@@ -5,42 +5,45 @@
 - 3.0 Network Operations 16%
 - 4.0 Network Security 19%
 - 5.0 Network Troubleshooting 22%
+- 720/900=80 // 720 minimum score.
 
 - **Tips**
   - https://www.reddit.com/r/WGU/comments/w7vhpm/networks_c480network_n101008_passed_first_attempt/
   - https://github.com/PacktPublishing/CompTIA-Network-Cert-N10-007-Full-Course-and-Practice-Exam
   - osi model
-  - 802.11
-  - troubleshooting steps
+  - 802.11 Wi-Fi
+  - Classless Subnetting (CIDR)
+  - CompTIA troubleshooting steps
+  - Error levels
 - **practice exams**
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
 
 ## Acronyms
 
-- CSMA/CD, CPE, EUI, IANA, IXE, MAC, MDI-X,PSK, PSTN, STP
+- CPE,IXE, PSK, PSTN,
 - **Disaster Recovery**
   - MTBF, MTTR, RTO, RPO
 - **Fiber**
   - OEO, SFP, SMF,
+- **Layer 2**
+  - CSMA/CD, EUI, MAC, MDI-X, NAC, STP
+- **Layer 3**
+  - IANA,
+- **Security**
+  - UTM
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
-  - DMZ, MIMO, MU-MIMO, WPS
+  - DMZ, MIMO, MU-MIMO, OFDM, WPS
 
 %
 
-- **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
 - **CPE**: Customer Premise Equipment. what internet provider calls your router.
-- **EUI**: extended unique identifier. IEEE name for MAC address
-- **IANA**: Internet Assigned Numbers Authority. manages all IP's.
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
-- **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
   - Also called BIA(burned in address).
-- **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
 - **PSTN**: Public Switched Telephone Network. internet access through phone company.
-- **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 
 - **Disaster Recovery**
   - **MTBF**: Mean time between failure. expected lifetime of product before failure.
@@ -51,6 +54,17 @@
   - **OEO**: optical-electrical-optical. fiber repeater.
   - **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
   - **SMF**: Single Mode Fiber: type of long distance fiber wire.
+- **Layer 2**
+  - **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
+  - **EUI**: extended unique identifier. IEEE name for MAC address
+  - **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
+  - **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
+  - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
+  - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
+- **Layer 3**
+  - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
+- **Security**
+  - **UTM**: Unified Threat Management. multiple security features combine into one device.
 - **Tools**
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
   - **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
@@ -60,6 +74,7 @@
     - multiple antenna's on both client and router.
     - TxR:S // Transmit antenna, Receive Antenna, Max streams.
   - **MU-MIMO**: multiple user. stream to multiple devices at the same time.
+  - **OFDM**: Orthogonal frequency-division multiplexing. split stream into segments.
   - **WPS**: Wi-Fi Protected Setup. Security risk. Allows router connection without password.
 - g
 
@@ -1265,7 +1280,8 @@
     - **Traffic logs**: what was on the network. traffic summary.
     - **Audit logs**: AD. events of logging in/out.
     - **Syslog**: standarized process to log system information. Enterprise logs: SIEM(Security Info Event Manager).
-  - **Logging levels/severity levels**: debug, inform, notice, warning, error, critical, alert, emergency.
+  - **Logging levels/severity levels**:
+    - (1)debug, (2)inform, (3)notice, (4)warning, (5)error, (6)critical, (7)alert, (8)emergency.
 - **Interface statistics/status**: monitor problems with data on network.
   - **Link state (up/down)**: interface is up/down turned off.
   - **Speed/duplex**: should match with other switch to have best throughput.
