@@ -18,12 +18,13 @@
 
 ## Acronyms
 
-- CSMA/CD, CPE, EUI, IANA, IDC, IXE, MAC, MDI-X, OEO, PSTN, SFP, STP
+- CSMA/CD, CPE, DMZ, EUI, IANA, IDC, IXE, MAC, MDI-X, MTBF, MTTR, OEO, OTDR, PSK, PSTN, RTO, RPO, SFP, SMF, STP
 
 %
 
 - **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
 - **CPE**: Customer Premise Equipment. what internet provider calls your router.
+- **DMZ**: demilitarized zone(screened subnet). physical or logical subnetwork.
 - **EUI**: extended unique identifier. IEEE name for MAC address
 - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
 - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
@@ -31,9 +32,16 @@
 - **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
   - Also called BIA(burned in address).
 - **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
+- **MTBF**: Mean time between failure. expected lifetime of product before failure.
+- **MTTR**: Mean time to repair. estimated time to recover from fault.
 - **OEO**: optical-electrical-optical. fiber repeater.
+- **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
+- **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
 - **PSTN**: Public Switched Telephone Network. internet access through phone company.
+- **RPO**: Recovery point objective. amount of data loss a system can sustain, measured in time units.
+- **RTO**: Recovery time objective. period following disaster that system may remain offline.
 - **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
+- **SMF**: Single Mode Fiber: type of long distance fiber wire.
 - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 
 <!-- # 1.0 Networking Fundamentals 24% -->
