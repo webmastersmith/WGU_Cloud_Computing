@@ -1,10 +1,10 @@
 # D325 CompTIA Network+ (N10-008)
 
-1.0 Networking Fundamentals 24%
-2.0 Network Implementations 19%
-3.0 Network Operations 16%
-4.0 Network Security 19%
-5.0 Network Troubleshooting 22%
+- 1.0 Networking Fundamentals 24%
+- 2.0 Network Implementations 19%
+- 3.0 Network Operations 16%
+- 4.0 Network Security 19%
+- 5.0 Network Troubleshooting 22%
 
 **Tips**
 
@@ -14,7 +14,6 @@
 - 802.11
 - troubleshooting steps
 - **practice exams**
-  - https://wgu.udemy.com/course/new-comptia-network-cert-n10-007-practice-tests/
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
 
