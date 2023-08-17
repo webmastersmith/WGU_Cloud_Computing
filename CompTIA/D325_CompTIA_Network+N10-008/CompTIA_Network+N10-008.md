@@ -6,13 +6,12 @@
 - 4.0 Network Security 19%
 - 5.0 Network Troubleshooting 22%
 
-**Tips**
-
-- https://www.reddit.com/r/WGU/comments/w7vhpm/networks_c480network_n101008_passed_first_attempt/
-- https://github.com/PacktPublishing/CompTIA-Network-Cert-N10-007-Full-Course-and-Practice-Exam
-- osi model
-- 802.11
-- troubleshooting steps
+- **Tips**
+  - https://www.reddit.com/r/WGU/comments/w7vhpm/networks_c480network_n101008_passed_first_attempt/
+  - https://github.com/PacktPublishing/CompTIA-Network-Cert-N10-007-Full-Course-and-Practice-Exam
+  - osi model
+  - 802.11
+  - troubleshooting steps
 - **practice exams**
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
