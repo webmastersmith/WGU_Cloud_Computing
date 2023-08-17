@@ -18,7 +18,15 @@
 
 ## Acronyms
 
-- CSMA/CD, CPE, DMZ, EUI, IANA, IDC, IXE, MAC, MDI-X, MTBF, MTTR, OEO, OTDR, PSK, PSTN, RTO, RPO, SFP, SMF, STP
+- CSMA/CD, CPE, DMZ, EUI, IANA, IXE, MAC, MDI-X,PSK, PSTN, STP
+- **Disaster Recovery**
+  - MTBF, MTTR, RTO, RPO
+- **Fiber**
+  - OEO, SFP, SMF,
+- **Tools**
+  - IDC, OTDR,
+- **Wi-Fi**
+  - MIMO, MU-MIMO
 
 %
 
@@ -27,22 +35,32 @@
 - **DMZ**: demilitarized zone(screened subnet). physical or logical subnetwork.
 - **EUI**: extended unique identifier. IEEE name for MAC address
 - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
-- **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
 - **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
   - Also called BIA(burned in address).
 - **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
-- **MTBF**: Mean time between failure. expected lifetime of product before failure.
-- **MTTR**: Mean time to repair. estimated time to recover from fault.
-- **OEO**: optical-electrical-optical. fiber repeater.
-- **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
 - **PSTN**: Public Switched Telephone Network. internet access through phone company.
-- **RPO**: Recovery point objective. amount of data loss a system can sustain, measured in time units.
-- **RTO**: Recovery time objective. period following disaster that system may remain offline.
-- **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
-- **SMF**: Single Mode Fiber: type of long distance fiber wire.
 - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
+
+- **Disaster Recovery**
+  - **MTBF**: Mean time between failure. expected lifetime of product before failure.
+  - **MTTR**: Mean time to repair. estimated time to recover from fault.
+  - **RPO**: Recovery point objective. amount of data loss a system can sustain, measured in time units. (ex.. 24h)
+  - **RTO**: Recovery time objective. period following disaster that system may remain offline.
+- **Fiber**
+  - **OEO**: optical-electrical-optical. fiber repeater.
+  - **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
+  - **SMF**: Single Mode Fiber: type of long distance fiber wire.
+- **Tools**
+  - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
+  - **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
+- **Wi-Fi**
+  - **MIMO**: multiple streams send/receive to many devices, but only one device at a time.
+    - multiple antenna's on both client and router.
+    - TxR:S // Transmit antennna, Receive Antenna, Max streams.
+  - **MU-MIMO**: multiple user. stream to multiple devices at the same time.
+- g
 
 <!-- # 1.0 Networking Fundamentals 24% -->
 
@@ -1089,8 +1107,11 @@
 | 802.11ax (Wifi 6)       | 20,40,80,80+80,160 | 2.4GHz, 5GHz  | 1201Mbps       | 9.6Gbps (8 x DL/UL, MU-MIMO, OFDMA) |
 
 - **Frequencies and range**
-  - 2.4GHz: a,b,g: 20Mhz. n: 20,40,80Mhz. // 2.4GHz only has 93Mhz possible bandwidth. 3 channels. 40MHz takes 2 channels(80% of bandwidth).
-  - 5GHz:
+  - 2.4GHz: only has 93Mhz total bandwidth. 3 channels(1,6,11).
+    - each channel needs ~25MHz(5MHz \* 5) bandwidth. That's why channel 1,6,11 don't overlap(one channel is 5MHz wide).
+    - bonding 2 channels: 40MHz takes 80% of bandwidth. You will have overlap if you have more than one 40MHz on 2.4GHz.
+  - 5GHz: ~500MHz total bandwidth. It is not consecutive, but that's why you can bond multiple channels and get larger bandwidth
+  - each person that connects, consumes some of the bandwidth. more bandwidth, more people can stream without interruption.
 - **Channels**
   - **Regulatory impacts**
 - **Channel bonding**: connecting multiple channels to increase bandwidth(pipe size) for better throughput.
@@ -1136,10 +1157,10 @@
 | 5G High-band | 25 - 39 GHz   | 10Gbps             |
 
 - **Multiple input, multiple output (MIMO) and multi-user MIMO (MU-MIMO)**
-  - MIMO: multiple streams send/receive at the same time to one device at a time.
+  - **MIMO**: multiple streams send/receive to many devices, but only one device at a time.
     - multiple antenna's on both client and router.
     - TxR:S // Transmit antennna, Receive Antenna, Max streams.
-  - MU-MIMO: stream to multiple devices at a time.
+  - **MU-MIMO**: multiple user. stream to multiple devices at the same time.
 
 <!-- # 3.0 Network Operations 16% -->
 
