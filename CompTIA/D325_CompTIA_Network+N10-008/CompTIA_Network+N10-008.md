@@ -18,22 +18,23 @@
 
 ## Acronyms
 
-- CSMA/CD, CPE, EUI, IANA, IDC, IXE, MAC, MDI-X, OEO, PSTN, SFP
+- CSMA/CD, CPE, EUI, IANA, IDC, IXE, MAC, MDI-X, OEO, PSTN, SFP, STP
 
 %
 
-- CSMA/CD: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
-- CPE: Customer Premise Equipment: what internet provider calls your router.
-- EUI: extended unique identifier. IEEE name for MAC address
-- IANA: Internet Assigned Numbers Authority: manages all IP's.
-- IDC: Insulation Displacement Connector: punchdown tool on patch panels. holds the wire.
-- IXE: Internet eXchange Points: backbone of internet(high bandwidth trunks) connects to this.
-- MAC: media access controller. 48 bit unique address assigned to all interface ports.
+- **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
+- **CPE**: Customer Premise Equipment. what internet provider calls your router.
+- **EUI**: extended unique identifier. IEEE name for MAC address
+- **IANA**: Internet Assigned Numbers Authority. manages all IP's.
+- **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
+- **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
+- **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
   - Also called BIA(burned in address).
-- MDI-X: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
-- OEO: optical-electrical-optical. fiber repeater.
-- PSTN: Public Switched Telephone Network: internet access through phone company.
-- SFP: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
+- **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
+- **OEO**: optical-electrical-optical. fiber repeater.
+- **PSTN**: Public Switched Telephone Network. internet access through phone company.
+- **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
+- **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 
 <!-- # 1.0 Networking Fundamentals 24% -->
 
