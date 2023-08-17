@@ -18,7 +18,7 @@
 
 ## Acronyms
 
-- CSMA/CD, CPE, DMZ, EUI, IANA, IXE, MAC, MDI-X,PSK, PSTN, STP
+- CSMA/CD, CPE, EUI, IANA, IXE, MAC, MDI-X,PSK, PSTN, STP
 - **Disaster Recovery**
   - MTBF, MTTR, RTO, RPO
 - **Fiber**
@@ -26,13 +26,12 @@
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
-  - MIMO, MU-MIMO
+  - DMZ, MIMO, MU-MIMO, WPS
 
 %
 
 - **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
 - **CPE**: Customer Premise Equipment. what internet provider calls your router.
-- **DMZ**: demilitarized zone(screened subnet). physical or logical subnetwork.
 - **EUI**: extended unique identifier. IEEE name for MAC address
 - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
@@ -56,10 +55,12 @@
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
   - **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
 - **Wi-Fi**
+  - **DMZ**: demilitarized zone(screened subnet). physical or logical subnetwork.
   - **MIMO**: multiple streams send/receive to many devices, but only one device at a time.
     - multiple antenna's on both client and router.
-    - TxR:S // Transmit antennna, Receive Antenna, Max streams.
+    - TxR:S // Transmit antenna, Receive Antenna, Max streams.
   - **MU-MIMO**: multiple user. stream to multiple devices at the same time.
+  - **WPS**: Wi-Fi Protected Setup. Security risk. Allows router connection without password.
 - g
 
 <!-- # 1.0 Networking Fundamentals 24% -->
@@ -456,6 +457,8 @@
   - **Default gateway**
 - **IPv4 subnetting**
   - **Classless (variable-length subnet mask)**
+  - Explain Professor Messer 7 second subnetting
+  - What is network address of 192.168.0.123/29
   - **Classful**
     - A
     - B
@@ -532,6 +535,34 @@
 | Class D | 1 1 1 0       | 224.0.0.0 - 239.255.255.255    |
 | Class E | 1 1 1 1       | 240.0.0.0 - 255.255.255.255    |
 
+- **Professor Messer 7 second subnetting**
+
+| 1   | 2   | 3   | 4   | decimal | host-2 | networks |
+| --- | --- | --- | --- | ------- | ------ | -------- |
+| /1  | /9  | /17 | /25 | 128     | 128    | 2        |
+| /2  | /10 | /18 | /26 | 192     | 64     | 4        |
+| /3  | /11 | /19 | /27 | 224     | 32     | 8        |
+| /4  | /12 | /20 | /28 | 240     | 16     | 16       |
+| /5  | /13 | /21 | /29 | 248     | 8      | 32       |
+| /6  | /14 | /22 | /30 | 252     | 4      | 64       |
+| /7  | /15 | /23 | /31 | 254     | 2      | 128      |
+| /8  | /16 | /24 | /32 | 255     | 1      | 256      |
+
+| host | multiples of host up to 256                                                                                      |
+| ---- | ---------------------------------------------------------------------------------------------------------------- |
+| 128  | 0, 128                                                                                                           |
+| 64   | 0, 64, 128, 192                                                                                                  |
+| 32   | 0, 32, 64, 96, 128, 160, 192, 224                                                                                |
+| 16   | 0, 16, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240                                           |
+| 8    | 0,8,16,24,32,40,48,56,64,72,80,88,96,104,112,120,128,136,144,152,160,168,176,184,192,200,208,216,224,232,240,248 |
+
+|           | octet | octet | octet | octet | notes                   |
+| --------- | ----- | ----- | ----- | ----- | ----------------------- |
+| address   | 192   | 168   | 0     | 123   | /29 mask.               |
+| mask      | 255   | 255   | 255   | 248   | 255 bring down octet    |
+| network   | 192   | 168   | 0     | 120   | if zero bring down zero |
+| broadcast | 192   | 168   | 0     | 127   | if zero bring down 255. |
+
 - **Classful**
   - A: 0-127
   - B: 128-191
@@ -564,17 +595,21 @@
     - IPv6 subnet prefix: 64bits + (MAC(48 bits) + FFFE(16 bits) in the middle) 64 bits = unique IPv6 address.
     - DAD (duplicate address detection). makes sure no duplicate ip on network.
 - **Convert MAC to EUI-64**: If first octect(E0) Hex value is 0, then becomes a 2. If(E7) 7, becomes a 5.
-  0|1
-  2|3
-  --
-  4|5
-  6|7
-  --
-  8|9
-  A|B
-  --
-  C|D
-  E|F
+- ![seventh bit flip](./img/seventh_bit_flip.PNG)
+
+  | Seventh Bit Flip |
+  | :--------------: |
+  |       0/1        |
+  |       2/3        |
+  |                  |
+  |       4/5        |
+  |       6/7        |
+  |                  |
+  |       8/9        |
+  |       A/B        |
+  |                  |
+  |       C/D        |
+  |       E/F        |
 
 - **Virtual IP (VIP)**
   - logical ip address assigned to virtual machines.
