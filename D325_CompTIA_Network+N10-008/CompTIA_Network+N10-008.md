@@ -13,6 +13,7 @@
   - osi model
   - 802.11 Wi-Fi
   - Classless Subnetting (CIDR)
+  - Ports
   - CompTIA troubleshooting steps
   - Error levels
 - **practice exams**
@@ -29,7 +30,7 @@
 - **Layer 2**
   - CSMA/CD, EUI, MAC, MDI-X, NAC, STP
 - **Layer 3**
-  - IANA,
+  - HSRP, IANA, OSPF, VRRP
 - **Security**
   - UTM
 - **Tools**
@@ -43,7 +44,7 @@
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
   - Also called BIA(burned in address).
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
-- **PSTN**: Public Switched Telephone Network. internet access through phone company.
+- **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
 
 - **Disaster Recovery**
   - **MTBF**: Mean time between failure. expected lifetime of product before failure.
@@ -62,7 +63,10 @@
   - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
   - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 - **Layer 3**
+  - **HSRP**: Hot standby router protocol. Cisco Proprietary(router redundancy). multiple routers share virtual IP.
   - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
+  - **OSPF**: Open shortest path first. routing protocol to find best path to destination.
+  - **VRRP**: virtual router redundancy protocol. multiple routers with virtual IP/MAC address.
 - **Security**
   - **UTM**: Unified Threat Management. multiple security features combine into one device.
 - **Tools**
@@ -139,7 +143,7 @@
   - Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers: layer 4. TCP header (TCP/UDP/ Ports).
   - Internet Protocol (IP) header: layer 3. IP header (IP).
   - Ethernet header: layer 2. Frame header and frame trailer (MAC address).
-  - **TCP flags(layer 4 -6 bit)**:
+  - **TCP flags(layer 4. 6 bit)**:
     - SYN: synchronize three way handshake
     - URG: precedence over other data
     - ACK: acknowledge packet arrived
@@ -1182,8 +1186,8 @@
 | ---- | ------------ | --------------------- | ------------ | ------------- |
 | 1    | WPA3         | SAE (Dragonfly)       | 256          | AES-GCMP, MIC |
 | 2    | WPA2         | PSK (4-way-handshake) | 128          | AES-CCMP, MIC |
-| 3    | WPA          | 24-bit IV, TKIP       | 128          | RC4           |
-| 4    | WEP          | obsolete              | 24           |               |
+| 3    | WPA          | TKIP, 24-bit IV, PSK  | 128          | RC4           |
+| 4    | WEP          | obsolete PSK          | 24           |               |
 | 5    | Open Network | (no security at all)  | 0            | -             |
 
 - **WPA/WPA2 Enterprise (AES/TKIP)**: use a RADIUS server. Each user has separate username/password.
@@ -1280,8 +1284,16 @@
     - **Traffic logs**: what was on the network. traffic summary.
     - **Audit logs**: AD. events of logging in/out.
     - **Syslog**: standarized process to log system information. Enterprise logs: SIEM(Security Info Event Manager).
-  - **Logging levels/severity levels**:
-    - (1)debug, (2)inform, (3)notice, (4)warning, (5)error, (6)critical, (7)alert, (8)emergency.
+  - **Logging levels/severity levels**: mnemonic: Everyone always complains even when nothing is different.
+    <!-- - prettier-ignore -->
+    0. emergency: System is unusable
+    1. alert: Immediate action needed
+    2. critical: Critical condition
+    3. error: Error condition
+    4. warning: Warning condition
+    5. notification: Normal but significant condition
+    6. informational: Informational message only
+    7. debugging: Appears during debugging only
 - **Interface statistics/status**: monitor problems with data on network.
   - **Link state (up/down)**: interface is up/down turned off.
   - **Speed/duplex**: should match with other switch to have best throughput.
@@ -1355,7 +1367,7 @@
   - **Security policy**: policy for the organization. remote access, building security, incident response. constantly change.
   - **Data loss prevention**: watch and blocks sensitive data before gets transferred out of network. credit card numbers, social security numbers, medical records. Allow only if encrypted.
 - **Common documentation**
-  - **Physical network diagram**: how each device connects to other devices.
+  - **Physical network diagram**: how each device connects to other devices overlaid on floor blueprints.
   - **Floor plan**: where wires are, room plans, patch panel to room code locations.
   - **Rack diagram**: shelving system for patch panels, switches and routers. service tags and port IDs and links. power outlets on the uninterruptible power supply (UPS).
   - **Intermediate distribution frame (IDF)/main distribution frame (MDF) documentation**:
@@ -1615,7 +1627,7 @@
 - **Best practices**
   - **Secure SNMP**: monitor switches. use v3.
   - **Router Advertisement (RA) Guard**: IPV6 Neighbor Discovery. attacker could pretend to be router.
-  - **Port security**: 802.1X Unique rules for each interface. prevent unauthorized user from connecting to network(EAP -> RADIUS).
+  - **Port security**: individual switch ports to allow only a specified number of source MAC addresses to communicate.
   - **Dynamic ARP inspection**: stops ARP posioning. switch creates it own table, if something odd happens, switch drops packet.
   - **Control plane policing**: QoS traffic has to be processed. Malware masquerading as QoS can create a DoS.
     - mitigate: policy that uses ACL to allow/deny types of QoS traffic.
@@ -1756,6 +1768,16 @@
 - **Document findings, actions, outcomes, and lessons learned**
 
 %
+
+- Mnemonic: "I Eat Three Eggs In Virginia Daily"
+
+1. Identify the problem
+2. Establish a theory of probable cause
+3. Test the theory to determine the cause
+4. Establish a plan of action to resolve the problem and implement the Solution
+5. Verify full system functionality
+6. Implement the solution or escalate as necessary
+7. Document the findings, actions, and outcomes
 
 - **Identify the problem**
   1. **Gather information**: get as many details as possible.
