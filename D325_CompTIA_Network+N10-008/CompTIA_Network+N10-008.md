@@ -42,15 +42,14 @@
 
 - **CPE**: Customer Premise Equipment. what internet provider calls your router.
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
-  - Also called BIA(burned in address).
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
 - **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
 
 - **Disaster Recovery**
   - **MTBF**: Mean time between failure. expected lifetime of product before failure.
   - **MTTR**: Mean time to repair. estimated time to recover from fault.
-  - **RPO**: Recovery point objective. amount of data loss a system can sustain, measured in time units. (ex.. 24h)
-  - **RTO**: Recovery time objective. period following disaster that system may remain offline.
+  - **RPO**: Recovery point objective. Maximum amount of time that 100% data can be recovered from a backup. (ex.. 24h).
+  - **RTO**: Recovery time objective. Maximum allowable time a system may remain offline following a disaster.
 - **Fiber**
   - **OEO**: optical-electrical-optical. fiber repeater.
   - **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
@@ -59,7 +58,8 @@
   - **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
   - **EUI**: extended unique identifier. IEEE name for MAC address
   - **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
-  - **MDI-X**: Medium Dependent Interface Crossover. Transmit on host connect to Receive on device.
+    - Also called BIA(burned in address).
+  - **MDI-X**: Medium Dependent Interface Crossover. automatically detect transmit/receive pins. No crossover cable needed.
   - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
   - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 - **Layer 3**
@@ -1030,26 +1030,40 @@
 
 - **Routing**
   - **Dynamic routing protocols**
+    - ![dynamic protocols](./img/dynamic_routing_protocols_overview.PNG)
     - router to router communication.
     - determine best path.
-    - **Routing Internet Protocol (RIP)**: distance vector.
+    - **Routing Internet Protocol (RIP)**: distance vector. Max size 15 hops. known as 'routing by rumor'.
+      - v1: classful, v2: classless, RIPng: IPv6.
     - **Open Shortest Path First (OSPF)**: link-state.
-    - **Enhanced Interior Gateway Routing Protocol (EIGRP)**: cisco. distance vector.
-    - **Border Gateway Protocol (BGP)**: hybrid.
+      - hierarchical(routers are grouped into OSPF areas).
+        - **Area border routers**: connect the different areas.
+        - AS(autonomous system) border router: connects to internet. ABR's elect backbone(Area 0).
+      - LSA: each entry in database(LSDB).
+      - LSDB: complete database of topology.
+    - **Enhanced Interior Gateway Routing Protocol (EIGRP)**: cisco. distance vector/hybrid(hops + bandwidth + delay).
+    - **Border Gateway Protocol (BGP)**: Path Vector. uses EGP. network connects to any external network (ISP, Internet).
   - **Link state vs. distance vector vs. hybrid**:
-    - link state: considers speed of link. scalable.
-    - distance vector: best route based on distance(hops). doesn't scale. doesn't factor speed of connection.
-    - hybrid: combine hops and link speed. BGP(border gateway protocol).
+    - **link state**: router knows the state of every link(interface) on every router. considers bandwidth(speed) of link(cost). scalable.
+    - **distance vector**: best route based on hops. only knows direct neighbor. doesn't scale. doesn't factor speed of connection.
+    - **hybrid**: combine hops and link speed. BGP(border gateway protocol).
   - **Static routing**: engineer add the route manually.
   - **Default route**:
     - when nothing in routing table matches, send to this ip. 0.0.0.0/0
-    - if no default route, ip not in routing table, drop packet.
-  - **Administrative distance**: metric value lower better.
-  - **Exterior vs. interior**:
+    - if no default route, ip not found in routing table, drop packet.
+  - **Administrative distance**: metric value given to each routing protocol(rip, ospf...). lower number better.
+  - **Exterior vs. interior (Gateway Protocols)**:
+    - AS: Autonomous Systems. Network under the administrative control of single owner.
+    - Exterior: Routing between AS(ISP, Internet). Tuned for stability, security.
+    - Interior: Routing within an AS. Tuned for speed and responsiveness.
   - **Time to live**:
 - **Bandwidth management**
-  - **Traffic shaping**: set priority of apps.
-  - **Quality of service (QoS)**: priority over other packets.
+  - improve the overall network performance, reduce latency, and provide a better user experience.
+  - **Traffic shaping**: delay based on content. store lower priority packets till network idle.
+  - **Quality of service (QoS)**: priority over other packets(VoIP, video). marked in the packet header.
+    - **Control plane**: makes decisions about how traffic should be prioritized and where it should be switched.
+    - **Data plane**: handles the actual switching of traffic.
+    - **Management plane**: monitors traffic conditions.
 
 ## 2.3 Given a scenario, configure and deploy common Ethernet switching features
 
