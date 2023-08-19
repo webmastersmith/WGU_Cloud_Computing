@@ -22,17 +22,17 @@
 
 ## Acronyms
 
-- CPE,IXE, PSK, PSTN,
+- CPE,IXE, PSK, PSTN, SIEM
 - **Disaster Recovery**
   - MTBF, MTTR, RTO, RPO
 - **Fiber**
   - OEO, SFP, SMF,
 - **Layer 2**
-  - CSMA/CD, EUI, MAC, MDI-X, NAC, STP
+  - BPDU, CSMA/CD, EUI, LACP, MAC, MDI-X, STP
 - **Layer 3**
   - HSRP, IANA, OSPF, VRRP
 - **Security**
-  - UTM
+  - UTM, NAC
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
@@ -44,6 +44,7 @@
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
 - **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
+- **SIEM**: deploy multiple agents to monitor and log security related events from firewalls, IPS, antivirus to central location.
 
 - **Disaster Recovery**
   - **MTBF**: Mean time between failure. expected lifetime of product before failure.
@@ -55,12 +56,13 @@
   - **SFP**: Small Form-factor Pluggable: fiber optic to digital bit convertors. Must match ethernet standard and wavelength.
   - **SMF**: Single Mode Fiber: type of long distance fiber wire.
 - **Layer 2**
+  - **BPDU**: Bridge protocol data units. frames contain information about STP.
   - **CSMA/CD**: Carrier Sense Multi Access/Collision Domain. Switch detects frame collisions.
   - **EUI**: extended unique identifier. IEEE name for MAC address
+  - **LACP**: Link Aggregation Control Protocol. Combine multiple physical links into one logical link(bonding).
   - **MAC**: media access controller. 48 bit unique address assigned to all interface ports.
     - Also called BIA(burned in address).
   - **MDI-X**: Medium Dependent Interface Crossover. automatically detect transmit/receive pins. No crossover cable needed.
-  - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
   - **STP**: Spanning Tree Protocol. Prevent loops when switches have multiple path to each other.
 - **Layer 3**
   - **HSRP**: Hot standby router protocol. Cisco Proprietary(router redundancy). multiple routers share virtual IP.
@@ -68,6 +70,7 @@
   - **OSPF**: Open shortest path first. routing protocol to find best path to destination.
   - **VRRP**: virtual router redundancy protocol. multiple routers with virtual IP/MAC address.
 - **Security**
+  - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
   - **UTM**: Unified Threat Management. multiple security features combine into one device.
 - **Tools**
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
@@ -1789,8 +1792,8 @@
 2. Establish a theory of probable cause
 3. Test the theory to determine the cause
 4. Establish a plan of action to resolve the problem and implement the Solution
-5. Verify full system functionality
-6. Implement the solution or escalate as necessary
+5. Implement the solution or escalate as necessary
+6. Verify full system functionality
 7. Document the findings, actions, and outcomes
 
 - **Identify the problem**
@@ -1879,11 +1882,19 @@
     - rollover: yost cable, console cable. 1,8;2,7;3,6;4,5;5,4;6,3;7,2;8,1; 12345678 -> 87654321
   - **Crossover cable**:
     - 568B: 1(o/w),3; 2(o),6; 3(g/w),1; 4(bl),7; 5(bl/w),8; 6(g),2; 7(br/w),4; 8(br),5; 12345678 -> 361-78-245
-  - **Power over Ethernet**: power supply to device from switch(endspan). Midspan(power from injector).
-    - pure copper and bigger conductor will produce less heat(better data rates).
-    - Mode A: power on data pairs
-    - Mode B: power on spare pairs
-    - 4-pair: power on all pairs -common with gigabit ethernet.
+
+| Device   | Transmit Pins | Receive Pins |
+| -------- | ------------- | ------------ |
+| PC       | 1,2           | 3,6          |
+| Firewall | 1,2           | 3,6          |
+| Router   | 1,2           | 3,6          |
+| Switch   | 3,6           | 1,2          |
+
+- **Power over Ethernet**: power supply to device from switch(endspan). Midspan(power from injector).
+  - pure copper and bigger conductor will produce less heat(better data rates).
+  - Mode A: power on data pairs
+  - Mode B: power on spare pairs
+  - 4-pair: power on all pairs -common with gigabit ethernet.
 
 | POE RJ-45      | Wattage                                     |
 | -------------- | ------------------------------------------- |
