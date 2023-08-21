@@ -10,12 +10,14 @@
 - **Tips**
   - https://www.reddit.com/r/WGU/comments/w7vhpm/networks_c480network_n101008_passed_first_attempt/
   - https://github.com/PacktPublishing/CompTIA-Network-Cert-N10-007-Full-Course-and-Practice-Exam
+  - https://packetlife.net/library/cheat-sheets/
+  - https://ankiweb.net/shared/info/1542354670
   - osi model
   - 802.11 Wi-Fi
   - Classless Subnetting (CIDR)
   - Ports
   - CompTIA troubleshooting steps
-  - Error levels
+  - Syslog Error levels
 - **practice exams**
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
@@ -32,7 +34,7 @@
 - **Layer 3**
   - HSRP, IANA, OSPF, VRRP
 - **Security**
-  - UTM, NAC
+  - EAP, NAC, RADIUS, TACACS+, UTM
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
@@ -70,7 +72,10 @@
   - **OSPF**: Open shortest path first. routing protocol to find best path to destination.
   - **VRRP**: virtual router redundancy protocol. multiple routers with virtual IP/MAC address.
 - **Security**
-  - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS.
+  - **EAP**: Extensible Authentication Protocol. authentication framework.
+  - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS. 802.1X
+  - **RADIUS**: Remote Access Dial-In User Service. open source AAA server. often used in 802.1X Wireless Auth.
+  - **TACACS+**: Terminal Access Controller Access Control System. Cisco. Enterprise admin authentication.
   - **UTM**: Unified Threat Management. multiple security features combine into one device.
 - **Tools**
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
@@ -83,7 +88,47 @@
   - **MU-MIMO**: multiple user. stream to multiple devices at the same time.
   - **OFDM**: Orthogonal frequency-division multiplexing. split stream into segments.
   - **WPS**: Wi-Fi Protected Setup. Security risk. Allows router connection without password.
-- g
+
+## Electromagnetic Radiation
+
+- amplitude, attenuation, bandwidth, baud rate, bps, electromagnetic radiation, encoding, frequency, hertz, interference, jitter, latency, modulation, noise, signal, spectrum, speed, throughput,
+
+%
+
+- **Amplitude**: distance between low and high states of waveform.
+- **Attenuation**: loss of signal strength, expressed in decibels (dBm). strength at origin and signal strength at destination.
+- **Bandwidth**: theoretical size of pipe. The narrow definition of bandwidth is a **frequency** range measured in cycles per second or Hertz (Hz), but the term is very widely used in data networking to mean the amount of data that can be transferred, measured multiples of bits per second (bps). Encoding methods mean that, for instance, a signal with 100 MHz frequency bandwidth can transfer much more than 100 Mbps.
+- **baud rate**: any signal high to low(called **symbol**) per second.
+  - A symbol could be something like a pulse of higher voltage in an electrical current or the transition between the peak and the trough in an electromagnetic wave.
+- **bps**: bits per second. data link layer. Can be more than one bit per symbol, so bit rate can be higher than baud rate.
+- **Electromagnetic radiation**: means transmitting signals as electric current, infrared light, or radio waves.
+- **Encoding**: transitioning between low and high voltage states in an electrical circuit, making use of a characteristic of the wave called amplitude.
+- **Frequency**: how many times a second a signal goes from high to low to high.
+- **Hertz**: frequency range measured in cycles per second.
+- **Interference**: obstruction thats causes signal quality to decrease.
+- **Jitter**: delay between packets.
+- **Latency**: time it takes packet to arrive from src.
+- **Modulation**: encoding information into a transmitted signal.
+- **noise**: anything that gets transmitted that isn't the intended signal. expressed as **SNR(signal to noise ratio)**.
+- **signal**: Electromagnetic radiation means transmitting signals as electric current, infrared light, or radio waves.
+- **Spectrum**: range of radio waves.
+- **speed**: is the expected performance of a link. measured in ms. sometimes called latency or delay.
+- **throughput**: the tested average data rate achieved over time. actual data transfer.
+
+## Good to Know
+
+- Application Layer/Management Plane
+- Control Layer/Control Plane
+- Infrastructure Layer/Data Plane
+
+%
+
+- **Application layer/Management plane**: manage networking devices.
+  - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
+- **Control layer/Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
+  - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
+- **Infrastructure layer/Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting.
+  - switch ports.
 
 <!-- # 1.0 Networking Fundamentals 24% -->
 
