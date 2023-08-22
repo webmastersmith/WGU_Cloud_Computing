@@ -39,7 +39,6 @@
 
 %
 
-- ![osi](./img/osi.PNG)
 - **Addressing**: Describing where data messages should go. At each layer, there are different rules for how they can send and receive messages.
 - **Encapsulation**: how data messages should be packaged for transmission. each node encapsulates and passes down to next level.
 - **PDU**: At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
@@ -78,11 +77,15 @@
 6. presentation
 7. application
 
-- **Data encapsulation and decapsulation within the OSI model context**
+## Data encapsulation and decapsulation within the OSI model context
+
+- ![osi](./img/osi.PNG)
+
   - Applications data: 5,6,7 (HTTPS, IMAP, SSH).
   - Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers: layer 4. TCP header (TCP/UDP/ Ports).
   - Internet Protocol (IP) header: layer 3. IP header (IP).
   - Ethernet header: layer 2. Frame header and frame trailer (MAC address).
+
   - **TCP flags(layer 4. 6 bit)**:
     - SYN: synchronize three way handshake
     - URG: precedence over other data
