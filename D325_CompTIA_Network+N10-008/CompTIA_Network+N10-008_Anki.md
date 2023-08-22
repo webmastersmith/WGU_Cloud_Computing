@@ -24,27 +24,19 @@
 
 <!-- # 1.0 Networking Fundamentals 24% -->
 
-## 1.1 Compare and contrast the Open Systems Interconnection (OSI) model layers and encapsulation concepts
+<!-- ## 1.1 Compare and contrast the Open Systems Interconnection (OSI) model layers and encapsulation concepts -->
 
-- **Network protocol has what two principal functions?**
-- **What is a PDU?**
-- **Describe OSI model**
-- **Data encapsulation and decapsulation within the OSI model context**
-  - Ethernet header
-  - Internet Protocol (IP) header
-  - Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers
-  - TCP flags
-  - Payload
-  - Maximum transmission unit (MTU)
-
-%
+## 1.1 Network protocol has what two principal functions
 
 - **Addressing**: Describing where data messages should go. At each layer, there are different rules for how they can send and receive messages.
 - **Encapsulation**: how data messages should be packaged for transmission. each node encapsulates and passes down to next level.
-- **PDU**: At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
-  - **Packet**: means the same thing as PDU.
--
-- **OSI model**
+
+## 1.1 PDU
+
+- At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
+- **Packet**: means the same thing as PDU.
+
+## 1.1 OSI model
 
 | Number | Layer        | Description                                                                      |
 | ------ | ------------ | -------------------------------------------------------------------------------- |
@@ -77,28 +69,59 @@
 6. presentation
 7. application
 
-## Data encapsulation and decapsulation within the OSI model context
+## 1.1 Data encapsulation and decapsulation within the OSI model context
 
 - ![osi](./img/osi.PNG)
 
   - Applications data: 5,6,7 (HTTPS, IMAP, SSH).
-  - Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers: layer 4. TCP header (TCP/UDP/ Ports).
-  - Internet Protocol (IP) header: layer 3. IP header (IP).
-  - Ethernet header: layer 2. Frame header and frame trailer (MAC address).
 
-  - **TCP flags(layer 4. 6 bit)**:
-    - SYN: synchronize three way handshake
-    - URG: precedence over other data
-    - ACK: acknowledge packet arrived
-    - PSH: push data to application without buffering
-    - FIN: last packet from sender
-    - RST: reset connection
-  - Payload:
-  - Maximum transmission unit (MTU): size of data to send through network.
-    - layer 3(IP). flags in IP header show if payload is fragmented.
-    - default is 1500 bytes. (includes IP header, TCP header, Application data).
-    - windows: ping -f -l 1472 8.8.8.8 // -f: don't fragment. -l: size bytes=1500.
-    - linux: ping -D -s 1472 8.8.8.8
+## 1.1 Ethernet header
+
+- Ethernet header: layer 2. Frame header and frame trailer (MAC address).
+
+| Name                      | Description                              | Length            |
+| ------------------------- | ---------------------------------------- | ----------------- |
+| Preamble                  | sync device clocks                       | 7 bytes (56 bits) |
+| SFD Start Frame Delimiter | where data actually starts               | 1 bytes (8 bits)  |
+| Destination MAC           | Destination MAC                          | 6 bytes (48 bits) |
+| Source MAC                | Source MAC                               | 6 bytes (48 bits) |
+| EtherType                 | Layer 3 protocol (ipv4 / ipv6) or length | 2 bytes (16 bits) |
+| payload                   | layer 3 or higher data                   | 46-1500 bytes     |
+| FCS Frame Check Sequence  | (CRC algorithm) check corrupted data     | 4 bytes (32 bits) |
+
+- EtherType value of 1500 or less is length. Greater than 1536 means ipv4/6.
+  - ipv4=0x800 (2048 in decimal)
+  - ipv6=0x86DD (34525 in decimal)
+- CRC (Cyclic Redundancy Check)
+
+## 1.1 Internet Protocol (IP) header
+
+- Internet Protocol (IP) header: layer 3. IP header (IP).
+
+## 1.1 Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers
+
+- Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers: layer 4. TCP header (TCP/UDP/ Ports).
+
+## 1.1 TCP flags(layer 4. 6 bit)
+
+- SYN: synchronize three way handshake
+- URG: precedence over other data
+- ACK: acknowledge packet arrived
+- PSH: push data to application without buffering
+- FIN: last packet from sender
+- RST: reset connection
+
+## 1.1 Payload
+
+- Data contained inside the layer 3.
+- layer 3(IP). flags in IP header show if payload is fragmented.
+
+## 1.1 Maximum transmission unit (MTU)
+
+- size of data to send through network.
+- default is 1500 bytes. (includes IP header, TCP header, Application data).
+<!-- - windows: ping -f -l 1472 8.8.8.8 // -f: don't fragment. -l: size bytes=1500.
+- linux: ping -D -s 1472 8.8.8.8 -->
 
 ## 1.2 Explain the characteristics of network topologies and network types
 
@@ -800,14 +823,18 @@
   - **Distribution/aggregation layer**: midpoint between core and users. switches.
   - **Access/edge**: users location. the edge. clients.
 - **Software-defined networking**
-  - **Software-defined network**:
-  - virtual networks.
-  - **Application layer/Management plane**: manage networking devices.
-    - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
-  - **Control layer/Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
-    - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
-  - **Infrastructure layer/Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting.
-    - switch ports.
+  - **Software-defined network**: virtual networks.
+  - **Application layer / Management Plane**:
+    - **Application layer**: communication resource requests or information about the network.
+    - **Management plane**: monitor traffic conditions, the status of the network, gain insights.
+      - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
+  - **Control layer / Control Plane**:
+    - **Control layer**: how to route a data packet on the network and to make decisions about how traffic should be prioritized, secured, forwarded.
+    - **Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
+      - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
+  - **Infrastructure layer/Data Plane**:
+    - **Infrastructure layer**: the physical networking devices that receive information from the control layer about where to move the data and then perform those movements.
+    - **Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting. switch ports.
 - **Spine and leaf**
   - Typically found in data centers. Designed to address the increasing demands for bandwidth, low latency, add redundancy.
   - Backbone: spine switches wired in mesh topology with all leaf switches.

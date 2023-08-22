@@ -119,6 +119,10 @@
   - HSRP, IANA, OSPF, VRRP
 - **Security**
   - EAP, NAC, RADIUS, TACACS+, UTM
+- **SNMP**
+  - Agent, Baseline, MIB, OID, Trap
+- **Telephone**
+  - PSTN, POTS,
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
@@ -129,7 +133,6 @@
 - **CPE**: Customer Premise Equipment. what internet provider calls your router.
 - **IXE**: Internet eXchange Points. backbone of internet(high bandwidth trunks) connects to this.
 - **PSK**: Pre-shared key. cryptography. secret key(password) that has been established between the parties.
-- **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
 - **SIEM**: deploy multiple agents to monitor and log security related events from firewalls, IPS, antivirus to central location.
 
 - **Disaster Recovery**
@@ -161,6 +164,15 @@
   - **RADIUS**: Remote Access Dial-In User Service. open source AAA server. often used in 802.1X Wireless Auth.
   - **TACACS+**: Terminal Access Controller Access Control System. Cisco. Enterprise admin authentication.
   - **UTM**: Unified Threat Management. multiple security features combine into one device.
+- **SNMP**
+  - **Agent**: runs on each client to create OID's in the MIB.
+  - **Baseline**: the normal operation specs.
+  - **MIB**: Management Information Database. ASCII text file that describes elements as a list of data objects.
+  - **OID**: Object identifier. database entry(MIB) object being monitored has an OID number. PIDs you can monitor.
+  - **Trap**: instead of polling to collect info for graphs, can configure device to send alert when OID reaches threshold.
+- **Telephone**
+  - **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
+  - **POTS**: old phone line T1 connection.
 - **Tools**
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
   - **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
@@ -201,7 +213,7 @@
 
 ## Contracts
 
-- AUP, defense in depth, least privilege, MOU, MSDS, password policy, remote access policy, SLA, SOW, zero trust.
+- AUP, defense in depth, DLP, least privilege, MOU, MSDS, password policy, remote access policy, SLA, SOW, zero trust.
 
 %
 
@@ -217,21 +229,6 @@
 - **SLA**: Service Level Agreement. commitment between a service provider and a client for particular aspects of the service, such as quality, availability, or responsibilities.
 - **SOW**: Statement of Work. business agreement that outlines deliverables and project goals. Helps clients and vendors to stay aligned.
 - **Zero Trust**: all users in/out organization to be authenticated, authorized and validated. Secure Infrastructure.
-
-## Layers and Planes
-
-- Application Layer/Management Plane
-- Control Layer/Control Plane
-- Infrastructure Layer/Data Plane
-
-%
-
-- **Application layer/Management plane**: manage networking devices.
-  - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
-- **Control layer/Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
-  - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
-- **Infrastructure layer/Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting.
-  - switch ports.
 
 ## Ethernet Pinout
 
@@ -295,4 +292,52 @@
 | 10GBASE-SR (Short Range)       |        | MMF     | 33m to 400m                |
 | 10GBASE-LR (Long Range)        |        | SMF     | 10 km(SMF)                 |
 
-## Ports -see ports & protocols deck
+## Ethernet Cable
+
+| Cat/Class       | Cable Type                  | Network Application | Max. Distance  | Frequency | Connector |
+| :-------------- | :-------------------------- | :------------------ | :------------- | :-------- | :-------- |
+| 3 (obsolete)    | UTP                         | 10BASE-T            | 100 m (328 ft) | 16 MHz    | RJ-45     |
+| 5 (obsolete)    | UTP                         | 100BASE-TX          | 100 m (328 ft) | 100 MHz   | RJ-45     |
+| 5e (Class D)    | UTP or F/UTP                | 1000BASE-T          | 100 m (328 ft) | 100 MHz   | RJ-45     |
+| 6 (Class E)     | UTP                         | 10GBASE-T           | 55 m (180 ft)  | 250 MHz   | RJ-45     |
+| 6 (Class E)     | F/UTP, or U/FTP             | 1000BASE-T          | 100 m (328 ft) | 250 MHz   | RJ-45     |
+| 6a (Class Ea)   | UTP, F/UTP, U/FTP, or S/FTP | 10GBASE-T           | 100 m (328 ft) | 500 MHz   | RJ-45     |
+| 7 (Class F)     | S/FTP or F/FTP              | 10GBASE-T           | 100 m (328 ft) | 600 MHz   | GG45/TERA |
+| 8/8.1 (Class I) | U/FTP or F/UTP              | 40GBASE-T           | 30 m (100 ft)  | 2000 MHz  | RJ-45     |
+| 8.2 (Class II)  | F/FTP or S/FTP              | 40GBASE-T           | 30 m (100 ft)  | 2000 MHz  | GG45/TERA |
+
+- **Cat 5** cable is no longer available. Cat 5e is tested at frequencies up to 100 MHz (like Cat 5 was) but to higher overall specifications for attenuation and crosstalk, meaning that the cable is rated to handle Gigabit Ethernet throughput. Cat 5e would still be an acceptable choice for providing network links for workstations.
+- **Cat 6A** is an improved specification cable that can support 10 Gbps over 100 m. Cat 6A cable is bulkier than Cat 5e, and the installation requirements more stringent, so fitting it within pathways designed for older cable can be problematic. TIA/EIA standards recommend Cat 6A for use in health care facilities, with Power over Ethernet (PoE) 802.3bt installations, and for horizontal connections to wireless access points.
+  - if you are installing Cat 6A wiring, you must also install Cat 6A patch panels, wall plates, and connectors.
+- **Cat 7** cable is always of a screened/shielded type and is rated for 10GbE applications up to 100 m (328 feet). Cat 7 is not recognized by TIA/EIA but appears in the cabling standards created by the ISO (ISO/IEC 11801). It must be terminated with GG45 or TERA connectors rather than standard RJ-45 connectors.
+- **Cat 8** is intended for use in datacenters only for short patch cable runs that make top-of-rack connections between adjacent appliances. ISO defines two variants; 8.1 (Class I) is equivalent to TIA/EIA Cat 8 and uses RJ-45 connectors while 8.2 (Class II) must use outer shielding or screening and GG-45 or TERA connectors.
+
+## Wireless Networks
+
+- GSM, CMDA
+- Cellular chart
+
+%
+
+- **GSM (Global System For Mobiles)**: Cellular technology that takes the voice during a call and converts it into a digital format. Removable SIM card and most popular around the world. In US, used by AT&T and T-Mobile.
+- **CDMA (Code-Division Multiple Access)**: Cellular technology that uses code division to split up the channel.
+  - CDMA is a more powerful and flexible technology than GSM.
+    - W-CDMA
+      - Wideband CDMA
+    - UMTS
+      - Universal Mobile Telecommunications System
+  - Cannot remove SIM, but new electronic SIM is a cheaper way of getting a data service when overseas.
+  - The **preferred roaming list (PRL)** is a database built by CDMA service and most important to connect to network while traveling.
+
+| Technology   | Frequency     | Transfer Speed     |
+| ------------ | ------------- | ------------------ |
+| 1G           | 30KHz         | 2Kbps              |
+| 2G           | 1800MHz       | 14.4Kbps - 64 Kbps |
+| 3G WCDMA     | 1.6 - 2 GHz   | 144Kbps - 2Mbps    |
+| 3G HSPA      | 1.6 - 2 GHz   | 14.4Mbps           |
+| 3G HSPA+     | 1.6 - 2 GHz   | 50Mbps             |
+| 4G LTE       | 2 GHz         | 100Mbps            |
+| 4G LTE-A     | 8 GHz         | 1Gbps              |
+| 5G Low-band  | 600 - 850 MHz | 30Mbps - 250Mbps   |
+| 5G Mid-band  | 2.5 - 3.7 GHz | 100Mbps - 900Mbps  |
+| 5G High-band | 25 - 39 GHz   | 10Gbps             |
