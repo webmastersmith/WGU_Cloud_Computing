@@ -819,9 +819,12 @@
 %
 
 - **Three-tiered**
-  - **Core**: center of network. data servers, web servers. Routers.
-  - **Distribution/aggregation layer**: midpoint between core and users. switches.
-  - **Access/edge**: users location. the edge. clients.
+
+  - **core layer**: network backbone. layer 3 switches. redundant traffic to network. full mesh with distribution layer 3 switches.
+  - **distribution/aggregation layer**: redundant layer 3 switches. full or partial mesh link to each layer 3 switch.
+    - implement traffic policies, such as routing boundaries, filtering, or quality of service (QoS).
+  - **access/edge layer**: allow connection to network. layer 2 switches.
+
 - **Software-defined networking**
   - **Software-defined network**: virtual networks.
   - **Application layer / Management Plane**:

@@ -19,7 +19,7 @@
 | 4    | WEP          | obsolete PSK          | 24           |               |
 | 5    | Open Network | (no security at all)  | 0            | -             |
 
-## OSI Model
+## OSI Model & TCP/IP
 
 | Number | Layer        | Description                                                                    |
 | ------ | ------------ | ------------------------------------------------------------------------------ |
@@ -30,6 +30,13 @@
 | 3      | Network      | Packet(datagram). Router, hop-to-hop. layer3 switch. Logical IP Addressing     |
 | 2      | Data Link    | Frame. Node-to-Node(MAC). Error detection. switch(WAP), bridge, NIC.           |
 | 1      | Physical     | Bit. hub, repeater, modem, cabling/wifi(Bounded/unbounded media).              |
+
+| TC/IP Model      | Protocols and Services                  | OSI Model                                   |
+| :--------------- | :-------------------------------------- | :------------------------------------------ |
+| Application      | HTTP, SSH, FTP, Telnet, NTP, DHCP, PING | 7. Application, 6. Presentation, 5. Session |
+| Transport        | Segment. TCP, UDP                       | 4. Transport                                |
+| Internet/Network | Packet. IP, ARP, ICMP, IGMP             | 3. Network                                  |
+| Network Access   | Ethernet (physically sent), Frame       | 2. Data Link, 1. Physical                   |
 
 ## CIDR
 
@@ -108,7 +115,7 @@
 
 ## Acronyms
 
-- CPE,IXE, PSK, PSTN, SIEM
+- CPE,IXE, PSK, SIEM
 - **Disaster Recovery**
   - MTBF, MTTR, RTO, RPO
 - **Fiber**
@@ -117,12 +124,14 @@
   - BPDU, CSMA/CD, EUI, LACP, MAC, MDI-X, STP
 - **Layer 3**
   - HSRP, IANA, OSPF, VRRP
+- **Routing**
+  - BGP, EIGRP, MPLS, OSPF
 - **Security**
   - EAP, NAC, RADIUS, TACACS+, UTM
 - **SNMP**
   - Agent, Baseline, MIB, OID, Trap
 - **Telephone**
-  - PSTN, POTS,
+  - PSTN, POTS, SIP
 - **Tools**
   - IDC, OTDR,
 - **Wi-Fi**
@@ -158,6 +167,11 @@
   - **IANA**: Internet Assigned Numbers Authority. manages all IP's.
   - **OSPF**: Open shortest path first. routing protocol to find best path to destination.
   - **VRRP**: virtual router redundancy protocol. multiple routers with virtual IP/MAC address.
+- **Routing**
+  - **BGP**: Border Gateway Protocol. enables the internet to exchange routing information between AS(Autonomous Systems).
+  - **EIGRP**: Enhanced Interior Gateway Routing Protocol. advanced distance-vector routing protocol. Cisco.
+  - **MPLS**: Multi-protocol label switching. adding labels to packets to speed up time it takes to flow from one node ot another. Can flow on any protocol.
+  - **OSPF**: Open Shortest Path First. link-state routing protocol that was developed for IP networks and is based on the Shortest Path First (SPF) algorithm.
 - **Security**
   - **EAP**: Extensible Authentication Protocol. authentication framework.
   - **NAC**: Network Access Control. Authorization before allowed on network. EAP + RADIUS. 802.1X
@@ -173,6 +187,7 @@
 - **Telephone**
   - **PSTN**: Public Switched Telephone Network. sometimes called 'POTS' Line. internet access through phone company.
   - **POTS**: old phone line T1 connection.
+  - **SIP**: Sesion Initiation Protocol. VoIP. video calls, instant messaging.
 - **Tools**
   - **IDC**: Insulation Displacement Connector. punchdown tool on patch panels. holds the wire.
   - **OTDR**: Optical Time Domain Reflectometer. Tool analyze fiber wire. certifying,maintaining,troubleshooting.
@@ -299,8 +314,7 @@
 | 3 (obsolete)    | UTP                         | 10BASE-T            | 100 m (328 ft) | 16 MHz    | RJ-45     |
 | 5 (obsolete)    | UTP                         | 100BASE-TX          | 100 m (328 ft) | 100 MHz   | RJ-45     |
 | 5e (Class D)    | UTP or F/UTP                | 1000BASE-T          | 100 m (328 ft) | 100 MHz   | RJ-45     |
-| 6 (Class E)     | UTP                         | 10GBASE-T           | 55 m (180 ft)  | 250 MHz   | RJ-45     |
-| 6 (Class E)     | F/UTP, or U/FTP             | 1000BASE-T          | 100 m (328 ft) | 250 MHz   | RJ-45     |
+| 6 (Class E)     | UTP, F/UTP, or U/FTP        | 1000BASE-T          | 100 m (328 ft) | 250 MHz   | RJ-45     |
 | 6a (Class Ea)   | UTP, F/UTP, U/FTP, or S/FTP | 10GBASE-T           | 100 m (328 ft) | 500 MHz   | RJ-45     |
 | 7 (Class F)     | S/FTP or F/FTP              | 10GBASE-T           | 100 m (328 ft) | 600 MHz   | GG45/TERA |
 | 8/8.1 (Class I) | U/FTP or F/UTP              | 40GBASE-T           | 30 m (100 ft)  | 2000 MHz  | RJ-45     |
@@ -341,3 +355,22 @@
 | 5G Low-band  | 600 - 850 MHz | 30Mbps - 250Mbps   |
 | 5G Mid-band  | 2.5 - 3.7 GHz | 100Mbps - 900Mbps  |
 | 5G High-band | 25 - 39 GHz   | 10Gbps             |
+
+## Cisco Three-tiered network hierarchy
+
+- access/edge layer
+- distribution/aggregation layer
+- core layer
+- Traffic Flow: North-South, East-West.
+
+%
+
+- ![cisco three tiered hierarchy](./img/cisco_three_tier_hierarchy.PNG)
+- access/edge layer: allow connection to network. layer 2 switches.
+- distribution/aggregation layer: redundant layer 3 switches. full or partial mesh link to each layer 3 switch.
+  - implement traffic policies, such as routing boundaries, filtering, or quality of service (QoS).
+- core layer: network backbone. layer 3 switches. redundant traffic to network. full mesh with distribution layer 3 switches.
+
+- Traffic flow:
+  - North-South: data travels outside the network.
+  - East-West: traffic travels inside the network.
