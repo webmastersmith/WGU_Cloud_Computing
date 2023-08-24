@@ -374,3 +374,23 @@
 - Traffic flow:
   - North-South: data travels outside the network.
   - East-West: traffic travels inside the network.
+
+## Legacy Voice
+
+- **Demarc/smartjack/NIU**: Network Interface Unit.
+  - where PTSN ends and customers personal network(private network) begins.
+  - **CSU/DSU**: Channel Service Unit/Data Service Unit. connects to smartjack.
+- **PBX**: Private Branch Exchange. automated switchboard providing a single connection point for an organizations voice lines.
+  - **TDM PBX**: hardware.
+  - **VoIP PBX**: software on router, pc.
+- **PTSN**:
+- **POTS**: plain old telephone service. Analog interface phone line terminates at home in. Each line is incoming or outgoing voice. Large business would require hundreds of lines for voice.
+- **T-Carrier**: multiplex voice on single line. digitized voice. based on TDM.
+  - **TDM**: Time Division Multiplexing. The trunk line for large business that multiplex separate voice and data channels over a single cable.
+  - each channel(**DS0**) gets a time slot. 64kbs.
+  - **DS1(T1)**: 1.544Mbps = 24\*64Kbps channels. can be multiplexed increase bandwidth.
+- **Legacy voice and VoIP**: Voip PBX would be placed on edge router.
+
+%
+
+- ![Legacy to VoIP](./img/voip_pbx.PNG)
