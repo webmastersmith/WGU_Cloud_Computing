@@ -951,18 +951,30 @@
 
 - **Networking devices**
   - **Layer 2 switch**: layer 2. make forwarding decisions with MAC address. POE.
-  - **Layer 3 capable switch**: layer 3. routing decisions.
+    - ASIC: Applcation Specific Integrated Circuit. Forwarding decisions in hardware. faster.
+    - POE: power over ethernet.
+  - **Layer 3 capable switch**: layer 3. forwarding by ASIC(layer 2), routing decisions in software.
   - **Router**: layer 3. routing decisions. separates networks.
   - **Hub**: layer 1. repeater. half-duplex. traffic increase, efficiency decrease(collision domain).
   - **Access point**: layer 2. same as bridge. Typically wireless.
   - **Bridge**: layer 2. makes forwarding decisions. separate collision domains. WAP.
   - **Wireless LAN controller**: centralized management of access points. sends policy/configuration to new AP.
+    - allows multiple access points.
+    - change configuration, policy that will effect all AP's.
+    - seamless network connection from multiple AP.
+    - security and monitoring.
   - **Load balancer**: distribute load across servers. fault tolerance. caching. encryption. QoS. content switching.
     - content switching: distributes based on which server can respond to application.
-  - **Proxy server**: between user and external network. policy.
+  - **Proxy server**: sit between user and external network.
+    - send request on behalf of user.
+    - examine response and cache or security decisions. enforce policy.
+    - Explicit proxy: each client has to be configured to go through proxy.
+    - Implicit proxy: transparent. only gateway out.
   - **Cable modem**: layer 1. broadband(multiple frequencies). frequencies separated by DOCIS.
-  - **DSL modem**: layer 1. telephone line. download faster than upload.
-  - **Repeater**: layer 1. regenerate signal to boost it.
+    - DOCIS: Data over cable service interface specification.
+  - **DSL modem**: layer 1. telephone line. download faster than upload. ADSL.
+    - ADSL: Asymmetric digital subscriber line. Download speeds faster than upload.
+  - **Repeater**: layer 1. regenerate signal to boost it. copper,fiber. can also convert fiber to ethernet.
   - **Voice gateway**: PBX (private branch exchange). Converts: Phone Line(analog) <-> VoIP(digital).
   - **Media converter**: layer 1. fiber to ethernet...
   - **Intrusion prevention system (IPS)/intrusion detection system (IDS) device**:
