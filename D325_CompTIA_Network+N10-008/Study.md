@@ -377,20 +377,46 @@
 
 ## Legacy Voice
 
-- **Demarc/smartjack/NIU**: Network Interface Unit.
-  - where PTSN ends and customers personal network(private network) begins.
-  - **CSU/DSU**: Channel Service Unit/Data Service Unit. connects to smartjack.
+- **PBX**
+- **Demarc/smartjack/NIU**
+- **CSU/DSU**
+- **TDM PBX**
+- **VoIP PBX**
+- **POTS**
+- **PTSN**
+- **T-Carrier**
+- **TDM**
+- **DS1(T1)**
+- **Legacy voice and VoIP**
+- **VoIP PBX**
+- **Foreign Exchange Subscriber (FXS) gateway(Voice Gateway)**
+- **Address Translation**
+
+%
+
+- ![Legacy to VoIP](./img/voip_pbx.PNG)
 - **PBX**: Private Branch Exchange. automated switchboard providing a single connection point for an organizations voice lines.
+  - **Demarc/smartjack/NIU**: Network Interface Unit. where PTSN ends and customers personal network(private network) begins.
+  - **CSU/DSU**: Channel Service Unit/Data Service Unit. connects to smartjack.
   - **TDM PBX**: hardware.
   - **VoIP PBX**: software on router, pc.
-- **PTSN**:
 - **POTS**: plain old telephone service. Analog interface phone line terminates at home in. Each line is incoming or outgoing voice. Large business would require hundreds of lines for voice.
+- **PTSN**: public telephone switched network. All analog phone calls go through this network.
 - **T-Carrier**: multiplex voice on single line. digitized voice. based on TDM.
   - **TDM**: Time Division Multiplexing. The trunk line for large business that multiplex separate voice and data channels over a single cable.
   - each channel(**DS0**) gets a time slot. 64kbs.
   - **DS1(T1)**: 1.544Mbps = 24\*64Kbps channels. can be multiplexed increase bandwidth.
 - **Legacy voice and VoIP**: Voip PBX would be placed on edge router.
+- **VoIP PBX** integrate VoIP devices with corporate phone switch.
+- **Foreign Exchange Subscriber (FXS) gateway(Voice Gateway)**: convert VoIP to phone lines. often built-in VoIP PBX.
+- VoIP to enter the PSTN, address translation must take place.
+- **Address Translation**: digital packets(internet) to electrical signals(analog) conversion.
 
-%
+## Flood-wired UTP cable
 
-- ![Legacy to VoIP](./img/voip_pbx.PNG)
+- cables being laid to every location in the building that may need to support a telephone or computer.
+
+## Fast Link Pulse
+
+- Fast Ethernet codes 16-bit packet into 'Im alive' signal advertising its capabilities.
+- switch node should transmit regular electrical pulses when it is not transmitting data to confirm the viability of the link.

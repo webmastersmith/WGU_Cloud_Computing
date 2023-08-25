@@ -276,7 +276,7 @@
   - Single-mode
   - Multimode
 - **Connector types**
-  - **Local connector (LC), straight tip (ST), subscriber connector (SC), mechanical transfer (MT), registered jack (RJ)**
+  - **Lucent connector (LC), straight tip (ST), subscriber connector (SC), mechanical transfer (MT), registered jack (RJ)**
     - Angled physical contact (APC)
     - Ultra-physical contact (UPC)
   - RJ11
@@ -326,7 +326,7 @@
     - Cat 7
     - Cat 8
   - **Coaxial/RG-6**
-    - single conductor
+    - single conductor. type f connector.
   - **Twinaxial**
     - twin cables, similar as coax. 10G ethernet, full-duplex, low cost, low latency.
   - **Termination standards**
@@ -349,11 +349,15 @@
 | More Expensive                       | Less Expensive                       |
 
 - **Connector types**
-  - **Local connector (LC), straight tip (ST), subscriber connector (SC), mechanical transfer (MT), registered jack (RJ)**
-    - **Angled physical contact (APC)**
-      - designed to reduce light reflecting back. better than UPC. returned light is angled up out of connector.
-    - **Ultra-physical contact (UPC)**
-      - straight connector. small amount of light is reflected back.
+  - **Lucent connector (LC)**: duplex push-pull. similar to SC, but smaller form factor.
+  - **straight tip (ST)**: no snap-in design. MMF.
+  - **subscriber connector (SC)**: push-pull connector. square block connector. SMF,MMF.
+  - **mechanical transfer registered jack (MT-RJ)**: snap-in duplex connector. MMF. Transmit/Receive single connector.
+  - **Angled physical contact (APC)**
+    - designed to reduce light reflecting back. better than UPC. returned light is angled up out of connector.
+  - **Ultra-physical contact (UPC)**
+    - straight connector. small amount of light is reflected back.
+  - **PC**: Physical Contact. tip polished to curve slightly and fit together better.
   - **RJ11**
     - 6 pin only 2 conductors (6P2C).
     - RJ14 uses 6P4C.
@@ -380,10 +384,11 @@
   - **Fiber distribution panel**
     - between floors or buildings.
   - **Punchdown block**
-    - 66: early type. voice.
-    - 110: replaced 66.
+    - 66: early type. voice. obsolete. pre-Cat 5 cable.
+    - 110: replaced 66. At&t.
     - Krone: europe. same as 110.
     - Bix: GigaBIX better than cat6. looks similar to 110.
+    - patch panel: most common. IDCs(insulation-displacement connections) one side, other side RJ-45.
 - **Ethernet standards**
   - baseband: single frequency. ethernet.
   - broadband: many frequencies.
@@ -403,6 +408,12 @@
 | Cat 6a (augmented)    | 10GBASE-T                     | 10 Gbps    | 100 meters     |
 | Cat 7 (shielded only) | 10GBASE-T                     | 10 Gbps    | 100 meters     |
 | Cat 8 (shielded only) | 40GBASE-T                     | 40 Gbps    | 30 meters      |
+
+- **legacy STP**: hardest to install. special bonding for wire shielding to ground manually. Connectors have to be shielded.
+- **U/FTP**: unshielded/foil around all twisted pairs.
+- **F/UTP**: foil/unshielded around all wire.
+- **S/FTP**: braided shielding around wires/foil around each individual pair.
+- **ScTP**: screened twisted pair. thin outer shield around all pairs.
 
 - **Fiber**
 
@@ -1105,6 +1116,7 @@
   - Disabled: admin turned off port.
   - Rapid STP has faster convergence.
 - **Carrier-sense multiple access with collision detection (CSMA/CD)**: detects packet collisions, resends packet.
+  - Data, check network, transmit data, collision, wait, retransmit.
 
 ## 2.4 Given a scenario, install and configure the appropriate wireless standards and technologies
 
@@ -1808,6 +1820,7 @@
   - Throughput
   - Speed
   - Distance
+- **Multiplexing Technique**
 - **Cable considerations**
   - Shielded and unshielded
   - Plenum and riser-rated
@@ -1849,6 +1862,15 @@
   - **Throughput**: actual data transfer(size of pipe) over time. bps.
   - **Speed**: expected performance of link. bps.
   - **Distance**: Attenuation and noise enforce distance limitations.
+- **Multiplexing Technique**
+  - **BiDi**: bidirectional. transmit/receive over same strand. uses WDM to transmit/receive signals over slightly shifted wavelengths.
+  - **CWDM**: course wavelength division multiplexing. up to 16 wavelengths. typically 4-8 bidirectional channels over single fiber strand.
+  - **DWDM (Dense Wavelength Division Multiplexing)**
+    - multiple optical signals at different wavelengths(color) share same fiber strand(20,40,80,160).
+    - more precise, expensive lasers to do this.
+    - allows more capacity/bandwidth without upgrading infrastructure.
+    - uses long haul connectivity.
+  - **WDM**: wavelength division multiplexing. transmit/receive more than one channel at a time on single strand.
 - **Cable considerations**
   - **Shielded and unshielded**: -S: braided shielding, -F: foil sheilding, -U: unsheilded(U/UTP).
     - braided sheild around cable, foil around pairs. (S/FTP).
@@ -1877,6 +1899,11 @@
   - Mode A: power on data pairs
   - Mode B: power on spare pairs
   - 4-pair: power on all pairs -common with gigabit ethernet.
+  - **Power Injector**: plugs into wall outlet. Two RJ45 ports, one to switch, other to device.
+  - **Midspan**: power injector provides power to device.
+  - **Endspan**: power from switch port.
+  - **PSE**: power sourcing equipment. provide PoE.
+  - PoE are more efficient than AC wall outlet. Power schemes(sleep), power capping.
 
 | POE RJ-45      | Wattage                                     |
 | -------------- | ------------------------------------------- |
