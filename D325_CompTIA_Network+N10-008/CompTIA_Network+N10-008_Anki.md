@@ -1092,7 +1092,7 @@
     - **Link Aggregation Control Protocol (LACP)**: manages this protocol. automation.
   - **Duplex**: half/full
   - **Speed**: 10M/100M/1000M/10G
-  - **Flow control**: a802.3x. pause frame. slows down. CoS(class of service).
+  - **Flow control**: 802.3x. pause frame. slows down. CoS(class of service).
   - **Port mirroring**: copy traffic from one or more ports to another port. Helps observer port traffic.
     - IPS watches traffic
   - **Port security**: prevent unauthorized users from access to network by pluggin in.
