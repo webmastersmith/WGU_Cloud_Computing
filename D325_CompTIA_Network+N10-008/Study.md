@@ -403,16 +403,22 @@
   - **TDM PBX**: hardware.
   - **VoIP PBX**: software on router, pc.
 - **POTS**: plain old telephone service. Analog interface phone line terminates at home in. Each line is incoming or outgoing voice. Large business would require hundreds of lines for voice.
-- **PTSN**: public telephone switched network. All analog phone calls go through this network.
+- **PSTN**: public switched telephone network. All analog phone calls go through this network.
 - **T-Carrier**: multiplex voice on single line. digitized voice. based on TDM.
   - **TDM**: Time Division Multiplexing. The trunk line for large business that multiplex separate voice and data channels over a single cable.
   - each channel(**DS0**) gets a time slot. 64kbs.
   - **DS1(T1)**: 1.544Mbps = 24\*64Kbps channels. can be multiplexed increase bandwidth.
 - **Legacy voice and VoIP**: Voip PBX would be placed on edge router.
-- **VoIP PBX** integrate VoIP devices with corporate phone switch.
-- **Foreign Exchange Subscriber (FXS) gateway(Voice Gateway)**: convert VoIP to phone lines. often built-in VoIP PBX.
+- ![fxo, fxs](./img/fxo_fxs_diagram.PNG)
+- **Foreign Exchange Station (FXS)**: sender of voltage on line.
+- **Foreign Exchange Office (FXO)**: interface is an RJ-11 connector that allows an analog connection to be directed at the public switched telephone network's (PSTN's) or PBX. The device that needs the voltage from FSX.
+- **FXO and FXS interface** go hand in hand to complete a connection and are always paired, i.e. similar to a male / female plug. You cannot connect two
+  - FXO: receiver.
+  - FXS: sender. provides the voltage.
+- integrate VoIP devices with corporate phone switch.
 - VoIP to enter the PSTN, address translation must take place.
-- **Address Translation**: digital packets(internet) to electrical signals(analog) conversion.
+- **Foreign Exchange Subscriber (FXS) gateway / (Voice Gateway)**: convert VoIP to phone lines. often built-in VoIP PBX.
+- **Address Translation**: digital packets(encapsulates the analog signal in a IP packet.) to electrical signals(analog) conversion.
 
 ## Flood-wired UTP cable
 
