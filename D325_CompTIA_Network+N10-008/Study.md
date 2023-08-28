@@ -233,8 +233,10 @@
 %
 
 - **Acceptable Use Policy**: agreement to use corporate network according to terms.
+- **Asset Management Policy**: receiving, tagging, documenting and disposing of equipment.
 - **Defense In Depth**: is a strategy that leverages multiple security measures to protect an organization's assets.
 - **DLP**: Data Loss Prevention Policy. Defines how organizations can share and protect data.
+- **EULA**: end user license agreement. software license agreement.
 - **Least Privilege**: a user or entity should only have access to the specific data, resources and applications needed to complete a required task.
 - **MOU**: Memorandum of Understanding. Informal letter of intent. not a signed contract. Defines the responsibilities of each party in an agreement, provides the scope and authority of the agreement, clarifies terms, and outlines compliance issues.
 - **MSDS**: Material Safety Data Sheet. potential hazards (health, fire, reactivity and environmental) and how to work safely with the chemical product.
