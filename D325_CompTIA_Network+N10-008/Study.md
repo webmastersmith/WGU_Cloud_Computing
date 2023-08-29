@@ -428,3 +428,29 @@
 
 - Fast Ethernet codes 16-bit packet into 'Im alive' signal advertising its capabilities.
 - switch node should transmit regular electrical pulses when it is not transmitting data to confirm the viability of the link.
+
+## Three-tiered Layers
+
+- **core layer**: network backbone. layer 3 switches. redundant traffic to network. full mesh with distribution layer 3 switches.
+- **distribution/aggregation layer**: redundant layer 3 switches. full or partial mesh link to each layer 3 switch.
+  - implement traffic policies, such as routing boundaries, filtering, or quality of service (QoS).
+- **access/edge layer**: allow connection to network. layer 2 switches.
+
+## Software-defined networking
+
+- **Software-defined network**: virtual networks.
+- **Application layer / Management Plane**:
+  - **Application layer**: communication resource requests or information about the network.
+    - monitor traffic conditions, the status of the network, gain insights.
+    - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
+- **Control layer / Control Plane**:
+  - **Control layer**: how to route a data packet on the network and to make decisions about how traffic should be prioritized, secured, forwarded.
+  - **Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
+    - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
+- **Infrastructure layer/Data Plane**:
+  - **Infrastructure layer**: the physical networking devices that receive information from the control layer about where to move the data and then perform those movements.
+  - **Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting. switch ports.
+
+## SIEM
+
+- (Security Information and Event Management) is a software system that gathers and analyzes activities across your entire IT infrastructure. SIEM gathers security data from network devices, servers, domain controllers, and other sources.

@@ -220,6 +220,7 @@
   - labeling packets(label switching) to help make routing decisions.
     - labels pushed onto packets by router, when reach dest, labels are popped off.
 - **Multipoint generic routing encapsulation (mGRE)**
+  - routes multicast packets over IP.
   - used in conjunction with MPLS. Used extensively for Dynamic Multipoint VPN (DMVPN).
   - dynamic mesh. VPN tunnel is created dynamically and can directly go to dest.
 - **Service-related entry point**
@@ -830,17 +831,15 @@
 %
 
 - **Three-tiered**
-
   - **core layer**: network backbone. layer 3 switches. redundant traffic to network. full mesh with distribution layer 3 switches.
   - **distribution/aggregation layer**: redundant layer 3 switches. full or partial mesh link to each layer 3 switch.
     - implement traffic policies, such as routing boundaries, filtering, or quality of service (QoS).
   - **access/edge layer**: allow connection to network. layer 2 switches.
-
 - **Software-defined networking**
   - **Software-defined network**: virtual networks.
   - **Application layer / Management Plane**:
     - **Application layer**: communication resource requests or information about the network.
-    - **Management plane**: monitor traffic conditions, the status of the network, gain insights.
+      - monitor traffic conditions, the status of the network, gain insights.
       - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
   - **Control layer / Control Plane**:
     - **Control layer**: how to route a data packet on the network and to make decisions about how traffic should be prioritized, secured, forwarded.
@@ -1459,8 +1458,9 @@
     - **Multiple Internet service providers (ISPs)/diverse paths**: multiple internet connections.
     - **Virtual Router Redundancy Protocol (VRRP)/First Hop Redundancy Protocol (FHRP)**: default gateway is served by multiple routers. they share virtual ip and virtual MAC.
     - both are the same besides small terminology and VRRP does not need a physical IP assigned.
-  - **Mean time to repair (MTTR)**: estimated time to recover from fault.
-  - **Mean time between failure (MTBF)**: expected lifetime of product before failure.
+  - **Mean time to repair (MTTR)**: estimated time to recover from fault. Total repair time / number of incidents.
+  - **Mean time between failure (MTBF)**: expected lifetime of product before failure. Total time(devices \* hours)/devices failures.
+  - **Mean time to failure**: nonrepairable assets(harddrives). (device \* hours) / failures.
   - **Recovery time objective (RTO)**: period following disaster that system may remain offline.
   - **Recovery point objective (RPO)**: amount of data loss a system can sustain, measured in time units.
     - example: virus destoys database. RPO is 24 hours. data can be recovered from backup no more than 24 hours before the infection.
