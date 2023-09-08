@@ -1433,8 +1433,8 @@
 - **Network interface card (NIC) teaming**: multiple NICs
 - **Redundant hardware/clusters**: fault tolerance. backup if something fails. running configs are same as startup configs and backed up.
   - **Switches**: each one of these will cause the system to go down if there is no redundancy. backup config, MAC tables, security settings.
-  - **Routers**:
-  - **Firewalls**:
+  - **Routers**: virtual IP shared with all redundant routers.
+  - **Firewalls**: virtual MAC shared with all redundant switches.
 - **Facilities and infrastructure support**
   - **Uninterruptible power supply (UPS)**: temporary backup power for powerloss. batteries and inverter.
   - **Power distribution units (PDUs)**: cleans the signal of incoming power. spikes, surges, brownouts.
