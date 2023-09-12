@@ -26,17 +26,29 @@
 
 <!-- ## 1.1 Compare and contrast the Open Systems Interconnection (OSI) model layers and encapsulation concepts -->
 
-## 1.1 Network protocol has what two principal functions
+## 1.1 Compare and contrast the Open Systems Interconnection (OSI) model layers and encapsulation concepts.
+
+- **OSI model**
+  - Layer 1 – Physical
+  - Layer 2 – Data link
+  - Layer 3 – Network
+  - Layer 4 – Transport
+  - Layer 5 – Session
+  - Layer 6 – Presentation
+  - Layer 7 – Application
+- **Data encapsulation and decapsulation within the OSI model context**
+- **Ethernet header**
+- **Internet Protocol (IP) header**
+- **Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers**
+- **TCP flags**
+- **Payload**
+- **Maximum transmission unit (MTU)**
+
+%
 
 - **Addressing**: Describing where data messages should go. At each layer, there are different rules for how they can send and receive messages.
-- **Encapsulation**: how data messages should be packaged for transmission. each node encapsulates and passes down to next level.
 
-## 1.1 PDU
-
-- At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
 - **Packet**: means the same thing as PDU.
-
-## 1.1 OSI model
 
 | Number | Layer        | Description                                                                      |
 | ------ | ------------ | -------------------------------------------------------------------------------- |
@@ -61,7 +73,8 @@
    1. bridge: legacy. joins physical network segments. each port is a network interface(NIC). separated collision domains with Hubs. replaced by switches. Radio/Microwaves are unbounded.
    2. Extended Unique Identifier (EUI-48, EUI-64). Similar to MAC address.
 3. network:
-   1. **datagram**: PDU packaged at the network level.
+   1. **datagram**: generic term that is often used in describing protocols that function at higher levels of the OSI model.
+      1. Logical IP addressing(IP). network level and up(layer 3,4,5,6,7).
 4. transport: **Post Office layer**. Ports. each segment is tagged with the port number.
    1. advanced firewalls(IDS), layer 3 switches(as load balancers).
    2. allows session multiplexing
@@ -69,15 +82,18 @@
 6. presentation
 7. application
 
-## 1.1 Data encapsulation and decapsulation within the OSI model context
-
-- ![osi](./img/osi.PNG)
-
+- **Data encapsulation and decapsulation within the OSI model context**
+  - ![osi](./img/osi.PNG)
   - Applications data: 5,6,7 (HTTPS, IMAP, SSH).
-
-## 1.1 Ethernet header
-
-- Ethernet header: layer 2. Frame header and frame trailer (MAC address).
+  - **Encapsulation**: how data messages should be packaged for transmission. each node encapsulates and passes down to next level.
+  - **PDU**
+    - At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
+- **Ethernet header**
+  - Ethernet header: layer 2. Frame header and frame trailer (MAC address).
+  - EtherType value of 1500 or less is length. Greater than 1536 means ipv4/6.
+    - ipv4=0x800 (2048 in decimal)
+    - ipv6=0x86DD (34525 in decimal)
+  - CRC (Cyclic Redundancy Check)
 
 | Name                      | Description                              | Length            |
 | ------------------------- | ---------------------------------------- | ----------------- |
@@ -89,39 +105,24 @@
 | payload                   | layer 3 or higher data                   | 46-1500 bytes     |
 | FCS Frame Check Sequence  | (CRC algorithm) check corrupted data     | 4 bytes (32 bits) |
 
-- EtherType value of 1500 or less is length. Greater than 1536 means ipv4/6.
-  - ipv4=0x800 (2048 in decimal)
-  - ipv6=0x86DD (34525 in decimal)
-- CRC (Cyclic Redundancy Check)
-
-## 1.1 Internet Protocol (IP) header
-
-- Internet Protocol (IP) header: layer 3. IP header (IP).
-
-## 1.1 Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers
-
-- Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers: layer 4. TCP header (TCP/UDP/ Ports).
-
-## 1.1 TCP flags(layer 4. 6 bit)
-
-- SYN: synchronize three way handshake
-- URG: precedence over other data
-- ACK: acknowledge packet arrived
-- PSH: push data to application without buffering
-- FIN: last packet from sender
-- RST: reset connection
-
-## 1.1 Payload
-
-- Data contained inside the layer 3.
-- layer 3(IP). flags in IP header show if payload is fragmented.
-
-## 1.1 Maximum transmission unit (MTU)
-
-- size of data to send through network.
-- default is 1500 bytes. (includes IP header, TCP header, Application data).
-<!-- - windows: ping -f -l 1472 8.8.8.8 // -f: don't fragment. -l: size bytes=1500.
-- linux: ping -D -s 1472 8.8.8.8 -->
+- **Internet Protocol (IP) header**
+  - Internet Protocol (IP) header: layer 3. IP header (IP).
+- **Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers**
+  - layer 4. TCP header (TCP/UDP/ Ports).
+- **TCP flags(layer 4. 6 bit)**
+  - SYN: synchronize three way handshake
+  - URG: precedence over other data
+  - ACK: acknowledge packet arrived
+  - PSH: push data to application without buffering
+  - FIN: last packet from sender
+  - RST: reset connection
+- **Payload**
+  - every layers payload is the previous layer encapsulated.
+  - layer 3(IP). flags in IP header show if payload is fragmented.
+- **Maximum transmission unit (MTU)**
+  - size of data to send through network.
+  - default is 1500 bytes. (includes IP header, TCP header, Application data).
+  <!-- - windows: ping -f -l 1472 8.8.8.8 // -f: don't fragment. -l: size bytes=1500. linux: ping -D -s 1472 8.8.8.8 -->
 
 ## 1.2 Explain the characteristics of network topologies and network types
 
@@ -163,46 +164,51 @@
 - **Mesh**
   - all nodes connect to each other. No single point of failure in network.
   - redundancy, load balancing, fault-tolerance.
-  - WANs, wifi use this topology.
+  - WANs, wifi, IoT use this topology.
 - **Star/hub-and-spoke**
-  - Star topology: most common. hub or switch in center.
+  - Star topology: most common. hub or switch in center. LAN only.
+  - Hub-and-Spoke: same as Star, but distance is over WAN.
 - **Bus**
   - single line of devices connected together by one shared network cable terminated on each end.
   - coaxial cable, Thinnet.
   - not fault tolerant.
 - **Ring**
   - Each node connects to exactly two other nodes. Each device will have a 'ring in' and 'ring out' port.
+  - Token passed to each node enables talking on network.
   - MAN's, WAN's use them.
     - dual-rings, built-in fault tolerance.
       - If line is severed, the two devices on each side of sever will 'see' it and send communication back the other direction till it reaches destination.
 - **Hybrid**
   - more than one topology combined together.
 - **Network types and characteristics**
-  - **Peer-to-peer**
-    - Peer-to-Peer (P2P): no designated client-server. Both act as client-server. Bitcoin, Tor, windows 'workgroup'.
+  - **Peer-to-peer (P2P)**
+    - two or more PCs are connected and share resources without going through a separate server.
+    - no designated client-server. Both act as client-server. residential networks.
+    - Bitcoin, Tor, windows 'workgroup'.
     - easy to deploy, low cost.
     - difficult: to secure, administer.
   - **Client-server**
-    - distinct client, server. client needs data. server sends data.
+    - distinct client, server. client needs data. server sends data. Business and enterprise networks.
     - Pros: performance, administration
     - Cons: cost, complexity
   - **Local area network (LAN)**
-    - slower than wifi/ethernet, then probably not communicating over LAN.
+    - a series of computers linked together to form a network with private addressing.
   - **Metropolitan area network (MAN)**
-    - Metro Ethernet.
+    - Metro Ethernet(City). Larger than single building LAN, but located within a single geographic area.
+    - smaller than a WAN.
   - **Wide area network (WAN)**
-    - slower throuput than LAN.
+    - remote networks(office, data center, cloud) to form one logical network. Largest of networks.
   - **Wireless local area network (WLAN)**
-    - 802.11
+    - 802.11. series of computers linked together to form a network with private addressing based on radio transmission rather than wired connections.
   - **Personal area network (PAN)**
-    - bluetooth, IR, NFC.
-    - automobile, headphones.
+    - connects electronic devices within a users immediate area. bluetooth, IR, NFC. automobile, headphones.
   - **Campus area network (CAN)**
-    - multiple buildings, fiber.
+    - multiple buildings, fiber. typically used within educational or corporate campus. Smaller than MAN.
   - **Storage area network (SAN)**
     - NAS: Network Attached Storage. file-level access. must change whole file to make changes.
     - SAN: block-level access. large file can just change one block of data. Efficient read write.
-    - dedicated network: high bandwidth needed.
+      - similar to harddrive on PC.
+      - dedicated network: high bandwidth needed.
 
 | Network | Max Distance                     |
 | ------- | -------------------------------- |
@@ -216,6 +222,7 @@
 - **Software-defined wide area network (SDWAN)**
   - originally had data center, all routes to data went here.
   - virtual WAN. moving apps, database to cloud and having connections to them and your data center.
+  - SD-WAN replaces hub and spoke type designs with more efficient, but still secure with automation and orchestration(software-defined networking (SDN)). Each site has a SD-WAN capable router, gateway, or VPN app.
 - **Multiprotocol label switching (MPLS)**
   - labeling packets(label switching) to help make routing decisions.
     - labels pushed onto packets by router, when reach dest, labels are popped off.
@@ -1428,7 +1435,7 @@
   - layer 4: basic load-balancer.
   - layer 7: decisions based on application data request.
 - **Multipathing**: more than one physical link to another node. anywhere that link redundancy is required.
-  - SAN multipathing: more than one dedicated link to SAN.
+  - SAN multipathing: iSCSI. more than one dedicated link to SAN. Nic Teaming is used for switches.
   - Multiple ISPs: more than one path to internet.
 - **Network interface card (NIC) teaming**: multiple NICs
 - **Redundant hardware/clusters**: fault tolerance. backup if something fails. running configs are same as startup configs and backed up.
@@ -1571,14 +1578,19 @@
 - **Technology-based**
   - **Denial-of-service (DoS)/distributed denial-of-service (DDoS)**: force service to fail.
     - **Botnet/command and control**: hacker open backdoor(zombie), network between handlers(original infected host) and bots.
+    - **command and control (C-and-C or C2)**: network hacker use to control bots.
     - mitigate with updates and scans. monitor traffic.
   - **On-path attack (previously known as man-in-the-middle attack)**: compromise connection between hosts.
+    - **arp posioning/spoofing**(trick network that your the gateway).
+    - **MAC/IP spoofing**(duplicate MAC/IP address to incercept traffic and DoS).
+    - **DHCP/DNS posioning/spoofing**: give false lookup information to redirect clients.
     - mititgate: encryption.
-  - **DNS poisoning**: compromise name resolution process. or modify host file.
+  - **DNS poisoning**: compromise name resolution process. or modify HOST file.
   - **VLAN hopping**: gain access to unauthorized vlan by double tagging or switch spoofing trunk port.
     - mitigate double tagging by native vlan using different ID to any user accessible vlan.
     - mitigated by not allowing auto-configure trunk ports.
-  - **ARP spoofing**: gratuitous ARP with source address that spoofs legitimate host(so they update their APR table with hacker MAC). target is usually default gateway.
+  - **ARP spoofing**: gratuitous ARP with source address that spoofs legitimate host(so they update their APR table with hacker MAC). target is to become the network default gateway.
+    - mitigate: packet filtering firewall that looks for duplicate ip.
   - **Rogue DHCP**: rogue DHCP server on network.
     - mitigate: enable DHCP snooping. Authorize DHCP in Active Directory.
   - **Rogue access point (AP)**: AP installed on network without authorization(backdoor).
@@ -1591,7 +1603,7 @@
   - **Dictionary**: list of commonly used passwords.
   - **MAC spoofing**: fake MAC address to circumvent ACL filter.
   - **IP spoofing**: fake IP. Mask origin of attack.
-  - **Deauthentication**: forces client off network.
+  - **Deauthentication**: attacker sends 'deauth' frame to AP w/spoofed MAC address. DoS.
   - **Malware**: malicious software. Generic term for: viruses, ransomware, worms, and trojans.
 - **Human and environmental**: obtain information by tricking person.
   - **Social engineering**: trick individual into revealing confidential information.
