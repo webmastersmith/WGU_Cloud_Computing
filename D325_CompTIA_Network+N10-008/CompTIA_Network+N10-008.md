@@ -224,46 +224,77 @@
   - virtual WAN. moving apps, database to cloud and having connections to them and your data center.
   - SD-WAN replaces hub and spoke type designs with more efficient, but still secure with automation and orchestration(software-defined networking (SDN)). Each site has a SD-WAN capable router, gateway, or VPN app.
 - **Multiprotocol label switching (MPLS)**
-  - labeling packets(label switching) to help make routing decisions.
-    - labels pushed onto packets by router, when reach dest, labels are popped off.
-- **Multipoint generic routing encapsulation (mGRE)**
-  - routes multicast packets over IP.
-  - used in conjunction with MPLS. Used extensively for Dynamic Multipoint VPN (DMVPN).
-  - dynamic mesh. VPN tunnel is created dynamically and can directly go to dest.
+  - WAN providers offer MPLS to establish private links(VPN) with guaranteed service levels.
+  - **Label Edge Router (LER)**: connects network to internet. Shim's/Pop's a label in header. At each edge.
+  - **Label Switch Router (LSR)**: reads header shim and routes packets to next LSR.
+  - **Label Switch Path (LSP)**: shim in header tells LSR where packet is going.
+- **Generic Routing Encapsulation (GRE)**: encapsulates any type of packet for routing.
+  - Tunnel is created between two routers. IPv6 over IPv4 network. packets larger than MTU(1500 bytes) are fragmented.
+  - used with IPSec to create a secure VPN tunnel. Point-to-Point
+- **Multipoint Generic Routing Encapsulation (mGRE)**
+  - Tunnel is created between more than two routers. Point-to-Multipoint.
+  - Used extensively for Dynamic Multipoint VPN (DMVPN).
+    - DMVPN creates dynamic links between routers without having to be pre-configured.
 - **Service-related entry point**
   - **Demarcation point (demarc)**
-    - point where internet company ends and your connection to WAN begins(house).
+    - point where internet company(PTSN) ends and customer private network begins(house, business).
     - if problem on CPE (customer premises equipment) you are responsible.
   - **Smartjack**
-    - NIU Network interface unit: can auto determine the demarc.
-    - specialized equipment that internet provider can remote troubleshoot network problems.
-    - built-in diagnostics.
+    - NIU Network interface unit: specialized equipment that internet provider can remote troubleshoot network problems. built-in diagnostics.
 - **Virtual network concepts**
   - **vSwitch**
-    - software switch that has same functionality as real switch.
+    - Software-based network switches that operate within virtualized environments.
+    - Enable communication between virtual machines and between virtual machines and the physical network.
+    - Provide features such as VLAN support, traffic filtering, and QoS.
   - **Virtual network interface card (vNIC)**
-    - multiple interfaces managed by hypervisor.
+    - Software-based network interface cards within virtual machines.
+    - Allow virtual machines to connect to virtual networks and communicate with other virtual machines and physical devices.
+    - Can be configured with specific network settings and policies.
   - **Network function virtualization (NFV)**
-    - replace physical network with virtual one.
-    - managed by hypervisor.
-  - **Hypervisor**
-    - VMM Virtual Machine Manager.
-    - divides physical server hardware into virtual hardware. Guest operating systems.
+    - Logical segmentation of a physical network into separate virtual networks.
+    - Enables isolation, security, and efficient network management.
+    - Virtual machines or physical devices can be assigned to different VLANs based on network requirements.
+  - **Hypervisor**: creates the virtual hardware for devices.
+    - software to create the illusion of physical hardware.
+    - manages all physical resources: memory, processor, storage.
+    - Must have Hypervisor capable processor to support virtualization.
+    - maintains a network connection to the many virtual machines. commonly used on servers.
+    - **Type 1**: (bare metal hypervisor). Installed directly on the physical hardware.
+      - Hyper-V(Microsoft, Windows 10+), VMWare ESXi(server environment), Citrix's XEN Server, KVM(Linux open source).
+      - Manages virtual machines and resources without relying on an underlying operating system.
+      - complete access to hardware (no OS to go through).
+    - **Type 2**: (hosted). Installed as an app on top of an existing operating system.
+      - Requires the host operating system to manage hardware resources. Commonly used on personal computers.
+      - Runs virtual machines as processes within the host operating system.
+      - Microsoft Virtual, VMware Workstation, Oracle Virtual Box, and MAC Parallels Workstation.
+      - Security: VM Escape. Attacker tries to get control of Host OS.
 - **Provider links**
   - **Satellite**
     - non terrestrial communication
-    - latency 250ms each way. low orbit 20-30ms.
     - line of sight. problems with rain, snow.
+    - **low earth orbit**: lower latency(20-30ms), less coverage = more satellites needed.
+      - Lower to earth (340 miles). Typically will have a motor to turn dish to jump to next satellite.
+    - **geosynchronous**: high orbit, higher latency, less satellites (22,000 miles).
+      - latency 250ms each way. slow due to latency (distance from dish to satellite). Expensive.
+      - This is an issue for real-time applications, such as videoconferencing, VoIP, and multiplayer gaming.
   - **Digital subscriber line (DSL)**
-    - copper wire.
-    - Asymmetric DSL. bandwidth different to home then from
+    - copper wire. DSL connection will have a port for a telephone-type cable, usually an RJ-11 connector.
+    - **ADSL (Asymmetric DSL)**: different speed on the download (8Mbps) vs upload(1.544Mbps). 18,000 ft distance max from DSLAM.
+    - **SDSL (Symmetric DSL)**: equal upload/download speed. dedicated access.
+    - **VDSL (Very High Bit-Rate DSL)**: high down/up speeds (50/10M). Have to be 4000 ft from DSLAM.
   - **Cable**
-    - broadband.
-    - modem: DOCSIS (data voer cable servcie interface specification).
+    - broadband. coax cable. Type 'F' screw on connector.
+    - Wire: RG-6(new, inside home), RG-11(cable company to house), RG-59(old. inside home).
+    - modem: DOCSIS (data over cable service interface specification): encodes high-bandwidth signal over coax.
   - **Leased line**
+    - Unlike broadband or DSL connections, which are shared with other users, a leased line is exclusively reserved for the organization's use. dedicated point-to-point connection between two locations. data, voice, internet.
+    - Symmetrical bandwidth: upload/download speed same.
+    - Guaranteed Reliability: SLA's provide uptime guarantees.
+    - scalability: scale to bandwidth needed.
   - **Metro-optical**
-    - connect organization spread out over the city.
+    - high-speed fiber communication network infrastructure that operates within a metropolitan or city area.
     - low cost lan-to-lan connectivity in a metro area.
+    - **High Bandwidth**: Dense Wavelength Division Multiplexing (DWDM) and Coarse Wavelength Division Multiplexing (CWDM) to carry multiple channels or wavelengths of data simultaneously over a single optical fiber strand.
 
 ## 1.3 Summarize the types of cables and connectors and explain which is the appropriate type for a solution
 
@@ -326,27 +357,31 @@
 
 - **Copper**
   - **Twisted pair**
-    - Tx+ Tx- are twisted together.
-    - Cat 5
-    - Cat 5e
-    - Cat 6
-    - Cat 6a
-    - Cat 7
-    - Cat 8
-  - **Coaxial/RG-6**
-    - single conductor. type f connector.
-  - **Twinaxial**
-    - twin cables, similar as coax. 10G ethernet, full-duplex, low cost, low latency.
-  - **Termination standards**
-    - **TIA/EIA-568A**
-      - T-568A: 1:Green/White, 2:Green, 3:Orange/White, 4:Blue, 5:Blue/White, 6:Orange, 7:Brown/White, 8:Brown
-    - **TIA/EIA-568B**
-      - T-568B: 1:Orange/White, 2:Orange, 3:Green/White, 4:Blue, 5:BlueS, 6:Green, 7:Brown/White, 8:Brown.
+    - Tx+ Tx- are twisted together to cancel noise.
+
+| Cat/Class       | Cable Type              | Network Application | Max Distance | Frequency | Connector    |
+| :-------------- | :---------------------- | :------------------ | :----------- | :-------- | :----------- |
+| 5 (obsolete)    | UTP                     | 100BASE-TX          | 100m         | 100 MHz   | RJ-45        |
+| 5e (Class D)    | UTP or F/UTP            | 1000BASE-T          | 100m         | 100 MHz   | RJ-45        |
+| 6 (Class E)     | UTP, (F/UTP, or U/FTP ) | 10GBASE-T           | 55m (100m)   | 250 MHz   | RJ-45        |
+| 6a (Class Ea)   | S/FTP                   | 10GBASE-T           | 100m         | 500 MHz   | RJ-45        |
+| 7 (Class F)     | S/FTP or F/FTP          | 10GBASE-T           | 100m         | 600 MHz   | GG45 or TERA |
+| 8/8.1 (Class I) | U/FTP or F/UTP          | 40GBASE-T           | 30m          | 2000 MHz  | RJ-45        |
+| 8.2 (Class II)  | F/FTP or S/FTP          | 40GBASE-T           | 30m          | 2000 MHz  | GG45 or TERA |
+
+- **Coaxial/RG-6**
+  - coax. single conductor. shielded by braided cable. type f connector. replaced RG-59.
+- **Twinaxial**: short range high speed(10G). Two conductors in wire. Typically used in SAN.
+- **Termination standards**
+  - **TIA/EIA-568A**
+    - T-568A: 1:Green/White, 2:Green, 3:Orange/White, 4:Blue, 5:Blue/White, 6:Orange, 7:Brown/White, 8:Brown
+  - **TIA/EIA-568B**
+    - T-568B: 1:Orange/White, 2:Orange, 3:Green/White, 4:Blue, 5:BlueS, 6:Green, 7:Brown/White, 8:Brown.
 - **Fiber**
   - immune to emf and radio frequency.
   - led or laser.
   - **Single-mode**
-  - **Multimode**
+  - **Multi-mode**
 
 | SMF yellow                           | MMF orange                           |
 | ------------------------------------ | ------------------------------------ |
@@ -358,7 +393,7 @@
 
 - **Connector types**
   - **Lucent connector (LC)**: duplex push-pull. similar to SC, but smaller form factor.
-  - **straight tip (ST)**: no snap-in design. MMF.
+  - **straight tip (ST)**: no snap-in design. twist connector. used in MMF.
   - **subscriber connector (SC)**: push-pull connector. square block connector. SMF,MMF.
   - **mechanical transfer registered jack (MT-RJ)**: snap-in duplex connector. MMF. Transmit/Receive single connector.
   - **Angled physical contact (APC)**
