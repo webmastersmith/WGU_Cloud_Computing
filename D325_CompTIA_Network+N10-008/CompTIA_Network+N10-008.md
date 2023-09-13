@@ -1,4 +1,4 @@
-# D325 CompTIA Network+ (N10-008)
+# CompTIA_Network+ N10-008_Guide
 
 - 1.0 Networking Fundamentals 24%
 - 2.0 Network Implementations 19%
@@ -46,9 +46,7 @@
 
 %
 
-- **Addressing**: Describing where data messages should go. At each layer, there are different rules for how they can send and receive messages.
-
-- **Packet**: means the same thing as PDU.
+- **OSI Model**
 
 | Number | Layer        | Description                                                                      |
 | ------ | ------------ | -------------------------------------------------------------------------------- |
@@ -73,8 +71,7 @@
    1. bridge: legacy. joins physical network segments. each port is a network interface(NIC). separated collision domains with Hubs. replaced by switches. Radio/Microwaves are unbounded.
    2. Extended Unique Identifier (EUI-48, EUI-64). Similar to MAC address.
 3. network:
-   1. **datagram**: generic term that is often used in describing protocols that function at higher levels of the OSI model.
-      1. Logical IP addressing(IP). network level and up(layer 3,4,5,6,7).
+   1. **datagram**: generic term that is often used in describing protocols that function at higher levels of the OSI model. network level and up(layer 3,4,5,6,7).
 4. transport: **Post Office layer**. Ports. each segment is tagged with the port number.
    1. advanced firewalls(IDS), layer 3 switches(as load balancers).
    2. allows session multiplexing
@@ -84,7 +81,6 @@
 
 - **Data encapsulation and decapsulation within the OSI model context**
   - ![osi](./img/osi.PNG)
-  - Applications data: 5,6,7 (HTTPS, IMAP, SSH).
   - **Encapsulation**: how data messages should be packaged for transmission. each node encapsulates and passes down to next level.
   - **PDU**
     - At each level (except the physical layer), the sending node adds a header to the data payload, forming a “chunk” of data called a protocol data unit (PDU).
@@ -117,8 +113,7 @@
   - FIN: last packet from sender
   - RST: reset connection
 - **Payload**
-  - every layers payload is the previous layer encapsulated.
-  - layer 3(IP). flags in IP header show if payload is fragmented.
+  - every layers payload is the previous encapsulated layer.
 - **Maximum transmission unit (MTU)**
   - size of data to send through network.
   - default is 1500 bytes. (includes IP header, TCP header, Application data).
@@ -225,22 +220,22 @@
   - SD-WAN replaces hub and spoke type designs with more efficient, but still secure with automation and orchestration(software-defined networking (SDN)). Each site has a SD-WAN capable router, gateway, or VPN app.
 - **Multiprotocol label switching (MPLS)**
   - WAN providers offer MPLS to establish private links(VPN) with guaranteed service levels.
-  - **Label Edge Router (LER)**: connects network to internet. Shim's/Pop's a label in header. At each edge.
-  - **Label Switch Router (LSR)**: reads header shim and routes packets to next LSR.
-  - **Label Switch Path (LSP)**: shim in header tells LSR where packet is going.
+  - Label Edge Router (LER): connects network to internet. Shim's/Pop's a label in header. At each edge.
+  - Label Switch Router (LSR): reads header shim and routes packets to next LSR.
+  - Label Switch Path (LSP): shim in header tells LSR where packet is going.
 - **Generic Routing Encapsulation (GRE)**: encapsulates any type of packet for routing.
   - Tunnel is created between two routers. IPv6 over IPv4 network. packets larger than MTU(1500 bytes) are fragmented.
-  - used with IPSec to create a secure VPN tunnel. Point-to-Point
+  - used with IPSec to create a secure Point-to-Point VPN tunnel.
 - **Multipoint Generic Routing Encapsulation (mGRE)**
   - Tunnel is created between more than two routers. Point-to-Multipoint.
   - Used extensively for Dynamic Multipoint VPN (DMVPN).
     - DMVPN creates dynamic links between routers without having to be pre-configured.
 - **Service-related entry point**
   - **Demarcation point (demarc)**
-    - point where internet company(PTSN) ends and customer private network begins(house, business).
+    - point where internet company(PSTN) ends and customer private network begins(house, business).
     - if problem on CPE (customer premises equipment) you are responsible.
   - **Smartjack**
-    - NIU Network interface unit: specialized equipment that internet provider can remote troubleshoot network problems. built-in diagnostics.
+    - NIU Network interface unit: specialized equipment at the demarc point that internet provider can remote troubleshoot network problems. built-in diagnostics.
 - **Virtual network concepts**
   - **vSwitch**
     - Software-based network switches that operate within virtualized environments.
@@ -251,9 +246,10 @@
     - Allow virtual machines to connect to virtual networks and communicate with other virtual machines and physical devices.
     - Can be configured with specific network settings and policies.
   - **Network function virtualization (NFV)**
-    - Logical segmentation of a physical network into separate virtual networks.
-    - Enables isolation, security, and efficient network management.
-    - Virtual machines or physical devices can be assigned to different VLANs based on network requirements.
+    - virtualizes physical network hardware appliances into software-based solutions running on standard servers and other virtualization infrastructure.
+    - Virtual Network Function (VNF): instance of each virtual appliance.
+    - NFV infrastructure: hypervisor manages the creation of each VNF on servers in data centers at edge or cloud.
+    - Management and orchestration (MANO): NFV lifecycle management and manages the underlying compute, storage, and network resources.
   - **Hypervisor**: creates the virtual hardware for devices.
     - software to create the illusion of physical hardware.
     - manages all physical resources: memory, processor, storage.
@@ -279,9 +275,7 @@
       - This is an issue for real-time applications, such as videoconferencing, VoIP, and multiplayer gaming.
   - **Digital subscriber line (DSL)**
     - copper wire. DSL connection will have a port for a telephone-type cable, usually an RJ-11 connector.
-    - **ADSL (Asymmetric DSL)**: different speed on the download (8Mbps) vs upload(1.544Mbps). 18,000 ft distance max from DSLAM.
-    - **SDSL (Symmetric DSL)**: equal upload/download speed. dedicated access.
-    - **VDSL (Very High Bit-Rate DSL)**: high down/up speeds (50/10M). Have to be 4000 ft from DSLAM.
+    - **ADSL (Asymmetric DSL)**: different speed on the download (8Mbps) vs upload(1.544Mbps).
   - **Cable**
     - broadband. coax cable. Type 'F' screw on connector.
     - Wire: RG-6(new, inside home), RG-11(cable company to house), RG-59(old. inside home).
@@ -407,7 +401,7 @@
   - **RJ45**
     - 8P8C
   - **F-type connector**
-    - Coax cable. DOCSIS standard.
+    - Coax cable. DOCSIS standard. screw on.
   - **Transceivers/media converters**
     - Layer 1. Convert light(fiber) to digital ethernet.
   - **Transceiver type**
@@ -423,9 +417,10 @@
       - 4 x 10G. Their is also BiDi for these.
 - **Cable management**
   - **Patch panel/patch bay**
-    - office plug to data closet patch panel. Punchdown block on one side/RJ45 on the other.
+    - office RJ-45 plug to data closet patch panel. Punchdown block on one side/RJ45 on the other. to switch.
+    - allows incoming and outgoing connections to be reconfigured by changing the patch cable connections, which is much simpler than reterminating punchdown blocks.
   - **Fiber distribution panel**
-    - between floors or buildings.
+    - patch panel for fiber. each connection there is a 'cost'.
   - **Punchdown block**
     - 66: early type. voice. obsolete. pre-Cat 5 cable.
     - 110: replaced 66. At&t.
@@ -436,28 +431,16 @@
   - baseband: single frequency. ethernet.
   - broadband: many frequencies.
   - **Copper**
-    - 10BASE-T
-    - 100BASE-TX
-    - 1000BASE-T
-    - 10GBASE-T
-    - 40GBASE-T
-
-| Ethernet              | Standard                      | Throughput | Distance       |
-| --------------------- | ----------------------------- | ---------- | -------------- |
-| Cat 3                 | 10BASE-TX (obsolete)          | 10 Mbps    | 100 meters     |
-| Cat 5                 | 100BASE-TX (Fast Ethernet)    | 100 Mbps   | 100 meters     |
-| Cat 5e                | 1000BASE-T (Gigabit Ethernet) | 1000 Mbps  | 100 meters     |
-| Cat 6 or 6 shielded   | 10GBASE-T                     | 10 Gbps    | 55 meters/100m |
-| Cat 6a (augmented)    | 10GBASE-T                     | 10 Gbps    | 100 meters     |
-| Cat 7 (shielded only) | 10GBASE-T                     | 10 Gbps    | 100 meters     |
-| Cat 8 (shielded only) | 40GBASE-T                     | 40 Gbps    | 30 meters      |
-
+    - 10BASE-T: 802.3 Cat 3
+    - 100BASE-TX: Cat 5
+    - 1000BASE-T: Cat 5e (enhanced)
+    - 10GBASE-T: Cat 6/6a 55m/100m
+    - 40GBASE-T: Cat 8
 - **legacy STP**: hardest to install. special bonding for wire shielding to ground manually. Connectors have to be shielded.
 - **U/FTP**: unshielded/foil around all twisted pairs.
 - **F/UTP**: foil/unshielded around all wire.
 - **S/FTP**: braided shielding around wires/foil around each individual pair.
 - **ScTP**: screened twisted pair. thin outer shield around all pairs.
-
 - **Fiber**
 
 | Specification                  | Optics | Fiber   | Max Distance               |
@@ -469,14 +452,15 @@
 | 10GBASE-SR (Short Range)       |        | MMF     | 33m to 400m                |
 | 10GBASE-LR (Long Range)        |        | SMF     | 10 km(SMF)                 |
 
-- **Bidirectional wavelength division multiplexing (WDM)**
-  - BiDi. bi-directional communication. full duplex.
+- **Bidirectional wavelength division multiplexing (BiDi WDM)**
+  - BiDi. bi-directional communication on same strand of fiber. full duplex.
+  - BiDi transceivers must be installed in opposite pairs, so one end of fiber the transceiver would use 1490 nm to Tx(transmit), the other end transceiver will use 1490nm to Rx(receive).
   - sends different wavelengths of light(different colors).
   - **Coarse wavelength division multiplexing (CWDM)**
-    - 10GBASE-LX4 (4 x 3Gbps at 4 wavelengths)
+    - 16 wavelengths.
   - **Dense wavelength division multiplexing (DWDM)**
-    - multiplex multiple OC carriers on a single fiber.
-    - 160 wavelengths => 1.6 Tbps.
+    - up to 160 wavelengths. 160 wavelengths => 1.6 Tbps.
+    - more expensive precision lasers. Longer distance than CWDN.
 
 ## 1.4 Given a scenario, configure a subnet and use appropriate IP addressing schemes
 
@@ -521,11 +505,20 @@
   - **RFC1918**
     - IANA(internet assinged numbers authority) provides address blocks to RIR (Regional Internet Registries).
     - RIR assigns smaller blocks to ISP(internet service providers).
-    - ISP assigns
+  - Public
+    - routable over the internet. assigned by ISP.
+  - Private addresses are defined in **RFC 1918** and sometimes referred to as RFC 1918 address space.
+    - any organization can use private routing without asking permission.
+    - 10.x.x.x/8
+    - 172.16.x.x/12
+    - 192.168.x.x/16
+    - 169.254.x.x/16 (APIPA)
   - **Network address translation (NAT)**
-    - increase number of logical IP's. router provides NAT.
+    - NAT is 1:1 mapping between private IPv4 and public IPv4 addresses.
+    - NAT is configured on a border device, such as a router, proxy server, or firewall.
   - **Port address translation (PAT)**
-    - using the port address on local network to track who sent message.
+    - map multiple private IP addresses to a single public IP address by using different port numbers.
+    - PAT is configured on a border device, such as a router, proxy server, or firewall.
 - **IPv4 vs. IPv6**
   - **Automatic Private IP Addressing (APIPA)**
     - if DHCP not found, OS will assign itself an IP. 169.254.1.0-169.254.254.255.
