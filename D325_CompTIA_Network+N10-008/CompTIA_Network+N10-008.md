@@ -909,31 +909,39 @@
 %
 
 - **Three-tiered**
+  - ![three tier](./img/cisco_three_tier_hierarchy.PNG)
   - **core layer**: network backbone. layer 3 switches. redundant traffic to network. full mesh with distribution layer 3 switches.
   - **distribution/aggregation layer**: redundant layer 3 switches. full or partial mesh link to each layer 3 switch.
     - implement traffic policies, such as routing boundaries, filtering, or quality of service (QoS).
   - **access/edge layer**: allow connection to network. layer 2 switches.
 - **Software-defined networking**
-  - **Software-defined network**: virtual networks.
-  - **Application layer / Management Plane**:
-    - **Application layer**: communication resource requests or information about the network.
-      - monitor traffic conditions, the status of the network, gain insights.
-      - cisco communication port for changing settings. SSH, SNMP, NetFlow, and syslog.
-  - **Control layer / Control Plane**:
-    - **Control layer**: how to route a data packet on the network and to make decisions about how traffic should be prioritized, secured, forwarded.
-    - **Control Plane**: manage actions of data plane. ex.. routing table, session table, NAT table.
-      - all tables. routing updates, ARP traffic, STP notifications, NTP updates, QoS classification and link reservation requests
-  - **Infrastructure layer/Data Plane**:
-    - **Infrastructure layer**: the physical networking devices that receive information from the control layer about where to move the data and then perform those movements.
-    - **Data Plane**: process packets and frames. ex.. forwarding, trunking, NAT, encrypting. switch ports.
+  - ![software defined network](./img/sdn.PNG)
+  - enables intelligent network control from central location to be controlled using software.
+  - virtualize physical network. Automation and Orchestration.
+  - **These 3 layers allow the network to be decoupled from the hardware**:
+    - **Application Layer**: focus on the communication resources of the network.
+    - **Control Layer**: the how to route,prioritize,forward data packets on network.
+    - **Infrastructure Layer**:
+  - **Application layer**: business logic. how traffic prioritized(QoS), secured. Segmentation, ACL, traffic shaping.
+    - **Northbound API**:
+  - **Control layer**: SDN controller implements control layer. exposes API for scripting. every physical device must be able to communicate by an API.
+    - **Southbound API**:
+    - **Control Plane/Management Plane**: in the control layer. for monitoring. cpu,memory/traffic,network.
+  - **Infrastructure layer**: network devices that receive information about where to move packets from the API.
 - **Spine and leaf**
+  - ![spine leaf design](./img/spine-and-leaf-architecture.jpg)
   - Typically found in data centers. Designed to address the increasing demands for bandwidth, low latency, add redundancy.
-  - Backbone: spine switches wired in mesh topology with all leaf switches.
-  - leaf switches connect to data servers.
-  - **Top-of-rack switching**: installed at top of server rack. easier to wire(mesh connections) with leaf switches.
+  - Most traffic is **East/West**. When data in data centers is spread across multiple servers. Helps them communicate more efficiently.
+  - good scalability. single hop to backbone.
+  - each leaf has redundant paths. load balancing and failover. Equal Cost Multipathing.
+  - does not need STP. spine switches do not connect to each other. leaf switches do not connect to each other.
+  - servers are connected to multiple leaf switches. redundancy. first hop gateway determines path.
+  - **spine**: backbone. each switch connects to all leaf switches(full mesh).
+  - **leaf**: no direct connection to one another. top tier leaf switches(**top-of-rack (ToR)**)
+  - **ToR**: top-of-rack switches have 10 Gbps access ports and 40/100 Gbps uplink ports.
 - **Traffic flows**
   - **North-South**: traffic leaving/entering network.
-  - **East-West**: traffic staying local in network.
+  - **East-West**: - **East-West**: traffic stays within the datacenter. Security concerns for traffic that increases the zero trust(servers must auth to talk.)
 - **Branch office vs. on-premises datacenter vs. colocation**
   - Branch office: remote location.
   - on-premises: in-house
