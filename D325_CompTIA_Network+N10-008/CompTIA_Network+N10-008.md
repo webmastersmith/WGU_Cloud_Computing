@@ -12,12 +12,8 @@
   - https://github.com/PacktPublishing/CompTIA-Network-Cert-N10-007-Full-Course-and-Practice-Exam
   - https://packetlife.net/library/cheat-sheets/
   - https://ankiweb.net/shared/info/1542354670
-  - osi model
-  - 802.11 Wi-Fi
-  - Classless Subnetting (CIDR)
-  - Ports
-  - CompTIA troubleshooting steps
-  - Syslog Error levels
+  - https://www.javatpoint.com/cloud-computing
+  - https://www.javatpoint.com/computer-network-tutorial
 - **practice exams**
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
@@ -543,6 +539,7 @@
   - Public
     - routable over the internet. assigned by ISP.
   - Private addresses are defined in **RFC 1918** and sometimes referred to as RFC 1918 address space.
+    - RFC 1918 - Private Address are not routable on the public internet.
     - any organization can use private routing without asking permission.
     - 10.x.x.x/8
     - 172.16.x.x/12 (172.16.x.x - 172.31.x.x)
@@ -555,20 +552,20 @@
     - map multiple private IP addresses to a single public IP address by using different port numbers.
     - PAT is configured on a border device, such as a router, proxy server, or firewall.
 - **IPv4 vs. IPv6**
-
   - **Automatic Private IP Addressing (APIPA)**
     - if DHCP server not found, OS will assign itself an IP. (169.254.1.0-169.254.254.255)
     - first and last 256 address reserved by IETF(Internet Engineering Task Force).
     - can only communicate on local network.
     - computer sends ARP, if no response, computer picks that APIPA IP.
   - **Extended unique identifier (EUI-64)**
-    - method to automatically configure IPv6 host addresses.
+    - converts 48bit MAC address into 64bit EUI-64. This method is automatically configure IPv6 host addresses.
       1. MAC address(48bit).
       2. first 24 bits: OUI (Organizationally Unique Identifier). Split here.
       3. `FFFE` are added to middle of MAC(after first 24 bits).
       4. last 24 bits: NIC (Network Interface Card). Added after `FFFE`.
       5. First byte of MAC is converted to binary, 7 bit is flipped.
          1. MAC: `00:60:8C:12:3A:BC` = EUI-64: `0260:8CFF:FE12:3ABC`
+         2. This becomes link-local address: `FE80::0260:8CFF:FE12:3ABC`. `FE80::`(64bit) is prefix for link-local.
   - **Multicast**
     - IPv4 and IPv6 only devices must subscribe.
     - IPv4 has reserved thew class D **224.0.0.0 to 239.255.255.255** addresses as a multicast range.
@@ -586,8 +583,6 @@
   - **Default gateway**
     - IPv4 protocol compares the source and destination address in each packet against the netmask(255.255.255.0).
     - If masked portion does not match, packet must be routed to another network through the 'default gateway'.
-    - router. IP: `0.0.0.0./0`
-
 - **IPv4 subnetting**
   - **Classless (variable-length subnet mask)**
     - solved the Class-based network. allows subnetting.
@@ -651,44 +646,32 @@
   - 128 bit address. 16 bits as hex, in 8 groups.
   - **Tunneling**
     - 6to4. tunnel IPv6 over the IPv4 network.
-    - 4to6. tunnel IPv4 over the IPv6 network.
+    - 4to6. tunnel IPv4 over the IPv6 network. GRE(Generic Routing Encapsulation) protocol.
   - **Dual stack**
     - device can use IPv4 and IPv6. Each protocol has separate routing table.
   - **Shorthand notation**
     - group of zeros: '::' // can only be one double colon.
     - leading zeros optional.
   - **Router advertisement**
-    - RS (router solicitation) and RA (router advertisement). sent out as multicast. router responds with RA.
+    - Client sends RS (router solicitation) and Router responds with RA (router advertisement). sent out as multicast.
     - router can also send unsolicited RA.
   - **Neighbor Solicitation (NS)**
     - no broadcast in IPv6. NS sends multicast. All IPv6 devices will answer back NA (neighbor advertisement) with there MAC address.
-  - **Stateless address autoconfiguration (SLAAC)**
-    - allows a host to assign itself a unique 64-bit IPv6 called EUI-64 (Extended Unique Identifier).
-    - 24 bits: OUI (Organizationally Unique Identifier).
-    - 24 bits: NIC (Network Interface Card). `FF FE` is added in front of the MAC address.
-    - Invert the 7th bit of the first octect of MAC address.
-    - IPv6 subnet prefix: 64bits + (MAC(48 bits) + FFFE(16 bits) in the middle) 64 bits = unique IPv6 address.
-    - DAD (duplicate address detection). makes sure no duplicate ip on network.
-- **Convert MAC to EUI-64**: If first octect(E0) Hex value is 0, then becomes a 2. If(E7) 7, becomes a 5.
-- ![seventh bit flip](./img/seventh_bit_flip.PNG)
-
-  | Seventh Bit Flip |
-  | :--------------: |
-  |       0/1        |
-  |       2/3        |
-  |                  |
-  |       4/5        |
-  |       6/7        |
-  |                  |
-  |       8/9        |
-  |       A/B        |
-  |                  |
-  |       C/D        |
-  |       E/F        |
-
+  - **Stateless address auto configuration (SLAAC)**: host automatically assigns itself a IPv6 link-local\*\* address and solicits routing and subnet information from network router.
+    1. `FE80::` + `EUI-64` (Extended Unique Identifier) becomes the 128 bit link-local address.
+    2. sends out an **DAD (duplicate address detection)** as ICMPv6 via Network Discovery Protocol – Network Solicitation (NDP NS). makes sure no duplicate ip on network.
+    3. After IPv6 link-local is confirmed as unique. RS(Router solicitation) is sent out asking for router to announce itself with a RA(Router Advertisement).
+    4. The RA will include the Global routable prefix. The device will take `first global 64bit + EUI-64` for global address.
+    5. This process does not provide DNS server IP. DHCPv6 is used for this.
 - **Virtual IP (VIP)**
   - logical ip address assigned to virtual machines.
+  - router use this for redundancy, high availability, and fault tolerant.
+    - Hot Standby Router Protocol (HSRP) or Virtual Router Redundancy Protocol (VRRP).
 - **Subinterfaces**
+  - virtual link between VLAN's.
+  - Each subinterface is configured with a specific VLAN ID.
+  - VLAN traffic is routed from one VLAN subinterface to the destination VLAN subinterface.
+  - Layer 3 switches are optimized for VLAN routing.
 
 ## 1.5 Explain common ports and protocols, their application, and encrypted alternatives
 
@@ -733,57 +716,71 @@
 
 %
 
-| Port      | Name                                                                       | Encryption | TCP/UDP |
-| --------- | -------------------------------------------------------------------------- | ---------- | ------- |
-| 20        | `FTP-Data`                                                                 | no         | TCP     |
-| 21        | `FTP-Control-Connecting`                                                   | no         | TCP     |
-| 22        | `SSH & SFTP` (Secure Shell) & SFTP (Secure File Transfer Protocol)         | yes        | TCP     |
-| 23        | `Telnet` check open ports and connectivity                                 | no         | TCP     |
-| 25        | `SMTP` (Simple Mail Transfer Protocol) sending/outgoing email              | no         | TCP     |
-| 53        | `DNS` (Domain Name Service)                                                | no         | TCP/UDP |
-| 67/68     | `DHCP` Server/Client listens                                               |            | UDP     |
-| 69        | `TFTP` (Trivial File Transfer Protocol)                                    |            | UDP     |
-| 80        | `HTTP`                                                                     | no         | TCP     |
-| 110       | `POP3` (Post Office Protocol) incoming email.                              | no         | TCP     |
-| 123       | `NTP` (Network Time Protocol) Time sync on computer                        |            | UDP     |
-| 143       | `IMAP` (Internet Mail Application Protocol) incoming email                 | no         | TCP     |
-| 161/162   | `SNMP` (simple network management protocol) manage/monitor,polling         |            | UDP     |
-| 389       | `LDAP` (AD, Directory, Replication, Authentication, Group Policy, Trusts.) | no         | TCP     |
-| 443       | `HTTPS` SSL(old) TLS(new encryption protocol)                              |            | TCP     |
-| 445       | `SMB` (Server Message Block) windows file/printer sharing. CIFS            |            | TCP     |
-| 514       | `Syslog`                                                                   |            | UDP     |
-| 587       | `SMTP` encrypted outgoing email SSL/TLS (465 was old way, obsolete)        | yes        | TCP     |
-| 636       | `LDAP` encrypted                                                           | yes        | TCP     |
-| 993       | `IMAP` encrypted incoming email SSL/TLS                                    | yes        | TCP     |
-| 995       | `POP3` encrypted incoming email SSL/TLS                                    | yes        | TCP     |
-| 1433      | `SQL` Microsoft Structured Query Language                                  |            | TCP     |
-| 1521      | `SQLnet` Oracle SQL Net                                                    |            | TCP     |
-| 3306      | `MySQL` Open source                                                        |            | TCP     |
-| 3389      | `RDP` Remote Desktop Protocol, graphical interface, proprietary microsoft  | RDG y/no   | TCP     |
-| 5060/5061 | `SIP` Session Initiation Protocol (VoIP)                                   |            | TCP     |
-| 5800      | VCN Virtual Network Computing (Web Interface)                              |            | TCP     |
-| 5900      | VCN Virtual Network Computing                                              |            | TCP     |
+| Port      | Name                                                                        | Encryption | TCP/UDP |
+| --------- | --------------------------------------------------------------------------- | ---------- | ------- |
+| 20        | `FTP-Data`                                                                  | no         | TCP     |
+| 21        | `FTP-Control-Connecting`                                                    | no         | TCP     |
+| 22        | `SSH & SFTP` (Secure Shell) & SFTP (Secure File Transfer Protocol)          | yes        | TCP     |
+| 23        | `Telnet` check open ports and connectivity                                  | no         | TCP     |
+| 25        | `SMTP` (Simple Mail Transfer Protocol) sending/outgoing email               | no         | TCP     |
+| 53        | `DNS` (Domain Name Service)                                                 | no         | TCP/UDP |
+| 67/68     | `DHCP` Server/Client listens                                                |            | UDP     |
+| 69        | `TFTP` (Trivial File Transfer Protocol)                                     |            | UDP     |
+| 80        | `HTTP`                                                                      | no         | TCP     |
+| 110       | `POP3` (Post Office Protocol) incoming email.                               | no         | TCP     |
+| 123       | `NTP` (Network Time Protocol) Time sync on computer                         |            | UDP     |
+| 143       | `IMAP` (Internet Mail Application Protocol) incoming email                  | no         | TCP     |
+| 161/162   | `SNMP` (simple network management protocol) manage/monitor,polling          |            | UDP     |
+| 389       | `LDAP` (AD, Directory, Replication, Authentication, Group Policy, Trusts.)  | no         | TCP     |
+| 443       | `HTTPS` SSL(old) TLS(new encryption protocol)                               |            | TCP     |
+| 445       | `SMB` (Server Message Block) windows file/printer sharing. CIFS             |            | TCP     |
+| 514       | `Syslog`                                                                    |            | UDP     |
+| 587       | `SMTP` encrypted outgoing email SSL/TLS (465 was old way, obsolete)         | yes        | TCP     |
+| 636       | `LDAP` encrypted                                                            | yes        | TCP     |
+| 993       | `IMAP` encrypted incoming email SSL/TLS                                     | yes        | TCP     |
+| 995       | `POP3` encrypted incoming email SSL/TLS                                     | yes        | TCP     |
+| 1433      | `SQL` Microsoft Structured Query Language                                   |            | TCP     |
+| 1521      | `SQLnet` Oracle SQL Net                                                     |            | TCP     |
+| 3306      | `MySQL` Open source                                                         |            | TCP     |
+| 3389      | `RDP` Remote Desktop Protocol, graphical interface, proprietary microsoft   | RDG y/no   | TCP     |
+| 5060/5061 | `SIP` Session Initiation Protocol (VoIP)                                    |            | TCP     |
+| 5004/5005 | `RTP/RTCP` (Real Time Protocol/Real Time Control Protocol) Video/Monitoring |            | UDP     |
 
 - **IP protocol types**
   - **Internet Control Message Protocol (ICMP)**
     - another protocol of IP. not used for data transfer. request/reply, send messages.
+    - report errors and send messages about the delivery of a packet.
+    - ICMP messages are generated under error conditions in most types of unicast traffic, but not for broadcast or multicast packets.
   - **TCP**
-    - layer 4. allows multiplexing(many applications at same time). reliable. flow control.
+    - Transmission Control Protocol. Transport layer 4 to provide connection-oriented, guaranteed communication using acknowledgements to ensure that delivery has occurred.
+    - allows mutiplexingg(many applications at same time), flow control.
   - **UDP**
+    - User Datagram Protocol. connectionless, nonguaranteed method of communication
+    - no acknowledgments or flow control.
   - **Generic Routing Encapsulation (GRE)**
-    - tunnel between endpoints. No encryption.
+    - encapsulate and route any layer 2 or 3 packet. No encryption.
   - **Internet Protocol Security (IPSec)**
-    - secure communication rules to establish secure connections over a network.
-    - VPN used to encrypt data. Concentrator is used on each end to encrypt/decrypt data.
-    - **Authentication Header (AH)/Encapsulating Security Payload (ESP)**
-      - AH: hash of packet to verify integrity.
-      - ESP: encrypts packet.
-      - tunnel mode: New header added to tunnel packets to hide original sender. header point to the endpoint of tunnel.
-      - |tunnel header|AH header|ESP header|original IP header|data|ESP trailer|integrity check value|
+    - open standard. symmetric key. popular with VPN's. encrypts layer 3 payload.
+    - secure IPv4 and/or IPv6 communications on local networks and as a remote access protocol.
+    - Each host that uses IPSec must be assigned a policy. only peers that can authenticate with each other can connect.
+    - ensures: confidentiality(encrypted), integrity(hash checking for modified in transit), and authenticity(identity is established by peers).
+    - An **IPSec policy** sets the authentication mechanism and also the protocols and mode for the connection.
+      1. Two peers prove identity(authenticity) by using certificates or pre-shared keys.
+      2. **IKE Phase 1**: asymmetric key exchange(Diffie-Hellman). slow. both side will have the same DH key. will be kept.
+      3. **IKE Phase 2**: agree encryption methods. use DH to creates the symmetric key. fast. can be torn down and re-established quickly.
+    - **Policy Based VPN**: rule sets match traffic that should use vpn tunnel.
+      - can have multiple tunnel security methods for each type of interesting traffic match.
+    - **Route Based VPN**: target match on prefix. (192.168.0.0/24 -> VPN). single tunnel all traffic flows.
+    - **AH (Authentication Header)**: performs hash on packet. provides integrity, no encryption. not popular.
+      - adds hash to the AH(integrity check value). both sender receiver hash must match.
+    - **ESP (Encapsulating Security Payload)**: confidentiality, integrity, authentication. Most Common.
+      - encrypts entire layer 3 packet. adds IP Header, Payload(encrypted data), Trailer, ICV.
+      - **Transport Mode**: does not encrypt header.
+      - **Tunnel Mode**: encrypts header.
 - **Connectionless vs. connection-oriented**
-- Sockets: combination of ip address, protocol, port number.
-- Non-Ephemeral Ports: 0-1023. // well-known port numbers.
-- Ephemeral Ports: temporary ports. // 1024-65,535.
+  - Two ways to send data: Connection-Oriented and Connectionless Service.
+  - **Connection-oriented**: TCP. service involves the creation and termination of the connection for sending the data between two or more devices.
+  - **connectionless**: UDP. service does not require establishing any connection and termination process for transferring the data over a network.
 
 ## 1.6 Explain the use and purpose of network services
 
@@ -831,49 +828,52 @@
 
 - **DHCP**
   - automates the assigning: ip, subnet mask, gateway, dns, ntp...
+  - **mnemonic: DORA: Discover, Offer, Request, Acknowledge**.
   - **DHCP Discover**: new device sends 0.0.0.0:68(udp) to 255.255.255.255:67(udp) -all nodes gets broadcast message.
   - **DHCP Offer**: DHCP responds will this address work?: 10.10.10.99:67(udp) to 255.255.255.255:68(udp) -all nodes.
   - **DHCP Request**: new client responds look good: 0.0.0.0:68(udp) to 255.255.255.255:67(udp) -all nodes
   - **DHCP Acknowledgement**: DHCP says ok: 10.10.10.99:67(udp) to 255.255.255.255:68(udp) -all nodes
   - **Scope**: configure DHCP server with options.
     - **Exclusion ranges**: do not assign these addresses.
-    - **Reservation**: same as static assignment.
+    - **Reservation**: same as static assignment, but also assigns DNS, Default gateway...
     - **Dynamic assignment**: DHCP chooses IP from pool.
     - **Static assignment**: MAC of new device and IP is added to DHCP server. network admin manually configure.
     - **Lease time**: time till ip address renewal.
       - T1 timer: 50% of lease time, renew.
       - T2 timer: 87.5% of lease time, look for another DHCP server.
     - **Scope options**: dns, ip range(pool), excluded ip address, lease duration, default gateway.
-    - **Available leases**: IP pool
-  - **DHCP relay**: enterprise. access to dhcp server outside domain.
-    - new devices ask for DHCP Discover. Router knows no DHCP server on network, so relays to next subnet.
+    - **Available leases**: IP address pool.
+  - **DHCP relay**: enterprise. access to dhcp server outside broadcast domain.
+    - new devices ask broadcast DHCP Discover. Router knows no DHCP server on network, so relays to next subnet.
   - **IP helper/UDP forwarding**:
-    - IP helper: Cisco IOS. same as DHCP relay.
-    - udp forwarding: forward udp packets between network segments. VoIP, streaming, gaming...
+    - cisco command to setup router DHCP relay.
+    - udp forwarding: generic setup on router to forward DHCP, and Network Time Protocol (NTP) and other broadcast-based applications.
 - **DNS**
   - translate domain name into ip address.
   - **Record types**
-    - **Address (A vs. AAAA)**: FQDN to IPv4/IPv6.
+    - **Address (A vs. AAAA)**: maps FQDN(`www.example.com`) to IPv4(A) and IPv6(AAAA) address.
     - **Canonical name (CNAME)**: redirect from one FQDN to another. alias.
-    - **Mail exchange (MX)**: where do you send email?
-    - **Start of authority (SOA)**: info about domain or zone. ex.. admin eamil, last updated, TTL...
+    - **Mail exchange (MX)**: email server FQDN(`mail.example.com`) and ip address.
+    - **Start of authority (SOA)**: identifies the primary authoritative name server that maintains complete resource records for the zone.
     - **Pointer (PTR)**: allows reverse DNS lookup. IP to FQDN.
     - **Text (TXT)**: DMARC, SPF, DKIM.
     - **Service (SRV)**: points to a specific service on server.
-    - **Name server (NS)**: authority of DNS.
+    - **Name server (NS)**: Type of DNS server that stores all the DNS records for a given domain.
   - **Global hierarchy**
     - **Root DNS servers**: 13 globally located. ex.. .com, .org, .net...
-  - **Internal vs. external**: local vs internet.
+  - **Internal vs. external**: lacation of DNS. local network or external network.
   - **Zone transfers**: secondary DNS for redundancy.
-  - **Authoritative name servers**: answer came from DNS authority, not cached.
+    - **DNS Primary Zone**: primary name server. dns record can be edited.
+    - **DNS Secondary Zone**: sedondary name server. zone transfer copies original and is read-only dns record.
+  - **Authoritative name servers**: DNS response came from DNS authority, not cached.
   - **Time to live (TTL)**: how long cached Domain name is valid.
-  - **DNS caching**: does not have to respond back to DNS, has local copy.
+  - **DNS caching**: local copy of DNS response.
   - **Reverse DNS/reverse lookup/forward lookup**
     - forward: query dns with FQDN, DNS provides IP address.
     - reverse: query dns with IP address, DNS provides FQDN.
   - **Recursive lookup/iterative lookup**
-    - Recursive: DNS does the lookup.
-    - Iterative: client keep asking different NS till you get response.
+    - Recursive: DNS server does the lookup.
+    - Iterative: client keep asking different Name Servers till DNS Authority sever is found.
 - **NTP**
   - synchronize devices with master clock.
   - **Stratum**: accuracy of server with atomic clock.
