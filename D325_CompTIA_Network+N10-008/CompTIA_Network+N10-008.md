@@ -98,13 +98,50 @@
 | Destination MAC           | Destination MAC                          | 6 bytes (48 bits) |
 | Source MAC                | Source MAC                               | 6 bytes (48 bits) |
 | EtherType                 | Layer 3 protocol (ipv4 / ipv6) or length | 2 bytes (16 bits) |
-| payload                   | layer 3 or higher data                   | 46-1500 bytes     |
+| payload                   | encapsulated layer 3,4,5,6,7 data        | 46-1500 bytes     |
 | FCS Frame Check Sequence  | (CRC algorithm) check corrupted data     | 4 bytes (32 bits) |
 
 - **Internet Protocol (IP) header**
-  - Internet Protocol (IP) header: layer 3. IP header (IP).
+
+| Name            | Bits | Bit Range | Description                                                 |
+| --------------- | ---- | --------- | ----------------------------------------------------------- |
+| Version         | 4    | 0-3       | ipv4 bit 0100 or ipv6 0110                                  |
+| Header Length   | 4    | 4-7       | 'Options' field is variable, Internet Header Length x 4.    |
+| DSCP            | 6    | 8-13      | QoS. Prioritize Voice/Video Packets                         |
+| ECN             | 2    | 14-15     | Explicit Congestion Notification.                           |
+| Total Length    | 16   | 16-31     | Total Length of Packet including layer 4 segment in bytes.  |
+| Identification  | 16   | 32-47     | if packet to large, this identifies fragment for reassembly |
+| Flags           | 3    | 48-50     | control/identify fragments                                  |
+| Fragment Offset | 13   | 51-63     | position of unfragmented packet within the original packet  |
+| Time to Live    | 8    | 64-71     | Stops Layer 3 packet storms. drops packet at TTL 0          |
+| Protocol        | 8    | 72-79     | protocol of layer 4 PDU. TCP/UDP/ICMP/OSPF/EIGRP/GRE...     |
+| Header Checksum | 16   | 80-95     | check for errors in ipv4.                                   |
+| Source IP Add   | 32   | 96-127    | source ip address                                           |
+| Dst IP Add      | 32   | 128-159   | dst ip address                                              |
+| Option          | 320  | 160-287   | optional. 0-320 bits. IHL greater than 5, options exist     |
+| Data(payload)   |      |           |                                                             |
+
 - **Transmission Control Protocol (TCP)/User Datagram Protocol (UDP) headers**
-  - layer 4. TCP header (TCP/UDP/ Ports).
+
+| TCP Header             | Explanation                            |
+| :--------------------- | :------------------------------------- |
+| Source port            | sending host port                      |
+| Destination port       | destination host port                  |
+| Sequence number        | last byte in segment                   |
+| Acknowledgement number | next segment expected                  |
+| Flags                  | SYN, SYN-ACK, ACK, FIN                 |
+| Window                 | total data host can receive before ACK |
+| Checksum               | Payload hash                           |
+| Urgent Pointer         | end of data in segment                 |
+| Options                | Params, Max segment size               |
+
+| UDP Header       | Explanation                    |
+| :--------------- | :----------------------------- |
+| Source port      | UDP port of sending host.      |
+| Destination port | UDP port of destination host.  |
+| Message length   | Size of the UDP packet.        |
+| Checksum         | Ensures validity of the packet |
+
 - **TCP flags(layer 4. 6 bit)**
   - SYN: synchronize three way handshake
   - URG: precedence over other data
@@ -480,8 +517,6 @@
   - **Default gateway**
 - **IPv4 subnetting**
   - **Classless (variable-length subnet mask)**
-  - Explain Professor Messer 7 second subnetting
-  - What is network address of 192.168.0.123/29
   - **Classful**
     - A
     - B
@@ -510,9 +545,9 @@
   - Private addresses are defined in **RFC 1918** and sometimes referred to as RFC 1918 address space.
     - any organization can use private routing without asking permission.
     - 10.x.x.x/8
-    - 172.16.x.x/12
+    - 172.16.x.x/12 (172.16.x.x - 172.31.x.x)
     - 192.168.x.x/16
-    - 169.254.x.x/16 (APIPA)
+    - 169.254.x.x/16 (APIPA). First 256 and last 256 address are reserved.
   - **Network address translation (NAT)**
     - NAT is 1:1 mapping between private IPv4 and public IPv4 addresses.
     - NAT is configured on a border device, such as a router, proxy server, or firewall.
@@ -520,31 +555,39 @@
     - map multiple private IP addresses to a single public IP address by using different port numbers.
     - PAT is configured on a border device, such as a router, proxy server, or firewall.
 - **IPv4 vs. IPv6**
+
   - **Automatic Private IP Addressing (APIPA)**
-    - if DHCP not found, OS will assign itself an IP. 169.254.1.0-169.254.254.255.
+    - if DHCP server not found, OS will assign itself an IP. (169.254.1.0-169.254.254.255)
     - first and last 256 address reserved by IETF(Internet Engineering Task Force).
     - can only communicate on local network.
-    - computer sends ARP, if no response, computer picks that IP.
+    - computer sends ARP, if no response, computer picks that APIPA IP.
   - **Extended unique identifier (EUI-64)**
     - method to automatically configure IPv6 host addresses.
-    - MAC split, 16 bits(FFFE) added in middle. MAC(48bits) + 16bits = 64bits.
-      - MAC split between OUI(organizationally unique identifier) and NICS(network interface controller-specific).
-      - invert the seventh bit of first hex.
-      - take ipv6 subnet prefix + EUI-64 = 128 bit IPv6.
+      1. MAC address(48bit).
+      2. first 24 bits: OUI (Organizationally Unique Identifier). Split here.
+      3. `FFFE` are added to middle of MAC(after first 24 bits).
+      4. last 24 bits: NIC (Network Interface Card). Added after `FFFE`.
+      5. First byte of MAC is converted to binary, 7 bit is flipped.
+         1. MAC: `00:60:8C:12:3A:BC` = EUI-64: `0260:8CFF:FE12:3ABC`
   - **Multicast**
-    - IPv4 and IPv6 only devices subscribed.
+    - IPv4 and IPv6 only devices must subscribe.
+    - IPv4 has reserved thew class D **224.0.0.0 to 239.255.255.255** addresses as a multicast range.
   - **Unicast**
     - one-to-one. one device to another.
   - **Anycast**
-    - packets delivered to closest interface. DNS servers respond this way.
+    - assigning same ip to multiple servers or network nodes in different geographic locations. These servers provide the same service.
+    - packets delivered to closest interface. DNS, CDN servers are setup this way.
   - **Broadcast**
     - one-to-all. broadcast domain. does not leave router. ARP request.
   - **Link local**
-    - same as APIPA.
+    - same as APIPA. private ip address self assigned when DHCP server not found.
   - **Loopback**
     - 127.0.0.1-127.255.255.254
   - **Default gateway**
-    - router
+    - IPv4 protocol compares the source and destination address in each packet against the netmask(255.255.255.0).
+    - If masked portion does not match, packet must be routed to another network through the 'default gateway'.
+    - router. IP: `0.0.0.0./0`
+
 - **IPv4 subnetting**
   - **Classless (variable-length subnet mask)**
     - solved the Class-based network. allows subnetting.
