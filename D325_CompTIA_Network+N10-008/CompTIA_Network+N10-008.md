@@ -943,21 +943,33 @@
   - **North-South**: traffic leaving/entering network.
   - **East-West**: - **East-West**: traffic stays within the datacenter. Security concerns for traffic that increases the zero trust(servers must auth to talk.)
 - **Branch office vs. on-premises datacenter vs. colocation**
-  - Branch office: remote location.
+  - Branch office: remote location. Hub and spoke topology.
   - on-premises: in-house
   - colocation: share data center with others.
 - **Storage area networks**
-  - block level access. feels like local harddrive. efficient reading/writing.
-  - requires lot of bandwidth.
+  - block level access. feels like local harddrive. efficient reading/writing. requires lot of bandwidth.
+  - dedicated special adapters, cables, switches, NICs. Has own protocol, not Ethernet protocol.
+  - Sends SCSI(scuzzy -the same command pc send harddrive) commands over FC network.
+  - **HBA Host Bus Adapter**: equivalent of NIC. Not ethernet, so frame is different. HBA on storage server and server.
+  - **WWN World Wide Name**: 8 byte address.`15:00:00:F0:8C:08:95:DE`. Similar to MAC address, but 64bit.
+  - **WWNN World wide Node Name**: assigned to a node in the Storage network. one node can have multiple HBA's, but WWNN signifies the node.
+  - **WWPN World Wide Port Name**: identifies each HBA on a node. Similar to MAC. assigned to both storage node and server.
   - **Connection types**:
+    - **Initiator**: client device asking for data.
+    - **Target**: network port of storage device.
+      - initiators and targets are identified by 64-bit WorldWide Names (WWN).
+    - **FC Switch**: interconnections between initiators and targets.
+      - multiple paths between initiators and targets, allow for fault tolerance and load balancing.
+      - High performance FC switches are often referred to as **directors**.
   - **Fibre Channel over Ethernet (FCoE)**:
-    - fiber to SFP to switch.
+    - delivering Fibre Channel packets over Ethernet cabling and switches.
+    - requires special 10/40/100G adapters that combine the function of NIC and HBA, referred to as converged network adapters (CNAs).
+    - FCoE uses a special frame type, identified by the EtherType value 0x8096. The protocol maps WWNs onto MAC addresses.
   - **Fibre Channel**:
-    - high speed network to SAN.
-    - need fiber channel switch.
+    - high speed network to SAN. SCSI communication.
+    - Storage device and Server need HBA in place of NIC and special FC switches.
   - **Internet Small Computer Systems Interface (iSCSI)**:
-    - iScuzzy. created by IBM, Cisco. RFC standard.
-    - remote drive look/acts like local drive. can be managed with software.
+    - IP tunneling protocol that enables the transfer of SCSI data over an IP-based(Ehternet) network.
 
 ## 1.8 Summarize cloud concepts and connectivity options
 
@@ -998,7 +1010,11 @@
 | DaaS     | SaaS + desktop virtualization software(VDI), thin clients |
 
 - **Infrastructure as code**: define all hardware(servers, network, applications) as software.
-  - **Automation/orchestration**: build/destroy all instances with automation code.
+  - automation and orchestration fully replace manual configuration.
+  - **Automation/orchestration**:
+    - Automation: scripts to configure or build single parts of network.
+    - Orchestration: sequence of automated task.
+    - Avoid vendor lock-in.
 - **Connectivity options**
   - Virtual private network (VPN)
   - Private-direct connection to cloud provider
@@ -1006,11 +1022,12 @@
 - **Elasticity**: automatically scale up/down as needed.
 - **Scalability**: manually scale up/down as needed.
 - **Security implications**:
-  - VPN: tunnel to cloud provider infrastructure.
-  - VPNG(virtual private cloud gateway): connect user to internet.
-  - VPC Endpoint: direct connection to endpoint resources.
-  - VM sprawl: two many VM's, can no longer manage.
-  - VM escape: VM leaving to OS.
+  - If security breach, client will still be responsible for stolen data.
+  - potentially confidential or commercially secret data may be transferred over links that extend beyond the enterprise’s infrastructure and direct control.
+  - service level agreement (SLA) as a cloud responsibility matrix should identify precisely which risks you are transferring; to identify which responsibilities the service provider is undertaking.
+  - legal implications of using a cloud provider if its servers are in a different country.
+  - insider threat, where the insiders are administrators working for the service provider.
+  - data is in proximity to other, unknown virtual servers and that some sort of attack could be launched on your data from another virtual server.
 
 <!-- # 2.0 Network Implementations 19% -->
 
