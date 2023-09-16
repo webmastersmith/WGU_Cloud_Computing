@@ -1063,22 +1063,21 @@
 %
 
 - **Networking devices**
-  - **Layer 2 switch**: layer 2. make forwarding decisions with MAC address. POE.
-    - ASIC: Applcation Specific Integrated Circuit. Forwarding decisions in hardware. faster.
+  - **Layer 2 switch**: layer 2. frame forwarding decisions with MAC address. PoE. Vlan, QoS.
+    - ASIC: Applcation Specific Integrated Circuit. Switch makes forwarding decisions in hardware. faster.
     - POE: power over ethernet.
-  - **Layer 3 capable switch**: layer 3. forwarding by ASIC(layer 2), routing decisions in software.
-  - **Router**: layer 3. routing decisions. separates networks.
+  - **Layer 3 capable switch**: layer 3. forwarding by ASIC(layer 2), but also routing decisions in software. better for vlan traffic.
+  - **Router**: layer 3. routing decisions. separates networks(broadcast domains).
   - **Hub**: layer 1. repeater. half-duplex. traffic increase, efficiency decrease(collision domain).
   - **Access point**: layer 2. same as bridge. Typically wireless.
   - **Bridge**: layer 2. makes forwarding decisions. separate collision domains. WAP.
-  - **Wireless LAN controller**: centralized management of access points. sends policy/configuration to new AP.
-    - allows multiple access points.
-    - change configuration, policy that will effect all AP's.
-    - seamless network connection from multiple AP.
-    - security and monitoring.
+  - **Wireless LAN controller**: centralized management and monitoring of the APs on the network.
+    - manage: configuration, policy, security and monitoring.
+    - fat AP: has enough processor logic to function autonomously.
+    - thin A: requires wireless LAN controller.
   - **Load balancer**: distribute load across servers. fault tolerance. caching. encryption. QoS. content switching.
     - content switching: distributes based on which server can respond to application.
-  - **Proxy server**: sit between user and external network.
+  - **Proxy server**: sit between user and external network(man-in-the-middle).
     - send request on behalf of user.
     - examine response and cache or security decisions. enforce policy.
     - Explicit proxy: each client has to be configured to go through proxy.
@@ -1101,10 +1100,15 @@
   - **Physical access control devices**: card reader, biometric: mathmatical representation of body.
   - **Cameras**: CCTV, object detection. ip addressable.
   - **Heating, ventilation, and air conditioning (HVAC) sensors**: integrated into fire system.
-  - **Internet of Things (IoT)**: should be segmented network.
-    - Refrigerator, Smart speakers, Smart thermostats, Smart doorbells.
+    - physical access control system (PACS): monitoring of smart devices in building, including hvac, lighting, fire.
+  - **Internet of Things (IoT)**: Smart devices equipped with sensors, software, and network connectivity.
+    - Machine to Machine (M2M): IoT devices communicating with each other.
+    - Hub/control system: user interface to control, monitor IoT devices.
+    - vulnerable to internet attacks. should run on a segmented network(isolated from main network).
   - **Industrial control systems/supervisory control and data acquisition (SCADA)**:
-    - large scale systems(industrial). plc, segmented for security.
+    - ICS: enables workflow and process automations. Using actuators, motors, circuit breakers and sensors.
+    - Distributed Control System (DCS): software to manages many ICS.
+    - SCADA: software to manage several DCS and ICS.
 
 ## 2.2 Compare and contrast routing technologies and bandwidth management concepts
 
@@ -1129,14 +1133,16 @@
 - **Routing**
   - **Dynamic routing protocols**
     - ![dynamic protocols](./img/dynamic_routing_protocols_overview.PNG)
-    - router to router communication.
-    - determine best path.
-    - **Routing Internet Protocol (RIP)**: distance vector. Max size 15 hops. known as 'routing by rumor'.
-      - v1: classful, v2: classless, RIPng: IPv6.
+    - algorithm and metrics to build and maintain a routing information database(route table).
+    - routers use dynamic routing protols to add learned routes to their routing table.
+    - **Routing Internet Protocol (RIP)**: distance vector(hop count). Max size 15 hops. known as 'routing by rumor'.
+      - v1: classful(port UDP:520), v2: classless(port UDP:520), RIPng: IPv6(port UDP:521).
+      - sends entire database to neighbor every 30 seconds.
+      - When a router receives an update from a neighbor, it adds unknown routes to its own routing table.
     - **Open Shortest Path First (OSPF)**: link-state.
       - hierarchical(routers are grouped into OSPF areas).
         - **Area border routers**: connect the different areas.
-        - AS(autonomous system) border router: connects to internet. ABR's elect backbone(Area 0).
+        - ABRs: autonomous system border router. connects to internet. ABR's elect backbone(Area 0).
       - LSA: each entry in database(LSDB).
       - LSDB: complete database of topology.
     - **Enhanced Interior Gateway Routing Protocol (EIGRP)**: cisco. distance vector/hybrid(hops + bandwidth + delay).
@@ -1144,15 +1150,15 @@
   - **Link state vs. distance vector vs. hybrid**:
     - **link state**: router knows the state of every link(interface) on every router. considers bandwidth(speed) of link(cost). scalable.
     - **distance vector**: best route based on hops. only knows direct neighbor. doesn't scale. doesn't factor speed of connection.
-    - **hybrid**: combine hops and link speed. BGP(border gateway protocol).
-  - **Static routing**: engineer add the route manually.
+    - **hybrid**: combine hops and link speed. EIGP and BGP(border gateway protocol).
+  - **Static routing**: route table is updated manually.
   - **Default route**:
-    - when nothing in routing table matches, send to this ip. 0.0.0.0/0
-    - if no default route, ip not found in routing table, drop packet.
+    - if packet does not match route in routing table, send to this ip. 0.0.0.0/0
+    - prevents router from dropping packet when IP is not in routing table.
   - **Administrative distance**: metric value given to each routing protocol(rip, ospf...). lower number better.
   - **Exterior vs. interior (Gateway Protocols)**:
     - AS: Autonomous Systems. Network under the administrative control of single owner.
-    - Exterior: Routing between AS(ISP, Internet). Tuned for stability, security.
+    - Exterior: Routing between AS(autonomous system; ex.. ISP, Internet). Tuned for stability, security.
     - Interior: Routing within an AS. Tuned for speed and responsiveness.
   - **Time to live**:
 - **Bandwidth management**
