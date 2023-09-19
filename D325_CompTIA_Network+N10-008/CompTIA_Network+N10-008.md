@@ -2100,12 +2100,15 @@
     - electromagetic interference (EMI): electromagnetic source not part of signal(noise). microwave, other wifi on same channel, bluetooth, cordless phone.
   - **Decibel (dB) loss**: one-tenth of a bel. signal strength(power|magnitude of an electric field). closer to 0 better. -65dBm good signal. -80dBm packet loss.
     - dB loss: poor signal, CRC errors, data corruption. EMI(electromagnetic interference).
-    - cable handling: no metal staples. bend radius.
+    - cable: proper distance. no metal staples. bend radius.
     - wifi: spectrum analyzer to find sources of noise, attenuation and signal strength.
-  - **Incorrect pinout**: makes sure wires are made correctly(pinout circuit tester)..
-  - **Bad ports**: check interface error report on switch. speed, vlan, duplex match.
-  - **Open/short**: poor wiring connector or damaged wires. TDR(time domain reflectometer) tells you how far down wire problem is.
-  - **Light-emitting diode (LED) status indicators**: interface status.
+  - **Incorrect pinout**: conductors are incorrectly wired into the terminals. pinout circuit tester.
+  - **Bad ports**: no lights? check with loopback adapter.
+  - **Open/short**:
+    - open: conductor does not form a circuit.
+    - short: conductors are joined at some point.
+    - poor wiring connector or damaged wires. TDR(time domain reflectometer) tells you how far down wire problem is.
+  - **Light-emitting diode (LED) status indicators**: interface(link) status.
     - solid green: no traffic.
     - flickering green: normal
     - no light: port off, interface problem
@@ -2115,17 +2118,18 @@
   - **Duplexing issues**:
     - speed: 10/100/1000/auto; less than expected throughput.
     - duplex: half/full/auto; late collision counter increase.
-  - **Transmit and receive (TX/RX) reversed**: test with ethernet cable tester. Auto-MDI-X will auto correct. no connectivity.
-  - **Dirty optical cables**: connections are not dirty. dust caps on end of connection.
+  - **Transmit and receive (TX/RX) reversed**: incorrect connector install or crossover cable.
+    - test with ethernet cable tester. Auto-MDI-X will auto correct. no connectivity.
+  - **Dirty optical cables**: should have dust caps on end of connectors. clean w/fiber optic solvent, lint free cloth. clean splicing equipment.
 - **Common tools**
-  - **Cable crimper**: ethernet RJ-45.
+  - **Cable crimper**: attach ethernet wire to RJ-45 connector.
   - **Punchdown tool**: punchdown block. trims wire. tool specific to block type(66,110 block).
   - **Tone generator**: find other end of wire.
-  - **Loopback adapter**: check ports. ethernet: 1,3; 2,6; 4,7; 5,8;
+  - **Loopback adapter**: check RJ-45 port problems.
   - **Optical time-domain reflectometer (OTDR)**: estimate cable length. identify splice, cable impedance, signal loss, locate breaks. finde layer 1 problems.
   - **Multimeter**: voltage tester.
   - **Cable tester**: opens, correct RJ-45 build.
-  - **Wire map**: test each wire with led output.
+  - **Wire map**: test each end of wire with led output.
   - **Tap**: allow see network traffic.
   - **Fusion splicers**: connect fiber together.
   - **Spectrum analyzers**: frequency analyzer.
