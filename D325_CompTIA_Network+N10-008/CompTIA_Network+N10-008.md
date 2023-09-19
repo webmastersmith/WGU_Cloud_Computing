@@ -1155,19 +1155,32 @@
   - **Default route**:
     - if packet does not match route in routing table, send to this ip. 0.0.0.0/0
     - prevents router from dropping packet when IP is not in routing table.
-  - **Administrative distance**: metric value given to each routing protocol(rip, ospf...). lower number better.
-  - **Exterior vs. interior (Gateway Protocols)**:
-    - AS: Autonomous Systems. Network under the administrative control of single owner.
-    - Exterior: Routing between AS(autonomous system; ex.. ISP, Internet). Tuned for stability, security.
-    - Interior: Routing within an AS. Tuned for speed and responsiveness.
-  - **Time to live**:
+  - **Administrative distance**: trustworthiness(best) of the protocol.
+    - metric value given to each routing protocol(rip, ospf...). lower number better.
+    - longest prefix match: most specific ip match to route. If more than one route with identical prefix match, use least-cost path(metric).
+
+| Route Source           | Default AD |
+| ---------------------- | ---------- |
+| Direct Connected Route | 0          |
+| Static Route           | 1          |
+| BGP (External)         | 20         |
+| EIGRP                  | 90         |
+| OSPF                   | 110        |
+| RIP                    | 120        |
+| Unusable route         | 255        |
+
+- **Exterior vs. interior (Gateway Protocols)**:
+  - AS: Autonomous Systems. Network under the administrative control of single owner.
+  - Exterior: Routing between AS(autonomous system; ex.. ISP, Internet). Tuned for stability, security.
+  - Interior: Routing within an AS. Tuned for speed and responsiveness.
+- **Time to live**: layer 3. reduced by one each hop. at zero, packet is discarded.
 - **Bandwidth management**
   - improve the overall network performance, reduce latency, and provide a better user experience.
   - **Traffic shaping**: delay based on content. store lower priority packets till network idle.
   - **Quality of service (QoS)**: priority over other packets(VoIP, video). marked in the packet header.
-    - **Control plane**: makes decisions about how traffic should be prioritized and where it should be switched.
-    - **Data plane**: handles the actual switching of traffic.
-    - **Management plane**: monitors traffic conditions.
+    - **Management Plane**: monitor traffic conditions.
+    - **Control Plane**: decisions about traffic priority and where it should be switched.
+    - **Data Plane**: does the actual switching of traffic. ex.. forwarding, trunking, NAT, encrypting. switch ports.
 
 ## 2.3 Given a scenario, configure and deploy common Ethernet switching features
 
@@ -1203,19 +1216,26 @@
   - **Flow control**: 802.3x. pause frame. slows down. CoS(class of service).
   - **Port mirroring**: copy traffic from one or more ports to another port. Helps observer port traffic.
     - IPS watches traffic
-  - **Port security**: prevent unauthorized users from access to network by pluggin in.
+  - **Port security**: prevent unauthorized users from access to network by plugging in.
   - **Jumbo frames**: layer 2 frame payload bigger than 1500 bytes. up to 9216 bytes. as long as all devices support jumbo frames, this will increase efficiency of traffic.
   - **Auto-medium-dependent interface crossover (MDI-X)**: auto detect for transmit/receive. no crossover cable.
 
-| Device   | Transmit Pins | Receive Pins |
-| -------- | ------------- | ------------ |
-| PC       | 1,2           | 3,6          |
-| Firewall | 1,2           | 3,6          |
-| Router   | 1,2           | 3,6          |
-| Switch   | 3,6           | 1,2          |
+|       | Device   | Transmit | Receive Pins |
+| ----- | -------- | -------- | ------------ |
+| MDI   | PC       | 1,2      | 3,6          |
+| MDI   | Firewall | 1,2      | 3,6          |
+| MDI   | Router   | 1,2      | 3,6          |
+| MDI-X | Switch   | 3,6      | 1,2          |
 
 - **Media access control (MAC) address tables**: MAC to port mapping. layer 2 switch.
 - **Power over Ethernet (PoE)/Power over Ethernet plus (PoE+)**: power device.
+
+| POE RJ-45      | Wattage                                     |
+| -------------- | ------------------------------------------- |
+| 802.3af (2003) | 15.4w, 350mA, oldest                        |
+| 802.3at (2009) | POE+, 25.5w 600mA                           |
+| 802.3bt (2018) | POE++, 51w,600mA(Type 3), 73w,960mA(Type 4) |
+
 - **Spanning Tree Protocol:**: prevents loops. switches plugged into each other will loop.
   - Blocking: blocks ports a loop could happen.
   - Listening: not forwarding, cleans MAC table.
@@ -1223,8 +1243,23 @@
   - Forwarding: full operational.
   - Disabled: admin turned off port.
   - Rapid STP has faster convergence.
+  - STP
+    - Switch sends **Hello BPDU's**(asking for switches) every 2 seconds.
+    - **Root Bridge** is choosen. Sends **bridge protocol data unit (BPDU)**(topology of the network)
+    - each switch wil choose **designated port(DP)**, **root port**, **Blocking Port**
+  - RSTP: evolution of STP. improves convergence time.
+  - MSTP: multiple spanning trees in network.
+
+| Name                                       | IEEE   | Description                             |
+| ------------------------------------------ | ------ | --------------------------------------- |
+| STP (Spanning Tree Protocol)               | 802.1D | original tree, one tree for all vlan    |
+| PVST+ (Per VLAN Spanning Tree Plus)        | 802.1D | Cisco, add separate tree for every vlan |
+| RSTP (Rapid Spanning Tree Protocol)        | 802.1w | STP + improve convergence               |
+| RPVST+ (Rapid Per VLAN Spanning Tree Plus) | 802.1W | Cisco, PVST + increase convergence time |
+| MVSP (Multiple Spanning Tree Protocol)     | 802.1s | RSTP + each vlan has tree               |
+
 - **Carrier-sense multiple access with collision detection (CSMA/CD)**: detects packet collisions, resends packet.
-  - Data, check network, transmit data, collision, wait, retransmit.
+  - Data, check network, transmit data, collision, wait, retransmit. // for half-duplex switches.
 
 ## 2.4 Given a scenario, install and configure the appropriate wireless standards and technologies
 
@@ -1262,7 +1297,6 @@
 %
 
 - **802.11 standards**
-  - baby monitors, corless phones, microwaves, bluetooth all operate in the 2.4Ghz range.
   - a
   - b
   - g
@@ -1281,12 +1315,13 @@
 
 - **Frequencies and range**
   - 2.4GHz: only has 93Mhz total bandwidth. 3 channels(1,6,11).
+    - baby monitors, corless phones, microwaves, bluetooth all operate in the 2.4Ghz range.
     - each channel needs ~25MHz(5MHz \* 5) bandwidth. That's why channel 1,6,11 don't overlap(one channel is 5MHz wide).
     - bonding 2 channels: 40MHz takes 80% of bandwidth. You will have overlap if you have more than one 40MHz on 2.4GHz.
   - 5GHz: ~500MHz total bandwidth. It is not consecutive, but that's why you can bond multiple channels and get larger bandwidth
   - each person that connects, consumes some of the bandwidth. more bandwidth, more people can stream without interruption.
 - **Channels**
-  - **Regulatory impacts**
+  - **Regulatory impacts**: strict limit on wifi(2.4,5GHz) power output and constraining the range of Wi-Fi devices.
 - **Channel bonding**: connecting multiple channels to increase bandwidth(pipe size) for better throughput.
 - **Service set identifier (SSID)**
   - **Basic service set**: Acts like the MAC address of an AP.
@@ -1294,7 +1329,7 @@
   - **Independent basic service set (Ad-hoc)**: direct communication between two devices.
   - **Roaming**: moving from one AP to another without interruption.
 - **Antenna types**
-  - **Omni**: like a bubble, radiates out from all sides, lower signal strength.
+  - **Omni**: like a bubble, radiates out from all sides, lower signal strength. Placed higher is better.
   - **Directional**: focused signal. increase distance. 3db doubles signal gain.
     - yagi: directional, high gain.
     - parabolic: highest gain. focus to single point.
@@ -1313,7 +1348,7 @@
 - **Cellular technologies**
   - **Code-division multiple access (CDMA)**: Cellular technology that uses code division to split up the channel.
   - **Global System for Mobile Communications (GSM)**: Cellular technology that takes the voice during a call and converts it into a digital format. Removable SIM card and most popular around the world.
-  - **Long-Term Evolution (LTE)**:
+  - **Long-Term Evolution (LTE)**: supported by both the GSM and CDMA. LTE devices must have a SIM card issued by the network provider.
   - **3G, 4G, 5G**:
 
 | Technology   | Frequency     | Transfer Speed     |
