@@ -1921,8 +1921,8 @@
   - **Camera**: PTZ(pan-tilt-zoom). replace physical guards. object detection(face, license plate). motion detection(radio,infrared).
     - CCTV connect to multiplexer(coax cable). multiple image on screen. record video.
   - **Motion detection**: microwave radio reflection (similar to radar) or passive infrared (PIR), which detect moving heat sources.
-  - **Asset tags**: RFID. detected at entry/exit points.
-  - **Tamper detection**: hardware tamperning(identifies if someone removes case.)
+  - **Asset tags**: RFID. asset tracking. passive tags scanned at entry/exit points or battery powered tags emit tracking signal.
+  - **Tamper detection**: Protected Distribution System (PDS): hardened steel conduit to avoid 'tap' data cables.
 - **Prevention methods**
   - **Employee training**: vulerable to social engineering, malware attacks, careless with sensitive data.
     - orgaization security policy.
@@ -1933,11 +1933,13 @@
   - **Biometrics**: fingerprint, retina scan, voiceprint. Mathmatical representation.
   - **Locking racks**: hold hardware(router,switch...)
   - **Locking cabinets**: safe storage for individual items(media with cryptographic keys, password list).
-  - **Access control vestibule (previously known as a mantrap)**: record who enter/left building. forces only one person at a time. turnstile or enclosed space protected by another gateway.
+  - **Access control vestibule (previously known as a mantrap)**: record who enter/left building. forces only one person at a time. turnstile or monitored, enclosed space protected by another gateway.
   - **Smart lockers**: deliveries made to locker. your given code to pick them up.
 - **Asset disposal**: make sure legal to dispose of data.
   - **Factory reset/wipe configuration**: switch,router,firewall. deletes all personal information.
-  - **Sanitize devices for disposal**: people go through trash. 3 pass wipe(all 0, 1, random).
+  - **Sanitize devices for disposal**: people go through trash.
+    - Secure Erase(SE): 3 pass wipe(0, 1, random).
+    - Instant Secure Erase(ISE): self-encrypting drives, deletes media encryption key(MEK). data is not recoverable.
 
 <!-- # 5.0 Network Troubleshooting 22% -->
 
