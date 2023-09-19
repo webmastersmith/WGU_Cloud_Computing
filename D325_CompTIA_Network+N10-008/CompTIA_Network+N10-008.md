@@ -2173,6 +2173,9 @@
   - **Protocol analyzer/packet capture**: wireshark.
   - **Bandwidth speed tester**: through ISP.
   - **Port scanner**: nmap. open, active ports.
+    - `nmap -sT 10.1.16.12` // simple, TCP only. `-sU`:UDP, `-sS`:SYN (half-open) scan. `-sP`:ping sweep.
+    - `nmap --top-ports 20 10.1.16.12` // 20 common ports.
+    - `nmap -p22,137 10.1.16.12` // only scan these ports.
   - **iperf**: do it your self bandwidth speed tester with two local computers.
   - **NetFlow analyzers**: gather traffic stats. probe and collector. 'tap' to see traffic.
   - **Trivial File Transfer Protocol (TFTP) server**: store firmware and file on local system.
@@ -2183,7 +2186,7 @@
   - **ipconfig/ifconfig/ip**: shows/renew: ip, subnet mask, default gateway. /all adds MAC, DHCP, Lease time.
   - **nslookup/dig**: domain name information. canonical name, ip address, cache timer...
   - **traceroute/tracert**: (unix,Linux,MacOS/Windows) shows router hops and latency to destination.
-  - **arp**: show/clear arp(IP to MAC mapping) cache:
+  - **arp**: show/clear arp(IP:MAC mapping) cache.
   - **netstat**: basic ports information: open, active on a network
   - **hostname**: show pc/server name.
   - **route**: show/configure routing table(Windows).
