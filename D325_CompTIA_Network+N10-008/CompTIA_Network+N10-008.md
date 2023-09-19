@@ -1209,8 +1209,8 @@
 - **Port configurations**
   - **Port tagging/802.1Q**: trunking. main path between switches all vlans can take.
     - switch adds tag to ethernet header showing what vlan packet is on.
-  - **Port bonding/Link aggregation (LAG)**: multiple ports bonded into one to increase bandwidth, then load balanced.
-    - **Link Aggregation Control Protocol (LACP)**: manages this protocol. automation.
+  - **Port bonding/Link aggregation (LAG)**: combining two or more separate cabled links between a host and a switch into a single logical channel. increase bandwidth, redundancy. 802.3ad,802.3ax.
+    - **Link Aggregation Control Protocol (LACP)**: detect configuration errors and recover from the failure of one of the physical links.
   - **Duplex**: half/full
   - **Speed**: 10M/100M/1000M/10G
   - **Flow control**: 802.3x. pause frame. slows down. CoS(class of service).
@@ -1417,28 +1417,29 @@
 
 - **Performance metrics/sensors**
   - **Device/chassis**
-    - **Temperature**: over 120C may have problem. 180C is overheating.
+    - **Temperature**: over 120°C may have problem. 180°C is overheating.
     - **Central processing unit (CPU) usage**: performance of the processors.
     - **Memory**: if you run out, will start using pagefiles(virtual memory).
   - **Network metrics**: snmp, netflow, sflow, ipfix, all will tell you about network stats.
     - **Bandwidth**: how big pipe is.
-    - **Latency**: delay between send/receive.
-    - **Jitter**: sensitive to delay. voice,video.
+    - **Latency**: time it takes packet to arrive from src.
+    - **Jitter**: delay between packets. sensitive to delay. voice,video.
 - **SNMP**: allows monitor network, interfaces. UDP/161
   - v1: in clear
   - v2: bulk transfers
   - v3: auth, encrypt, integrity.
   - **Traps**: instead of polling to collect info for graphs, can configure device to send alert when OID reaches threshold.
-  - **Object identifiers (OIDs)**: database entry(MIB) object being monitored has an OID number. PIDs you can monitor.
+  - **Object identifiers (OIDs)**: MIB database entry object being monitored has an OID number. PIDs you can monitor.
     - `1.3.6.1.2.1.11.19.0` // .iso.org.dod.internet.mgmt.mib-2.snmp.snmpOutTraps.0
     - manufacturer can have custom OID.
   - **Management information bases (MIBs)**: each device will have a database that holds performance stats.
+  - **SNMP Manager**: oversee network activity. Uses **Master Agent** to collect OID from agents.
 - **Network device logs**: traffic flow, summary.
   - **Log reviews**
     - **Traffic logs**: what was on the network. traffic summary.
-    - **Audit logs**: AD. events of logging in/out.
+    - **Audit logs**: records use of authentication and authorization privileges.
     - **Syslog**: standarized process to log system information. Enterprise logs: SIEM(Security Info Event Manager).
-  - **Logging levels/severity levels**: mnemonic: Everyone always complains even when nothing is different.
+  - **Logging levels/severity levels**: mnemonic: "Everyone always complains even when nothing is different"
     <!-- - prettier-ignore -->
     0. emergency: System is unusable
     1. alert: Immediate action needed
@@ -1450,20 +1451,20 @@
     7. debugging: Appears during debugging only
 - **Interface statistics/status**: monitor problems with data on network.
   - **Link state (up/down)**: interface is up/down turned off.
-  - **Speed/duplex**: should match with other switch to have best throughput.
-  - **Send/receive traffic**: runts: frame smaller than 64 bytes. collision has occured.
-  - **Cyclic redundancy checks (CRCs)**: frames
-  - **Protocol packet and byte counts**:
+  - **Speed/duplex**: speed should match on both switch port. both switch ports should be full-duplex.
+  - **Send/receive traffic**: data transferred over a period. percentage of the available bandwidth.
+  - **Cyclic redundancy checks (CRCs)**: frames. detect errors in transmitted or stored data.
+  - **Protocol packet and byte counts**: monitor both packet counts and bandwidth consumption. High packet counts: high processing load on the CPU and system memory.
 - **Interface errors or alerts**
-  - **CRC errors**: frames corrupted do not match the CRC number. bad: cable, interface.
+  - **CRC errors**: corrupted data does not match the CRC number. cause: interference. bad cable or connector. attenuation.
   - **Giants**: frames larger than 1518 bytes.
   - **Runts**: runts: frame smaller than 64 bytes. collision has occured.
   - **Encapsulation errors**: frame type mismatch. configuration mismatch(ISL vs 802.1Q).
 - **Environmental factors and sensors**
-  - **Temperature**: constant coolin needed.
+  - **Temperature**: constant cooling needed.
   - **Humidity**: constant low humidity
-  - **Electrical**: proper voltage
-  - **Flooding**: make sure water does not get close to equipment.
+  - **Electrical**: proper voltage. power conditioner. battery backup. generator.
+  - **Flooding**: make sure water does not get close to equipment. fire system is chemical based.
 - **Baselines**: for graphs. helps you see when something changes.
 - **NetFlow data**: gather stats from traffic. add 'tap' to analyze raw traffic. probe and collector(server listening).
 - **Uptime/downtime**: status page from network provider to view up/down time.
@@ -1503,22 +1504,29 @@
 %
 
 - **Plans and procedures**
-  - **Change management**: upgrade software, change firewall config, modify switch port. Change can break other things. have clear policy.
+  - **Change management**: Change can break other things. have clear policy on steps to make change. upgrade software, change firewall config, modify switch port.
   - **Incident response plan**: NIST: (1)prep, (2)detect/analyze, (3)contain/eradicate, (4)recovery.
   - **Disaster recovery plan**: many types of disasters. comprehensive. data recovery, recovery location.
-  - **Business continuity plan**:
-    - COOP: Continuity of operations. alternative plan if system goes down.
+  - **Business continuity plan**: collection of processes and resources that enable an organization to maintain normal business operations in the face of some adverse event.
+    - Continuity of operations (COOP): alternative plan if system goes down.
+    - Business impact analysis (BIA): identifies mission essential and primary business functions and the risks that would arise if the organization cannot fulfill them.
+    - IT contingency planning (ITCP) or IT service continuity planning (ITSCP): mitigate all single points of failure.
   - **System life cycle**: how to dispose of old tech, information. Can it legally be destroyed? dumpster diving?
-  - **Standard operating procedures**: process, procedures. who to contact, what to do when disaster occurs. software upgrades.
+  - **Standard operating procedures**: process, procedures. who to contact, what to do when disaster occurs.
 - **Hardening and security policies**
-  - **Password policy**: length of characters(entropy) or time valid.
+  - **Password policy**: length of characters(entropy, 14 chars) or time pasword valid.
   - **Acceptable use policy**: company assets, how you use them. dismiss someone, what they did wrong is documented in the AUP.
-  - **Bring your own device (BYOD) policy**: device meets company policy. how data is protected. MDM is used to protect data on device.
-  - **Remote access policy**: policy on accessing building. includes third-party access. hardware/software required.
+  - **Bring your own device (BYOD) policy**: device meets company policy. how data is protected. MDM(Mobile Device Management) is used to protect data on device.
+  - **Remote access policy**: policy on accessing building/data. includes third-party access. The hardware/software required.
   - **Onboarding and offboarding policy**:
     - onboarding: new hires. IT agreements, accounts created. hardware provided.
     - offboarding: pre-planned how leave organizatin. accounts deactivated, hardware returned, data?
   - **Security policy**: policy for the organization. remote access, building security, incident response. constantly change.
+    - Background Check: they are who they say they are.
+    - Identity and access management (IAM): access to necessary systems.
+    - asset allocation: provision devices to perform work. laptop, phone.
+    - training: security awareness. role relevant training.
+    - offboarding: IAM(disable access), return assets(laptop, phone).
   - **Data loss prevention**: watch and blocks sensitive data before gets transferred out of network. credit card numbers, social security numbers, medical records. Allow only if encrypted.
 - **Common documentation**
   - **Physical network diagram**: how each device connects to other devices overlaid on floor blueprints.
@@ -1568,13 +1576,13 @@
 
 %
 
-- **Load balancing**: multiple servers providing same function. distributes request. fault tolerant, DDos attacks.
+- **Load balancing**: multiple servers providing same function. distributes request. fault tolerant, DDoS attacks.
   - layer 4: basic load-balancer.
-  - layer 7: decisions based on application data request.
-- **Multipathing**: more than one physical link to another node. anywhere that link redundancy is required.
+  - layer 7: decisions based on packet content.
+- **Multipathing**: network node has more than one physical link to another node. link redundancy.
   - SAN multipathing: iSCSI. more than one dedicated link to SAN. Nic Teaming is used for switches.
   - Multiple ISPs: more than one path to internet.
-- **Network interface card (NIC) teaming**: multiple NICs
+- **Network interface card (NIC) teaming**: multiple NICs. bandwidth link1 + bandwidth link2 = total bandwidth.
 - **Redundant hardware/clusters**: fault tolerance. backup if something fails. running configs are same as startup configs and backed up.
   - **Switches**: each one of these will cause the system to go down if there is no redundancy. backup config, MAC tables, security settings.
   - **Routers**: virtual IP shared with all redundant routers.
@@ -1582,8 +1590,8 @@
 - **Facilities and infrastructure support**
   - **Uninterruptible power supply (UPS)**: temporary backup power for powerloss. batteries and inverter.
   - **Power distribution units (PDUs)**: cleans the signal of incoming power. spikes, surges, brownouts.
-  - **Generator**: whole building power. cannot be brought online fast enough if powerloss.
-  - **HVAC**: prevent overheating by controling temperture and humidity.
+  - **Generator**: whole building power. needs UPS. cannot be brought online fast enough if powerloss.
+  - **HVAC**: prevent overheating by controlling temperture and humidity.
   - **Fire suppression**: protect equipment.
     - wet-pipe: water under pressure.
     - dry-pipe: water only flows in freezing area when fire detected.
@@ -1593,18 +1601,18 @@
 - **Redundancy and high availability (HA) concepts**: 5 "9's" = 99.99999% uptime.
   - high availablilty: systems always available. automatic switchover.
   - **Cold site**: empty building that will need equipment and data to be installed.
-  - **Warm site**: same as hot, but needs data set.
+  - **Warm site**: same as hot, but needs current data set.
   - **Hot site**: ready to deploy. building in another location with live data set and equipment.
   - **Cloud site**: move processing and data storage. most cost effective.
-  - **Active-active vs. active-passive**:
-    - active-active: both switches/routers/firewall load balance.
-    - active-passive: two switches/routers/firewall sharing same virtual MAC/IP, when one is active, the other is passive.
-    - **Multiple Internet service providers (ISPs)/diverse paths**: multiple internet connections.
+  - **Active-active vs. active-passive**: Redundant Hardware/Clusters
+    - active-active: both nodes are processing connections concurrently.
+    - active-passive: sharing same virtual MAC/IP, when one is active, the other is passive. advantage: failure node not adversely affected.
+    - **Multiple Internet service providers (ISPs)/diverse paths**: multiple internet connections. redundancy.
     - **Virtual Router Redundancy Protocol (VRRP)/First Hop Redundancy Protocol (FHRP)**: default gateway is served by multiple routers. they share virtual ip and virtual MAC.
-    - both are the same besides small terminology and VRRP does not need a physical IP assigned.
-  - **Mean time to repair (MTTR)**: estimated time to recover from fault. Total repair time / number of incidents.
-  - **Mean time between failure (MTBF)**: expected lifetime of product before failure. Total time(devices \* hours)/devices failures.
-  - **Mean time to failure**: nonrepairable assets(harddrives). (device \* hours) / failures.
+    - VRRP: open standard. if failure, new default gateway(master router) is selected. does not require each router to have unique IP. All routers can share virtual IP.
+  - **Mean time to repair (MTTR)**: estimated time to recover from fault. `Total repair time / number of incidents`.
+  - **Mean time between failure (MTBF)**: expected lifetime of device before failure. `Total time(devices x hours)/devices failures`.
+  - **Mean time to failure (MTTF)**: nonrepairable assets(harddrives). `Total time(device * hours) / device failures`.
   - **Recovery time objective (RTO)**: period following disaster that system may remain offline.
   - **Recovery point objective (RPO)**: amount of data loss a system can sustain, measured in time units.
     - example: virus destoys database. RPO is 24 hours. data can be recovered from backup no more than 24 hours before the infection.
