@@ -2048,39 +2048,31 @@
 - **Specifications and limitations**
   - **Throughput**: actual data transfer(size of pipe) over time. bps.
   - **Speed**: expected performance of link. bps.
-  - **Distance**: Attenuation and noise enforce distance limitations.
+  - **Distance**: length signal can travel before attenuation(signal strength) and noise(anything transmitted not the signal) degrade signal.
 - **Multiplexing Technique**
-  - **BiDi**: bidirectional. transmit/receive over same strand. uses WDM to transmit/receive signals over slightly shifted wavelengths.
+  - **BiDi**: bidirectional. transmit/receive over same fiber strand. uses Waveform Division Multiplexing(WDM) to transmit/receive signals over slightly shifted wavelengths.
   - **CWDM**: course wavelength division multiplexing. up to 16 wavelengths. typically 4-8 bidirectional channels over single fiber strand.
   - **DWDM (Dense Wavelength Division Multiplexing)**
-    - multiple optical signals at different wavelengths(color) share same fiber strand(20,40,80,160).
+    - multiple optical signals at different wavelengths(color) share same fiber strand(20,40,80,160 channels).
     - more precise, expensive lasers to do this.
     - allows more capacity/bandwidth without upgrading infrastructure.
-    - uses long haul connectivity.
-  - **WDM**: wavelength division multiplexing. transmit/receive more than one channel at a time on single strand.
+    - uses long haul connectivity for increased distance.
+  - **WDM**: wavelength division multiplexing. transmit/receive more than one channel at a time on single fiber strand.
 - **Cable considerations**
   - **Shielded and unshielded**: -S: braided shielding, -F: foil sheilding, -U: unsheilded(U/UTP).
     - braided sheild around cable, foil around pairs. (S/FTP).
     - foil around cable, unsheilded pairs. (F/UTP)
-  - **Plenum and riser-rated**: outter coating(FEP|Low smoke PVC, marked CMP/MMP) is fire/smoke resistant(orange). not flexible.
-    - non-plenum: no forced are circulating through.
-    - plenum: forced air(supply/return) where wires run.
+  - **Plenum and riser-rated**: cable jacket(FEP|Low smoke PVC, marked CMP/MMP) is fire/smoke resistant(orange). not flexible.
+    - non-plenum: no forced are circulating through cavity.
+    - plenum: false ceiling or raised floor. forced air(HVAC supply/return air) where wires run.
       - plenty of airflow and no fire breaks make it a fire hazard.
-    - riser: passes between floors. similar to plenum, but not as strict.
+    - riser: passes between floors(vertical). similar to plenum, but not as strict.
 - **Cable application**
   - **Rollover cable/console cable**:
     - console: DB-9,DB-25. RS-232 signal. management port of router/switch. (9600 baud rate)
     - rollover: yost cable, console cable. 1,8;2,7;3,6;4,5;5,4;6,3;7,2;8,1; 12345678 -> 87654321
   - **Crossover cable**:
-    - 568B: 1(o/w),3; 2(o),6; 3(g/w),1; 4(bl),7; 5(bl/w),8; 6(g),2; 7(br/w),4; 8(br),5; 12345678 -> 361-78-245
-
-| Device   | Transmit Pins | Receive Pins |
-| -------- | ------------- | ------------ |
-| PC       | 1,2           | 3,6          |
-| Firewall | 1,2           | 3,6          |
-| Router   | 1,2           | 3,6          |
-| Switch   | 3,6           | 1,2          |
-
+    - 568B: 1(o/w); 2(o); 3(g/w); 4(bl); 5(bl/w); 6(g); 7(br/w); 8(br);
 - **Power over Ethernet**: power supply to device from switch(endspan). Midspan(power from injector).
   - pure copper and bigger conductor will produce less heat(better data rates).
   - Mode A: power on data pairs
