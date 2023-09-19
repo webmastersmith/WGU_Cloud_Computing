@@ -2070,9 +2070,10 @@
 - **Cable application**
   - **Rollover cable/console cable**:
     - console: DB-9,DB-25. RS-232 signal. management port of router/switch. (9600 baud rate)
-    - rollover: yost cable, console cable. 1,8;2,7;3,6;4,5;5,4;6,3;7,2;8,1; 12345678 -> 87654321
+    - rollover: also called yost cable. type of console cable that creates an interface with the device. 568b color. pin 12345678 -> pin 87654321.
   - **Crossover cable**:
-    - 568B: 1(o/w); 2(o); 3(g/w); 4(bl); 5(bl/w); 6(g); 7(br/w); 8(br);
+    - 568B: 1(o/w) -> 3; 2(o) -> 6; 3(g/w) -> 1; 4(bl) -> 7; 5(bl/w) -> 8; 6(g) -> 2; 7(br/w) -> 4; 8(br) -> 5;
+    - allows MDI -> MDI or MDI-X -> MDI-X device to communicate. obsolete w/Auto-MDI-X.
 - **Power over Ethernet**: power supply to device from switch(endspan). Midspan(power from injector).
   - pure copper and bigger conductor will produce less heat(better data rates).
   - Mode A: power on data pairs
@@ -2081,7 +2082,7 @@
   - **Power Injector**: plugs into wall outlet. Two RJ45 ports, one to switch, other to device.
   - **Midspan**: power injector provides power to device.
   - **Endspan**: power from switch port.
-  - **PSE**: power sourcing equipment. provide PoE.
+  - **PSE**: power sourcing equipment. PoE equipped switch.
   - PoE are more efficient than AC wall outlet. Power schemes(sleep), power capping.
 
 | POE RJ-45      | Wattage                                     |
@@ -2092,10 +2093,15 @@
 
 - **Common issues**
   - **Attenuation**: signal loss over distance(radio wave, light, electrical).
-  - **Interference**:
+  - **Interference**: anything that interupts signal.
+    - reflextion/bounce: mirrors, shiny surfaces.
+    - refraction: glass or water(aquirium) bends waves to take different path.
+    - absorption: walls/windows reduce signal strength.
+    - electromagetic interference (EMI): electromagnetic source not part of signal(noise). microwave, other wifi on same channel, bluetooth, cordless phone.
   - **Decibel (dB) loss**: one-tenth of a bel. signal strength(power|magnitude of an electric field). closer to 0 better. -65dBm good signal. -80dBm packet loss.
     - dB loss: poor signal, CRC errors, data corruption. EMI(electromagnetic interference).
     - cable handling: no metal staples. bend radius.
+    - wifi: spectrum analyzer to find sources of noise, attenuation and signal strength.
   - **Incorrect pinout**: makes sure wires are made correctly(pinout circuit tester)..
   - **Bad ports**: check interface error report on switch. speed, vlan, duplex match.
   - **Open/short**: poor wiring connector or damaged wires. TDR(time domain reflectometer) tells you how far down wire problem is.
