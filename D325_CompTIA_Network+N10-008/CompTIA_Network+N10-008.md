@@ -1661,17 +1661,19 @@
   - **External**: one that has no account or authorized access. malware and/or social engineering. remotely or on-premises.
 - **Vulnerabilities**: weakness that could be accidentally triggered or intentionally exploited to cause a security breach.
   - **Common vulnerabilities and exposures (CVE)**: dictionary of vulnerabilities. used to develop test in pentesting.
-  - **Zero-day**: vulnerability discovered before developer knows.
+  - **Zero-day**: vulnerability discovered before anyone knows it exist. No patch for it.
 - **Exploits**
   - **Least privilege**: user granted sufficient rights to perform job. Authorization creep: user acquires more and more rights.
-  - **Role-based access**: rights are assigned by role. Only admin has power to change role rights.
+  - **Role-based access**: access rights are assigned to roles. employee assigned role. Only admin can change role rights.
   - **Zero Trust**: continuous authentication and conditional access to mitigate privilege escalation. microsegmentation: applying policies to a single node.
-- **Defense in depth**: physical controls(locks), technical controls(firewalls), admin controls(policy).
+- **Defense in depth**: NAC(network access control, AAA server). Honeypots(detect illegal activity). Separation of duties: Duties and responsibilities divided among individuals to prevent ethical conflicts or abuse of powers.
   - **Network segmentation enforcement**: segmenting the network into clearly defined areas. virtual LANs and subnets. segment is a separate broadcast domain. Any traffic between segments must be routed.
-  - **Perimeter network [previously known as demilitarized zone (DMZ)]**:
-    - network with two firewalls. also called **screened subnet**.
-      - choke firewall: internal firewall to private network
-      - edge firewall: external to internet.
+  - **Perimeter network [previously known as demilitarized zone (DMZ)]**: known as bastion host(not fully trusted).
+    - perimeter network: proxy, server between two firewalls:
+      1. edge firewall: internet facing.
+         1. internet listening proxy or server is between these two.
+      2. choke firewall: private network facing.
+    - screened subnet: one edge firewall that routes internet traffic to Extranet(isolated LAN).
   - **Separation of duties**: separates duties and responsibilities against critical systems that could be compromised from insiders(split knowlege).
   - **Network access control**: authenticating endpoints. ethernet ports, wifi AP, VPN's. EAP and RADIUS.
     - **802.1X**: port based access control integrated with EAP.
@@ -1685,11 +1687,26 @@
     - Something you do: sign name
     - Somewhere you are: location
   - **Terminal Access Controller Access-Control System Plus (TACACS+)**: better for admin credentials.
-  - **Single sign-on (SSO)**: password or pin to authenticate.
   - **Remote Authentication Dial-in User Service (RADIUS)**: better for AP authentication for users.
-  - **LDAP**: protocol to access X.500 like database.
-  - **Kerberos**: used by Active Directory(Microsoft). Authenticate one time, no need to re-authenticate. KDC returns a 'ticket granting ticket'.
-  - **Local authentication**: login or logon to gain access to device. passwords stored on local device.
+
+| TACACS+                                                   | RADIUS                                             |
+| --------------------------------------------------------- | -------------------------------------------------- |
+| Separates AAA, port TCP:49, encrypted                     | Combines AAA, port UDP:1812;1813, unencrypted      |
+| single, multi-factor or challenge/response authentication | username/password. can be extended with EAP        |
+| fine grained Auth, Auditing features                      | less granular Auth, Auditing features              |
+| Cisco proprietary protocol.                               | open source, vendor neutral                        |
+| best auth for admin access to routers,switches            | best auth to Access Point/NAC for end user devices |
+
+- **Single sign-on (SSO)**: user to authenticate once to a local device and be authorized to access compatible application servers without having to enter credentials again.
+- **LDAP**: protocol to access X.500 like database. centralized data: auth user, access to resources on network.
+- **Kerberos**: authentication protocol: provides secure authentication for users and services over a non-secure network.
+  - client: uses shared key to authenticate with KDC.
+  - key distribution center (KDC): central component. AS + TGS = KDC. returns a 'ticket granting ticket' to client.
+  - authentication server(AS). client is given a ticket granting ticket(TGT).
+  - ticket-granting-server (TGS): issues and tracks privileges to client using a TGT.
+  - ticket-granting-ticket (TGT): ticket used by TGS to provide auth for resource access. Single sign-on.
+  - used by Active Directory(Microsoft).
+- **Local authentication**: software architecture and code by which user is authenticated before starting a shell.
 
 ## 4.2 Compare and contrast common types of attacks
 
@@ -1721,32 +1738,35 @@
 %
 
 - **Technology-based**
-  - **Denial-of-service (DoS)/distributed denial-of-service (DDoS)**: force service to fail.
-    - **Botnet/command and control**: hacker open backdoor(zombie), network between handlers(original infected host) and bots.
-    - **command and control (C-and-C or C2)**: network hacker use to control bots.
-    - mitigate with updates and scans. monitor traffic.
-  - **On-path attack (previously known as man-in-the-middle attack)**: compromise connection between hosts.
+  - **Denial-of-service (DoS)/distributed denial-of-service (DDoS)**: force network failure.
+    - DoS (Denial of Service): Brute force. Increase traffic until overwhelm system.
+    - DDoS (Distributed DoS Attacks and Botnets): Botnet of zombie host.
+    - **Botnet/command and control**:
+      - Botnet: hacker infects devices with a backdoor(zombie) and uses them to launch DDoS and DRDoS attacks.
+      - Command and Control (C-and-C or C2): network used manage and orchestrate the activities of the bots. handler(manager) and bots(zombies).
+      - mitigate with updates and scans. monitor traffic.
+  - **On-path attack (known as man-in-the-middle attack)**: compromise connection between hosts.
     - **arp posioning/spoofing**(trick network that your the gateway).
-    - **MAC/IP spoofing**(duplicate MAC/IP address to incercept traffic and DoS).
-    - **DHCP/DNS posioning/spoofing**: give false lookup information to redirect clients.
-    - mititgate: encryption.
+    - **MAC/IP spoofing**(duplicate MAC/IP address to incercept traffic, DoS, bypass security).
+    - **DHCP Poisoning/Spoofing**: attacker able to answer broadcast DHCP queries faster than the legit DHCP server can inject any network setting on the requesting client.
+      - mitigation: DHCP Snooping(drop unauthorized dhcp traffic). Port Security(auth before access to network). Network monitoring.
   - **DNS poisoning**: compromise name resolution process. or modify HOST file.
+    - mitigate: clean HOST file, ipconfig /flushdns, set DNS to correct IP.
   - **VLAN hopping**: gain access to unauthorized vlan by double tagging or switch spoofing trunk port.
-    - mitigate double tagging by native vlan using different ID to any user accessible vlan.
-    - mitigated by not allowing auto-configure trunk ports.
+    - mitigate: do not use default vlan. disable auto-configuring trunk ports.
   - **ARP spoofing**: gratuitous ARP with source address that spoofs legitimate host(so they update their APR table with hacker MAC). target is to become the network default gateway.
-    - mitigate: packet filtering firewall that looks for duplicate ip.
+    - mitigate: packet filtering firewall that looks for duplicate ip. packet encryption. network monitoring.
   - **Rogue DHCP**: rogue DHCP server on network.
-    - mitigate: enable DHCP snooping. Authorize DHCP in Active Directory.
+    - mitigate: enable DHCP snooping(drop unauthorized DHCP packets). Port Security(auth to access network).
   - **Rogue access point (AP)**: AP installed on network without authorization(backdoor).
     - mitigate: NAC(802.1X) all traffic on network must be authenticated. Zero Trust.
   - **Evil twin**: rogue AP masquerading as legitimate AP. harvest credentials.
     - mitigate with EAP-TLS, WIDS(wireless intrusion detection)
   - **Ransomware**: extort money from victim.
   - **Password attacks**: hacker able to obtain credentials. password in clear.
-  - **Brute-force**: every combination.
+  - **Brute-force**: every combination of characters tried.
   - **Dictionary**: list of commonly used passwords.
-  - **MAC spoofing**: fake MAC address to circumvent ACL filter.
+  - **MAC spoofing**: fake MAC address to circumvent Access Control List filter.
   - **IP spoofing**: fake IP. Mask origin of attack.
   - **Deauthentication**: attacker sends 'deauth' frame to AP w/spoofed MAC address. DoS.
   - **Malware**: malicious software. Generic term for: viruses, ransomware, worms, and trojans.
@@ -1793,42 +1813,50 @@
 %
 
 - **Best practices**
-  - **Secure SNMP**: monitor switches. use v3.
-  - **Router Advertisement (RA) Guard**: IPV6 Neighbor Discovery. attacker could pretend to be router.
-  - **Port security**: individual switch ports to allow only a specified number of source MAC addresses to communicate.
-  - **Dynamic ARP inspection**: stops ARP posioning. switch creates it own table, if something odd happens, switch drops packet.
-  - **Control plane policing**: QoS traffic has to be processed. Malware masquerading as QoS can create a DoS.
-    - mitigate: policy that uses ACL to allow/deny types of QoS traffic.
-    - block non-management traffic that is tagged QoS.
-  - **Private VLANs**: port isolation: limit or prevent device to device communication.
+  - **Secure SNMP**: monitor devices. use v3 or IPSec to encrypt data.
+  - **Router Advertisement (RA) Guard**: drops unauthorized IPV6 Neighbor Discovery and RA traffic. similar to DHCP snooping.
+  - **Port security**: Port-Based Network Access Control(PNAC): switch performs some sort of authentication of the attached device before activating the port.
+  - **Dynamic ARP inspection (DAI)**: prevents a host from flooding gratuitous ARP replies.
+  - **Control Plane Policing**: attacker spoofs high-priority traffic(QoS). creates high demands on routers/switches. DoS.
+    - normal traffic uses ASIC chips to process frames without needing much overhead.
+    - QoS uses processing and memory(Control and Management planes) to route.
+  - **Private VLANs (PVLAN)**: restricting the ability of hosts within a VLAN to communicate directly with one another.
+    - Promiscuous Port: can communicate with every vlan.
+    - Isolated Port: can only communicate with promiscuous port.
+    - Community Port: only in same community and promiscuous.
   - **Disable unneeded switchports**: prevent gaining access to network. 802.1X(EAP,RADIUS).
   - **Disable unneeded network services**: every service on network needs an open port. close all ports except required ports.
-    - control with NGFW. remove any unknown services.
+    - control with next generation firewall(NGFW). remove any unknown services.
     - scan for open ports with nmap.
   - **Change default passwords**: default passwords are well known.
-  - **Password complexity/length**: increase entropy. uppper/lower/special chars. more than 8 chars.
-  - **Enable DHCP snooping**: add additional security to prevent rogue DHCP from network. filters out invalid ip.
-  - **Change default VLAN**: by default all ports assigned access(not trunk) will be assigned to the single default vlan. This makes it easier for attackers to know what vlan to target.
-    - separate management traffic.
-    - honeypot default vlan.
-  - **Patch and firmware management**: update to fix security patches. always have a rollback plan, backup binaries.
+  - **Password complexity/length**: increase entropy. uppper/lower/special chars. 14 chars or more.
+  - **Enable DHCP snooping**: drops unauthorized DHCP packets.
+  - **Change default VLAN**: VLAN 1. no ports should be assigned to default vlan.
+    - Native Vlan: untagged traffic(legacy no 802.1Q) on trunk is routed here. Change to non-default vlan on all switches.
+  - **Patch and firmware management**: monitor and update security patches. always have a rollback plan.
   - **Access control list**: allow/deny traffic based on tuples(grouping of categories: source ip, dest ip, port).
-  - **Role-based access**: least privilege. assign role, roles come preconfigured with necessary access.
+  - **Role-based access**: least privilege. assign role to employee, roles come preconfigured with necessary access.
   - **Firewall rules**: allow/deny traffic. firewall will log any rule match. adding explicit deny: any | deny, will log all traffic denied.
-    - **Explicit deny**: if match deny.
-    - **Implicit deny**: if nothing matches, drop.
+    - **Explicit deny**: match rule, deny.
+    - **Implicit deny**: no matches rule, drop.
 - **Wireless security**:
   - **MAC filtering**: limit access by matching MAC address. easily defeated.
-  - **Antenna placement**: focus coverage on needed areas. limit access outside building. adjust power levels. 802.1X.
-  - **Power levels**: not so strong signals reach outside building.
-  - **Wireless client isolation**: devices can't communicate with each other. public areas. hotels.
-  - **Guest network isolation**: on a subnet. no access to your network.
-  - **Preshared keys (PSKs)**:
-  - **EAP**: 802.1X format of authentication(about 5 types). Used with RADIUS server.
-  - **Geofencing**: only allow device features in a specific area. MDM.
-  - **Captive portal**: message that appears when you connect to the network.
-- **IoT access considerations**: lights, door locks, smart devices. Security problems. IoT should be on separate network. vlan or guest network.
-  - screened subnet(DMZ) is designed to be access from the internet.
+  - **Antenna placement**: focus coverage on needed areas. limit access outside building. adjust power levels.
+  - **Power levels**: Power levels and channel selection should be tuned:
+    - access points do not interfere with one another.
+    - broadcast a signal that client can "hear" but cannot reply to.
+  - **Wireless client isolation**: clients can only communicate via its gateway. peer-to-peer blocked.
+  - **Guest network isolation**: on a separate network. custom security policy. internet only access(not local network).
+  - **Preshared keys (PSKs)**: cryptographic symmetric key that is shared in advance between two or more parties to enable secure communication.
+  - **EAP**: 802.1X format of authentication protocols(about 5 types). Used with RADIUS server.
+  - **Geofencing**: valid geographic area to access the network. mobil device management(MDM).
+  - **Captive portal**: guest network. perform authentication by redirecting stations to a secure web page.
+- **IoT access considerations**:
+  - regular audit:
+    - prevent shadow IT(uncontrolled deployment of smart devices).
+    - supplier security policies and procedures.
+  - administrative interface is secured(no default passwords) and devices are assigned proper organizational roles.
+  - update patches. isolate network(vlan or guest).
 
 ## 4.4 Compare and contrast remote access methods and security implications
 
@@ -1853,7 +1881,7 @@
     - full: all traffic goes through tunnel. traffic from client goes to vpn, then sent to internet.
     - split: some data is sent to vpn tunnel.
 - **Remote desktop connection**: windows RDP. share desktop remote location. VNC(virtual network computing): open source.
-- **Remote desktop gateway**: typically connect client with virtual desktop through vpn. Encrypts traffic to remote desktop. port 3389(RDP).
+- **Remote desktop gateway**: access to networked apps. connect to virtual desktop or implement clientless vpn.
 - **SSH**: terminal screen encrypted on other computer.
 - **Virtual network computing (VNC)**: alternative to RDP(windows). share desktop(remote access). many OS's.
 - **Virtual desktop**: VDI(cloud virtual desktop infrastructure). pre built desktop client connects to.
@@ -1864,7 +1892,7 @@
   - logging and auditing: logons, attempted logons.
   - latest update/patches.
 - **In-band vs. out-of-band management**:
-  - in-band: shares traffic with other communications on the "production" network.
+  - in-band: management traffic on the "production" network. VLAN to isolate management traffic.
   - out-of-band: dedicated port(console.port). management access is on separate network. more secure.
 
 ## 4.5 Explain the importance of physical security

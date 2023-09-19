@@ -454,3 +454,9 @@
 ## SIEM
 
 - (Security Information and Event Management) is a software system that gathers and analyzes activities across your entire IT infrastructure. SIEM gathers security data from network devices, servers, domain controllers, and other sources.
+
+## QoS uses three layers
+
+1. control
+2. data
+3. management
