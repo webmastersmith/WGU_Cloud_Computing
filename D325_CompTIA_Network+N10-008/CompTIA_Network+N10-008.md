@@ -2202,10 +2202,13 @@
   - **hostname**: show pc/server name. `hostnane`
   - **route**: show/configure routing table(Windows). `route print`
   - **telnet**: legacy remote terminal. tcp/23. no encryption. `telnet ipAddress port`
-  - **tcpdump**: tcp/ip packet info over the network. sniffer.
+  - **tcpdump**: command line packet capture tool. similar to wireshark. `tcpdump -i eth0`
   - **nmap**: in-depth information about ports, hosts, services running and current OS.
+    - `nmap -sT 10.1.16.12` // simple, TCP only. `-sU`:UDP, `-sS`:SYN (half-open) scan. `-sP`:ping sweep.
+    - `nmap --top-ports 20 10.1.16.12` // 20 common ports.
+    - `nmap -p22,137 10.1.16.12` // only scan these ports.
 - **Basic network platform commands**
-  - **show interface**: show interface on device: router,switch
+  - **show interface**: displays statistics for the network interface (router,switch).
   - **show config**: show device configuration file
   - **show route**: view routing table.
 
@@ -2242,7 +2245,9 @@
 - **Specifications and limitations**
   - **Throughput**: amount of data successfully transfered over time.
   - **Speed**: maximum bandwidth
-  - **Distance**: strength of signal -65dBm(good), -80dBm(bad)
+  - **Distance**:
+    - cable:
+    - wifi: strength of signal -65dBm(good), -80dBm(bad)
   - **Received signal strength indication (RSSI) signal strength**: radio signal. dBm. decibel-milliwatt. spectrum analyzer.
   - **Effective isotropic radiated power (EIRP)/power settings**: signal strength.
     - transmit strength + antenna gain - cable loss.
