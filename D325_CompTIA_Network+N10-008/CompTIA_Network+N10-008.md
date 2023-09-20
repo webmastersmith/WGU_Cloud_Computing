@@ -2176,21 +2176,32 @@
     - `nmap -sT 10.1.16.12` // simple, TCP only. `-sU`:UDP, `-sS`:SYN (half-open) scan. `-sP`:ping sweep.
     - `nmap --top-ports 20 10.1.16.12` // 20 common ports.
     - `nmap -p22,137 10.1.16.12` // only scan these ports.
-  - **iperf**: do it your self bandwidth speed tester with two local computers.
-  - **NetFlow analyzers**: gather traffic stats. probe and collector. 'tap' to see traffic.
-  - **Trivial File Transfer Protocol (TFTP) server**: store firmware and file on local system.
-  - **Terminal emulator**: putty. ssh client.
-  - **IP scanner**: looking for rogue device or who is own local network.
+  - **iperf**: do-it-your-self bandwidth speed tester with two local computers.
+  - **NetFlow analyzers**:
+    - NetFlow: management and monitoring tool that helps organizations collect, analyze, and visualize NetFlow data.
+    - NetFlow Data: source and destination of traffic, the volume of data transferred, and other attributes.
+      - instead of recording each frame, only captures packet metadata.
+    - NetFlow Exporter: each device you want to monitor(router, switch, firewall...).
+    - NetFlow Collector: receive, process, and store traffic metadata from each Exporter.
+    - NetFlow Analyzer: queries Collector database and shows results in chart form.
+    - useful for optimizing network performance, troubleshooting issues, and enhancing network security.
+  - **Trivial File Transfer Protocol (TFTP) server**: connectionless protocol(file server) running over UDP port 69.
+    - no packet guarantee, so only good for small files. Only read/write commands. no file browsing, deletion.
+  - **Terminal emulator**: software that replicates TTY input/output function. putty. ssh client.
+  - **IP scanner**: network visibility: who is connected to network, what are they doing.
+    - tool that performs host discovery and can establish the overall logical topology of the network in terms of subnets and routers.
+    - looking for rogue device or who is own local network.
 - **Command line tool**
-  - **ping**: Determine IP address connectivity and latency in network. (ICMP echo request).
+  - **ping**: Determine IP address connectivity and latency in network. (ICMP echo request). `ping 192.168.01`
   - **ipconfig/ifconfig/ip**: shows/renew: ip, subnet mask, default gateway. /all adds MAC, DHCP, Lease time.
   - **nslookup/dig**: domain name information. canonical name, ip address, cache timer...
   - **traceroute/tracert**: (unix,Linux,MacOS/Windows) shows router hops and latency to destination.
-  - **arp**: show/clear arp(IP:MAC mapping) cache.
-  - **netstat**: basic ports information: open, active on a network
-  - **hostname**: show pc/server name.
-  - **route**: show/configure routing table(Windows).
-  - **telnet**: legacy remote terminal. tcp/23. no encryption.
+    - `traceroute ipAddress`
+  - **arp**: `arp -a` show arp cache. `arp -d` delete arp cache.
+  - **netstat**: basic ports information: open, active on a network `netstat 192.168.0.3`
+  - **hostname**: show pc/server name. `hostnane`
+  - **route**: show/configure routing table(Windows). `route print`
+  - **telnet**: legacy remote terminal. tcp/23. no encryption. `telnet ipAddress port`
   - **tcpdump**: tcp/ip packet info over the network. sniffer.
   - **nmap**: in-depth information about ports, hosts, services running and current OS.
 - **Basic network platform commands**
