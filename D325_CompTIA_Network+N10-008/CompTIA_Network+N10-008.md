@@ -2264,16 +2264,16 @@
   - **Site survey**: look at blueprints. see what would cause interference. AP needs ethernet port and power. wifi analyzer to see all frequencies in area.
     - heap map: software on laptop. walk around building and map signal strength with laptop.
 - **Common issues**
-  - **Interference**:
+  - **Interference**: wired: emi interference, sharp bends. wifi: obstruction of signal. walls, glass, water.
     - **Channel overlap**: channel 1,6,11 give you 25MHz bandwidth each channel. 2.4GHz has 90MHz total bandwidth.
   - **Antenna cable attenuation/signal loss**: further from destination, weaker signal. attenuation. dBm.
     - can increase power to send signal further, but client device may not have enough power to send signal back.
     - signal loss can happen in the coax connected to antenna.
-  - **RF attenuation/signal loss**:
+  - **RF attenuation/signal loss**: antenna placement: to low, far away. cable to antenna loss.
   - **Wrong SSID**: service set identifier. security concern because no-login connections means everything is in the open.
   - **Incorrect passphrase**: psk(everyone uses same password). enterprise everyone has separate pw. 802.1X has to be trouble-shooted for problems. check communication.
     - legacy device cannot connect to modern enterprise hardware.
-  - **Encryption protocol mismatch**:
+  - **Encryption protocol mismatch**: connection will fail. driver update or OS patch may be required.
   - **Insufficient wireless coverage**: place AP at edge and different channels where they overlap.
   - **Captive portal issues**: sent from AP. login/welcome screen.
   - **Client disassociation issues**: DoS attack. deauth attack. sending disassociation frames. wireshark can find them. remove device causing problem or upgrade to 802.11 standard.
@@ -2318,13 +2318,18 @@
 %
 
 - **Considerations**
-  - **Device configuration review**: review configuration before modifying .
-  - **Routing tables**: make sure routes to network are good. static routes you can easily create loop. make sure default gateway for traffic not matching routing table.
-  - **Interface status**: how interface is configured. speed/duplex mismatch.
+  - **Device configuration review**: checking that the running configuration matches the documented baseline.
+  - **Routing tables**: make sure routes to network are good. static routes you can easily create loop. make sure default gateway for traffic not matching routing table. `show route`
+  - **Interface status**: how interface is configured. speed/duplex mismatch `show interface f0/0`
+    - what errors do you see?
+      - cyclic redundancy check erros (CRC): mismatch CRC is a frame data coruption error. cause: interference.
+      - encapsulation errors: cause: ethernet header type mismatch, ethernet trunk mismatch, WAN framing mismatch.
+      - runt frames: size smaller than 64 bytes. cause: collison. duplex mismatch.
+      - giant frames: larger than 1518 bytes. cause: 802.1q trunk(add 802.1Q label to header making frame larger than 1518 bytes) or frame size is set to use jumbo frames.
   - **VLAN assignment**: incorrect vlan configuration will not be able to communicate on network. access vlan or trunk vlan. make sure port your plugged into is on the correct vlan.
   - **Network performance baselines**: compare for spikes in traffic. troubleshooting problems. collection of data you can view in GUI.
 - **Common issues**
-  - **Collisions**: half-duplex problems with collision. full-duplex(no collisions). bad hardware.
+  - **Collisions**: half-duplex problems with collision. full-duplex(no collisions). bad interface hardware.
   - **Broadcast storm**: on same network. to many broadcast can cause performance problems. separate network into small subnets(broadcast domains).
   - **Duplicate MAC address**: burned-in address. on-path attack is a duplicate MAC address. It's rare manufacture create device with duplicate MAC. Take packet capture, should see ARP contention(same MAC, IP keeps changing)
   - **Duplicate IP address**: more common. cause intermittent connectivity. OS detect it, will disable itself. ping network to make sure IP is not in use. If get a response, look at ARP table to see MAC address of device.
@@ -2337,7 +2342,7 @@
   - **Switching loops**: solved by Spanning Tree Protocol. traffic gets stuck in a loop between switches. There is no TTL on frames.
   - **Routing loops**: misconfigured routers think each other is best path. packet goes back and forth to each router like a ping pong.
     - traceroute.
-  - **Rogue DHCP server**: clients can be assigned duplicate IP(connectivity issues). enable DHCP snooping. authorize DHCP in Active Directory.
+  - **Rogue DHCP server**: clients can be assigned duplicate IP(connectivity issues). enable DHCP snooping. authorize DHCP in Active Directory. enable Port Security.
     - Disable rogue DHCP, renew IP addresses.
   - **DHCP scope exhaustion**: depleted IP pool addresses. check DHCP server.
     - IPAM(IP address management): monitor and report IP shortages.
@@ -2345,11 +2350,11 @@
   - **IP setting issues**:
     - check device settings: IP address, subnet mask, gateway, dns. Monitor traffic.
     - Not sure what the settings should be: check other devices on network.
-    - traceroute ping.
-    - **Incorrect gateway**:
-    - **Incorrect subnet mask**:
-    - **Incorrect IP address**:
-    - **Incorrect DNS**:
+    - `ipconfig /all`, // check DHCP setting on machine to verify:
+      - **Incorrect gateway**
+      - **Incorrect subnet mask**
+      - **Incorrect IP address**
+      - **Incorrect DNS**
   - **Missing route**: no destination in routing table, router will discard packet.
     - ICMP host unreachable will show up.
     - ping: check for connectivity. make sure correct routes for both ingress/egress traffic.
@@ -2365,7 +2370,7 @@
   - **DNS issues**: web browser not working. ping works, but can't browse. can reach by ip but not domain name.
     - check dns ip configuration.
     - nslookup, dig.
-  - **NTP issues**: kerbos uses timestamps to see how old tickets are. if timestamp wrong, client will not be able to login with correct credentials.
+  - **NTP issues**: kerbos uses timestamps to invalidate old tickets are. if timestamp wrong, client will not be able to login with correct credentials.
   - **BYOD challenges**: employees own device. difficult to secure.
     - MDM sets policy about what can and cannot be used on device.
   - **Licensed feature issues**: pay for license, you can use feature.
