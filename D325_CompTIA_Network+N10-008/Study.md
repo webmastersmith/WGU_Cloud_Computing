@@ -15,8 +15,8 @@
 | ---- | ------------ | --------------------- | ------------ | ------------- |
 | 1    | WPA3         | SAE (Dragonfly)       | 256          | AES-GCMP, MIC |
 | 2    | WPA2         | PSK (4-way-handshake) | 128          | AES-CCMP, MIC |
-| 3    | WPA          | TKIP, 24-bit IV, PSK  | 128          | RC4           |
-| 4    | WEP          | obsolete PSK          | 24           |               |
+| 3    | WPA          | PSK, TKIP             | 128          | RC4           |
+| 4    | WEP          | PSK                   | 24           | RC4           |
 | 5    | Open Network | (no security at all)  | 0            | -             |
 
 ## OSI Model & TCP/IP
