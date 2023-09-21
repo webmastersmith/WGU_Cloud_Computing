@@ -2176,7 +2176,7 @@
     - `nmap -sT 10.1.16.12` // simple, TCP only. `-sU`:UDP, `-sS`:SYN (half-open) scan. `-sP`:ping sweep.
     - `nmap --top-ports 20 10.1.16.12` // 20 common ports.
     - `nmap -p22,137 10.1.16.12` // only scan these ports.
-  - **iperf**: do-it-your-self bandwidth speed tester with two local computers.
+  - **iperf**: do-it-your-self bandwidth speed tester(throughput of a network) between two local devices.
   - **NetFlow analyzers**:
     - NetFlow: management and monitoring tool that helps organizations collect, analyze, and visualize NetFlow data.
     - NetFlow Data: source and destination of traffic, the volume of data transferred, and other attributes.
