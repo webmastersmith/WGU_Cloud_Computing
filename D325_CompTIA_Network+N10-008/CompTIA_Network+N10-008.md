@@ -447,7 +447,7 @@
     - **Quad small form-factor pluggable (QSFP)**
       - 4 times the fiber connections. 4 x 1G
     - **Enhanced quad small form-factor pluggable (QSFP+)**
-      - 4 x 10G. Their is also BiDi for these.
+      - 4 x 10G. There is also BiDi for these.
 - **Cable management**
   - **Patch panel/patch bay**
     - office RJ-45 plug to data closet patch panel. Punchdown block on one side/RJ45 on the other. to switch.
