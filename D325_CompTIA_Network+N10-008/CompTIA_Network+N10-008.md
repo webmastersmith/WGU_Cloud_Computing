@@ -17,6 +17,7 @@
 - **practice exams**
   - https://wgu.udemy.com/course/comptia-network-008-exams/
   - https://wgu.udemy.com/course/total-comptia-network-n10-008-3-practice-tests-270-qs/
+  - https://www.examtopics.com/exams/comptia/n10-008/view/1/
 
 <!-- # 1.0 Networking Fundamentals 24% -->
 
