@@ -461,8 +461,8 @@
     - Bix: GigaBIX better than cat6. looks similar to 110.
     - patch panel: most common. IDCs(insulation-displacement connections) one side, other side RJ-45.
 - **Ethernet standards**
-  - baseband: single frequency. ethernet.
-  - broadband: many frequencies.
+  - baseband: use all the available frequencies on a medium to transmit data.
+  - broadband: divides the bandwidth into different channels.
   - **Copper**
     - 10BASE-T: 802.3 Cat 3
     - 100BASE-TX: Cat 5

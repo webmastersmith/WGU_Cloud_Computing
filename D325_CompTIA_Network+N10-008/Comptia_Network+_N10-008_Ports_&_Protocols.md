@@ -144,19 +144,22 @@ Transport Protocol: **UDP**
 123
 Transport Protocol: **UDP**
 
-## 139
+## 137, 139
 
 %
 
 NetBIOS (Network Basic Input/Output System) Used for file or printer sharing in a Windows network.
-Transport Protocol: **UDP**
+NetBIOS Port 137 handles authentication. 137:TCP
+NetBIOS port 139 file and printer sharing. 139:UDP
+Transport Protocol: **TCP, UDP**
 
 ## NetBIOS (Network Basic Input/Output System) Used for file or printer sharing in a Windows network.
 
 %
 
-139
-Transport Protocol: **UDP**
+NetBIOS Port 137 handles authentication. 137:TCP
+NetBIOS port 139 file and printer sharing. 139:UDP
+Transport Protocol: **TCP, UDP**
 
 ## 143
 
