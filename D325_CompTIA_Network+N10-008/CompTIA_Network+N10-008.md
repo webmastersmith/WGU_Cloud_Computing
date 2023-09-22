@@ -1671,11 +1671,11 @@
 - **Defense in depth**: NAC(network access control, AAA server). Honeypots(detect illegal activity). Separation of duties: Duties and responsibilities divided among individuals to prevent ethical conflicts or abuse of powers.
   - **Network segmentation enforcement**: segmenting the network into clearly defined areas. virtual LANs and subnets. segment is a separate broadcast domain. Any traffic between segments must be routed.
   - **Perimeter network [previously known as demilitarized zone (DMZ)]**: known as bastion host(not fully trusted).
-    - perimeter network: proxy, server between two firewalls:
+    - perimeter network: internet facing.
+    - screened subnet: one edge firewall that routes internet traffic to Extranet(isolated LAN).
       1. edge firewall: internet facing.
          1. internet listening proxy or server is between these two.
       2. choke firewall: private network facing.
-    - screened subnet: one edge firewall that routes internet traffic to Extranet(isolated LAN).
   - **Separation of duties**: separates duties and responsibilities against critical systems that could be compromised from insiders(split knowlege).
   - **Network access control**: authenticating endpoints. ethernet ports, wifi AP, VPN's. EAP and RADIUS.
     - **802.1X**: port based access control integrated with EAP.
