@@ -661,7 +661,7 @@
     - no broadcast in IPv6. NS sends multicast. All IPv6 devices will answer back NA (neighbor advertisement) with there MAC address.
   - **Stateless address auto configuration (SLAAC)**: host automatically assigns itself a IPv6 link-local address and solicits routing and subnet information from network router.
     1. `FE80::` + `EUI-64` (Extended Unique Identifier) becomes the 128 bit link-local address.
-    2. sends out an **DAD (duplicate address detection)** as ICMPv6 via Network Discovery Protocol – Network Solicitation (NDP NS). makes sure no duplicate ip on network.
+    2. Once link local IP address is known, host sends out an **DAD (duplicate address detection)** as ICMPv6 via Network Discovery Protocol – Network Solicitation (NDP NS). makes sure no duplicate ip on network.
     3. After IPv6 link-local is confirmed as unique. RS(Router solicitation) is sent out asking for router to announce itself with a RA(Router Advertisement).
     4. The RA will include the Global routable prefix. The device will take `first global 64bit + EUI-64` for global address.
     5. This process does not provide DNS server IP. DHCPv6 is used for this.
@@ -755,9 +755,9 @@
     - ICMP messages are generated under error conditions in most types of unicast traffic, but not for broadcast or multicast packets.
   - **TCP**
     - Transmission Control Protocol. Transport layer 4 to provide connection-oriented, guaranteed communication using acknowledgements to ensure that delivery has occurred.
-    - allows mutiplexingg(many applications at same time), flow control.
+    - allows mutiplexing(many applications at same time), flow control.
   - **UDP**
-    - User Datagram Protocol. connectionless, nonguaranteed method of communication
+    - User Datagram Protocol. connectionless, non-guaranteed method of communication
     - no acknowledgments or flow control.
   - **Generic Routing Encapsulation (GRE)**
     - encapsulate and route any layer 2 or 3 packet. No encryption.
