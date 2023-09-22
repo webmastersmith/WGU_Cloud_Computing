@@ -866,7 +866,7 @@
   - **Internal vs. external**: loScation of DNS. local network or external network.
   - **Zone transfers**: secondary DNS for redundancy.
     - **DNS Primary Zone**: primary name server. dns record can be edited.
-    - **DNS Secondary Zone**: sedondary name server. zone transfer copies original and is read-only dns record.
+    - **DNS Secondary Zone**: secondary name server. zone transfer caches original and is read-only dns record.
   - **Authoritative name servers**: DNS response came from DNS authority, not cached.
   - **Time to live (TTL)**: how long cached Domain name is valid.
   - **DNS caching**: local copy of DNS response.
