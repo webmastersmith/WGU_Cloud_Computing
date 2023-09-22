@@ -565,7 +565,7 @@
       4. last 24 bits: NIC (Network Interface Card). Added after `FFFE`.
       5. First byte of MAC is converted to binary, 7 bit is flipped.
          1. MAC: `00:60:8C:12:3A:BC` = EUI-64: `0260:8CFF:FE12:3ABC`
-         2. This becomes link-local address: `FE80::0260:8CFF:FE12:3ABC`.
+         2. This becomes link-local address: `FE80::0260:8CFF:FE12:3ABC`
          3. `FE80::`(64bit) is prefix for link-local.
   - **Multicast**
     - IPv4 and IPv6 only devices must subscribe.
