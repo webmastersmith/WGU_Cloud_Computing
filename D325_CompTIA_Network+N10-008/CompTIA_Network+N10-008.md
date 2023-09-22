@@ -1421,7 +1421,7 @@
   - **Device/chassis**
     - **Temperature**: over 120°C may have problem. 180°C is overheating.
     - **Central processing unit (CPU) usage**: performance of the processors.
-    - **Memory**: if you run out, will start using pagefiles(virtual memory).
+    - **Memory**: if you run out, packets will be dropped.
   - **Network metrics**: snmp, netflow, sflow, ipfix, all will tell you about network stats.
     - **Bandwidth**: how big pipe is.
     - **Latency**: time it takes packet to arrive from src.
@@ -1522,7 +1522,7 @@
   - **Remote access policy**: policy on accessing building/data. includes third-party access. The hardware/software required.
   - **Onboarding and offboarding policy**:
     - onboarding: new hires. IT agreements, accounts created. hardware provided.
-    - offboarding: pre-planned how leave organizatin. accounts deactivated, hardware returned, data?
+    - offboarding: pre-planned how leave organization. accounts deactivated, hardware returned, data?
   - **Security policy**: policy for the organization. remote access, building security, incident response. constantly change.
     - Background Check: they are who they say they are.
     - Identity and access management (IAM): access to necessary systems.
