@@ -1084,12 +1084,12 @@
     - examine response and cache or security decisions. enforce policy.
     - Explicit proxy: each client has to be configured to go through proxy.
     - Implicit proxy: transparent. only gateway out.
-  - **Cable modem**: layer 1. broadband(multiple frequencies). frequencies separated by DOCIS.
+  - **Cable modem**: layer 1. broadband(segmented bandwidth into channels). frequencies separated by DOCIS.
     - DOCIS: Data over cable service interface specification.
   - **DSL modem**: layer 1. telephone line. download faster than upload. ADSL.
     - ADSL: Asymmetric digital subscriber line. Download speeds faster than upload.
   - **Repeater**: layer 1. regenerate signal to boost it. copper,fiber. can also convert fiber to ethernet.
-  - **Voice gateway**: PBX (private branch exchange). Converts: Phone Line(analog) <-> VoIP(digital).
+  - **Voice gateway**: PBX (private branch exchange). encapsulates analog voice into ethernet packets.
   - **Media converter**: layer 1. fiber to ethernet...
   - **Intrusion prevention system (IPS)/intrusion detection system (IDS) device**:
     - IDS: alerts only. tap.
@@ -1097,7 +1097,7 @@
   - **Firewall**: layer 3,4. NGFW: layer 3-7(application smart, encryption).
   - **VPN headend**: the conentrator. encrypts/decrypts packets. often inside firewall, can be software.
 - **Networked devices**
-  - **Voice over Internet Protocol (VoIP) phone**: each device is computer. POE.
+  - **Voice over Internet Protocol (VoIP) phone**: each device(phone handset) is computer. POE.
   - **Printer**: scanner, fax, ethernet/wifi/usb/bluetooth/infrared.
   - **Physical access control devices**: card reader, biometric: mathmatical representation of body.
   - **Cameras**: CCTV, object detection. ip addressable.
@@ -1215,7 +1215,7 @@
     - **Link Aggregation Control Protocol (LACP)**: detect configuration errors and recover from the failure of one of the physical links.
   - **Duplex**: half/full
   - **Speed**: 10M/100M/1000M/10G
-  - **Flow control**: 802.3x. pause frame. slows down. CoS(class of service).
+  - **Flow control**: 802.3x. pause frame sending. fast senders can inundate slower receivers.
   - **Port mirroring**: copy traffic from one or more ports to another port. Helps observer port traffic.
     - IPS watches traffic
   - **Port security**: prevent unauthorized users from access to network by plugging in.
