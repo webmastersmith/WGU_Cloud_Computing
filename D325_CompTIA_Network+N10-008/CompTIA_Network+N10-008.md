@@ -1076,7 +1076,7 @@
   - **Wireless LAN controller**: centralized management and monitoring of the APs on the network.
     - manage: configuration, policy, security and monitoring.
     - fat AP: has enough processor logic to function autonomously.
-    - thin A: requires wireless LAN controller.
+    - thin AP: requires wireless LAN controller.
   - **Load balancer**: distribute load across servers. fault tolerance. caching. encryption. QoS. content switching.
     - content switching: distributes based on which server can respond to application.
   - **Proxy server**: sit between user and external network(man-in-the-middle).
