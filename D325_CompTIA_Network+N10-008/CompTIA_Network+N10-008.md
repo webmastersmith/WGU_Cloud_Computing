@@ -1220,7 +1220,7 @@
     - IPS watches traffic
   - **Port security**: prevent unauthorized users from access to network by plugging in.
   - **Jumbo frames**: layer 2 frame payload bigger than 1500 bytes. up to 9216 bytes. as long as all devices support jumbo frames, this will increase efficiency of traffic.
-  - **Auto-medium-dependent interface crossover (MDI-X)**: auto detect for transmit/receive. no crossover cable.
+  - **Auto-medium-dependent interface crossover (MDI-X)**: auto detect transmit/receive. no crossover cable needed.
 
 |       | Device   | Transmit | Receive Pins |
 | ----- | -------- | -------- | ------------ |
@@ -1229,7 +1229,7 @@
 | MDI   | Router   | 1,2      | 3,6          |
 | MDI-X | Switch   | 3,6      | 1,2          |
 
-- **Media access control (MAC) address tables**: MAC to port mapping. layer 2 switch.
+- **Media access control (MAC) address tables**: network switch maps MAC:SwitchPort. layer 2 switch.
 - **Power over Ethernet (PoE)/Power over Ethernet plus (PoE+)**: power device.
 
 | POE RJ-45      | Wattage                                     |
@@ -1342,8 +1342,8 @@
 | ---- | ------------ | --------------------- | ------------ | ------------- |
 | 1    | WPA3         | SAE (Dragonfly)       | 256          | AES-GCMP, MIC |
 | 2    | WPA2         | PSK (4-way-handshake) | 128          | AES-CCMP, MIC |
-| 3    | WPA          | TKIP, 24-bit IV, PSK  | 128          | RC4           |
-| 4    | WEP          | obsolete PSK          | 24           |               |
+| 3    | WPA          | PSK, TKIP             | 128          | RC4           |
+| 4    | WEP          | PSK                   | 24           | RC4           |
 | 5    | Open Network | (no security at all)  | 0            | -             |
 
 - **WPA/WPA2 Enterprise (AES/TKIP)**: use a RADIUS server. Each user has separate username/password.
