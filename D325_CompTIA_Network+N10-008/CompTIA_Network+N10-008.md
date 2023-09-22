@@ -578,7 +578,8 @@
   - **Broadcast**
     - one-to-all. broadcast domain. does not leave router. ARP request.
   - **Link local**
-    - same as APIPA. private ip address self assigned when DHCP server not found.
+    - IPv4 sometimes called link local, but is APIPA. private ip address self assigned when DHCP server not found.
+    - IPv6 creates it's own private IP(link local) using SLAAC.
   - **Loopback**
     - 127.0.0.1-127.255.255.254
   - **Default gateway**
@@ -658,7 +659,7 @@
     - router can also send unsolicited RA.
   - **Neighbor Solicitation (NS)**
     - no broadcast in IPv6. NS sends multicast. All IPv6 devices will answer back NA (neighbor advertisement) with there MAC address.
-  - **Stateless address auto configuration (SLAAC)**: host automatically assigns itself a IPv6 link-local\*\* address and solicits routing and subnet information from network router.
+  - **Stateless address auto configuration (SLAAC)**: host automatically assigns itself a IPv6 link-local address and solicits routing and subnet information from network router.
     1. `FE80::` + `EUI-64` (Extended Unique Identifier) becomes the 128 bit link-local address.
     2. sends out an **DAD (duplicate address detection)** as ICMPv6 via Network Discovery Protocol – Network Solicitation (NDP NS). makes sure no duplicate ip on network.
     3. After IPv6 link-local is confirmed as unique. RS(Router solicitation) is sent out asking for router to announce itself with a RA(Router Advertisement).
