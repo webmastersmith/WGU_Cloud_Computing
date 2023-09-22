@@ -863,7 +863,7 @@
     - **Name server (NS)**: Type of DNS server that stores all the DNS records for a given domain.
   - **Global hierarchy**
     - **Root DNS servers**: 13 globally located. ex.. .com, .org, .net...
-  - **Internal vs. external**: lacation of DNS. local network or external network.
+  - **Internal vs. external**: loScation of DNS. local network or external network.
   - **Zone transfers**: secondary DNS for redundancy.
     - **DNS Primary Zone**: primary name server. dns record can be edited.
     - **DNS Secondary Zone**: sedondary name server. zone transfer copies original and is read-only dns record.
