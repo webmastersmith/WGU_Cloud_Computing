@@ -3,6 +3,7 @@
 # Tips
 
 - https://www.comptia.org/training/resources/exam-objectives
+- https://comptiacdn.azureedge.net/webcontent/docs/default-source/exam-objectives/comptia-security-sy0-601-exam-objectives-(6-0).pdf?sfvrsn=13599e66_2
 - **Practice Test**
 
 <!-- ## 1.0 Threats, Attacks, and Vulnerabilities -->
