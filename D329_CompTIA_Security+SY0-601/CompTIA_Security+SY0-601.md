@@ -4,6 +4,9 @@
 
 - https://www.comptia.org/training/resources/exam-objectives
 - https://comptiacdn.azureedge.net/webcontent/docs/default-source/exam-objectives/comptia-security-sy0-601-exam-objectives-(6-0).pdf?sfvrsn=13599e66_2
+- **Anki Cards**
+  - [Security+ SYS-601 Questions](https:/ankiweb.net/shared/info/1023269036?cb=1695735283833)
+  - [Security+ SYS-601 Acronyms](https://ankiweb.net/shared/info/938689157?cb=1695735525641)
 - **Practice Test**
 
 <!-- ## 1.0 Threats, Attacks, and Vulnerabilities -->
