@@ -61,7 +61,7 @@
 - **Tailgating**: Gaining unauthorized physical access by following an authorized person into a secure area.
 - **Eliciting information**: Extracting sensitive information through casual conversation or questionnaires without arousing suspicion.
 - **Whaling**: Targeting high-profile individuals or executives in phishing attacks.
-- **Prepending**: Adding malicious code or content to legitimate files or documents.
+- **Prepending**: Adding malicious code or content to legitimate files or documents to gain trust.
 - **Identity fraud**: Impersonating someone else to access their accounts or resources.
 - **Invoice scams**: Sending fake invoices to individuals or organizations to trick them into making payments.
 - **Credential harvesting**: Collecting usernames and passwords for unauthorized access.
@@ -149,7 +149,7 @@
   - **Brute Force Attack**: Trying every possible combination until the correct password is found.
   - **Offline Attack**: Attempting to crack password hashes offline after obtaining them.
   - **Online Attack**: Trying passwords directly on an online login page.
-  - **Rainbow Table Attack**: Using precomputed tables to crack password hashes.
+  - **Rainbow Table Attack**: Using precomputed tables to crack password hashes. Reverse hash into password.
   - **Plaintext/Unencrypted**: Attacking passwords stored or transmitted without encryption.
 - **Physical attacks**:
   - **Malicious USB Cable**: USB cables designed to compromise connected devices.
@@ -162,7 +162,7 @@
 - **Supply-chain attacks**: Compromising a target through vulnerabilities in the supply chain, such as tampering with hardware or software during production or distribution.
 - **Cloud-based vs. on-premises attacks**: Distinguishing between attacks targeting cloud-based services and traditional on-premises infrastructure.
 - **Cryptographic attacks**:
-  - **Birthday Attack**: Exploiting the probability of collision in cryptographic hash functions.
+  - **Birthday Attack**: Exploiting the probability of collision in cryptographic hash functions. create a malicious document that outputs the same hash as the benign document. get benign signed by authority, then substitute malicious document with same hash as signed document.
   - **Collision Attack**: Finding two different inputs that produce the same hash value.
   - **Downgrade Attack**: Forcing the use of weaker encryption protocols or algorithms to break security.
 
