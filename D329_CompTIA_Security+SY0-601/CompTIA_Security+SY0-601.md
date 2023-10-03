@@ -8,6 +8,7 @@
   - [Security+ SYS-601 Questions](https:/ankiweb.net/shared/info/1023269036?cb=1695735283833)
   - [Security+ SYS-601 Acronyms](https://ankiweb.net/shared/info/938689157?cb=1695735525641)
 - **Practice Test**
+  - https://wgu.udemy.com/course/total-comptia-security-cert-sy0-601-practice-tests
 
 <!-- ## 1.0 Threats, Attacks, and Vulnerabilities -->
 
