@@ -1,4 +1,4 @@
-# CompTIA_Security+SYS-601_Questions
+# CompTIA_Security+SYO-601_Questions
 
 ## Phishing
 
@@ -6287,4 +6287,3 @@ Agreements that specify how data should be handled and protected.
 %
 
 A statement provided to individuals about how their data will be used and protected by an organization.
-
