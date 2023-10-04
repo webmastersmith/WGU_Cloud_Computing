@@ -921,7 +921,7 @@
 - **Redundancy**:
 - **Geographic Dispersal**: Spreading resources across different geographic locations for redundancy and disaster recovery.
 - **Disk**: Duplication of storage disks to ensure data availability.
-- **Redundant Array of Independent (or Inexpensive) Disks (RAID) Levels**: Methods of configuring multiple disks for data redundancy and performance.
+- **Redundant Array of Independent (or Inexpensive) Disks (RAID) Levels**: Methods of configuring multiple disks for data redundancy and performance. Raid 0: striping(data split across multiple disk. fastest). Raid 1: mirroring(1:1 backup. slowest). Raid 5: Redundancy through parity(). Raid 6: striping with dual parity(better redundancy). Raid 10: striping + mirroring(raid 1 within raid 0).
 - **Multipath**: Using multiple physical paths for data transfer to ensure reliability.
 - **Network**: Duplicating network components for fault tolerance.
 - **Load Balancers**: Distributing network traffic across multiple servers for load distribution and redundancy.
@@ -936,10 +936,10 @@
 - **VM (Virtual Machine)**: Creating copies of virtual machines for redundancy and failover.
 - **On-Premises vs. Cloud**: Deciding whether to host resources and services locally (on-premises) or in cloud environments.
 - **Backup Types**:
-- **Full**: Copying all data in a backup operation.
-- **Incremental**: Backing up only the changes made since the last backup.
+- **Full**: Copying all data in a backup operation no matter what archive bit says. Clears archive bit on all files.
+- **Incremental**: Backing up only the changes made since the last backup. Clears archive bit.
 - **Snapshot**: Capturing the current state of a system or data at a specific point in time.
-- **Differential**: Backing up the changes made since the last full backup.
+- **Differential**: Backing up the changes made since the last full backup. Does not clear archive bit.
 - **Tape**: Storing data on magnetic tape cartridges.
 - **Disk**: Storing backups on hard drives or other disk storage.
 - **Copy**: Creating an exact duplicate of data for backup.
@@ -1135,7 +1135,7 @@
 - **USB Data Blocker**: A device used to prevent data transfer when connecting a USB device to a computer, protecting against data theft or malware.
 - **Lighting**: Illumination used for security purposes, often to deter intruders or enhance surveillance.
 - **Fencing**: Physical barriers made of various materials, such as metal or wire, used to enclose and secure areas.
-- **Fire Suppression**: Systems designed to detect and suppress fires, protecting assets and personnel.
+- **Fire Suppression**: Systems designed to detect and suppress fires, protecting assets and personnel. A = Ash. Common Combustables(wood, cloth, paper). B = Boil. Liquid fires. C = Current. Electrical fires. D = Dent. Metal fires.
 - **Sensors**: Devices that detect specific conditions or events.
 - **Motion Detection**: Sensors that trigger alarms or actions in response to movement.
 - **Noise Detection**: Sensors that detect unusual sounds or noise.
