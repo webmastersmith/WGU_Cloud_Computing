@@ -1224,7 +1224,7 @@
 - **Hashing**: Hashing is the process of converting data into a fixed-size string of characters, often used for data integrity verification.
 - **Key Exchange**: Key exchange protocols allow two parties to securely exchange cryptographic keys over an insecure communication channel.
 - **Elliptic-Curve Cryptography**: A type of asymmetric cryptography that uses the mathematics of elliptic curves for key generation and encryption, providing strong security with shorter key lengths.
-- **Perfect Forward Secrecy**: Perfect Forward Secrecy (PFS) ensures that past communication sessions' encryption keys cannot be compromised even if current session keys are exposed.
+- **Perfect Forward Secrecy**: Perfect Forward Secrecy (PFS) ensures that past communication sessions' encryption keys cannot be compromised even if current session keys are exposed. Each session, new secrets are created.
 - **Quantum**: Quantum cryptography and computing involve using principles of quantum mechanics for secure communication and solving specific computational problems.
 - **Communications**: Quantum cryptography offers secure communication through the use of quantum properties.
 - **Computing**: Quantum computing leverages quantum bits (qubits) for solving complex problems more efficiently than classical computers.
