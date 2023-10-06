@@ -1393,7 +1393,7 @@
 - **Code Signing**: Digitally signing code to verify its authenticity.
 - **Allow List**: A list of approved elements, often used in security configurations.
 - **Block List/Deny List**: A list of prohibited elements or entities.
-- **Secure Coding Practices**: Adhering to coding standards and practices that enhance security.
+- **Secure Coding Practices**: Adhering to coding standards and practices that enhance security. 1. Don't trust user to make good security descisions. 2. Keep code simple. 3. automate. 4. Threat model your code to find vulnerbilities. 5. use vetted crypto libraries.
 - **Static Code Analysis**: Analyzing source code without executing it to find vulnerabilities.
 - **Manual Code Review**: A human-driven review of source code to identify security issues.
 - **Dynamic Code Analysis**: Analyzing code while it's running to discover vulnerabilities.
