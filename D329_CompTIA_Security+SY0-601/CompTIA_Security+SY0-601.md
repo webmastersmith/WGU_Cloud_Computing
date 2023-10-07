@@ -1966,12 +1966,12 @@
 - **Privacy Enhanced Mail (PEM)**: A text-based format for encoding certificates.
 - **Personal Information Exchange (PFX)**: A format that bundles a private key and certificate into a single file.
 - **.cer**: A common file extension for certificates.
-- **P12**: A file format for storing a certificate and private key.
-- **P7B**: A format for certificate chains.
+- **P12**: A file format for storing a certificate (chains) and private key.
+- **P7B**: A format for certificate chains, without private key.
 - **Concepts**:
 - **Online vs. Offline CA**: The distinction between CAs that are connected to the network (online) and those that are not (offline).
-- **Stapling**: A mechanism where a server provides a proof of the certificate's validity to the client.
-- **Pinning**: The process of associating a specific certificate or public key with a particular service.
+- **Stapling**: A mechanism where a server provides a proof of the certificate's validity to the client. You don't have to ask the OCSP if cert is valid.
+- **Pinning**: The process of associating a specific certificate or public key with a particular service. client does not solely rely on the default list of trusted CAs. Instead, it compares the presented server certificate with a predefined or "pinned" certificate or public key that the client expects the server to present. Only if matches, client considers connection as secure.
 - **Trust Model**: The framework that defines how trust is established and managed within a PKI.
 - **Key Escrow**: The practice of storing cryptographic keys with a trusted third party.
 - **Certificate Chaining**: The process of linking certificates in a hierarchy to establish trust.
@@ -2037,8 +2037,8 @@
 - **netstat**: A command to display network statistics and active connections.
 - **netcat**: A networking utility for reading from and writing to network connections.
 - **IP scanners**: Tools designed to scan IP addresses for open ports.
-- **arp**: A command for viewing and modifying ARP (Address Resolution Protocol) cache.
-- **route**: A command for displaying and manipulating the network routing table.
+- **arp**: A command for viewing and modifying ARP (Address Resolution Protocol) cache. `arp -a`.
+- **route**: A command for displaying and manipulating the network routing table. `route`.
 - **curl**: A command-line tool for transferring data with URLs.
 - **theHarvester**: A tool for gathering email addresses, hostnames, and subdomains from public sources.
 - **sn1per**: An automated scanner for information gathering and vulnerability scanning.
