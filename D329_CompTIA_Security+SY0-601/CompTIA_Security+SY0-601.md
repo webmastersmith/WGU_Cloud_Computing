@@ -1599,7 +1599,7 @@
 
 ## 3.5 Given a scenario, implement secure mobile solutions
 
-- Connection methods and receivers:
+- Secure Connection methods and receivers:
   - Cellular:
   - WiFi:
   - Bluetooth:
@@ -1610,7 +1610,7 @@
   - Point-to-multipoint:
   - Global Positioning System (GPS):
   - RFID:
-- Mobile device management (MDM):
+- Secure Mobile device management (MDM):
   - Application management:
   - Content management:
   - Remote wipe:
@@ -1624,12 +1624,12 @@
   - Containerization:
   - Storage segmentation:
   - Full device encryption:
-- Mobile devices:
+- Secure Mobile devices:
   - MicroSD hardware security module (HSM):
   - MDM/Unified Endpoint Management (UEM):
   - Mobile application management (MAM):
   - SEAndroid:
-- Enforcement and monitoring of::
+- Securre Enforcement and monitoring of::
   - Third-party application stores:
   - Rooting/jailbreaking:
   - Sideloading:
@@ -1646,7 +1646,7 @@
   - Tethering:
   - Hotspot:
   - Payment methods:
-- Deployment models:
+- Secure Deployment models:
   - Bring your own device (BYOD):
   - Corporate-owned personally enabled (COPE):
   - Choose your own device (CYOD):
@@ -1655,30 +1655,59 @@
 
 %
 
-- **Cryptographic Protocols**:
-- **WiFi Protected Access 2 (WPA2)**: A security protocol used in wireless networks to secure data transmission.
-- **WiFi Protected Access 3 (WPA3)**: An improved version of WPA2 with stronger security features.
-- **Counter-Mode/CBC-MAC Protocol (CCMP)**: A protocol used for encryption and authentication in WPA2 and WPA3.
-- **Simultaneous Authentication of Equals (SAE)**: A key exchange protocol used in WPA3 for secure authentication.
-- **Authentication Protocols**:
-- **Extensible Authentication Protocol (EAP)**: A framework for various authentication methods used in wireless and network security.
-- **Protected Extensible Authentication Protocol (PEAP)**: A secure extension of EAP used for authentication.
-- **EAP-FAST**: EAP Flexible Authentication via Secure Tunneling, an EAP method.
-- **EAP-TLS**: EAP-Transport Layer Security, an EAP method that uses certificates.
-- **EAP-TTLS**: EAP-Tunneled Transport Layer Security, another EAP method that provides secure authentication.
-- **IEEE 802.1X**: A standard for network access control, often used with EAP.
-- **Remote Authentication Dial-In User Service (RADIUS) Federation**: A mechanism for centralized authentication and authorization.
-- **Methods**:
-- **Pre-Shared Key (PSK) vs. Enterprise vs. Open**: Different methods for securing wireless networks, with PSK using a shared passphrase, Enterprise using server-based authentication, and Open having no authentication.
-- **WiFi Protected Setup (WPS)**: A method for simplifying the setup of secure wireless networks.
-- **Captive Portals**: Web pages that require user authentication or acceptance of terms before granting network access.
-- **Installation Considerations**:
-- **Site Surveys**: Assessing the physical environment to plan for optimal wireless coverage.
-- **Heat Maps**: Visual representations of wireless signal strength to identify weak spots.
-- **WiFi Analyzers**: Tools for monitoring and analyzing wireless network performance.
-- **Channel Overlaps**: Avoiding interference by selecting non-overlapping channels.
-- **Wireless Access Point (WAP) Placement**: Strategically placing access points for optimal coverage.
-- **Controller and Access Point Security**: Ensuring that wireless network controllers and access points are secure against unauthorized access and tampering.
+- **Secure Connection Methods and Receivers**:
+- **Cellular**: Mobile communication via cell towers, enabling voice and data transmission. Ensure devices connect to secure and authenticated cellular networks, avoiding open or compromised networks.
+- **WiFi**: Wireless local area network (LAN) technology for connecting to the internet and other devices. Implement strong encryption (e.g., WPA3), secure passwords, and regularly update router firmware to protect against unauthorized access.
+- **Bluetooth**: Short-range wireless technology for connecting devices like headphones, keyboards, and smartphones. Disable Bluetooth when not in use to prevent unauthorized pairing and enable secure pairing methods when needed.
+- **NFC (Near Field Communication)**: Enables close-range wireless communication for tasks like contactless payments. Use secure NFC implementations and be cautious of contactless payment fraud.
+- **Infrared**: Uses infrared light for data transfer, common in older remote controls. Since infrared is less common today, disabling it can enhance security.
+- **USB**: Wired connection through USB ports for data transfer and device charging. Employ USB data blockers to prevent unauthorized data transfer via USB ports and protect against malware.
+- **Point-to-Point**: Direct communication between two devices. Use secure and authenticated connections between two trusted devices.
+- **Point-to-Multipoint**: Communication from one point to multiple points, like broadcasting a WiFi signal. Secure the central point to prevent unauthorized access to multiple devices.
+- **GPS (Global Positioning System)**: Satellite-based system for location tracking and navigation. Protect against GPS spoofing and tampering to ensure accurate location data.
+- **RFID**: Uses radio waves for identifying and tracking objects. Secure RFID implementations to prevent unauthorized reading of RFID tags and protect sensitive information.
+- **Secure Mobile Device Management (MDM)**: MDM is a system used for managing mobile devices and enforcing policies.
+- **Application Management**: Control over app installation, updates, and removal. Ensure apps come from trusted sources, and regularly update and patch apps to fix vulnerabilities.
+- **Content Management**: Managing data and documents on devices, including encryption and secure storage. Encrypt sensitive data, and use secure containers to separate work and personal data.
+- **Remote Wipe**: Ability to remotely erase data on a lost or stolen device. Protect remote wipe commands with strong authentication and consider remote data encryption.
+- **Geofencing**: Defining geographical boundaries and enforcing rules based on location. Secure geofencing features to prevent unauthorized tracking or access.
+- **Geolocation**: Tracking the location of devices. Protect location data from unauthorized access or tracking.
+- **Screen Locks**: Enforcing device lock settings. Enforce strong passcodes, PINs, or biometric authentication.
+- **Push Notifications**: Sending alerts and updates to devices. Encrypt push notifications to prevent eavesdropping.
+- **Passwords and PINs**: Setting security measures for device access. Implement strong password policies and multi-factor authentication (MFA).
+- **Biometrics**: Using fingerprint, facial recognition, etc., for authentication. Secure biometric data and ensure biometric authentication methods are resistant to spoofing.
+- **Context-Aware Authentication**: Adjusting security based on device context, like location or network. Use contextual information securely, and don't rely solely on it for authentication.
+- **Containerization**: Isolating work-related data and apps from personal data. Isolate work data and apps from personal data and apps securely.
+- **Storage Segmentation**: Separating data storage areas for better security. Implement strong access controls for segmented storage.
+- **Full Device Encryption**: Encrypting the entire device to protect data. Encrypt the entire device to protect data at rest.
+- **Secure Mobile Devices**:
+- **MicroSD Hardware Security Module (HSM)**: A secure chip for protecting cryptographic operations on microSD cards. Use trusted HSMs for storing cryptographic keys.
+- **MDM/Unified Endpoint Management (UEM)**: Software for managing mobile devices within an organization. Protect MDM/UEM systems against unauthorized access, and keep them updated.
+- **Mobile Application Management (MAM)**: Focusing on managing and securing specific mobile apps. Implement secure policies for app management.
+- **SEAndroid**: A security-enhanced version of Android that enforces access controls. Keep SEAndroid-enabled devices updated with security patches and configurations.
+- **Secure Enforcement and Monitoring**:
+- **Third-Party Application Stores**: Controlling access to app stores beyond official ones. Educate users about the risks of unofficial app stores, and encourage downloading from trusted sources.
+- **Rooting/Jailbreaking**: Bypassing device security to gain unauthorized access. Detect rooted or jailbroken devices and limit their access to sensitive data.
+- **Sideloading**: Installing apps from unofficial sources. Limit sideloading to prevent the installation of apps from unofficial sources.
+- **Custom Firmware**: Modifying the device's operating system. Ensure devices run trusted and secure firmware.
+- **Carrier Unlocking**: Making a device compatible with different mobile carriers. Only use authorized methods for carrier unlocking.
+- **Firmware Over-the-Air (OTA) Updates**: Updating device software remotely. Verify the authenticity of OTA updates and keep devices up to date.
+- **Camera Use**: Monitoring or controlling device camera access. Control camera access for apps and ensure user consent.
+- **SMS/MMS/RCS**: Managing messaging services. Protect against SMS phishing and malware.
+- **External Media**: Controlling the use of external storage devices. Scan external media for malware and control data transfer.
+- **USB On-The-Go (USB OTG)**: Allowing USB devices to connect to a mobile device. Secure USB connections and data transfer.
+- **Recording Microphone**: Managing microphone access for recording. Notify users when the microphone is in use and allow them to control access.
+- **GPS Tagging**: Adding location information to media files. Ensure user consent for GPS tagging in apps.
+- **WiFi Direct/Ad Hoc**: Direct wireless device-to-device connections. Secure ad hoc connections and limit their use.
+- **Tethering**: Sharing a mobile device's internet connection. Implement secure tethering features.
+- **Hotspot**: Creating a WiFi network to share mobile data. Secure mobile hotspot functionality.
+- **Payment Methods**: Managing mobile payment services. Use trusted payment methods and secure payment apps.
+- **Secure Deployment Models**:
+- **Bring Your Own Device (BYOD)**: Employees use their personal devices for work. Implement strong security policies, such as MDM, for BYOD devices.
+- **Corporate-Owned Personally Enabled (COPE)**: Employers provide and manage devices for both work and personal use. Balance security and user privacy on COPE devices.
+- **Choose Your Own Device (CYOD)**: Employees choose from a list of approved devices provided by the employer. Allow users to choose from pre-approved secure devices.
+- **Corporate-Owned**: Employers provide and manage devices exclusively for work. Maintain strict control and security over corporate-owned devices.
+- **Virtual Desktop Infrastructure (VDI)**: Desktop environments run on remote servers, accessed from mobile devices. Secure VDI environments to protect data accessed via mobile devices.
 
 ## 3.6 Given a scenario, apply cybersecurity solutions to the cloud
 
@@ -1846,24 +1875,24 @@
 - **HSM (Hardware Security Module)**: A dedicated hardware device for managing cryptographic keys.
 - **Knowledge-Based Authentication**: Authentication based on knowledge, such as passwords or PINs.
 - **Authentication/Authorization**:
-- **EAP (Extensible Authentication Protocol)**: A framework for various authentication methods.
-- **CHAP (Challenge-Handshake Authentication Protocol)**: A secure authentication protocol used in Point-to-Point Protocol (PPP) connections.
-- **PAP (Password Authentication Protocol)**: An older, less secure authentication protocol.
+- **EAP (Extensible Authentication Protocol)**: A framework for various authentication methods. Typically used in wireless connections.
+- **CHAP (Challenge-Handshake Authentication Protocol)**: A secure authentication protocol used in Point-to-Point Protocol (PPP) connections. VPN authentication.
+- **PAP (Password Authentication Protocol)**: An older, less secure authentication protocol. Send password in clearText.
 - **802.1X**: A standard for network port-based authentication.
 - **RADIUS (Remote Authentication Dial-In User Service)**: A protocol and system for authenticating and authorizing network access.
 - **Single Sign-On (SSO)**: A method allowing users to access multiple systems with a single set of credentials.
-- **SAML (Security Assertion Markup Language)**: An XML-based framework for exchanging authentication and authorization data.
+- **SAML (Security Assertion Markup Language)**: An XML-based framework for exchanging authentication and authorization data. federated services: sharing of SSO w/ different websites.
 - **TACACS+ (Terminal Access Controller Access Control System Plus)**: A protocol for authentication, authorization, and accounting (AAA) services.
 - **OAuth**: A protocol for authorizing third-party applications to access resources on behalf of a user.
 - **OpenID**: An open standard for single sign-on and identity verification.
 - **Kerberos**: A network authentication protocol for secure authentication in distributed systems.
 - **Access Control Schemes**:
-- **Attribute-Based Access Control (ABAC)**: Access control based on attributes such as user roles, attributes, and environmental factors.
+- **Attribute-Based Access Control (ABAC)**: Access control based on attributes such as user roles, attributes, and environmental factors. Time of day, location, ip...
 - **Role-Based Access Control**: Access control based on user roles and permissions.
-- **Rule-Based Access Control**: Access control based on predefined rules and policies.
-- **MAC (Mandatory Access Control)**: Access control based on security labels and policies.
-- **Discretionary Access Control (DAC)**: Access control where owners of objects control access to them.
-- **Conditional Access**: Access control based on specific conditions or criteria.
+- **Rule-Based Access Control**: Access control based on predefined rules and policies. Firewall,Routers ACL.
+- **MAC (Mandatory Access Control)**: Access control based on security labels and policies. Labels are typically hierarchical, such as "Top Secret," "Secret," "Confidential," and "Unclassified." Enforce strict access control policies and protect sensitive information from unauthorized access. Access decisions are made by a central authority or security policy, and users have no discretion to change access. Used in high-security environments, such as government agencies and military organizations where data protection is paramount and where the access control rules must be rigorously enforced.
+- **Discretionary Access Control (DAC)**: Access control where owners of objects control access to them. Microsoft Windows filesystem permissions.
+- **Conditional Access**: Access control based on specific conditions or criteria. Your a member of a group.
 - **Privileged Access Management**: Managing and controlling privileged user access.
 - **Filesystem Permissions**: Permissions governing access to files and directories on a filesystem.
 
