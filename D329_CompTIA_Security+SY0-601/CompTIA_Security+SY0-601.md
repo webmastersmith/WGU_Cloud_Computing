@@ -2102,7 +2102,7 @@
 
 - **Incident Response Plans**: Incident Response Plans (IRPs)
 - **Incident Response Process**:
-- **Preparation**: The phase where organizations develop and implement an incident response plan, identify critical assets, and establish an incident response team.
+- **Preparation**: The phase where organizations develop and implement an incident response plan, identify critical assets, and establish an incident response team. Create Process.
 - **Identification**: The phase where incidents are detected, categorized, and reported.
 - **Containment**: The phase where measures are taken to prevent the incident from spreading or causing further damage.
 - **Eradication**: The phase where the root cause of the incident is identified and removed.
