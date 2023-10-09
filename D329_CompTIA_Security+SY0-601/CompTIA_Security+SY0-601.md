@@ -12,6 +12,14 @@
 - **Practice Test**
   - https://www.udemy.com/course/total-comptia-security-cert-sy0-601-practice-tests/
 
+| **CompTIA Security+ SY0-601 Percentage**  |     |
+| ----------------------------------------- | --- |
+| 1.0 Attacks, Threats, and Vulnerabilities | 24% |
+| 2.0 Architecture and Design               | 21% |
+| 3.0 Implementation                        | 25% |
+| 4.0 Operations and Incident Response      | 16% |
+| 5.0 Governance, Risk, and Compliance      | 14% |
+
 <!-- 1.0 Threats, Attacks, and Vulnerabilities -->
 
 ## 1.1 Compare and contrast different types of social engineering techniques
@@ -2101,7 +2109,7 @@
 %
 
 - **Incident Response Plans**: Incident Response Plans (IRPs)
-- **Incident Response Process**:
+- **Six Incident Response Process Steps**: 1. Prepare. 2. Identify. 3. Contain. 4. Eradicate. 5. Recover. 6. Lessons learned. (mnemonic Penguins In Cute Earmuffs Riding Lemons).
 - **Preparation**: The phase where organizations develop and implement an incident response plan, identify critical assets, and establish an incident response team. Create Process.
 - **Identification**: The phase where incidents are detected, categorized, and reported.
 - **Containment**: The phase where measures are taken to prevent the incident from spreading or causing further damage.
@@ -2276,8 +2284,8 @@
 - **Reports**: Formal documents summarizing findings or incidents.
 - **Event Logs**: Records of events or actions taken on a system or network.
 - **Interviews**: Gathered statements from individuals involved in or witness to an incident.
+- **Order of Volatility**: A strategy for collecting evidence by prioritizing volatile data sources that are more likely to change or be lost. 1. Registers, Cache. 2. RAM: Routing Table, ARP Cache, Process Table, Kernel Stastics, Memory. 3. Temporary File Systems. 4. Disk. 5. Remote Logging and Monitoring Data that is Relevant to the System in Question. 6. Physical Configuration, Network Topology. 7. Archival Media.
 - **Acquisition**:
-- **Order of Volatility**: A strategy for collecting evidence by prioritizing volatile data sources that are more likely to change or be lost.
 - **Disk**: Collecting data from storage devices.
 - **Random-Access Memory (RAM)**: Capturing data from a computer's memory.
 - **Swap/Pagefile**: Acquiring data from virtual memory.
@@ -2434,7 +2442,7 @@
 - **Non-Disclosure Agreement (NDA)**: A legal contract that prohibits individuals from disclosing confidential or proprietary information.
 - **Social Media Analysis**: Monitoring and analyzing employees' and candidates' social media activity to assess potential security risks.
 - **Onboarding**: The process of integrating new employees into an organization, including training and orientation.
-- **Offboarding**: The process of transitioning employees out of an organization, including revoking access to systems and data.
+- **Offboarding**: The process of transitioning employees out of an organization, including revoking access to systems and data. 1. disable access. 2. debrief them, remind about NDA's. 3. return company assets. 4. let others know that need to know they have been fired.
 - **User Training**: Providing education and training to employees and users to enhance their awareness of security risks and best practices.
 - **Gamification**: Using game-like elements, such as points and rewards, to engage employees in security training and awareness programs.
 - **Capture the Flag (CTF)**: A cybersecurity competition or exercise where participants solve security challenges to capture flags, demonstrating their skills.
@@ -2552,8 +2560,8 @@
 - **Likelihood of Occurrence**: The probability that a risk event will happen.
 - **Impact**: The potential consequences or harm resulting from a risk event.
 - **Asset Value**: The estimated value of assets affected by a risk event.
-- **Single-Loss Expectancy (SLE)**: The estimated loss resulting from a single occurrence of a risk event.
-- **Annualized Loss Expectancy (ALE)**: The expected annual financial loss from a risk event.
+- **Single-Loss Expectancy (SLE)**: The estimated loss resulting from a single occurrence of a risk event. Formula (SLE = AV\*EF). AV(Asset Value). EF(Exposure Factor, percentage loss).
+- **Annualized Loss Expectancy (ALE)**: The expected annual financial loss from a risk event. Formula (ALE=SLE\*ARO). ARO(Annulized rate of occurrence, frequency).
 - **Annualized Rate of Occurrence (ARO)**: The expected frequency of risk events occurring annually.
 - **Disasters**:
 - **Environmental**: Disasters caused by natural events like earthquakes, floods, or hurricanes.
@@ -2638,8 +2646,8 @@
 - **Data Minimization**: Collecting and storing only the minimum amount of data necessary.
 - **Data Masking**: Replacing sensitive data with masked or pseudonymous values.
 - **Tokenization**: Replacing sensitive data with tokens that have no inherent meaning.
-- **Anonymization**: Removing personally identifiable information from data.
-- **Pseudo-Anonymization**: Replacing identifying information with pseudonyms while maintaining usability.
+- **Anonymization**: Removing personally identifiable information from data. not reversable.
+- **Pseudo-Anonymization**: Replacing identifying information with pseudonyms while maintaining usability. can be reversed.
 - **Roles and Responsibilities**:
 - **Data Owners**: Individuals responsible for the data within their domain.
 - **Data Controller**: The entity that determines the purposes and means of data processing.
