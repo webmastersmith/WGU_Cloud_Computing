@@ -12,7 +12,7 @@
 - **Practice Test**
   - https://www.udemy.com/course/total-comptia-security-cert-sy0-601-practice-tests/
 
-<!-- ## 1.0 Threats, Attacks, and Vulnerabilities -->
+<!-- 1.0 Threats, Attacks, and Vulnerabilities -->
 
 ## 1.1 Compare and contrast different types of social engineering techniques
 
