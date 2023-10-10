@@ -7,7 +7,7 @@
   - https://comptiacdn.azureedge.net/webcontent/docs/default-source/exam-objectives/comptia-security-sy0-601-exam-objectives-(6-0).pdf?sfvrsn=13599e66_2
   - https://www.udemy.com/course/comptia_security_sy0-601_certification_training_class/ // follows exam objectives
 - **Anki Cards**
-  - [Security+ SYS-601 Questions](https:/ankiweb.net/shared/info/1023269036?cb=1695735283833)
+  - [Security+ SYS-601 Exam Objectives](https://ankiweb.net/shared/info/1967774822?cb=1696894568776)
   - [Security+ SYS-601 Acronyms](https://ankiweb.net/shared/info/938689157?cb=1695735525641)
 - **Practice Test**
   - https://www.udemy.com/course/total-comptia-security-cert-sy0-601-practice-tests/
@@ -2646,7 +2646,7 @@
 - **Data Minimization**: Collecting and storing only the minimum amount of data necessary.
 - **Data Masking**: Replacing sensitive data with masked or pseudonymous values.
 - **Tokenization**: Replacing sensitive data with tokens that have no inherent meaning.
-- **Anonymization**: Removing personally identifiable information from data. not reversable.
+- **Anonymization**: Removing personally identifiable information from data. not reversible.
 - **Pseudo-Anonymization**: Replacing identifying information with pseudonyms while maintaining usability. can be reversed.
 - **Roles and Responsibilities**:
 - **Data Owners**: Individuals responsible for the data within their domain.
