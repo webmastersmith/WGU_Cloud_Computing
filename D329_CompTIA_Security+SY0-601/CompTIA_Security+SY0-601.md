@@ -929,7 +929,7 @@
 - **Redundancy**:
 - **Geographic Dispersal**: Spreading resources across different geographic locations for redundancy and disaster recovery.
 - **Disk**: Duplication of storage disks to ensure data availability.
-- **Redundant Array of Independent (or Inexpensive) Disks (RAID) Levels**: Methods of configuring multiple disks for data redundancy and performance. Raid 0: striping(data split across multiple disk. fastest). Raid 1: mirroring(1:1 backup. slowest). Raid 5: Redundancy through parity(). Raid 6: striping with dual parity(better redundancy). Raid 10: striping + mirroring(raid 1 within raid 0).
+- **Redundant Array of Independent (or Inexpensive) Disks (RAID) Levels**: Methods of configuring multiple disks for data redundancy and performance. Raid 0: striping(data split across multiple disk. fastest). Raid 1: mirroring(1:1 backup. slowest write). Raid 5: Redundancy through parity(min 3 drives). Raid 6: striping with dual parity(better redundancy). Raid 10: striping + mirroring(raid 1 within raid 0).
 - **Multipath**: Using multiple physical paths for data transfer to ensure reliability.
 - **Network**: Duplicating network components for fault tolerance.
 - **Load Balancers**: Distributing network traffic across multiple servers for load distribution and redundancy.
@@ -2330,7 +2330,7 @@
 
 - **Category**:
 - **Managerial Controls**: These are controls that focus on managing the organization's security policies, procedures, and compliance efforts. They include activities such as risk assessments, security awareness training, and security policies.
-- **Operational Controls**: These controls are concerned with day-to-day security operations and processes within an organization. They involve tasks like access management, incident response, and monitoring.
+- **Operational Controls**: These controls are concerned with day-to-day security operations of personnel and processes within an organization. They involve tasks like access management, incident response, and monitoring.
 - **Technical Controls**: Technical controls are implemented through technology and systems. They include things like firewalls, intrusion detection systems, encryption, and authentication mechanisms.
 - **Control Type**:
 - **Preventive Controls**: These controls are designed to prevent security incidents from occurring. They aim to stop or limit potential threats and vulnerabilities. Examples include firewalls and access controls.
@@ -2368,11 +2368,11 @@
 - **National, Territory, or State Laws**: Various countries, territories, and states have their own specific laws and regulations related to cybersecurity and data protection. These can vary widely and must be adhered to based on the location and scope of operations.
 - **Payment Card Industry Data Security Standard (PCI DSS)**: A set of security standards designed to ensure that all companies that accept, process, store, or transmit credit card information maintain a secure environment. It is essential for businesses handling payment card data.
 - **Key Frameworks**:
-- **Center for Internet Security (CIS)**: Provides a set of best practices and guidelines for securing systems and data. CIS Controls and CIS Benchmarks are well-known resources in the cybersecurity community.
-- **National Institute of Standards and Technology (NIST) Risk Management Framework (RMF)/Cybersecurity Framework (CSF)**: NIST provides comprehensive guidance on risk management and cybersecurity practices. The NIST CSF is widely adopted as a framework for improving cybersecurity posture.
-- **International Organization for Standardization (ISO) 27001/27002/27701/31000**: ISO 27001 is a globally recognized standard for information security management systems (ISMS). ISO 27002 provides guidelines for implementing controls. ISO 27701 extends privacy management to ISO 27001. ISO 31000 is a standard for risk management.
+- **Center for Internet Security (CIS)**: Provides a set of best practices and guidelines for securing systems and data. CIS Controls and CIS Benchmarks are well-known resources in the cybersecurity community. https://www.cisecurity.org/
+- **National Institute of Standards and Technology (NIST) Risk Management Framework (RMF)/Cybersecurity Framework (CSF)**: NIST provides comprehensive guidance on risk management and cybersecurity practices. The NIST CSF is widely adopted as a framework for improving cybersecurity posture. https://www.nist.gov/, https://csrc.nist.gov/projects/risk-management/about-rmf, https://www.nist.gov/cyberframework
+- **International Organization for Standardization (ISO) 27001/27002/27701/31000**: ISO 27001 (security framework) is a globally recognized standard for information security management systems (ISMS). ISO 27002 (27001 best practices) provides guidelines for implementing controls. ISO 27701 (privacy framwork) extends privacy management to ISO 27001. ISO 31000 (risk management framework) is a standard for risk management.
 - **SSAE SOC 2 Type I/II**: These are auditing standards developed by the American Institute of CPAs (AICPA) for service organizations to demonstrate their controls and security practices. SOC 2 Type II is more rigorous and involves testing controls over a period.
-- **Cloud Security Alliance**: An organization that promotes best practices for secure cloud computing. Their Cloud Control Matrix provides a framework for assessing cloud security.
+- **Cloud Security Alliance**: An organization that promotes best practices for secure cloud computing. Their Cloud Control Matrix provides a framework for assessing cloud security. https://cloudsecurityalliance.org/research/guidance
 - **Reference Architecture**: Frameworks or models that provide guidance on building secure systems and networks. They help organizations design security into their architecture from the beginning.
 - **Benchmarks/Secure Configuration Guides**: These are documents and guidelines that provide recommendations for configuring and securing various types of IT systems and components
 - **Platform/Vendor-Specific Guides**: Tailored guidelines for specific platforms or products, such as operating systems, web servers, application servers, and network devices.
@@ -2456,14 +2456,14 @@
 - **Supply Chain**: Evaluating and mitigating cybersecurity risks within the supply chain, including suppliers and logistics partners.
 - **Business Partners**: Managing cybersecurity risks in collaboration with business partners and affiliates.
 - **Service Level Agreement (SLA)**: A formal agreement that defines the level of service and security expectations between parties.
-- **Memorandum of Understanding (MOU)**: An agreement outlining the terms and responsibilities of parties in a partnership or collaboration.
+- **Memorandum of Understanding (MOU)**: An agreement outlining the terms and responsibilities of parties in a partnership or collaboration. Informal letter of intent. Not a signed contract.
 - **Measurement Systems Analysis (MSA)**: Evaluating and ensuring the accuracy and reliability of measurement systems and data.
 - **Business Partnership Agreement (BPA)**: A formal agreement that defines the terms and conditions of a business partnership.
 - **End of Life (EOL)**: The date when a product or service is no longer supported by the vendor.
 - **End of Service Life (EOSL)**: The date when a product or service reaches the end of its useful life and is no longer supported.
 - **NDA**: Non-disclosure agreement, as mentioned earlier.
 - **Data**:
-- **Classification**: Categorizing data based on its sensitivity and importance for security and management purposes.
+- **Classification**: Categorizing data based on its sensitivity and importance for security and management purposes. Public, Confidential, Critical(top secret). Asset classification (proprietary, private, sensitive).
 - **Governance**: Establishing policies and procedures for data management, privacy, and security.
 - **Retention**: Defining how long data should be retained and when it should be securely disposed of.
 - **Credential Policies**:
@@ -2543,7 +2543,7 @@
 - **Transference**: Shifting the risk to a third party, such as through insurance or outsourcing.
 - **Cybersecurity Insurance**: Purchasing insurance to cover financial losses resulting from cybersecurity incidents.
 - **Mitigation**: Implementing controls and measures to reduce the impact or likelihood of a risk.
-- **Risk Analysis**:
+- **Risk Analysis**: identify and prioritize potential risks and threats that could affect an organization.
 - **Risk Register**: A document that identifies and records potential risks and their characteristics.
 - **Risk Matrix/Heat Map**: A visual representation of risks based on their likelihood and impact.
 - **Risk Control Assessment**: Evaluating the effectiveness of risk control measures.
@@ -2551,7 +2551,7 @@
 - **Risk Awareness**: Ensuring that stakeholders are informed and aware of existing risks.
 - **Inherent Risk**: The level of risk before any risk mitigation measures are applied.
 - **Residual Risk**: The remaining risk after mitigation measures are implemented.
-- **Control Risk**: The risk that controls and safeguards will not effectively mitigate identified risks.
+- **Control Risk**: How much less effective a security control has become over time. The risk that controls and safeguards will not effectively mitigate identified risks.
 - **Risk Appetite**: The level of risk an organization is willing to accept.
 - **Regulations that Affect Risk Posture**: Laws and regulations that influence an organization's risk exposure.
 - **Risk Assessment Types**:
@@ -2567,7 +2567,7 @@
 - **Environmental**: Disasters caused by natural events like earthquakes, floods, or hurricanes.
 - **Person-Made**: Disasters resulting from human actions or errors, such as industrial accidents or data breaches.
 - **Internal vs. External**: Differentiating between disasters that originate from within the organization and those from external sources.
-- **Business Impact Analysis**:
+- **Business Impact Analysis (BIA)**: assessing the potential impact of disruptions on an organization's business operations.
 - **Recovery Time Objective (RTO)**: The maximum acceptable downtime for a system or process.
 - **Recovery Point Objective (RPO)**: The maximum acceptable data loss in case of a disruption.
 - **Mean Time to Repair (MTTR)**: The average time it takes to repair a system or process.
