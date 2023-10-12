@@ -12,13 +12,13 @@
 - **Practice Test**
   - https://www.udemy.com/course/total-comptia-security-cert-sy0-601-practice-tests/
 
-| **CompTIA Security+ SY0-601 Percentage**  |     |
-| ----------------------------------------- | --- |
-| 1.0 Attacks, Threats, and Vulnerabilities | 24% |
-| 2.0 Architecture and Design               | 21% |
-| 3.0 Implementation                        | 25% |
-| 4.0 Operations and Incident Response      | 16% |
-| 5.0 Governance, Risk, and Compliance      | 14% |
+| **CompTIA Security+ SY0-601 Percentage**  | 750/900 |
+| ----------------------------------------- | :-----: |
+| 1.0 Attacks, Threats, and Vulnerabilities |   24%   |
+| 2.0 Architecture and Design               |   21%   |
+| 3.0 Implementation                        |   25%   |
+| 4.0 Operations and Incident Response      |   16%   |
+| 5.0 Governance, Risk, and Compliance      |   14%   |
 
 <!-- 1.0 Threats, Attacks, and Vulnerabilities -->
 
@@ -80,9 +80,7 @@
 - **Hoax**: Spreading false information or rumors to deceive people.
 - **Impersonation**: Pretending to be someone else, often through communication channels.
 - **Watering hole attack**: passive. Compromising websites or resources frequently visited by a target group.
-- **Typosquatting**: Registering domain names similar to legitimate ones to trick users into visiting malicious sites.
-  - also known as _cousin_, _lookalike_, or _doppelganger_ domains.
-  - another method is to register a hijacked subdomain using the primary domain of a trusted cloud provider, such as _comptia.onmicrosoft.com_.
+- **Typosquatting**: Registering domain names similar to legitimate ones to trick users into visiting malicious sites. also known as _cousin_, _lookalike_, _URL hijacking_, or _doppelganger_ domains. another method is to register a hijacked subdomain using the primary domain of a trusted cloud provider, such as _comptia.onmicrosoft.com_.
 - **Pretexting**: Creating a fabricated scenario to obtain sensitive information.
 - **Influence campaigns**: Using psychological tactics to manipulate individuals or groups.
   - **Hybrid warfare**: espionage, disinformation/fake news, and hacking.
@@ -2644,9 +2642,9 @@
 - **Customer Data**: Information about customers and their interactions with the organization.
 - **Privacy Enhancing Technologies**:
 - **Data Minimization**: Collecting and storing only the minimum amount of data necessary.
-- **Data Masking**: Replacing sensitive data with masked or pseudonymous values.
-- **Tokenization**: Replacing sensitive data with tokens that have no inherent meaning.
-- **Anonymization**: Removing personally identifiable information from data. not reversible.
+- **Data Masking**: Replacing sensitive data with masked or pseudonymous values. `S****`.
+- **Tokenization**: Replacing sensitive data with tokens that have no inherent meaning. Can be reversed.
+- **Anonymization**: Removing personally identifiable information from data. not reversible. difficult to analyze.
 - **Pseudo-Anonymization**: Replacing identifying information with pseudonyms while maintaining usability. can be reversed.
 - **Roles and Responsibilities**:
 - **Data Owners**: Individuals responsible for the data within their domain.
