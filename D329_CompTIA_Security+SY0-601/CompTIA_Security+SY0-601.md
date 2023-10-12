@@ -658,7 +658,7 @@
 - **Honeyfiles**: Fake files or data designed to deceive attackers.
 - **Honeynets**: Entire network segments designed to lure and analyze attackers.
 - **Fake Telemetry**: False data generated to mislead attackers.
-- **DNS Sinkhole**: Redirecting malicious domain queries to a harmless location.
+- **DNS Sinkhole**: Redirecting malicious domain queries to a harmless location(honeynet), where it can be analyzed.
 
 ## 2.2 Summarize virtualization and cloud computing concepts
 
