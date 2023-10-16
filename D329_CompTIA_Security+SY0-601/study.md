@@ -39,3 +39,15 @@
   - **Deterrent Controls**: Deterrent controls are meant to discourage potential attackers by making the target less appealing or more difficult to breach. Examples include security cameras and warning signs.
   - **Compensating Controls**: Compensating controls are alternative measures put in place when the primary control is not feasible or effective. They provide an equivalent level of security.
   - **Physical Controls**: Physical controls involve the use of physical security measures to protect assets. This can include measures like biometric access controls, locked doors, and security guards.
+-
+-
+- **Threat Intelligence Sources -Cyber Threat Intelligence**: threat data feeds you subscribe to.
+- **Threat Intelligence Sources -Open-Source Intelligence (OSINT)**: Information gathered from publicly available sources, such as websites and social media.
+- **Threat Intelligence Sources -Closed/Proprietary**: Exclusive threat intelligence sources typically not accessible to the public.
+- **Threat Intelligence Sources -Vulnerability Databases**: Repositories of known software vulnerabilities and associated information.
+- **Threat Intelligence Sources -Public/Private Information-Sharing Centers**: Organizations or groups that share threat intelligence among members.
+- **Threat Intelligence Sources -Dark Web**: Hidden parts of the internet where cybercriminals trade information and conduct illicit activities.
+- **Threat Intelligence Sources -Indicators of Compromise**: Pieces of data indicating a security incident or breach. IoC is evidence of a TTP(tactic, technique, or procedure).
+- **Threat Intelligence Sources -Automated Indicator Sharing (AIS)**: A system for sharing standardized threat indicators. Service offered by the Department of Homeland Security (DHS) for companies to participate in threat intelligence sharing.
+- **Structured Threat Information eXpression (STIX)**: OASIS framework syntax for sharing CTI.
+- **Trusted Automated eXchange of Intelligence Information (TAXII)**: means for transmitting CTI data between servers and clients. sharing threat intelligence.

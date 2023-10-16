@@ -281,27 +281,26 @@
 - **Radio Frequency Identification (RFID)**: Technology using radio waves to identify and track objects, often used in inventory management and access control.
 - **Near-Field Communication (NFC)**: A short-range wireless communication technology for data exchange between devices, often used in contactless payments.
 - **Initialization Vector (IV)**: A random number used in encryption algorithms to ensure uniqueness and security.
-- **On-Path Attack (Man-in-the-Middle Attack/Man-in-the-Browser Attack)**:
-- **A type of cyberattack where an attacker intercepts and possibly alters communication between two parties without their knowledge.**:
-- **Layer 2 Attacks**:
+- **On-Path Attack (Man-in-the-Middle Attack/Man-in-the-Browser Attack)**: A type of cyberattack where an attacker intercepts and possibly alters communication between two parties without their knowledge.
+- **Layer 2 Attacks**: network attacks that happen at layer 2(MAC address) like ARP poisoning or MAC flooding.
 - **Address Resolution Protocol (ARP) Poisoning**: Manipulating ARP tables to redirect network traffic through the attacker's system.
 - **Media Access Control (MAC) Flooding**: Overloading a network switch with fake MAC addresses to disrupt network traffic.
 - **MAC Cloning**: Impersonating a legitimate device by using its MAC address.
-- **Domain Name System (DNS)**:
+- **Domain Name System (DNS) Attacks**: attacks that redirect to malicious web sites.
 - **Domain Hijacking**: Unauthorized changes to a domain's registration information, potentially leading to control loss.
 - **DNS Poisoning**: Manipulating DNS records to redirect users to malicious websites.
 - **Uniform Resource Locator (URL) Redirection**: Forcing users to visit a different URL than the one they intended.
 - **Domain Reputation**: Evaluating the trustworthiness of a domain based on its history and behavior.
-- **Distributed Denial-of-Service (DDoS)**:
-- **Network**: Overloading a target network with excessive traffic to disrupt services.
-- **Application**: Flooding a target application with requests to render it unavailable.
-- **Operational Technology (OT)**: DDoS attacks targeting industrial control systems and critical infrastructure.
+- **Distributed Denial-of-Service (DDoS)**: network of victim computers under the control of an attacker that overwhelm victim with bogus request.
+- **DDoS Network Attack**: Overloading a target network with excessive traffic(like SYN request) to disrupt services.
+- **DDoS Application Attack**: Flooding a target application with requests to render it unavailable. Targets vulnerabilities in the headers and payloads of specific application protocols.
+- **DDoS Operational Technology (OT)**: DDoS attacks targeting industrial control systems and critical infrastructure. The term "operational" is used because these systems monitor and control physical electromechanical components, such as valves, motors, electrical switches, gauges, and sensors.
 - **Malicious Code or Script Execution**:
-- **PowerShell**: A scripting language used for automation that can also be exploited for malicious purposes.
-- **Python**: A versatile programming language, sometimes used in cyberattacks due to its ease of use.
-- **Bash**: A Unix shell that can execute commands and scripts, including malicious ones.
-- **Macros**: Small scripts often embedded in documents that can carry out malicious actions.
-- **Visual Basic for Applications (VBA)**: A scripting language for Microsoft Office applications, sometimes used in malicious macros.
+- **Malicious Code or Script Execution -PowerShell**: A scripting language used for automation that can also be exploited for malicious purposes.
+- **Malicious Code or Script Execution -Python**: A versatile programming language, sometimes used in cyberattacks due to its ease of use.
+- **Malicious Code or Script Execution -Bash**: A Unix shell that can execute commands and scripts, including malicious ones.
+- **Malicious Code or Script Execution -Macros**: Small scripts often embedded in documents that can carry out malicious actions.
+- **Malicious Code or Script Execution -Visual Basic for Applications (VBA)**: A scripting language for Microsoft Office applications, sometimes used in malicious macros.
 
 ## 1.5 Explain different threat actors, vectors, and intelligence sources
 
@@ -370,40 +369,41 @@
 - **Shadow IT**: Unsanctioned IT systems or services used within an organization without official approval.
 - **Competitors**: Organizations or individuals with motives to gain a competitive edge through cyber activities.
 - **Attributes of Actors**:
-- **Internal/External**: Refers to whether the threat actor is affiliated with the target organization (internal) or outside it (external).
-- **Level of Sophistication/Capability**: The extent of technical skills and resources possessed by the threat actor.
-- **Resources/Funding**: The financial and logistical resources available to the threat actor.
-- **Intent/Motivation**: The underlying purpose or goal driving the threat actor's actions.
+- **Attributes of Actors -Internal/External**: Refers to whether the threat actor is affiliated with the target organization (internal) or outside it (external).
+- **Attributes of Actors -Level of Sophistication/Capability**: The extent of technical skills and resources possessed by the threat actor.
+- **Attributes of Actors -Resources/Funding**: The financial and logistical resources available to the threat actor.
+- **Attributes of Actors -Intent/Motivation**: The underlying purpose or goal driving the threat actor's actions.
 - **Vectors**:
-- **Direct Access**: Gaining unauthorized access through direct means, often exploiting vulnerabilities or weak passwords.
-- **Wireless**: Leveraging wireless network vulnerabilities, such as Wi-Fi hacking.
-- **Email**: Exploiting email systems and communication for attacks like phishing.
-- **Supply Chain**: Targeting weaknesses in the supply chain to compromise products or services.
-- **Social Media**: Exploiting social platforms to spread malware, gather information, or manipulate individuals.
-- **Removable Media**: Using USB drives or other removable media to introduce malware into systems.
-- **Cloud**: Exploiting vulnerabilities or misconfigurations in cloud services.
-- **Threat Intelligence Sources**:
-- **Open-Source Intelligence (OSINT)**: Information gathered from publicly available sources, such as websites and social media.
-- **Closed/Proprietary**: Exclusive threat intelligence sources typically not accessible to the public.
-- **Vulnerability Databases**: Repositories of known software vulnerabilities and associated information.
-- **Public/Private Information-Sharing Centers**: Organizations or groups that share threat intelligence among members.
-- **Dark Web**: Hidden parts of the internet where cybercriminals trade information and conduct illicit activities.
-- **Indicators of Compromise**: Pieces of data indicating a security incident or breach.
-- **Automated Indicator Sharing (AIS)**: A system for sharing standardized threat indicators.
-- **Structured Threat Information eXpression (STIX)/Trusted Automated eXchange of Intelligence Information (TAXII)**: Standards for representing and sharing threat intelligence.
-- **Predictive Analysis**: Analyzing historical data to predict future threats.
-- **Threat Maps**: Visual representations of real-time cyber threats and attacks.
-- **File/Code Repositories**: Places where code or files are stored and can be sources of threat intelligence.
+- **Attack Vectors -Direct Access**: Gaining unauthorized access through direct means, often exploiting vulnerabilities or weak passwords.
+- **Attack Vectors -Wireless**: Leveraging wireless network vulnerabilities, such as Wi-Fi hacking.
+- **Attack Vectors -Email**: Exploiting email systems and communication for attacks like phishing.
+- **Attack Vectors -Supply Chain**: Targeting weaknesses in the supply chain to compromise products or services.
+- **Attack Vectors -Social Media**: Exploiting social platforms to spread malware, gather information, or manipulate individuals.
+- **Attack Vectors -Removable Media**: Using USB drives or other removable media to introduce malware into systems.
+- **Attack Vectors -Cloud**: Exploiting vulnerabilities or misconfigurations in cloud services.
+- **Threat Intelligence Sources -Cyber Threat Intelligence**: threat data feeds you subscribe to.
+- **Threat Intelligence Sources -Open-Source Intelligence (OSINT)**: Information gathered from publicly available sources, such as websites and social media.
+- **Threat Intelligence Sources -Closed/Proprietary**: Exclusive threat intelligence sources typically not accessible to the public.
+- **Threat Intelligence Sources -Vulnerability Databases**: Repositories of known software vulnerabilities and associated information.
+- **Threat Intelligence Sources -Public/Private Information-Sharing Centers**: Organizations or groups that share threat intelligence among members.
+- **Threat Intelligence Sources -Dark Web**: Hidden parts of the internet where cybercriminals trade information and conduct illicit activities.
+- **Threat Intelligence Sources -Indicators of Compromise**: Pieces of data indicating a security incident or breach. IoC is evidence of a TTP(tactic, technique, or procedure).
+- **Threat Intelligence Sources -Automated Indicator Sharing (AIS)**: A system for sharing standardized threat indicators. Service offered by the Department of Homeland Security (DHS) for companies to participate in threat intelligence sharing.
+- **Structured Threat Information eXpression (STIX)**: OASIS framework syntax for sharing CTI.
+- **Trusted Automated eXchange of Intelligence Information (TAXII)**: means for transmitting CTI data between servers and clients. sharing threat intelligence.
+- **Threat Intelligence Sources -Predictive Analysis**: Analyzing historical data to predict future threats.
+- **Threat Intelligence Sources -Threat Maps**: Visual representations of real-time cyber threats and attacks.
+- **Threat Intelligence Sources -File/Code Repositories**: Places where code or files are stored and can be sources of threat intelligence.
 - **Research Sources**:
-- **Vendor Websites**: Information from technology vendors regarding security updates and advisories.
-- **Vulnerability Feeds**: Regular updates on software vulnerabilities.
-- **Conferences**: Cybersecurity conferences where experts share research and findings.
-- **Academic Journals**: Published research papers on cybersecurity topics.
-- **Request for Comments (RFC)**: Documents describing internet standards, protocols, and best practices.
-- **Local Industry Groups**: Regional organizations or associations focused on cybersecurity.
-- **Social Media**: Platforms where security researchers and professionals share insights and updates.
-- **Threat Feeds**: Real-time information feeds containing data on active threats.
-- **Adversary Tactics, Techniques, and Procedures (TTP)**: Research on the methods and strategies used by cyber adversaries.
+- **Research Sources -Vendor Websites**: Information from technology vendors regarding security updates and advisories.
+- **Research Sources -Vulnerability Feeds**: Regular updates on software vulnerabilities.
+- **Research Sources -Conferences**: Cybersecurity conferences where experts share research and findings.
+- **Research Sources -Academic Journals**: Published research papers on cybersecurity topics.
+- **Research Sources -Request for Comments (RFC)**: Documents describing internet standards, protocols, and best practices.
+- **Research Sources -Local Industry Groups**: Regional organizations or associations focused on cybersecurity.
+- **Research Sources -Social Media**: Platforms where security researchers and professionals share insights and updates.
+- **Research Sources -Threat Feeds**: Real-time information feeds containing data on active threats.
+- **Research Sources -Adversary Tactics, Techniques, and Procedures (TTP)**: Research on the methods and strategies used by cyber adversaries.
 
 ## 1.6 Explain the security concerns associated with various types of vulnerabilities
 
@@ -440,48 +440,38 @@
 
 %
 
-- **Cloud-based vs. On-Premises Vulnerabilities**:
-- **Cloud-Based**: Vulnerabilities that affect data and systems hosted in cloud environments.
-- **On-Premises**: Vulnerabilities that affect data and systems hosted within an organization's physical infrastructure.
-- **Zero-Day**:
-- **A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch, making it a prime target for attackers.**:
-- **Weak Configurations**:
-- **Security weaknesses resulting from improper or suboptimal settings in software, hardware, or systems.**:
+- **Cloud-based vs. On-Premises Vulnerabilities**: Distinguishing between attacks targeting cloud-based services and traditional on-premises infrastructure.
+- **Cloud-Based Vulnerabilities**: affect data and systems hosted in cloud environments.
+- **On-Premises Vulnerabilities**: affect data and systems hosted within an organization's physical infrastructure.
+- **Zero-Day**: A zero-day vulnerability is a software flaw that is unknown to the vendor and has no available patch, making it a prime target for attackers.
+- **Weak Configurations**: Security weaknesses resulting from improper or suboptimal settings in software, hardware, or systems
+- **Weak Configurations -Open Permissions**: Allowing unauthorized access due to overly permissive permissions.
+- **Weak Configurations -Unsecure Root Accounts**: Insufficiently secured administrative accounts.
+- **Weak Configurations -Errors**: Configuration mistakes that create vulnerabilities.
+- **Weak Configurations -Weak Encryption**: Poorly configured encryption mechanisms.
+- **Weak Configurations -Unsecure Protocols**: Use of insecure communication protocols.
+- **Weak Configurations -Default Settings**: Using default settings that may be insecure.
+- **Weak Configurations -Open Ports and Services**: Exposing unnecessary network ports and services.
+- **Third-Party Risks**: Vulnerabilities arising from interactions with third-party vendors and services.
 - **Subcategories**:
-- **Open Permissions**: Allowing unauthorized access due to overly permissive permissions.
-- **Unsecure Root Accounts**: Insufficiently secured administrative accounts.
-- **Errors**: Configuration mistakes that create vulnerabilities.
-- **Weak Encryption**: Poorly configured encryption mechanisms.
-- **Unsecure Protocols**: Use of insecure communication protocols.
-- **Default Settings**: Using default settings that may be insecure.
-- **Open Ports and Services**: Exposing unnecessary network ports and services.
-- **Third-Party Risks**:
-- **Vulnerabilities arising from interactions with third-party vendors and services.**:
-- **Subcategories**:
-- **Vendor Management**: Challenges in ensuring third-party vendors meet security standards.
-- **System Integration**: Risks related to integrating third-party systems.
-- **Lack of Vendor Support**: Vulnerabilities due to unsupported software or hardware.
-- **Supply Chain**: Risks stemming from vulnerabilities in the supply chain.
-- **Outsourced Code Development**: Security concerns when code is developed externally.
-- **Data Storage**: Risks related to how third parties handle data storage and security.
-- **Improper or Weak Patch Management**:
-- **Inadequate procedures for applying updates and patches to various components.**:
-- **Subcategories**:
-- **Firmware**: Updating the firmware of hardware devices.
-- **Operating System (OS)**: Updating the underlying OS for security.
-- **Applications**: Keeping software applications up-to-date with security patches.
-- **Legacy Platforms**:
-- **Systems, hardware, or software that are outdated and no longer supported by vendors, making them prone to vulnerabilities.**:
-- **Impacts**:
-- **Consequences of security breaches and vulnerabilities.**:
-- **Subcategories**:
-- **Data Loss**: Unauthorized access or deletion of data.
-- **Data Breaches**: Unauthorized access to sensitive data.
-- **Data Exfiltration**: Theft of data from a network.
-- **Identity Theft**: Unauthorized use of someone's personal information.
-- **Financial**: Monetary losses due to cyberattacks.
-- **Reputation**: Damage to an individual or organization's reputation.
-- **Availability Loss**: Disruption of services or data unavailability.
+- **Third-Party Risks -Vendor Management**: Challenges in ensuring third-party vendors meet security standards.
+- **Third-Party Risks -System Integration**: Risks related to integrating third-party systems.
+- **Third-Party Risks -Lack of Vendor Support**: Vulnerabilities due to unsupported software or hardware.
+- **Third-Party Risks -Supply Chain**: Risks stemming from vulnerabilities in the supply chain.
+- **Third-Party Risks -Outsourced Code Development**: Security concerns when code is developed externally.
+- **Third-Party Risks -Data Storage**: Risks related to how third parties handle data storage and security.
+- **Improper or Weak Patch Management**: security patches are not applied to systems vulnerabilities in software code, OS, or Firmware. Inadequate procedures for applying updates and patches to various components.
+- **Improper or Weak Patch Management -Firmware**: not updating the firmware of hardware devices.
+- **Improper or Weak Patch Management -Operating System (OS)**: not updating the underlying OS for security.
+- **Improper or Weak Patch Management -Applications**: not keeping software applications up-to-date with security patches.
+- **Legacy Platforms Impacts**: Systems, hardware, or software that are outdated and no longer supported by vendors, making them prone to vulnerabilities. Consequences of security breaches and vulnerabilities.
+- **Legacy Platforms Impacts -Data Loss**: Unauthorized access or deletion of data.
+- **Legacy Platforms Impacts -Data Breaches**: Unauthorized access to sensitive data.
+- **Legacy Platforms Impacts -Data Exfiltration**: Theft of data from a network.
+- **Legacy Platforms Impacts -Identity Theft**: Unauthorized use of someone's personal information.
+- **Legacy Platforms Impacts -Financial**: Monetary losses due to cyberattacks.
+- **Legacy Platforms Impacts -Reputation**: Damage to an individual or organization's reputation.
+- **Legacy Platforms Impacts -Availability Loss**: Disruption of services or data unavailability.
 
 ## 1.7 Summarize the techniques used in security assessments
 
@@ -514,31 +504,32 @@
 
 %
 
-- **Threat Hunting**:
-- **Intelligence Fusion**: Combining threat intelligence from various sources to gain a more comprehensive understanding of potential threats.
-- **Threat Feeds**: Subscriptions or services that provide real-time information on current cyber threats.
-- **Advisories and Bulletins**: Notifications or reports issued by cybersecurity organizations to warn about vulnerabilities or threats.
-- **Maneuver**: In threat hunting, it refers to taking action to counter or mitigate threats.
-- **Vulnerability Scans**:
-- **False Positives**: Incorrectly identifying a benign activity or file as a security threat.
-- **False Negatives**: Failing to identify a legitimate security threat.
-- **Log Reviews**: Analyzing logs to identify security incidents or vulnerabilities.
-- **Credentialed vs. Non-Credentialed**: Scanning with or without valid credentials (username/password).
-- **Intrusive vs. Non-Intrusive**: Scanning methods that either actively interact with systems (intrusive) or observe without interaction (non-intrusive).
-- **Application**: Scanning software applications for vulnerabilities.
-- **Web Application**: Focusing on vulnerabilities in web-based applications.
-- **Network**: Identifying vulnerabilities in network infrastructure.
+- **Threat Hunting**: assessment technique that utilizes insights gained from threat intelligence to proactively discover whether there is evidence of TTPs already present within the network or system.
+- **Threat Hunting -Intelligence Fusion**: Combining threat intelligence from various sources to gain a more comprehensive understanding of potential threats.
+- **Threat Hunting -Threat Feeds**: Subscriptions or services that provide real-time information on current cyber threats.
+- **Threat Hunting -Advisories and Bulletins**: Notifications or reports issued by cybersecurity organizations to warn about vulnerabilities or threats.
+- **Threat Hunting -Maneuver**: In threat hunting, it refers to taking action to counter or mitigate threats. A military doctrine term relating to obtaining positional advantage. To avoid attacker accelerating attack, security team might use passive discovery techniques so that threat actors are given no hint that an intrusion has been discovered.
+- **Vulnerability Scans**: automated processes or tools that help identify security weaknesses and potential vulnerabilities in computer systems, networks, applications, and other IT infrastructure.
+- **Vulnerability Scans -False Positives**: Incorrectly identifying a benign activity or file as a security threat.
+- **Vulnerability Scans -False Negatives**: Failing to identify a legitimate security threat.
+- **Vulnerability Scans -Log Reviews**: Analyzing logs to identify security incidents or vulnerabilities.
+- **Vulnerability Scans -Credentialed vs. Non-Credentialed**: Scanning with or without valid credentials (username/password).
+- **Vulnerability Scans -Intrusive vs. Non-Intrusive**: Scanning methods that either actively interact with systems (intrusive) or observe without interaction (non-intrusive).
+- **Vulnerability Scans -Application**: Scanning software applications for vulnerabilities.
+- **Vulnerability Scans -Web Application**: Focusing on vulnerabilities in web-based applications.
+- **Vulnerability Scans -Network**: Identifying vulnerabilities in network infrastructure.
 - **Common Vulnerabilities and Exposures (CVE) / Common Vulnerability Scoring System (CVSS)**: Standardized identifiers and scoring system for vulnerabilities.
-- **Configuration Review**: Evaluating system configurations for security weaknesses.
-- **Syslog/Security Information and Event Management (SIEM)**: real-time monitoring, alerting, and analysis of security events from analyzed log files.
-- **Review Reports**: Analyzing reports generated by SIEM systems.
-- **Packet Capture**: Recording network traffic for analysis.
-- **Data Inputs**: Sources of data fed into a SIEM for analysis.
-- **User Behavior Analysis**: Examining user activities to detect anomalies or suspicious behavior.
-- **Sentiment Analysis**: Analyzing data to determine the emotional tone, often used in social media monitoring.
-- **Security Monitoring**: Continuous observation of systems and networks for security incidents.
-- **Log Aggregation**: Collecting and centralizing logs from various sources.
-- **Log Collectors**: Devices or software components that gather log data.
+- **Vulnerability Scans -Configuration Review**: Evaluating system configurations for security weaknesses.
+- **Syslog**: standard protocol used for message logging and event notification in computer systems.
+- **Security Information and Event Management (SIEM)**: real-time monitoring, alerting, and analysis of security events from analyzed log files.
+- **Syslog/SIEM -Review Reports**: Analyzing reports generated by SIEM systems.
+- **Syslog/SIEM -Packet Capture**: Recording network traffic for analysis from sniffers.
+- **Syslog/SIEM -Data Inputs**: Sources of data fed into a SIEM for analysis.
+- **Syslog/SIEM -User Behavior Analysis**: Examining user activities to detect anomalies or suspicious behavior.
+- **Syslog/SIEM -Sentiment Analysis**: Analyzing data to determine the emotional tone, often used in social media monitoring.
+- **Syslog/SIEM -Security Monitoring**: Continuous observation of systems and networks for security incidents.
+- **Syslog/SIEM -Log Aggregation**: Collecting and centralizing logs from various sources.
+- **Syslog/SIEM -Log Collectors**: Devices or software components that gather log data.
 - **Security Orchestration, Automation, and Response (SOAR)**: SOAR refers to a system that combines security orchestration (coordinating security tasks), automation (performing tasks without human intervention), and response (taking actions to mitigate threats) to streamline and enhance security operations.
 
 ## 1.8 Explain the techniques used in penetration testing
@@ -568,28 +559,27 @@
 
 %
 
-- **Penetration Testing**:
-- **Known Environment**: Testing conducted when the tester has detailed knowledge of the target environment.
-- **Unknown Environment**: Testing conducted when the tester has no prior knowledge of the target environment.
-- **Partially Known Environment**: Testing conducted with limited knowledge of the target environment.
-- **Rules of Engagement**: Guidelines defining the scope and limitations of a penetration test.
-- **Lateral Movement**: The process of moving horizontally across a network or system, gaining access to additional resources.
-- **Privilege Escalation**: Elevating one's access level to gain higher privileges within a system.
-- **Persistence**: Establishing a lasting presence within a compromised system or network.
-- **Cleanup**: Removing all traces of a penetration test or intrusion to restore the system to its original state.
-- **Bug Bounty**: A program where organizations offer rewards to individuals who identify and report security vulnerabilities.
-- **Pivoting**: The technique of using a compromised system to attack other systems within a network.
-- **Passive and Active Reconnaissance**:
-- **Drones**: Unmanned aerial vehicles used for reconnaissance and data collection.
-- **War Flying**: The practice of using drones or other means to map wireless networks from the air.
-- **War Driving**: The act of searching for and mapping wireless networks while driving or walking.
-- **Footprinting**: The process of gathering information about a target network or organization.
-- **OSINT (Open-Source Intelligence)**: Collecting information from publicly available sources.
-- **Exercise Types**:
-- **Red-Team**: A group that simulates attackers to test an organization's defenses.
-- **Blue-Team**: A group responsible for defending against simulated attacks and ensuring security measures are effective.
-- **White-Team**: An impartial group that assesses and mediates between red and blue teams during an exercise.
-- **Purple-Team**: A collaborative approach that combines red and blue teams to work together to improve security and response capabilities.
+- **Penetration Testing**: ethical hacking. Systematic and authorized process of assessing an organization's information security by simulating cyberattacks.
+- **Penetration Testing -Known Environment**: Testing conducted when the tester has detailed knowledge of the target environment.
+- **Penetration Testing -Unknown Environment**: Testing conducted when the tester has no prior knowledge of the target environment.
+- **Penetration Testing -Partially Known Environment**: Testing conducted with limited knowledge of the target environment.
+- **Penetration Testing -Rules of Engagement**: Guidelines defining the scope and limitations of a penetration test.
+- **Penetration Testing -Lateral Movement**: The process of moving horizontally across a network or system, gaining access to additional resources.
+- **Penetration Testing -Privilege Escalation**: Elevating one's access level to gain higher privileges within a system.
+- **Penetration Testing -Persistence**: Establishing a lasting presence within a compromised system or network. Example, backdoor from RAT.
+- **Penetration Testing -Cleanup**: Removing all traces of a penetration test or intrusion to restore the system to its original state.
+- **Penetration Testing -Bug Bounty**: A program where organizations offer rewards to individuals who identify and report security vulnerabilities.
+- **Penetration Testing -Pivoting**: The technique of using a compromised system to attack other systems within a network.
+- **Passive and Active Reconnaissance**: collecting information without directly interacting with the target system or network(Passive), or collecting information with direct interaction with the target system, network, or organization(Active).
+- **Passive and Active Reconnaissance -Drones**: Unmanned aerial vehicles used for reconnaissance and data collection.
+- **Passive and Active Reconnaissance -War Flying**: The practice of using drones or other means to map wireless networks from the air.
+- **Passive and Active Reconnaissance -War Driving**: The act of searching for and mapping wireless networks while driving or walking.
+- **Passive and Active Reconnaissance -Footprinting**: The process of gathering information about a target network or organization.
+- **Passive and Active Reconnaissance -OSINT (Open-Source Intelligence)**: Collecting information from publicly available sources.
+- **Pentesting Exercise Types -Red-Team**: A group that simulates attackers to test an organization's defenses.
+- **Pentesting Exercise Types -Blue-Team**: A group responsible for defending against simulated attacks and ensuring security measures are effective.
+- **Pentesting Exercise Types -White-Team**: An impartial group that assesses and mediates between red and blue teams during an exercise.
+- **Pentesting Exercise Types -Purple-Team**: A collaborative approach that combines red and blue teams to work together to improve security and response capabilities.
 <!-- 2.0 Architecture and Design -->
 
 ## 2.1 Explain the importance of security concepts in an enterprise environment
@@ -627,21 +617,21 @@
 
 %
 
-- **Configuration Management**:
-- **Diagrams**: Visual representations of system configurations and network topologies.
-- **Baseline Configuration**: A standard, secure configuration that serves as a reference for a system's ideal state.
-- **Standard Naming Conventions**: Consistent naming conventions for devices, files, or resources.
-- **Internet Protocol (IP) Schema**: A plan that defines IP address allocation within a network.
+- **Configuration Management**: Incident and disaster response and recovery become increasingly difficult to provision at scale unless well organized. Configuration Management ensures that each component of ICT infrastructure is in a trusted state that has not diverged from its documented properties.
+- **Configuration Management -Diagrams**: visual representation that helps organizations manage and control the configuration of various IT assets and components within their environment.
+- **Configuration Management -Baseline Configuration**: A standard, secure configuration that serves as a reference for a system's ideal state.
+- **Configuration Management -Standard Naming Conventions**: help maintain consistency and organization within an organization's IT infrastructure, making it easier to identify, manage, and track various components and resources.
+- **Configuration Management -Internet Protocol (IP) Schema**: A plan that defines IP address allocation within a network.
 - **Data Sovereignty**: The concept that data is subject to the laws and governance of the country or region in which it is stored.
-- **Data Protection**:
-- **Data Loss Prevention (DLP)**: Techniques and tools to prevent the unauthorized disclosure of sensitive data.
-- **Masking**: Replacing sensitive data with fictional or obscured characters.
-- **Encryption**: The process of converting data into a secure format that is unreadable without the appropriate decryption key.
-- **At Rest**: Data encryption while stored on storage devices.
-- **In Transit/Motion**: Data encryption during transmission over networks.
-- **In Processing**: Data encryption while being processed by applications or systems.
-- **Tokenization**: Replacing sensitive data with tokens that have no intrinsic value.
-- **Rights Management**: Managing and enforcing access rights and permissions for data.
+- **Data Protection**: safeguarding data from unauthorized access, corruption, theft, or loss.
+- **Data Protection -Data Loss Prevention (DLP)**: Techniques and tools to prevent the unauthorized disclosure of sensitive data.
+- **Data Protection -Masking**: Replacing sensitive data with fictional or obscured characters. Example, `Hello = H****`.
+- **Data Protection -Encryption**: The process of converting data into a secure format that is unreadable without the appropriate decryption key.
+- **Data Protection -At Rest**: Data encryption while stored on storage devices.
+- **Data Protection -In Transit/Motion**: Data encryption during transmission over networks.
+- **Data Protection -In Processing**: Data encryption while being processed by applications or systems.
+- **Data Protection -Tokenization**: Replacing sensitive data with tokens that have no intrinsic value, but can be referenced to see actual data value.
+- **Data Protection -Rights Management**: Managing and enforcing access rights and permissions for data.
 - **Geographical Considerations**: Factors related to the physical location of data centers, facilities, and the impact on security and compliance.
 - **Response and Recovery Controls**: Measures and processes to respond to and recover from security incidents or disasters.
 - **Secure Sockets Layer (SSL)/Transport Layer Security (TLS) Inspection**: The practice of inspecting encrypted traffic to detect and prevent threats.
@@ -690,12 +680,12 @@
 
 %
 
-- **Cloud Models**:
-- **Infrastructure as a Service (IaaS)**: Cloud service providing virtualized computing resources over the internet.
-- **Platform as a Service (PaaS)**: Cloud service offering a platform for developing, running, and managing applications without worrying about infrastructure.
-- **Software as a Service (SaaS)**: Cloud service delivering software applications over the internet, often on a subscription basis.
+- **Cloud Models**: collectively define the different ways organizations can use cloud resources.
+- **Infrastructure as a Service (IaaS)**: Cloud service providing virtualized computing resources over the internet. You design it all.
+- **Platform as a Service (PaaS)**: Cloud service offering a platform for developing, running, and managing applications without worrying about infrastructure. You bring your code.
+- **Software as a Service (SaaS)**: Cloud service delivering software applications over the internet, often on a subscription basis. You bring your data.
 - **Anything as a Service (XaaS)**: An extension of cloud services beyond the core IaaS, PaaS, and SaaS models.
-- **Public Cloud**: Cloud services provided by third-party vendors to the general public.
+- **Public Cloud**: Cloud services provided by third-party vendors to the general public. AWS, Google Cloud, Microsoft Azure...
 - **Community Cloud**: Cloud services shared by a specific group or community with common interests.
 - **Private Cloud**: Cloud infrastructure dedicated to a single organization.
 - **Hybrid Cloud**: A mix of public and private cloud services to meet specific requirements.
@@ -704,8 +694,8 @@
 - **On-Premises vs. Off-Premises**:
 - **On-Premises**: Resources, systems, and infrastructure located within an organization's physical facilities.
 - **Off-Premises**: Resources, systems, or services hosted outside an organization's physical facilities, often in the cloud.
-- **Fog Computing**: A decentralized computing architecture that extends cloud computing capabilities to the edge of the network.
-- **Edge Computing**: Processing data closer to the source or destination, reducing latency and enabling real-time analysis.
+- **Fog Computing**: A decentralized computing architecture that extends cloud computing capabilities to the edge of the network. Analyze and filter data. Important data is sent to data center for processing.
+- **Edge Computing**: ultra low latency processing data closer to the source, reducing latency and enabling real-time analysis.
 - **Thin Client**: A lightweight computer or device that relies on a central server for processing and storage.
 - **Containers**: Lightweight, standalone executable packages that include everything needed to run software, including code, runtime, libraries, and dependencies.
 - **Microservices/API**:
