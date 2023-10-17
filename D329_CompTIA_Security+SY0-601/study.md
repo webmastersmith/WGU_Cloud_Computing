@@ -41,8 +41,12 @@
 
 - **Center for Internet Security (CIS)**: Provides a set of best practices and guidelines for securing systems and data. CIS Controls and CIS Benchmarks are well-known resources in the cybersecurity community.
 - **National Institute of Standards and Technology (NIST) Risk Management Framework (RMF)/Cybersecurity Framework (CSF)**: NIST provides comprehensive guidance on risk management and cybersecurity practices. The NIST CSF is widely adopted as a framework for improving cybersecurity posture.
-- **International Organization for Standardization (ISO) 27001/27002/27701/31000**: ISO 27001 is a globally recognized standard for information security management systems (ISMS). ISO 27002 provides guidelines for implementing controls. ISO 27701 extends privacy management to ISO 27001. ISO 31000 is a standard for risk management.
-- **SSAE SOC 2 Type I/II**: These are auditing standards developed by the American Institute of CPAs (AICPA) for service organizations to demonstrate their controls and security practices. SOC 2 Type II is more rigorous and involves testing controls over a period.
+- **International Organization for Standardization (ISO) 27001/27002/27701/31000**:
+  - ISO 27001: Framework to help organizations protect the confidentiality, integrity, and availability of their information assets.
+  - ISO 27002 provides guidelines(best practices) for implementing 27001 controls.
+  - ISO 27701 extends privacy management to ISO 27001.
+  - ISO 31000 is a standard for risk management.
+- **SSAE SOC 2 Type I/II**: These are auditing standards developed by the American Institute of CPAs (AICPA) for service organizations to demonstrate their controls and security practices. SOC 2 Type II is more rigorous and involves testing controls over a period of time.
 - **Cloud Security Alliance**: An organization that promotes best practices for secure cloud computing. Their Cloud Control Matrix provides a framework for assessing cloud security.
 -
 - **Security Controls**
@@ -50,7 +54,7 @@
   - **Operational Controls**: These controls are concerned with day-to-day security operations and processes within an organization. They involve tasks like access management, incident response, and monitoring.
   - **Technical Controls**: Technical controls are implemented through technology and systems. They include things like firewalls, intrusion detection systems, encryption, and authentication mechanisms.
 -
-- **Control Types**:
+- **Security Control Types**:
   - **Preventive Controls**: These controls are designed to prevent security incidents from occurring. They aim to stop or limit potential threats and vulnerabilities. Examples include firewalls and access controls.
   - **Detective Controls**: Detective controls are put in place to identify and detect security incidents when they happen. They help in quickly identifying unauthorized access or unusual activities. Examples include intrusion detection systems and log monitoring.
   - **Corrective Controls**: Corrective controls are activated after a security incident has been detected to mitigate the impact and prevent similar incidents in the future. Examples include patch management and incident response procedures.
@@ -66,7 +70,7 @@
 - **Threat Intelligence Sources -Public/Private Information-Sharing Centers**: Organizations or groups that share threat intelligence among members.
 - **Threat Intelligence Sources -Dark Web**: Hidden parts of the internet where cybercriminals trade information and conduct illicit activities.
 - **Threat Intelligence Sources -Indicators of Compromise**: Pieces of data indicating a security incident or breach. IoC is evidence of a TTP(tactic, technique, or procedure).
-- **Threat Intelligence Sources -Automated Indicator Sharing (AIS)**: A system for sharing standardized threat indicators. Service offered by the Department of Homeland Security (DHS) for companies to participate in threat intelligence sharing.
+- **Threat Intelligence Sources -Automated Indicator Sharing (AIS)**: A framework for sharing CTI. Service offered by the Department of Homeland Security (DHS) for companies to participate in threat intelligence sharing.
 - **Structured Threat Information eXpression (STIX)**: OASIS framework syntax for sharing CTI.
 - **Trusted Automated eXchange of Intelligence Information (TAXII)**: means for transmitting CTI data between servers and clients. sharing threat intelligence.
 -
@@ -77,7 +81,7 @@
 - **SQL injection**: also known as SQLI, is a common attack vector that uses malicious SQL code for backend database manipulation to access information that was not intended to be displayed. The giveaway here is the 1=1 in the query which is essentially creating a condition that will automatically be true.
 - **XSS (Cross-Site Scripting) attacks**: a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites.
 - **Replay Attack**: a kind of man-in-the-middle attack in which an attacker sniffs messages being sent on a channel to intercept them and resend them under the cloak of authentic messages
-- **CSRF (Cross Sit Request Forgery)**: attacks that target functionality that causes a state change on the server, such as changing the victim's email address or password, or purchasing something.
+- **CSRF (Cross Sit Request Forgery)**: hijacking a users session. usually demonstrated as someone stealing money from bank with well crafted URL and a person who is logged into their bank.
 
 ## Agreements
 

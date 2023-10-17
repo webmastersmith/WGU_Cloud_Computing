@@ -646,7 +646,7 @@
 - **Honeyfiles**: Fake files or data designed to deceive attackers.
 - **Honeynets**: Entire network segments designed to lure and analyze attackers.
 - **Fake Telemetry**: False data generated to mislead attackers.
-- **DNS Sinkhole**: Redirecting malicious domain queries to a harmless location(honeynet), where it can be analyzed.
+- **DNS Sinkhole**: Redirecting malicious domain queries to a harmless location(honeynet or typosquatting domain names), where it can be analyzed.
 
 ## 2.2 Summarize virtualization and cloud computing concepts
 
@@ -694,7 +694,7 @@
 - **On-Premises vs. Off-Premises**:
 - **On-Premises**: Resources, systems, and infrastructure located within an organization's physical facilities.
 - **Off-Premises**: Resources, systems, or services hosted outside an organization's physical facilities, often in the cloud.
-- **Fog Computing**: A decentralized computing architecture that extends cloud computing capabilities to the edge of the network. Analyze and filter data. Important data is sent to data center for processing.
+- **Fog Computing**: A decentralized computing architecture that extends cloud computing capabilities to the edge of the network. Analyze and filter data. Important data is sent to Cloud(data center) for processing.
 - **Edge Computing**: ultra low latency processing data closer to the source, reducing latency and enabling real-time analysis.
 - **Thin Client**: A lightweight computer or device that relies on a central server for processing and storage.
 - **Containers**: Lightweight, standalone executable packages that include everything needed to run software, including code, runtime, libraries, and dependencies.
