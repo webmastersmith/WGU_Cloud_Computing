@@ -1761,7 +1761,7 @@
 - **Virtual Private Cloud (VPC) Endpoint**: A private connection between a VPC and supported AWS services.
 - **Container Security**: Securing containerized applications and services.
 - **Solutions**:
-- **Cloud Access Security Broker (CASB)**: A solution for managing and securing cloud services.
+- **Cloud Access Security Broker (CASB)**: A solution for managing and securing cloud services. SSO(single sign on auth). Malware scans. Monitor and Audit. Provides visibility and control over the use of cloud services within an organization, helping to detect and block unauthorized cloud applications. It acts as an intermediary between users and cloud services, allowing organizations to enforce security policies, monitor cloud activity, and prevent access to unsanctioned or high-risk cloud applications.
 - **Application Security**: Protecting cloud-based applications from threats.
 - **Next-Generation Secure Web Gateway (SWG)**: A security solution for monitoring and filtering web traffic.
 - **Firewall Considerations in a Cloud Environment**: Adapting firewall configurations for cloud infrastructure.
