@@ -11,6 +11,7 @@
   - **Filesystem Permissions**: Permissions governing access to files and directories on a filesystem.
 -
 - **Order of volatility**
+  - the sequence or order in which the digital evidence is collected. The order is maintained from highly volatile to less volatile data. Highly volatile data resides in the memory, cache, or CPU registers, and it will be lost as soon as the power to the computer is turned off.
   1. Registers, Cache.
   2. RAM: Routing Table, ARP Cache, Process Table, Kernel Stastics, Memory.
   3. Temporary File Systems.
