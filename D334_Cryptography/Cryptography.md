@@ -11,3 +11,119 @@
 - https://www.youtube.com/playlist?list=PLCpo5JCOaimi8Ot328oQWGL73bT3O0ibc
 - https://www.reddit.com/r/WGU/comments/11pvlg3/failed_introduction_to_cryptography_d334/
 - https://www.studocu.com/en-us/document/western-governors-university/legal-issues-in-information-security/how-to-pass-c839-intro-to-cryptography-2994/36521132
+- https://www.reddit.com/r/WGU/comments/v0szcv/thirdterm_bscc_c173_c916_c175_c839/
+- https://www.reddit.com/r/WGU/comments/v9plvw/passed_c839d334_intro_to_cryptography/
+
+## WGU Tips
+
+Chapter 2 Summary
+Webex meeting recording: Chapter 2 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=11ae0fc01ef3146e29f3def3c20cc295
+
+Chapter 3 Summary
+Webex meeting recording: Chapter 3 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=5585101366429fd1c6ebdfbb8774af88
+
+Chapter 4 Summary
+Webex meeting recording: Chapter 4 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=66510775337a1d7dd17606335f86f15b
+
+Chapter 5 Summary
+Webex meeting recording: Chapter 5 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=881e20011a4e41e2fbc6098ec52a1bd2
+
+Chapter 6 Summary
+Webex meeting recording: Chapter 6 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=7d211a50d793869dfda4c34b900e8efb
+
+Chapter 7 Summary
+Webex meeting recording: Chapter 7 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=96771c992d911855f55fbc96487ef478
+
+Chapter 8 Summary
+Webex meeting recording: Chapter 8 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=86e2b75e058eaa3207a1efc71fbc2a71
+
+Chapter 9 Summary
+Webex meeting recording: Chapter 9 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=755d2552b1c36fe8f051b9b91e84ca05
+
+Chapter 10 Summary
+Webex meeting Recording: Chapter 10 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=204455271930ab7c9280faed0e9e516d
+
+Chapter 12 Summary
+Webex meeting recording: Chapter 12 Summary
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=d14aead54d8192afa00690e026ae5276
+
+Topic covered was PKIs
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=4951ceffe4b5807a18eb82607ee842c0
+
+Topic covered was Cipher Modes
+Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=aeb7d2d305685b241c488b601ed1f4bd
+
+## Exam Preparedness
+
+To prepare for the objective assessment, ask yourself these questions:
+
+## Section 1
+
+- **Secret-Key Encryption**: Symmetric encryption. One key (de/en)crypts.;
+- **Public-Key Encryption**: Asymmetric encryption. Two keys. Public/Private. Only public key can decrypt private key. Only private key can decrypt public key. Authenticate Identities. Pass Secret-Keys.;
+- **Binary AND, OR, XOR**:
+  - ![binary or and xor](./img/binary_or_and_xor.jpg)
+  - **AND** only double = '1'.
+  - **OR** any '1' = '1'.
+  - **XOR** only opposite = '1'.;
+- **Authentication**: It is the process of verification of the identity of the valid person through his username and password that communicates over a network.;
+- **Authorization**: It refers to the process of granting or denying access to a network resource or service. Most of the computer security systems that we have today are based on a two-step mechanism. The first step is authentication, and the second step is authorization or access control, which allows the user to access various resources based on the user’s identity.;
+- **Confidentiality or privacy**: It means the assurance that only authorized users can read or use confidential information. When cryptographic keys are used on plaintext to create ciphertext, privacy is assigned to the information.;
+- **Integrity**: Integrity is the security aspect that confirms that the original contents of information have not been altered or corrupted. There should be not any kind of modification with information while its transport over the network.;
+- **Non-repudiation**: Non-repudiation makes sure that each party is liable for its sent message. Someone can communicate and then later either falsely deny the communication entirely or claim that it occurred at a different time, or even deny receiving any piece of information.;
+- **Monoalphabetic Cipher**: Each letter in the plaintext is replaced by a fixed corresponding letter in the ciphertext. This type of substitution cipher has 26 different possible keys.;
+- **Polyalphabetic Cipher**: In a polyalphabetic cipher, each letter can be replaced by multiple ciphertext letters based on its position within the plaintext. The Vigenère cipher is an example of a polyalphabetic cipher.;
+- **Pigpen Cipher**:
+  - ![pigpen cipher](./img/Pigpen_cipher_key.png)
+  - Mono-alphabetic substitution cipher that makes use of mapping plaintext characters to graphical characters rather than to alphabetic. ones. i.e. A=(pick a symbol), vs A=(pick a letter). Disadvantage -once the mapping is known, it is difficult to keep the message secret.;
+- **Rail Code Cipher**:
+  - ![rail fence cipher](./img/rail-fence-cipher.png)
+  - Employs a method to scramble text by writing it in a sequence across a number of rails.;
+- **BIFID Cipher**:
+  - ![BIFID Cipher](./img/bifid_cipher.PNG)
+  - Makes use of a grid and which maps the letters into numeric values.;
+- **Playfair Cipher**:
+  - ![playfair cipher](./img/Playfair_Cipher.png)
+  - The Playfair cipher uses a 5×5 grid of letters, and encrypts a message by breaking the text into pairs of letters and swapping them according to their positions in a rectangle within that grid: "HI" becomes "BM".;
+- **Morse Code Cipher**:
+  - ![morsecode cipher](./img/morsecode.webp)
+  - Encoding method, rather than a cipher, that works by translating characters into sequences of dots (.) and dashes (-).;
+- **Caesar Cipher**:
+  - ![Caesar Cipher](./img/Caesar_cipher_left_shift_of_3.svg)
+  - Mono-alphabetic substitution cipher known as "shift" cipher. Involves plaintext being replaced by a letter some fixed number of positions down the alphabet. i.e., a Caesar Cipher using a shift of +3 would mean a plaintext letter A would result in a ciphertext letter D (a shift of three positions to the right in the alphabet).;
+- **Vigenere Cipher**:
+  - ![Vigenere Cipher](./img/vigenere_Cipher.webp)
+  - Polyalphabetic cipher that involves using a different mapping, based on a keyword, for each character of the cipher. An advantage of this type of cipher is that the same plaintext character is likely to be coded to different mappings, depending on the position of the keyword, making guessing more difficult.;
+- **One Time Pad Cipher**:
+  - ![one time pad](./img/one_time_pad.png)
+  - Cipher code mapping that is used only once. Advantage is it is essentially unbreakable, disadvantage is it takes lots of work as you'd have to generate the pad to be used, each time.;
+- **Four-square Cipher**:
+  - ![Four Square Cipher](./img/four_square_cipher.jpg)
+  - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
+- **Enigma Machine**: Used a polyalphabetic substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
+
+- **Identify characteristics and types of substitution ciphers**:
+  - Substitution ciphers involve replacing each letter or character in the plaintext with another letter or character.
+  - They are typically simple and can be easily implemented.
+  - Substitution ciphers are vulnerable to cryptanalysis, as they often have recognizable patterns.
+  - These ciphers are part of classical cryptography and are rarely used for secure communication today.;
+  - **Caesar Cipher (Shift Cipher)**: The letters in the plaintext are shifted a fixed number of positions down or up the alphabet. For example, with a shift of 3, "ABC" becomes "XYZ.";
+  - **Atbash Cipher**: In the Atbash cipher, the alphabet is reversed, so 'A' is replaced by 'Z,' 'B' is replaced by 'Y,' and so on.;
+  - **Rail Fence Cipher**: This cipher rearranges the letters in a zigzag pattern. The letters are then read from left to right, top to bottom.;
+
+## Section 2
+
+- **Caesar Cipher (Shift Cipher)**: The letters in the plaintext are shifted a fixed number of positions down or up the alphabet. For example, with a shift of 3, "ABC" becomes "XYZ.";
+- **Monoalphabetic Cipher**: Each letter in the plaintext is replaced by a fixed corresponding letter in the ciphertext. This type of substitution cipher has 26 different possible keys.;
+- **Polyalphabetic Cipher**: In a polyalphabetic cipher, each letter can be replaced by multiple ciphertext letters based on its position within the plaintext. The Vigenère cipher is an example of a polyalphabetic cipher.;
+- **Atbash Cipher**: In the Atbash cipher, the alphabet is reversed, so 'A' is replaced by 'Z,' 'B' is replaced by 'Y,' and so on.;
+- **Rail Fence Cipher**: This cipher rearranges the letters in a zigzag pattern. The letters are then read from left to right, top to bottom.;
