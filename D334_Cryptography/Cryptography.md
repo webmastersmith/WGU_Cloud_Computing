@@ -76,12 +76,19 @@ To prepare for the objective assessment, ask yourself these questions:
   - **OR** any '1' = '1'.
   - **XOR** only opposite = '1'.;
 - **Authentication**: It is the process of verification of the identity of the valid person through his username and password that communicates over a network.;
+- **Encryption**:
+  - simplest terms, changing plaintext into ciphertext.
+  - encryption should be done at rest and in transit;
+- **Decryption**: changing ciphertext into plaintext.;
 - **Authorization**: It refers to the process of granting or denying access to a network resource or service. Most of the computer security systems that we have today are based on a two-step mechanism. The first step is authentication, and the second step is authorization or access control, which allows the user to access various resources based on the user’s identity.;
 - **Confidentiality or privacy**: It means the assurance that only authorized users can read or use confidential information. When cryptographic keys are used on plaintext to create ciphertext, privacy is assigned to the information.;
 - **Integrity**: Integrity is the security aspect that confirms that the original contents of information have not been altered or corrupted. There should be not any kind of modification with information while its transport over the network.;
 - **Non-repudiation**: Non-repudiation makes sure that each party is liable for its sent message. Someone can communicate and then later either falsely deny the communication entirely or claim that it occurred at a different time, or even deny receiving any piece of information.;
-- **Monoalphabetic Cipher**: Each letter in the plaintext is replaced by a fixed corresponding letter in the ciphertext. This type of substitution cipher has 26 different possible keys.;
-- **Polyalphabetic Cipher**: In a polyalphabetic cipher, each letter can be replaced by multiple ciphertext letters based on its position within the plaintext. The Vigenère cipher is an example of a polyalphabetic cipher.;
+- **Monoalphabetic Cipher**: code or substitution is where a single mapping from our alphabet to a cipher alphabet is created. Many
+  early cryptosystems used this.;
+- **Polyalphabetic Cipher**:
+  - refers to the mapping of our alphabet to a number of cipher alphabets. This approach added a bit of complexity to early cryptosystems.
+  - In a polyalphabetic cipher, each letter can be replaced by multiple ciphertext letters based on its position within the plaintext. The Vigenère cipher is an example of a polyalphabetic cipher.;
 - **Pigpen Cipher**:
   - ![pigpen cipher](./img/Pigpen_cipher_key.png)
   - Mono-alphabetic substitution cipher that makes use of mapping plaintext characters to graphical characters rather than to alphabetic. ones. i.e. A=(pick a symbol), vs A=(pick a letter). Disadvantage -once the mapping is known, it is difficult to keep the message secret.;
@@ -110,25 +117,39 @@ To prepare for the objective assessment, ask yourself these questions:
   - ![Four Square Cipher](./img/four_square_cipher.jpg)
   - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
 - **Enigma Machine**: Used a polyalphabetic substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
-- **hasing**: algorithm outputs fixed length value that cannot be mathematically reversed.;
-- **HMAC**: hashing algorithm that takes a secret and will only produce same results if input string and secret are same.;
 - **Digital Signatures**: Authentication and Non-repudiation.
   - Sender encrypts hash of media with private key.
   - Receiver decrypts signature with senders public key and compares hash of media with decrypted hash of signature
   - If both match, only the sender could sign media.;
-- **Identify characteristics and types of substitution ciphers**:
-  - Substitution ciphers involve replacing each letter or character in the plaintext with another letter or character.
-  - They are typically simple and can be easily implemented.
-  - Substitution ciphers are vulnerable to cryptanalysis, as they often have recognizable patterns.
-  - These ciphers are part of classical cryptography and are rarely used for secure communication today.;
-  - **Caesar Cipher (Shift Cipher)**: The letters in the plaintext are shifted a fixed number of positions down or up the alphabet. For example, with a shift of 3, "ABC" becomes "XYZ.";
-  - **Atbash Cipher**: In the Atbash cipher, the alphabet is reversed, so 'A' is replaced by 'Z,' 'B' is replaced by 'Y,' and so on.;
-  - **Rail Fence Cipher**: This cipher rearranges the letters in a zigzag pattern. The letters are then read from left to right, top to bottom.;
+- **Pseudo-Random Number Generators (PRNGs)**: This method repeats the random numbers after a given time (periodic). They are fast and are also deterministic and are useful in producing a repeatable set of random numbers.;
+- **True Random Number Generators (TRNGs)**:
+  - This method generates a true random number and uses some form of random process. One approach is to monitor the movements of a mouse pointer on a screen or from the pauses between keystrokes.
+  - Overall, the method is generally slow, especially if it involves human interaction, but is **non-deterministic** and **aperiodic**.;
+- **Frequency Analysis**: cipher cracking methodology that involves identifying patterns and **variations in the probability** of codes. i.e. a three-letter ciphered text combination spotted at the beginning of a string too often could tip us off that those three letters correlate the letters THE in the English alphabet.;
+- **Entropy**: measures level of unpredictability; in encryption relates to the degree of uncertainty of the encryption process.;
+- **Two common binary to characters encoding methods**: ASCII (8-bit values, up to 256 characters) and UTF-16 (16- bit values, up to 65,536 characters).;
+- **Hardware vs Software encryption**: Hardware encryption is more efficient than software encryption.;
+- **hardware security module (HSM)**: is a tamper-evident and intrusion-resistant physical device that safeguards and manages cryptographic keys and provides cryptographic processing.;
+- **trusted platform module (TPM)**: is a dedicated processor that handles hardware-level encryption; allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
 
 ## Section 2
 
-- **Caesar Cipher (Shift Cipher)**: The letters in the plaintext are shifted a fixed number of positions down or up the alphabet. For example, with a shift of 3, "ABC" becomes "XYZ.";
-- **Monoalphabetic Cipher**: Each letter in the plaintext is replaced by a fixed corresponding letter in the ciphertext. This type of substitution cipher has 26 different possible keys.;
-- **Polyalphabetic Cipher**: In a polyalphabetic cipher, each letter can be replaced by multiple ciphertext letters based on its position within the plaintext. The Vigenère cipher is an example of a polyalphabetic cipher.;
-- **Atbash Cipher**: In the Atbash cipher, the alphabet is reversed, so 'A' is replaced by 'Z,' 'B' is replaced by 'Y,' and so on.;
-- **Rail Fence Cipher**: This cipher rearranges the letters in a zigzag pattern. The letters are then read from left to right, top to bottom.;
+## Section 3
+
+- **Explain Hashing**:
+  - describes one-way or irreversible encryption used for protecting the integrity of data and in authentication applications.
+  - Hashing is normally used to either hide the original contents of a message (such as hiding a password), or to check the integrity of data.
+  - Hashing involves taking a variable length input and producing a fixed length output (message digest).
+  - A weakness of one-way hashing is that the same piece of plaintext will result in the same ciphertext (unless salt is applied).;
+- **Important factors with hash signatures are**:
+  - **Collision**. This is where another match is found, no matter the similarity of the original message. Collision attacks exploit this.
+  - **Similar context**. This is where part of the message has some significance to the original and generates the same hash signature. This is defined as a Pre-image attack.
+  - **Full context**. This is where an alternative message is created with the same hash signature and has a direct relation to the original message. This is an extension to a Pre-image attack.;
+- **collision**: occurs when two different input values that produce the same hash signature.;
+- **Apache-defined APR1 Hash**: format addresses the problems of brute forcing an **MD5** hash, and basically iterates the hash value 1,000 times.;
+- **SHA method**: does not have a salted value. SHA produces a 160-bit signature, thus can contain a larger set of hashed value than MD5, but because there is no salt it can be open to rainbow table attacks, and also brute force. (A rainbow table is a collection of precomputed hash values of actual plaintext passwords used for password cracking.);
+- **HMAC**: is a message authentication code (MAC) that can be used to verify the integrity and authentication of the message. It involves hashing the message with a secret key, and thus differs from standard hashing, which is purely a one-way function.;
+- **Passwords which use a hashed value can be cracked by**: either with rainbow tables or brute force. An improved method of generating passcode is to generate a different one each time based on an initial seed value or based on time. One Time Passwords, Timed One Time Password, Hashed One Time Password;
+- **One Time Passwords (OTP)**: This allows a new unique password to be created for each instance, based on an initial seed.;
+- **Timed One Time Password (TOTP)**: This allows for a new unique passcode to be created for each instance, based on an initial seed and for a given time period.;
+- **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
