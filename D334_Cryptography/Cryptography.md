@@ -144,7 +144,7 @@ To prepare for the objective assessment, ask yourself these questions:
   - padding is used to fill blocks to operating size when the data does not fit perfectly.
   - Symmetric block ciphers manage how blocks of data are processed through block cipher mode implementations. For instance, one may choose to use the DES block cipher configured with ECB as the mode of operation.
   - Common block cipher modes covered in this course include ECB, CBC, CFB, OFB, and CTR.
-  - CFB, OFB, and CTR blocks can be (en/de)crypted in parallel(do not rely on the previous block) and essentially allow the block cipher to operate like a stream cipher.;
+  - CTR can be run in parallel(do not rely on the previous block) and essentially allow the block cipher to operate like a stream cipher.;
 - **Symmetric Stream Encryption**: much faster than block and can typically be applied in real-time applications. symmetric stream encryption involves encrypting one bit at a time, i.e., a synchronous stream.;
 - **Work Factor**:
   - All current cipher codes are crackable and a measure of the security of a code is the amount of time it would take to break the code based on the computational power available. This is often referred to as the work factor. As processing power magnifies, security of current ciphers decreases.;
