@@ -110,7 +110,12 @@ To prepare for the objective assessment, ask yourself these questions:
   - ![Four Square Cipher](./img/four_square_cipher.jpg)
   - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
 - **Enigma Machine**: Used a polyalphabetic substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
-
+- **hasing**: algorithm outputs fixed length value that cannot be mathematically reversed.;
+- **HMAC**: hashing algorithm that takes a secret and will only produce same results if input string and secret are same.;
+- **Digital Signatures**: Authentication and Non-repudiation.
+  - Sender encrypts hash of media with private key.
+  - Receiver decrypts signature with senders public key and compares hash of media with decrypted hash of signature
+  - If both match, only the sender could sign media.;
 - **Identify characteristics and types of substitution ciphers**:
   - Substitution ciphers involve replacing each letter or character in the plaintext with another letter or character.
   - They are typically simple and can be easily implemented.
