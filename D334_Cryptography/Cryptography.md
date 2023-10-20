@@ -167,6 +167,24 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Counter Mode Cipher**:
   - ![Counter Mode Cipher](./img/counter_mode_cipher.PNG)
   - ![Ciphers](./img/ciphers.PNG);
+- **Explain RC4, CHA CHA Symmetric Stream Ciphers**:
+  - **RC4**. (stream cipher) – used in SSL and WEP.
+  - **CHA CHA**. stream cipher.;
+- **Explain MD5, SHA Hashes**:
+  - **MD5**. 128 bit hash.
+  - **SHA 1, 256, 3**. 1(160 bit), 256(192 bit), 3(224, 256, 384, and 512 bit);
+- **Explain DES, 3DES, RC2, RC4, IDEA, and AES Symmetric Block Cipher**:
+  - **DES**. (56 bit key size, 64 bit block size).
+  - **3DES**. (112 bit key size, 64 bit block size).
+  - **RC2**. (40-bit key size, 64-bit blocks).
+  - **RC5**. (variable key size, 32, 64 or 128-bit block sizes).
+  - **IDEA**. (128 key size, 64 bit block size).
+  - **AES**. (128, 192 or 256-bit key size, 128-bit block size).;
+- **Explain RSA, DSA and ElGamal Asymmetric Cipher**:
+  - **RSA**.
+  - **DSA**.
+  - **ElGamal**. key signing.
+  - **Cramer Shoup**. extends El Gamal but adds one-way hashing. ;
 
 ## Section 3
 
@@ -184,3 +202,9 @@ To prepare for the objective assessment, ask yourself these questions:
 - **One Time Passwords (OTP)**: This allows a new unique password to be created for each instance, based on an initial seed.;
 - **Timed One Time Password (TOTP)**: This allows for a new unique passcode to be created for each instance, based on an initial seed and for a given time period.;
 - **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
+- **Time Stamp Protocol (TSP)**: cryptography method to give a verifiable method that a data entity was created at a defined time.;
+
+## Section 4
+
+- **Advantage of Signing**: file integrity. sender non-repudiation.;
+-
