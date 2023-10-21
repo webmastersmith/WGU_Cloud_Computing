@@ -180,7 +180,7 @@ To prepare for the objective assessment, ask yourself these questions:
   - **RC5**. (variable key size, 32, 64 or 128-bit block sizes).
   - **IDEA**. (128 key size, 64 bit block size).
   - **AES**. (128, 192 or 256-bit key size, 128-bit block size).;
-- **Explain RSA, DSA and ElGamal Asymmetric Cipher**:
+- **Explain RSA, DSA and ElGamal Asymmetric Ciphers**:
   - **RSA**.
   - **DSA**.
   - **ElGamal**. key signing.
@@ -207,4 +207,179 @@ To prepare for the objective assessment, ask yourself these questions:
 ## Section 4
 
 - **Advantage of Signing**: file integrity. sender non-repudiation.;
--
+- **Explain Public/Private Keys**:
+  - The public key can only decrypt a private key encryption and the private key can only decrypt a public key encryption. They are mathematically linked this way.
+  - It's like a lockbox that has two types of keys(public/private). Only one person has the ability to open the lock(private key), many people have the ability to lock it(public key). Any person w/public key can put something in the lockbox and lock it, but only the person w/ the private key can open it.;
+- **5 Steps to Signing**:
+  1. Sender creates hash of file and encrypts hash with private key(Signed).
+  2. Client contacts Sender asking for file and passing along Client's public key. Sender encrypts file and signature with the Clients public key(now only the Clients private key can decrypt message. privacy).
+  3. Client decrypts message with it's private key. Inside is the file and the encrypted signature.
+  4. Client then decrypts Sender signature with Senders public key(non-repudiation).
+  5. Client computes hash of message and compares this to the Sender's hash of original file. If both match, file integrity is assured.;
+
+## Section 5
+
+- **How was the sharing of secret keys solved**:
+  - The major problem of secret-key encryption is how to pass the key between the entity encrypting and the entity decrypting. The two main methods for key exchange in symmetric cryptography is to (1) use a key exchange algorithm (such as Diffie-Hellman) or (2) encrypt the key with the recipient’s public key, pass it to the other side and then allow the recipient use their private key to decrypt it i.e., via public key encryption.
+  - Diffie-Hellman is a widely used key exchange algorithm used to exchange the secret key in symmetric cryptography.;
+- **Forward Secrecy**: An important concept within key exchange is the usage of forward secrecy, which means that a compromise of the long-term keys will not compromise any previous session keys.;
+- **Sesson Key**: one time use key for each session(log-in, log-out).;
+- **Emphemral Keys**: One time use. Temporary key. Throw away. With ephemeral key methods, a different key is used for each connection, and, again, the leakage of any long-term key would not cause all the associated session keys to be breached.;
+- **DHE_EXPORT Downgrade Attack**:
+  - A weakness discovered in Diffie Hellman is that it is fairly easy to precompute values for two popular Diffie-Hellman parameters (and which use the DHE_EXPORT cipher set).
+  - The DHE_EXPORT Downgrade attack involves forcing the key negotiation process to default to 512-bit prime numbers. For this the client only offers DHE_EXPORT for the key negotiation, and the server, if it is setup for this, will accept it. The precomputation of 512-bit keys with g values of 2 and 5 (which are common) are within a reasonable time limits.;
+- **Methods to combat DHE_EXPORT Downgrade attacks**: on Diffie Hellman include:
+  1. Disabling Export Cipher Suites negotiation.
+  2. Using (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE).
+  3. Use a strong group. Diffie Hellman has three groups (bases): Group 1, Group 3 or Group 5, which vary in the size of the prime number used.;
+- **Diffie-Hellman man in the middle attack**: methods have been used extensively to create a shared secret key but suffers from man-in-the-middle attacks, where an attacker sits in-between and passes the values back and forward and negotiates two keys: one between a sender and the attacker, and the other between the receiver and the attacker. An improved method is to use public key encryption.;
+- **Diffie-Hellman strength relates to what**: the size of the prime number bases which are used in the key exchange. bigger, better(longer to crack).;
+
+## Section 6 Certificate Management
+
+- **Common Certificate Applications**: Server authentication, Client authentication, Code signing, Email signing, Time stamping, IP security, Windows hardware driver verification, Smart card logon, Document signing, Public key transport.;
+- **Common Certificate Types**: IKE, PKCS #7, PKCS #10, RSA signatures, X.509v3;
+- **Pubic-Key Cryptography Standards (PKCS) #5, #7, #10, #12**:
+  - **PKCS #5** Used for password-based encryption.
+  - **PKCS #7** Used to sign and/or encrypt messages for PKI.
+  - **PKCS #10** A standard format used for requesting digital certificates from certificate authorities.
+  - **PKCS #12** Used to bundle a private key with its X.509 certificate or to bundle all the members of a chain of trust.;
+- **What is Certificate Revocation List (CRL) and who publishes it**:
+  - Certificates listed here cannot be trusted.
+  - CRL must be published by the CA who originally generated the targeted certificates.;
+- **Certificate Revoked**: private key breach.;
+- **Certificate Hold**: investigation has show that it is possible breach of private key.;
+- **Certificate Revocation Key Compromise**: This defines that the private key has been compromised.;
+- **Certificate Revocation CA Compromise**: This defines that the CA has been compromised.;
+- **Certificate Revocation Affiliation Changed**: This defines that the certificate affiliation defined within the certificate has changed.;
+- **Certificate Revocation Superseded**: This defines that there is an updated certificate, and that this certificate is not valid any more.;
+- **Certificate Revocation Cessation Of Operation**: This defines a generic reason of a termination of the certificate, such as where a company has gone in liquidation.;
+- **Certificate Revocation Certificate Hold**: This defines where a hold is placed on a certificate.;
+- **Certificate Revocation Remove from CRL**: This is where a remove is defined from the list.;
+- **Certificate Revocation Privilege Withdrawn**: This defines where a privilege to sign certificates has been removed.;
+
+## Section 7 Tunneling
+
+- **Most common tunneling protocols**:
+  - PPTP. Point-to-point tunneling protocol. Created by Microsoft.
+  - L2TP. Layer 2 Tunneling protocol. Cisco Microsoft, Ascent and 3Com created it. Layer 2 protocol.
+  - IPSec. VPN protocol. Open standard. Encryption and Authentication.;
+- **SSL Risk**:
+  - SSL v2. to comply with government export regulations, they were made weak and crackable.
+  - DROWN, POODLE, FREAK all make SSL crackable.;
+- **SSL/TLS**: creates tunnel w/ symmetric key(AES or RC4). Hash is created with MD5 or SHA.;
+- **VPN**: tunnel over public network.;
+- **IPSec ESP, ESP Tunnel/Transport Mode**:
+  - encapsulated security protocol. encrypts payload.
+  - Transport Mode. only payload is encrypted. Has a weakness with replay attack. fix with Tunnel mode.
+  - Tunnel mode. whole packet is encrypted and new IP is added to it.;
+- **IPSec AH, AH with Tunnel/Transport Mode**:
+  - Authentication Header.
+  - Transport mode. AH header inserted between ip and packet. does not encrypt anything. just verifies authenticity.
+  - Tunnel Mode. new ip header and AH is added on. packet is unchanged. does not encrypt anything. only used for verifying authenticity.;
+- **IPSec Transport Mode**: end-to-end encryption. only payload is encrypted. device to device, so even the network can't see traffic;
+- **IPSec Tunnel Mode**: complete packet is encrypted and new header is attached to packet. only encrypted once leaves network;
+- **IPSec Port**: UDP 500. Key exchange. IP Protocol has the value 50 defined in IP header for ESP and 51 for AH.;
+- **Internet Key Exchange (IKE)**: how IPSec does handshake to agree on auth methods. ;
+- **Onion Router**: routing using only subscriber computers instead of publicly available ones.;
+- **TOR network**: network of computers around the world that route traffic. Each hop reduces a persons ability to track you.;
+
+## Section 8 Crypto Cracking
+
+- **Two backdoors in cryptography**:
+  - the two main methods which could be used are
+  - **Key escrow**. This is where a copy of the encryption key is kept in escrow so that it can be used by a government agent.
+  - A **NOBUS (‘nobody but us’)** backdoor. This is where it is mathematically possible for government agents to crack the encryption, but no-one else can.;
+- **Exhaustive search Cipher Attack**: Where the intruder uses brute force to decrypt the ciphertext and tries every possible key.;
+- **Known plaintext Cipher Attack**: Where the intruder knows part of the ciphertext and the corresponding plaintext. The known ciphertext and plaintext can then be used to decrypt the rest of the ciphertext.;
+- **Man-in-the-middle Cipher Attack**: Where the intruder is hidden between two parties and impersonates each of them to the other.;
+- **Chosen-ciphertext Cipher Attack**: Where the intruder sends a message to the target, this is then encrypted with the target’s private key and the intruder then analyses the encrypted message. For example, an intruder may send an e-mail to the encryption file server and the intruder spies on the delivered message.;
+- **Active Cipher Attack**: Where the intruder inserts or modifies messages.;
+- **The replay system Cipher Attack**: Where the intruder takes a legitimate message and sends it into the network at some future time.;
+- **Cut-and-paste Cipher Attack**: Where the intruder mixes parts of two different encrypted messages and is able to create a new message. This message is likely to make no sense but may trick the receiver into doing something that helps the intruder.;
+- **Time resetting**: Some encryption schemes use the time of the computer to create the key. Resetting this time or determining the time that the message was created can give some useful information to the intruder.;
+- **Time Cipher Attack**: This involves determining the amount of time that a user takes to decrypt the message; from this the key could be found.;
+- **AES poor implementation of the encryption method**: leaves it susceptible to attacks such as: Brute force, use of Non-Random Numbers, and copy-and-paste.;
+- **RSA suffers from**: several weaknesses and is susceptible to numerous attacks and cracking methods.;
+
+## Section 9 Light-Weight Cryptography
+
+- **Why is light-weight cryptography needed**:
+  - Most conventional cryptosystems require too much processing power; too much physical space; and consume too much battery power for implementation in IoT, embedded SYSTEMS, and RFID.
+  - Light-weight cryptography essentially consists of cryptosystems able to support IoT, embedded systems, RFID etc. (i.e. provide cryptographic functions but require less processing power, physical space, and battery power than conventional cryptosystems).
+- **NIST Device Spectrum**:
+  - **Conventional cryptography**. Servers and Desktops. Tablets and smart phones.
+  - **Light-weight cryptography**. Embedded Systems. RFID and Sensor Networks.;
+- **Quantum computers**: have fast multiplication circuits, and thus can be used to perform multiplications and search a range of prime numbers at a speed which would break most existing RSA implementations.;
+- **Merkle tree**: is a tree that defines each non-leaf node with a value or a label and contains a hash of its children. This builds a hash trees and is used to provide a verification of large-scale data structures.;
+- **Lattice-based cryptography**: uses asymmetric cryptographic primitives based on lattices. It has been known about for several decades, and is now being investigated because of its quantum robustness, whereas many of the existing public key methods such as RSA and Diffie-Hellman cryptosystems can be broken with quantum computers
+- **Light-Weight Crypto -PRESENT**:
+  - Block Size. 64
+  - Key Size. 80 or 128
+  - Attributes. Relatively small key and block sizes. Uses an SPN (substitution permutation network) method. **One of the 1st considered as an AES replacement for use in light-weight implementations**.;
+- **Light-Weight Crypto -XTEA**:
+  - Block Size. 64
+  - Key Size. 128
+  - Attributes. Relatively small key and block sizes and variable rounds setting. Operates with just a just a few lines of code. **Fast speed**.;
+- **Light-Weight Crypto -RC5**:
+  - Block Size. 32, 64, or 128
+  - Key Size. 0-2048
+  - Attributes. Variable block size, key size, and rounds. Can be optimized to IoT devices. **Conventional method suitable for light-weight implementations**.;
+- **Light-Weight Crypto -SIMON**:
+  - Block Size. 32, 48, 64, 96, 128
+  - Key Size. 64, 72, 96, 128, 144, 192 or 256
+  - Attributes. Variable block sizes key sizes, and rounds. **Optimized for hardware implementations**.;
+- **Light-Weight Crypto -SPECK**:
+  - Block Size. 32, 48, 64, 96 or 128
+  - Key Size. Variable
+  - Attributes. Variable block sizes key sizes, and rounds. **Optimized for software implementations**.;
+- **Light-Weight Crypto -CLEFIA**:
+  - Block Size. 128
+  - Key Size. 128, 192 and 256
+  - Attributes. Variable key size and rounds.;
+- **Light-Weight Crypto -Rabbit**:
+  - Hash Value. 128
+  - IV Size. 64;
+- **Light-Weight Crypto -Mickey v2**:
+  - Hash Value. 80
+  - IV Size. Variable up to 80;
+- **Light-Weight Crypto -Trivium**:
+  - Hash Value. 80
+  - IV Size. 80;
+- **Light-Weight Crypto -Grain**:
+  - Hash Value. 80
+  - IV Size. 64;
+- **Light-Weight Crypto -Enocoro**:
+  - Hash Value. 128
+  - IV Size. 64;
+- **Quark**:
+  - Hash Value. 64 or 112.
+  - Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Can be used for hashing and in stream encryption.;
+- **Chaskey**:
+  - Key Size. 128
+  - Light-weight cryptography method for signing messages (MAC). Relatively undemanding hardware implementation (only ~3,333 gates required at 1MHz clock rate) making it suitable for IoT implementation.;
+
+## Section 10 Blockchain and Crypto-Currency
+
+One of the most popular crypto-currencies is Bitcoin (BTC). A key focus is for the crypto-currency to protect against someone spending
+money that they do not have, so Bitcoin uses Blockchain.
+➢ Blockchain is a publicly available ledger of transactions that allows the Bitcoin network to know the number of bitcoins that a given
+user has in their account. Can be public or private.
+➢ A blockchain mining process where a new block of transactions is added to the blockchain and transactions within the block are
+considered to be processed occurs every 10 minutes or so.
+➢ Conventional currencies usually have a central bank that creates money and then controls its supply. The Bitcoin currency is instead
+created when users mine for it, using their computers to perform complex calculations through special software.
+➢ Bitcoin transactions will be captured by miners who will compile a list of the latest transactions. If valid, the transaction is then recorded
+within a mining process, where mining nodes gather new transactions and compute a hash of the new block, and which should also
+contain the hash of the previous block, and then build a transaction log. Once complete, this becomes part of the official Blockchain in
+the network, and the miners reach a consensus on the current Blockchain. Miners receive rewards for successful mining efforts.
+➢ The crypto currency Ethereum was built on the Bitcoin/Blockchain concept but included the concept of smart contracts.
+➢ Within Ethereum applications we define the concept of gas. This is basically the unit that is used to measure the amount of work that is
+required to perform a single Keccak-256 hash.
+➢ Smart contracts are programs stored on a blockchain that run when predetermined conditions are met; they typically are used to
+automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's
+involvement or time loss.
+➢ Along with creating a new currency (Ether), the main contribution of Ethereum is to create the concept of peer-to-peer smart contracts
+which enables users to create their own contracts, and which will be strictly abided to.
+➢ Although Bitcoin, Ethereum, and Hyperledger all use blockchain, Ethereum, and Hyperledger are considered “common” options for
+implementing blockchain for this course. Hyperledger and Ethereum offer the smart contracts feature..
