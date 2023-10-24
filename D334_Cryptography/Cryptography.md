@@ -376,3 +376,5 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Smart contracts**: are programs stored on a blockchain that run when predetermined conditions are met; they typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's involvement or time loss.;
 - **Ethereum gas**: This is basically the unit that is used to measure the amount of work that is required to perform a single **Keccak-256 hash**.;
 - Although Bitcoin, Ethereum, and Hyperledger all use blockchain: **Ethereum, and Hyperledger are considered "common" options for implementing blockchain** for this course. Hyperledger and Ethereum offer the smart contracts feature.;
+
+## Section 12 Wireless Cryptography and Stream Ciphers
