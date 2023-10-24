@@ -297,7 +297,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Active Cipher Attack**: Where the intruder inserts or modifies messages.;
 - **The replay system Cipher Attack**: Where the intruder takes a legitimate message and sends it into the network at some future time.;
 - **Cut-and-paste Cipher Attack**: Where the intruder mixes parts of two different encrypted messages and is able to create a new message. This message is likely to make no sense but may trick the receiver into doing something that helps the intruder.;
-- **Time resetting**: Some encryption schemes use the time of the computer to create the key. Resetting this time or determining the time that the message was created can give some useful information to the intruder.;
+- **Time resetting Cipher Attack**: Some encryption schemes use the time of the computer to create the key. Resetting this time or determining the time that the message was created can give some useful information to the intruder.;
 - **Time Cipher Attack**: This involves determining the amount of time that a user takes to decrypt the message; from this the key could be found.;
 - **AES poor implementation of the encryption method**: leaves it susceptible to attacks such as: Brute force, use of Non-Random Numbers, and copy-and-paste.;
 - **RSA suffers from**: several weaknesses and is susceptible to numerous attacks and cracking methods.;
@@ -361,25 +361,18 @@ To prepare for the objective assessment, ask yourself these questions:
 
 ## Section 10 Blockchain and Crypto-Currency
 
-One of the most popular crypto-currencies is Bitcoin (BTC). A key focus is for the crypto-currency to protect against someone spending
-money that they do not have, so Bitcoin uses Blockchain.
-➢ Blockchain is a publicly available ledger of transactions that allows the Bitcoin network to know the number of bitcoins that a given
-user has in their account. Can be public or private.
-➢ A blockchain mining process where a new block of transactions is added to the blockchain and transactions within the block are
-considered to be processed occurs every 10 minutes or so.
-➢ Conventional currencies usually have a central bank that creates money and then controls its supply. The Bitcoin currency is instead
-created when users mine for it, using their computers to perform complex calculations through special software.
-➢ Bitcoin transactions will be captured by miners who will compile a list of the latest transactions. If valid, the transaction is then recorded
-within a mining process, where mining nodes gather new transactions and compute a hash of the new block, and which should also
-contain the hash of the previous block, and then build a transaction log. Once complete, this becomes part of the official Blockchain in
-the network, and the miners reach a consensus on the current Blockchain. Miners receive rewards for successful mining efforts.
-➢ The crypto currency Ethereum was built on the Bitcoin/Blockchain concept but included the concept of smart contracts.
-➢ Within Ethereum applications we define the concept of gas. This is basically the unit that is used to measure the amount of work that is
-required to perform a single Keccak-256 hash.
-➢ Smart contracts are programs stored on a blockchain that run when predetermined conditions are met; they typically are used to
-automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's
-involvement or time loss.
-➢ Along with creating a new currency (Ether), the main contribution of Ethereum is to create the concept of peer-to-peer smart contracts
-which enables users to create their own contracts, and which will be strictly abided to.
-➢ Although Bitcoin, Ethereum, and Hyperledger all use blockchain, Ethereum, and Hyperledger are considered “common” options for
-implementing blockchain for this course. Hyperledger and Ethereum offer the smart contracts feature..
+- **Bitcoin (BTC)**: most popular crypto-currency. A key focus is for the crypto-currency to protect against someone spending money that they do not have, so Bitcoin uses Blockchain.;
+- **Blockchain**: a publicly available ledger of transactions that allows the Bitcoin network to know the number of bitcoins that a given user has in their account. Can be public or private.;
+- **blockchain mining**: process where a new block of transactions is added to the blockchain and transactions within the block are considered to be processed occurs every 10 minutes or so.;
+- **Conventional currencies vs Crypto currency**: conventional currency usually have a central bank that creates money and then controls its supply. The Bitcoin currency is instead created when users mine for it, using their computers to perform complex calculations through special software.;
+- **Bitcoin transaction steps**:
+  1. will be captured by miners who will compile a list of the latest transactions.
+  2. If valid, the transaction is then recorded within a mining process, where mining nodes gather new transactions and compute a hash of the new block, and which should also contain the hash of the previous block, and then build a transaction log.
+  3. Once complete, this becomes part of the official Blockchain in the network, and the miners reach a consensus on the current Blockchain.
+  4. Miners receive rewards for successful mining efforts.;
+- **crypto currency Ethereum**:
+  - was built on the Bitcoin/Blockchain concept but included the concept of smart contracts.
+  - Along with creating a new currency (Ether), the main contribution of Ethereum is to create the concept of **peer-to-peer smart contracts** which enables users to create their own contracts, and which will be strictly abided to.;
+- **Smart contracts**: are programs stored on a blockchain that run when predetermined conditions are met; they typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's involvement or time loss.;
+- **Ethereum gas**: This is basically the unit that is used to measure the amount of work that is required to perform a single **Keccak-256 hash**.;
+- Although Bitcoin, Ethereum, and Hyperledger all use blockchain: **Ethereum, and Hyperledger are considered "common" options for implementing blockchain** for this course. Hyperledger and Ethereum offer the smart contracts feature.;
