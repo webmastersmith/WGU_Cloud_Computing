@@ -68,11 +68,11 @@ To prepare for the objective assessment, ask yourself these questions:
 
 ## Section 1
 
-- **Binary AND, OR, XOR**:
+- **Binary AND, OR, XOR**: true = 1, false = 0.
   - ![binary or and xor](./img/binary_or_and_xor.jpg)
-  - **AND** both must be true. '1'.
-  - **OR** only one needs to be true. '1'.
-  - **XOR** only a true and false = '1'.;
+  - **AND** both must be true. '1'. 0,0=0. 1,0=0. 0,1=0. 1,1=1.
+  - **OR** only one needs to be true. '1'. 0,0=0. 1,0=1. 0,1=0. 1,1=1.
+  - **XOR** only a true and false = '1'. 0,0=0. 1,0=1. 0,1=1. 1,1=0.;
 - **Authentication**: It is the process of verification of the identity of the person.;
 - **Encryption**:
   - simplest terms, changing plaintext into ciphertext.
