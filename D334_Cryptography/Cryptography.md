@@ -115,9 +115,9 @@ To prepare for the objective assessment, ask yourself these questions:
   - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
 - **Enigma Machine**: Used a polyalphabetic substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
 - **Digital Signatures**: Authentication and Non-repudiation.
-  1. Sender encrypts hash of media with private key.
-  2. Receiver decrypts signature with senders public key and compares hash of media with decrypted hash of signature
-  3. If both match, only the sender could sign media and media integrity is assured.;
+  1. Sender encrypts **hash** of media with **private** key.
+  2. Receiver decrypts signature with **senders public** key and compares hash of media with decrypted hash of signature.
+  3. If both match, only the sender could sign media and media **integrity** is assured.;
 - **Pseudo-Random Number Generators (PRNGs)**: This method repeats the random numbers after a given time (periodic). They are fast and are also deterministic and are useful in producing a repeatable set of random numbers.;
 - **True Random Number Generators (TRNGs)**:
   - This method generates a true random number and uses some form of random process. One approach is to monitor the movements of a mouse pointer on a screen or from the pauses between keystrokes.
@@ -167,40 +167,42 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Counter Mode Cipher**:
   - ![Counter Mode Cipher](./img/counter_mode_cipher.PNG)
   - ![Ciphers](./img/ciphers.PNG);
-- **Explain RC4, CHA CHA Symmetric Stream Ciphers**:
+- **Explain common symmetric stream ciphers**:
   - **RC4**. (stream cipher) – used in SSL and WEP.
   - **CHA CHA**. stream cipher.;
-- **Explain MD5, SHA Hashes**:
+- **Explain common hashes**:
   - **MD5**. 128 bit hash.
   - **SHA 1, 256, 3**. 1(160 bit), 256(192 bit), 3(224, 256, 384, and 512 bit);
-- **Explain DES, 3DES, RC2, RC4, IDEA, and AES Symmetric Block Cipher**:
+- **Explain common symmetric block ciphers**:
   - **DES**. (56 bit key size, 64 bit block size).
   - **3DES**. (112 bit key size, 64 bit block size).
   - **RC2**. (40-bit key size, 64-bit blocks).
   - **RC5**. (variable key size, 32, 64 or 128-bit block sizes).
   - **IDEA**. (128 key size, 64 bit block size).
   - **AES**. (128, 192 or 256-bit key size, 128-bit block size).;
-- **Explain RSA, DSA and ElGamal Asymmetric Ciphers**:
+- **Explain common asymmetric ciphers**:
   - **RSA**.
   - **DSA**.
   - **ElGamal**. key signing.
   - **Cramer Shoup**. extends El Gamal but adds one-way hashing. ;
 - **Explain block and key size of DES, 3DES, AES, IDEA, Skipjack, Blowfish, Twofish, Camellia, RC2, RC5, RC6, XTEA**:
-- |   Name   |  Block Size (In Bits)  |         Key Size (In Bits)          |         Rounds          |
-  | :------: | :--------------------: | :---------------------------------: | :---------------------: |
-  |   DES    |           64           |                 56                  |           16            |
-  |   3DES   |           64           |                 112                 |           48            |
-  |   AES    |          128           |          128, 192, OR 256           |      10, 12, or 14      |
-  |   IDEA   |           64           |                 128                 |           >17           |
-  | Skipjack |           64           |                 80                  |           32            |
-  | Blowfish |           64           | 32-448 (common = 128, 192, or 256)  |           16            |
-  | Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |           16            |
-  | Camellia |          128           |          128, 192, OR 256           |        18 or 24         |
-  |   RC2    |           64           |   1-128 (suggested minimum = 40)    |           18            |
-  |   RC5    |     32, 64, or 128     |               0-2048                |          0-255          |
-  |   RC6    | Variable (common =128) | Variable (common = 128, 192 or 256) |           20            |
-  |   XTEA   |           64           |                 128                 | Variable (64 suggested) |
-  ;
+
+| Name     |  Block Size (In Bits)  |         Key Size (In Bits)          |                  Rounds |
+| :------- | :--------------------: | :---------------------------------: | ----------------------: |
+| DES      |           64           |                 56                  |                      16 |
+| 3DES     |           64           |                 112                 |                      48 |
+| AES      |          128           |          128, 192, OR 256           |           10, 12, or 14 |
+| IDEA     |           64           |                 128                 |                     >17 |
+| Skipjack |           64           |                 80                  |                      32 |
+| Blowfish |           64           | 32-448 (common = 128, 192, or 256)  |                      16 |
+| Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |                      16 |
+| Camellia |          128           |          128, 192, OR 256           |                18 or 24 |
+| RC2      |           64           |   1-128 (suggested minimum = 40)    |                      18 |
+| RC5      |     32, 64, or 128     |               0-2048                |                   0-255 |
+| RC6      | Variable (common =128) | Variable (common = 128, 192 or 256) |                      20 |
+| XTEA     |           64           |                 128                 | Variable (64 suggested) |
+
+;
 
 ## Section 03 Hashing
 

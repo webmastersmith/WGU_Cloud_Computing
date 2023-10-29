@@ -1,6 +1,11 @@
 (async function () {
   const fs = await import('fs');
   const path = await import('path');
+  const showdown = require('./showdown');
+  showdown.setFlavor('github');
+  const converter = new showdown.Converter({ tables: true, tasklist: true });
+  // converter.makeHtml(textBlock) // returns html.
+
   async function invoke(action, params = {}) {
     // will return object with result and error field when error.
     try {
@@ -52,6 +57,7 @@
   //
   //
   // START Functions
+  // separate page into sections.
   async function parsePage(data) {
     // remove first 68 lines
     const dataStr = data.split(/\r?\n/).slice(68).join('\n');
@@ -82,57 +88,55 @@
     sectionBlocks.forEach((lineBlock) => {
       let front = '';
       let back = '';
-      let table = '<br>';
       const picture = [];
       // check each line if an image.
       // separate key, value
-      table += extractTable(lineBlock);
-      // only split first line
-      const [firstLine, ...rest] = lineBlock.trim().split(/\r?\n/);
-      const [key, v] = firstLine.trim().split(':');
-      const value = v + '\n' + rest.join('\n');
-      front = '<h2>' + key.replaceAll('*', '').replace('-', '').trim() + '</h2>';
-      // loop each line to find images. check if value is empty.
-      if (value) {
-        value.split(/\r?\n/).forEach((line) => {
-          // discard empty lines
-          if (line.length < 1) return;
-          if (/\|[\w \W]*\|[\w \W]*\|/.test(line)) return; // table line.
-          // check if line is an image.
-          if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
-            const picPath = markdownParser(line);
-            const filename = picPath.split('/').pop();
-            const newPic = path.join(process.cwd(), 'img', filename);
+      // only split first line, due to tables having ':' in them.
+      const [firstLine, ...rest] = lineBlock?.trim().split(/\r?\n/);
+      const [key, v] = firstLine?.trim().split(':');
+      front = '<h2>' + key.replaceAll('*', '').replace('-', '')?.trim() + '</h2>';
+      // backside of card.
+      const value = v?.trim() ? v + '\n' : '' + rest?.join('\n') || '';
+      // const value = confirm.makeHtml(v?.trim() ? v + '\n' : '' + rest?.join('\n') || '');
+      // loop each line, remove image line, push image object to picture.
+      let textNoImages = '';
+      value.split(/\r?\n/).forEach((line) => {
+        // discard empty lines
+        if (line.length < 1) return;
+        // check if line is an image.
+        if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
+          const picPath = markdownParser(line);
+          const filename = picPath.split('/').pop();
+          const newPic = path.join(process.cwd(), 'img', filename);
 
-            picture.push({
-              path: newPic,
-              filename,
-              fields: ['Back'],
-            });
-          } else {
-            // text
-            back += markdownParser(line) + '<br>';
-          }
-        });
-      }
-      text.push({ front, back: back + table, picture });
+          picture.push({
+            path: newPic,
+            filename,
+            fields: ['Back'],
+          });
+          return;
+        }
+        textNoImages += line.trim() + '\n'; // take out the bullet indents.
+      });
+      back = converter.makeHtml(textNoImages);
+      text.push({ front, back, picture });
     });
     // console.log(text);
     return { section, text };
   }
-
-  function markdownParser(text) {
+  // parse markdown line of text and return html.
+  function markdownParser(line) {
     // check if line is startsWith '-'.
-    if (text.trim().startsWith('-')) {
+    if (line.trim().startsWith('-')) {
       // preserve the whitespace or tabs. Do not trim start of line.
-      const newText = text
+      const newline = line
         .replace(/^(\s*)-/, '$1\u2022') // bullet point
         .trimEnd();
-      return markdownToHTML(newText);
+      return markdownToHTML(newline);
     }
     // check if heading
-    if (/^#+/.test(text.trim())) {
-      const heading = text
+    if (/^#+/.test(line.trim())) {
+      const heading = line
         .replace(/^##### (.*$)/gim, '<h5>$1</h5>') // h5 tag
         .replace(/^#### (.*$)/gim, '<h4>$1</h4>') // h4 tag
         .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
@@ -141,17 +145,18 @@
         .trim();
       return markdownToHTML(heading);
     } else {
-      return markdownToHTML(text);
+      return markdownToHTML(line);
     }
 
     function markdownToHTML(line) {
       return line
-        .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold text
-        .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic text
+        .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold line
+        .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic line
         .replace(/.*!\[.*\]\((.*)\)/, '$1') // image. return path.
         .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>"); // link
     }
   }
+  // parse block of markdown line and return html table
   function extractTable(tableBlock) {
     const tableArr = tableBlock.split(/\r?\n/);
     let table = '';
