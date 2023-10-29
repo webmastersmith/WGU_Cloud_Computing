@@ -1,0 +1,54 @@
+Name
+Block Size (In Bits)
+Key Size (In Bits)
+Rounds
+DES
+64
+56
+16
+3DES
+64
+112
+48
+AES
+128
+128, 192, OR 256
+10, 12, or 14
+IDEA
+64
+128
+>17
+Skipjack
+64
+80
+32
+Blowfish
+64
+32-448 (common = 128, 192, or 256)
+16
+Twofish
+128
+1-256 (common = 128, 192, or 256)
+16
+Camellia
+128
+128, 192, OR 256
+18 or 24
+RC5
+32, 64, or 128
+0-2048
+0-255
+RC2
+64
+1-128 (suggested minimum = 40)
+18
+RC6
+Variable (common =
+128)
+Variable (common = 128, 192 or 256)
+20
+XTEA
+64
+128
+Variable (64
+suggested)

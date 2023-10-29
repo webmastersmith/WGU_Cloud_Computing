@@ -66,9 +66,9 @@ Recording link: https://wgu.webex.com/wgu/ldr.php?RCID=aeb7d2d305685b241c488b601
 
 To prepare for the objective assessment, ask yourself these questions:
 
-## Section 1
+## Section 01 Ciphers and Fundamentals
 
-- **Binary AND, OR, XOR**: true = 1, false = 0.
+- **Binary AND, OR, XOR**:
   - ![binary or and xor](./img/binary_or_and_xor.jpg)
   - **AND** both must be true. '1'. 0,0=0. 1,0=0. 0,1=0. 1,1=1.
   - **OR** only one needs to be true. '1'. 0,0=0. 1,0=1. 0,1=0. 1,1=1.
@@ -133,7 +133,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **hardware security module (HSM)**: is a tamper-evident and intrusion-resistant physical device that safeguards and manages cryptographic keys and provides cryptographic processing.;
 - **trusted platform module (TPM)**: is a dedicated processor that handles hardware-level encryption allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
 
-## Section 2
+## Section 02 Secret Key Encryption
 
 - **Secret-Key Encryption**: Symmetric encryption. One key (de/en)crypts.
   - Since the same key is used for both encryption and decryption in symmetric cryptography, a challenge that exists is finding a secure way to share or transport the key between the entity encrypting and the one decrypting.;
@@ -185,8 +185,24 @@ To prepare for the objective assessment, ask yourself these questions:
   - **DSA**.
   - **ElGamal**. key signing.
   - **Cramer Shoup**. extends El Gamal but adds one-way hashing. ;
+- **Explain block and key size of DES, 3DES, AES, IDEA, Skipjack, Blowfish, Twofish, Camellia, RC2, RC5, RC6, XTEA**:
+- |   Name   |  Block Size (In Bits)  |         Key Size (In Bits)          |         Rounds          |
+  | :------: | :--------------------: | :---------------------------------: | :---------------------: |
+  |   DES    |           64           |                 56                  |           16            |
+  |   3DES   |           64           |                 112                 |           48            |
+  |   AES    |          128           |          128, 192, OR 256           |      10, 12, or 14      |
+  |   IDEA   |           64           |                 128                 |           >17           |
+  | Skipjack |           64           |                 80                  |           32            |
+  | Blowfish |           64           | 32-448 (common = 128, 192, or 256)  |           16            |
+  | Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |           16            |
+  | Camellia |          128           |          128, 192, OR 256           |        18 or 24         |
+  |   RC2    |           64           |   1-128 (suggested minimum = 40)    |           18            |
+  |   RC5    |     32, 64, or 128     |               0-2048                |          0-255          |
+  |   RC6    | Variable (common =128) | Variable (common = 128, 192 or 256) |           20            |
+  |   XTEA   |           64           |                 128                 | Variable (64 suggested) |
+  ;
 
-## Section 3
+## Section 03 Hashing
 
 - **Explain Hashing**:
   - describes one-way or irreversible encryption used for protecting the integrity of data and in authentication applications.
@@ -204,7 +220,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
 - **Time Stamp Protocol (TSP)**: cryptography method to give a verifiable method that a data entity was created at a defined time.;
 
-## Section 4
+## Section 04 Public Key
 
 - **Advantage of Signing**: file integrity. sender non-repudiation.;
 - **Explain Public/Private Keys**:
@@ -217,7 +233,7 @@ To prepare for the objective assessment, ask yourself these questions:
   4. Client then decrypts Sender signature with Senders public key(non-repudiation).
   5. Client computes hash of message and compares this to the Sender's hash of original file. If both match, file integrity is assured.;
 
-## Section 5
+## Section 05 Key Exchange
 
 - **How was the sharing of secret keys solved**:
   - The major problem of secret-key encryption is how to pass the key between the entity encrypting and the entity decrypting. The two main methods for key exchange in symmetric cryptography is to (1) use a key exchange algorithm (such as Diffie-Hellman) or (2) encrypt the key with the recipient’s public key, pass it to the other side and then allow the recipient use their private key to decrypt it i.e., via public key encryption.
@@ -235,15 +251,20 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Diffie-Hellman man in the middle attack**: methods have been used extensively to create a shared secret key but suffers from man-in-the-middle attacks, where an attacker sits in-between and passes the values back and forward and negotiates two keys: one between a sender and the attacker, and the other between the receiver and the attacker. An improved method is to use public key encryption.;
 - **Diffie-Hellman strength relates to what**: the size of the prime number bases which are used in the key exchange. bigger, better(longer to crack).;
 
-## Section 6 Certificate Management
+## Section 06 Authentication and Digital Certificates
 
 - **Common Certificate Applications**: Server authentication, Client authentication, Code signing, Email signing, Time stamping, IP security, Windows hardware driver verification, Smart card logon, Document signing, Public key transport.;
-- **Common Certificate Types**: IKE, PKCS #7, PKCS #10, RSA signatures, X.509v3;
-- **Pubic-Key Cryptography Standards (PKCS) #5, #7, #10, #12**:
-  - **PKCS #5** Used for password-based encryption.
-  - **PKCS #7** Used to sign and/or encrypt messages for PKI.
-  - **PKCS #10** A standard format used for requesting digital certificates from certificate authorities.
-  - **PKCS #12** Used to bundle a private key with its X.509 certificate or to bundle all the members of a chain of trust.;
+- **Common Certificate Types**:
+  - IKE
+  - PKCS 7
+  - PKCS 10
+  - RSA signatures
+  - X.509v3;
+- **Pubic-Key Cryptography Standards (PKCS) 5, 7, 10, 12**:
+  - **PKCS 5** Used for password-based encryption.
+  - **PKCS 7** Used to sign and/or encrypt messages for PKI.
+  - **PKCS 10** A standard format used for requesting digital certificates from certificate authorities.
+  - **PKCS 12** Used to bundle a private key with its X.509 certificate or to bundle all the members of a chain of trust.;
 - **What is Certificate Revocation List (CRL) and who publishes it**:
   - Certificates listed here cannot be trusted.
   - CRL must be published by the CA who originally generated the targeted certificates.;
@@ -258,7 +279,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Certificate Revocation Remove from CRL**: This is where a remove is defined from the list.;
 - **Certificate Revocation Privilege Withdrawn**: This defines where a privilege to sign certificates has been removed.;
 
-## Section 7 Tunneling
+## Section 07 Tunneling
 
 - **Most common tunneling protocols**:
   - PPTP. Point-to-point tunneling protocol. Created by Microsoft.
@@ -284,7 +305,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Onion Router**: routing using only subscriber computers instead of publicly available ones.;
 - **TOR network**: network of computers around the world that route traffic. Each hop reduces a persons ability to track you.;
 
-## Section 8 Crypto Cracking
+## Section 08 Crypto Cracking
 
 - **Two backdoors in cryptography**:
   - the two main methods which could be used are
@@ -302,17 +323,17 @@ To prepare for the objective assessment, ask yourself these questions:
 - **AES poor implementation of the encryption method**: leaves it susceptible to attacks such as: Brute force, use of Non-Random Numbers, and copy-and-paste.;
 - **RSA suffers from**: several weaknesses and is susceptible to numerous attacks and cracking methods.;
 
-## Section 9 Light-Weight Cryptography
+## Section 09 Light-Weight Cryptography
 
 - **Why is light-weight cryptography needed**:
   - Most conventional cryptosystems require too much processing power; too much physical space; and consume too much battery power for implementation in IoT, embedded SYSTEMS, and RFID.
-  - Light-weight cryptography essentially consists of cryptosystems able to support IoT, embedded systems, RFID etc. (i.e. provide cryptographic functions but require less processing power, physical space, and battery power than conventional cryptosystems).
+  - Light-weight cryptography essentially consists of cryptosystems able to support IoT, embedded systems, RFID etc. (i.e. provide cryptographic functions but require less processing power, physical space, and battery power than conventional cryptosystems).;
 - **NIST Device Spectrum**:
   - **Conventional cryptography**. Servers and Desktops. Tablets and smart phones.
   - **Light-weight cryptography**. Embedded Systems. RFID and Sensor Networks.;
 - **Quantum computers**: have fast multiplication circuits, and thus can be used to perform multiplications and search a range of prime numbers at a speed which would break most existing RSA implementations.;
 - **Merkle tree**: is a tree that defines each non-leaf node with a value or a label and contains a hash of its children. This builds a hash trees and is used to provide a verification of large-scale data structures.;
-- **Lattice-based cryptography**: uses asymmetric cryptographic primitives based on lattices. It has been known about for several decades, and is now being investigated because of its quantum robustness, whereas many of the existing public key methods such as RSA and Diffie-Hellman cryptosystems can be broken with quantum computers
+- **Lattice-based cryptography**: uses asymmetric cryptographic primitives based on lattices. It has been known about for several decades, and is now being investigated because of its quantum robustness, whereas many of the existing public key methods such as RSA and Diffie-Hellman cryptosystems can be broken with quantum computers.;
 - **Light-Weight Crypto -PRESENT**:
   - Block Size. 64
   - Key Size. 80 or 128
@@ -373,8 +394,49 @@ To prepare for the objective assessment, ask yourself these questions:
 - **crypto currency Ethereum**:
   - was built on the Bitcoin/Blockchain concept but included the concept of smart contracts.
   - Along with creating a new currency (Ether), the main contribution of Ethereum is to create the concept of **peer-to-peer smart contracts** which enables users to create their own contracts, and which will be strictly abided to.;
-- **Smart contracts**: are programs stored on a blockchain that run when predetermined conditions are met; they typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's involvement or time loss.;
+- **Smart contracts**: are programs stored on a blockchain that run when predetermined conditions are met they typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's involvement or time loss.;
 - **Ethereum gas**: This is basically the unit that is used to measure the amount of work that is required to perform a single **Keccak-256 hash**.;
 - Although Bitcoin, Ethereum, and Hyperledger all use blockchain: **Ethereum, and Hyperledger are considered "common" options for implementing blockchain** for this course. Hyperledger and Ethereum offer the smart contracts feature.;
 
 ## Section 12 Wireless Cryptography and Stream Ciphers
+
+- **Encryption schemes commonly used with Wi-Fi include**:
+  - 40-bit RC4 (WEP)
+  - TKIP with 128-bit RC4 (WPA – Wi-Fi Protected Access)
+  - 128-bit AES-CCMP (WPA-2).;
+- **Because of export restrictions, the size of the original key in RC4 was limited to**: 40 bits and was then increased to 128 bits.;
+- **Overall WEP is weak from a number of viewpoints**:
+  - Small value of IV (24 bits). This meant that it repeated within a reasonable time, and the key could then be attacked.
+  - Construction of keys made it susceptible to the weak key attacks (FMS attack).
+  - Lack of protection against message replay. There was no protection against cipher streams being played back over the network.
+  - Lack of message tampering identification. The method did not support the detection of message tampering.
+  - Directly used a master key. The method had no way of updating the keys.;
+- **After WEP, WPA fixed what**:
+  - there was a strong need to fix the problems, but to keep compatibility, thus WPA supported TKIP, and which increased the IV value to 48 bits (rather than 24 bits).;
+- **WPA addressed the weaknesses of WEP, and without requiring significant hardware changes, and focused on two main methods**:
+  - WPA-PSK and WPA Enterprise.;
+- **WPA-2 (IEEE 802.11i-2004) advanced the WPA standard by**:
+  - keeping compatibility with WPA, but adding AES-CCMP (AES-Counter Mode CBCMAC Protocol), which is a block encryption method. Again, it supported two modes: Personal (with a pre-shared key) and Enterprise.;
+- **WPA Enterprise is different from WPA how**:
+  - no pre-shared key is used, and it also includes a MIC (Message Integrity Check).
+  - The MIC mainly guards against the bit flipping attacks identified within WEP.;
+- **Mobile phone networks/GSM typically use what type of encryption**:
+  - the A5/1 or A5/2 stream encryption method, but almost on its first day of operation it has been a target for crackers, and the source code to crack A5/2 was released within one month of being made public.;
+- **A5/3 encryption system fixes what**:
+  - known as KASUMI, the Japanese word for “mist”, is the upgrade to A5/1 and uses a block cipher. A5/1 is designed to be used for the GSM network, whereas A5/3 is for 3GPP, and is based on the MISTY1 cipher. 128-bit key.;
+- **While WEP contains what weaknesses**:
+
+  - a properly defined stream cipher can be much faster than block ciphers, as they just have to create a key stream from an IV (also known as a nonce value) and a key.;
+  - **ChaCha20**:
+    - named as it has 20 rounds
+    - Google proposed as an alternative to AES to be used with TLS connections.;
+  - **WEP vs WPA vs WPA2**:
+
+    |                   | WEP              | WPA              | WPA2            |
+    | ----------------- | ---------------- | ---------------- | --------------- |
+    | Encryption Method | RC4              | TKIP + RC4       | AES-CCMP        |
+    | Key Size          | 40-bit           | 128-bit          | 128-bit         |
+    | Cipher Type       | Symmetric Stream | Symmetric Stream | Symmetric Block |
+    | IV Size           | 24-bit           | 48-bit           | 48-bit          |
+
+    ;
