@@ -1,6 +1,7 @@
 (async function () {
   const fs = await import('fs');
   const path = await import('path');
+  // curl -Lo showdown.js 'https://unpkg.com/showdown/dist/showdown.min.js'
   const showdown = require('./showdown');
   showdown.setFlavor('github');
   const converter = new showdown.Converter({ tables: true, tasklist: true });
