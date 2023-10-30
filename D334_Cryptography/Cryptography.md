@@ -13,6 +13,7 @@
 - https://www.studocu.com/en-us/document/western-governors-university/legal-issues-in-information-security/how-to-pass-c839-intro-to-cryptography-2994/36521132
 - https://www.reddit.com/r/WGU/comments/v0szcv/thirdterm_bscc_c173_c916_c175_c839/
 - https://www.reddit.com/r/WGU/comments/v9plvw/passed_c839d334_intro_to_cryptography/
+- https://www.khanacademy.org/computing/computer-science
 
 ## WGU Tips
 

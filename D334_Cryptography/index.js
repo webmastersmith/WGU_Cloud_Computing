@@ -60,7 +60,7 @@
   // separate page into sections.
   async function parsePage(data) {
     // remove first 68 lines
-    const dataStr = data.split(/\r?\n/).slice(68).join('\n');
+    const dataStr = data.split(/\r?\n/).slice(69).join('\n');
     // separate page into blocks
     const blocks = dataStr.match(/[^#]*/g).filter((line) => line.length > 0);
     // console.log(blocks);
@@ -124,98 +124,98 @@
     // console.log(text);
     return { section, text };
   }
-  // parse markdown line of text and return html.
-  function markdownParser(line) {
-    // check if line is startsWith '-'.
-    if (line.trim().startsWith('-')) {
-      // preserve the whitespace or tabs. Do not trim start of line.
-      const newline = line
-        .replace(/^(\s*)-/, '$1\u2022') // bullet point
-        .trimEnd();
-      return markdownToHTML(newline);
-    }
-    // check if heading
-    if (/^#+/.test(line.trim())) {
-      const heading = line
-        .replace(/^##### (.*$)/gim, '<h5>$1</h5>') // h5 tag
-        .replace(/^#### (.*$)/gim, '<h4>$1</h4>') // h4 tag
-        .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
-        .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
-        .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
-        .trim();
-      return markdownToHTML(heading);
-    } else {
-      return markdownToHTML(line);
-    }
+  // // parse markdown line of text and return html.
+  // function markdownParser(line) {
+  //   // check if line is startsWith '-'.
+  //   if (line.trim().startsWith('-')) {
+  //     // preserve the whitespace or tabs. Do not trim start of line.
+  //     const newline = line
+  //       .replace(/^(\s*)-/, '$1\u2022') // bullet point
+  //       .trimEnd();
+  //     return markdownToHTML(newline);
+  //   }
+  //   // check if heading
+  //   if (/^#+/.test(line.trim())) {
+  //     const heading = line
+  //       .replace(/^##### (.*$)/gim, '<h5>$1</h5>') // h5 tag
+  //       .replace(/^#### (.*$)/gim, '<h4>$1</h4>') // h4 tag
+  //       .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
+  //       .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
+  //       .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
+  //       .trim();
+  //     return markdownToHTML(heading);
+  //   } else {
+  //     return markdownToHTML(line);
+  //   }
 
-    function markdownToHTML(line) {
-      return line
-        .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold line
-        .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic line
-        .replace(/.*!\[.*\]\((.*)\)/, '$1') // image. return path.
-        .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>"); // link
-    }
-  }
-  // parse block of markdown line and return html table
-  function extractTable(tableBlock) {
-    const tableArr = tableBlock.split(/\r?\n/);
-    let table = '';
-    let tableStr = '';
-    let isTable = false;
-    let isTableEnd = false;
-    const size = tableArr.length;
-    tableArr.forEach((line, i) => {
-      // console.log(/\|[\w \W]*\|[\w \W]*\|/.test(line))
-      // check each line for table markup
-      const lineIsTable = /\|[\w \W]*\|[\w \W]*\|/.test(line);
-      if (lineIsTable) {
-        tableStr += line.trim() + '\n';
-        isTable = true;
-      }
-      // check if table has ended.
-      if (isTable && (!lineIsTable || i === size - 1)) {
-        isTableEnd = true;
-        isTable = false;
-      }
-      // after table end process table.
-      if (!isTable && isTableEnd) {
-        isTableEnd = false;
-        table = processTable(tableStr);
-      }
-    });
-    return table;
-    function processTable(table) {
-      let tableHTML = '<table>';
-      const tableArr = table.split(/\r?\n/);
-      const [h, a, ...rest] = tableArr;
-      const alignment = checkAlignment(a); // left|center|right
-      // header
-      tableHTML += lineToHTML(h, alignment, true);
-      // body
-      rest.forEach((line) => {
-        tableHTML += lineToHTML(line, alignment, false);
-      });
-      return tableHTML;
+  //   function markdownToHTML(line) {
+  //     return line
+  //       .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold line
+  //       .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic line
+  //       .replace(/.*!\[.*\]\((.*)\)/, '$1') // image. return path.
+  //       .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>"); // link
+  //   }
+  // }
+  // // parse block of markdown line and return html table
+  // function extractTable(tableBlock) {
+  //   const tableArr = tableBlock.split(/\r?\n/);
+  //   let table = '';
+  //   let tableStr = '';
+  //   let isTable = false;
+  //   let isTableEnd = false;
+  //   const size = tableArr.length;
+  //   tableArr.forEach((line, i) => {
+  //     // console.log(/\|[\w \W]*\|[\w \W]*\|/.test(line))
+  //     // check each line for table markup
+  //     const lineIsTable = /\|[\w \W]*\|[\w \W]*\|/.test(line);
+  //     if (lineIsTable) {
+  //       tableStr += line.trim() + '\n';
+  //       isTable = true;
+  //     }
+  //     // check if table has ended.
+  //     if (isTable && (!lineIsTable || i === size - 1)) {
+  //       isTableEnd = true;
+  //       isTable = false;
+  //     }
+  //     // after table end process table.
+  //     if (!isTable && isTableEnd) {
+  //       isTableEnd = false;
+  //       table = processTable(tableStr);
+  //     }
+  //   });
+  //   return table;
+  //   function processTable(table) {
+  //     let tableHTML = '<table>';
+  //     const tableArr = table.split(/\r?\n/);
+  //     const [h, a, ...rest] = tableArr;
+  //     const alignment = checkAlignment(a); // left|center|right
+  //     // header
+  //     tableHTML += lineToHTML(h, alignment, true);
+  //     // body
+  //     rest.forEach((line) => {
+  //       tableHTML += lineToHTML(line, alignment, false);
+  //     });
+  //     return tableHTML;
 
-      function lineToHTML(line, align = 'left', isHeader = false) {
-        let row = '<tr>';
-        const type = isHeader ? 'th' : 'td';
-        const style = `style='text-align: ${align}'`;
-        row += `<${type} ${style}>`;
-        const rowData = line
-          .split('|')
-          .map((data) => data.trim())
-          .slice(1, -1);
-        rowData.forEach((d) => (row += `<${type} ${style}>${d}</${type}>`));
-        row += `</tr>`;
-        return row;
-      }
-      function checkAlignment(line) {
-        const alignment = line.replace(/\|/g, '').trim();
-        if (alignment.startsWith(':') && alignment.endsWith(':')) return 'center';
-        if (alignment.endsWith(':')) return 'right';
-        return 'left';
-      }
-    }
-  }
+  //     function lineToHTML(line, align = 'left', isHeader = false) {
+  //       let row = '<tr>';
+  //       const type = isHeader ? 'th' : 'td';
+  //       const style = `style='text-align: ${align}'`;
+  //       row += `<${type} ${style}>`;
+  //       const rowData = line
+  //         .split('|')
+  //         .map((data) => data.trim())
+  //         .slice(1, -1);
+  //       rowData.forEach((d) => (row += `<${type} ${style}>${d}</${type}>`));
+  //       row += `</tr>`;
+  //       return row;
+  //     }
+  //     function checkAlignment(line) {
+  //       const alignment = line.replace(/\|/g, '').trim();
+  //       if (alignment.startsWith(':') && alignment.endsWith(':')) return 'center';
+  //       if (alignment.endsWith(':')) return 'right';
+  //       return 'left';
+  //     }
+  //   }
+  // }
 })();
