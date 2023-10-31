@@ -106,7 +106,7 @@
         if (line.length < 1) return;
         // check if line is an image.
         if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
-          const picPath = markdownParser(line);
+          const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
           const filename = picPath.split('/').pop();
           const newPic = path.join(process.cwd(), 'img', filename);
 

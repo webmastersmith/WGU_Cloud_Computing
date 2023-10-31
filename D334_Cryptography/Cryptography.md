@@ -110,7 +110,7 @@ To prepare for the objective assessment, ask yourself these questions:
   - Polyalphabetic cipher that involves using a different mapping, based on a keyword, for each character of the cipher. An advantage of this type of cipher is that the same plaintext character is likely to be coded to different mappings, depending on the position of the keyword, making guessing more difficult.;
 - **One Time Pad Cipher**:
   - ![one time pad](./img/one_time_pad.png)
-  - Cipher code mapping that is used only once. Advantage is it is essentially unbreakable, disadvantage is it takes lots of work as you'd have to generate the pad to be used, each time.;
+  - Cipher code mapping that is used only once. Advantage is it is essentially unbreakable, disadvantage is it takes lots of work as you'd have to generate the pad to be used, each time. Each key(pad) must be same size as message. True Random Number Generators take time to create random data.;
 - **Four-square Cipher**:
   - ![Four Square Cipher](./img/four_square_cipher.jpg)
   - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
@@ -119,9 +119,9 @@ To prepare for the objective assessment, ask yourself these questions:
   1. Sender encrypts **hash** of media with **private** key.
   2. Receiver decrypts signature with **senders public** key and compares hash of media with decrypted hash of signature.
   3. If both match, only the sender could sign media and media **integrity** is assured.;
-- **Pseudo-Random Number Generators (PRNGs)**: This method repeats the random numbers after a given time (periodic). They are fast and are also deterministic and are useful in producing a repeatable set of random numbers.;
+- **Pseudo-Random Number Generators (PRNGs)**: This method repeats the random numbers after a given time (periodic). They are fast and are also deterministic and are useful in producing a repeatable set of random numbers. If the seed value(some number) is the same, the generator will produce the same results. The seed number will eventually be exhausted and repeat;
 - **True Random Number Generators (TRNGs)**:
-  - This method generates a true random number and uses some form of random process. One approach is to monitor the movements of a mouse pointer on a screen or from the pauses between keystrokes.
+  - This method generates a true random number and uses some form of random process. One approach is to monitor the movements of a mouse pointer on a screen or from the pauses between keystrokes or monitor static(noise) for random seed.
   - Overall, the method is generally slow, especially if it involves human interaction, but is **non-deterministic** and **aperiodic**.;
 - **Frequency Analysis**: cipher cracking methodology that involves identifying patterns and **variations in the probability** of codes.
   - example. a three-letter ciphered text combination spotted at the beginning of a string too often could tip us off that those three letters correlate the letters THE in the English alphabet.;
@@ -131,8 +131,8 @@ To prepare for the objective assessment, ask yourself these questions:
   1. ASCII (8-bit values, up to 256 characters)
   2. UTF-16 (16- bit values, up to 65,536 characters).;
 - **Hardware vs Software encryption**: Hardware encryption is more efficient than software encryption.;
-- **hardware security module (HSM)**: is a tamper-evident and intrusion-resistant physical device that safeguards and manages cryptographic keys and provides cryptographic processing.;
-- **trusted platform module (TPM)**: is a dedicated processor that handles hardware-level encryption allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
+- **Hardware Security Module (HSM)**: is a tamper-evident and intrusion-resistant physical device that safeguards and manages cryptographic keys and provides cryptographic processing.;
+- **Trusted Platform Module (TPM)**: is a dedicated processor that handles hardware-level encryption allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
 
 ## Section 02 Secret Key Encryption
 
