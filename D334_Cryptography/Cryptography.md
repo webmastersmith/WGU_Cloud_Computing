@@ -170,7 +170,7 @@ To prepare for the objective assessment, ask yourself these questions:
   - ![Ciphers](./img/ciphers.PNG);
 - **Explain common symmetric stream ciphers**:
   - **RC4**. (stream cipher) – used in SSL and WEP.
-  - **CHA CHA**. stream cipher.;
+  - **CHACHA20**. stream cipher.;
 - **Explain common hashes**:
   - **MD5**. 128 bit hash.
   - **SHA 1, 256, 3**. 1(160 bit), 256(192 bit), 3(224, 256, 384, and 512 bit);
