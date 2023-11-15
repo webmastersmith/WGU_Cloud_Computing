@@ -7,7 +7,7 @@
   const converter = new showdown.Converter({ tables: true, tasklist: true });
   // converter.makeHtml(textBlock) // returns html.
 
-  async function invoke(action, params = {}) {
+  async function sendToAnki(action, params = {}) {
     // will return object with result and error field when error.
     try {
       const res = await fetch('http://127.0.0.1:8765', {
@@ -32,17 +32,19 @@
   const sections = await parsePage(data);
   // console.log(JSON.stringify(sections, null, 2));
 
-  // create deck
-  await invoke('createDeck', { deck: deckName });
-  // loop each section and add to anki.
-  // {section, text: [{front, back, picture}] }
+  // create Main Deck Name
+  await sendToAnki('createDeck', { deck: deckName });
+  // Create SubDecks
   for (const { section, text } of sections) {
+    // {section, text: [{front, back, picture}] }
+    // subDeck name remove spaces.
     const sectionName = section.replaceAll(' ', '_').trim();
-    // create subDeck
-    await invoke('createDeck', { deck: `${deckName}::${sectionName}` });
-    // add text array
+    // create subDeck name
+    await sendToAnki('createDeck', { deck: `${deckName}::${sectionName}` });
+    // Create cards in subDeck
     for (const { front, back, picture } of text) {
-      await invoke('addNote', {
+      // add content to each card
+      await sendToAnki('addNote', {
         note: {
           deckName: `${deckName}::${sectionName}`,
           modelName: 'Basic',
@@ -64,15 +66,12 @@
     const dataStr = data.split(/\r?\n/).slice(69).join('\n');
     // separate page into blocks
     const blocks = dataStr.match(/[^#]*/g).filter((line) => line.length > 0);
-    // console.log(blocks);
-    // console.log(blocks.length);
-
-    // returns object with {section, text}
+    // returns object with {section, text} // section is name of subDeck. text is front, back, images for cards.
     const sections = blocks.map((block) => processBlocks(block));
     return sections;
   }
-  //
-  // need object with {section, text: {front, back, picture}}
+  // Each block is separated by '##'
+  // need object with {section, text: [{front, back, picture}]}
   function processBlocks(block) {
     // get and remove section name
     const [s, ...rest] = block.split(/\r?\n/).filter((line) => line.length > 0);
@@ -84,19 +83,23 @@
       .filter((line) => line.length > 4);
     // console.log(sectionBlocks.length);
 
-    const text = [];
-    // format each section
+    const cards = [];
+    // get front, back, image from each section block. Card data.
     sectionBlocks.forEach((lineBlock) => {
       let front = '';
       let back = '';
       const picture = [];
       // check each line if an image.
       // separate key, value
-      // only split first line, due to tables having ':' in them.
+      // Split each block up. only split first line, due to tables having ':' in them.
+      // The first line will be the question.
       const [firstLine, ...rest] = lineBlock?.trim().split(/\r?\n/);
+      // the first line will have ':' as a separator between question and answer.
       const [key, v] = firstLine?.trim().split(':');
+      // create the html for the question.
       front = '<h2>' + key.replaceAll('*', '').replace('-', '')?.trim() + '</h2>';
-      // backside of card.
+      // The 'rest' is the backside(answer) of card.
+      // 'v' could be blank or text. If text, then add newline. Then join 'rest' with it.
       const value = v?.trim() ? v + '\n' : '' + rest?.join('\n') || '';
       // const value = confirm.makeHtml(v?.trim() ? v + '\n' : '' + rest?.join('\n') || '');
       // loop each line, remove image line, push image object to picture.
@@ -109,7 +112,7 @@
           const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
           const filename = picPath.split('/').pop();
           const newPic = path.join(process.cwd(), 'img', filename);
-
+          // create the picture data.
           picture.push({
             path: newPic,
             filename,
@@ -117,10 +120,12 @@
           });
           return;
         }
+        // no image, process text.
         textNoImages += line.trim() + '\n'; // take out the bullet indents.
       });
+      // Parse md into html with 'Showdown'.
       back = converter.makeHtml(textNoImages);
-      text.push({ front, back, picture });
+      cards.push({ front, back, picture });
     });
     // console.log(text);
     return { section, text };
