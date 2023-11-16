@@ -212,12 +212,12 @@ To prepare for the objective assessment, ask yourself these questions:
   - Hashing is normally used to either hide the original contents of a message (such as hiding a password), or to check the integrity of data.
   - Hashing involves taking a variable length input and producing a fixed length output (message digest).
   - A weakness of one-way hashing is that the same piece of plaintext will result in the same ciphertext (unless salt is applied).;
-- **Hah Collision**: occurs when two different input values that produce the same hash signature. Different files produce the same hash value, rare but possible. Collision attacks exploit this.
+- **Hash Collision**: occurs when two different input values that produce the same hash signature. Different files produce the same hash value, rare but possible. Collision attacks exploit this.
   - Also called **Hash Similar Context**, **Pre-image attack**, and **Hash Full context**.;
 - **Apache-defined APR1 Hash**: format that addresses the problems of brute forcing an **MD5** hash, and basically iterates the hash value 1,000 times.;
 - **SHA method**: does not have a salted value. SHA produces a 160-bit signature, thus can contain a larger set of hashed value than MD5, but because there is no salt it can be open to rainbow table attacks, and also brute force. (A rainbow table is a collection of precomputed hash values of actual plaintext passwords used for password cracking.);
 - **HMAC**: is a message authentication code (MAC) that can be used to verify the integrity and authentication of the message. It involves hashing the message with a secret key, and thus differs from standard hashing, which is purely a one-way function.;
-- **Passwords which use a hashed value can be cracked by**: either with rainbow tables or brute force. An improved method of generating passcode is to generate a different one each time based on an initial seed value or based on time. One Time Passwords, Timed One Time Password, Hashed One Time Password.;
+- **Passwords which use a hashed value can be cracked by**: either with **rainbow tables** or **brute force**. An improved method of generating passcode is to generate a different one each time based on an initial seed value or based on time. One Time Passwords, Timed One Time Password, Hashed One Time Password.;
 - **One Time Passwords (OTP)**: This allows a new unique password to be created for each instance, based on an initial seed.;
 - **Timed One Time Password (TOTP)**: This allows for a new unique passcode to be created for each instance, based on an initial seed and for a given time period.;
 - **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
@@ -247,10 +247,11 @@ To prepare for the objective assessment, ask yourself these questions:
 - **DHE_EXPORT Downgrade Attack**:
   - A weakness discovered in Diffie Hellman is that it is fairly easy to precompute values for two popular Diffie-Hellman parameters (and which use the DHE_EXPORT cipher set).
   - The DHE_EXPORT Downgrade attack involves forcing the key negotiation process to default to 512-bit prime numbers. For this the client only offers DHE_EXPORT for the key negotiation, and the server, if it is setup for this, will accept it. The precomputation of 512-bit keys with g values of 2 and 5 (which are common) are within a reasonable time limits.;
-- **Methods to combat DHE_EXPORT Downgrade attacks**: on Diffie Hellman include:
-  1. Disabling Export Cipher Suites negotiation.
-  2. Using (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE).
-  3. Use a strong group. Diffie Hellman has three groups (bases): Group 1, Group 3 or Group 5, which vary in the size of the prime number used.;
+- **Methods to combat DHE_EXPORT Downgrade attacks**:
+  - on Diffie Hellman include
+    1. Disabling Export Cipher Suites negotiation.
+    2. Using (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE).
+    3. Use a strong group. Diffie Hellman has three groups (bases): Group 1, Group 3 or Group 5, which vary in the size of the prime number used.;
 - **Diffie-Hellman man in the middle attack**: methods have been used extensively to create a shared secret key but suffers from man-in-the-middle attacks, where an attacker sits in-between and passes the values back and forward and negotiates two keys: one between a sender and the attacker, and the other between the receiver and the attacker. An improved method is to use public key encryption.;
 - **Diffie-Hellman strength relates to what**: the size of the prime number bases which are used in the key exchange. bigger, better(longer to crack).;
 

@@ -35,14 +35,14 @@
   // create Main Deck Name
   await sendToAnki('createDeck', { deck: deckName });
   // Create SubDecks
-  for (const { section, text } of sections) {
-    // {section, text: [{front, back, picture}] }
+  for (const { section, cards } of sections) {
+    // {section, cards: [{front, back, picture}] }
     // subDeck name remove spaces.
     const sectionName = section.replaceAll(' ', '_').trim();
     // create subDeck name
     await sendToAnki('createDeck', { deck: `${deckName}::${sectionName}` });
     // Create cards in subDeck
-    for (const { front, back, picture } of text) {
+    for (const { front, back, picture } of cards) {
       // add content to each card
       await sendToAnki('addNote', {
         note: {
@@ -128,7 +128,7 @@
       cards.push({ front, back, picture });
     });
     // console.log(text);
-    return { section, text };
+    return { section, cards };
   }
   // // parse markdown line of text and return html.
   // function markdownParser(line) {
