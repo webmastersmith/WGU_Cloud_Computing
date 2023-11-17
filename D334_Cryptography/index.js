@@ -7,35 +7,15 @@
   const converter = new showdown.Converter({ tables: true, tasklist: true });
   // converter.makeHtml(textBlock) // returns html.
 
-  async function sendToAnki(action, params = {}) {
-    // will return object with result and error field when error.
-    try {
-      const res = await fetch('http://127.0.0.1:8765', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ action, version: 1, params }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw 'Fetch failed to get response. Is Anki Connect listening?';
-      if (data.error) throw data;
-      return data;
-    } catch (e) {
-      console.log('Error: ', e);
-    }
-  }
-
-  // START HERE!
   const data = fs.readFileSync('Cryptography.md', 'utf-8');
   const deckName = 'WGU_D334_Intro_to_Cryptography';
-  const sections = await parsePage(data);
+  // const sections = await parsePage(data);
   // console.log(JSON.stringify(sections, null, 2));
 
   // create Main Deck Name
   await sendToAnki('createDeck', { deck: deckName });
   // Create SubDecks
-  for (const { section, cards } of sections) {
+  for (const { section, cards } of await parsePage(data)) {
     // {section, cards: [{front, back, picture}] }
     // subDeck name remove spaces.
     const sectionName = section.replaceAll(' ', '_').trim();
@@ -57,6 +37,28 @@
       });
     }
   }
+
+  // This function sends object to ANKI listening on port 8765.
+  async function sendToAnki(action, params = {}) {
+    // will return object with result and error field when error.
+    try {
+      const res = await fetch('http://127.0.0.1:8765', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action, version: 1, params }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw 'Fetch failed to get response. Is Anki Connect listening?';
+      if (data.error) throw data;
+      return data;
+    } catch (e) {
+      console.log('Error: ', e);
+    }
+  }
+
+  // START HERE!
   //
   //
   // START Functions
@@ -92,23 +94,23 @@
 
       // Each cardBlock is a Card. Get question and answer.
       // separate first line, due to tables having ':' in them.
-      // The first line will be the question.
+      // The first line will be the question. 'rest' will be an array, empty or lines.
       const [firstLine, ...rest] = cardBlock?.trim().split(/\r?\n/);
       // It may have an answer in the line separated by ':'.
-      const [question, answer] = firstLine?.trim().split(':');
+      const [question = '', answer = ''] = firstLine?.trim().split(':');
       // Bold question.
-      front = '<h2>' + question.replaceAll('*', '').replace('-', '')?.trim() + '</h2>';
+      front = '<h2>' + question.replaceAll('*', '')?.trim().replace(/^-/, '')?.trim() + '</h2>';
       // The 'rest' is the backside(answer) of card.
       // 'answer' could be blank or text. If text, then add newline. Then join 'rest' with it.
-      const answerBlock = answer?.trim() ? answer + '\n' : '' + rest?.join('\n') || '';
+      const answerBlock = `${answer?.trim() ? answer.trim() + '\n' : ''}${rest?.join('\n') || ''}`;
       // The first line is processed.
 
-      // Work on the answerBlock which could be multiple lines and images
+      // ANSWER BLOCK STARTS. Could be multiple lines, tables and images.
       let textNoImages = '';
       let lineIsTable = false; // check if previous line was table. Has to be outside loop.
       answerBlock.split(/\r?\n/).forEach((line) => {
         // discard empty lines
-        // if (line.length < 1) return;
+        if (line.length < 1) return;
         // IMAGE -check if line is an image.
         if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
           const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
@@ -124,10 +126,13 @@
         }
         // no image, process text.
         if (line.trim().startsWith('|')) {
+          // if line is a table element, only add newline between it and previous text.
+          // if the previous line was a table line, then linIsTable will be true so don't add newline.
+          // the showdown markdown -> html will not recognize tables unless it has newline before it.
           textNoImages += `${!lineIsTable ? '\n' : ''}${line.trim()}\n`;
           lineIsTable = true;
         } else {
-          textNoImages += line.trim() + '\n'; // take out the bullet indents.
+          textNoImages += line.replace(/^\s{2}/, '').trimEnd() + '\n'; // take out two spaces from each bullet indents.
           lineIsTable = false;
         }
       });
@@ -138,98 +143,4 @@
     // console.log(text);
     return { section, cards };
   }
-  // // parse markdown line of text and return html.
-  // function markdownParser(line) {
-  //   // check if line is startsWith '-'.
-  //   if (line.trim().startsWith('-')) {
-  //     // preserve the whitespace or tabs. Do not trim start of line.
-  //     const newline = line
-  //       .replace(/^(\s*)-/, '$1\u2022') // bullet point
-  //       .trimEnd();
-  //     return markdownToHTML(newline);
-  //   }
-  //   // check if heading
-  //   if (/^#+/.test(line.trim())) {
-  //     const heading = line
-  //       .replace(/^##### (.*$)/gim, '<h5>$1</h5>') // h5 tag
-  //       .replace(/^#### (.*$)/gim, '<h4>$1</h4>') // h4 tag
-  //       .replace(/^### (.*$)/gim, '<h3>$1</h3>') // h3 tag
-  //       .replace(/^## (.*$)/gim, '<h2>$1</h2>') // h2 tag
-  //       .replace(/^# (.*$)/gim, '<h1>$1</h1>') // h1 tag
-  //       .trim();
-  //     return markdownToHTML(heading);
-  //   } else {
-  //     return markdownToHTML(line);
-  //   }
-
-  //   function markdownToHTML(line) {
-  //     return line
-  //       .replace(/\*\*(.*)\*\*/gim, '<b>$1</b>') // bold line
-  //       .replace(/\*(.*)\*/gim, '<i>$1</i>') // italic line
-  //       .replace(/.*!\[.*\]\((.*)\)/, '$1') // image. return path.
-  //       .replace(/\[(.*?)\]\((.*?)\)/gim, "<a href='$2'>$1</a>"); // link
-  //   }
-  // }
-  // // parse block of markdown line and return html table
-  // function extractTable(tableBlock) {
-  //   const tableArr = tableBlock.split(/\r?\n/);
-  //   let table = '';
-  //   let tableStr = '';
-  //   let isTable = false;
-  //   let isTableEnd = false;
-  //   const size = tableArr.length;
-  //   tableArr.forEach((line, i) => {
-  //     // console.log(/\|[\w \W]*\|[\w \W]*\|/.test(line))
-  //     // check each line for table markup
-  //     const lineIsTable = /\|[\w \W]*\|[\w \W]*\|/.test(line);
-  //     if (lineIsTable) {
-  //       tableStr += line.trim() + '\n';
-  //       isTable = true;
-  //     }
-  //     // check if table has ended.
-  //     if (isTable && (!lineIsTable || i === size - 1)) {
-  //       isTableEnd = true;
-  //       isTable = false;
-  //     }
-  //     // after table end process table.
-  //     if (!isTable && isTableEnd) {
-  //       isTableEnd = false;
-  //       table = processTable(tableStr);
-  //     }
-  //   });
-  //   return table;
-  //   function processTable(table) {
-  //     let tableHTML = '<table>';
-  //     const tableArr = table.split(/\r?\n/);
-  //     const [h, a, ...rest] = tableArr;
-  //     const alignment = checkAlignment(a); // left|center|right
-  //     // header
-  //     tableHTML += lineToHTML(h, alignment, true);
-  //     // body
-  //     rest.forEach((line) => {
-  //       tableHTML += lineToHTML(line, alignment, false);
-  //     });
-  //     return tableHTML;
-
-  //     function lineToHTML(line, align = 'left', isHeader = false) {
-  //       let row = '<tr>';
-  //       const type = isHeader ? 'th' : 'td';
-  //       const style = `style='text-align: ${align}'`;
-  //       row += `<${type} ${style}>`;
-  //       const rowData = line
-  //         .split('|')
-  //         .map((data) => data.trim())
-  //         .slice(1, -1);
-  //       rowData.forEach((d) => (row += `<${type} ${style}>${d}</${type}>`));
-  //       row += `</tr>`;
-  //       return row;
-  //     }
-  //     function checkAlignment(line) {
-  //       const alignment = line.replace(/\|/g, '').trim();
-  //       if (alignment.startsWith(':') && alignment.endsWith(':')) return 'center';
-  //       if (alignment.endsWith(':')) return 'right';
-  //       return 'left';
-  //     }
-  //   }
-  // }
 })();

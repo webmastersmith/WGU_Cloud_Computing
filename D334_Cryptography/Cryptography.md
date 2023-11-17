@@ -110,49 +110,86 @@ To prepare for the objective assessment, ask yourself these questions:
   - Polyalphabetic cipher that involves using a different mapping, based on a keyword, for each character of the cipher. An advantage of this type of cipher is that the same plaintext character is likely to be coded to different mappings, depending on the position of the keyword, making guessing more difficult.;
 - **One Time Pad Cipher**:
   - ![one time pad](./img/one_time_pad.png)
-  - Cipher code mapping that is used only once. Advantage is it is essentially unbreakable, disadvantage is it takes lots of work as you'd have to generate the pad to be used, each time. Each key(pad) must be same size as message. True Random Number Generators take time to create random data.;
+  - Cipher code mapping that is used only once. Advantage is it is essentially unbreakable, disadvantage is it takes lots of work as you'd have to generate the pad to be used, each time. **Each key(pad) must be same size as message**. True Random Number Generators take time to create random data.;
 - **Four-square Cipher**:
   - ![Four Square Cipher](./img/four_square_cipher.jpg)
   - Uses four 5 × 5 matrices arranged in a square, are where each matrix contains 25 letters for encoding and decoding operations.;
-- **Enigma Machine**: Used a polyalphabetic substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
+- **Enigma Machine**: Used a **polyalphabetic** substitution cipher, which did not repeat within a reasonable time period, along with a secret key. For the cracking of the Enigma cipher, the challenge was thus to determine both the algorithm used and the key. Enigma’s main weakness, though, was that none of the plain text letters could be ciphered as itself.;
 - **Digital Signatures**: Authentication and Non-repudiation.
   1. Sender encrypts **hash** of media with **private** key.
   2. Receiver decrypts signature with **senders public** key and compares hash of media with decrypted hash of signature.
   3. If both match, only the sender could sign media and media **integrity** is assured.;
-- **Pseudo-Random Number Generators (PRNGs)**: This method repeats the random numbers after a given time (periodic). They are fast and are also deterministic and are useful in producing a repeatable set of random numbers. If the seed value(some number) is the same, the generator will produce the same results. The seed number will eventually be exhausted and repeat;
+- **Pseudo-Random Number Generators (PRNGs)**:
+  - https://www.youtube.com/watch?v=GtOt7EBNEwQ
+  - This method repeats the random numbers after a given time (**periodic**). They are fast and are also **deterministic** and are useful in producing a repeatable set of random numbers. If the seed value(some number) is the same, the generator will produce the same results. The **seed number will eventually be exhausted and repeat**;
 - **True Random Number Generators (TRNGs)**:
   - This method generates a true random number and uses some form of random process. One approach is to monitor the movements of a mouse pointer on a screen or from the pauses between keystrokes or monitor static(noise) for random seed.
   - Overall, the method is generally slow, especially if it involves human interaction, but is **non-deterministic** and **aperiodic**.;
-- **Frequency Analysis**: cipher cracking methodology that involves identifying patterns and **variations in the probability** of codes.
-  - example. a three-letter ciphered text combination spotted at the beginning of a string too often could tip us off that those three letters correlate the letters THE in the English alphabet.;
-- **Entropy**: measures level of unpredictability in encryption relates to the degree of uncertainty of the encryption process.
+- **Frequency Analysis**:
+  - cipher cracking methodology that involves identifying patterns and **variations in the probability** of codes.
+  - example. a three-letter ciphered text combination spotted at the beginning of a string too often could tip us off that those three letters correlate the letters **'THE'** in the English alphabet. The most common letter is **'e'**. Slowly solving the mapping of the cipher to the plain text.;
+- **Entropy**:
+  - measures level of **unpredictability(randomness)** in encryption process.
   - more entropy, harder to crack.;
 - **Two common binary to character encoding methods**:
-  1. ASCII (8-bit values, up to 256 characters)
-  2. UTF-16 (16- bit values, up to 65,536 characters).;
-- **Hardware vs Software encryption**: Hardware encryption is more efficient than software encryption.;
-- **Hardware Security Module (HSM)**: is a tamper-evident and intrusion-resistant physical device that safeguards and manages cryptographic keys and provides cryptographic processing.;
-- **Trusted Platform Module (TPM)**: is a dedicated processor that handles hardware-level encryption allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
+  1. **ASCII** (8-bit values, up to 256 characters)
+  2. **UTF-16** (16- bit values, up to 65,536 characters).;
+- **Hardware vs Software encryption**: Hardware encryption is **more efficient(faster)** than software encryption.;
+- **Hardware Security Module (HSM)**: is a **tamper-evident and intrusion-resistant physical device that creates, safeguards and manages cryptographic keys**.;
+- **Trusted Platform Module (TPM)**: is a dedicated card **inside computer that handles hardware-level encryption** allows the use of full disk encryption on a hard drive in a manner that minimizes the impact on system performance. TPM contains the encryption keys.;
+- **What is a Prime Number**:
+  - Only factors are **1 and itself**.
+  - Used extensively in public key encryption.;
+- **Combination vs Permutation**:
+  - **combinations**: are not concerned with the order
+  - **permutations**: all options considered incuding sequence.;
+- **Explain Probability Theory**:
+  - **Likelihood of an event happening** by understanding the chances of how each of the elements involved interact.
+  - **Dependent, Independent, and mutually exclusive**.;
+- **Explain the Modulus Operator in Math**:
+  - using the **'mod'** or **'%'** symbol.
+  - **10 % 2 = 0**: only the remainder will be looked at.
+  - **9 mod 2 = 1**: only the remainder.;
 
 ## Section 02 Secret Key Encryption
 
-- **Secret-Key Encryption**: Symmetric encryption. One key (de/en)crypts.
-  - Since the same key is used for both encryption and decryption in symmetric cryptography, a challenge that exists is finding a secure way to share or transport the key between the entity encrypting and the one decrypting.;
-- **Public-Key Encryption**: Asymmetric encryption. Two keys. Public/Private. Only public key can decrypt private key. Only private key can decrypt public key. Authenticate Identities. Pass Secret-Keys.;
-- **Diffie-Hellman**: fundamental cryptographic protocol used to establish a secure shared secret between two parties over an insecure communication channel. AKA **key exchange**;
-- **Symmetric Block Encryption**:
-  - grouping data into blocks and encrypting the individual blocks.
-  - padding is used to fill blocks to operating size when the data does not fit perfectly.
-  - Symmetric block ciphers manage how blocks of data are processed through block cipher mode implementations. For instance, one may choose to use the DES block cipher configured with ECB as the mode of operation.
-  - Common block cipher modes covered in this course include ECB, CBC, CFB, OFB, and CTR.
-  - CTR can be run in parallel(do not rely on the previous block) and essentially allow the block cipher to operate like a stream cipher.;
-- **Symmetric Stream Encryption**: much faster than block and can typically be applied in real-time applications. symmetric stream encryption involves encrypting one bit at a time, i.e., a synchronous stream.;
+- **Secret-Key Encryption**:
+  - **Symmetric encryption**. One key encrypts/decrypts.
+  - Much faster encryption/decryption than asymmetric.
+  - Since the same key is used for both encryption and decryption in symmetric cryptography, a challenge that exists is **finding a secure way to share or transport the key** between the entity encrypting and the one decrypting.
+  - PKI solves this.;
+- **Public-Key Encryption**:
+  - **Asymmetric encryption**. Two keys. Public/Private.
+  - Only public key can decrypt private key. Only private key can decrypt public key.
+  - PKI(pulic key infrastructure) is used transport and **share the symmetric key**.
+  - With Public/Private keys you can **Authenticate Identities**.;
+- **Diffie-Hellman**:
+  - fundamental cryptographic protocol used to establish a secure shared secret between two parties over an insecure communication channel.
+  - **securely exchanging cryptographic keys over a public channel**.
+  - because asymmetric(public/private) key decryption/encryption is slow, sharing the mush faster symmetric key secret over public channels is what Diffie-Hellman algorithm does.;
+- **Two types of Symmetric Encryption**:
+  - **Symmetric Block Encryption**:
+    - **grouping data into blocks** and encrypting the individual blocks.
+    - padding is used to fill blocks to operating size when the data does not fit perfectly.
+    - Symmetric block ciphers manage how blocks of data are processed through block cipher mode implementations. For instance, one may choose to use the DES block cipher configured with ECB as the mode of operation.
+    - Common block cipher modes covered in this course include ECB, CBC, CFB, OFB, and CTR.
+    - CTR can be run in parallel(do not rely on the previous block) and essentially allow the block cipher to operate like a stream cipher.
+  - **Symmetric Stream Encryption**:
+    - much **faster than block** and can typically be applied in real-time applications. symmetric stream encryption involves **encrypting one bit at a time**, i.e., a synchronous stream.;
 - **Work Factor**:
-  - All current cipher codes are crackable and a measure of the security of a code is the amount of time it would take to break the code based on the computational power available. This is often referred to as the work factor. As processing power magnifies, security of current ciphers decreases.;
-  - **Salting**: is the process of adding an initialization vector to the ciphering process to change its operation and ensure that the ciphertext does not give the original plaintext when played back.;
-  - **Describe Block Cipher**:
-    - ![block cipher mode](./img/block_cipher_mode.PNG)
-    - Outline how the blocks will be handled depending on the implementation selected (i.e., which mode is used). Implementation selection can be based on anything just as type of cipher can. Factors can include security needs or not, processing capacity, organization preference and so on.;
+  - **All current cipher codes are crackable** and a measure of the security of a code is the **amount of time it would take to break the code** based on the computational power available. This is often referred to as the work factor. As processing power magnifies, security of current ciphers decreases.;
+- **Salting**:
+  - **Passwords**:
+    - if you hash the same word, you get the same results. Rainbow tables take advantage of this and hash common passwords, then compare their table with a database 'hashed passwords'(because nobody stores passwords in plaintext) to find matches.
+    - because of the time involved, usually these tables are made in advance.
+    - Salt adds randomness. This makes it impractical to use pre-created Rainbow tables.
+  - **Initialization Vectors**:
+    - when creating encrypted blocks, the same block will produce the same results.
+    - adding in randomness increases the entropy.
+    - ensure that the **ciphertext does not give the original plaintext when played back**.;
+- **Describe Block Cipher**:
+  - ![block cipher mode](./img/block_cipher_mode.PNG)
+  - Outline how the blocks will be handled depending on the implementation selected (i.e., which mode is used). Implementation selection can be based on anything just as type of cipher can. Factors can include security needs or not, processing capacity, organization preference and so on.;
 - **Electronic Code Book Cipher (EBC)**:
   - ![Electronic code book cipher](./img/ecb_cipher.PNG)
   - ![cipher](./img/ciphers.PNG);
@@ -190,21 +227,6 @@ To prepare for the objective assessment, ask yourself these questions:
 
 ;
 
-- **Explain common Light-weight Symmetric Block ciphers**:
-  - mnemonic: xCRISP(i=sImon)
-  - **Bold** means testable!
-
-| Name    | Block Size (In Bits)    | Key Size (In Bits)                   | Rounds                     | Key attributes for light-weight suitability                        |
-| ------- | ----------------------- | ------------------------------------ | -------------------------- | ------------------------------------------------------------------ |
-| XTEA    | **64**                  | **128**                              | Variable (64 recommended)  | **Fast speed.**                                                    |
-| CLEFIA  | **128**                 | **128, 192 and 256**                 | 18, 22, OR 26              | Variable key size and rounds.                                      |
-| RC5     | **32, 64, or 128**      | **0-2048**                           | Variable 0-255             | **Conventional method suitable for light-weight implementations.** |
-| SIMON   | **32, 48, 64, 96, 128** | **64, 72, 96, 128, 144, 192 or 256** | Variable (32 or 44 common) | **Optimized for hardware implementations.**                        |
-| SPECK   | 32, 48, 64, 96 or 128   | Variable                             | Variable (32 or 44 common) | **Optimized for software implementations.**                        |
-| PRESENT | **64**                  | **80 or 128**                        | **32**                     | **considered as an AES replacement**                               |
-
-;
-
 - **Explain Conventional Symmetric Stream ciphers**:
   - mnemonic: ChaCha Roberto!
   - **Bold** means testable!
@@ -213,82 +235,6 @@ To prepare for the objective assessment, ask yourself these questions:
 | ------ | ------------------------------------- |
 | ChaCha | 256 bit key size. 3 x faster than AES |
 | RC4    | **1-256 bit key size**. 1 round       |
-
-;
-
-- **Explain Common Light-weight Symmetric Stream ciphers**:
-  - mnemonic: tGERM
-  - **Bold** means testable!
-
-| Name      | Key Size (In Bits) | Initialization Vector (IV) Size (In Bits) |
-| --------- | ------------------ | ----------------------------------------- |
-| Trivium   | **80**             | **80**                                    |
-| Grain     | **80**             | 64                                        |
-| Enocoro   | **128**            | **64**                                    |
-| Rabbit    | **128**            | **64**                                    |
-| Mickey v2 | **80**             | **Variable up to 80**                     |
-
-;
-
-- **Explain Conventional Asymmetric Ciphers**:
-  - mnemonic: DEER
-  - **Bold** means testable!
-
-| Name     | Description                                                                                            |
-| -------- | ------------------------------------------------------------------------------------------------------ |
-| DSA      | Federal Information Processing Standard (FIPS 186). modular exponentiation and the discrete logarithm. |
-| ECC      | Improved over RSA. Key exchange and digital signing.                                                   |
-| El Gamal | encryption and digital signing                                                                         |
-| RSA      | 1024-4096 bit key size. Partially homomorphic. Leverages Prime numbers.                                |
-
-;
-
-- **Explain Coventional Hash Ciphers**:
-  - mnemonic: MD. Shyamalan (like M. Night Shyamalan -the movie director)
-  - **Bold** means testable!
-
-| Name    | Initialization Vector (IV) Size (In Bits) |
-| ------- | ----------------------------------------- |
-| MD2,4,5 | **128**                                   |
-| MD6     | 1-512                                     |
-| SHA-1   | **160**                                   |
-| SHA-2   | 256,384,512                               |
-| SHA-3   | variable                                  |
-| SHA-256 | 256                                       |
-| SHA-512 | 512                                       |
-
-;
-
-- **Explain light-weight hashing ciphers**:
-  - mnemonic: PLUS(u=Quark)
-  - **Bold** means testable!
-
-| Name        | Hash Value (In Bits)         | Key attributes for light-weight suitability                                         |
-| ----------- | ---------------------------- | ----------------------------------------------------------------------------------- |
-| PHOTON      | 80, 128, 160, 224 or 256-bit | Small memory footprint.                                                             |
-| Lesamnta-LW | 256                          | Small memory footprint. **5 times faster than SHA-256**. **short message hashing**. |
-| Quark       | **64 or 112**                | Small memory footprint. **hashing and in stream encryption**.                       |
-| SPONGENT    | 88, 128, 160, 224 or 256     | Small memory footprint.                                                             |
-
-;
-
-- **Explain light-weight Signing ciphers**:
-  - mnemonic: Chase (Bank) Key.
-  - **Bold** means testable!
-
-| Name    | Key Size (In Bits) | Description                                                         |
-| ------- | ------------------ | ------------------------------------------------------------------- |
-| Chaskey | **128**            | MAC (Message authentication code). suitable for IoT implementation. |
-
-;
-
-- **Explain light-weight Public Key ciphers**:
-  - mnemonic: Eli (the book of eli movie)
-  - **Bold** means testable!
-
-| Name | Key Size (In Bits) | Description                                 |
-| ---- | ------------------ | ------------------------------------------- |
-| Elli | 128                | "Elliptic Light". **RFID implementations**. |
 
 ;
 
@@ -309,6 +255,21 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Timed One Time Password (TOTP)**: This allows for a new unique passcode to be created for each instance, based on an initial seed and for a given time period.;
 - **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
 - **Time Stamp Protocol (TSP)**: cryptography method to give a verifiable method that a data entity was created at a defined time.;
+- **Explain Coventional Hash Ciphers**:
+  - mnemonic: MD. Shyamalan (like M. Night Shyamalan -the movie director)
+  - **Bold** means testable!
+
+| Name    | Hash Value (In Bits) |
+| ------- | -------------------- |
+| MD2,4,5 | **128**              |
+| MD6     | 1-512                |
+| SHA-1   | **160**              |
+| SHA-2   | 256,384,512          |
+| SHA-3   | variable             |
+| SHA-256 | 256                  |
+| SHA-512 | 512                  |
+
+;
 
 ## Section 04 Public Key
 
@@ -322,6 +283,18 @@ To prepare for the objective assessment, ask yourself these questions:
   3. Client decrypts message with it's private key. Inside is the file and the encrypted signature.
   4. Client then decrypts Sender signature with Senders public key(non-repudiation).
   5. Client computes hash of message and compares this to the Sender's hash of original file. If both match, file integrity is assured.;
+- **Explain Conventional Asymmetric Ciphers**:
+  - mnemonic: DEER
+  - **Bold** means testable!
+
+| Name     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| DSA      | Federal Information Processing Standard (FIPS 186). modular exponentiation and the discrete logarithm. |
+| ECC      | Improved over RSA. Key exchange and digital signing.                                                   |
+| El Gamal | encryption and digital signing                                                                         |
+| RSA      | 1024-4096 bit key size. Partially homomorphic. Leverages Prime numbers.                                |
+
+;
 
 ## Section 05 Key Exchange
 
@@ -425,51 +398,67 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Quantum computers**: have fast multiplication circuits, and thus can be used to perform multiplications and search a range of prime numbers at a speed which would break most existing RSA implementations.;
 - **Merkle tree**: is a tree that defines each non-leaf node with a value or a label and contains a hash of its children. This builds a hash trees and is used to provide a verification of large-scale data structures.;
 - **Lattice-based cryptography**: uses asymmetric cryptographic primitives based on lattices. It has been known about for several decades, and is now being investigated because of its quantum robustness, whereas many of the existing public key methods such as RSA and Diffie-Hellman cryptosystems can be broken with quantum computers.;
-- **Light-Weight Crypto -PRESENT**:
-  - Block Size. 64
-  - Key Size. 80 or 128
-  - Attributes. Relatively small key and block sizes. Uses an SPN (substitution permutation network) method. **One of the 1st considered as an AES replacement for use in light-weight implementations**.;
-- **Light-Weight Crypto -XTEA**:
-  - Block Size. 64
-  - Key Size. 128
-  - Attributes. Relatively small key and block sizes and variable rounds setting. Operates with just a just a few lines of code. **Fast speed**.;
-- **Light-Weight Crypto -RC5**:
-  - Block Size. 32, 64, or 128
-  - Key Size. 0-2048
-  - Attributes. Variable block size, key size, and rounds. Can be optimized to IoT devices. **Conventional method suitable for light-weight implementations**.;
-- **Light-Weight Crypto -SIMON**:
-  - Block Size. 32, 48, 64, 96, 128
-  - Key Size. 64, 72, 96, 128, 144, 192 or 256
-  - Attributes. Variable block sizes key sizes, and rounds. **Optimized for hardware implementations**.;
-- **Light-Weight Crypto -SPECK**:
-  - Block Size. 32, 48, 64, 96 or 128
-  - Key Size. Variable
-  - Attributes. Variable block sizes key sizes, and rounds. **Optimized for software implementations**.;
-- **Light-Weight Crypto -CLEFIA**:
-  - Block Size. 128
-  - Key Size. 128, 192 and 256
-  - Attributes. Variable key size and rounds.;
-- **Light-Weight Crypto -Rabbit**:
-  - Hash Value. 128
-  - IV Size. 64;
-- **Light-Weight Crypto -Mickey v2**:
-  - Hash Value. 80
-  - IV Size. Variable up to 80;
-- **Light-Weight Crypto -Trivium**:
-  - Hash Value. 80
-  - IV Size. 80;
-- **Light-Weight Crypto -Grain**:
-  - Hash Value. 80
-  - IV Size. 64;
-- **Light-Weight Crypto -Enocoro**:
-  - Hash Value. 128
-  - IV Size. 64;
-- **Quark**:
-  - Hash Value. 64 or 112.
-  - Small memory footprint and have a target an input of just 256 characters (whereas typical hash functions support up to 264 bits). Can be used for hashing and in stream encryption.;
-- **Chaskey**:
-  - Key Size. 128
-  - Light-weight cryptography method for signing messages (MAC). Relatively undemanding hardware implementation (only ~3,333 gates required at 1MHz clock rate) making it suitable for IoT implementation.;
+- **Explain common Light-weight Symmetric Block ciphers**:
+  - mnemonic: xCRISP(i=sImon)
+  - **Bold** means testable!
+
+| Name    | Block Size (In Bits)    | Key Size (In Bits)                   | Rounds                     | Key attributes for light-weight suitability                        |
+| ------- | ----------------------- | ------------------------------------ | -------------------------- | ------------------------------------------------------------------ |
+| XTEA    | **64**                  | **128**                              | Variable (64 recommended)  | **Fast speed.**                                                    |
+| CLEFIA  | **128**                 | **128, 192 and 256**                 | 18, 22, OR 26              | Variable key size and rounds.                                      |
+| RC5     | **32, 64, or 128**      | **0-2048**                           | Variable 0-255             | **Conventional method suitable for light-weight implementations.** |
+| SIMON   | **32, 48, 64, 96, 128** | **64, 72, 96, 128, 144, 192 or 256** | Variable (32 or 44 common) | **Optimized for hardware implementations.**                        |
+| SPECK   | 32, 48, 64, 96 or 128   | Variable                             | Variable (32 or 44 common) | **Optimized for software implementations.**                        |
+| PRESENT | **64**                  | **80 or 128**                        | **32**                     | **considered as an AES replacement**                               |
+
+;
+
+- **Explain Common Light-weight Symmetric Stream ciphers**:
+  - mnemonic: tGERM
+  - **Bold** means testable!
+
+| Name      | Key Size (In Bits) | Initialization Vector (IV) Size (In Bits) |
+| --------- | ------------------ | ----------------------------------------- |
+| Trivium   | **80**             | **80**                                    |
+| Grain     | **80**             | 64                                        |
+| Enocoro   | **128**            | **64**                                    |
+| Rabbit    | **128**            | **64**                                    |
+| Mickey v2 | **80**             | **Variable up to 80**                     |
+
+;
+
+- **Explain light-weight hashing ciphers**:
+  - mnemonic: PLUS(u=Quark)
+  - **Bold** means testable!
+
+| Name        | Hash Value (In Bits)         | Key attributes for light-weight suitability                                         |
+| ----------- | ---------------------------- | ----------------------------------------------------------------------------------- |
+| PHOTON      | 80, 128, 160, 224 or 256-bit | Small memory footprint.                                                             |
+| Lesamnta-LW | 256                          | Small memory footprint. **5 times faster than SHA-256**. **short message hashing**. |
+| Quark       | **64 or 112**                | Small memory footprint. **hashing and in stream encryption**.                       |
+| SPONGENT    | 88, 128, 160, 224 or 256     | Small memory footprint.                                                             |
+
+;
+
+- **Explain light-weight Signing ciphers**:
+  - mnemonic: Chase (Bank) Key.
+  - **Bold** means testable!
+
+| Name    | Key Size (In Bits) | Description                                                         |
+| ------- | ------------------ | ------------------------------------------------------------------- |
+| Chaskey | **128**            | MAC (Message authentication code). suitable for IoT implementation. |
+
+;
+
+- **Explain light-weight Public Key ciphers**:
+  - mnemonic: Eli (the book of eli movie)
+  - **Bold** means testable!
+
+| Name | Key Size (In Bits) | Description                                 |
+| ---- | ------------------ | ------------------------------------------- |
+| Elli | 128                | "Elliptic Light". **RFID implementations**. |
+
+;
 
 ## Section 10 Blockchain and Crypto-Currency
 
@@ -516,18 +505,17 @@ To prepare for the objective assessment, ask yourself these questions:
 - **A5/3 encryption system fixes what**:
   - known as KASUMI, the Japanese word for “mist”, is the upgrade to A5/1 and uses a block cipher. A5/1 is designed to be used for the GSM network, whereas A5/3 is for 3GPP, and is based on the MISTY1 cipher. 128-bit key.;
 - **While WEP contains what weaknesses**:
-
   - a properly defined stream cipher can be much faster than block ciphers, as they just have to create a key stream from an IV (also known as a nonce value) and a key.;
   - **ChaCha20**:
     - named as it has 20 rounds
     - Google proposed as an alternative to AES to be used with TLS connections.;
-  - **WEP vs WPA vs WPA2**:
+- **WEP vs WPA vs WPA2**:
 
-    |                   | WEP              | WPA              | WPA2            |
-    | ----------------- | ---------------- | ---------------- | --------------- |
-    | Encryption Method | RC4              | TKIP + RC4       | AES-CCMP        |
-    | Key Size          | 40-bit           | 128-bit          | 128-bit         |
-    | Cipher Type       | Symmetric Stream | Symmetric Stream | Symmetric Block |
-    | IV Size           | 24-bit           | 48-bit           | 48-bit          |
+  |                   | WEP              | WPA              | WPA2            |
+  | ----------------- | ---------------- | ---------------- | --------------- |
+  | Encryption Method | RC4              | TKIP + RC4       | AES-CCMP        |
+  | Key Size          | 40-bit           | 128-bit          | 128-bit         |
+  | Cipher Type       | Symmetric Stream | Symmetric Stream | Symmetric Block |
+  | IV Size           | 24-bit           | 48-bit           | 48-bit          |
 
-    ;
+  ;
