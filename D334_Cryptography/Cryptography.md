@@ -139,7 +139,7 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Secret-Key Encryption**: Symmetric encryption. One key (de/en)crypts.
   - Since the same key is used for both encryption and decryption in symmetric cryptography, a challenge that exists is finding a secure way to share or transport the key between the entity encrypting and the one decrypting.;
 - **Public-Key Encryption**: Asymmetric encryption. Two keys. Public/Private. Only public key can decrypt private key. Only private key can decrypt public key. Authenticate Identities. Pass Secret-Keys.;
-- **Diffie-Hellman**: fundamental cryptographic protocol used to establish a secure shared secret between two parties over an insecure communication channel.;
+- **Diffie-Hellman**: fundamental cryptographic protocol used to establish a secure shared secret between two parties over an insecure communication channel. AKA **key exchange**;
 - **Symmetric Block Encryption**:
   - grouping data into blocks and encrypting the individual blocks.
   - padding is used to fill blocks to operating size when the data does not fit perfectly.
@@ -168,40 +168,127 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Counter Mode Cipher**:
   - ![Counter Mode Cipher](./img/counter_mode_cipher.PNG)
   - ![Ciphers](./img/ciphers.PNG);
-- **Explain common symmetric stream ciphers**:
-  - **RC4**. (stream cipher) – used in SSL and WEP.
-  - **CHACHA20**. stream cipher.;
-- **Explain common hashes**:
-  - **MD5**. 128 bit hash.
-  - **SHA 1, 256, 3**. 1(160 bit), 256(192 bit), 3(224, 256, 384, and 512 bit);
-- **Explain common symmetric block ciphers**:
-  - **DES**. (56 bit key size, 64 bit block size).
-  - **3DES**. (112 bit key size, 64 bit block size).
-  - **RC2**. (40-bit key size, 64-bit blocks).
-  - **RC5**. (variable key size, 32, 64 or 128-bit block sizes).
-  - **IDEA**. (128 key size, 64 bit block size).
-  - **AES**. (128, 192 or 256-bit key size, 128-bit block size).;
-- **Explain common asymmetric ciphers**:
-  - **RSA**.
-  - **DSA**.
-  - **ElGamal**. key signing.
-  - **Cramer Shoup**. extends El Gamal but adds one-way hashing. ;
-- **Explain block and key size of DES, 3DES, AES, IDEA, Skipjack, Blowfish, Twofish, Camellia, RC2, RC5, RC6, XTEA**:
+- **Explain Conventional Symmetric Block Ciphers**:
+  - mnemonic: 3xBIRDS(64 block size). CART(two RR's. 128 block size)
+  - **Bold** means testable!
 
 | Name     |  Block Size (In Bits)  |         Key Size (In Bits)          |                  Rounds |
 | :------- | :--------------------: | :---------------------------------: | ----------------------: |
-| DES      |           64           |                 56                  |                      16 |
 | 3DES     |           64           |                 112                 |                      48 |
-| AES      |          128           |          128, 192, OR 256           |           10, 12, or 14 |
-| IDEA     |           64           |                 128                 |                     >17 |
-| Skipjack |           64           |                 80                  |                      32 |
+| XTEA     |           64           |                 128                 | Variable (64 suggested) |
 | Blowfish |           64           | 32-448 (common = 128, 192, or 256)  |                      16 |
-| Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |                      16 |
-| Camellia |          128           |          128, 192, OR 256           |                18 or 24 |
+| IDEA     |           64           |                 128                 |                     >17 |
 | RC2      |           64           |   1-128 (suggested minimum = 40)    |                      18 |
+| DES      |           64           |                 56                  |                      16 |
+| Skipjack |           64           |                 80                  |                      32 |
+| -        |           -            |                  -                  |                       - |
+| Camellia |          128           |          128, 192, OR 256           |                18 or 24 |
+| AES      |          128           |          128, 192, OR 256           |           10, 12, or 14 |
 | RC5      |     32, 64, or 128     |               0-2048                |                   0-255 |
 | RC6      | Variable (common =128) | Variable (common = 128, 192 or 256) |                      20 |
-| XTEA     |           64           |                 128                 | Variable (64 suggested) |
+| Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |                      16 |
+
+;
+
+- **Explain common Light-weight Symmetric Block ciphers**:
+  - mnemonic: xCRISP(i=sImon)
+  - **Bold** means testable!
+
+| Name    | Block Size (In Bits)    | Key Size (In Bits)                   | Rounds                     | Key attributes for light-weight suitability                        |
+| ------- | ----------------------- | ------------------------------------ | -------------------------- | ------------------------------------------------------------------ |
+| XTEA    | **64**                  | **128**                              | Variable (64 recommended)  | **Fast speed.**                                                    |
+| CLEFIA  | **128**                 | **128, 192 and 256**                 | 18, 22, OR 26              | Variable key size and rounds.                                      |
+| RC5     | **32, 64, or 128**      | **0-2048**                           | Variable 0-255             | **Conventional method suitable for light-weight implementations.** |
+| SIMON   | **32, 48, 64, 96, 128** | **64, 72, 96, 128, 144, 192 or 256** | Variable (32 or 44 common) | **Optimized for hardware implementations.**                        |
+| SPECK   | 32, 48, 64, 96 or 128   | Variable                             | Variable (32 or 44 common) | **Optimized for software implementations.**                        |
+| PRESENT | **64**                  | **80 or 128**                        | **32**                     | **considered as an AES replacement**                               |
+
+;
+
+- **Explain Conventional Symmetric Stream ciphers**:
+  - mnemonic: ChaCha Roberto!
+  - **Bold** means testable!
+
+| Name   | Description                           |
+| ------ | ------------------------------------- |
+| ChaCha | 256 bit key size. 3 x faster than AES |
+| RC4    | **1-256 bit key size**. 1 round       |
+
+;
+
+- **Explain Common Light-weight Symmetric Stream ciphers**:
+  - mnemonic: tGERM
+  - **Bold** means testable!
+
+| Name      | Key Size (In Bits) | Initialization Vector (IV) Size (In Bits) |
+| --------- | ------------------ | ----------------------------------------- |
+| Trivium   | **80**             | **80**                                    |
+| Grain     | **80**             | 64                                        |
+| Enocoro   | **128**            | **64**                                    |
+| Rabbit    | **128**            | **64**                                    |
+| Mickey v2 | **80**             | **Variable up to 80**                     |
+
+;
+
+- **Explain Conventional Asymmetric Ciphers**:
+  - mnemonic: DEER
+  - **Bold** means testable!
+
+| Name     | Description                                                                                            |
+| -------- | ------------------------------------------------------------------------------------------------------ |
+| DSA      | Federal Information Processing Standard (FIPS 186). modular exponentiation and the discrete logarithm. |
+| ECC      | Improved over RSA. Key exchange and digital signing.                                                   |
+| El Gamal | encryption and digital signing                                                                         |
+| RSA      | 1024-4096 bit key size. Partially homomorphic. Leverages Prime numbers.                                |
+
+;
+
+- **Explain Coventional Hash Ciphers**:
+  - mnemonic: MD. Shyamalan (like M. Night Shyamalan -the movie director)
+  - **Bold** means testable!
+
+| Name    | Initialization Vector (IV) Size (In Bits) |
+| ------- | ----------------------------------------- |
+| MD2,4,5 | **128**                                   |
+| MD6     | 1-512                                     |
+| SHA-1   | **160**                                   |
+| SHA-2   | 256,384,512                               |
+| SHA-3   | variable                                  |
+| SHA-256 | 256                                       |
+| SHA-512 | 512                                       |
+
+;
+
+- **Explain light-weight hashing ciphers**:
+  - mnemonic: PLUS(u=Quark)
+  - **Bold** means testable!
+
+| Name        | Hash Value (In Bits)         | Key attributes for light-weight suitability                                         |
+| ----------- | ---------------------------- | ----------------------------------------------------------------------------------- |
+| PHOTON      | 80, 128, 160, 224 or 256-bit | Small memory footprint.                                                             |
+| Lesamnta-LW | 256                          | Small memory footprint. **5 times faster than SHA-256**. **short message hashing**. |
+| Quark       | **64 or 112**                | Small memory footprint. **hashing and in stream encryption**.                       |
+| SPONGENT    | 88, 128, 160, 224 or 256     | Small memory footprint.                                                             |
+
+;
+
+- **Explain light-weight Signing ciphers**:
+  - mnemonic: Chase (Bank) Key.
+  - **Bold** means testable!
+
+| Name    | Key Size (In Bits) | Description                                                         |
+| ------- | ------------------ | ------------------------------------------------------------------- |
+| Chaskey | **128**            | MAC (Message authentication code). suitable for IoT implementation. |
+
+;
+
+- **Explain light-weight Public Key ciphers**:
+  - mnemonic: Eli (the book of eli movie)
+  - **Bold** means testable!
+
+| Name | Key Size (In Bits) | Description                                 |
+| ---- | ------------------ | ------------------------------------------- |
+| Elli | 128                | "Elliptic Light". **RFID implementations**. |
 
 ;
 

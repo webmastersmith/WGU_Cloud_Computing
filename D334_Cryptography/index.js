@@ -85,29 +85,31 @@
 
     const cards = [];
     // get front, back, image from each section block. Card data.
-    sectionBlocks.forEach((lineBlock) => {
+    sectionBlocks.forEach((cardBlock) => {
       let front = '';
       let back = '';
       const picture = [];
-      // check each line if an image.
-      // separate key, value
-      // Split each block up. only split first line, due to tables having ':' in them.
+
+      // Each cardBlock is a Card. Get question and answer.
+      // separate first line, due to tables having ':' in them.
       // The first line will be the question.
-      const [firstLine, ...rest] = lineBlock?.trim().split(/\r?\n/);
-      // the first line will have ':' as a separator between question and answer.
-      const [key, v] = firstLine?.trim().split(':');
-      // create the html for the question.
-      front = '<h2>' + key.replaceAll('*', '').replace('-', '')?.trim() + '</h2>';
+      const [firstLine, ...rest] = cardBlock?.trim().split(/\r?\n/);
+      // It may have an answer in the line separated by ':'.
+      const [question, answer] = firstLine?.trim().split(':');
+      // Bold question.
+      front = '<h2>' + question.replaceAll('*', '').replace('-', '')?.trim() + '</h2>';
       // The 'rest' is the backside(answer) of card.
-      // 'v' could be blank or text. If text, then add newline. Then join 'rest' with it.
-      const value = v?.trim() ? v + '\n' : '' + rest?.join('\n') || '';
-      // const value = confirm.makeHtml(v?.trim() ? v + '\n' : '' + rest?.join('\n') || '');
-      // loop each line, remove image line, push image object to picture.
+      // 'answer' could be blank or text. If text, then add newline. Then join 'rest' with it.
+      const answerBlock = answer?.trim() ? answer + '\n' : '' + rest?.join('\n') || '';
+      // The first line is processed.
+
+      // Work on the answerBlock which could be multiple lines and images
       let textNoImages = '';
-      value.split(/\r?\n/).forEach((line) => {
+      let lineIsTable = false; // check if previous line was table. Has to be outside loop.
+      answerBlock.split(/\r?\n/).forEach((line) => {
         // discard empty lines
-        if (line.length < 1) return;
-        // check if line is an image.
+        // if (line.length < 1) return;
+        // IMAGE -check if line is an image.
         if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
           const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
           const filename = picPath.split('/').pop();
@@ -121,7 +123,13 @@
           return;
         }
         // no image, process text.
-        textNoImages += line.trim() + '\n'; // take out the bullet indents.
+        if (line.trim().startsWith('|')) {
+          textNoImages += `${!lineIsTable ? '\n' : ''}${line.trim()}\n`;
+          lineIsTable = true;
+        } else {
+          textNoImages += line.trim() + '\n'; // take out the bullet indents.
+          lineIsTable = false;
+        }
       });
       // Parse md into html with 'Showdown'.
       back = converter.makeHtml(textNoImages);
