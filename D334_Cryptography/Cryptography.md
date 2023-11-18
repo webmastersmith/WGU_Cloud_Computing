@@ -190,40 +190,89 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Describe Block Cipher**:
   - ![block cipher mode](./img/block_cipher_mode.PNG)
   - Outline how the blocks will be handled depending on the implementation selected (i.e., which mode is used). Implementation selection can be based on anything just as type of cipher can. Factors can include security needs or not, processing capacity, organization preference and so on.;
-- **Electronic Code Book Cipher (EBC)**:
-  - ![Electronic code book cipher](./img/ecb_cipher.PNG)
-  - ![cipher](./img/ciphers.PNG);
+- **Electronic Code Book (ECB)**:
+  - The IV and Secret will be the same size bits as the 'block'.
+  - Start: **PlainText XOR Secret Key = CipherText Block**.
+  - Next Block: **PlainText XOR Secret Key = CipherText Block**.
+  - Padding is added if not enough data to fill block.
+  - Pros: good for short messages < 1 block.
+  - Cons: Can be easily broken. Same text will result in same CipherText Block.
+  - The Secret Key and PlainText will use **eXclusive OR**, boolean logic. This process allows you to recover the hidden bit.
+  - XOR rules: compare two bits, if opposite = 1, if same = 0.
+  - **Encrypt**
+
+| Description: Create CipherText     | nibble |
+| ---------------------------------- | ------ |
+| plaintext in binary                | 1001   |
+| secret key in binary               | 0011   |
+| ---------------------------------- | ------ |
+| XOR to create ciphertext in binary | 1010   |
+
+- **Decrypt**
+
+| Description: Create PlainText      | nibble |
+| ---------------------------------- | ------ |
+| secret key in binary               | 0011   |
+| ciphertext in binary               | 1010   |
+| ---------------------------------- | ------ |
+| XOR to create plaintext in binary  | 1001   |
+
+- ![Electronic code book cipher](./img/ecb_cipher.PNG)
+- ![cipher](./img/ciphers.PNG);
 - **Cipher Block Chaining (CBC)**:
+  - The IV and Secret will be the same size bits as the 'block'.
+  - mnemonic: Chaining is plain.
+  - Start: **(IV XOR PlainText) XOR Secret Key = CipherText Block**.
+  - Next Block: **(Previous CipherText Block XOR PlainText) XOR Secret Key = CipherText Block**.
+  - Pros: More secure than ECB.
+  - Cons: No parallelism. IV and Secret Key must be know to both parties.
   - ![cipher block cipher](./img/cbc_cipher.PNG)
   - ![ciphers](./img/ciphers.PNG);
 - **Cipher Feedback (CFB)**:
+  - The IV and Secret will be the same size bits as the 'block'.
+  - mnemonic: Feedback is a secret.
+  - Start: **(IV XOR Secret Key) XOR PlainText = CipherText Block**.
+  - Next Block: **(Previous CipherText Block XOR Secret Key) XOR PlainText = CipherText Block**.
+  - The only difference between CFB and CBC, The Secret Key and PlainText are reversed.
+  - Pros: Can create a 'streaming mode'. No need of padding.
+  - Cons: IV and Secret Key must be known by both parties.
   - ![cipher feedback](./img/cipher_feedback.PNG)
   - ![ciphers](./img/ciphers.PNG);
 - **Output Feedback (OFB)**:
+  - The IV and Secret **do not** have to be the same size as the 'block'.
+  - Start: **(IV XOR Secret Key = SecretCipher) XOR PlainText = CipherText Block**.
+  - Next Block: **(Previous SecretCipher XOR Secret Key) XOR PlainText = CipherText Block**.
+  - Pros: Bit error in CipherText Block do not propagate. PlainText can be any size.
+  - Cons: IV and Secret Key must be known by both parties. Vulnerable to modification attack. Not parallelizable.
   - ![output feedback cipher](./img/output_feedback_cipher.PNG)
   - ![ciphers](./img/ciphers.PNG);
 - **Counter Mode Cipher**:
+  - The Counter and Secret will be the same size bits as the 'block'.
+  - Start: **(Counter(Nonce) XOR Secret Key) XOR PlainText = CipherText Block**.
+  - Next Block: **(Counter +n XOR Secret Key) XOR PlainText = CipherText Block**.
+  - Pros: Parallelism. Not vulnerable to Oracle attacks. Efficient.
+  - Cons: Counter and Secret must be known by both parties. Not safe for small blocks of text < 128 bits.
   - ![Counter Mode Cipher](./img/counter_mode_cipher.PNG)
   - ![Ciphers](./img/ciphers.PNG);
 - **Explain Conventional Symmetric Block Ciphers**:
-  - mnemonic: 3xBIRDS(64 block size). CART(two RR's. 128 block size)
+  - mnemonic: **3xBIRDS(64 block size) in a CART(two RR's. 128 block size)**
   - **Bold** means testable!
 
-| Name     |  Block Size (In Bits)  |         Key Size (In Bits)          |                  Rounds |
-| :------- | :--------------------: | :---------------------------------: | ----------------------: |
-| 3DES     |           64           |                 112                 |                      48 |
-| XTEA     |           64           |                 128                 | Variable (64 suggested) |
-| Blowfish |           64           | 32-448 (common = 128, 192, or 256)  |                      16 |
-| IDEA     |           64           |                 128                 |                     >17 |
-| RC2      |           64           |   1-128 (suggested minimum = 40)    |                      18 |
-| DES      |           64           |                 56                  |                      16 |
-| Skipjack |           64           |                 80                  |                      32 |
-| -        |           -            |                  -                  |                       - |
-| Camellia |          128           |          128, 192, OR 256           |                18 or 24 |
-| AES      |          128           |          128, 192, OR 256           |           10, 12, or 14 |
-| RC5      |     32, 64, or 128     |               0-2048                |                   0-255 |
-| RC6      | Variable (common =128) | Variable (common = 128, 192 or 256) |                      20 |
-| Twofish  |          128           |  1-256 (common = 128, 192, or 256)  |                      16 |
+| Name     | Block Size (In Bits)   | Key Size (In Bits)                       | Rounds                  |
+| -------- | ---------------------- | ---------------------------------------- | ----------------------- |
+| 3DES     | **64**                 | **112**                                  | **48**                  |
+| XTEA     | **64**                 | **128**                                  | Variable (64 suggested) |
+| Blowfish | 64                     | 32 - 448 (**common = 128, 192, or 256**) | 16                      |
+| IDEA     | **64**                 | **128**                                  | **>17**                 |
+| RC2      | **64**                 | 1-128 (**suggested minimum = 40**)       | 18                      |
+| DES      | **64**                 | **56**                                   | **16**                  |
+| Skipjack | **64**                 | **80**                                   | 32                      |
+| -        | -                      | -                                        | -                       |
+| Camellia | 128                    | 128, 192, OR 256                         | 18 or 24                |
+| AES      | **128**                | **128, 192, OR 256**                     | 10, 12, or 14           |
+| RC5      | **32, 64, or 128**     | **0-2048**                               | 0-255                   |
+| RC6      | Variable (common =128) | Variable (common = 128, 192 or 256)      | 20                      |
+| Twofish  | 128                    | 1-256 (**common = 128, 192, or 256**)    | 16                      |
 
 ;
 
@@ -234,14 +283,14 @@ To prepare for the objective assessment, ask yourself these questions:
 | Name   | Description                           |
 | ------ | ------------------------------------- |
 | ChaCha | 256 bit key size. 3 x faster than AES |
-| RC4    | **1-256 bit key size**. 1 round       |
+| RC4    | **1 - 256 bit key size**. 1 round     |
 
 ;
 
 ## Section 03 Hashing
 
 - **Explain Hashing**:
-  - describes one-way or irreversible encryption used for protecting the integrity of data and in authentication applications.
+  - describes **one-way or irreversible encryption** used for protecting the integrity of data and in authentication applications.
   - Hashing is normally used to either hide the original contents of a message (such as hiding a password), or to check the integrity of data.
   - Hashing involves taking a variable length input and producing a fixed length output (message digest).
   - A weakness of one-way hashing is that the same piece of plaintext will result in the same ciphertext (unless salt is applied).;
@@ -262,7 +311,7 @@ To prepare for the objective assessment, ask yourself these questions:
 | Name    | Hash Value (In Bits) |
 | ------- | -------------------- |
 | MD2,4,5 | **128**              |
-| MD6     | 1-512                |
+| MD6     | 1 - 512              |
 | SHA-1   | **160**              |
 | SHA-2   | 256,384,512          |
 | SHA-3   | variable             |

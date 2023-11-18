@@ -2,10 +2,31 @@
   const fs = await import('fs');
   const path = await import('path');
   // curl -Lo showdown.js 'https://unpkg.com/showdown/dist/showdown.min.js'
+  // https://github.com/showdownjs/showdown/wiki
   const showdown = require('./showdown');
+  // Add border to tables
+  showdown.extension('table-header-css', {
+    type: 'output',
+    filter: (html) => {
+      const regex = /<th id=".*">/g;
+      return html.replace(regex, '<th style="border: 1px solid;padding:4px 6px;background-color: #EDEDED">');
+    },
+  });
+  showdown.extension('table-data-css', {
+    type: 'output',
+    filter: (html) => {
+      const regex = /<td>/g;
+      return html.replace(regex, '<td style="border: 1px solid;padding:4px 6px;">');
+    },
+  });
+  // github flavored markdown => html.
   showdown.setFlavor('github');
-  const converter = new showdown.Converter({ tables: true, tasklist: true });
   // converter.makeHtml(textBlock) // returns html.
+  const converter = new showdown.Converter({
+    tables: true,
+    tasklist: true,
+    extensions: ['table-header-css', 'table-data-css'],
+  });
 
   const data = fs.readFileSync('Cryptography.md', 'utf-8');
   const deckName = 'WGU_D334_Intro_to_Cryptography';
@@ -38,7 +59,8 @@
     }
   }
 
-  // This function sends object to ANKI listening on port 8765.
+  // This function sends object to ANKI-CONNECT addon listening on port 8765.
+  // https://github.com/amikey/anki-connect
   async function sendToAnki(action, params = {}) {
     // will return object with result and error field when error.
     try {
@@ -124,7 +146,8 @@
           });
           return;
         }
-        // no image, process text.
+        // TEXT or TABLE.
+        // check for table.
         if (line.trim().startsWith('|')) {
           // if line is a table element, only add newline between it and previous text.
           // if the previous line was a table line, then linIsTable will be true so don't add newline.
@@ -132,12 +155,14 @@
           textNoImages += `${!lineIsTable ? '\n' : ''}${line.trim()}\n`;
           lineIsTable = true;
         } else {
-          textNoImages += line.replace(/^\s{2}/, '').trimEnd() + '\n'; // take out two spaces from each bullet indents.
+          // add newline after table if finished.
+          textNoImages += `${lineIsTable ? '\n' : ''}${line.replace(/^\s{2}/, '').trimEnd() + '\n'}`; // take out two spaces from each bullet indents.
           lineIsTable = false;
         }
       });
       // Parse md into html with 'Showdown'.
       back = converter.makeHtml(textNoImages);
+      // console.log(back); // check the html
       cards.push({ front, back, picture });
     });
     // console.log(text);
