@@ -291,19 +291,19 @@ To prepare for the objective assessment, ask yourself these questions:
 
 - **Explain Hashing**:
   - describes **one-way or irreversible encryption** used for protecting the integrity of data and in authentication applications.
-  - Hashing is normally used to either hide the original contents of a message (such as hiding a password), or to check the integrity of data.
-  - Hashing involves taking a variable length input and producing a fixed length output (message digest).
-  - A weakness of one-way hashing is that the same piece of plaintext will result in the same ciphertext (unless salt is applied).;
-- **Hash Collision**: occurs when two different input values that produce the same hash signature. Different files produce the same hash value, rare but possible. Collision attacks exploit this.
+  - Hashing is normally used to either hide the original contents of a message (such as **hiding a password**), or to check the **integrity of data**.
+  - Hashing involves taking a **variable length input** and producing a **fixed length output** (message digest).
+  - A weakness of one-way hashing is that the **same piece of plaintext** will result in the **same ciphertext** (unless **salt** is applied).;
+- **Hash Collision**: occurs when **two different input** values that **produce the same hash signature**. Different files produce the same hash value, rare but possible. Collision attacks exploit this.
   - Also called **Hash Similar Context**, **Pre-image attack**, and **Hash Full context**.;
-- **Apache-defined APR1 Hash**: format that addresses the problems of brute forcing an **MD5** hash, and basically iterates the hash value 1,000 times.;
-- **SHA method**: does not have a salted value. SHA produces a 160-bit signature, thus can contain a larger set of hashed value than MD5, but because there is no salt it can be open to rainbow table attacks, and also brute force. (A rainbow table is a collection of precomputed hash values of actual plaintext passwords used for password cracking.);
-- **HMAC**: is a message authentication code (MAC) that can be used to verify the integrity and authentication of the message. It involves hashing the message with a secret key, and thus differs from standard hashing, which is purely a one-way function.;
+- **Apache-defined APR1 Hash**: format that addresses the problems of **brute forcing an MD5 hash**, and basically iterates the hash value 1,000 times.;
+- **SHA method**: **does not have a salted value**. SHA produces a 160-bit signature, thus can contain a larger set of hashed value than MD5, but because there is **no salt it can be open to rainbow table attacks**, and also brute force. (A **rainbow table** is a collection of precomputed hash values of actual plaintext passwords used for password cracking.);
+- **HMAC**: is a message authentication code (MAC) that can be used to **verify the integrity and authentication** of the message. It involves hashing the message with a secret key, and thus differs from standard hashing, which is purely a one-way function.;
 - **Passwords which use a hashed value can be cracked by**: either with **rainbow tables** or **brute force**. An improved method of generating passcode is to generate a different one each time based on an initial seed value or based on time. One Time Passwords, Timed One Time Password, Hashed One Time Password.;
-- **One Time Passwords (OTP)**: This allows a new unique password to be created for each instance, based on an initial seed.;
-- **Timed One Time Password (TOTP)**: This allows for a new unique passcode to be created for each instance, based on an initial seed and for a given time period.;
-- **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a counter value and an initial seed.;
-- **Time Stamp Protocol (TSP)**: cryptography method to give a verifiable method that a data entity was created at a defined time.;
+- **One Time Passwords (OTP)**: This allows a new **unique password to be created for each instance**, based on an initial **seed**.;
+- **Timed One Time Password (TOTP)**: This allows for a new **unique passcode to be created for each instance**, based on an **initial seed and for a given time period**.;
+- **Hashed One Time Password (HOTP)**: This allows a new unique passcode to be created each instance, based on a **counter value and an initial seed**.;
+- **Time Stamp Protocol (TSP)**: cryptography method to give a **verifiable** method that a **data entity was created at a defined time**.;
 - **Explain Coventional Hash Ciphers**:
   - mnemonic: MD. Shyamalan (like M. Night Shyamalan -the movie director)
   - **Bold** means testable!
@@ -324,6 +324,7 @@ To prepare for the objective assessment, ask yourself these questions:
 
 - **Advantage of Signing**: file integrity. sender non-repudiation.;
 - **Explain Public/Private Keys**:
+  - Makes use of a **key pair**.
   - The public key can only decrypt a private key encryption and the private key can only decrypt a public key encryption. They are mathematically linked this way.
   - It's like a lockbox that has two types of keys(public/private). Only one person has the ability to open the lock(private key), many people have the ability to lock it(public key). Any person w/public key can put something in the lockbox and lock it, but only the person w/ the private key can open it.;
 - **5 Steps to Signing**:
