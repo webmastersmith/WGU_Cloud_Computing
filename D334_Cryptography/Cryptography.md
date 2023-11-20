@@ -327,11 +327,16 @@ To prepare for the objective assessment, ask yourself these questions:
   - Makes use of a **key pair**.
   - The public key can only decrypt a private key encryption and the private key can only decrypt a public key encryption. They are mathematically linked this way.
   - It's like a lockbox that has two types of keys(public/private). Only one person has the ability to open the lock(private key), many people have the ability to lock it(public key). Any person w/public key can put something in the lockbox and lock it, but only the person w/ the private key can open it.;
-- **5 Steps to Signing**:
-  1. Sender creates hash of file and encrypts hash with private key(Signed).
-  2. Client contacts Sender asking for file and passing along Client's public key. Sender encrypts file and signature with the Clients public key(now only the Clients private key can decrypt message. privacy).
-  3. Client decrypts message with it's private key. Inside is the file and the encrypted signature.
-  4. Client then decrypts Sender signature with Senders public key(non-repudiation).
+- **4 Steps to Message Sending Public Key Cryptography W/O Hashing**:
+  1. Sender encrypts message with Sender private key(Signed).
+  2. Sender encrypts Signed message with Client public key.
+  3. Client decrypts message with it's private key.
+  4. Client then decrypts Sender signature with Senders public key(non-repudiation but no integrity).
+- **5 Steps to Message Sending Public Key Cryptography W/ Hashing**:
+  1. Sender creates hash of file and encrypts hash with Sender private key(Signed).
+  2. Sender encrypts message and hash with Clients public key.
+  3. Client decrypts message with Client's private key.
+  4. Client then decrypts Sender hash with Senders public key(non-repudiation).
   5. Client computes hash of message and compares this to the Sender's hash of original file. If both match, file integrity is assured.;
 - **Explain Conventional Asymmetric Ciphers**:
   - mnemonic: DEER
@@ -349,21 +354,35 @@ To prepare for the objective assessment, ask yourself these questions:
 ## Section 05 Key Exchange
 
 - **How was the sharing of secret keys solved**:
-  - The major problem of secret-key encryption is how to pass the key between the entity encrypting and the entity decrypting. The two main methods for key exchange in symmetric cryptography is to (1) use a key exchange algorithm (such as Diffie-Hellman) or (2) encrypt the key with the recipient’s public key, pass it to the other side and then allow the recipient use their private key to decrypt it i.e., via public key encryption.
-  - Diffie-Hellman is a widely used key exchange algorithm used to exchange the secret key in symmetric cryptography.;
-- **Forward Secrecy**: An important concept within key exchange is the usage of forward secrecy, which means that a compromise of the long-term keys will not compromise any previous session keys.;
+  - The **major problem** of secret-key encryption is **how to pass the key** between the entity encrypting and the entity decrypting.
+  - **Diffie-Hellman** is a widely used **key exchange algorithm** used to exchange the secret key in symmetric cryptography.;
+- **The two main methods for key exchange in symmetric cryptography**:
+  1. use a **key exchange algorithm** (such as Diffie-Hellman).
+  2. encrypt the key with the recipient’s public key, pass it to the other side and then allow the recipient use their private key to decrypt it i.e., via **public key encryption**.;
+- **Forward Secrecy**: compromise of a secret key does not compromise the confidentiality of past communication.;
 - **Sesson Key**: one time use key for each session(log-in, log-out).;
-- **Emphemral Keys**: One time use. Temporary key. Throw away. With ephemeral key methods, a different key is used for each connection, and, again, the leakage of any long-term key would not cause all the associated session keys to be breached.;
-- **DHE_EXPORT Downgrade Attack**:
-  - A weakness discovered in Diffie Hellman is that it is fairly easy to precompute values for two popular Diffie-Hellman parameters (and which use the DHE_EXPORT cipher set).
-  - The DHE_EXPORT Downgrade attack involves forcing the key negotiation process to default to 512-bit prime numbers. For this the client only offers DHE_EXPORT for the key negotiation, and the server, if it is setup for this, will accept it. The precomputation of 512-bit keys with g values of 2 and 5 (which are common) are within a reasonable time limits.;
-- **Methods to combat DHE_EXPORT Downgrade attacks**:
-  - on Diffie Hellman include
-    1. Disabling Export Cipher Suites negotiation.
-    2. Using (Ephemeral) Elliptic-Curve Diffie-Hellman (ECDHE).
-    3. Use a strong group. Diffie Hellman has three groups (bases): Group 1, Group 3 or Group 5, which vary in the size of the prime number used.;
-- **Diffie-Hellman man in the middle attack**: methods have been used extensively to create a shared secret key but suffers from man-in-the-middle attacks, where an attacker sits in-between and passes the values back and forward and negotiates two keys: one between a sender and the attacker, and the other between the receiver and the attacker. An improved method is to use public key encryption.;
-- **Diffie-Hellman strength relates to what**: the size of the prime number bases which are used in the key exchange. bigger, better(longer to crack).;
+- **Ephemral Keys**: One time use. With ephemeral key methods, a **different key is used for each connection**, and, again, the leakage of any long-term key would not cause all the associated session keys to be breached.;
+- **Diffie-Hellman DHE_EXPORT Downgrade Attack**:
+  - The vulnerability arises when servers support the **export-grade 512-bit or 1024-bit Diffie-Hellman groups**, which were historically used for export compliance reasons but are now considered weak.
+    - Laws were passed in the United States that resulted in the crippling of encryption software that was distributed outside of the United States(purposefully added a backdoor).
+    - https://en.wikipedia.org/wiki/Crypto_Wars: "The longest key size allowed for export without individual license proceedings was 40 bits, so Netscape developed two versions of its web browser. The "U.S. edition" had the full 128-bit strength. The "International Edition" had its effective key length reduced to 40 bits by revealing 88 bits of the key in the SSL protocol. Acquiring the 'U.S. domestic' version turned out to be sufficient hassle that most computer users, even in the U.S., ended up with the 'International' version, whose weak 40-bit encryption could be broken in a matter of days using a single personal computer."
+  - The DHE_EXPORT Downgrade attack involves forcing the key negotiation process to default to **512-bit prime numbers**. For this the client only offers DHE_EXPORT for the key negotiation, and the server, if it is setup for this, will accept it. The **precomputation of 512-bit keys** with g values of 2 and 5 (which are common) **are within a reasonable time limits**.;
+- **Methods to combat the Diffie-Hellman Downgrade attacks**:
+  1. **Disabling Export Cipher** Suites negotiation.
+  2. Using (Ephemeral) **Elliptic-Curve Diffie-Hellman (ECDHE)**.
+  3. Use a **strong group**(larger the better prime number).
+     - Common Diffie-Hellman groups:
+     1. Group 1:
+        1. Prime pp is 768 bits.
+        2. Generator gg is typically 2.
+     2. Group 2:
+        1. Prime pp is 1024 bits.
+        2. Generator gg is typically 2.
+     3. Group 5:
+        1. Prime pp is 1536 bits.
+        2. Generator gg is typically 2.;
+- **Diffie-Hellman man in the middle attack**: methods have been used extensively to create a shared secret key but suffers from **man-in-the-middle attacks**, where an attacker sits in-between and passes the values back and forward and negotiates two keys: one between a sender and the attacker, and the other between the receiver and the attacker. An **improved method is to use public key encryption**.;
+- **Diffie-Hellman strength relates to what**: the size of the **prime number bases** which are used in the key exchange. bigger prime, more entropy.;
 
 ## Section 06 Authentication and Digital Certificates
 
@@ -379,11 +398,14 @@ To prepare for the objective assessment, ask yourself these questions:
   - **PKCS 7** Used to sign and/or encrypt messages for PKI.
   - **PKCS 10** A standard format used for requesting digital certificates from certificate authorities.
   - **PKCS 12** Used to bundle a private key with its X.509 certificate or to bundle all the members of a chain of trust.;
+- **Common X.509 Certificate types**:
+  - **.cer** (used with both PEM and DER formats), others - **.crt, .pem, .key** (common with
+    PEM formats) and .der (common with DER formats).
 - **What is Certificate Revocation List (CRL) and who publishes it**:
   - Certificates listed here cannot be trusted.
   - CRL must be published by the CA who originally generated the targeted certificates.;
 - **Certificate Revoked**: private key breach.;
-- **Certificate Hold**: investigation has show that it is possible breach of private key.;
+- **Certificate Hold**: investigation has show a possible breach of the private key.;
 - **Certificate Revocation Key Compromise**: This defines that the private key has been compromised.;
 - **Certificate Revocation CA Compromise**: This defines that the CA has been compromised.;
 - **Certificate Revocation Affiliation Changed**: This defines that the certificate affiliation defined within the certificate has changed.;

@@ -119,18 +119,18 @@
       // The first line will be the question. 'rest' will be an array, empty or lines.
       const [firstLine, ...rest] = cardBlock?.trim().split(/\r?\n/);
       // It may have an answer in the line separated by ':'.
-      const [question = '', answer = ''] = firstLine?.trim().split(':');
-      // Bold question.
-      front = '<h2>' + question.replaceAll('*', '')?.trim().replace(/^-/, '')?.trim() + '</h2>';
-      // The 'rest' is the backside(answer) of card.
-      // 'answer' could be blank or text. If text, then add newline. Then join 'rest' with it.
-      const answerBlock = `${answer?.trim() ? answer.trim() + '\n' : ''}${rest?.join('\n') || ''}`;
+      const [firstLineQuestion = '', firstLineAnswer = ''] = firstLine?.trim().split(':');
+      // Bold firstLineQuestion.
+      front = '<h2>' + firstLineQuestion.replaceAll('*', '')?.trim().replace(/^-/, '')?.trim() + '</h2>';
+      // The 'rest' is the backside(firstLineAnswer) of card.
+      // 'firstLineAnswer' could be blank or text. If text, then add newline. Then join 'rest' with it.
+      rest.unshift(firstLineAnswer?.trim() + '\n' || '');
       // The first line is processed.
 
       // ANSWER BLOCK STARTS. Could be multiple lines, tables and images.
       let textNoImages = '';
       let lineIsTable = false; // check if previous line was table. Has to be outside loop.
-      answerBlock.split(/\r?\n/).forEach((line) => {
+      rest.forEach((line) => {
         // discard empty lines
         if (line.length < 1) return;
         // IMAGE -check if line is an image.
@@ -147,6 +147,8 @@
           return;
         }
         // TEXT or TABLE.
+        // Check for blockquote
+        if (line.trim().startsWith('>')) textNoImages += `\n${line.replace(/^\s{2}/, '').trimEnd()}\n`;
         // check for table.
         if (line.trim().startsWith('|')) {
           // if line is a table element, only add newline between it and previous text.
