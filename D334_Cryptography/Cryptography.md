@@ -290,6 +290,7 @@ To prepare for the objective assessment, ask yourself these questions:
 ## Section 03 Hashing
 
 - **Explain Hashing**:
+  - https://www.youtube.com/watch?v=HMoFvRK4HUo&list=PLIFyRwBY_4bTwRX__Zn4-letrtpSj1mzY
   - describes **one-way or irreversible encryption** used for protecting the integrity of data and in authentication applications.
   - Hashing is normally used to either hide the original contents of a message (such as **hiding a password**), or to check the **integrity of data**.
   - Hashing involves taking a **variable length input** and producing a **fixed length output** (message digest).
@@ -342,12 +343,13 @@ To prepare for the objective assessment, ask yourself these questions:
   - mnemonic: DEER
   - **Bold** means testable!
 
-| Name     | Description                                                                                            |
-| -------- | ------------------------------------------------------------------------------------------------------ |
-| DSA      | Federal Information Processing Standard (FIPS 186). modular exponentiation and the discrete logarithm. |
-| ECC      | Improved over RSA. Key exchange and digital signing.                                                   |
-| El Gamal | encryption and digital signing                                                                         |
-| RSA      | 1024-4096 bit key size. Partially homomorphic. Leverages Prime numbers.                                |
+| Name           | Description                                                                                      |
+| -------------- | ------------------------------------------------------------------------------------------------ |
+| DSA            | discrete logarithm. signature generation, signature verification                                 |
+| ECC            | Improved over RSA. Key exchange and signatures.                                                  |
+| El Gamal       | encryption and digital signing                                                                   |
+| RSA            | 1024-4096 bit key size. Partially homomorphic. Prime numbers. Encryption,Signatures,Key Exchange |
+| Diffie-Hellman | Key Exchange                                                                                     |
 
 ;
 
@@ -422,8 +424,8 @@ To prepare for the objective assessment, ask yourself these questions:
   - L2TP. Layer 2 Tunneling protocol. Cisco Microsoft, Ascent and 3Com created it. Layer 2 protocol.
   - IPSec. VPN protocol. Open standard. Encryption and Authentication.;
 - **SSL Risk**:
-  - SSL v2. to comply with government export regulations, they were made weak and crackable.
-  - DROWN, POODLE, FREAK all make SSL crackable.;
+  - export-grade ciphersuites -created to comply with government export regulations, they were made weak and crackable.
+  - DROWN, POODLE, FREAK are SSL risk.;
 - **SSL/TLS**: creates tunnel w/ symmetric key(AES or RC4). Hash is created with MD5 or SHA.;
 - **VPN**: tunnel over public network.;
 - **IPSec ESP, ESP Tunnel/Transport Mode**:
