@@ -4,7 +4,7 @@
   // curl -Lo showdown.js 'https://unpkg.com/showdown/dist/showdown.min.js'
   // https://github.com/showdownjs/showdown/wiki
   const showdown = require('./showdown');
-  // Add border to tables
+  // Add border and color to table header
   showdown.extension('table-header-css', {
     type: 'output',
     filter: (html) => {
@@ -12,6 +12,7 @@
       return html.replace(regex, '<th style="border: 1px solid;padding:4px 6px;background-color: #3399ff">');
     },
   });
+  // add border to table cells
   showdown.extension('table-data-css', {
     type: 'output',
     filter: (html) => {
@@ -19,7 +20,7 @@
       return html.replace(regex, '<td style="border: 1px solid;padding:4px 6px;">');
     },
   });
-  // zebra stripe table
+  // zebra stripe odd table rows
   showdown.extension('table-row-css', {
     type: 'output',
     filter: (html) => {

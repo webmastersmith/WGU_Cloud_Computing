@@ -449,20 +449,20 @@ To prepare for the objective assessment, ask yourself these questions:
 
 ## Section 08 Crypto Cracking
 
-- **Two backdoors in cryptography**:
+- **The Two backdoors in cryptography**:
   - the two main methods which could be used are
   - **Key escrow**. This is where a copy of the encryption key is kept in escrow so that it can be used by a government agent.
   - A **NOBUS (‘nobody but us’)** backdoor. This is where it is mathematically possible for government agents to crack the encryption, but no-one else can.;
-- **Exhaustive search Cipher Attack**: Where the intruder uses brute force to decrypt the ciphertext and tries every possible key.;
-- **Known plaintext Cipher Attack**: Where the intruder knows part of the ciphertext and the corresponding plaintext. The known ciphertext and plaintext can then be used to decrypt the rest of the ciphertext.;
-- **Man-in-the-middle Cipher Attack**: Where the intruder is hidden between two parties and impersonates each of them to the other.;
-- **Chosen-ciphertext Cipher Attack**: Where the intruder sends a message to the target, this is then encrypted with the target’s private key and the intruder then analyses the encrypted message. For example, an intruder may send an e-mail to the encryption file server and the intruder spies on the delivered message.;
+- **Exhaustive search Cipher Attack**: Where the intruder uses **brute force** to decrypt the ciphertext and tries every possible key.;
+- **Known plaintext Cipher Attack**: Where the **intruder knows part of the ciphertext and the corresponding plaintext**. The known ciphertext and plaintext can then be used to decrypt the rest of the ciphertext.;
+- **Man-in-the-middle Cipher Attack**: Where the intruder is **hidden between two parties** and impersonates each of them to the other.;
+- **Chosen-ciphertext Cipher Attack**: Where the intruder **sends a message to the target**, this is then encrypted with the target’s private key and the intruder then **analyses the encrypted message**. For example, an intruder may send an e-mail to the encryption file server and the intruder spies on the delivered message.;
 - **Active Cipher Attack**: Where the intruder inserts or modifies messages.;
-- **The replay system Cipher Attack**: Where the intruder takes a legitimate message and sends it into the network at some future time.;
-- **Cut-and-paste Cipher Attack**: Where the intruder mixes parts of two different encrypted messages and is able to create a new message. This message is likely to make no sense but may trick the receiver into doing something that helps the intruder.;
-- **Time resetting Cipher Attack**: Some encryption schemes use the time of the computer to create the key. Resetting this time or determining the time that the message was created can give some useful information to the intruder.;
-- **Time Cipher Attack**: This involves determining the amount of time that a user takes to decrypt the message; from this the key could be found.;
-- **AES poor implementation of the encryption method**: leaves it susceptible to attacks such as: Brute force, use of Non-Random Numbers, and copy-and-paste.;
+- **The replay system Cipher Attack**: Where the intruder takes a **legitimate message** and sends it into the network at **some future time**.;
+- **Cut-and-paste Cipher Attack**: Where the intruder **mixes parts of two different encrypted messages** and is able to create a new message. This message is likely to make no sense but may trick the receiver into doing something that helps the intruder.;
+- **Time resetting Cipher Attack**: **Manipulating or analyzing the encryption packet creation time**. Some encryption schemes use the time of the computer to create the key. Resetting this time or determining the time that the message was created can give some useful information to the intruder.;
+- **Time Cipher Attack**: This involves determining the amount of time that a user takes to decrypt the message, from this the key could be found.;
+- **Poor Implementation of the AES encryption method**: leaves it susceptible to attacks such as Brute force, use of Non-Random Numbers, and copy-and-paste.;
 - **RSA suffers from**: several weaknesses and is susceptible to numerous attacks and cracking methods.;
 
 ## Section 09 Light-Weight Cryptography
