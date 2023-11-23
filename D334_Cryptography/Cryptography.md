@@ -416,6 +416,10 @@ To prepare for the objective assessment, ask yourself these questions:
 - **Certificate Revocation Certificate Hold**: This defines where a hold is placed on a certificate.;
 - **Certificate Revocation Remove from CRL**: This is where a remove is defined from the list.;
 - **Certificate Revocation Privilege Withdrawn**: This defines where a privilege to sign certificates has been removed.;
+- **end-to-end authentication**:
+  - the user authenticates themselves to the end service.;
+- **intermediate authentication**:
+  - only part of the conversation between the entities is authenticated.;
 
 ## Section 07 Tunneling
 

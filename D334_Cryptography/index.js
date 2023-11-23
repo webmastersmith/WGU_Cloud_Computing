@@ -9,7 +9,7 @@
     type: 'output',
     filter: (html) => {
       const regex = /<th id=".*">/g;
-      return html.replace(regex, '<th style="border: 1px solid;padding:4px 6px;background-color: #EDEDED">');
+      return html.replace(regex, '<th style="border: 1px solid;padding:4px 6px;background-color: #3399ff">');
     },
   });
   showdown.extension('table-data-css', {
@@ -19,13 +19,25 @@
       return html.replace(regex, '<td style="border: 1px solid;padding:4px 6px;">');
     },
   });
+  // zebra stripe table
+  showdown.extension('table-row-css', {
+    type: 'output',
+    filter: (html) => {
+      return html.replaceAll(/<tbody>.*?<\/tbody>/gs, (match) =>
+        match
+          .split('</tr>')
+          .map((el, i) => (i % 2 == 1 ? el.replace('<tr>', '<tr style="background-color: #D3D3D3;">') : el))
+          .join('</tr>')
+      );
+    },
+  });
   // github flavored markdown => html.
   showdown.setFlavor('github');
   // converter.makeHtml(textBlock) // returns html.
   const converter = new showdown.Converter({
     tables: true,
     tasklist: true,
-    extensions: ['table-header-css', 'table-data-css'],
+    extensions: ['table-header-css', 'table-data-css', 'table-row-css'],
   });
 
   const data = fs.readFileSync('Cryptography.md', 'utf-8');
