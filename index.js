@@ -1,9 +1,20 @@
 (async function () {
   const fs = await import('fs');
   const path = await import('path');
-  // curl -Lo showdown.js 'https://unpkg.com/showdown/dist/showdown.min.js'
+  // variables
+  const data = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8');
+  const deckName = 'WGU_D334_Intro_to_Cryptography';
+  const removeLines = 69;
+
+  // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
-  const showdown = require('./showdown');
+  // check if file exist
+  if (!fs.existsSync('./showdown.min.js')) {
+    // curl -LO 'https://unpkg.com/showdown/dist/showdown.min.js' // downloads to current directory.
+    const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
+    fs.writeFileSync('./showdown.min.js', txt);
+  }
+  const showdown = require('./showdown.min');
   // Add border and color to table header
   showdown.extension('table-header-css', {
     type: 'output',
@@ -41,8 +52,6 @@
     extensions: ['table-header-css', 'table-data-css', 'table-row-css'],
   });
 
-  const data = fs.readFileSync('Cryptography.md', 'utf-8');
-  const deckName = 'WGU_D334_Intro_to_Cryptography';
   // const sections = await parsePage(data);
   // console.log(JSON.stringify(sections, null, 2));
 
@@ -100,7 +109,7 @@
   // separate page into sections.
   async function parsePage(data) {
     // remove first 68 lines
-    const dataStr = data.split(/\r?\n/).slice(69).join('\n');
+    const dataStr = data.split(/\r?\n/).slice(removeLines).join('\n');
     // separate page into blocks
     const blocks = dataStr.match(/[^#]*/g).filter((line) => line.length > 0);
     // returns object with {section, text} // section is name of subDeck. text is front, back, images for cards.
@@ -131,6 +140,11 @@
       // separate first line, due to tables having ':' in them.
       // The first line will be the question. 'rest' will be an array, empty or lines.
       const [firstLine, ...rest] = cardBlock?.trim().split(/\r?\n/);
+      // // Check if 'cloze'.
+      // if (/\{\{.*?\}\}/.test(firstLine)) {
+      //   cards.push({ firstLine, back, picture });
+      //   return;
+      // }
       // It may have an answer in the line separated by ':'.
       const [firstLineQuestion = '', firstLineAnswer = ''] = firstLine?.trim().split(':');
       // Bold firstLineQuestion.

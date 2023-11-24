@@ -468,16 +468,16 @@ To prepare for the objective assessment, ask yourself these questions:
 ## Section 09 Light-Weight Cryptography
 
 - **Why is light-weight cryptography needed**:
-  - Most conventional cryptosystems require too much processing power; too much physical space; and consume too much battery power for implementation in IoT, embedded SYSTEMS, and RFID.
+  - Most conventional cryptosystems require too much processing power, too much physical space, and consume too much battery power for implementation in **IoT, embedded SYSTEMS, and RFID**.
   - Light-weight cryptography essentially consists of cryptosystems able to support IoT, embedded systems, RFID etc. (i.e. provide cryptographic functions but require less processing power, physical space, and battery power than conventional cryptosystems).;
 - **NIST Device Spectrum**:
   - **Conventional cryptography**. Servers and Desktops. Tablets and smart phones.
   - **Light-weight cryptography**. Embedded Systems. RFID and Sensor Networks.;
-- **Quantum computers**: have fast multiplication circuits, and thus can be used to perform multiplications and search a range of prime numbers at a speed which would break most existing RSA implementations.;
+- **Quantum computers**: have **fast multiplication circuits**, and thus can be used to perform multiplications and search a range of prime numbers at a **speed which would break most existing RSA** implementations.;
 - **Merkle tree**: is a tree that defines each non-leaf node with a value or a label and contains a hash of its children. This builds a hash trees and is used to provide a verification of large-scale data structures.;
 - **Lattice-based cryptography**: uses asymmetric cryptographic primitives based on lattices. It has been known about for several decades, and is now being investigated because of its quantum robustness, whereas many of the existing public key methods such as RSA and Diffie-Hellman cryptosystems can be broken with quantum computers.;
 - **Explain common Light-weight Symmetric Block ciphers**:
-  - mnemonic: xCRISP(i=sImon)
+  - mnemonic: xCRISP(i=simon)
   - **Bold** means testable!
 
 | Name    | Block Size (In Bits)    | Key Size (In Bits)                   | Rounds                     | Key attributes for light-weight suitability                        |
@@ -540,21 +540,21 @@ To prepare for the objective assessment, ask yourself these questions:
 
 ## Section 10 Blockchain and Crypto-Currency
 
-- **Bitcoin (BTC)**: most popular crypto-currency. A key focus is for the crypto-currency to protect against someone spending money that they do not have, so Bitcoin uses Blockchain.;
-- **Blockchain**: a publicly available ledger of transactions that allows the Bitcoin network to know the number of bitcoins that a given user has in their account. Can be public or private.;
-- **blockchain mining**: process where a new block of transactions is added to the blockchain and transactions within the block are considered to be processed occurs every 10 minutes or so.;
-- **Conventional currencies vs Crypto currency**: conventional currency usually have a central bank that creates money and then controls its supply. The Bitcoin currency is instead created when users mine for it, using their computers to perform complex calculations through special software.;
+- **Bitcoin (BTC)**: most popular crypto-currency. A key focus is for the **crypto-currency** to protect against someone spending money that they do not have, so Bitcoin uses **Blockchain**.;
+- **Blockchain**: a **publicly available ledger of transactions** that allows the Bitcoin network to know the number of bitcoins that a given user has in their account. Can be public or private.;
+- **blockchain mining**: process where a **new block of transactions is added to the blockchain** and transactions within the block are considered to be processed occurs **every 10 minutes or so**.;
+- **Conventional currencies vs Crypto currency**: conventional currency usually have a **central bank** that **creates money and then controls its supply**. The Bitcoin currency is instead **created when users mine** for it, using their computers to perform **complex calculations** through special software.;
 - **Bitcoin transaction steps**:
-  1. will be captured by miners who will compile a list of the latest transactions.
-  2. If valid, the transaction is then recorded within a mining process, where mining nodes gather new transactions and compute a hash of the new block, and which should also contain the hash of the previous block, and then build a transaction log.
-  3. Once complete, this becomes part of the official Blockchain in the network, and the miners reach a consensus on the current Blockchain.
-  4. Miners receive rewards for successful mining efforts.;
+  1. Transactions will be captured by **miners** who will compile a list of the latest transactions.
+  2. If **valid**, the transaction is then **recorded within a mining process**, where mining nodes gather new transactions and **compute a hash of the new block**, and which should also contain the hash of the previous block, and then build a transaction log.
+  3. Once complete, this becomes part of the **official Blockchain** in the network, and the miners reach a consensus on the current Blockchain.
+  4. **Miners receive rewards** for successful mining efforts.;
 - **crypto currency Ethereum**:
   - was built on the Bitcoin/Blockchain concept but included the concept of smart contracts.
   - Along with creating a new currency (Ether), the main contribution of Ethereum is to create the concept of **peer-to-peer smart contracts** which enables users to create their own contracts, and which will be strictly abided to.;
 - **Smart contracts**: are programs stored on a blockchain that run when predetermined conditions are met they typically are used to automate the execution of an agreement so that all participants can be immediately certain of the outcome, without an intermediary's involvement or time loss.;
 - **Ethereum gas**: This is basically the unit that is used to measure the amount of work that is required to perform a single **Keccak-256 hash**.;
-- Although Bitcoin, Ethereum, and Hyperledger all use blockchain: **Ethereum, and Hyperledger are considered "common" options for implementing blockchain** for this course. Hyperledger and Ethereum offer the smart contracts feature.;
+- **Although Bitcoin, Ethereum, and Hyperledger all use blockchain**: **Ethereum, and Hyperledger are considered "common" options for implementing blockchain** for this course. Hyperledger and Ethereum offer the smart contracts feature.;
 
 ## Section 12 Wireless Cryptography and Stream Ciphers
 
@@ -576,14 +576,14 @@ To prepare for the objective assessment, ask yourself these questions:
 - **WPA-2 (IEEE 802.11i-2004) advanced the WPA standard by**:
   - keeping compatibility with WPA, but adding AES-CCMP (AES-Counter Mode CBCMAC Protocol), which is a block encryption method. Again, it supported two modes: Personal (with a pre-shared key) and Enterprise.;
 - **WPA Enterprise is different from WPA how**:
-  - no pre-shared key is used, and it also includes a MIC (Message Integrity Check).
+  - no pre-shared key is used, and it also includes a **MIC (Message Integrity Check)**.
   - The MIC mainly guards against the bit flipping attacks identified within WEP.;
 - **Mobile phone networks/GSM typically use what type of encryption**:
-  - the A5/1 or A5/2 stream encryption method, but almost on its first day of operation it has been a target for crackers, and the source code to crack A5/2 was released within one month of being made public.;
+  - the **A5/1 or A5/2 stream encryption** method, but almost on its first day of operation it has been a target for crackers, and the source code to crack A5/2 was released within one month of being made public.;
 - **A5/3 encryption system fixes what**:
-  - known as KASUMI, the Japanese word for “mist”, is the upgrade to A5/1 and uses a block cipher. A5/1 is designed to be used for the GSM network, whereas A5/3 is for 3GPP, and is based on the MISTY1 cipher. 128-bit key.;
+  - known as KASUMI, the Japanese word for “mist”, is the upgrade to A5/1 and uses a block cipher. A5/1 is designed to be used for the GSM network, whereas **A5/3 is for 3GPP**, and is based on the MISTY1 cipher. 128-bit key.;
 - **While WEP contains what weaknesses**:
-  - a properly defined stream cipher can be much faster than block ciphers, as they just have to create a key stream from an IV (also known as a nonce value) and a key.;
+  - a properly defined **stream cipher can be much faster than block ciphers**, as they just have to create a key stream from an IV (also known as a nonce value) and a key.;
   - **ChaCha20**:
     - named as it has 20 rounds
     - Google proposed as an alternative to AES to be used with TLS connections.;
