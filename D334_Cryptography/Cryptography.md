@@ -343,13 +343,12 @@ To prepare for the objective assessment, ask yourself these questions:
   - mnemonic: DEER
   - **Bold** means testable!
 
-| Name           | Description                                                                                      |
-| -------------- | ------------------------------------------------------------------------------------------------ |
-| DSA            | discrete logarithm. signature generation, signature verification                                 |
-| ECC            | Improved over RSA. Key exchange and signatures.                                                  |
-| El Gamal       | encryption and digital signing                                                                   |
-| RSA            | 1024-4096 bit key size. Partially homomorphic. Prime numbers. Encryption,Signatures,Key Exchange |
-| Diffie-Hellman | Key Exchange                                                                                     |
+| Name     | Description                                                                                      |
+| -------- | ------------------------------------------------------------------------------------------------ |
+| DSA      | discrete logarithm. signature generation, signature verification                                 |
+| ECC      | Improved over RSA. Key exchange and signatures.                                                  |
+| El Gamal | encryption and digital signing                                                                   |
+| RSA      | 1024-4096 bit key size. Partially homomorphic. Prime numbers. Encryption,Signatures,Key Exchange |
 
 ;
 
