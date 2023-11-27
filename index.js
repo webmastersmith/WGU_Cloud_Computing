@@ -3,6 +3,7 @@
   const path = await import('path');
   // variables
   const data = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8');
+  const directoryPath = 'D334_Cryptography';
   const deckName = 'WGU_D334_Intro_to_Cryptography';
   const removeLines = 69;
 
@@ -164,7 +165,7 @@
         if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
           const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
           const filename = picPath.split('/').pop();
-          const newPic = path.join(process.cwd(), 'img', filename);
+          const newPic = path.join(process.cwd(), directoryPath, 'img', filename);
           // create the picture data.
           picture.push({
             path: newPic,
