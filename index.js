@@ -2,20 +2,24 @@
   const fs = await import('fs');
   const path = await import('path');
   // variables
-  const data = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8');
+  const dataArr = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8')?.split(/\r?\n/);
   const directoryPath = 'D334_Cryptography';
-  const deckName = 'WGU_D334_Intro_to_Cryptography';
+  // Get first line of Markdown as Anki Deck Title
+  const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replace(' ', '_');
+  // const deckName = 'WGU_D334_Intro_to_Cryptography';
   const removeLines = 69;
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
-  // check if file exist
+  // Download showdown if not already downloaded. It parses markdown into html.
+  // check if showdown file exist
   if (!fs.existsSync('./showdown.min.js')) {
     // curl -LO 'https://unpkg.com/showdown/dist/showdown.min.js' // downloads to current directory.
     const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
     fs.writeFileSync('./showdown.min.js', txt);
   }
   const showdown = require('./showdown.min');
+  // These next few functions add styling to the html.
   // Add border and color to table header
   showdown.extension('table-header-css', {
     type: 'output',
@@ -53,13 +57,11 @@
     extensions: ['table-header-css', 'table-data-css', 'table-row-css'],
   });
 
-  // const sections = await parsePage(data);
-  // console.log(JSON.stringify(sections, null, 2));
-
+  // AnkiConnect Should be installed on Anki deck as an addon and Anki should be running.
   // create Main Deck Name
   await sendToAnki('createDeck', { deck: deckName });
   // Create SubDecks
-  for (const { section, cards } of await parsePage(data)) {
+  for (const { section, cards } of await parsePage(dataArr)) {
     // {section, cards: [{front, back, picture}] }
     // subDeck name remove spaces.
     const sectionName = section.replaceAll(' ', '_').trim();
@@ -94,10 +96,10 @@
         },
         body: JSON.stringify({ action, version: 1, params }),
       });
-      const data = await res.json();
       if (!res.ok) throw 'Fetch failed to get response. Is Anki Connect listening?';
-      if (data.error) throw data;
-      return data;
+      const json = await res.json();
+      if (res.error) throw res.error;
+      return json;
     } catch (e) {
       console.log('Error: ', e);
     }
@@ -108,10 +110,11 @@
   //
   // START Functions
   // separate page into sections.
-  async function parsePage(data) {
-    // remove first 68 lines
-    const dataStr = data.split(/\r?\n/).slice(removeLines).join('\n');
-    // separate page into blocks
+  async function parsePage(dataArr) {
+    // remove tips. The ternary is so the first line (title) is always removed.
+    // Otherwise it will be confused with block of data.
+    const dataStr = dataArr.slice(removeLines > 0 ? removeLines : 1).join('\n');
+    // separate page into subSections (blocks)
     const blocks = dataStr.match(/[^#]*/g).filter((line) => line.length > 0);
     // returns object with {section, text} // section is name of subDeck. text is front, back, images for cards.
     const sections = blocks.map((block) => processBlocks(block));

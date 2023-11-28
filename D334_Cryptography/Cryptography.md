@@ -1,4 +1,4 @@
-# Cryptography
+# WGU_D334_Intro_to_Cryptography
 
 ## Tips
 
