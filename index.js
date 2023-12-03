@@ -2,12 +2,13 @@
   const fs = await import('fs');
   const path = await import('path');
   // variables
-  const dataArr = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8')?.split(/\r?\n/);
+  // const dataArr = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8')?.split(/\r?\n/);
+  const dataArr = fs.readFileSync('D281_Linux_Foundations/Linux_Foundations.md', 'utf-8')?.split(/\r?\n/);
   const directoryPath = 'D334_Cryptography';
   // Get first line of Markdown as Anki Deck Title
-  const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replace(' ', '_');
+  const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
   // const deckName = 'WGU_D334_Intro_to_Cryptography';
-  const removeLines = 69;
+  const removeLines = 0;
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
