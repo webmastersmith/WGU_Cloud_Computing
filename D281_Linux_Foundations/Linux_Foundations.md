@@ -1,4 +1,4 @@
-# WGU D281 Linux Foundations
+# WGU D281 Linux Foundations LPI Linux Essentials 010-160
 
 ## Tips
 
@@ -13,13 +13,16 @@
 - https://learning.lpi.org/en/learning-materials/010-160/1/1.1/1.1_01/
 - Pass: 500 (on a scale of 200-800)
 
-## Intro Into Linux
+## License
 
 - **who created linux kernel**: linus torvold;
 - **GNU, Apache, MIT, Unlicense Licenses**
   - **GNU**: d
+  - **Open Sourced Software**: copyright holder grants users the rights to study, change, distribute to anyone.
   - **Apache**: d
   - **MIT**:
   - **Unlicense**: ;
 
-## License
+## Install Software
+
+-
