@@ -150,3 +150,164 @@
   - Upgrading resources (CPU, RAM) of existing VMs or containers.
 - High Availability and Scaling in Cloud bursting
   - Bursting workloads to the public cloud during peak demand.
+
+## 1.4 Given a scenario, analyze the solution design in support of the business requirements.
+
+- Explain importance of analyzing the solution design in support of the business requirements?
+  - By analyzing the solution design in relation to these requirements and providing details about the specific scenario, we can determine the appropriateness and effectiveness of the solution in meeting the business needs.
+  - Nature of the business: What industry is the business in?
+  - What is its size?
+  - Current IT infrastructure: What systems and applications are currently in use?
+  - Business goals: What are the objectives for implementing the solution?
+  - Pain points: What problems are the business trying to solve?
+- Requirement analysis for Software
+  - What software applications and platforms are included in the solution?
+  - Compatibility with existing systems and applications.
+  - Meets functional and technical requirements.
+  - Scalability to accommodate future growth.
+  - Availability of support and maintenance.
+- Requirement analysis for Hardware
+  - What hardware infrastructure is required?
+  - Sufficient capacity to meet performance and scalability needs.
+  - High availability and redundancy to minimize downtime.
+  - Security features to protect against cyber threats.
+  - Cost-effectiveness and energy efficiency.
+- Requirement analysis for Integration
+  - How will the solution integrate with existing systems and applications?
+  - Seamless integration with minimal disruption to ongoing operations.
+  - Efficient exchange of data and information between systems.
+  - Standardized interfaces and protocols.
+- Requirement analysis for Budgetary
+  - Cost-effective solution that aligns with financial constraints.
+  - Clear and transparent pricing model.
+  - Return on investment (ROI) analysis.
+- Requirement analysis for Compliance
+  - Adherence to all relevant **industry regulations** and standards.
+  - Security and **data privacy compliance**.
+  - Regular **audits** and assessments.
+- Requirement analysis for Service-Level Agreement (SLA)
+  - Guarantees a certain level of service availability and performance.
+  - Clearly defined metrics and service level objectives (SLOs).
+  - Compensation for breaches of the SLA.
+- Requirement analysis for User and business needs
+  - Meets the specific needs and requirements of the users and the business.
+  - User-friendly and intuitive interface.
+  - Accessibility and inclusivity.
+- Requirement analysis for Security
+  - Robust security measures to protect against cyber threats.
+  - Regular vulnerability scanning and penetration testing.
+  - Secure data encryption and access controls.
+- Requirement analysis for Network requirements.
+  - Reliable and secure network infrastructure.
+  - High-bandwidth connectivity to support data flow.
+  - Scalability to accommodate future growth.
+- Requirement analysis for Network Sizing.
+  - Appropriate infrastructure sizing to meet current and future needs.
+  - Resource utilization monitoring and optimization.
+  - Scalable architecture to adapt to changing demands.
+- Requirement analysis for Network Routing.
+  - Optimal routing configuration for efficient data flow.
+  - Minimization of latency and network congestion.
+  - Load balancing across multiple paths.
+- Development Environments
+  - Environment for developers to design, build, and test the solution.
+- Quality Assurance (QA) Environments
+  - Environment for testing the functionality and performance of the solution.
+- Staging Environments
+  - Environment for simulating production conditions and testing the solution with real-world data.
+- Blue-green Environments
+  - Deployment strategy where the new version of the solution is deployed alongside the existing version and then switched over to once verified.
+- Production Environments
+  - Environment where the solution is deployed and used by end users.
+- Disaster Recovery (DR) Environments
+  - Backup and recovery infrastructure to ensure business continuity in case of an outage.
+- Testing Techniques Vulnerability testing
+  - Identifies weaknesses in the solution that could be exploited by attackers.
+- Testing Techniques Penetration testing
+  - Simulates real-world attacks to test the effectiveness of the security measures.
+- Testing Techniques Performance testing
+  - Measures the responsiveness and scalability of the solution under load.
+- Testing Techniques Regression testing
+  - Ensures that new changes haven't introduced any regressions or bugs.
+- Testing Techniques Functional testing
+  - Tests the functionality of the solution against specified requirements.
+- Testing Techniques Usability testing
+  - Assesses how easy and intuitive the solution is for users to interact with.
+
+## 2.1 Given a scenario, configure identity and access management.
+
+- Why are Identification and authorization fundamental Security for controlling access to resources and ensuring data integrity in cloud environments?
+  - Identification:
+    - The process of verifying the identity of a user or system attempting to access resources.
+    - Common methods include usernames, passwords, multi-factor authentication (MFA), biometrics, and Security Assertion Markup Language (SAML).
+  - Authorization:
+    - The process of determining what resources a user or system is allowed to access and what actions they are permitted to perform.
+    - Based on user roles, permissions, and access control lists (ACLs).
+- Privileged access management (PAM) Security?
+  - Focuses on securing privileged accounts with elevated access to sensitive systems and data.
+  - Utilizes techniques like least privilege, password vaulting, and session recording.
+- Logical access management (LAM) Security?
+  - Manages user access to applications, systems, and data across the cloud environment.
+  - Leverages centralized directories and single sign-on (SSO) for seamless access.
+- Account life-cycle management Best Practices?
+  - Governs the creation, use, and termination of user accounts throughout their lifecycle.
+  - Automates tasks like provisioning, deprovisioning, and password resets.
+- Provision and deprovision accounts best practices?
+  - Creating and removing user accounts as needed.
+  - Automating account creation based on predefined roles and workflows.
+- Describe Role-based access control (RBAC)
+  - Grants access based on predefined roles and associated permissions.
+- Describe Discretionary access control (DAC)
+  - Allows users to control access to their own resources.
+- Describe Non-discretionary access control (N-DAC)
+  - Access controlled by an administrator or system based on rules and policies.
+- Describe Mandatory access control (MAC)
+  - Access determined by a central authority and enforced by the system.
+- Benefits of robust identification and authorization
+  - Increased security: Reduces the risk of unauthorized access and data breaches.
+  - Improved compliance: Helps meet regulatory requirements and industry standards.
+  - Enhanced user experience: Provides seamless and secure access to resources.
+  - Reduced costs: Automates tasks and minimizes manual effort.
+- Security Services in Cloud Environments: Directory services?
+  - Store and manage information about users, groups, devices, and other resources.
+  - Enable centralized authentication and authorization.
+  - Examples include Active Directory, OpenLDAP, and Azure AD.
+- Security Services in Cloud Environments: Lightweight Directory Access Protocol (LDAP)
+  - An industry-standard protocol for accessing and managing directory services.
+  - Provides a flexible and interoperable way to authenticate users and control access to resources.
+- Security Services in Cloud Environments: Federation
+  - Allows users to access multiple applications and services using a single set of credentials.
+  - Simplifies user management and reduces password fatigue.
+  - Examples include SAML and OpenID Connect.
+- Security Services in Cloud Environments: Certificate management
+  - Securely generates, issues, and manages digital certificates for authentication and encryption.
+  - Provides trust and integrity for secure communication.
+  - Examples include Let's Encrypt and AWS Certificate Manager.
+- Security Services in Cloud Environments: Multifactor authentication (MFA)
+  - Requires an additional factor beyond a password to verify user identity.
+  - Increases security and reduces the risk of unauthorized access.
+  - Examples include SMS codes, push notifications, and hardware tokens.
+- Security Services in Cloud Environments: Single sign-on (SSO)
+  - Allows users to authenticate once and access multiple applications without re-entering their credentials.
+  - Improves user experience and reduces password fatigue.
+  - Examples include Okta, Azure AD Connect, and Ping Identity.
+- Security Services in Cloud Environments: Security Assertion Markup Language (SAML)
+  - An open standard for exchanging authentication and authorization information.
+  - Enables single sign-on and federation between different systems.
+- Security Services in Cloud Environments: Public key infrastructure (PKI)
+  - Framework for issuing, managing, and using digital certificates.
+  - Provides secure communication and strengthens authentication.
+  - Examples include OpenSSL and Microsoft Certificate Services.
+- Security Services in Cloud Environments: Secret management
+  - Securely stores and manages sensitive information like passwords, API keys, and encryption keys.
+  - Ensures confidentiality and integrity of sensitive data.
+  - Examples include HashiCorp Vault and AWS Secrets Manager.
+- Security Services in Cloud Environments: Key management
+  - Manages the lifecycle of encryption keys used for data protection.
+  - Provides secure storage, rotation, and access control for encryption keys.
+  - Examples include AWS Key Management Service (KMS) and Azure Key Vault.
+- Benefits of utilizing Security Services in Cloud Environments
+  - Improved security: Reduces the risk of unauthorized access and data breaches.
+  - Enhanced user experience: Provides seamless and secure access to various applications and resources.
+  - Reduced costs: Automates tasks and minimizes manual effort.
+  - Increased compliance: Helps meet regulatory requirements and industry standards.
