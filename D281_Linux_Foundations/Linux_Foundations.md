@@ -21,7 +21,7 @@
 ## 1.1 Open Source Software and Licensing (Weight: 10%)
 
 - What is open source software?
-  - Software with code freely available for use, modification, and distribution.
+  - Software with code freely available for use, modification, and distribution.W
 - What are the benefits of using open source software?
   - Transparency, community support, lower cost, flexibility, and rapid development.
 - What are some common open source licenses and their implications?

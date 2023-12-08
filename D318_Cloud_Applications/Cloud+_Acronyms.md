@@ -1,0 +1,376 @@
+# CompTIA Cloud+ CV0-003 Acronyms
+
+## Acronyms
+
+- AAA
+  - Authentication, Authorization, and Accounting
+- ACL
+  - Access Control List
+- ADC
+  - Application Delivery Controller
+- AES
+  - Advanced Encryption Standard
+- AI
+  - Artificial Intelligence
+- API
+  - Application Programming Interface
+- ARP
+  - Address Resolution Protocol
+- BCP
+  - Business Continuity Plan
+- BGP
+  - Border Gateway Protocol
+- BIA
+  - Business Impact Analysis
+- CAB
+  - Change Advisory Board
+- CAS
+  - Content Addressed Storage
+- CASB
+  - Cloud Access Security Broker
+- CD
+  - Continuous Deployment
+- CDN
+  - Content Delivery Network
+- CI
+  - Continuous Integration
+- CIFS
+  - Common Internet File System
+- CIIS
+  - Client Integration Implementation Service
+- CMDB
+  - Configuration Management Database
+- CMS
+  - Content Management System
+- CNA
+  - Converged Network Adapter
+- COL
+  - Co-Location
+- COOP
+  - Continuity of Operations Plan
+- CPU
+  - Central Processing Unit
+- CRL
+  - Certificate Revocation List
+- CRM
+  - Customer Relationship Management
+- CSP
+  - Content Service Provider
+- DAC
+  - Discretionary Access Control
+- DAS
+  - Direct Attached Storage
+- DBaaS
+  - Database as a Service
+- DBMS
+  - Database Management Server
+- DDoS
+  - Distributed Denial of Service
+- DFS
+  - Distributed File System
+- DHCP
+  - Dynamic Host Configuration Protocol
+- DLP
+  - Data Loss Prevention
+- DMZ
+  - Demilitarized Zone
+- DNS
+  - Domain Name Service
+- DNSSEC
+  - DNS Security
+- DoH
+  - DNS over HTTPS
+- DoT
+  - DNS over TLS
+- DR
+  - Disaster Recovery
+- DRP
+  - Disaster Recovery Plan
+- DSA
+  - Distributed Services Architecture
+- EDR
+  - Endpoint Detection and Response
+- FC
+  - Fibre Channel
+- FCoE
+  - Fibre Channel over Ethernet
+- FIM
+  - File Integrity Monitoring
+- FTP
+  - File Transfer Protocol
+- FTPS
+  - FTP over SSL
+- GENEVE
+  - Generic Network Virtualization Encapsulation
+- GPT
+  - GUID Partition Table
+- GPU
+  - Graphics Processing Unit
+- GRE
+  - Generic Routing Encapsulation
+- GUI
+  - Graphical User Interface
+- HA
+  - High Availability
+- HBA
+  - Host Bus Adapter
+- HIDS
+  - Host-Based IDS
+- HIPS
+  - Host-Based IPS
+- HTTPS
+  - Hypertext Transfer Protocol Secure
+- I/O
+  - Input/Output
+- IaaS
+  - Infrastructure as a Service
+- ICMP
+  - Internet Control Management Protocol
+- IDS
+  - Intrusion Detection System
+- IFCP
+  - Internet Fibre Channel Protocol
+- IGRP
+  - Interior Gateway Routing Protocol
+- IOPS
+  - Input/Output Operations Per Second
+- IoT
+  - Internet of Things
+- IPAM
+  - IP Address Management
+- IPC
+  - Instructions Per Cycle
+- IPMI
+  - Intelligent Platform Management Interface
+- IPS
+  - Intrusion Prevention System
+- IPSec
+  - IP Security
+- IQN
+  - Initiator Qualified Name
+- iSCSI
+  - Internet Small Computer System Interface
+- ISNS
+  - Internet Storage Name Service
+- ISP
+  - Internet Service Provider
+- JBOD
+  - Just a Bunch Of Disks
+- KVM
+  - Kernel Virtual Machine
+- KVM
+  - Keyboard Video Mouse
+- L2TP
+  - Layer 2 Tunneling Protocol
+- LAN
+  - Local Area Network
+- LDAP
+  - Lightweight Directory Access Protocol
+- LTS
+  - Long Term Support
+- LUN
+  - Logical Unit Number
+- MAC
+  - Mandatory Access Control
+- MBR
+  - Master Boot Record
+- MDF
+  - Main Distribution Facility
+- MFA
+  - Multi-Factor Authentication
+- ML
+  - Machine Learning
+- MPIO
+  - MultiPath I/O
+- MPLS
+  - Multiprotocol Label Switching
+- MSP
+  - Managed Service Provider
+- MTBF
+  - Mean Time Between Failure
+- MTTF
+  - Mean Time To Failure
+- MTTR
+  - Mean Time To Repair
+- MTU
+  - Maximum Transmission Unit
+- NAC
+  - Network Access Control
+- NAS
+  - Network Attached Storage
+- NAT
+  - Network Address Translation
+- NFS
+  - Network File System
+- NIC
+  - Network Interface Controller
+- NIS
+  - Network Information Service
+- NOC
+  - Network Operations Center
+- NPIV
+  - N_Port ID Virtualization
+- NTFS
+  - New Technology File System
+- NTP
+  - Network Time Protocol
+- NTS
+  - Network Time Security
+- NVMe
+  - Non-Volatile Memory Express
+- NVMe-oF
+  - NVMe over Fabrics
+- ODBC
+  - Open Database Connectivity
+- OLA
+  - Operational Level Agreement
+- OS
+  - Operating System
+- OSPF
+  - Open Shortest Path First
+- P2P
+  - Physical to Physical
+- P2V
+  - Physical to Virtual
+- PaaS
+  - Platform as a Service
+- PAT
+  - Port Address Translation
+- PBX
+  - Private (or Public) Branch Exchange
+- PIT
+  - Point-in-Time (backup or snapshot)
+- PKI
+  - Public Key Infrastructure
+- PPTP
+  - Point-to-point Tunneling Protocol
+- QA
+  - Quality Assurance
+- QoS
+  - Quality of Service
+- RAID
+  - Redundant Array of Inexpensive Disks
+- RDP
+  - Remote Desktop Protocol
+- ReFS
+  - Resilient File System
+- RPO
+  - Recovery Point Objective
+- RTO
+  - Recovery Time Objectives
+- SaaS
+  - Software as a Service
+- SAML
+  - Security Assertion Markup Language
+- SAN
+  - Storage Area Network
+- SAS
+  - Serial Attached SCSI
+- SATA
+  - Serial Advanced Technology Attachment
+- SCP
+  - Session Control Protocol
+- SCSI
+  - Small Computer System Interface
+- SDLC
+  - Software Development Life Cycle
+- SDN
+  - Software-Defined Network
+- SDS
+  - Software-Defined Storage
+- SFTP
+  - Secure FTP
+- SHA
+  - Secure Hash Algorithm
+- SIP
+  - Session Initiation Protocol
+- SLA
+  - Service Level Agreement
+- SMB
+  - Server Message Block
+- SMT
+  - Simultaneous Multi-Threading
+- SNMP
+  - Simple Network Management Protocol
+- SR-IOV
+  - Single-Root Input/ Output Virtualization
+- SSD
+  - Solid State Disk
+- SSH
+  - Secure Shell
+- SSL
+  - Secure Sockets Layer
+- SSO
+  - Single Sign-On
+- TCO
+  - Total Cost of Operations
+- TCP
+  - Transmission Control Protocol
+- TKIP
+  - Temporal Key Integrity Protocol
+- TLS
+  - Transport Layer Security
+- TPM
+  - Trusted Platform Module
+- TTL
+  - Time to Live
+- UAT
+  - User Acceptance Testing
+- UDP
+  - Universal Datagram Protocol
+- UPS
+  - Universal Power Supply
+- V2P
+  - Virtual to Physical
+- V2V
+  - Virtual to Virtual
+- VAT
+  - Virtual Allocation Table
+- vCPU
+  - Virtual CPU
+- VDI
+  - Virtual Desktop Infrastructure
+- vGPU
+  - Virtual Graphics Processing Unit
+- VHD
+  - Virtual Hard Disk
+- VLAN
+  - Virtual LAN
+- VM
+  - Virtual Machine
+- VMFS
+  - Virtual Machine File System
+- VNC
+  - Virtual Network Computing
+- vNIC
+  - Virtual NIC
+- VoIP
+  - Voice over IP
+- VPC
+  - Virtual Private Cloud
+- VPN
+  - Virtual Private Network
+- vRAM
+  - Virtual RAM
+- vSAN
+  - Virtual SAN
+- vSwitch
+  - Virtual Switch
+- VTL
+  - Virtual Tape Library
+- VXLAN
+  - Virtual extensible LAN
+- WAF
+  - Web Application Firewall
+- WAN
+  - Wide Area Network
+- WMI
+  - Windows Management Implementation
+- WWNN
+  - World Wide Node Name
+- WWPN
+  - World Wide Port Name
+- XaaS
+  - anything as a Service
+- ZFS
+  - Z File System

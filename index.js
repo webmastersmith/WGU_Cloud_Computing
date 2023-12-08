@@ -3,12 +3,12 @@
   const path = await import('path');
   // variables
   // const dataArr = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8')?.split(/\r?\n/);
-  const dataArr = fs.readFileSync('D281_Linux_Foundations/Linux_Foundations.md', 'utf-8')?.split(/\r?\n/);
+  const dataArr = fs.readFileSync('D318_Cloud_Applications/Cloud_Applications.md', 'utf-8')?.split(/\r?\n/);
   const directoryPath = 'D334_Cryptography';
   // Get first line of Markdown as Anki Deck Title
   const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
   // const deckName = 'WGU_D334_Intro_to_Cryptography';
-  const removeLines = 20;
+  const removeLines = 22; // line before you want to start parsing. 0 is first line.
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
@@ -19,7 +19,16 @@
     const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
     fs.writeFileSync('./showdown.min.js', txt);
   }
+  // https://github.com/highlightjs/highlight.js#importing-the-library
+  if (!fs.existsSync('./highlight.min.js')) {
+    // curl -LO 'https://unpkg.com/showdown/dist/showdown.min.js' // downloads to current directory.
+    const txt = await (
+      await fetch('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js')
+    ).text();
+    fs.writeFileSync('./highlight.min.js', txt);
+  }
   const showdown = require('./showdown.min');
+  const hljs = require('./highlight.min');
   // These next few functions add styling to the html.
   // Add border and color to table header
   showdown.extension('table-header-css', {
@@ -49,13 +58,36 @@
       );
     },
   });
+  // code blocks
+  showdown.extension('code-blocks-css', {
+    type: 'output',
+    filter: (html) => {
+      function htmlunencode(text) {
+        return text
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"');
+      }
+      return html.replace(/<pre>.*?<\/pre>/gs, (match) => {
+        // remove class because highlight.js adds span tags around each word?
+        const fix = match.replace(/ class=".*?"/g, '');
+        // highlight.js returns html-encoded text. Need to un-encode it.
+        const codeBlock = htmlunencode(hljs.highlightAuto(fix).value);
+        // override the style of Anki card.
+        const txt = codeBlock.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
+        return txt;
+      });
+    },
+  });
   // github flavored markdown => html.
   showdown.setFlavor('github');
   // converter.makeHtml(textBlock) // returns html.
   const converter = new showdown.Converter({
     tables: true,
+    ghCodeBlocks: true,
     tasklist: true,
-    extensions: ['table-header-css', 'table-data-css', 'table-row-css'],
+    extensions: ['table-header-css', 'table-data-css', 'table-row-css', 'code-blocks-css'],
   });
 
   // AnkiConnect Should be installed on Anki deck as an addon and Anki should be running.
@@ -63,6 +95,7 @@
   await sendToAnki('createDeck', { deck: deckName });
   // Create SubDecks
   for (const { section, cards } of await parsePage(dataArr)) {
+    // console.log(section, cards);
     // {section, cards: [{front, back, picture}] }
     // subDeck name remove spaces.
     const sectionName = section.replaceAll(' ', '_').trim();
@@ -84,6 +117,20 @@
       });
     }
   }
+
+  // Sunburst theme for code blocks.
+  // https://highlightjs.org/examples
+  // https://github.com/highlightjs/highlight.js/tree/main/src/styles
+  const highlightCSS = `.hljs { color: #eaeaea; background: #000;}.hljs-subst { color: #eaeaea;}.hljs-emphasis { font-style: italic;}.hljs-strong { font-weight: bold;}.hljs-type { color: #eaeaea;}.hljs-params { color: #da0000;}.hljs-literal,.hljs-number,.hljs-name { color: #ff0000; font-weight: bolder;}.hljs-comment { color: #969896;}.hljs-selector-id,.hljs-quote { color: #00ffff;}.hljs-template-variable,.hljs-variable,.hljs-title { color: #00ffff; font-weight: bold;}.hljs-selector-class,.hljs-keyword,.hljs-symbol { color: #fff000;}.hljs-string,.hljs-bullet{ color: #00ff00;}.hljs-tag,.hljs-section { color: #000fff;}.hljs-selector-tag { color: #000fff; font-weight: bold;}.hljs-attribute,.hljs-built_in,.hljs-regexp,.hljs-link { color: #ff00ff;}.hljs-meta { color: #fff; font-weight: bolder;}`;
+  const nativeCSS =
+    '.card {font-family: arial;font-size: 20px;text-align: center;color: black;background-color: white;} img { object-fit: contain;}.cloze {font-weight: bold;color: blue;}.nightMode .cloze{color: lightblue;}';
+  const css = `${nativeCSS}${highlightCSS}`;
+
+  // console.log(await sendToAnki('modelNamesAndIds'));
+  // change styling of cards.
+  await sendToAnki('updateModelStyling', { model: { name: 'Basic', css } });
+  await sendToAnki('updateModelStyling', { model: { name: 'Basic (optional reversed card)', css } });
+  await sendToAnki('updateModelStyling', { model: { name: 'Basic (type in the answer)', css } });
 
   // This function sends object to ANKI-CONNECT addon listening on port 8765.
   // https://github.com/amikey/anki-connect
@@ -115,32 +162,39 @@
     // remove tips. The ternary is so the first line (title) is always removed.
     // Otherwise it will be confused with block of data.
     const dataStr = dataArr.slice(removeLines > 0 ? removeLines : 1).join('\n');
+    // console.log(dataStr);
     // separate page into subSections (blocks)
-    const blocks = dataStr.match(/[^#]*/g).filter((line) => line.length > 0);
+    const blocks = dataStr.split(/^#{2} /gm).filter((line) => line.length > 0);
     // console.log(blocks);
     // returns object with {section, text} // section is name of subDeck. text is front, back, images for cards.
     const sections = blocks.map((block) => processBlocks(block));
     // console.log(JSON.stringify(sections, null, 2));
     return sections;
   }
-  parsePage(dataArr);
+  // parsePage(dataArr); // for testing
 
-  // Each block is separated by '##'
-  // need object with {section, text: [{front, back, picture}]}
+  // Turn each '##' block into Question and Answer Cards.
   function processBlocks(block) {
     // get and remove section name
-    const [s, ...rest] = block.split(/\r?\n/).filter((line) => line.length > 0);
+    const [s, ...rest] = block.split(/\r?\n/);
+    // .filter((line) => line.length > 0);
     let section = s?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
-    const cards = [];
+    // console.log(rest);
+    const tempCards = [];
     for (const line of rest) {
+      // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
-        cards.push({ front: `<h2>${line.replace('-', '').trim()}</h2>`, back: [], picture: [] });
+        tempCards.push({
+          front: `<h2>${line.replace('-', '').replaceAll('*', '').trim()}</h2>`,
+          back: [],
+          picture: [],
+        });
         continue;
       }
       // must be answer if starts with '  -'.
-      const lastItem = cards.pop();
+      const lastItem = tempCards.pop();
       // check if line is image
       if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
         const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
@@ -148,17 +202,24 @@
         const newPic = path.join(process.cwd(), directoryPath, 'img', filename);
         // create the picture data.
         lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
-        cards.push(lastItem);
+        tempCards.push(lastItem);
         continue;
       }
-      lastItem.back.push(line.replace(/\s{2}/, '').trim());
-      cards.push(lastItem);
+      // console.log(line);
+      // The very first line can be blank and will fall through to answer and end up undefined.
+      if (!lastItem) continue;
+      // need the blank lines for tables. Only trim if line is not blank.
+      const str = line.length > 0 ? line?.replace(/\s{2}/, '').trim() : line;
+      lastItem?.back?.push(str);
+      tempCards.push(lastItem);
     }
-    const newCards = cards.map((card) => {
+    // convert back to html.
+    // console.log(tempCards);
+    const cards = tempCards.map((card) => {
       const back = converter.makeHtml(card.back.join('\n'));
       return { ...card, back };
     });
-    return { section, cards: newCards };
+    return { section, cards };
 
     // console.log(sectionBlocks);
 
