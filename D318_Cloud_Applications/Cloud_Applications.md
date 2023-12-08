@@ -9,7 +9,7 @@
 - https://github.com/cloud-master-io/cloud-master-io
 - Passing score: 750 (on a scale of 100—900)
   - Min Passing score: 75%
-  - Min questions correct: 75 of 90.
+  - Min questions correct: 65 of 80 + 10(do not count towards score).
 
 | Domain                            | Percentage of Exam |
 | --------------------------------- | ------------------ |
