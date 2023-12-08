@@ -184,7 +184,7 @@
     // get and remove section name
     const [s, ...rest] = block.split(/\r?\n/);
     // .filter((line) => line.length > 0);
-    let section = s?.replace(/\W+/g, '')?.trim() ?? 'Section';
+    let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/]/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
     const cardsArr = [];
@@ -192,8 +192,10 @@
       // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
+        const h = line.length > 30 ? 'h3' : 'h2';
+        const front = `<${h}>${line.replace('-', '').replaceAll('*', '').trim()}</${h}>`;
         cardsArr.push({
-          front: `<h2>${line.replace('-', '').replaceAll('*', '').trim()}</h2>`,
+          front,
           back: [],
           picture: [],
         });
