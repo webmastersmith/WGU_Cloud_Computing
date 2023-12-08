@@ -12,23 +12,31 @@
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
-  // Download showdown if not already downloaded. It parses markdown into html.
-  // check if showdown file exist
+  // Download showdown if not already downloaded. Showdown parses markdown into html.
   if (!fs.existsSync('./showdown.min.js')) {
-    // curl -LO 'https://unpkg.com/showdown/dist/showdown.min.js' // downloads to current directory.
     const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
     fs.writeFileSync('./showdown.min.js', txt);
   }
   // https://github.com/highlightjs/highlight.js#importing-the-library
   if (!fs.existsSync('./highlight.min.js')) {
-    // curl -LO 'https://unpkg.com/showdown/dist/showdown.min.js' // downloads to current directory.
     const txt = await (
       await fetch('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js')
     ).text();
     fs.writeFileSync('./highlight.min.js', txt);
   }
+  // CSS for Highlight.js
+  // https://github.com/highlightjs/highlight.js/tree/main/src/styles
+  // https://highlightjs.org/examples
+  if (!fs.existsSync('./hljs.css')) {
+    // change this to whatever theme you want.
+    const txt = await (
+      await fetch('https://raw.githubusercontent.com/highlightjs/highlight.js/main/src/styles/xt256.css')
+    ).text();
+    fs.writeFileSync('./hljs.css', txt);
+  }
   const showdown = require('./showdown.min');
   const hljs = require('./highlight.min');
+  const hljsCSS = fs.readFileSync('./hljs.css', 'utf-8');
   // These next few functions add styling to the html.
   // Add border and color to table header
   showdown.extension('table-header-css', {
@@ -98,7 +106,7 @@
     // console.log(section, cards);
     // {section, cards: [{front, back, picture}] }
     // subDeck name remove spaces.
-    const sectionName = section.replaceAll(' ', '_').trim();
+    const sectionName = section?.replaceAll(' ', '_')?.trim();
     // create subDeck name
     await sendToAnki('createDeck', { deck: `${deckName}::${sectionName}` });
     // Create cards in subDeck
@@ -118,16 +126,14 @@
     }
   }
 
-  // Sunburst theme for code blocks.
-  // https://highlightjs.org/examples
-  // https://github.com/highlightjs/highlight.js/tree/main/src/styles
-  const highlightCSS = `.hljs { color: #eaeaea; background: #000;}.hljs-subst { color: #eaeaea;}.hljs-emphasis { font-style: italic;}.hljs-strong { font-weight: bold;}.hljs-type { color: #eaeaea;}.hljs-params { color: #da0000;}.hljs-literal,.hljs-number,.hljs-name { color: #ff0000; font-weight: bolder;}.hljs-comment { color: #969896;}.hljs-selector-id,.hljs-quote { color: #00ffff;}.hljs-template-variable,.hljs-variable,.hljs-title { color: #00ffff; font-weight: bold;}.hljs-selector-class,.hljs-keyword,.hljs-symbol { color: #fff000;}.hljs-string,.hljs-bullet{ color: #00ff00;}.hljs-tag,.hljs-section { color: #000fff;}.hljs-selector-tag { color: #000fff; font-weight: bold;}.hljs-attribute,.hljs-built_in,.hljs-regexp,.hljs-link { color: #ff00ff;}.hljs-meta { color: #fff; font-weight: bolder;}`;
+  // Add styling to '.card' class.
   const nativeCSS =
     '.card {font-family: arial;font-size: 20px;text-align: center;color: black;background-color: white;} img { object-fit: contain;}.cloze {font-weight: bold;color: blue;}.nightMode .cloze{color: lightblue;}';
-  const css = `${nativeCSS}${highlightCSS}`;
+  const css = `${nativeCSS}${hljsCSS}`;
 
+  // view all models. Update styling of your model.
   // console.log(await sendToAnki('modelNamesAndIds'));
-  // change styling of cards.
+  // change default styling of cards.
   await sendToAnki('updateModelStyling', { model: { name: 'Basic', css } });
   await sendToAnki('updateModelStyling', { model: { name: 'Basic (optional reversed card)', css } });
   await sendToAnki('updateModelStyling', { model: { name: 'Basic (type in the answer)', css } });
@@ -178,15 +184,15 @@
     // get and remove section name
     const [s, ...rest] = block.split(/\r?\n/);
     // .filter((line) => line.length > 0);
-    let section = s?.trim() ?? 'Section';
+    let section = s?.replace(/\W+/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
-    const tempCards = [];
+    const cardsArr = [];
     for (const line of rest) {
       // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
-        tempCards.push({
+        cardsArr.push({
           front: `<h2>${line.replace('-', '').replaceAll('*', '').trim()}</h2>`,
           back: [],
           picture: [],
@@ -194,7 +200,9 @@
         continue;
       }
       // must be answer if starts with '  -'.
-      const lastItem = tempCards.pop();
+      const lastItem = cardsArr.pop();
+      // The very first line can be blank and will fall through to answer and end up undefined.
+      if (!lastItem) continue;
       // check if line is image
       if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
         const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
@@ -202,20 +210,18 @@
         const newPic = path.join(process.cwd(), directoryPath, 'img', filename);
         // create the picture data.
         lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
-        tempCards.push(lastItem);
+        cardsArr.push(lastItem);
         continue;
       }
       // console.log(line);
-      // The very first line can be blank and will fall through to answer and end up undefined.
-      if (!lastItem) continue;
       // need the blank lines for tables. Only trim if line is not blank.
       const str = line.length > 0 ? line?.replace(/\s{2}/, '').trim() : line;
       lastItem?.back?.push(str);
-      tempCards.push(lastItem);
+      cardsArr.push(lastItem);
     }
-    // convert back to html.
-    // console.log(tempCards);
-    const cards = tempCards.map((card) => {
+    // console.log(cardsArr);
+    // convert 'back' markdown to html.
+    const cards = cardsArr.map((card) => {
       const back = converter.makeHtml(card.back.join('\n'));
       return { ...card, back };
     });

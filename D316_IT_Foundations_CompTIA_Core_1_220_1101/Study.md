@@ -524,19 +524,20 @@ Describe RAID 0,1,5,10?
 
 | Raid | Min Drives | Lose | Description                                                                     |
 | ---- | ---------- | ---- | ------------------------------------------------------------------------------- |
-| 0    | 2          | 0    | **Striped**. Writes to multiple disk at same time. No redundancy. Fast          |
-| 1    | 2          | 1    | **Mirroring**. Full Redundancy. Slowest                                         |
-| 5    | 3          | 1    | **Redundancy through Parity**. fast and redundancy                              |
+| 0    | 2          | 0    | **Striped**. Splits writes between multiple disk. No redundancy. Fastest        |
+| 1    | 2          | 1    | **Mirrored**. Duplicate write. Full Redundancy. Slowest                         |
+| 5    | 3          | 1    | **Striped with Parity**. Split. XOR Data. fast and redundant                    |
+| 6    | 4          | 2    | **Striped with Double Parity**. fast and high redundancy                        |
 | 10   | 4          | 1    | **Striping + Mirroring**. Fast. Raid 1 within a Raid 0. Best for offsite backup |
 
 - **Parity**: fault tolerance by calculating data on the two drives and storing results on third. XOR'ing bit from drive 1 with a bit from drive 2. Storing the results on drive 3. Any one drive can fail and be rebuilt from the other two.
 
-| Drive1, Drive2 | Drive3(Parity drive) |
-| -------------- | -------------------- |
-| 0, 0           | 0                    |
-| 0, 1           | 1                    |
-| 1, 0           | 1                    |
-| 1, 1           | 0                    |
+| Drive1, Drive2 | XOR Drive3(Parity drive) |
+| -------------- | ------------------------ |
+| 0, 0           | 0                        |
+| 0, 1           | 1                        |
+| 1, 0           | 1                        |
+| 1, 1           | 0                        |
 
 ## Network Security
 
