@@ -100,14 +100,22 @@
 ## 1.2 Explain the factors that contribute to capacity planning
 
 - Capacity Planning Hardware:
-  - Minimum and recommended specifications for CPU, RAM, storage, network connectivity, etc.
-  - Compatibility with cloud platforms and operating systems.
+  - **EndUser**
+    - Access from any device.
+  - **Business**
+    - Hardware requirements specify the physical infrastructure needed to support the project. This includes servers, storage, networking equipment, ect.
+    - Internet throughput/speed.
+    - Hardware Scalability.
+    - Compatibility with cloud platforms and operating systems.
 - Capacity Planning Software:
-  - Operating systems, applications, and middleware needed for the cloud environment.
+  - Software requirements encompass various software components, which may include off-the-shelf products, custom software, security software, auditing tools, and more.
+    - Licensing requirements and costs.
   - Compatibility with the chosen cloud platform and hardware.
-  - Licensing requirements and costs.
 - Capacity Planning Budgetary:
   - Estimated costs for hardware, software, cloud services, and ongoing maintenance.
+    - Include development budget, operational budget, and security budget, taking into account costs for creating, maintaining, and securing the product or system.
+  - Cost of subscriptions.
+  - Cost of scaling resources.
   - Budget allocation for different components of the cloud environment.
 - Capacity Planning Business need analysis:
   - Identifying the business objectives and challenges that the cloud solution will address.
@@ -204,20 +212,23 @@
 
 ## 1.4 Given a scenario, analyze the solution design in support of the business requirements
 
-- Explain importance of analyzing the solution design in support of the business requirements?
-  - By analyzing the solution design in relation to these requirements and providing details about the specific scenario, we can determine the appropriateness and effectiveness of the solution in meeting the business needs.
-  - Nature of the business: What industry is the business in?
-  - What is its size?
-  - Current IT infrastructure: What systems and applications are currently in use?
-  - Business goals: What are the objectives for implementing the solution?
-  - Pain points: What problems are the business trying to solve?
 - Requirement analysis for Software
+  - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-business-requirements-analysis)
   - What software applications and platforms are included in the solution?
   - Compatibility with existing systems and applications.
   - Meets functional and technical requirements.
   - Scalability to accommodate future growth.
   - Availability of support and maintenance.
 - Requirement analysis for Hardware
+  - **Users**
+    - Access from any device
+  - **Business**
+    - Reliable and fast Internet connectivity
+    - Constructing and supporting a datacenter for private and hybrid cloud deployments
+    - Specialized hardware that cloud services cannot provide, such as industrial or manufacturing equipment
+    - Hardware scalability by the CSP
+    - Reliability of the CSP's hardware
+    -
   - What hardware infrastructure is required?
   - Sufficient capacity to meet performance and scalability needs.
   - High availability and redundancy to minimize downtime.
@@ -234,8 +245,10 @@
   - Return on investment (ROI) analysis.
 - Requirement analysis for Compliance
   - Adherence to all relevant **industry regulations** and standards.
-  - Security and **data privacy compliance**.
-  - Regular **audits** and assessments.
+    - Security and **data privacy compliance**.
+    - Industry requirements (such as HIPAA, PCI DSS, and PII).
+    - Regular **audits** and assessments.
+  - CSP certificates of compliance.
 - Requirement analysis for Service-Level Agreement (SLA)
   - Guarantees a certain level of service availability and performance.
   - Clearly defined metrics and service level objectives (SLOs).

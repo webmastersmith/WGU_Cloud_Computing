@@ -156,7 +156,7 @@
   function processBlocks(block) {
     // get and remove section name
     const [s, ...rest] = block.split(/\r?\n/);
-    // .filter((line) => line.length > 0);
+    // remove special characters from section name.
     let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/]/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
@@ -190,7 +190,7 @@
       }
       // console.log(line);
       // need the blank lines for tables. Only trim if line is not blank.
-      const str = line.length > 0 ? line?.replace(/\s{2}/, '').trim() : line;
+      const str = line.length > 0 ? line?.replace(/^(\s{2}|\t)/, '')?.trimEnd() : line;
       lastItem?.back?.push(str);
       cardsArr.push(lastItem);
     }
