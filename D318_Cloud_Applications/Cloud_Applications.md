@@ -1236,3 +1236,367 @@ n-1 Policy: Maintain at least one previous version of software and configuration
   - Organizations may need data centers in different geographical locations to mitigate the impact of regional disasters. Factors to consider include seismic activity, weather patterns, and accessibility.
 
 ## 5.1 Given a scenario, use the troubleshooting methodology to resolve cloud-related issues
+
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 1. Identify the Problem
+  - Question the user and identify any recent changes made to the cloud environment.
+  - Perform backups before implementing any changes to ensure data integrity.
+  - Inquire about environmental or infrastructure changes that might be contributing to the issue.
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 2. Establish a Theory of Probable Cause (Question the Obvious)
+  - Conduct internal or external research based on the identified symptoms.
+  - Question assumptions and validate any hypotheses regarding the root cause.
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 3. Test the Theory to Determine Cause
+  - Confirm the identified theory through testing.
+  - If the theory is confirmed, proceed to determine the next steps for problem resolution.
+  - If the theory is not confirmed, reevaluate and establish a new theory or escalate the issue for further investigation.
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 4. Establish a Plan of Action to Resolve the Problem and Implement the Solution
+  - Develop a step-by-step plan outlining actions to be taken for issue resolution.
+  - Implement the solution based on the confirmed theory, considering corporate policies and procedures.
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 5. Verify Full System Functionality and Implement Preventive Measures
+  - After implementing the solution, thoroughly test the cloud environment to ensure full functionality.
+  - Identify and implement preventive measures to mitigate the risk of similar issues in the future.
+- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 6. Document Findings, Actions, and Outcomes
+  - Maintain detailed documentation throughout the entire problem resolution process.
+  - Document findings, actions taken, and the outcomes of each step.
+  - This documentation serves as a reference for future troubleshooting and analysis.
+
+## 5.2 Given a scenario, troubleshoot security issues
+
+Troubleshooting Security Issues:
+
+- Troubleshooting Security Issues: Privilege Missing
+  - Identify users or entities lacking necessary privileges.
+  - Grant appropriate permissions based on roles and responsibilities.
+- Troubleshooting Security Issues: Privilege Incomplete
+  - Review access policies and ensure comprehensive coverage.
+  - Validate that users have all required privileges for their roles.
+- Troubleshooting Security Issues: Privilege Escalation
+  - Investigate instances of unauthorized privilege escalation.
+  - Implement measures to prevent and detect unauthorized elevation.
+- Troubleshooting Security Issues: Privilege Keys
+  - Monitor and manage cryptographic keys securely.
+  - Rotate keys regularly to minimize the impact of potential compromises.
+- Troubleshooting Security Issues: Authentication
+  - Ensure proper authentication mechanisms are in place.
+  - Verify the integrity of user credentials.
+  - Monitor for suspicious login attempts.
+- Troubleshooting Security Issues: Authorization
+  - Review and validate access control lists (ACLs) and authorization policies.
+  - Ensure users only have access to resources necessary for their roles.
+- Troubleshooting Security Groups: Network Security Groups
+  - Validate and adjust network security group rules.
+  - Monitor for unauthorized network traffic.
+- Troubleshooting Security Groups: Directory Security Groups
+  - Review membership and permissions of directory security groups.
+  - Remove users who no longer require access.
+- Troubleshooting Security Keys and Certificates: Expired
+  - Regularly check for and renew expired certificates.
+  - Implement a certificate management process.
+- Troubleshooting Security Keys and Certificates: Revoked
+  - Update the certificate revocation list promptly.
+  - Investigate the cause of certificate revocations.
+- Troubleshooting Security Keys and Certificates: Trust
+  - Verify the trustworthiness of certificate authorities.
+  - Monitor for compromised trust relationships.
+- Troubleshooting Security Keys and Certificates: Compromised
+  - Investigate and remediate compromised keys or certificates immediately.
+  - Implement measures to detect and respond to compromises.
+- Troubleshooting Security Keys and Certificates: Misconfigured
+  - Review certificate configurations and ensure adherence to best practices.
+  - Regularly audit and update certificate configurations.
+- Troubleshooting Security: Misconfigured or Misapplied Policies
+  - Regularly review and update security policies.
+  - Audit policy implementation against security best practices.
+- Troubleshooting Data Security Issues: Unencrypted Data
+  - Identify and encrypt sensitive data at rest and in transit.
+  - Enforce encryption policies consistently.
+- Troubleshooting Data Security Issues: Data Breaches
+  - Investigate and respond to data breaches promptly.
+  - Implement measures to prevent future breaches.
+- Troubleshooting Data Security Issues: Misclassification
+  - Review data classification policies and classifications.
+  - Ensure accurate classification of sensitive data.
+- Troubleshooting Data Security Issues: Lack of Encryption in Protocols
+  - Enable encryption for communication protocols.
+  - Disable insecure protocols.
+- Troubleshooting Data Security Issues: Insecure Ciphers
+  - Update and secure cryptographic ciphers.
+  - Monitor for the use of deprecated or insecure ciphers.
+- Troubleshooting Security: Exposed Endpoints
+  - Review and secure publicly exposed endpoints.
+  - Implement access controls and monitor for unauthorized access.
+- Troubleshooting Misconfigured or Failed Security Appliances: IPS (Intrusion Prevention System)
+  - Validate and update IPS configurations.
+  - Investigate and remediate IPS failures.
+- Troubleshooting Misconfigured or Failed Security Appliances: IDS (Intrusion Detection System)
+  - Regularly test and update IDS rules.
+  - Monitor for false positives and negatives.
+- Troubleshooting Misconfigured or Failed Security Appliances: NAC (Network Access Control)
+  - Verify NAC policies and configurations.
+  - Investigate and address NAC failures.
+- Troubleshooting Misconfigured or Failed Security Appliances: WAF (Web Application Firewall)
+  - Review and update WAF configurations.
+  - Monitor and respond to WAF alerts.
+- Troubleshooting Unsupported Protocols:
+  - Identify and disable unsupported or deprecated protocols.
+  - Replace unsupported protocols with more secure alternatives.
+- Troubleshooting External/Internal Attacks
+  - Monitor for suspicious activities and anomalies.
+  - Implement intrusion detection and prevention measures.
+  - Collaborate with incident response teams to investigate and respond to attacks promptly.
+
+## 5.3 Given a scenario, troubleshoot deployment issues
+
+- Troubleshooting Deployment: Connectivity Issues: Cloud Service Provider (CSP) or Internet Service Provider (ISP) Outages
+  - Verify the status of the CSP or ISP.
+  - Check for any reported outages or incidents.
+  - Investigate alternative connectivity options.
+- Troubleshooting Deployment Performance Degradation: Latency
+  - Measure and analyze latency between systems.
+  - Identify potential bottlenecks causing latency.
+  - Optimize network configurations for improved performance.
+- Troubleshooting Deployment Configurations: Scripts
+  - Review and debug scripts for errors.
+  - Ensure scripts align with intended configurations.
+- Troubleshooting Deployment: Applications in Containers
+  - Verify container configurations.
+  - Check for dependencies and compatibility issues.
+- Troubleshooting Deployment: Misconfigured Templates
+  - Review templates used for deployment.
+  - Validate configurations against best practices.
+- Troubleshooting Deployment: Missing or Incorrect Tags
+  - Inspect resource tags for accuracy.
+  - Update tags as needed for proper resource management.
+- Troubleshooting Deployment Insufficient Capacity: Scaling
+  - Assess scaling configurations for resource adequacy.
+  - Address capacity issues by adjusting scaling settings.
+- Troubleshooting Deployment Insufficient Capacity: Compute
+  - Ensure sufficient compute resources for workloads.
+- Troubleshooting Deployment Insufficient Capacity: Storage
+  - Review storage configurations and capacity.
+- Troubleshooting Deployment Insufficient Capacity: Bandwidth Issues
+  - Analyze and optimize network bandwidth.
+- Troubleshooting Deployment Insufficient Capacity: Oversubscription
+  - Check for oversubscription of resources and adjust if needed.
+- Troubleshooting Deployment: Licensing Issues
+  - Validate license status and expiration.
+  - Ensure compliance with licensing agreements.
+- Troubleshooting Deployment Vendor-Related Issues: Migrations of Vendors or Platforms
+  - Plan and execute vendor or platform migrations carefully.
+  - Verify compatibility and data migration processes.
+- Troubleshooting Deployment Vendor-Related Issues: Integration of Vendors or Platforms
+  - Validate integration configurations.
+  - Troubleshoot issues arising from vendor integrations.
+- Troubleshooting Deployment Vendor-Related Issues: API Request Limits
+  - Monitor API usage and ensure it adheres to limits.
+  - Request API limit increases if necessary.
+- Troubleshooting Deployment Vendor-Related Issues: Cost or Billing Issues
+  - Review billing statements for accuracy.
+  - Investigate unexpected costs and adjust resource usage if needed.
+
+## 5.4 Given a scenario, troubleshoot connectivity issues
+
+- Troubleshooting Connectivity Issues with Network Security Group Misconfigurations: ACL (Access Control List)
+  - Review ACL configurations for proper access permissions.
+  - Adjust ACL rules to align with security requirements.
+- Troubleshooting Connectivity Issues with Network Security Group Misconfigurations: Inheritance
+  - Verify inheritance settings for network security groups.
+  - Confirm that rules are inherited correctly from parent groups.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Peering
+  - Validate peering configurations between network components.
+  - Ensure peering relationships are established and functioning.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect Subnet
+  - Check and correct any misconfigured subnet settings.
+  - Ensure subnets align with intended network architecture.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect IP Address
+  - Verify IP addresses for accuracy.
+  - Correct any misconfigured IP addresses.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect IP Space
+  - Confirm that IP spaces are correctly allocated.
+  - Resolve conflicts in IP space assignments.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Default
+  - Verify the correct default gateway IP address and subnet mask are configured on network devices.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Static
+  - Double-check the accuracy of static route entries, including destination network, subnet mask, and next-hop gateway.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Dynamic
+  - Verify the correct routing protocol configuration parameters, including metric values, timers, and network advertisements.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Firewall: Incorrectly Administered Micro-Segmentation
+  - Validate micro-segmentation configurations.
+  - Ensure that segmentation policies align with security requirements.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): VPN
+  - Verify NAT settings on both ends of the VPN connection.
+  - Ensure port forwarding rules are configured for required VPN protocols/ports.
+  - Adjust NAT timeouts or consider alternative VPN options.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): Source
+  - Review NAT rules for affected applications and ensure proper translation.
+  - Clear and refresh the NAT table to eliminate outdated entries.
+  - Check for duplicate IP addresses and resolve conflicts.
+- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): Destination
+  - Verify NAT rules for desired destinations and add missing entries if needed.
+  - Analyze network routing tables and address any routing loops.
+  - Review firewall rules and ensure they allow access to the desired destinations.
+- Troubleshooting Connectivity Issues with Load Balancers: Methods
+  - Health checks: Verify that the load balancer is performing health checks on backend servers and removing unhealthy ones from the pool.
+  - Logs: Analyze load balancer logs for errors or warnings that may indicate the source of the problem.
+  - Traffic monitoring: Monitor load balancer traffic patterns to identify any anomalies or inconsistencies.
+  - Test connections: Manually test connections to individual backend servers to pinpoint issues with specific servers or network connections.
+- Troubleshooting Connectivity Issues with Load Balancers: Headers
+  - Host header: Ensure the host header is correctly configured in the load balancer and backend servers.
+  - X-Forwarded- headers: **Verify that X-Forwarded-** headers are correctly forwarded to backend servers to ensure proper routing.
+  - Custom headers: Check for any custom headers used by your application and ensure they are properly handled by the load balancer.
+- Troubleshooting Connectivity Issues with Load Balancers: Protocols
+  - HTTP/HTTPS: Verify the load balancer is listening on the correct ports for HTTP and HTTPS traffic.
+  - SSL certificates: Ensure valid and properly configured SSL certificates are installed on the load balancer and backend servers.
+  - Application protocols: Check if your application uses any specific application protocols and ensure the load balancer supports them.
+- Troubleshooting Connectivity Issues with Load Balancers: Encryption
+  - SSL configuration: Verify the SSL configuration for both the load balancer and backend servers.
+  - Cipher suites: Ensure compatible cipher suites are chosen for SSL encryption.
+  - Certificate chains: Check for missing or invalid intermediate certificates in the certificate chain.
+- Troubleshooting Connectivity Issues with Load Balancers: Back Ends
+  - Server health: Check the health and status of individual backend servers.
+  - Server configuration: Verify the configuration of backend servers, including firewall rules and port settings.
+  - Resource utilization: Monitor resource utilization on backend servers to identify any overloaded servers causing bottlenecks.
+- Troubleshooting Connectivity Issues with Load Balancers: Front Ends
+  - DNS configuration: Verify the DNS configuration is correct and pointing to the load balancer.
+  - Firewall rules: Check firewall rules on the front end to ensure they allow incoming traffic to the load balancer.
+  - Network connectivity: Test the network connectivity between the front end and the load balancer.
+- Troubleshooting Connectivity Issues with: DNS Records
+  - Verify the accuracy of DNS records for the affected domain name.
+  - Flush the DNS cache on affected devices.
+  - Check the status and accessibility of the DNS server.
+  - Utilize online tools like MXToolbox to diagnose DNS issues.
+- Troubleshooting Connectivity Issues with: VLAN / VXLAN / GENEVE
+  - Verify VLAN IDs and trunk ports are configured correctly.
+  - Check tunnel configuration parameters (e.g., source/destination endpoints, encapsulation type).
+  - Ensure consistent MTU settings across all devices involved in the communication.
+  - Analyze spanning-tree protocol logs for potential loop issues.
+- Troubleshooting Connectivity Issues with: Proxy
+  - Verify the proxy address, port, and authentication credentials.
+  - Check if the desired websites are explicitly blocked by the proxy.
+  - Contact the proxy server administrator if overloaded or experiencing technical issues.
+- Troubleshooting Connectivity Issues with: Maximum Transmission Unit (MTU)
+  - Determine the optimal MTU size for the network path.
+  - Configure all devices to use the same MTU setting.
+  - Enable jumbo frames on network interfaces if needed.
+- Troubleshooting Connectivity Issues with: Quality of Service (QoS)
+  - Verify QoS settings for affected traffic types and priorities.
+  - Monitor network traffic and identify bandwidth bottlenecks.
+  - Adjust QoS parameters or upgrade network infrastructure if necessary.
+- Troubleshooting Connectivity Issues with: Time Synchronization Issues
+  - Verify system clocks on all devices are synchronized with a reliable NTP server.
+  - Check the NTP server itself for any connectivity or configuration problems.
+  - Investigate potential sources of clock drift, such as hardware issues or software bugs.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: ping
+  - Tests the reachability of a specific IP address and measures the response time.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: tracert/traceroute
+  - Traces the route packets take to reach a specific destination, identifying potential bottlenecks or routing issues.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: flushdns
+  - Clears the local DNS cache, potentially resolving issues caused by outdated or corrupted entries.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: ipconfig/ifconfig/ip
+  - Provides information about the network configuration of your device, including IP addresses, subnet masks, and default gateways.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: nslookup/dig
+  - Resolves domain names to IP addresses and vice versa, helping identify DNS configuration issues.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: netstat/ss
+  - Lists active network connections and provides information about their status, protocols, and ports.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: route
+  - Displays the routing table, which defines how packets are routed through the network.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: arp
+  - Shows the Address Resolution Protocol (ARP) cache, which maps IP addresses to MAC addresses.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: curl
+  - Sends HTTP requests to a specified URL, helping diagnose web server connectivity and configuration issues.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: Packet capture
+  - Captures all network traffic flowing through a specific interface, allowing for detailed analysis of network behavior and troubleshooting of complex issues.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: Packet analyzer
+  - Analyzes captured network traffic, providing insights into protocols, packet contents, and potential network problems.
+- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: OpenSSL client
+  - Tests the connection to an SSL/TLS server and verifies the server's certificate, helping identify SSL/TLS configuration issues.
+
+## 5.5 Given a scenario, troubleshoot common performance issues
+
+- Troubleshooting Common Performance Issues with Resource Utilization: CPU
+  - High CPU Utilization:
+  - Resolution: Identify resource-intensive processes and optimize their execution. Consider load balancing and, if necessary, upgrade the CPU.
+- Troubleshooting Common Performance Issues with Resource Utilization: GPU
+  - GPU Bottleneck:
+  - Resolution: Optimize GPU-intensive applications, explore parallelization techniques, or consider upgrading to a more powerful GPU.
+- Troubleshooting Common Performance Issues with Resource Utilization: Memory
+  - Memory Exhaustion:
+  - Resolution: Identify and optimize memory-hungry processes. Consider increasing physical or virtual memory capacity.
+- Troubleshooting Common Performance Issues with Storage: I/O (Input/Output)
+  - I/O Bottleneck:
+  - Resolution: Optimize I/O-intensive processes, distribute I/O load, or consider upgrading storage solutions for improved performance.
+- Troubleshooting Common Performance Issues with Storage: Capacity
+  - Overcapacity:
+  - Resolution: Identify and optimize resource usage, consider load balancing strategies, and plan for capacity upgrades.
+- Troubleshooting Common Performance Issues with Network Bandwidth: Network Latency
+  - High Network Latency:
+  - Resolution: Identify and resolve network bottlenecks, optimize routing configurations, and consider Quality of Service (QoS) settings for reduced latency.
+- Troubleshooting Common Performance Issues with Network Bandwidth: Replication
+  - Replication Lag:
+  - Resolution: Optimize replication configurations, ensure adequate network bandwidth, and monitor for potential issues in replication processes to reduce lag.
+- Troubleshooting Common Performance Issues with Network Bandwidth: Scaling
+  - Inefficient Scaling:
+  - Resolution: Reevaluate scaling configurations, consider load balancing strategies, and ensure resources are effectively distributed across scaled instances.
+  - Scaling Bottleneck:
+  - Resolution: Identify and address bottlenecks in the scaling architecture, optimize scaling configurations, and ensure the scalability of underlying infrastructure for smoother scaling processes.
+- Troubleshooting Common Performance Issues with Application: Memory Management
+  - Memory Leaks: Identify and fix memory leaks. Use memory profiling tools for pinpointing issues.
+  - Excessive Memory Usage: Optimize memory usage, employ efficient data structures, and scale resources if needed.
+  - Garbage Collection Delays: Optimize code to reduce object creation, fine-tune garbage collection settings, and practice good memory management.
+- Troubleshooting Common Performance Issues with Application: Service Overload
+  - High Request Volume: Implement load balancing, scale resources horizontally, and optimize code for increased traffic.
+  - Long Response Times: Optimize slow code paths, enhance database queries, and consider caching for frequently accessed data.
+  - Concurrency Issues: Implement proper concurrency controls, use thread pools efficiently, and consider asynchronous processing.
+  - Database Bottlenecks: Optimize database queries, create indexes, and consider database caching to reduce server load.
+  - Resource Contentions: Implement connection pooling, optimize resource usage, and consider rate limiting for external API calls.
+  - Inefficient Code Paths: Profile and optimize critical code paths, identify bottlenecks, and refactor for better performance.
+  - Insufficient Scalability: Design for horizontal scalability, use cloud auto-scaling, and ensure dynamic resource scaling.
+  - Faulty Load Balancing: Verify load balancing configurations, consider session affinity, and monitor load balancer performance.
+- Troubleshooting Common Performance Issues with: Failed Load Balancer
+  - Verify Load Balancer Configurations: Double-check load balancer settings for correctness, ensuring proper distribution of traffic among servers.
+  - Consider Session Affinity: If applicable, implement session affinity to ensure consistent user sessions by directing requests to the same server.
+  - Monitor Load Balancer Performance: Regularly monitor load balancer performance, identify potential issues, and address them promptly.
+  - Check Health Checks: Ensure health checks are configured correctly to detect and route traffic away from unhealthy servers.
+  - Scale Resources Appropriately: If the load balancer is struggling, consider scaling resources horizontally or upgrading to handle increased demand.
+
+## 5.6 Given a scenario, troubleshoot automation or orchestration issues
+
+- Troubleshoot Automation or Orchestration Issues: Account Mismatches
+  - Verify credentials, username, password, API key, or access role.
+  - Ensure proper permissions are granted and account is active.
+- Troubleshoot Automation or Orchestration Issues: Change Management Failures
+  - Review change management records.
+  - Verify automation scripts reflect recent changes.
+  - Implement a robust change communication process.
+- Troubleshoot Automation or Orchestration Issues: Server Name Changes
+  - Update scripts with the latest server names.
+  - Consider using hostnames or DNS records instead of IP addresses.
+  - Implement automated server name updates where feasible.
+- Troubleshoot Automation or Orchestration Issues: IP Address Changes
+  - Update scripts with the latest IP addresses.
+  - Adjust routing configurations for the changes.
+  - Ensure dependencies are met in the new location.
+- Troubleshoot Automation or Orchestration Issues: Location Changes
+  - Review and update scripts for location changes.
+  - Adjust routing configurations.
+  - Ensure dependencies are met in the new location.
+- Troubleshoot Automation or Orchestration Issues: Version/Feature Mismatch
+  - Verify software versions are consistent across all servers.
+  - Update scripts to be compatible with the current environment.
+  - Install and activate required features.
+- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: Deprecated Features
+  - Identify and update scripts to use the latest features.
+  - Find alternatives for deprecated functions or APIs.
+  - Stay informed about upcoming deprecations.
+- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: API Version Incompatibility
+  - Verify API versions are compatible.
+  - Update scripts to use the correct API version.
+  - Check for any known compatibility issues with the specific API implementation.
+- Troubleshoot Automation or Orchestration Issues: Job Validation Issue
+  - Carefully review job inputs and parameters.
+  - Ensure data formatting is correct.
+  - Verify all required information is provided.
+- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: Patching Failure
+  - Review patching scripts for errors.
+  - Verify patch compatibility.
+  - Ensure sufficient system resources are available.
+  - Check network connectivity during the patching process.
