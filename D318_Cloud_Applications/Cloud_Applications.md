@@ -22,9 +22,9 @@
 | 5.0 Troubleshooting               | 22%                |
 | Total                             | 100%               |
 
-## 1.1 Compare and contrast the different types of cloud models
+## 1.1 Compare and contrast the different types of CLOUD MODELS
 
-- Public Cloud
+- Public Cloud or Multitenancy
   - A public cloud is a cloud computing model where the infrastructure and services are **owned and operated by a third-party provider**, such as **Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP)**. Users can access these resources over the internet and pay for them on a pay-as-you-go basis.
 - Private Cloud
   - A private cloud is a cloud computing model where the infrastructure and services are **dedicated to a single organization**. (GovCloud).
@@ -49,6 +49,7 @@
   - IaaS provides users with on-demand access to virtualized **computing resources**, such as servers, storage, and networking. Users have **full control over the operating system**, applications, and data that run on these resources.
   - The CSP manages hardware failures, firmware updates, device drivers, and hardware compatibility.
   - ![IaaS](./img/IaaS.PNG)
+  - ![IaaS](./img/cloud_responsibility_model.PNG)
 
   | Platform | Cloud Provider Includes                                     |
   | -------- | ----------------------------------------------------------- |
@@ -61,6 +62,7 @@
 
   - PaaS **provides users with a platform** for developing, deploying, and managing applications. Users do not have to worry about managing the underlying infrastructure, such as servers and storage.
   - ![PaaS](./img/IaaS.PNG)
+  - ![PaaS](./img/cloud_responsibility_model.PNG)
 
   | Platform | Cloud Provider Includes                                     |
   | -------- | ----------------------------------------------------------- |
@@ -75,6 +77,7 @@
   - Responsibility for the hardware where that software runs, the operating system upon which it runs, and the installation and patching of the software itself are all offloaded to the CSP.
   - ex.. Office 365, Salesforce, Gmail, Dropbox, Netflix...
   - ![SaaS](./img/IaaS.PNG)
+  - ![SaaS](./img/cloud_responsibility_model.PNG)
 
   | Platform | Cloud Provider Includes                                     |
   | -------- | ----------------------------------------------------------- |
@@ -97,66 +100,104 @@
   - The **Cloud consumers are responsible for the direct user access security for their own data**.
   - ![aws shared responsibility model](./img/aws_shared_responsibility_model.PNG)
 
-## 1.2 Explain the factors that contribute to capacity planning
+## 1.2 Explain the factors that contribute to CAPACITY PLANNING
 
+- Explain Capacity Planning?
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - Capacity planning involves considering various factors that contribute to **determining the needed resources** for a project or system.
+  - One crucial aspect of capacity planning is **understanding** and documenting **requirements**, which can encompass technical, business, and other relevant factors.
+  - Understanding what the business hopes to achieve from a cloud infrastructure migration, a cloud application deployment, or a cloud-based disaster recovery solution will make the project far more successful.
+  - Questions involved in capacity planning:
+    1. What is the current baseline or service level?
+    2. What is the current capacity?
+    3. What future needs can we predict, based on upcoming business initiatives?
+    4. Are there consolidation opportunities for services, applications, or data sources?
+    5. What recommendations can be made, and what actions can be taken?
 - Capacity Planning Hardware:
-  - **EndUser**
-    - Access from any device.
-  - **Business**
-    - Hardware requirements specify the physical infrastructure needed to support the project. This includes servers, storage, networking equipment, ect.
-    - Internet throughput/speed.
-    - Hardware Scalability.
-    - Compatibility with cloud platforms and operating systems.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - Hardware requirements specify the **physical infrastructure** and may want **redundancy** with a particular level of **performance**. This includes servers, storage, networking equipment, ect.
 - Capacity Planning Software:
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - Software **requirements** might stipulate that the software **manages** a particular process or produces a specific **output format**.
   - Software requirements encompass various software components, which may include off-the-shelf products, custom software, security software, auditing tools, and more.
     - Licensing requirements and costs.
   - Compatibility with the chosen cloud platform and hardware.
 - Capacity Planning Budgetary:
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - Budgetary requirements might identify **budget limitations** or subscription fees that control the scope of the project.
   - Estimated costs for hardware, software, cloud services, and ongoing maintenance.
     - Include development budget, operational budget, and security budget, taking into account costs for creating, maintaining, and securing the product or system.
   - Cost of subscriptions.
   - Cost of scaling resources.
   - Budget allocation for different components of the cloud environment.
 - Capacity Planning Business need analysis:
-  - Identifying the business objectives and challenges that the cloud solution will address.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - This analysis forms the **foundation** for the **entire capacity planning process**.
+  - Identifies business needs for which **solutions** must be found to help the organization achieve its strategic **goals**.
+  - Such goals might include decreasing costs, increasing revenue, increasing a customer base, or increasing operational effectiveness.
   - Aligning the cloud strategy with business goals and priorities.
+    - Does organization have a clear idea of how cloud services will help achieve strategic goals?
+    - A business needs analysis will identify a specific business problem for which cloud service might provide a solution.
 - Capacity Planning Standard Templates:
-  - Pre-configured cloud environments with specific configurations for common use cases.
-  - Can be used to quickly deploy applications and services in the cloud.
-  - Examples include web servers, databases, and development environments.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/templates-1>
+  - Consistent **format** for **documenting requirements**.
+  - Format example:
+    - Project overview
+    - Project scope
+    - Success factors
+    - Stakeholder identification
+    - Project constraints
+    - System functionality
+    - User classes
+    - User interface requirements
 - Capacity Planning Per-user Licensing
-  - Charges based on the number of users accessing the cloud service.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
+  - **One license per user** that consumes the software or service.
 - Capacity Planning Socket-based Licensing
-  - Charges based on the number of active connections to the cloud service.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
+  - **One license per CPU** that attaches to the **socket of a motherboard**, regardless of the number of cores the CPU might contain.
 - Capacity Planning Volume-based Licensing
-  - Charges based on the amount of data stored or processed in the cloud.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
+  - **One license** that permits a **specified number of installations**, for example, installation of the software on up to 100 computers.
 - Capacity Planning Core-based Licensing
-  - Charges based on the number of CPU cores used by the cloud service.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
+  - **One license per core** in a **CPU** in a server.
 - Capacity Planning Subscription Licensing
-  - Fixed monthly or annual fee for access to the cloud service with specific limitations.
-  - This payment model uses a recurring, periodic billing cycle.
-  - The model usually includes no long-term contracts.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
+  - Pay on a **periodic basis (e.g., daily, monthly, yearly)** with potentially easier upgrades and better support.
 - Capacity Planning User Density
-  - The number of users accessing the cloud environment at a given time.
-  - Used to determine the required amount of resources and performance capacity.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/user-density>
+  - User density refers to the number of **concurrent connections to cloud services** that maintain an acceptable level of **performance**.
+    - High concurrent users can lead to capacity challenges.
+    - The number of users accessing the cloud environment at a given time.
+    - Used to determine the required amount of resources and performance capacity.
 - Capacity Planning System Load
-  - The amount of work being done by the cloud environment at a given time.
-  - Measured by factors like CPU utilization, memory usage, and disk I/O.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/system-load>
+  - The system load is a measure of how **busy** the system’s central processing unit (**CPU**) is over a period of **time**.
+    - While there are usually counters for CPU utilization itself, the system load is better measured by using **CPU queue length**. That value tracks processes currently being run by the CPU as well as those that are awaiting the CPU’s attention (queued up).
 - Capacity Planning Trend Analysis
-  - Studying historical data to identify patterns and predict future trends in resource usage, performance, and costs.
-  - Used to optimize resource allocation and budget planning.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
+  - The process of **detecting patterns** within a **dataset** over time, and using those patterns to make **predictions** about future events or better understand past events.
+    - Studying historical data to identify patterns and predict future trends in resource usage, performance, and costs.
+    - Establish baselines of normal behavior. Monitor for anomalies that may require capacity adjustments.
+    - Optimize resource allocation and budget planning.
 - Capacity Planning Baselines
-  - A reference point for comparing current performance and resource usage.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
+  - A **reference point for comparing** current performance and resource usage.
   - Established during initial deployment or after a period of stable operation.
 - Capacity Planning Patterns
-  - Recurring trends in resource usage or system behavior.
-  - Can be used to identify potential bottlenecks and predict future demands.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
+  - **Recurring trends** in resource usage or system behavior.
+  - Can be used to identify potential bottlenecks and **predict** future demands.
 - Capacity Planning Anomalies
-  - Deviations from normal patterns that may indicate a problem or an opportunity.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
+  - **Deviations from normal(baseline)** patterns that may indicate a problem or an opportunity.
   - Need to be investigated to identify the root cause and take corrective action.
+  - For example, performance degradation for a web app is unexpected, based on the number of users running the application. Further investigation might point to an unrelated process running on the system (such as a backup or data deduplication process) that is consuming resources and negatively impacting the web app.
 - Capacity Planning Performance Capacity Planning
-  - Predicting future resource needs and ensuring that the cloud environment can meet them.
-  - Involves analyzing trends, forecasting future workloads, and optimizing resource allocation.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/performance-and-capacity-planning>
+  - Ongoing **monitoring** of application performance, including user experience quality, CPU, memory, and disk usage, to ensure **optimal resource allocation**.
+  - Effective capacity planning considers these licensing models and factors to ensure that resources are allocated efficiently and in line with business needs, user demands, and budget constraints
 
 ## 1.3 Explain the importance of high availability and scaling in cloud environments
 
@@ -340,13 +381,17 @@
   - **authorized** attempt to **identify security misconfigurations**.
   - Such testing begins with an **analysis** of available resources, looking for older, unpatched, or vulnerable software.
 - Testing Techniques Performance testing
-  - Measures the responsiveness and scalability of the solution under load.
+  - Quality assurance test to measure the responsiveness and **scalability** of the solution **under load**.
+  - For cloud services, this information is useful for determining scalability settings. For example, scaling can be done via scale-up (more resources, such as memory, given to a VM) or scale-out (more VMs deployed).
 - Testing Techniques Regression testing
-  - Ensures that new changes haven't introduced any regressions or bugs.
+  - Ensures that new **changes** haven't introduced any regressions or **bugs**.
+  - Otherwise, the application has fallen back, or “regressed,” to an earlier stage of functionality.
 - Testing Techniques Functional testing
   - Tests the functionality of the solution against specified requirements.
+  - Does it **do** what it’s **supposed to do**?
 - Testing Techniques Usability testing
   - Assesses how easy and intuitive the solution is for users to interact with.
+  - Performed by the **end-users** and provides direct **feedback** on the interface, features, and practical use.
 
 ## 2.1 Given a scenario, configure identity and access management
 
@@ -753,20 +798,27 @@ Preparation:
 
 ## 3.1 Given a scenario, integrate components into a cloud solution
 
+- Explain Cloud Solution Subscription Services?
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-subscription-services>
+  - organization pays a **fee** on a regular schedule (usually monthly or annually) and gets **access** to a resource through the term of the **subscription**.
+  - **pay-per-identity** (user or organization) model
 - Integrate Components Into a Cloud Solution: File Subscriptions
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud storage solutions like Dropbox, Google Drive, or OneDrive to provide file synchronization, sharing, and collaboration capabilities across teams and locations. Consider factors like storage capacity, access control features, and integration with other services.
-- Integrate Components Into a Cloud Solution: Communications
-  - Leverage cloud communication platforms like Zoom, Microsoft Teams, or Slack for unified communication, including video conferencing, voice calls, and instant messaging. Evaluate features like meeting scheduling, screen sharing, and recording functionalities based on your communication needs.
-- Integrate Components Into a Cloud Solution: Email
+- Integrate Components Into a Communications Cloud Solution: Email
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Utilize cloud email services like Gmail, Microsoft Exchange Online, or G Suite to ensure reliable and accessible email functionality for your organization. Consider spam filtering, email encryption, and calendar integration features when choosing a provider.
-- Integrate Components Into a Cloud Solution: Voice over IP (VoIP)
+- Integrate Components Into a Communications Cloud Solution: Voice over IP (VoIP)
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Implement VoIP solutions like Skype for Business, Google Voice, or RingCentral to provide cost-effective and flexible telephony services. Evaluate call quality, feature sets, and integration with existing communication platforms.
-- Integrate Components Into a Cloud Solution: Messaging
+- Integrate Components Into a Communications Cloud Solution: Messaging
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud messaging solutions like Slack, Microsoft Teams, or WhatsApp for instant messaging and collaboration within teams. Choose a platform offering features like file sharing, group chats, and integration with other productivity tools.
 - Integrate Components Into a Cloud Solution: Virtual Desktop Infrastructure (VDI)
-  - Utilize VDI solutions like Citrix Virtual Apps and Desktops or Microsoft Azure Virtual Desktop to provide virtualized desktops accessible from any device. Consider performance, security features, and cost-effectiveness when choosing a VDI solution.
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
+  - Utilize VDI solutions like Citrix Virtual Apps and Desktops, AWS WorkSpaces or Microsoft Azure Virtual Desktop to provide virtualized desktops accessible from any device. Consider performance, security features, and cost-effectiveness when choosing a VDI solution.
 - Integrate Components Into a Cloud Solution: Directory and Identity Services
-  - Integrate cloud directory services like Azure Active Directory or Okta for centralized user management, single sign-on (SSO), and access control across all cloud resources and applications. Evaluate features like multi-factor authentication (MFA), user provisioning, and integration with other cloud services.
+  - Integrate cloud directory services like Azure Active Directory or Okta for **centralized user management**, single sign-on (SSO), and **access control** across all cloud resources and applications. Evaluate features like multi-factor authentication (MFA), user provisioning, and integration with other cloud services.
 - Integrate Components Into Cloud Resources: IaaS (Infrastructure as a Service)
   - Utilize IaaS platforms like AWS EC2, Microsoft Azure VMs, or Google Compute Engine to provision virtual machines, storage, and network resources on-demand. Choose a platform offering flexibility, scalability, and cost-effective pricing models.
 - Integrate Components Into Cloud Resources: PaaS (Platform as a Service):
