@@ -216,58 +216,58 @@
   - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-business-requirements-analysis)
   - **Users**
     - What software applications and platforms are included in the solution?
-    - Meets functional and technical requirements.
+    - Meets **functional and technical requirements**.
       - Requirements that may vary by business roles (accounting, sales, developers, and IT)
-      - Specialized software that is not cloud native (such as accounting or human resources software)
-      - Management of unique data formats
+      - **Specialized software** that is not cloud native (such as accounting or human resources software)
+      - Management of **unique data formats**
     - Compatibility with existing systems and applications.
-      - Easy IT cloud administration tools
+      - **Easy** IT cloud administration tools
       - Easy cloud billing, reporting, and accounting user interface
-      - Familiar user interface for applications
-      - Consistent software versions
-    - Availability of support and maintenance.
-      - Training for IT cloud administrators
+      - **Familiar** user interface for applications
+      - **Consistent** software versions
+    - **Availability** of support and maintenance.
+      - **Training** for IT cloud administrators
   - **Business**
     - Specialized line of business or custom in-house developed software
     - Software that is cloud only or is not portable to the cloud
-    - Software scalability
-    - CSP's offer of SaaS, PaaS, and IaaS solutions
+    - Software **scalability**
+    - **CSP's** offer of SaaS, PaaS, and IaaS **solutions**
 - Requirement analysis for Hardware
   - **Users**
-    - Access from any device
+    - **Access** from any device
   - **Business**
-    - Reliable and fast Internet connectivity
-    - Constructing and supporting a datacenter for private and hybrid cloud deployments
+    - **Reliable** and fast Internet connectivity
+    - Constructing and supporting a datacenter for private and hybrid cloud **deployments**
     - What hardware infrastructure is required?
-    - High availability and redundancy to minimize downtime.
-    - Hardware scalability by the CSP
+    - High **availability** and **redundancy** to minimize downtime.
+    - Hardware **scalability** by the CSP
     - Reliability of the CSP's hardware
-    - Security features to protect against cyber threats.
+    - **Security** features to protect against cyber threats.
 - Requirement analysis for Integration
   - **Users**
-    - Efficient exchange of data and information between systems.
+    - Efficient exchange of data and **information between systems**.
       - Integration with existing data sources (SQL and NoSQL databases, big data, and business partners)
-    - Standardized interfaces and protocols.
-    - Integration of new cloud-native software with legacy on-premises software
+    - **Standardized** interfaces and protocols.
+    - **Integration** of new cloud-native software with legacy on-premises software
     - Integration with business partner systems
     - Support by the CSP during integration and cloud migration
   - **Business**
-    - Seamless integration with minimal disruption to ongoing operations.
+    - Seamless integration with **minimal disruption** to ongoing operations.
       - Integration with existing data sources (SQL and NoSQL databases, big data, and business partners)
-    - Integration of new cloud-native software with legacy on-premises software
-    - Integration with business partner systems
-    - Support by the cloud service provider during integration and cloud migration
+    - Integration of new cloud-native software with **legacy on-premises software**
+    - Integration with **business partner** systems
+    - **Support** by the cloud service provider during integration and cloud migration
 - Requirement analysis for Budgetary
   - **Users**
     - Whether the cloud service provider offers managed services for user applications
-    - Clear and transparent pricing model.
+    - Clear and **transparent pricing model**.
   - **Business**
     - Cost-effective solution that aligns with financial constraints.
-      - Cost of subscriptions
+      - **Cost** of subscriptions
       - Cost of scaling resources
       - Cost of moving data out of a provider’s cloud
     - A shift from capital expenditures to operations expenditures
-    - Return on investment (ROI) analysis.
+    - **Return on investment (ROI)** analysis.
 - Requirement analysis for Compliance
   - Adherence to all relevant **industry regulations** and standards.
     - Security and **data privacy compliance**.
@@ -276,46 +276,69 @@
   - CSP certificates of compliance.
   - Research compliance with other businesses in the same industry.
 - Requirement analysis for Service-Level Agreement (SLA)
-  - Guarantees a certain level of service availability and performance.
-  - Clearly defined metrics and service level objectives (SLOs).
+  - **Guarantees** a certain level of service **availability and performance**.
+  - **Clearly defined metrics** and service level objectives (SLOs).
   - Compensation for breaches of the SLA.
-  -
 - Requirement analysis for User and business Needs
-  - Meets the specific needs and requirements of the users and the business.
+  - **Meets the specific needs and requirements** of the users and the business.
   - User-friendly and intuitive interface.
-  - Accessibility and inclusivity.
+  - **Accessibility** and inclusivity.
 - Requirement analysis for Security
-  - Robust security measures to protect against cyber threats.
+- **Users**
+  - Straightforward security interfaces for users
+  - Security **easy** for cloud administrators to implement
+- **Business**
+  - Secure data **encryption** and access controls.
   - Regular vulnerability scanning and penetration testing.
-  - Secure data encryption and access controls.
+  - Robust security measures to protect against cyber **threats**.
+  - Virtual private cloud (VPC) options
+  - Whether data is stored at multiple datacenters for **regional** security
+  - Encryption for data at rest and in transit
+  - **How the CSP protects data**.
 - Requirement analysis for Network requirements.
-  - Reliable and secure network infrastructure.
-  - High-bandwidth connectivity to support data flow.
-  - Scalability to accommodate future growth.
+- **Users**
+  - Performance and **availability**
+- **Business**
+  - Reliable and **secure** network infrastructure.
+  - High-bandwidth connectivity to **support data flow**.
+  - **Scalability** to accommodate future growth.
+  - Encrypted connectivity/Virtual private network
+  - Performance and availability
+  - **Cost** of redundancy
+  - Available virtual network options (such as network size, subnetting/segmentation, and routing)
+  - Connectivity to the existing on-premises network
 - Requirement analysis for Network Sizing.
-  - Appropriate infrastructure sizing to meet current and future needs.
+  - Appropriate infrastructure sizing to meet **current and future needs**.
   - Resource utilization monitoring and optimization.
   - Scalable architecture to adapt to changing demands.
 - Requirement analysis for Network Routing.
-  - Optimal routing configuration for efficient data flow.
-  - Minimization of latency and network congestion.
-  - Load balancing across multiple paths.
+  - Optimal routing configuration for **efficient data flow**.
+  - Minimization of **latency** and network congestion.
+  - **Redundancy and Load balancing** across multiple paths.
 - Development Environments
-  - Environment for developers to design, build, and test the solution.
+  - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-how-business-requirements-affect-it-environments-2)
+  - Environment for developers to **design, build, and test** the solution.
+  - Development: programmers code projects, detect bugs, manage code versions, implement code-level security.
+  - Staging: QA testers validate cloud applications.
+  - Production: end-user environment.
 - Quality Assurance (QA) Environments
-  - Environment for testing the functionality and performance of the solution.
+  - Environment for **testing** the functionality and performance of the solution.
 - Staging Environments
-  - Environment for simulating production conditions and testing the solution with real-world data.
+  - Environment for **simulating production** conditions and testing the solution with real-world data.
 - Blue-green Environments
-  - Deployment strategy where the new version of the solution is deployed alongside the existing version and then switched over to once verified.
+  - Deployment strategy where the **new version of the solution is deployed alongside the existing version** and then switched over to once verified.
 - Production Environments
-  - Environment where the solution is deployed and used by end users.
+  - Environment where the solution is deployed and used by **end users**.
 - Disaster Recovery (DR) Environments
-  - Backup and recovery infrastructure to ensure business continuity in case of an outage.
+  - **Backup** and **recovery infrastructure** to ensure business continuity in case of an outage.
+  - Many DR concerns are addressed by the cloud’s scalability and inherent availability through availability zones and regions.
 - Testing Techniques Vulnerability testing
-  - Identifies weaknesses in the solution that could be exploited by attackers.
+  - **Identifies weaknesses** in the solution that could be exploited by attackers.
+  - The goal is to identify the vulnerability so that it can be mitigated.
 - Testing Techniques Penetration testing
-  - Simulates real-world attacks to test the effectiveness of the security measures.
+  - Simulates real-world attacks to test the **effectiveness of the security** measures.
+  - **authorized** attempt to **identify security misconfigurations**.
+  - Such testing begins with an **analysis** of available resources, looking for older, unpatched, or vulnerable software.
 - Testing Techniques Performance testing
   - Measures the responsiveness and scalability of the solution under load.
 - Testing Techniques Regression testing

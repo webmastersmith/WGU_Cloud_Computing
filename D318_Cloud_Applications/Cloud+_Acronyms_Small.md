@@ -2,12 +2,114 @@
 
 ## Acronyms
 
+- AAA
+  - Authentication, Authorization, and Accounting
+- ACL
+  - Access Control List
+- BCP
+  - Business Continuity Plan
+- BGP
+  - Border Gateway Protocol
+- BIA
+  - Business Impact Analysis
+- BRD
+  - business requirements document
+- CAB
+  - Change Advisory Board
+- CAS
+  - Content Addressed Storage
+- CASB
+  - Cloud Access Security Broker
 - CSP
   - Content Service Provider
+- DR
+  - Disaster Recovery
+- FC
+  - Fibre Channel
+- FCoE
+  - Fibre Channel over Ethernet
+- FIM
+  - File Integrity Monitoring
 - IoT
   - Internet of Things
+- IPS
+  - Intrusion Prevention System
+- IPSec
+  - IP Security
+- iSCSI
+  - Internet Small Computer System Interface
+- KVM
+  - Kernel Virtual Machine
+- L2TP
+  - Layer 2 Tunneling Protocol
+- LAN
+  - Local Area Network
+- LDAP
+  - Lightweight Directory Access Protocol
+- MAC
+  - Mandatory Access Control
+- MPLS
+  - Multiprotocol Label Switching
 - MSP
   - Managed Service Provider
+- MTBF
+  - Mean Time Between Failure
+- MTTF
+  - Mean Time To Failure
+- MTTR
+  - Mean Time To Repair
+- MTU
+  - Maximum Transmission Unit
+- NAC
+  - Network Access Control
+- NAS
+  - Network Attached Storage
+- NAT
+  - Network Address Translation
+- NFS
+  - Network File System
+- NIC
+  - Network Interface Controller
+- NIS
+  - Network Information Service
+- NOC
+  - Network Operations Center
+- RPO
+  - Recovery Point Objective
+- RTO
+  - Recovery Time Objectives
+- SAN
+  - Storage Area Network
+- SAS
+  - Serial Attached SCSI
+- SDLC
+  - Software Development Life Cycle
+- SDN
+  - Software-Defined Network
+- SDS
+  - Software-Defined Storage
+- SSO
+  - Single Sign-On
+- TPM
+  - Trusted Platform Module
+- TTL
+  - Time to Live
+- V2P
+  - Virtual to Physical
+- V2V
+  - Virtual to Virtual
+- VAT
+  - Virtual Allocation Table
+- vCPU
+  - Virtual CPU
+- VDI
+  - Virtual Desktop Infrastructure
+- vGPU
+  - Virtual Graphics Processing Unit
+- VHD
+  - Virtual Hard Disk
+- VLAN
+  - Virtual LAN
 - VM
   - Virtual Machine
 - VMFS
@@ -26,3 +128,7 @@
   - Virtual RAM
 - vSAN
   - Virtual SAN
+- WAF
+  - Web Application Firewall
+- WAN
+  - Wide Area Network
