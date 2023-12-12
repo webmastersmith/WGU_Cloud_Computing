@@ -215,7 +215,8 @@
   - Cost optimization: Utilizing resources effectively and avoiding unnecessary costs.
   - Enhanced user experience: Delivering consistent and reliable performance.
 - High Availability and Scaling Hypervisors: _Affinity_
-  - **Multiple VMs** running on **one host**.
+  - Deliberate **grouping** of VM instances on a **single host** for centralized management.
+  - increases performance.
   - **Pros**
     - Ensures that VMs with specific dependencies are placed on the same physical server. This improves performance and reduces latency.
   - **Cons**
@@ -223,20 +224,23 @@
     - Hard to scale.
   - Hypervisors are **software** programs that create and **manage virtual machines (VMs)** on a single physical server. They play a crucial role in achieving high availability and scalability.
 - High Availability and Scaling in Hypervisors: _Anti-affinity_
-  - Spreading **VMs** over **multiple machines**.
+  - deliberately **distributes** VM instances across **multiple hosts** to avoid **single points of failure**.
+  - increases failover.
   - **Pros**
-    - Scaling, redundancy easier.
+    - Scaling, redundancy, failover.
   - **Cons**
     - can be more difficult to monitor.
+    - slower performance.
 - High Availability and Scaling in Oversubscription: _Compute_
-  - Oversubscription allows cloud providers to allocate more resources (CPU, RAM, storage) than the physical server has available. This can be effective for workloads with variable resource demands and improves overall utilization. However, it can also lead to performance issues if resources become overcommitted.
-  - Sharing CPU cores among multiple VMs.
-  - Becomes a real problem when you don't have the dedicated resources(public cloud).
-  - You must have private cloud dedicated resources to guarantee .
+  - Oversubscription **allocates more resources** (CPU, RAM, storage) **than** the physical server has **available**.
+  - Compute: CPU power and memory space.
+  - Monitoring is important to ensure that all available compute resources are not actually consumed and that scaling is configured.
 - High Availability and Scaling in Oversubscription: _Network_
-  - Sharing network bandwidth among multiple VMs.
+  - Network over-allocation offers more network bandwidth for use than is actually available.
+  - Can be avoided with Virtual Private Networks(VPN).
 - High Availability and Scaling in Oversubscription: _Storage_
-  - Sharing storage capacity among multiple VMs.
+  - Storage capacity may be oversold to consumers by CSPs.
+  - Storage capacity is usually easy to add, however, so the larger concern is IOPS and overall read/write speed for storage resources.
 - High Availability and Scaling: _Regions and Zones_
   - Cloud providers offer services across multiple geographically **distributed** regions and zones. This provides **redundancy** and ensures that applications are **available** even if there is an outage in one region.
   - Geographically distinct areas with multiple data centers.
@@ -266,15 +270,22 @@
 - High Availability and Scaling: _Avoiding single points of failure_
   - **Redundancy** to prevent outages.
   - **Availability Zones** are fault tolerant and unlikely to fail simultaneously.
+  - Single point failure causes:
+    - A server with one power supply
+    - A server with one NIC
+    - A single server hosting a website
+    - A single server hosting a database
+    - A single backup job stored on one piece of media
+    - A single copy of a critical document
+    - A single router or switch providing connectivity to a segment
 - High Availability and Scaling in Scalability: _Auto-Scaling_
-  - **Adding resources** (CPU, RAM) of existing VMs or containers.
+  - **Automatic scaling** of resources(VMs) to match work load.
 - High Availability and Scaling in Scalability: _Horizontal scaling_
-  - **Adding VMs** to split **workloads** with other machines.
+  - **Scaling additional instances(Adding VMs)** to meet the workload. Also known as scaling out.
 - High Availability and Scaling in Scalability: _Vertical scaling_
-  - **Changing(upgrades) resources** to handle performance demands.
+  - **Upgrading/Adding** additional compute to **existing** instances.
 - High Availability and Scaling in Scalability: _Cloud bursting_
-  - **Redirecting traffic**(ex.. to cloud) when current resources are at 100% utilization.
-  - ex.. Bursting workloads to the public cloud(from private cloud) during peak demand.
+  - **Redirecting on-premises traffic**(ex.. to cloud) when current resources are at 100% utilization.
 
 ## 1.4 Given a scenario, analyze the solution design in support of the business requirements
 
