@@ -9,6 +9,7 @@
 - [generic cloud resource](https://github.com/cloud-master-io/cloud-master-io)
 - [cloud+ notes](https://dushanthas.github.io/CompTIA-Cloud-plus-notes/)
 - [cloud+ pbq](https://wyzguyscybersecurity.com/study-tips-for-comptia-cloud-cv0-003-exam/)
+- [ANKI cards](https://ankiweb.net/shared/by-author/938689157)
 - Passing score: 750 (on a scale of 100—900)
   - Min Passing score: 75%
   - Min questions correct: 65 of 80 + 10(do not count towards score).
@@ -24,8 +25,9 @@
 
 ## 1.1 Compare and contrast the different types of CLOUD MODELS
 
-- Public Cloud or Multitenancy
+- Public Cloud
   - A public cloud is a cloud computing model where the infrastructure and services are **owned and operated by a third-party provider**, such as **Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP)**. Users can access these resources over the internet and pay for them on a pay-as-you-go basis.
+  - Same as multitenancy
 - Private Cloud
   - A private cloud is a cloud computing model where the infrastructure and services are **dedicated to a single organization**. (GovCloud).
   - Private clouds can be hosted on-premises or in a colocation facility.
@@ -43,6 +45,8 @@
   - Multicloud is the practice of **using multiple cloud computing services from different providers**. This can help organizations **avoid vendor lock-in** and take advantage of the best features and services from each provider.
   - Multi-cloud deployments **reduce reliance on a single vendor**, provide greater service flexibility and choice, **permit improved geographic control of data**, and help manage disaster mitigation.
 - Multitenancy
+  - Same as public cloud.
+  - Multi-tenant architecture: multiple instances of an application operate in a shared environment.
   - Multitenancy is a cloud computing model where the **infrastructure and services are shared by multiple organizations**. This allows the provider to provide economies of scale and reduce the cost for users.
 - Infrastructure as a Service (IaaS)
 
@@ -92,8 +96,8 @@
   - Serverless computing is a cloud computing model in which the **provider manages the servers and infrastructure that run applications**. Users simply write the code and the provider takes care of the rest.
 - Machine Learning/Artificial Intelligence (AI)
   - Machine learning and artificial intelligence are technologies that allow **computers to learn and make decisions without being explicitly programmed**.
-  - AI **simulates human intelligence** by providing structured, semi-structured, and unstructured data and solving complex problems. AI accomplishes this by using a set of rules to manage its analysis.
-  - Machine Learning (ML) is a subset of AI. The goal of ML is to **make accurate predictions** by extracting data based on learned information and experience. ML systems are not explicitly programmed to find a particular outcome. Instead, they are programmed to learn from provided data and then make accurate decisions based on what they’ve learned.
+  - **AI simulates human intelligence** by providing structured, semi-structured, and unstructured data and **solving complex problems**. AI accomplishes this by using a set of rules to manage its analysis.
+  - Machine Learning (ML) is a subset of AI. The **goal of ML** is to **make accurate predictions** by extracting data based on learned information and experience. ML systems are not explicitly programmed to find a particular outcome. Instead, they are programmed to learn from provided data and then make accurate decisions based on what they’ve learned.
 - Shared Responsibility Model
   - The shared responsibility model is a cloud computing model where the **provider and the user share responsibility for security and compliance**.
   - The **CSP is responsible for securing the underlying infrastructure**. CSPs will typically provide **physical security** for the datacenter as well as **isolate data** between customers.
@@ -407,124 +411,114 @@
     - Appropriate infrastructure sizing to meet **current and future needs**.
     - Resource utilization monitoring and optimization.
     - Scalable architecture to adapt to changing demands.
-- Requirement analysis for Network Routing.
+- Requirement analysis for Networks: _Subnetting_
+  - **divide** larger networks into smaller **networks**, for performance or security (or both).
+- Requirement analysis for Networks: _Routing_
   - Optimal routing configuration for **efficient data flow**.
   - Minimization of **latency** and network congestion.
   - **Redundancy and Load balancing** across multiple paths.
-- Development Environments
+- _Development_ Environments
   - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-how-business-requirements-affect-it-environments-2)
   - Environment for developers to **design, build, and test** the solution.
-  - Development: programmers code projects, detect bugs, manage code versions, implement code-level security.
-  - Staging: QA testers validate cloud applications.
-  - Production: end-user environment.
-- Quality Assurance (QA) Environments
+  - Programmers code projects, detect bugs, manage code versions, implement code-level security.
+- _Quality Assurance (QA)_ Environments
   - Environment for **testing** the functionality and performance of the solution.
-- Staging Environments
+  - Typically done in 'Staging'.
+- _Staging_ Environments
   - Environment for **simulating production** conditions and testing the solution with real-world data.
-- Blue-green Environments
+  - QA testers validate applications.
+- _Blue-green_ Environments
   - Deployment strategy where the **new version of the solution is deployed alongside the existing version** and then switched over to once verified.
-- Production Environments
+- _Production_ Environments
   - Environment where the solution is deployed and used by **end users**.
 - Disaster Recovery (DR) Environments
   - **Backup** and **recovery infrastructure** to ensure business continuity in case of an outage.
   - Many DR concerns are addressed by the cloud’s scalability and inherent availability through availability zones and regions.
-- Testing Techniques Vulnerability testing
-  - **Identifies weaknesses** in the solution that could be exploited by attackers.
+- Testing Techniques: _Vulnerability testing_
+  - Identifies **existing** weaknesses in the solution that could be exploited by attackers.
   - The goal is to identify the vulnerability so that it can be mitigated.
-- Testing Techniques Penetration testing
+- Testing Techniques: _Penetration testing_
   - Simulates real-world attacks to test the **effectiveness of the security** measures.
   - **authorized** attempt to **identify security misconfigurations**.
   - Such testing begins with an **analysis** of available resources, looking for older, unpatched, or vulnerable software.
-- Testing Techniques Performance testing
-  - Quality assurance test to measure the responsiveness and **scalability** of the solution **under load**.
+- Testing Techniques: _Performance testing_
+  - Test **responsiveness** and **stability** of the solution **under load**.
   - For cloud services, this information is useful for determining scalability settings. For example, scaling can be done via scale-up (more resources, such as memory, given to a VM) or scale-out (more VMs deployed).
-- Testing Techniques Regression testing
-  - Ensures that new **changes** haven't introduced any regressions or **bugs**.
+- Testing Techniques: _Regression testing_
+  - Also called **Post**-deployment validation.
+  - Verifying changes do not effect other dependencies, **after** the update has been **deployed**.
   - Otherwise, the application has fallen back, or “regressed,” to an earlier stage of functionality.
-- Testing Techniques Functional testing
-  - Tests the functionality of the solution against specified requirements.
+- Testing Techniques: _Functional testing_
+  - **Tests** against specified **requirements**.
   - Does it **do** what it’s **supposed to do**?
-- Testing Techniques Usability testing
+- Testing Techniques: _Usability testing_
   - Assesses how easy and intuitive the solution is for users to interact with.
   - Performed by the **end-users** and provides direct **feedback** on the interface, features, and practical use.
 
-## 2.1 Given a scenario, configure identity and access management
+## 2.1 Given a scenario, configure IDENTITY and ACCESS MANAGEMENT
 
 - Why are Identification and authorization fundamental Security for controlling access to resources and ensuring data integrity in cloud environments?
-  - Identification:
-    - The process of verifying the identity of a user or system attempting to access resources.
+  - **Identification**:
+    - The process of **verifying the identity** of a user or system attempting to access resources.
     - Common methods include usernames, passwords, multi-factor authentication (MFA), biometrics, and Security Assertion Markup Language (SAML).
-  - Authorization:
-    - The process of determining what resources a user or system is allowed to access and what actions they are permitted to perform.
+  - **Authorization**:
+    - The process of determining **what resources** a user or system is allowed to **access** and what actions they are permitted to perform.
     - Based on user roles, permissions, and access control lists (ACLs).
-- Privileged access management (PAM) Security?
+- _Privileged access management (PAM)_ Security?
   - Focuses on securing privileged accounts with elevated access to sensitive systems and data.
   - Utilizes techniques like least privilege, password vaulting, and session recording.
-- Logical access management (LAM) Security?
+- _Logical access management (LAM)_ Security?
   - Manages user access to applications, systems, and data across the cloud environment.
   - Leverages centralized directories and single sign-on (SSO) for seamless access.
-- Account life-cycle management Best Practices?
+- Account life-cycle management: _Provision and Deprovision Accounts_
   - Governs the creation, use, and termination of user accounts throughout their lifecycle.
   - Automates tasks like provisioning, deprovisioning, and password resets.
-- Provision and deprovision accounts best practices?
   - Creating and removing user accounts as needed.
   - Automating account creation based on predefined roles and workflows.
-- Describe Role-based access control (RBAC)
+- Identity and Access Management Access Controls: _Role-based access control (RBAC)_
   - Grants access based on predefined roles and associated permissions.
-- Describe Discretionary access control (DAC)
+- Identity and Access Management Access Controls: _Discretionary access control (DAC)_
   - Allows users to control access to their own resources.
-- Describe Non-discretionary access control (N-DAC)
+- Identity and Access Management Access Controls: _Non-discretionary access control (N-DAC)_
   - Access controlled by an administrator or system based on rules and policies.
-- Describe Mandatory access control (MAC)
+- Identity and Access Management Access Controls: _Mandatory access control (MAC)_
   - Access determined by a central authority and enforced by the system.
-- Benefits of robust identification and authorization
-  - Increased security: Reduces the risk of unauthorized access and data breaches.
-  - Improved compliance: Helps meet regulatory requirements and industry standards.
-  - Enhanced user experience: Provides seamless and secure access to resources.
-  - Reduced costs: Automates tasks and minimizes manual effort.
-- Security Services in Cloud Environments: Directory services?
+- Identity and Access Management Directory Services: _Lightweight Directory Access Protocol (LDAP)_
   - Store and manage information about users, groups, devices, and other resources.
   - Enable centralized authentication and authorization.
   - Examples include Active Directory, OpenLDAP, and Azure AD.
-- Security Services in Cloud Environments: Lightweight Directory Access Protocol (LDAP)
   - An industry-standard protocol for accessing and managing directory services.
   - Provides a flexible and interoperable way to authenticate users and control access to resources.
-- Security Services in Cloud Environments: Federation
+- Identity and Access Management: _Federation_
   - Allows users to access multiple applications and services using a single set of credentials.
   - Simplifies user management and reduces password fatigue.
   - Examples include SAML and OpenID Connect.
-- Security Services in Cloud Environments: Certificate management
+- Identity and Access Management: _Certificate management_
   - Securely generates, issues, and manages digital certificates for authentication and encryption.
   - Provides trust and integrity for secure communication.
   - Examples include Let's Encrypt and AWS Certificate Manager.
-- Security Services in Cloud Environments: Multifactor authentication (MFA)
+- Identity and Access Management: _Multifactor authentication (MFA)_
   - Requires an additional factor beyond a password to verify user identity.
   - Increases security and reduces the risk of unauthorized access.
   - Examples include SMS codes, push notifications, and hardware tokens.
-- Security Services in Cloud Environments: Single sign-on (SSO)
+- Identity and Access Management Single sign-on (SSO): _Security Assertion Markup Language (SAML)_
   - Allows users to authenticate once and access multiple applications without re-entering their credentials.
   - Improves user experience and reduces password fatigue.
   - Examples include Okta, Azure AD Connect, and Ping Identity.
-- Security Services in Cloud Environments: Security Assertion Markup Language (SAML)
   - An open standard for exchanging authentication and authorization information.
   - Enables single sign-on and federation between different systems.
-- Security Services in Cloud Environments: Public key infrastructure (PKI)
+- Identity and Access Management: _Public key infrastructure (PKI)_
   - Framework for issuing, managing, and using digital certificates.
   - Provides secure communication and strengthens authentication.
   - Examples include OpenSSL and Microsoft Certificate Services.
-- Security Services in Cloud Environments: Secret management
+- Identity and Access Management: _Secret management_
   - Securely stores and manages sensitive information like passwords, API keys, and encryption keys.
   - Ensures confidentiality and integrity of sensitive data.
   - Examples include HashiCorp Vault and AWS Secrets Manager.
-- Security Services in Cloud Environments: Key management
+- Identity and Access Management: _Key management_
   - Manages the lifecycle of encryption keys used for data protection.
   - Provides secure storage, rotation, and access control for encryption keys.
   - Examples include AWS Key Management Service (KMS) and Azure Key Vault.
-- Benefits of utilizing Security Services in Cloud Environments
-  - Improved security: Reduces the risk of unauthorized access and data breaches.
-  - Enhanced user experience: Provides seamless and secure access to various applications and resources.
-  - Reduced costs: Automates tasks and minimizes manual effort.
-  - Increased compliance: Helps meet regulatory requirements and industry standards.
 
 ## 2.2 Given a scenario, secure a network in a cloud environment
 
