@@ -236,18 +236,19 @@
   - Compute: CPU power and memory space.
   - Monitoring is important to ensure that all available compute resources are not actually consumed and that scaling is configured.
 - High Availability and Scaling in Oversubscription: _Network_
-  - Network over-allocation offers more network bandwidth for use than is actually available.
+  - Network over-allocation offers **more network bandwidth** for use **than** is actually **available**.
   - Can be avoided with Virtual Private Networks(VPN).
 - High Availability and Scaling in Oversubscription: _Storage_
   - Storage capacity may be oversold to consumers by CSPs.
-  - Storage capacity is usually easy to add, however, so the larger concern is IOPS and overall read/write speed for storage resources.
+  - Storage capacity is usually easy to add, however, so the larger concern is **IOPS and overall read/write speed** for storage resources.
 - High Availability and Scaling: _Regions and Zones_
   - Cloud providers offer services across multiple geographically **distributed** regions and zones. This provides **redundancy** and ensures that applications are **available** even if there is an outage in one region.
-  - Geographically distinct areas with multiple data centers.
-  - Zones: Fault-tolerant locations within a region.
-  - Fulfill legal requirements must be in some regions.
+  - Each Region are geographically distinct areas with two or more zones(data centers).
+  - Each region supports a number of availability zones.
+  - Availability zones are datacenters with dedicated and redundant power and network connectivity.
+  - Fulfill legal requirements if you must be in some region.
 - High Availability and Scaling: _Applications_
-  - High availability for applications requires replicating them across multiple servers and regions. This ensures that if one instance fails, another can seamlessly take over.
+  - High availability for applications requires **replicating** them **across multiple servers and regions**. This ensures that if one instance fails, another can seamlessly take over.
   - Scalability: Auto-scaling.
   - High Availability: Availability zones.
 - High Availability and Scaling: _Containers_
@@ -256,17 +257,36 @@
   - Containers are lightweight and portable units of software that share an operating system kernel. They are becoming increasingly popular in cloud environments due to their fast startup times and resource efficiency.
   - Containerization: Packaging applications and their dependencies into containers.
   - Container orchestration: Managing the deployment, scaling, and networking of containers.
-  - Scalability: Auto-scaling
-  - High Availability: Docker Swarm
+  - Highly available containers:
+    - Scalability: Auto-scaling
+    - High Availability: Docker Swarm or Kubernetes
+      - Scale horizontally with VM cluster of redundant nodes.
+  - AWS: Elastic Container Service and Elastic Container Registry.
   - ![containerization](img/containerization.PNG)
+  - ![kubernetes](img/kubernetes_cluster.jpg)
 - High Availability and Scaling: _Clusters_
-  - Clusters are groups of interconnected servers that work together to provide shared resources and services. They are fundamental for scaling applications and workloads horizontally.
+  - Server failover clusters are a group of two or more integrated servers and often use the same data storage source.
+  - Each cluster member is referred to as a node, and all of the nodes are all configured the same way.
+  - Each node does the same tasks as the other nodes.
+  - Each server is an independent device within the cluster.
+  - A cluster of servers is treated as a single entity by clients, and their network identity is a single IP address.
+  - They are fundamental for **scaling** applications and workloads **horizontally**.
+  - The **purpose** behind server clusters is to provide **high availability** of services and data, **scalability**, **redundancy**, and **load balancing**.
   - Scalability: Auto-scaling
   - High Availability: Clusters
-- High Availability and Scaling of Network Functions: _Switches, Routers, Load Balancers, Firewalls_
+  - ![Cluster](img/cluster.PNG)
+- High Availability and Scaling of Network Functions: _Avoid Single Point Failures: Switches, Routers, Load Balancers, Firewalls_
   - Physical infrastructure needs to be turned off, components upgraded, then brought back online. To slow.
   - High Availability is instantly spinning up more infrastructure as needed.
   - Virtual instances can be spread across multiple availability zones.
+  - Avoiding Single Point Failures:
+    - NIC teaming: Aggregates network connectivity for servers by using two or more NICs
+    - Switch: Provides connectivity within network segments
+    - Router: Provides connectivity between network segments and filters some traffic
+    - Load balancer: Distributes workload requests among servers
+    - Firewall: Filters traffic between networks or network segments
+    - Proxy: Provides indirect connectivity to network services such as websites
+    - VPN: Provides connectivity between remote hosts and business sites, between business sites, or between business sites and cloud networks
 - High Availability and Scaling: _Avoiding single points of failure_
   - **Redundancy** to prevent outages.
   - **Availability Zones** are fault tolerant and unlikely to fail simultaneously.
@@ -283,11 +303,11 @@
 - High Availability and Scaling in Scalability: _Horizontal scaling_
   - **Scaling additional instances(Adding VMs)** to meet the workload. Also known as scaling out.
 - High Availability and Scaling in Scalability: _Vertical scaling_
-  - **Upgrading/Adding** additional compute to **existing** instances.
+  - **Upgrading|Adding** additional compute to **existing** instances.
 - High Availability and Scaling in Scalability: _Cloud bursting_
   - **Redirecting on-premises traffic**(ex.. to cloud) when current resources are at 100% utilization.
 
-## 1.4 Given a scenario, analyze the solution design in support of the business requirements
+## 1.4 Given a scenario, analyze the solution DESIGN in support of the BUSINESS REQUIREMENTS
 
 - Requirement analysis: _Software_
   - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-business-requirements-analysis)
