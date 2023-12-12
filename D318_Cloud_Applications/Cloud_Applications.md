@@ -107,22 +107,24 @@
   - Capacity planning involves considering various factors that contribute to **determining the needed resources** for a project or system.
   - One crucial aspect of capacity planning is **understanding** and documenting **requirements**, which can encompass technical, business, and other relevant factors.
   - Understanding what the business hopes to achieve from a cloud infrastructure migration, a cloud application deployment, or a cloud-based disaster recovery solution will make the project far more successful.
-  - Questions involved in capacity planning:
-    1. What is the current baseline or service level?
-    2. What is the current capacity?
-    3. What future needs can we predict, based on upcoming business initiatives?
-    4. Are there consolidation opportunities for services, applications, or data sources?
-    5. What recommendations can be made, and what actions can be taken?
-- Capacity Planning Hardware:
+  - CapEX: money that will need to be spent(even if not fully paid for) by the business for assets.
+  - Questions involved in capacity planning: What do you really need?
+    1. Hardware: What is the current baseline or service level?
+       1. Are there consolidation opportunities for services, applications, or data sources?
+    2. User Density: What is the current capacity?
+       1. What future needs can we predict, based on upcoming business initiatives?
+    3. Budget: How much can you spend?
+       1. What recommendations can be made, and what actions can be taken?
+- Capacity Planning: _Hardware_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
   - Hardware requirements specify the **physical infrastructure** and may want **redundancy** with a particular level of **performance**. This includes servers, storage, networking equipment, ect.
-- Capacity Planning Software:
+- Capacity Planning: _Software_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
   - Software **requirements** might stipulate that the software **manages** a particular process or produces a specific **output format**.
   - Software requirements encompass various software components, which may include off-the-shelf products, custom software, security software, auditing tools, and more.
     - Licensing requirements and costs.
   - Compatibility with the chosen cloud platform and hardware.
-- Capacity Planning Budgetary:
+- Capacity Planning: _Budgetary_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
   - Budgetary requirements might identify **budget limitations** or subscription fees that control the scope of the project.
   - Estimated costs for hardware, software, cloud services, and ongoing maintenance.
@@ -130,15 +132,16 @@
   - Cost of subscriptions.
   - Cost of scaling resources.
   - Budget allocation for different components of the cloud environment.
-- Capacity Planning Business need analysis:
+- Capacity Planning: _Business need analysis_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/relate-capacity-planning-to-business-goals>
+  - **What does the business need to reach goal**?
   - This analysis forms the **foundation** for the **entire capacity planning process**.
   - Identifies business needs for which **solutions** must be found to help the organization achieve its strategic **goals**.
   - Such goals might include decreasing costs, increasing revenue, increasing a customer base, or increasing operational effectiveness.
   - Aligning the cloud strategy with business goals and priorities.
     - Does organization have a clear idea of how cloud services will help achieve strategic goals?
     - A business needs analysis will identify a specific business problem for which cloud service might provide a solution.
-- Capacity Planning Standard Templates:
+- Capacity Planning: _Standard Templates_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/templates-1>
   - Consistent **format** for **documenting requirements**.
   - Format example:
@@ -150,32 +153,32 @@
     - System functionality
     - User classes
     - User interface requirements
-- Capacity Planning Per-user Licensing
+- Capacity Planning: _Per-user Licensing_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
   - **One license per user** that consumes the software or service.
-- Capacity Planning Socket-based Licensing
+- Capacity Planning: _Socket-based Licensing_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
   - **One license per CPU** that attaches to the **socket of a motherboard**, regardless of the number of cores the CPU might contain.
-- Capacity Planning Volume-based Licensing
+- Capacity Planning: _Volume-based Licensing_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
   - **One license** that permits a **specified number of installations**, for example, installation of the software on up to 100 computers.
-- Capacity Planning Core-based Licensing
+- Capacity Planning: _Core-based Licensing_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
   - **One license per core** in a **CPU** in a server.
-- Capacity Planning Subscription Licensing
+- Capacity Planning: _Subscription Licensing_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/licensing>
   - Pay on a **periodic basis (e.g., daily, monthly, yearly)** with potentially easier upgrades and better support.
-- Capacity Planning User Density
+- Capacity Planning: _User Density_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/user-density>
   - User density refers to the number of **concurrent connections to cloud services** that maintain an acceptable level of **performance**.
     - High concurrent users can lead to capacity challenges.
     - The number of users accessing the cloud environment at a given time.
     - Used to determine the required amount of resources and performance capacity.
-- Capacity Planning System Load
+- Capacity Planning: _System Load_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/system-load>
   - The system load is a measure of how **busy** the system’s central processing unit (**CPU**) is over a period of **time**.
     - While there are usually counters for CPU utilization itself, the system load is better measured by using **CPU queue length**. That value tracks processes currently being run by the CPU as well as those that are awaiting the CPU’s attention (queued up).
-- Capacity Planning Trend Analysis
+- Capacity Planning: _Trend Analysis_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
   - The process of **detecting patterns** within a **dataset** over time, and using those patterns to make **predictions** about future events or better understand past events.
     - Studying historical data to identify patterns and predict future trends in resource usage, performance, and costs.
@@ -189,9 +192,10 @@
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
   - **Recurring trends** in resource usage or system behavior.
   - Can be used to identify potential bottlenecks and **predict** future demands.
-- Capacity Planning Anomalies
+- Capacity Planning: _Anomalies_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
   - **Deviations from normal(baseline)** patterns that may indicate a problem or an opportunity.
+  - Outliers. Cannot predict.
   - Need to be investigated to identify the root cause and take corrective action.
   - For example, performance degradation for a web app is unexpected, based on the number of users running the application. Further investigation might point to an unrelated process running on the system (such as a backup or data deduplication process) that is consuming resources and negatively impacting the web app.
 - Capacity Planning Performance Capacity Planning
@@ -199,61 +203,82 @@
   - Ongoing **monitoring** of application performance, including user experience quality, CPU, memory, and disk usage, to ensure **optimal resource allocation**.
   - Effective capacity planning considers these licensing models and factors to ensure that resources are allocated efficiently and in line with business needs, user demands, and budget constraints
 
-## 1.3 Explain the importance of high availability and scaling in cloud environments
+## 1.3 Explain the importance of HIGH AVAILABILITY and SCALING in cloud environments
 
 - Explain the importance of high availability and scaling in cloud environments?
-  - High availability and scaling are two fundamental pillars of a robust and efficient cloud environment. They are critical for ensuring continuous operation, meeting fluctuating demands, and delivering a seamless user experience.
+  - High availability ensures that cloud (and on-premises) resources are **available** to consumers.
+  - The primary ways to provide availability are **redundancy**, monitoring, and failover capabilities.
+  - High availability and scaling are two fundamental pillars of a robust and efficient cloud environment. They are critical for ensuring **continuous operation**, meeting fluctuating demands, and delivering a seamless **user experience**.
   - High Availability: Minimizing downtime and service disruptions.
-  - Scalability: Adapting to changing workloads and demands efficiently.
+  - Scalability: Adding or removing VMs to adapt to growing demands efficiently.
+    - elasticity: dynamically adjusting resources based on real-time demand.
   - Cost optimization: Utilizing resources effectively and avoiding unnecessary costs.
   - Enhanced user experience: Delivering consistent and reliable performance.
-- High Availability and Scaling in Hypervisors
-  - Hypervisors are software programs that create and manage virtual machines (VMs) on a single physical server. They play a crucial role in achieving high availability and scalability.
-- High Availability and Scaling in Affinity
-  - Ensures that VMs with specific dependencies are placed on the same physical server. This improves performance and reduces latency.
-- High Availability and Scaling in Anti-affinity
-  - Distributes VMs across different physical servers to prevent a single hardware failure from impacting multiple VMs.
-- High Availability and Scaling in Oversubscription
+- High Availability and Scaling Hypervisors: _Affinity_
+  - **Multiple VMs** running on **one host**.
+  - **Pros**
+    - Ensures that VMs with specific dependencies are placed on the same physical server. This improves performance and reduces latency.
+  - **Cons**
+    - Creates single point of failure.
+    - Hard to scale.
+  - Hypervisors are **software** programs that create and **manage virtual machines (VMs)** on a single physical server. They play a crucial role in achieving high availability and scalability.
+- High Availability and Scaling in Hypervisors: _Anti-affinity_
+  - Spreading **VMs** over **multiple machines**.
+  - **Pros**
+    - Scaling, redundancy easier.
+  - **Cons**
+    - can be more difficult to monitor.
+- High Availability and Scaling in Oversubscription: _Compute_
   - Oversubscription allows cloud providers to allocate more resources (CPU, RAM, storage) than the physical server has available. This can be effective for workloads with variable resource demands and improves overall utilization. However, it can also lead to performance issues if resources become overcommitted.
-- High Availability and Scaling in Compute oversubscription
   - Sharing CPU cores among multiple VMs.
-- High Availability and Scaling in Network oversubscription
+  - Becomes a real problem when you don't have the dedicated resources(public cloud).
+  - You must have private cloud dedicated resources to guarantee .
+- High Availability and Scaling in Oversubscription: _Network_
   - Sharing network bandwidth among multiple VMs.
-- High Availability and Scaling in Storage oversubscription
+- High Availability and Scaling in Oversubscription: _Storage_
   - Sharing storage capacity among multiple VMs.
-- High Availability and Scaling in Regions and Zones
-  - Cloud providers offer services across multiple geographically distributed regions and zones. This provides redundancy and ensures that applications are available even if there is an outage in one region.
+- High Availability and Scaling: _Regions and Zones_
+  - Cloud providers offer services across multiple geographically **distributed** regions and zones. This provides **redundancy** and ensures that applications are **available** even if there is an outage in one region.
   - Geographically distinct areas with multiple data centers.
   - Zones: Fault-tolerant locations within a region.
-- High Availability and Scaling in Applications
+  - Fulfill legal requirements must be in some regions.
+- High Availability and Scaling: _Applications_
   - High availability for applications requires replicating them across multiple servers and regions. This ensures that if one instance fails, another can seamlessly take over.
-- High Availability and Scaling in Containers
+  - Scalability: Auto-scaling.
+  - High Availability: Availability zones.
+- High Availability and Scaling: _Containers_
   - Containerization is a form of virtualization, but it is significantly different than VMs. **Containers virtualize at the OS layer**, rather than the hardware layer.
   - A container holds a **single application and everything it needs to run**.
   - Containers are lightweight and portable units of software that share an operating system kernel. They are becoming increasingly popular in cloud environments due to their fast startup times and resource efficiency.
   - Containerization: Packaging applications and their dependencies into containers.
   - Container orchestration: Managing the deployment, scaling, and networking of containers.
+  - Scalability: Auto-scaling
+  - High Availability: Docker Swarm
   - ![containerization](img/containerization.PNG)
-- High Availability and Scaling in Clusters
+- High Availability and Scaling: _Clusters_
   - Clusters are groups of interconnected servers that work together to provide shared resources and services. They are fundamental for scaling applications and workloads horizontally.
-- High Availability and Scaling of network functions
-  - Ensuring continuous availability of network services like switches, routers, load balancers, and firewalls.
-- High Availability and Scaling in Avoiding single points of failure
-  - Eliminating single points of failure in the infrastructure to prevent outages.
-- High Availability and Scaling in Scalability
-  - Scalability refers to a system's ability to adapt to changing demands by increasing or decreasing resources. Different scaling approaches are available:
-- High Availability and Scaling in Auto-scaling
-  - Automatically adjusts resources based on predefined metrics.
-- High Availability and Scaling in Horizontal scaling
-  - Adding or removing VMs or containers to a cluster.
-- High Availability and Scaling in Vertical scaling
-  - Upgrading resources (CPU, RAM) of existing VMs or containers.
-- High Availability and Scaling in Cloud bursting
-  - Bursting workloads to the public cloud during peak demand.
+  - Scalability: Auto-scaling
+  - High Availability: Clusters
+- High Availability and Scaling of Network Functions: _Switches, Routers, Load Balancers, Firewalls_
+  - Physical infrastructure needs to be turned off, components upgraded, then brought back online. To slow.
+  - High Availability is instantly spinning up more infrastructure as needed.
+  - Virtual instances can be spread across multiple availability zones.
+- High Availability and Scaling: _Avoiding single points of failure_
+  - **Redundancy** to prevent outages.
+  - **Availability Zones** are fault tolerant and unlikely to fail simultaneously.
+- High Availability and Scaling in Scalability: _Auto-Scaling_
+  - **Adding resources** (CPU, RAM) of existing VMs or containers.
+- High Availability and Scaling in Scalability: _Horizontal scaling_
+  - **Adding VMs** to split **workloads** with other machines.
+- High Availability and Scaling in Scalability: _Vertical scaling_
+  - **Changing(upgrades) resources** to handle performance demands.
+- High Availability and Scaling in Scalability: _Cloud bursting_
+  - **Redirecting traffic**(ex.. to cloud) when current resources are at 100% utilization.
+  - ex.. Bursting workloads to the public cloud(from private cloud) during peak demand.
 
 ## 1.4 Given a scenario, analyze the solution design in support of the business requirements
 
-- Requirement analysis for Software
+- Requirement analysis: _Software_
   - [Certmaster Cloud+](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-business-requirements-analysis)
   - **Users**
     - What software applications and platforms are included in the solution?
@@ -273,7 +298,7 @@
     - Software that is cloud only or is not portable to the cloud
     - Software **scalability**
     - **CSP's** offer of SaaS, PaaS, and IaaS **solutions**
-- Requirement analysis for Hardware
+- Requirement analysis: _Hardware_
   - **Users**
     - **Access** from any device
   - **Business**
@@ -284,7 +309,7 @@
     - Hardware **scalability** by the CSP
     - Reliability of the CSP's hardware
     - **Security** features to protect against cyber threats.
-- Requirement analysis for Integration
+- Requirement analysis: _Integration_
   - **Users**
     - Efficient exchange of data and **information between systems**.
       - Integration with existing data sources (SQL and NoSQL databases, big data, and business partners)
@@ -298,7 +323,7 @@
     - Integration of new cloud-native software with **legacy on-premises software**
     - Integration with **business partner** systems
     - **Support** by the cloud service provider during integration and cloud migration
-- Requirement analysis for Budgetary
+- Requirement analysis: _Budgetary_
   - **Users**
     - Whether the cloud service provider offers managed services for user applications
     - Clear and **transparent pricing model**.
@@ -309,49 +334,48 @@
       - Cost of moving data out of a provider’s cloud
     - A shift from capital expenditures to operations expenditures
     - **Return on investment (ROI)** analysis.
-- Requirement analysis for Compliance
+- Requirement analysis: _Compliance_
   - Adherence to all relevant **industry regulations** and standards.
     - Security and **data privacy compliance**.
     - Industry requirements (such as HIPAA, PCI DSS, and PII).
     - Regular **audits** and assessments.
   - CSP certificates of compliance.
   - Research compliance with other businesses in the same industry.
-- Requirement analysis for Service-Level Agreement (SLA)
+- Requirement analysis: _Bugetary_
   - **Guarantees** a certain level of service **availability and performance**.
   - **Clearly defined metrics** and service level objectives (SLOs).
   - Compensation for breaches of the SLA.
-- Requirement analysis for User and business Needs
+- Requirement analysis: _User and business Needs_
   - **Meets the specific needs and requirements** of the users and the business.
   - User-friendly and intuitive interface.
   - **Accessibility** and inclusivity.
-- Requirement analysis for Security
-- **Users**
-  - Straightforward security interfaces for users
-  - Security **easy** for cloud administrators to implement
-- **Business**
-  - Secure data **encryption** and access controls.
-  - Regular vulnerability scanning and penetration testing.
-  - Robust security measures to protect against cyber **threats**.
-  - Virtual private cloud (VPC) options
-  - Whether data is stored at multiple datacenters for **regional** security
-  - Encryption for data at rest and in transit
-  - **How the CSP protects data**.
-- Requirement analysis for Network requirements.
-- **Users**
-  - Performance and **availability**
-- **Business**
-  - Reliable and **secure** network infrastructure.
-  - High-bandwidth connectivity to **support data flow**.
-  - **Scalability** to accommodate future growth.
-  - Encrypted connectivity/Virtual private network
-  - Performance and availability
-  - **Cost** of redundancy
-  - Available virtual network options (such as network size, subnetting/segmentation, and routing)
-  - Connectivity to the existing on-premises network
-- Requirement analysis for Network Sizing.
-  - Appropriate infrastructure sizing to meet **current and future needs**.
-  - Resource utilization monitoring and optimization.
-  - Scalable architecture to adapt to changing demands.
+- Requirement analysis: _Security_
+  - **Users**
+    - Straightforward security interfaces for users
+    - Security **easy** for cloud administrators to implement
+  - **Business**
+    - Secure data **encryption** and access controls.
+    - Regular vulnerability scanning and penetration testing.
+    - Robust security measures to protect against cyber **threats**.
+    - Virtual private cloud (VPC) options
+    - Whether data is stored at multiple datacenters for **regional** security
+    - Encryption for data at rest and in transit
+    - **How the CSP protects data**.
+- Requirement analysis for Networks: _Sizing_
+  - **Users**
+    - Performance and **availability**
+  - **Business**
+    - Reliable and **secure** network infrastructure.
+    - High-bandwidth connectivity to **support data flow**.
+    - **Scalability** to accommodate future growth.
+    - Encrypted connectivity/Virtual private network
+    - Performance and availability
+    - **Cost** of redundancy
+    - Available virtual network options (such as network size, subnetting/segmentation, and routing)
+    - Connectivity to the existing on-premises network
+    - Appropriate infrastructure sizing to meet **current and future needs**.
+    - Resource utilization monitoring and optimization.
+    - Scalable architecture to adapt to changing demands.
 - Requirement analysis for Network Routing.
   - Optimal routing configuration for **efficient data flow**.
   - Minimization of **latency** and network congestion.
@@ -758,25 +782,24 @@
 
 Preparation:
 
-- Incident Response Documentation
+- Incident Response: _Documentation_
   - Well-documented procedures, policies, and contact information ensure everyone involved knows what to do when an incident strikes. Clear documentation reduces confusion, delays, and potential errors during a crisis.
-- Incident Response Call Trees
+- Incident Response: _Call Trees_
   - Pre-defined call trees establish clear communication channels, ensuring timely notification of key personnel based on their roles and responsibilities. This ensures that the right people are informed at the right time, allowing for quicker decision-making and response initiation.
-- Incident Response Training
+- Incident Response: _Training_
   - Regular training for all personnel involved in incident response builds awareness, knowledge, and skills. This empowers individuals to recognize potential threats, understand their roles, and take appropriate actions during an incident.
-- Incident Response Tabletop Exercises
+- Incident Response: _Tabletop Exercises_
   - Simulated incident scenarios allow teams to test their response plan in a controlled environment. This helps identify weaknesses in the plan, uncover potential communication gaps, and enhance overall preparedness before a real incident occurs.
-- Incident Response Documented Incident Types/Categories
+- Incident Response: _Documented Incident Types/Categories_
   - Categorizing potential incidents based on severity and impact enables a more tailored response. This allows teams to prioritize resources and allocate them effectively based on the nature and scope of the incident.
-- Incident Response Roles and Responsibilities
+- Incident Response: _Roles and Responsibilities_
   - Clearly defining roles and responsibilities eliminates confusion and ensures everyone understands their assigned tasks during an incident. This promotes accountability, avoids duplication of efforts, and facilitates smoother coordination throughout the response process.
-- Incident Response Procedures: Identification
-  - Early recognition of an incident is crucial to minimize damage and initiate a timely response. Establishing clear indicators of compromise and monitoring systems for suspicious activity helps identify potential threats quickly.
-- Incident Response Procedures: Scope
+- Incident Response Procedures Identification: _Scope_
   - Determining the scope of the incident involves assessing the affected systems and data, identifying the root cause, and understanding the potential impact on business operations. This enables teams to prioritize their efforts and allocate resources efficiently.
-- Incident Response Procedures: Investigation
+  - Early recognition of an incident is crucial to minimize damage and initiate a timely response. Establishing clear indicators of compromise and monitoring systems for suspicious activity helps identify potential threats quickly.
+- Incident Response Procedures: _Investigation_
   - A thorough investigation into the incident is essential to understand its origin, root cause, and extent. This involves collecting and analyzing evidence, identifying vulnerabilities exploited by the attackers, and understanding the attackers' tactics, techniques, and procedures (TTPs).
-- Incident Response Procedures: Containment, Eradication, and Recovery (CER)
+- Incident Response Procedures: _Containment, Eradication, and Recovery (CER)_
   - These are the core steps of incident response:
     - Incident Response Procedures: Containment
       - Isolating affected systems and data prevents the spread of the incident and limits further damage. This may involve shutting down affected systems, blocking network access, and Quarantining compromised data.
@@ -786,13 +809,13 @@ Preparation:
       - Restoring affected systems and data to full functionality is crucial for business continuity. This may involve restoring backups, redeploying systems, and notifying impacted users.
     - Incident Response Procedures: Isolation
     - Isolating affected systems and data prevents the malicious code or attacker from spreading laterally within the network. This helps contain the damage and prevents further compromise of systems and data.
-- Incident Response Procedures: Evidence Acquisition
+- Incident Response Procedures: _Evidence Acquisition_
   - Collecting and preserving evidence in a forensically sound manner is essential for investigation and potential legal proceedings. This may involve acquiring system logs, network traffic captures, and memory dumps from affected systems.
-- Incident Response Procedures: Chain of Custody
+- Incident Response Procedures: _Chain of Custody_
   - Maintaining a documented chain of custody for evidence ensures its integrity and admissibility in legal matters. This involves documenting the collection, storage, and handling of evidence to ensure it has not been tampered with in any way.
-- Incident Response Procedures: Post-Incident Review and Lessons Learned
+- Incident Response Procedures: _Post-Incident Review and Lessons Learned_
   - Analyzing the incident after it has been resolved is crucial for identifying areas for improvement and updating the incident response plan. This involves reviewing the effectiveness of the response, identifying any gaps or weaknesses, and implementing corrective actions to prevent similar occurrences in the future
-- Incident Response Procedures: Root Cause Analysis
+- Incident Response Procedures: _Root Cause Analysis_
   - Identifying the root cause of the incident helps prevent similar occurrences in the future.
   - This involves analyzing the vulnerabilities exploited by the attacker, understanding the attacker's motivations and TTPs, and implementing mitigation strategies to address the root cause.
 
@@ -802,40 +825,49 @@ Preparation:
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-subscription-services>
   - organization pays a **fee** on a regular schedule (usually monthly or annually) and gets **access** to a resource through the term of the **subscription**.
   - **pay-per-identity** (user or organization) model
-- Integrate Components Into a Cloud Solution: File Subscriptions
+- Integrate Components Into a Cloud Solution: _File Subscriptions_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
-  - Integrate cloud storage solutions like Dropbox, Google Drive, or OneDrive to provide file synchronization, sharing, and collaboration capabilities across teams and locations. Consider factors like storage capacity, access control features, and integration with other services.
-- Integrate Components Into a Communications Cloud Solution: Email
+  - Integrate cloud storage solutions like Dropbox, Google Drive, or OneDrive, Apple iCloud.
+- Integrate Components Into a Communications Cloud Solution: _Email_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
-  - Utilize cloud email services like Gmail, Microsoft Exchange Online, or G Suite to ensure reliable and accessible email functionality for your organization. Consider spam filtering, email encryption, and calendar integration features when choosing a provider.
-- Integrate Components Into a Communications Cloud Solution: Voice over IP (VoIP)
+  - Utilize cloud email services like Gmail, Microsoft Exchange Online, or G Suite.
+- Integrate Components Into a Communications Cloud Solution: _Voice over IP (VoIP)_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
-  - Implement VoIP solutions like Skype for Business, Google Voice, or RingCentral to provide cost-effective and flexible telephony services. Evaluate call quality, feature sets, and integration with existing communication platforms.
-- Integrate Components Into a Communications Cloud Solution: Messaging
+  - Implement VoIP solutions like Skype for Business, Google Voice, or RingCentral.
+- Integrate Components Into a Communications Cloud Solution: _Messaging_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
-  - Integrate cloud messaging solutions like Slack, Microsoft Teams, or WhatsApp for instant messaging and collaboration within teams. Choose a platform offering features like file sharing, group chats, and integration with other productivity tools.
-- Integrate Components Into a Cloud Solution: Virtual Desktop Infrastructure (VDI)
+  - Integrate cloud messaging solutions like Slack, Microsoft Teams, or WhatsApp for instant messaging.
+- Integrate Components Into a Cloud Solution: _Virtual Desktop Infrastructure (VDI)_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
-  - Utilize VDI solutions like Citrix Virtual Apps and Desktops, AWS WorkSpaces or Microsoft Azure Virtual Desktop to provide virtualized desktops accessible from any device. Consider performance, security features, and cost-effectiveness when choosing a VDI solution.
-- Integrate Components Into a Cloud Solution: Directory and Identity Services
+  - Utilize VDI solutions like Citrix Virtual Apps and Desktops, AWS WorkSpaces or Microsoft Azure Virtual Desktop.
+- Integrate Components Into a Cloud Solution: _Directory and Identity Services_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud directory services like Azure Active Directory or Okta for **centralized user management**, single sign-on (SSO), and **access control** across all cloud resources and applications. Evaluate features like multi-factor authentication (MFA), user provisioning, and integration with other cloud services.
-- Integrate Components Into Cloud Resources: IaaS (Infrastructure as a Service)
-  - Utilize IaaS platforms like AWS EC2, Microsoft Azure VMs, or Google Compute Engine to provision virtual machines, storage, and network resources on-demand. Choose a platform offering flexibility, scalability, and cost-effective pricing models.
-- Integrate Components Into Cloud Resources: PaaS (Platform as a Service):
-  - Leverage PaaS platforms like AWS Elastic Beanstalk, Azure App Service, or Google App Engine to rapidly deploy and manage applications without managing underlying infrastructure. Evaluate ease of deployment, scalability, and available programming languages when choosing a PaaS platform.
-- Integrate Components Into Cloud Resources: SaaS (Software as a Service):
-  - Integrate SaaS solutions like Salesforce, Microsoft Office 365, or Google Workspace for readily available software applications and services accessible from any device. Choose a provider offering features, integrations, and pricing plans that align with your organization's needs.
-- Cloud Resources Provisioning: Compute
-  - Utilize cloud APIs or management tools to provision virtual machines, containers, and serverless functions based on your application's resource requirements. Consider factors like CPU, memory, storage, and networking needs.
-- Cloud Resources Provisioning: Storage
-  - Choose between various storage options like object storage, block storage, or file storage depending on your data access needs, performance requirements, and cost considerations.
-- Cloud Resources Provisioning: Network
-  - Configure virtual networks, subnets, and firewalls to secure your cloud environment, manage network traffic flow, and control user access to resources.
-- Cloud Resources for Application Deployment: Serverless
-  - Utilize serverless platforms like AWS Lambda, Azure Functions, or Google Cloud Functions to deploy code without managing servers or infrastructure. This option is ideal for event-driven applications and simplifies deployment and management.
-- Cloud Resources for Application Deployment: Deploying Virtual Machines (VMs) and Custom Images
+- Integrate Components Into Cloud Resources: _IaaS (Infrastructure as a Service)_
+  - Utilize IaaS platforms like AWS EC2, Microsoft Azure VMs, or Google Cloud.
+- Integrate Components Into Cloud Resources: _PaaS (Platform as a Service)_
+  - Leverage PaaS platforms like AWS Elastic Beanstalk, Azure App Service, or Google App Engine.
+- Integrate Components Into Cloud Resources: _SaaS (Software as a Service)_
+  - Integrate SaaS solutions like Salesforce, Microsoft Office 365, or Google Workspace.
+- Cloud Resources Provisioning: _Compute_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
+  - In cloud architecture, the resources that provide processing functionality and services, often in the context of an isolated container or **VM**.
+  - Compute resources encompass CPU, memory, storage, and network allocations.
+  - Utilize cloud APIs or management tools to provision **virtual machines, containers, and serverless functions**.
+- Cloud Resources Provisioning: _Storage_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
+  - Choose between various storage options like **object storage, block storage, or file storage** depending on your data access needs, performance requirements, and cost considerations.
+  - Some data needs to be available very quickly, with no latency. Other data is archived and may be held only to satisfy data retention industry requirements.
+- Cloud Resources Provisioning: _Network_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
+  - Configure **virtual networks(switches, routers), subnets, and firewalls** to secure your cloud environment, manage network traffic flow, and control user access to resources.
+  - cloud-based virtual network can be combined with an on-premises physical network, as well as the creation of one or more virtual networks that exist entirely in the cloud.
+- Cloud Resources for Application Deployment: _Serverless_
+  - Also known as **FaaS**.
+  - Utilize serverless platforms like AWS Lambda, Azure Functions, or Google Cloud Functions to **deploy code without managing servers or infrastructure**. This option is ideal for **event-driven applications** and simplifies deployment and management.
+- Cloud Resources for Application Deployment: _Deploying Virtual Machines (VMs) and Custom Images_
   - Use pre-built images or create custom images containing specific software and configurations to deploy VMs quickly and consistently. This option provides greater control and flexibility for specific application deployments.
-- Cloud Resources for Application Deployment: Templates
+- Cloud Resources for Application Deployment: _Templates_
   - Leverage OS and solution templates to **simplify deployment** of common configurations and applications. This option saves time and ensures consistency across deployments.
   - Help prevent configuration mistakes.
   - A virtual machine template is a master copy of a virtual machine that usually includes the guest OS, a set of applications, and a specific VM configuration. Virtual machine templates are used when you need to deploy many VMs and ensure that they are **consistent and standardized**.

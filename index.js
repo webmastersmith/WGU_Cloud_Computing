@@ -167,8 +167,9 @@
       // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
-        const h = line.length > 30 ? 'h3' : 'h2';
-        const front = `<${h}>${line.replace('-', '').replaceAll('*', '').trim()}</${h}>`;
+        const h = line.length > 40 ? '###' : '##';
+        const front = converter.makeHtml(`${h} ${line.replace('-', '').trim()}`);
+        // console.log(front);
         cardsArr.push({
           front,
           back: [],

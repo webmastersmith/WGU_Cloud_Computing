@@ -30,6 +30,8 @@
   - Fibre Channel over Ethernet
 - FIM
   - File Integrity Monitoring
+- IAM
+  - Identity and Access Management
 - IoT
   - Internet of Things
 - IPS
