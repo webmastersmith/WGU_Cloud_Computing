@@ -32,6 +32,8 @@
   - File Integrity Monitoring
 - IAM
   - Identity and Access Management
+- IdM
+  - Identity Management
 - IoT
   - Internet of Things
 - IPS

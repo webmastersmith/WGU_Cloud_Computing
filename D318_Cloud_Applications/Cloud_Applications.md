@@ -457,184 +457,237 @@
 
 ## 2.1 Given a scenario, configure IDENTITY and ACCESS MANAGEMENT
 
-- Why are Identification and authorization fundamental Security for controlling access to resources and ensuring data integrity in cloud environments?
+- Explain Authentication, Authorization, Auditing and IAM?
+  - **AAA**
+    - Authentication : A user proves their identity(password, something only you know).
+    - Authorization : The identity is permitted a specified level of access to a resource.
+    - Auditing : A record is kept of what the identity did and when.
   - **Identification**:
     - The process of **verifying the identity** of a user or system attempting to access resources.
     - Common methods include usernames, passwords, multi-factor authentication (MFA), biometrics, and Security Assertion Markup Language (SAML).
   - **Authorization**:
     - The process of determining **what resources** a user or system is allowed to **access** and what actions they are permitted to perform.
-    - Based on user roles, permissions, and access control lists (ACLs).
-- _Privileged access management (PAM)_ Security?
+    - IAM is Based on user roles, permissions, and access control lists (ACLs) for access to data or running programs.
+    - Ultimately, the goal is for a user to have one identity that provides access to all resources they are authorized to use.
+- Identity and Access Management: _Privileged access management (PAM)_
+  - **Principle of least privilege**: minimum level of access to accomplish assigned tasks.
   - Focuses on securing privileged accounts with elevated access to sensitive systems and data.
   - Utilizes techniques like least privilege, password vaulting, and session recording.
-- _Logical access management (LAM)_ Security?
+  - **Physical access control**: include managing physical security, including locked doors, man cages, guest badges, and other physical means of denying access to unauthorized persons.
+  - **Logical access control**: are software-based management practices. Examples include basic authentication (name and password), Windows and Linux permissions, and firewall rules.
+- Identity and Access Management: _Logical access management (LAM)_
   - Manages user access to applications, systems, and data across the cloud environment.
   - Leverages centralized directories and single sign-on (SSO) for seamless access.
-- Account life-cycle management: _Provision and Deprovision Accounts_
+- Identity and Access Management::Account life-cycle management: _Provision and Deprovision Accounts_
   - Governs the creation, use, and termination of user accounts throughout their lifecycle.
   - Automates tasks like provisioning, deprovisioning, and password resets.
   - Creating and removing user accounts as needed.
   - Automating account creation based on predefined roles and workflows.
 - Identity and Access Management Access Controls: _Role-based access control (RBAC)_
-  - Grants access based on predefined roles and associated permissions.
+  - Grants **access** based on predefined **roles** and associated permissions.
 - Identity and Access Management Access Controls: _Discretionary access control (DAC)_
-  - Allows users to control access to their own resources.
+  - Allows **users** to **control access** to their **own resources**.
+  - Access is managed with an access control list (ACL) that lists who has access and what level of access they have.
 - Identity and Access Management Access Controls: _Non-discretionary access control (N-DAC)_
   - Access controlled by an administrator or system based on rules and policies.
 - Identity and Access Management Access Controls: _Mandatory access control (MAC)_
-  - Access determined by a central authority and enforced by the system.
-- Identity and Access Management Directory Services: _Lightweight Directory Access Protocol (LDAP)_
-  - Store and manage information about users, groups, devices, and other resources.
-  - Enable centralized authentication and authorization.
+  - Labels set on objects (files) by the administrator. Users cannot manipulate these labels.
+  - Users are given matching classifications. If both match, user is granted access.
+- Identity and Access Management: _Directory Services::Lightweight Directory Access Protocol (LDAP)_
+  - Store(x500-like directory) and **manage**(lifecycle) information about **users**, groups, devices, and other resources.
+    - the x.500-like database is used to centralize information about clients, access, privileges on the network
+  - Enable **centralized** authentication and authorization.
   - Examples include Active Directory, OpenLDAP, and Azure AD.
-  - An industry-standard protocol for accessing and managing directory services.
-  - Provides a flexible and interoperable way to authenticate users and control access to resources.
+  - GCP offers Secure LDAP.
 - Identity and Access Management: _Federation_
   - Allows users to access multiple applications and services using a single set of credentials.
+    - Defines a system of trust between an IdM provider and a resource provider.
+  - SSO experience for the user.
   - Simplifies user management and reduces password fatigue.
-  - Examples include SAML and OpenID Connect.
+  - Examples include SAML and OpenID Connect. AWS Single Sign-On and AWS Identity and Access Management.
 - Identity and Access Management: _Certificate management_
   - Securely generates, issues, and manages digital certificates for authentication and encryption.
+  - Public/Private key management(PKI).
   - Provides trust and integrity for secure communication.
   - Examples include Let's Encrypt and AWS Certificate Manager.
 - Identity and Access Management: _Multifactor authentication (MFA)_
+  - What you know (such as a password)
+  - What you have (such as a token or a smart card)
+  - Who you are (measuring biometrics through a fingerprint scanner or similar device)
   - Requires an additional factor beyond a password to verify user identity.
   - Increases security and reduces the risk of unauthorized access.
   - Examples include SMS codes, push notifications, and hardware tokens.
-- Identity and Access Management Single sign-on (SSO): _Security Assertion Markup Language (SAML)_
-  - Allows users to authenticate once and access multiple applications without re-entering their credentials.
-  - Improves user experience and reduces password fatigue.
-  - Examples include Okta, Azure AD Connect, and Ping Identity.
-  - An open standard for exchanging authentication and authorization information.
-  - Enables single sign-on and federation between different systems.
+- Identity and Access Management: _Single sign-on (SSO)::Security Assertion Markup Language (SAML)_
+  - **SAML**
+    - User **authenticates** to an identity management service (IdM), and their verified **identity** information is **passed** to the service or **application** provider.
+    - Allows SSO.
+  - **Single Sign-On**
+    - Allows users to authenticate **once** and **access multiple applications** without re-entering their credentials.
+    - Improves user experience and reduces password fatigue.
+    - Examples include Okta, Azure AD Connect, and Ping Identity.
+      - AWS Identity and Access Management
+      - Google Identity Platform
+      - Azure Active Directory
 - Identity and Access Management: _Public key infrastructure (PKI)_
-  - Framework for issuing, managing, and using digital certificates.
+  - Framework for issuing, **managing**, and using **digital certificates**(signed public/private keys).
+  - The actual certificates are handled by _certificate authority_ servers that create, manage, expire, renew, and revoke certificates.
   - Provides secure communication and strengthens authentication.
   - Examples include OpenSSL and Microsoft Certificate Services.
 - Identity and Access Management: _Secret management_
-  - Securely stores and manages sensitive information like passwords, API keys, and encryption keys.
+  - Securely **stores** and manages sensitive information like passwords, API **keys**, and encryption keys.
   - Ensures confidentiality and integrity of sensitive data.
   - Examples include HashiCorp Vault and AWS Secrets Manager.
 - Identity and Access Management: _Key management_
-  - Manages the lifecycle of encryption keys used for data protection.
+  - Manages the **lifecycle**(renewed or reissued) of encryption **keys** used for data protection.
+    - not to be confused with secret management, specifically covers the management of public and private keys within the PKI(renewed or reissued).
   - Provides secure storage, rotation, and access control for encryption keys.
   - Examples include AWS Key Management Service (KMS) and Azure Key Vault.
 
-## 2.2 Given a scenario, secure a network in a cloud environment
+## 2.2 Given a scenario, SECURE a NETWORK in a cloud environment
 
-- Secure a Network in a Cloud Environment: Network Segmentation:
-  - Limit blast radius: A security breach in one segment is contained and doesn't impact others.
-  - Granular access control: Define specific access rules for each segment.
-  - Improved resource utilization: Optimize resource allocation within each segment.
-- Virtual LAN (VLAN)/Virtual Extensible LAN (VXLAN)/Generic Network Virtualization Encapsulation (GENEVE)
-  - Create logically separate networks within a shared physical network.
-- Secure a Network in a Cloud Environment: Micro-segmentation
-  - Further subdivide networks based on workload or security needs.
-- Secure a Network in a Cloud Environment: Tiering:
+- Secure a Network in a Cloud Environment: _Network Segmentation::Virtual LAN (VLAN)/Virtual Extensible LAN (VXLAN)/Generic Network Virtualization Encapsulation (GENEVE)_
+  - **VLAN**
+    - Network at Layer 2 (the data link layer of the OSI model). This is accomplished by tagging data frames with VLAN membership information.
+    - Switch isolates the traffic to the appropriate VLAN.
+    - Router routes traffic between VLANs.
+    - **Advantages**
+      - Limit blast radius: A security breach in one segment is contained and doesn't impact others.
+      - Granular access control: Define specific access rules for each segment.
+      - Improved resource utilization: Optimize resource allocation within each segment.
+      - Create logically separate networks within a shared physical network.
+  - **VXLAN**
+    - Improvements over VLAN.
+      - 16 million network segments(VLAN 4096).
+      - Provides Tunneling services.
+      - Better Link aggregation and Layer 3 routing.
+    - **Advantages**
+      - Greater scalability.
+      - Stretching: VXLAN traffic crosses between the local network and the cloud network using a bi-directional tunnel.
+      - Traffic mirroring: traffic and be sent to another network for auditing.
+  - **GENEVE**
+    - Microsoft approach to overcome VLAN limitations.
+    - Encapsulate packet to create compatibility with VLAN and Stateless Transfer Tunnel.
+    - Usually required across multi-cloud deployments.
+- Secure a Network in a Cloud Environment: _Network Segmentation::Micro-segmentation_
+  - **Dividing** a **network** at the **workload**(application) level.
+  - Network level segmentation segments the network, but does not manage security within segments.
+  - Three Aspects of Microsegmentation:
+    - Visibility: The entire workflow of the application must be available for configuration.
+    - Granularity: Each workflow is isolated from all others, allowing it to be governed independently.
+    - Dynamic: The configuration is mobile and able to follow the application through changes or scaling.
+  - **Advantages**
+    - Reduced attack surface
+    - Increased containment of security breaches
+    - Increase compliance
+    - Easier management via policies
+  - AWS security groups(virtual firewalls) and Azure Application Security Groups allow microsegmentation.
+  - ![microsegmentation](img/microsegmentation.PNG)
+- Secure a Network in a Cloud Environment: _Network Segmentation::Tiering_
   - Organize network resources into layers based on function (e.g., public, private, DMZ).
-- Explain Domain Name Service (DNS)
-  - Resolves domain names to IP addresses.
-- Secure a Network in a Cloud Environment: DNS over HTTPS (DoH)/DNS over TLS (DoT)
-  - Securely encrypts communication between clients and DNS resolvers.
-- Secure a Network in a Cloud Environment: DNS Security (DNSSEC)
-  - Cryptographically verifies the authenticity and integrity of DNS responses.
-- Secure a Network in a Cloud Environment: Network Time Protocol (NTP)
+  - ![tiering](img/tiering.PNG)
+- Secure a Network in a Cloud Environment: _Protocols::Domain Name Service (DNS)::DNS over HTTPS (DoH)/DNS over TLS (DoT)_
+  - Securely **encrypt communications** between clients and **DNS**(resolves domain names to IP addresses).
+- Secure a Network in a Cloud Environment: _Protocols::Domain Name Service (DNS)::DNS Security (DNSSEC)_
+  - Cryptographically **verifies** the **authenticity** and integrity of **DNS** responses.
+- Secure a Network in a Cloud Environment: _Protocols::Network Time Protocol (NTP)::Time Security (NTS)_
   - Synchronizes clocks across devices in the network.
-- Secure a Network in a Cloud Environment: Network Time Security (NTS)
-  - Secures NTP communication against spoofing and manipulation.
-- IPSec Encryption
-  - Encrypts communication at the IP layer, securing the entire network stack.
-- Transport Layer Security (TLS) Encryption
-  - Encrypts communication between applications, protecting data in transit.
-- Hypertext Transfer Protocol Secure (HTTPS) Encryption
-  - Secures communication between web browsers and servers.
-- What Advantages do you have with Data Encryption Techniques?
-  - Protecting data confidentiality: Ensuring information remains private and only accessible to authorized entities.
-  - Guaranteeing data integrity: Preventing unauthorized modification of data during transmission.
-  - Providing data authenticity: Verifying the origin and identity of data.
-- Tunneling
-  - Tunneling encapsulates data within another protocol, creating a secure channel for communication.
-  - Tunneling provides the following benefits:
-    - Secure communication: Protects data from eavesdropping and manipulation.
-    - Access control: Restricts access to specific resources and networks.
-    - Network extension: Enables secure connections between geographically dispersed locations.
-- Secure Shell (SSH)
-  - Encrypts communication between devices for secure remote access and file transfer.
-- Layer 2 Tunneling Protocol (L2TP)/Point-to-Point Tunneling Protocol (PPTP)
-  - Create virtual tunnels over IP networks for remote access and site-to-site connections.
-- Generic Routing Encapsulation (GRE)
-  - Encapsulates datagrams within IP packets for routing through different networks.
-- Secure a Network in a Cloud Environment: Firewalls
-  - Filter network traffic based on predefined rules and access control lists (ACLs).
-- Secure a Network in a Cloud Environment: Stateful firewalls
-  - Monitor and analyze traffic flow to identify and prevent suspicious activity.
-- Secure a Network in a Cloud Environment: Stateless firewalls
-  - Filter traffic based on individual packets without considering state information.
-- Secure a Network in a Cloud Environment: Web Application Firewall (WAF)
-  - Protects web applications from common attacks like SQL injection and cross-site scripting.
-- Secure a Network in a Cloud Environment: Application Delivery Controller (ADC)
-  - Load balances traffic across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection.
-- Secure a Network in a Cloud Environment: Intrusion Protection System (IPS)/Intrusion Detection System (IDS)
-  - Monitors network traffic for malicious activity and prevents or alerts on detected threats.
-- Secure a Network in a Cloud Environment: Data Loss Prevention (DLP)
-  - Identifies and prevents sensitive data from being leaked or exfiltrated from the network.
-- Secure a Network in a Cloud Environment: Network Access Control (NAC)
-  - Grants or denies network access based on device compliance with security policies.
-- Secure a Network in a Cloud Environment: Packet brokers
+  - Secures NTP communication against spoofing and manipulation through key exchange.
+- Secure a Network in a Cloud Environment: _Protocols::Encryption::IPSec_
+  - Encrypts communication at the IP layer(Layer 3), securing the entire network stack.
+  - HTTPS only allows web-based communications to be encrypted.
+  - IPsec uses two different modes:
+    - Transport mode: The original header is not encrypted, but payload is. There is small bandwidth savings. This mode is usually used with host-to-host connections.
+    - Tunnel mode: The entire packet is encrypted (header and payload). This mode is usually used in router-to-router connections.
+  - Originally used as a VPN protocol, but once security professionals began defining internal networks as "untrusted," then IPsec was used to protect the internal traffic.
+- Secure a Network in a Cloud Environment: _Protocols::Encryption::Transport Layer Security (TLS) Encryption_
+  - **Encrypts communication** between applications, protecting data in transit.
+  - Combination of symmetric and asymmetric encryption.
+  - Identity of the web server is confirmed by the client.
+- Secure a Network in a Cloud Environment: _Protocols::Encryption::Hypertext Transfer Protocol Secure (HTTPS)_
+  - **Secures** communication between **web browsers** and servers.
+  - Uses digital certificates to prove the identity of the web server(prevent man-in-the-middle attacks).
+  - Certificates and encryption are part of the TLS structure.
+  - HTTPS encryption occurs at the application layer of the TCP/IP stack.
+- Secure a Network in a Cloud Environment: _Protocols::Tunneling::Secure Shell (SSH)_
+  - Encrypted remote administration protocol.
+- Secure a Network in a Cloud Environment: _Protocols::Tunneling::Layer 2 Tunneling Protocol (L2TP)/Point-to-Point Tunneling Protocol (PPTP)_
+  - **Layer 2 tunneling protocol (L2TP)/IPsec**
+    - VPN protocol that relies on IPsec for encrypted site-to-site connections.
+  - **Point-to-point tunneling protocol (PPTP)**
+    - legacy protocol that should be avoided for its vulnerabilities.
+- Secure a Network in a Cloud Environment: _Protocols::Tunneling::Generic Routing Encapsulation (GRE)_
+  - Tunneling protocol that does not use encryption unless combined with IPsec and should be avoided for any secure communications.
+- Secure a Network in a Cloud Environment: _Network Services::Firewalls::Stateful_
+  - Keeps track of connections from layer 3,4,5.
+  - Allows advanced firewall rules.
+  - Stateful firewalls are powerful and understand the entire network connection, but are slower than Stateless.
+- Secure a Network in a Cloud Environment: _Network Services::Firewalls::Stateless_
+  - Uses ACL(simple permit/deny rules) to filter traffic.
+  - Stateless firewalls are faster, especially for high workloads, but they don't check traffic content.
+- Secure a Network in a Cloud Environment: _Network Services::Web Application Firewall (WAF)_
+  - Work at Layer 7 to protect web applications from common attacks like cross-site scripting, cross-site forgery, SQL injections and DDoS.
+- Secure a Network in a Cloud Environment: _Network Services::Application Delivery Controller (ADC)_
+  - **Load balances traffic** across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection.
+  - Typically, these devices are placed in a DMZ.
+- Secure a Network in a Cloud Environment: _Network Services::Intrusion Protection System (IPS)/Intrusion Detection System (IDS)_
+  - **IDS**
+    - **Monitors** network traffic for malicious activity and prevents or **alerts** on detected threats.
+    - Passive devices that match network traffic and patterns against known vulnerabilities.
+    - Monitor/alert the network environment but do not stop.
+  - **IPS**
+    - **Monitor and Prevent** malicious activity.
+    - Dynamically blocks the connection and traffic identified as a threat.
+- Secure a Network in a Cloud Environment: _Network Services::Data Loss Prevention (DLP)_
+  - Detects/Prevents data exfiltration.
+- Secure a Network in a Cloud Environment: _Network Services::Network Access Control (NAC)_
+  - Combine several aspects of security into a single unit.
+    - Workstation security (endpoints): anti-virus, anti-spyware, patching, and vulnerability scans.
+    - Authentication: single sign-on and multifactor authentication.
+    - Network security: firewalls, network IDS, patching, and updated anti-virus definitions.
+- Secure a Network in a Cloud Environment: _Network Services::Packet brokers_
   - Mirror network traffic to security and monitoring tools for analysis and troubleshooting.
-- Secure a Network in a Cloud Environment: Implementation considerations
-  - Choose appropriate tunneling protocols based on security requirements and network topology.
-  - Deploy necessary network services based on specific security needs and workload characteristics.
-  - Configure and manage network services effectively to ensure optimal performance and security.
-  - Monitor network activity for suspicious behavior and proactively address potential threats.
-  - Regularly update network services and security policies to keep pace with evolving threats and vulnerabilities.
-- Secure a Network in a Cloud Environment: Log and Event Monitoring
+  - Exist between the network infrastructure and infrastructure security tools to gather information and **expose packet** to the appropriate **tools**.
+- Secure a Network in a Cloud Environment: _Log and Event Monitoring_
   - Proactively identify and address security incidents by monitoring logs and events generated by various systems and applications.
   - Utilize tools like Security Information and Event Management (SIEM) to collect, analyze, and correlate events across the cloud environment.
-  - Monitor for suspicious activity like unauthorized access attempts, malware infections, and system vulnerabilities.
-  - Set up alerts to notify administrators of potential security issues promptly.
-  - System logs: Track system activity and identify potential issues.
-  - Application logs: Monitor application behavior and detect errors or anomalies.
-  - Security logs: Capture security events and identify suspicious activity.
-  - Network logs: Track network traffic and identify unusual patterns.
-- Secure a Network in a Cloud Environment: Network Flows
-  - Monitor and analyze network traffic patterns to detect anomalous behavior and identify potential threats.
+- Secure a Network in a Cloud Environment: _Network Flows_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-network-flow-diagrams>
+  - **visualize** and understand how data moves through a **network** infrastructure.
+  - Detect anomalous behavior and identify potential threats.
   - Use tools like network flow analysis (NFA) to track data flow across the network and identify bottlenecks or suspicious activity.
-  - Correlate network flow data with other security data sources to gain deeper insights into threats and security posture.
-  - Disabling unnecessary ports and services: Reduces the attack surface and minimizes potential vulnerabilities.
-  - Disabling weak protocols and ciphers: Uses only strong cryptographic algorithms for secure communication.
-  - Firmware upgrades: Applies latest firmware updates to address vulnerabilities and improve security posture.
-  - Controlling ingress and egress traffic: Restricts inbound and outbound traffic based on security policies.
-- Secure a Network in a Cloud Environment: Hardening and Configuration Management:
+- Secure a Network in a Cloud Environment: _Hardening and Configuration Management_
   - Implement security best practices by hardening operating systems, applications, and cloud services.
+    - ex.. Vulnerability Scanning. SIEM, EDR, XDR.
   - Disable unnecessary ports and services to minimize attack surfaces.
+    - ex.. nmap, systemctl stop, windows stop services.
   - Disallow weak protocols and ciphers that are vulnerable to exploits.
   - Regularly update firmware and software to address vulnerabilities.
   - Control ingress and egress traffic using firewalls, access control lists (ACLs), and whitelisting or blacklisting.
   - Implement proxy servers to filter and monitor network traffic.
   - Utilize DDoS protection services to mitigate distributed denial-of-service attacks.
+    - ex.. Azure Application Gateway WAF
 
-## 2.3 Given a scenario, apply the appropriate OS and application security controls
+## 2.3 Given a scenario, apply the appropriate OS and APPLICATION SECURITY controls
 
-- Password complexity
+- OS and APPLICATION SECURITY: _Policy::Password complexity_
   - Enforces strong passwords to reduce the risk of brute-force attacks.
-- Account lockout
+- OS and APPLICATION SECURITY: _Policy::Account lockout_
   - Automatically locks accounts after a certain number of unsuccessful login attempts.
-- Application whitelisting
+- OS and APPLICATION SECURITY: _Policy::Application whitelisting_
   - Only allows authorized applications to run on systems.
-- Software feature restrictions
+- OS and APPLICATION SECURITY: _Policy::Software feature restrictions_
   - Disables unnecessary features and functionality to reduce the attack surface.
-- User/group permissions
+- OS and APPLICATION SECURITY: _Policy::User/group permissions_
   - Grants least privilege access to users and groups based on their roles and needs.
-- User Permissions
+- OS and APPLICATION SECURITY: _User Permissions_
   - Restrict user access to sensitive data and resources.
   - Implement the principle of least privilege, granting only the minimum access required for users to perform their tasks.
   - Regularly review and update user permissions to ensure they remain appropriate.
-- Antivirus/Anti-Malware/Endpoint Detection and Response (EDR)
+- OS and APPLICATION SECURITY: _Antivirus/Anti-Malware/Endpoint Detection and Response (EDR)_
   - Protects systems from viruses, malware, and other malicious threats.
   - EDR solutions provide real-time visibility and threat detection capabilities.
   - Regularly update antivirus/anti-malware signatures and EDR solutions to stay ahead of evolving threats.
-- Host-based Intrusion Detection System (HIDS)/Host-based Intrusion Prevention System (HIPS)
+- OS and APPLICATION SECURITY: _Host-based Intrusion Detection System (HIDS)/Host-based Intrusion Prevention System (HIPS)_
   - Monitors system activity for suspicious behavior and potential security breaches.
   - HIDS detects malicious activity while HIPS actively prevents it.
   - These tools provide valuable insights into system security and can help identify and respond to threats quickly.
