@@ -656,6 +656,7 @@
   - Detect anomalous behavior and identify potential threats.
   - Use tools like network flow analysis (NFA) to track data flow across the network and identify bottlenecks or suspicious activity.
 - Secure a Network in a Cloud Environment: _Hardening and Configuration Management_
+  - Hardening can be summed up as "remove what you don’t need, and use the most current version of what’s left."
   - Implement security best practices by hardening operating systems, applications, and cloud services.
     - ex.. Vulnerability Scanning. SIEM, EDR, XDR.
   - Disable unnecessary ports and services to minimize attack surfaces.
@@ -670,139 +671,130 @@
 ## 2.3 Given a scenario, apply the appropriate OS and APPLICATION SECURITY controls
 
 - OS and APPLICATION SECURITY: _Policy::Password complexity_
-  - Enforces strong passwords to reduce the risk of brute-force attacks.
+  - password **length**, **complexity**(special chars, capitals, numbers), **frequency of change**.
 - OS and APPLICATION SECURITY: _Policy::Account lockout_
-  - Automatically locks accounts after a certain number of unsuccessful login attempts.
+  - Automatically **locks accounts** after a certain number of **unsuccessful login attempts**.
 - OS and APPLICATION SECURITY: _Policy::Application whitelisting_
-  - Only allows authorized applications to run on systems.
+  - Explicitly identifies the **permitted applications** a user or system can run.
 - OS and APPLICATION SECURITY: _Policy::Software feature restrictions_
-  - Disables unnecessary features and functionality to reduce the attack surface.
+  - Defines which **software** features will be **installed** and how the feature may be used.
 - OS and APPLICATION SECURITY: _Policy::User/group permissions_
-  - Grants least privilege access to users and groups based on their roles and needs.
+  - Defines the user and group **lifecycle**, including **provisioning** and **deprovisioning** of accounts, as well as group membership **rules**.
 - OS and APPLICATION SECURITY: _User Permissions_
-  - Restrict user access to sensitive data and resources.
-  - Implement the principle of least privilege, granting only the minimum access required for users to perform their tasks.
+  - **Policies** and **training** can help **users** set proper **permissions**. Can also implement additional security layers, such as the MAC.
+  - Both Linux and Windows users can set permissions on files and folders that they own. The reason is that both Windows NTFS and Linux standard permissions are DAC-oriented permissions structures.
+  - Mistakes or deliberate misconfiguration of permission by end-users risk exposing confidential information.
   - Regularly review and update user permissions to ensure they remain appropriate.
 - OS and APPLICATION SECURITY: _Antivirus/Anti-Malware/Endpoint Detection and Response (EDR)_
-  - Protects systems from viruses, malware, and other malicious threats.
-  - EDR solutions provide real-time visibility and threat detection capabilities.
-  - Regularly update antivirus/anti-malware signatures and EDR solutions to stay ahead of evolving threats.
+  - Anti-virus, Anti-malware should be installed.
+  - **EDR (Endpoint Detection and Response)**:
+    - Continually monitor the system for changes that indicate threats or exploits.
+    - Data is centralized for more accuracy.
+    - EDR systems work by installing an agent on the workstation to manage the collection of information.
 - OS and APPLICATION SECURITY: _Host-based Intrusion Detection System (HIDS)/Host-based Intrusion Prevention System (HIPS)_
-  - Monitors system activity for suspicious behavior and potential security breaches.
-  - HIDS detects malicious activity while HIPS actively prevents it.
+  - **HIDS detects** malicious activity while **HIPS** actively **prevents** it.
   - These tools provide valuable insights into system security and can help identify and respond to threats quickly.
-- OS and Application Security Controls: Hardened Baselines
-  - Standardized configurations for operating systems and applications that meet specific security requirements.
+- OS and APPLICATION SECURITY: _Hardened Baselines::Single Function_
+  - Baseline: Agreed-upon configurations for operating system version and applications that meet specific security requirements.
+  - Configuration baseline: defines what services and features will be installed on a newly deployed system.
   - Baselines include configurations for:
     - User and group permissions
     - Services and ports
     - Software features
     - Security settings and policies
     - Patching and vulnerability management
-- Hardened Baselines Single function
   - Hardened baselines should focus on a single function to avoid unnecessary complexity and vulnerabilities.
-- Hardened Baselines File integrity
-  - Implement file integrity monitoring to detect and prevent unauthorized changes to critical system files.
-- Hardened Baselines Log and event monitoring
-  - Monitor system logs and events for suspicious activity and potential security breaches.
-- Hardened Baselines Configuration management
+- OS and APPLICATION SECURITY: _File integrity_
+  - File integrity **monitoring** to detect and **prevent unauthorized changes** to critical system files.
+- OS and APPLICATION SECURITY: _Log and event monitoring_
+  - **Monitor** system **logs** and events for suspicious activity and potential **security** breaches.
+- OS and APPLICATION SECURITY: _Configuration management_
   - Use configuration management tools to automate the deployment and enforcement of security settings across all systems.
-- Hardening Builds
-  - Builds are pre-configured versions of software that include specific software packages and configurations.
-- Hardening Stable Builds
-  - Stable builds are tested and proven to be reliable and secure, ideal for production environments.
-- Hardening Long-term support (LTS) Builds
-  - LTS builds receive security updates and patches for several years, providing long-term stability and support.
-- Hardening Beta Builds
-  - Beta builds offer early access to new features and functionalities but may contain bugs and require additional testing.
-- Hardening Canary Builds
-  - Canary builds are deployed to a small subset of users to test new features and identify potential issues before a wider rollout.
-- OS and Application Security Controls: Operating System (OS) Upgrades
-  - Regularly upgrade operating systems to address known vulnerabilities and improve security.
-  - Plan and test OS upgrades carefully to avoid disruptions and ensure compatibility with existing applications.
+- OS and APPLICATION SECURITY: _Builds::Stable_
+  - Stable builds are **tested** and proven to be reliable and secure, ideal for production environments.
+- OS and APPLICATION SECURITY: _Builds::Long-term support (LTS)_
+  - LTS builds receive security **updates and patches for several years**, providing long-term stability and support.
+- OS and APPLICATION SECURITY: _Builds::Beta_
+  - Beta builds offer **early access** to new **features** and functionalities but may contain bugs and require additional testing.
+- OS and APPLICATION SECURITY: _Builds::Canary_
+  - Canary builds are **deployed** to a **small subset of users** to **test new features** and identify potential issues before a wider rollout.
+- OS and APPLICATION SECURITY: _Operating System (OS) Upgrades_
+  - Regularly upgrade operating systems to **address** known **vulnerabilities** and improve **security**.
   - Consider using rolling upgrades or blue-green deployments to minimize downtime and risk during upgrades.
-- API Endpoint Encryption
-  - Protects data in transit between applications and APIs.
-  - Common protocols: HTTPS, Transport Layer Security (TLS).
-- Application Encryption
-  - Safeguards data within applications, databases, and internal communication.
-  - Techniques: Field-level encryption, application-level encryption, database encryption.
-- OS Encryption
-  - Protects data stored on operating system disk drives and volumes.
-  - Technologies: BitLocker, FileVault, Linux Unified Key Setup (LUKS).
-- Storage Encryption
-  - Secures data at rest within cloud storage services.
+- OS and APPLICATION SECURITY: _Encryption::Application Programming Interface (API) Endpoint_
+  - Encrypt Communication: HTTPS or Transport Layer Security (TLS).
+- OS and APPLICATION SECURITY: _Encryption::Application_
+  - encrypt at application layer.
+  - Data encryption: in transit on the network, at rest in storage, and in data structures such as databases.
+- OS and APPLICATION SECURITY: _Encryption::OS_
+  - Encrypt drive: BitLocker, FileVault, Linux Unified Key Setup (LUKS).
+- OS and APPLICATION SECURITY: _Encryption::Storage_
+  - encrypt data at rest within cloud storage services.
   - Often provided by cloud providers (e.g., Amazon S3 encryption, Azure Storage Service Encryption).
-- Filesystem Encryption
-  - Protects data stored on individual filesystems.
+- OS and APPLICATION SECURITY: _Encryption::Filesystem_
+  - encrypt data stored on individual filesystems.
   - Options: eCryptfs, TrueCrypt, VeraCrypt.
-- Mandatory Access Control (MAC):
-  - Enforces a strict security policy that dictates which users or processes can access specific resources.
-  - Restricts actions based on security labels assigned to subjects and objects.
-  - Prevents unauthorized access to sensitive data, even by privileged users.
+- OS and APPLICATION SECURITY: _Mandatory Access Control (MAC)_
+  - Restricts access specific resources based on security labels assigned to subjects and objects.
   - Examples: SELinux, AppArmor, TrustedBSD.
-- Software Firewall:
-  - Monitors and filters network traffic at the operating system level.
-  - Controls incoming and outgoing connections to protect systems from unauthorized access and intrusions.
-  - Can be configured to block specific ports, protocols, or IP addresses.
+- OS and APPLICATION SECURITY: _Software Firewall_
+  - Two kind of firewall: network(perimeter) and host-based(local).
+  - default: if no rule match, 'block' incoming.
   - Examples: Windows Firewall, iptables (Linux), PF (FreeBSD).
 
-## 2.4 Given a scenario, apply data security and compliance controls in cloud environments
+## 2.4 Given a scenario, apply DATA SECURITY and COMPLIANCE CONTROLS in cloud environments
 
-- Data Security in Cloud Environments: Encryption at rest
-  - Protects data stored on cloud storage and databases.
-- Data Security in Cloud Environments: Encryption in transit
-  - Secures data transmission between applications, devices, and users.
-- Data Security in Cloud Environments: Encryption for sensitive data
-  - Applies encryption to specific data fields or entire files containing sensitive information.
-- Data Security in Cloud Environments: Key management
-  - Utilizes secure key management practices to protect encryption keys and prevent unauthorized decryption.
-- Data Security in Cloud Environments: Integrity
-  - Ensures data remains unaltered and trustworthy.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Encryption_
+  - **Confidentiality**: Data is encrypted such that only **authorized** users with the decryption key can view the data. Confidentiality provides privacy and is a common use of encryption.
+  - **Integrity**: generate a **hash**, provides a simple way of checking data has changed.
+  - **Non-repudiation**: **digitally signed data**, by using a public-private key pair.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Integrity::Hashing algorithms_
+  - Ensures data remains **unaltered** and trustworthy.
   - Utilizes hashing algorithms like SHA-256 or MD5 to generate unique digital fingerprints of data.
-  - Digital signatures provide additional verification of data origin and authenticity.
-  - File integrity monitoring (FIM) tracks and alerts on unauthorized changes to critical data files.
-- Data Security in Cloud Environments: Hashing algorithms
-  - Generate unique digital fingerprints of data to detect unauthorized changes.
-- Data Security in Cloud Environments: Digital signatures
-  - Cryptographically verify the authenticity and integrity of data origin.
-- Data Security in Cloud Environments: File integrity monitoring (FIM)
+- DATA SECURITY and COMPLIANCE CONTROLS: _Integrity::Digital signatures_
+  - Cryptographically verify the **authenticity** and **integrity** of **data** origin.
+  - **Non-repudiation**: can only be signed by private key holder.
+  - If any data changed, corrupted, will fail.
+  - manage digital signatures is OpenSSL, AWS Key Management Service (KMS).
+- DATA SECURITY and COMPLIANCE CONTROLS: _Integrity::File integrity monitoring (FIM)_
   - Continuously monitors files for modifications and alerts on unauthorized changes.
-- Data Security in Cloud Environments: Classification
+  - Linux: tripwire.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Classification_
   - Categorizes data based on its sensitivity and security requirements.
   - Helps prioritize security controls and access restrictions based on data classification.
-  - Typical classifications: Public, Internal, Confidential, Highly Confidential.
-- Data Security in Cloud Environments: Segmentation
-  - Divides cloud environments into logically separated segments to isolate and protect sensitive data.
+  - Typical **classifications**: **Public**, **Internal**, **Confidential**, **Highly Confidential**.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Segmentation_
+  - **Divides environments** into logically separated segments to isolate and **protect** sensitive data.
   - Utilizes network segmentation, virtual networks, and storage segmentation techniques.
   - Limits the blast radius of potential security breaches.
   - Limiting access to specific segments based on user roles and permissions.
-- Data Security in Cloud Environments: Access Control
-  - Implements granular access controls to restrict data access to authorized users and applications.
-  - Utilizes authentication, authorization, and accounting (AAA) mechanisms.
-  - Utilizing methods like multi-factor authentication (MFA) and single sign-on (SSO) to enhance access control.
-  - Enforces the principle of least privilege, granting only the minimum access required for specific tasks.
-  - Regularly reviewing and updating access control policies and procedures.
-- Data Security in Cloud Environments: Impact of Laws and Regulations:
+- DATA SECURITY and COMPLIANCE CONTROLS: _Access Control_
+  - **role-based access control (RBAC)**: assign role permissions.
+  - **Groups**: assign group permissions and assign to someone.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Impact of Laws and Regulations::Legal Hold_
   - legal hold: preserve relevant data for legal or regulatory purposes.
   - data residency restrictions: adhering to relevant laws and regulations governing data privacy and security like GDPR, HIPAA, CCPA, etc.
-- Data Security in Cloud Environments: Legal Hold
-  - Preserves data that may be relevant to legal proceedings or regulatory investigations.
-  - Requires implementing mechanisms to prevent modification, deletion, or destruction of such data.
-- Data Security in Cloud Environments: Records Management
+- DATA SECURITY and COMPLIANCE CONTROLS: _Records Management::Versioning_
+  - **Records management**: the process of controlling data throughout its lifecycle.
   - Implementing a robust records management program for data retention, versioning, and destruction.
+  - **labeling data/file** when modified.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Records Management::Retention_
   - Defining clear policies for document retention periods based on regulatory requirements and business needs.
-  - Utilizing data lifecycle management solutions to automate recordkeeping processes.
-  - Implementing Write Once Read Many (WORM) storage for specific data types that require immutability.
-- Data Security in Cloud Environments: Data Loss Prevention (DLP)
-  - Identifying and preventing sensitive data from being exfiltrated or leaked from the cloud environment.
-  - Implementing DLP tools to monitor data movement and enforce security policies.
-  - Regularly reviewing and updating DLP policies to adapt to evolving threats and data sensitivity requirements.
-- Data Security in Cloud Environments: Cloud Access Security Broker (CASB):
-  - CASBs act as intermediaries between cloud applications and users, providing additional security and compliance controls.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Records Management::Destruction_
+  - how to dispose of data.
+  - CSPs and their customers face unique challenges in this area. Storage drives are shared and reshared among tenants.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Records Management::Write Once Read Many_
+  - **Data** that require **immutability**.
+  - Long-term storage, legal, financial, and other data types benefit from WORM storage.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Data Loss Prevention (DLP)_
+  - DLP has three primary goals:
+    1. Identify confidential data in use, in storage, and in transit, and then understand how that data is used.
+    2. Apply protection automatically to data by using technology.
+    3. Conduct exfiltration monitoring, detection, and response.
+- DATA SECURITY and COMPLIANCE CONTROLS: _Cloud Access Security Broker (CASB):_
+  - CASBs act as intermediaries(proxy) between cloud applications and users, providing additional security and compliance controls.
   - CASBs offer features like data encryption, access control, threat detection, and compliance reporting.
-  - Implementing a CASB can help organizations gain greater visibility and control over their cloud data and applications.
-- Data Security in Cloud Environments: Effective Implementation:
+- DATA SECURITY and COMPLIANCE CONTROLS: _Effective Implementation:_
   - Conduct regular risk assessments to identify and prioritize security risks.
   - Develop a comprehensive data security and compliance strategy.
   - Implement appropriate security controls based on data classification and compliance requirements.
@@ -810,74 +802,92 @@
   - Train employees on data security policies and procedures.
   - Stay informed about evolving threat landscape and adapt security controls accordingly.
 
-## 2.5 Given a scenario, implement measures to meet security requirements
+## 2.5 Given a scenario, implement measures to MEET SECURITY REQUIREMENTS
 
-- Implementing Measures to Meet Security Requirements in Cloud Environments Vulnerability Scanners
+- MEET SECURITY REQUIREMENTS: _Tools::Vulnerability Scanners_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-security-management-concepts>
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/use-security-management-tools>
   - Identify known vulnerabilities in systems and applications.
-  - Examples: Nessus, Qualys, OpenVAS.
-- Implementing Measures to Meet Security Requirements in Cloud Environments: Port Scanners
+  - Cloud administrators are responsible for IaaS instances and containers they deploy, as well as any virtual network configurations. This responsibility is held for public, private, community, and hybrid cloud models.
+  - Examples: Burp Suite, Nessus, Qualys, OpenVAS, GCP Container Analysis, AWS Amazon Inspector, Azure Defender
+- MEET SECURITY REQUIREMENTS: _Tools::Port Scanners_
   - Discover open ports and potential vulnerabilities in network services.
   - Examples: Nmap, Zenmap, Angry IP Scanner.
-- Default and Common Credential Scans Vulnerability Assessment
+- MEET SECURITY REQUIREMENTS: _Vulnerability Assessment::Default and Common Credential Scans_
   - Attempt logins using commonly used or default credentials.
-- Credentialed Scans Vulnerability Assessment
+- MEET SECURITY REQUIREMENTS: _Vulnerability Assessment::Credentialed Scans_
   - Authenticate to systems to conduct deeper vulnerability probes.
-- Network-Based Scans Vulnerability Assessment
+- MEET SECURITY REQUIREMENTS: _Vulnerability Assessment::Network-Based Scans_
   - Assess vulnerabilities from a network perspective.
-- Agent-Based Scans Vulnerability Assessment
+- MEET SECURITY REQUIREMENTS: _Vulnerability Assessment::Agent-Based Scans_
   - Use software agents installed on systems for more comprehensive scanning.
-- Service Availabilities Vulnerability Assessment
+- MEET SECURITY REQUIREMENTS: _Vulnerability Assessment::Service Availabilities_
   - Scan for services that should not be accessible publicly.
-- Hot Fixes Security Patches
+- MEET SECURITY REQUIREMENTS: _Security Patches::Hot Fixes_
   - Address critical vulnerabilities urgently.
-- Scheduled Updates Security Patches
+- MEET SECURITY REQUIREMENTS: _Security Patches::Scheduled Updates_
   - Regularly apply security patches from vendors.
-- Virtual Security Patches
+    -MEET SECURITY REQUIREMENTS: _Security Patches::Virtual Updates_
   - Mitigate vulnerabilities without direct system modification.
-- Signature Updates Security Patches
+- MEET SECURITY REQUIREMENTS: _Security Patches::Signature Updates_
   - Update security tools to detect new threats.
-- Rollups Security Patches
+- MEET SECURITY REQUIREMENTS: _Security Patches::Rollups_
   - Bundle multiple patches for efficient deployment.
-- Implementing Measures to Meet Security Requirements in Cloud Environments: Risk Register
+- MEET SECURITY REQUIREMENTS: _Risk Register_
   - Maintain a comprehensive record of identified vulnerabilities, their associated risks, and planned mitigation strategies.
   - Prioritize vulnerabilities based on their severity, exploitability, and potential impact on business operations.
-- Implementing Measures to Meet Security Requirements in Cloud Environments: Prioritization of Patch Application
+
+| Risk                 | Likelihood | Impact | Severity | Mitigation                  | Status      |
+| :------------------- | :--------- | :----- | :------- | :-------------------------- | :---------- |
+| Flood                | Low        | High   | High     | Remote failover site        | In progress |
+| Internet interrupted | Medium     | High   | High     | Redundant Internet services | Complete    |
+| Data interception    | High       | High   | Medium   | VPN deployment              | Complete    |
+
+- MEET SECURITY REQUIREMENTS: _Prioritization of Patch Application_
   - Prioritize patching critical vulnerabilities first, followed by high-risk and moderate-risk vulnerabilities.
   - Consider the impact of patching on system stability and availability when prioritizing patch application.
-- Implementing Measures to Meet Security Requirements in Cloud Environments: Deactivate Default Accounts
-  - Disable default or unused accounts to prevent unauthorized access.
-  - Implement strong password policies and require multi-factor authentication for all administrative accounts.
-- Impacts of Security Tools on Systems and Services
-  - Carefully consider potential performance impacts and compatibility issues before deploying security tools.
-  - Configure security tools to minimize resource consumption and optimize performance.
-  - Conduct performance testing to assess the impact of security tools on critical systems and services.
-- Effects of Cloud Service Models on Security Implementation
+- MEET SECURITY REQUIREMENTS: _Deactivate Default Accounts_
+  - **Disable** **default** or **unused accounts** to prevent unauthorized access.
+  - Audit regularly.
+- MEET SECURITY REQUIREMENTS: _Impacts of Security Tools on Systems and Services_
+  - Security tools can have an impact on network bandwidth and system performance.
+- MEET SECURITY REQUIREMENTS: _Effects of Cloud Service Models on Security Implementation_
   - Understand the shared responsibility model for each cloud service model (SaaS, PaaS, IaaS) to ensure appropriate security measures are implemented by both the cloud provider and the customer.
-  - Leverage cloud provider security features and services to enhance overall security posture.
-  - Implement additional security controls and configurations specific to the chosen cloud service model.
+  - The CSP is responsible for far more of the security stance in the SaaS model than the IaaS model.
 
-## 2.6 Explain the importance of incident response procedures
+## 2.6 Explain the importance of INCIDENT RESPONSE procedures
 
 Preparation:
 
-- Incident Response: _Documentation_
-  - Well-documented procedures, policies, and contact information ensure everyone involved knows what to do when an incident strikes. Clear documentation reduces confusion, delays, and potential errors during a crisis.
-- Incident Response: _Call Trees_
-  - Pre-defined call trees establish clear communication channels, ensuring timely notification of key personnel based on their roles and responsibilities. This ensures that the right people are informed at the right time, allowing for quicker decision-making and response initiation.
-- Incident Response: _Training_
-  - Regular training for all personnel involved in incident response builds awareness, knowledge, and skills. This empowers individuals to recognize potential threats, understand their roles, and take appropriate actions during an incident.
-- Incident Response: _Tabletop Exercises_
-  - Simulated incident scenarios allow teams to test their response plan in a controlled environment. This helps identify weaknesses in the plan, uncover potential communication gaps, and enhance overall preparedness before a real incident occurs.
-- Incident Response: _Documented Incident Types/Categories_
+- INCIDENT RESPONSE: _Preparation::Documentation_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/prepare-for-incident-response-in-the-cloud>
+  - Disaster recovery documentation organizes and prepares responders for incidents.
+- INCIDENT RESPONSE: _Preparation::Call Trees_
+  - Call trees are a way of ensuring that the appropriate people are contacted during an incident.
+- INCIDENT RESPONSE: _Preparation::Training_
+  - dedicated training to prepare personnel for incident response and disaster recovery.
+- INCIDENT RESPONSE: _Preparation::Tabletop Exercises_
+  - The disaster recovery procedures are implemented on a limited scale. Participants engage in role-playing to ensure comprehension and realism.
+- INCIDENT RESPONSE: _Preparation::Documented Incident Types/Categories_
   - Categorizing potential incidents based on severity and impact enables a more tailored response. This allows teams to prioritize resources and allocate them effectively based on the nature and scope of the incident.
-- Incident Response: _Roles and Responsibilities_
-  - Clearly defining roles and responsibilities eliminates confusion and ensures everyone understands their assigned tasks during an incident. This promotes accountability, avoids duplication of efforts, and facilitates smoother coordination throughout the response process.
-- Incident Response Procedures Identification: _Scope_
+
+| Attack Category             | Incident Type                    | Severity Level                       |
+| :-------------------------- | :------------------------------- | :----------------------------------- |
+| Malware                     | Insider                          | Critical (employee or public safety) |
+| Data breach                 | Hacktivism                       | High (employee, business data)       |
+| Unsuccessful Access attempt | Advanced persistent threat (APT) | Medium (computer,servers,network)    |
+| Physical breach             | Unknown                          | Low (business or service disruption) |
+| Natural disaster            |                                  | Varies                               |
+
+- INCIDENT RESPONSE: _Preparation::Roles and Responsibilities_
+  - **Incident response documentation** will also outline various **roles and responsibilities**.
+  - Which will change depending on the incident type and the disruption level.
+- INCIDENT RESPONSE: _Incident Response Procedures::Identification::Scope_
   - Determining the scope of the incident involves assessing the affected systems and data, identifying the root cause, and understanding the potential impact on business operations. This enables teams to prioritize their efforts and allocate resources efficiently.
   - Early recognition of an incident is crucial to minimize damage and initiate a timely response. Establishing clear indicators of compromise and monitoring systems for suspicious activity helps identify potential threats quickly.
-- Incident Response Procedures: _Investigation_
+- INCIDENT RESPONSE: _Incident Response Procedures::Investigation_
   - A thorough investigation into the incident is essential to understand its origin, root cause, and extent. This involves collecting and analyzing evidence, identifying vulnerabilities exploited by the attackers, and understanding the attackers' tactics, techniques, and procedures (TTPs).
-- Incident Response Procedures: _Containment, Eradication, and Recovery (CER)_
+- INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Isolation_
   - These are the core steps of incident response:
     - Incident Response Procedures: Containment
       - Isolating affected systems and data prevents the spread of the incident and limits further damage. This may involve shutting down affected systems, blocking network access, and Quarantining compromised data.
@@ -887,13 +897,12 @@ Preparation:
       - Restoring affected systems and data to full functionality is crucial for business continuity. This may involve restoring backups, redeploying systems, and notifying impacted users.
     - Incident Response Procedures: Isolation
     - Isolating affected systems and data prevents the malicious code or attacker from spreading laterally within the network. This helps contain the damage and prevents further compromise of systems and data.
-- Incident Response Procedures: _Evidence Acquisition_
+- INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Evidence Acquisition_
   - Collecting and preserving evidence in a forensically sound manner is essential for investigation and potential legal proceedings. This may involve acquiring system logs, network traffic captures, and memory dumps from affected systems.
-- Incident Response Procedures: _Chain of Custody_
+- INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Chain of Custody_
   - Maintaining a documented chain of custody for evidence ensures its integrity and admissibility in legal matters. This involves documenting the collection, storage, and handling of evidence to ensure it has not been tampered with in any way.
-- Incident Response Procedures: _Post-Incident Review and Lessons Learned_
+- INCIDENT RESPONSE: _Incident Response Procedures::Post-Incident and Lessons Learned::Root Cause Analysis_
   - Analyzing the incident after it has been resolved is crucial for identifying areas for improvement and updating the incident response plan. This involves reviewing the effectiveness of the response, identifying any gaps or weaknesses, and implementing corrective actions to prevent similar occurrences in the future
-- Incident Response Procedures: _Root Cause Analysis_
   - Identifying the root cause of the incident helps prevent similar occurrences in the future.
   - This involves analyzing the vulnerabilities exploited by the attacker, understanding the attacker's motivations and TTPs, and implementing mitigation strategies to address the root cause.
 
