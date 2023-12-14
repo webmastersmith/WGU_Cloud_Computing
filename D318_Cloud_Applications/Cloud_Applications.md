@@ -469,56 +469,65 @@
     - The process of determining **what resources** a user or system is allowed to **access** and what actions they are permitted to perform.
     - IAM is Based on user roles, permissions, and access control lists (ACLs) for access to data or running programs.
     - Ultimately, the goal is for a user to have one identity that provides access to all resources they are authorized to use.
-- Identity and Access Management: _Privileged access management (PAM)_
+- IDENTITY and ACCESS MANAGEMENT: _Privileged access management (PAM)_
   - **Principle of least privilege**: minimum level of access to accomplish assigned tasks.
-  - Focuses on securing privileged accounts with elevated access to sensitive systems and data.
-  - Utilizes techniques like least privilege, password vaulting, and session recording.
+  - Just-in-Time access. Just when you need it.
+  - Granular: time limited, highly targeted.
   - **Physical access control**: include managing physical security, including locked doors, man cages, guest badges, and other physical means of denying access to unauthorized persons.
   - **Logical access control**: are software-based management practices. Examples include basic authentication (name and password), Windows and Linux permissions, and firewall rules.
-- Identity and Access Management: _Logical access management (LAM)_
-  - Manages user access to applications, systems, and data across the cloud environment.
-  - Leverages centralized directories and single sign-on (SSO) for seamless access.
-- Identity and Access Management::Account life-cycle management: _Provision and Deprovision Accounts_
-  - Governs the creation, use, and termination of user accounts throughout their lifecycle.
+- IDENTITY and ACCESS MANAGEMENT: _Logical access management (LAM)_
+  - Management using remote access securely.
+  - HTTPS, SSH, IPSEC and tunneling.
+  - Can include:
+    - username/password, private keys, biometrics.
+  - Must meet security and compliance company rules.
+- IDENTITY and ACCESS MANAGEMENT: _Account life-cycle management::Provision and Deprovision Accounts_
+  - CRUD: Create, Review/Update, Deactivate.
+  - Day 1 access to job assignment.
+  - Governs the **creation**, use, and **termination** of **user accounts** throughout their lifecycle.
   - Automates tasks like provisioning, deprovisioning, and password resets.
   - Creating and removing user accounts as needed.
   - Automating account creation based on predefined roles and workflows.
-- Identity and Access Management Access Controls: _Role-based access control (RBAC)_
-  - Grants **access** based on predefined **roles** and associated permissions.
-- Identity and Access Management Access Controls: _Discretionary access control (DAC)_
+- IDENTITY and ACCESS MANAGEMENT Access Controls: _Role-based access control (RBAC)_
+  - Grants **access** based on predefined **roles** and associated permissions. Given to **groups**.
+- IDENTITY and ACCESS MANAGEMENT Access Controls: _Discretionary access control (DAC)_
+  - **Owner access** controls.
   - Allows **users** to **control access** to their **own resources**.
   - Access is managed with an access control list (ACL) that lists who has access and what level of access they have.
-- Identity and Access Management Access Controls: _Non-discretionary access control (N-DAC)_
-  - Access controlled by an administrator or system based on rules and policies.
-- Identity and Access Management Access Controls: _Mandatory access control (MAC)_
-  - Labels set on objects (files) by the administrator. Users cannot manipulate these labels.
+- IDENTITY and ACCESS MANAGEMENT Access Controls: _Non-discretionary access control (N-DAC)_
+  - **Rule based access control**.
+  - Access controlled by an **administrator** or system based on rules and policies.
+- IDENTITY and ACCESS MANAGEMENT Access Controls: _Mandatory access control (MAC)_
+  - **Access via security model**.
+  - **Labels** set on objects (files) by the administrator. Users cannot manipulate these labels.
   - Users are given matching classifications. If both match, user is granted access.
-- Identity and Access Management: _Directory Services::Lightweight Directory Access Protocol (LDAP)_
+- IDENTITY and ACCESS MANAGEMENT: _Directory Services::Lightweight Directory Access Protocol (LDAP)_
   - Store(x500-like directory) and **manage**(lifecycle) information about **users**, groups, devices, and other resources.
     - the x.500-like database is used to centralize information about clients, access, privileges on the network
   - Enable **centralized** authentication and authorization.
   - Examples include Active Directory, OpenLDAP, and Azure AD.
   - GCP offers Secure LDAP.
-- Identity and Access Management: _Federation_
-  - Allows users to access multiple applications and services using a single set of credentials.
+- IDENTITY and ACCESS MANAGEMENT: _Federation_
+  - Allows users to access multiple organizations and services using a single set of credentials.
     - Defines a system of trust between an IdM provider and a resource provider.
   - SSO experience for the user.
   - Simplifies user management and reduces password fatigue.
-  - Examples include SAML and OpenID Connect. AWS Single Sign-On and AWS Identity and Access Management.
-- Identity and Access Management: _Certificate management_
+  - Examples include SAML and OpenID Connect. AWS Single Sign-On and AWS IDENTITY and ACCESS MANAGEMENT.
+- IDENTITY and ACCESS MANAGEMENT: _Certificate management_
   - Securely generates, issues, and manages digital certificates for authentication and encryption.
   - Public/Private key management(PKI).
   - Provides trust and integrity for secure communication.
   - Examples include Let's Encrypt and AWS Certificate Manager.
-- Identity and Access Management: _Multifactor authentication (MFA)_
+- IDENTITY and ACCESS MANAGEMENT: _Multifactor authentication (MFA)_
   - What you know (such as a password)
   - What you have (such as a token or a smart card)
   - Who you are (measuring biometrics through a fingerprint scanner or similar device)
   - Requires an additional factor beyond a password to verify user identity.
   - Increases security and reduces the risk of unauthorized access.
   - Examples include SMS codes, push notifications, and hardware tokens.
-- Identity and Access Management: _Single sign-on (SSO)::Security Assertion Markup Language (SAML)_
+- IDENTITY and ACCESS MANAGEMENT: _Single sign-on (SSO)::Security Assertion Markup Language (SAML)_
   - **SAML**
+    - The protocol used perform SSO.
     - User **authenticates** to an identity management service (IdM), and their verified **identity** information is **passed** to the service or **application** provider.
     - Allows SSO.
   - **Single Sign-On**
@@ -528,16 +537,17 @@
       - AWS Identity and Access Management
       - Google Identity Platform
       - Azure Active Directory
-- Identity and Access Management: _Public key infrastructure (PKI)_
+- IDENTITY and ACCESS MANAGEMENT: _Public key infrastructure (PKI)_
+  - Protect data, insure identity. **Key Pair Encryption**.
   - Framework for issuing, **managing**, and using **digital certificates**(signed public/private keys).
   - The actual certificates are handled by _certificate authority_ servers that create, manage, expire, renew, and revoke certificates.
   - Provides secure communication and strengthens authentication.
   - Examples include OpenSSL and Microsoft Certificate Services.
-- Identity and Access Management: _Secret management_
+- IDENTITY and ACCESS MANAGEMENT: _Secret management_
   - Securely **stores** and manages sensitive information like passwords, API **keys**, and encryption keys.
   - Ensures confidentiality and integrity of sensitive data.
   - Examples include HashiCorp Vault and AWS Secrets Manager.
-- Identity and Access Management: _Key management_
+- IDENTITY and ACCESS MANAGEMENT: _Key management_
   - Manages the **lifecycle**(renewed or reissued) of encryption **keys** used for data protection.
     - not to be confused with secret management, specifically covers the management of public and private keys within the PKI(renewed or reissued).
   - Provides secure storage, rotation, and access control for encryption keys.
@@ -557,7 +567,7 @@
       - Create logically separate networks within a shared physical network.
   - **VXLAN**
     - Improvements over VLAN.
-      - 16 million network segments(VLAN 4096).
+      - 16 million network segments(VLAN 4096). CSPs will have more than 4096 customers.
       - Provides Tunneling services.
       - Better Link aggregation and Layer 3 routing.
     - **Advantages**
@@ -569,6 +579,7 @@
     - Encapsulate packet to create compatibility with VLAN and Stateless Transfer Tunnel.
     - Usually required across multi-cloud deployments.
 - Secure a Network in a Cloud Environment: _Network Segmentation::Micro-segmentation_
+  - **Zero Trust**.
   - **Dividing** a **network** at the **workload**(application) level.
   - Network level segmentation segments the network, but does not manage security within segments.
   - Three Aspects of Microsegmentation:
@@ -883,28 +894,23 @@ Preparation:
   - **Incident response documentation** will also outline various **roles and responsibilities**.
   - Which will change depending on the incident type and the disruption level.
 - INCIDENT RESPONSE: _Incident Response Procedures::Identification::Scope_
-  - Determining the scope of the incident involves assessing the affected systems and data, identifying the root cause, and understanding the potential impact on business operations. This enables teams to prioritize their efforts and allocate resources efficiently.
-  - Early recognition of an incident is crucial to minimize damage and initiate a timely response. Establishing clear indicators of compromise and monitoring systems for suspicious activity helps identify potential threats quickly.
+  - Once a potential issue is discovered, it needs to be declared as an incident and its scope defined.
 - INCIDENT RESPONSE: _Incident Response Procedures::Investigation_
-  - A thorough investigation into the incident is essential to understand its origin, root cause, and extent. This involves collecting and analyzing evidence, identifying vulnerabilities exploited by the attackers, and understanding the attackers' tactics, techniques, and procedures (TTPs).
+  - Some investigation may be necessary before an incident can be identified and categorized.
 - INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Isolation_
-  - These are the core steps of incident response:
-    - Incident Response Procedures: Containment
-      - Isolating affected systems and data prevents the spread of the incident and limits further damage. This may involve shutting down affected systems, blocking network access, and Quarantining compromised data.
-    - Incident Response Procedures: Eradication
-      - Eliminating the threat involves removing the malicious software, patching vulnerabilities, and reconfiguring systems to a secure state. This aims to ensure that the threat is fully neutralized and cannot cause further harm.
-    - Incident Response Procedures: Recovery
-      - Restoring affected systems and data to full functionality is crucial for business continuity. This may involve restoring backups, redeploying systems, and notifying impacted users.
-    - Incident Response Procedures: Isolation
-    - Isolating affected systems and data prevents the malicious code or attacker from spreading laterally within the network. This helps contain the damage and prevents further compromise of systems and data.
+  - **Isolation**: While **investigating** incidents, it may be valuable to have an **active or unaltered** example of the **malware**, defacement, or breaching approach.
+  - **Containment**: Keep malware, viruses, and spyware from spreading to additional servers, workstations, or other devices.
+  - **Eradication**: Eliminate the malware, website defacement, or other visible components.
+  - **Recovery**: Return applications and services to their regular workload.
 - INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Evidence Acquisition_
-  - Collecting and preserving evidence in a forensically sound manner is essential for investigation and potential legal proceedings. This may involve acquiring system logs, network traffic captures, and memory dumps from affected systems.
+  - **Collecting and preserving evidence** in a **forensically** sound manner is essential for investigation and potential legal proceedings.
+  - Cloud-based incidents are different from digital forensics methods used with physical servers and datacenters.
 - INCIDENT RESPONSE: _Incident Response Procedures::Containment, Eradication, and Recovery (CER)::Chain of Custody_
-  - Maintaining a documented chain of custody for evidence ensures its integrity and admissibility in legal matters. This involves documenting the collection, storage, and handling of evidence to ensure it has not been tampered with in any way.
+  - Tracking potential evidence throughout the incident response and evidence acquisition processes.
+  - Specifies who has custody and control of access at all times or other interaction with the evidence.
 - INCIDENT RESPONSE: _Incident Response Procedures::Post-Incident and Lessons Learned::Root Cause Analysis_
-  - Analyzing the incident after it has been resolved is crucial for identifying areas for improvement and updating the incident response plan. This involves reviewing the effectiveness of the response, identifying any gaps or weaknesses, and implementing corrective actions to prevent similar occurrences in the future
-  - Identifying the root cause of the incident helps prevent similar occurrences in the future.
-  - This involves analyzing the vulnerabilities exploited by the attacker, understanding the attacker's motivations and TTPs, and implementing mitigation strategies to address the root cause.
+  - A written incident response plan will include a section that analyzes all aspects of the incident with the goal of improving.
+  - Identifying **how** an **attacker** was able to **achieve** their **goals** or how an accidental action created a security incident provides the organization with the opportunity to mitigate it.
 
 ## 3.1 Given a scenario, integrate components into a cloud solution
 
