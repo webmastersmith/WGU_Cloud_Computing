@@ -36,6 +36,8 @@
   - Identity Management
 - IoT
   - Internet of Things
+- IPC
+  - Instructions Per Cycle
 - IPS
   - Intrusion Prevention System
 - IPSec
@@ -96,6 +98,8 @@
   - Software-Defined Network
 - SDS
   - Software-Defined Storage
+- SMT
+  - Simultaneous Multithreading
 - SSO
   - Single Sign-On
 - TPM

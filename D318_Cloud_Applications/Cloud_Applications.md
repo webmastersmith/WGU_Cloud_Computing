@@ -1181,82 +1181,84 @@ Preparation:
   - permits network administrators to manage/automate configurations for multiple devices, such as routers, switches, and load balancers.
   - ![sdn](img/sdn.png)
 
-## 3.4 Given a scenario, configure the appropriate compute sizing for a deployment
+## 3.4 Given a scenario, configure the appropriate COMPUTE SIZING for a deployment
 
-- List Strategies for Optimal Compute Sizing?
-  - Analyze your workload: Clearly define the resource requirements (CPU, memory, storage) of your applications to determine the appropriate compute size.
-  - Monitor resource usage: Track CPU, memory, and network utilization of your VMs to identify bottlenecks and adjust sizing accordingly.
-  - Right-size your VMs: Choose the smallest VM size that can meet your application's performance requirements without overprovisioning resources.
-  - Utilize autoscaling: Leverage cloud provider autoscaling features to automatically adjust VM resources based on demand, ensuring optimal performance and cost-effectiveness.
-  - Consider cloud pricing models: Choose pricing models that align with your resource usage patterns to optimize costs.
-- Virtualization Technologies: Hypervisors
-  - Hypervisor manages the physical resources: memory, processor, storage, allowing software to create the illusion of physical hardware.
+- COMPUTE SIZING: _Virtualization::Hypervisors::Type 1_
+  - Hypervisor is software that talks directly to the hardware and manages the physical resources: memory, processor, storage, allowing software to create the illusion of physical hardware.
   - Allowing multiple virtual machines (VMs) to run concurrently on a single physical server.
-- Virtualization Technologies: Type 1 Hypervisors
-  - Runs directly on bare metal hardware(program that talks directly to the kernel without going through the OS), providing low overhead and superior performance.
+  - Runs directly on **bare metal** hardware(program that **talks directly to the kernel** without going through the OS), providing low overhead and superior performance.
   - Microsoft(Hyper-V, Windows 10+), VMWare ESXi(server environment), Citrix's XEN Server, KVM(Linux open source).
   - Manages virtual machines and resources without relying on an underlying operating system.
-- Virtualization Technologies: Type 2 Hypervisors
-  - Install on top of an existing operating system (OS), offering greater flexibility but potentially lower performance. Examples include Oracle VirtualBox and VMware Workstation.
-- Virtualization Technologies: Simultaneous Multithreading (SMT)
-  - Enables a single CPU core to process multiple threads simultaneously, boosting performance for multi-threaded applications. However, effectiveness depends on application characteristics.
-- Virtualization Technologies: Dynamic Resource Allocation
-  - Cloud providers dynamically allocate resources (CPU, memory) to VMs based on real-time demand, ensuring efficient resource utilization and cost savings.
-- Virtualization Technologies: Oversubscription
+- COMPUTE SIZING: _Virtualization::Hypervisors::Type 2_
+  - Install **on top of an existing operating system (OS)**, offering greater flexibility but potentially **lower performance**. Examples include Oracle VirtualBox and VMware Workstation.
+- COMPUTE SIZING: _Virtualization::Simultaneous Multithreading (SMT)_
+  - Enables a **single** CPU **core** to **process multiple threads simultaneously**, boosting performance for multi-threaded applications. However, effectiveness depends on application characteristics.
+- COMPUTE SIZING: _Virtualization::Dynamic Allocations_
+  - Cloud providers dynamic **allocation** of resources, including **CPU, memory, storage**, and even network **bandwidth** to **VMs** based on real-time demand, ensuring efficient resource utilization and cost savings.
+- COMPUTE SIZING: _Virtualization::Oversubscription_
+  - **allocating more resources** to the VMs than the physical **server actually has**.
   - Allows allocating more virtual CPUs (vCPUs) than available physical cores, relying on SMT and the assumption that not all VMs will require their full CPU allocation concurrently. While cost-effective, oversubscription can lead to performance degradation under high load.
-- Virtualization Technologies: Central Processing Unit (CPU)
-  - The physical hardware component responsible for executing instructions and processing data. Its specifications significantly influence VM performance.
-- Virtualization Technologies: Virtual CPU (vCPU)
-  - A virtual representation of a physical CPU core allocated to VMs. The number of vCPUs required depends on your application's workload and resource demands.
-- Virtualization Technologies: Virtual GPUs (vGPUs)
-  - Provide dedicated or shared access to a physical GPU, enabling VMs to run graphics-intensive applications.
-- Virtualization Technologies: Shared GPUs
-  - Multiple VMs share a single physical GPU, offering cost-efficiency but potentially lower performance.
-- Virtualization Technologies: Pass-through GPUs
-  - Assign a dedicated physical GPU to a single VM, providing exceptional performance for demanding workloads.
-- Virtualization Performance Factors: Clock Speed
-  - Measured in GHz, it indicates how often a CPU core can execute instructions. Higher clock speeds generally lead to better performance.
-- Virtualization Performance Factors: Instructions per Cycle (IPC)
+- COMPUTE SIZING: _Central Processing Unit (CPU)/Virtual CPU (vCPU)_
+  - **CPU**: The physical hardware component responsible for executing instructions and processing data.
+  - **vCPU**: A virtual representation of a physical CPU core allocated to VMs. The number of vCPUs required depends on your application's workload and resource demands.
+- COMPUTE SIZING: _Graphics Processing Unit (GPU)::Virtual::Shared_
+  - **vGPU**: Multiple VMs share a single physical GPU, offering cost-efficiency but potentially lower performance.
+- COMPUTE SIZING: _Graphics Processing Unit (GPU)::Pass-through_
+  - Assign a **dedicated** physical **GPU** to a **single VM**, providing exceptional performance for demanding workloads.
+- COMPUTE SIZING: _Clock Speed/Instructions Per Cycle (IPC)_
+  - Measured in **GHz**, it indicates **how often a CPU core can execute instructions**. Higher **clock speed**s generally lead to better performance.
   - Measures the number of instructions a CPU core can process per clock cycle. Higher IPC indicates better performance even at a lower clock speed.
-- Virtualization: Hyperconverged Infrastructure (HCI)
-  - Combines compute, storage, and networking resources into a single platform, simplifying management, scalability, and resource utilization.
-- Virtualization: Memory
-  - Temporary storage used by applications for data and instructions. Efficient allocation is crucial.
-- Virtualization: Dynamic Memory Allocation
+- COMPUTE SIZING: _Hyperconverged_
+  - Combines compute, memory, storage, and networking resources into a single platform, simplifying management, scalability, and resource utilization.
+  - Combines such that they cannot be separated. Creates a cloud like infrastructure on-prem.
+  - Hyperconverged deployments use off-the-shelf hardware, making them ideal for private clouds and organizational datacenters.
+- COMPUTE SIZING: _Memory::Dynamic Allocation_
+  - **RAM**: Temporary storage used by applications for data and instructions. Efficient allocation is crucial.
+- COMPUTE SIZING::\_
   - Cloud providers dynamically allocate memory to VMs based on their need, optimizing resource utilization and cost-effectiveness.
-- Virtualization: Ballooning
-  - A technique used to reclaim unused memory from VMs, ensuring efficient memory utilization and preventing performance bottlenecks.
+- COMPUTE SIZING: _Memory::Ballooning_
+  - A technique used to **reclaim unused memory from VM**s, ensuring efficient memory utilization and **preventing performance bottlenecks**.
+  - only critical if the host hardware does not have enough memory to support the VMs running on it.
 
-## 3.5 Given a scenario, perform cloud migrations
+## 3.5 Given a scenario, perform CLOUD MIGRATIONS
 
-- What is Cloud Migration?
-  - Cloud migration involves transferring digital assets, applications, and data from on-premises environments or other cloud providers to a new cloud platform. This complex process necessitates meticulous planning, execution, and ongoing management to ensure a smooth transition and achieve desired business outcomes.
-- Cloud Migrations: Physical to virtual (P2V)
-  - Facilitates migrating physical servers and applications to virtual machines (VMs) within the cloud, enhancing agility, scalability, and resource management.
-- Cloud Migrations: Virtual to virtual (V2V)
-  - Simplifies the migration process for existing virtualized environments by moving VMs from one cloud platform to another.
-- Cloud Migrations: Cloud-to-cloud migrations
-  - Transfer data and workloads between different cloud providers, often driven by factors like cost savings, performance improvements, service differentiation, or strategic changes. This type of migration necessitates careful consideration of vendor lock-in, data security, and compatibility across platforms.
-- Cloud-to-Cloud Migrations: Vendor lock-in
-  - Avoiding dependence on a specific vendor's proprietary solutions or APIs is crucial. Choose cloud-agnostic technologies and tools to ensure flexibility and portability across platforms, mitigating lock-in risks.
-- Cloud-to-Cloud Migrations: PaaS or SaaS Migrations
-  - Migrating Platform as a Service (PaaS) or Software as a Service (SaaS) applications requires meticulous mapping of features, functionalities, and data compatibility between the source and target platforms. Adapting to potential differences in APIs and data formats becomes crucial for successful migration.
-- Cloud-to-Cloud Migrations: Access Control Lists (ACLs)
-  - Carefully review and adapt ACLs within the new cloud environment to guarantee secure access and resource allocation, ensuring compliance with user access policies and data security regulations.
-- Cloud-to-Cloud Migrations: Firewalls
+- CLOUD MIGRATIONS: _Physical to virtual (P2V)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/migrate-physical-systems-to-virtual-p2v>
+  - Facilitates **migrating physical servers** and **applications** to virtual machines (**VMs**) within the cloud, enhancing agility, scalability, and resource management.
+  - **Virtualization** in general makes far **more efficient** use of hardware resources than traditional physical servers.
+- CLOUD MIGRATIONS: _Virtual to virtual (V2V)_
+  - **Moving VMs** from one cloud **platform to another**.
+- CLOUD MIGRATIONS: _Cloud-to-Cloud Migrations::Vendor Lock-In_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/migrate-systems-between-clouds-1>
+  - Lock-in occurs when the **cost** (whether time, money, or resources) is **too high to switch** from the current CSP to a different desired provider.
+  - **Avoiding** dependence on a specific **vendor's proprietary** solutions or APIs is crucial.
+  - **Choose cloud-agnostic** technologies and tools to ensure flexibility and portability across platforms, mitigating lock-in risks.
+- CLOUD MIGRATIONS: _Cloud-to-Cloud Migrations::PaaS or SaaS Migrations::Access Control List (ACLs)_
+  - **Planning** the **infrastructure** requires meticulous **mapping of features**, functionalities, and data compatibility.
+  - Carefully review and adapt ACLs within the new cloud environment to guarantee secure access and resource allocation, ensuring **compliance** with user access **policies** and data **security** regulations.
+- CLOUD MIGRATIONS: _Cloud-to-Cloud Migrations::PaaS or SaaS Migrations::Firewalls_
   - Configure firewalls to enforce security policies and control network traffic flow within the new cloud environment, protecting your migrated resources and data from unauthorized access and security breaches.
-- Cloud Migrations: Block Storage
-  - Migrates data stored on block storage devices, such as hard drives or SSDs, to cloud-based block storage services like Amazon EBS or Azure Disk Storage. This offers increased accessibility, scalability, and resilience compared to on-premises storage solutions.
-- Cloud Migrations: File Storage
-  - Transfers data stored in file systems to cloud-based file storage services like Amazon S3 or Azure Files, facilitating file sharing and collaboration across dispersed locations. This allows for easier access and management of large datasets and simplifies file synchronization across devices.
-- Cloud Migrations: Object Storage
-  - Migrates large, unstructured data sets, such as images, videos, and archives, to cloud-based object storage services like Amazon S3 or Azure Blob Storage. This offers cost-effective and scalable storage solutions for data that doesn't require a traditional file system structure.
-- Cloud Database Migrations: Cross-service Migrations
-  - This involves migrating databases between different cloud platforms or database providers. This process requires careful consideration of data formats, compatibility, and potential schema changes to ensure data integrity and application functionality.
-- Cloud Database Migrations: Relational Database Migrations
-  - Focuses on migrating traditional relational databases, such as MySQL or Oracle, to cloud-based relational database services like Amazon RDS or Azure SQL Database. This offers scalability, automated backups, and high availability features.
-- Cloud Database Migrations: Non-relational Database Migrations
-  - Deals with migrating NoSQL databases, such as MongoDB or Cassandra, to cloud-based NoSQL database services like Amazon DynamoDB or Azure Cosmos DB. This provides flexibility and scalability for unstructured data management, catering to modern application needs.
+- CLOUD MIGRATIONS: _Storage Migrations::Block Storage_
+  - Typically **expensive** but **fast** and **efficient**. Data is divided into chunks and may be **distributed** across various storage media.
+- CLOUD MIGRATIONS: _Storage Migrations::File Storage_
+  - **Simple** and **not** very **scalable**. It is **inexpensive**, relies on the computer’s filesystem, and is commonly used for basic file servers.
+  - Network accessibility is provided by services such as NFS or CIFS.
+- CLOUD MIGRATIONS: _Storage Migrations::Object Storage_
+  - Very **efficient** for **reading** but **not for writing** tasks and is **not** suitable for **databases**.
+  - Scalable and cost effective.
+- CLOUD MIGRATIONS: _Database Migrations::Cross-service Migrations_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/migrate-databases>
+  - This involves **moving databases** between different cloud platforms or database **providers**.
+  - **Cross-service migrations**: **data conversions** between two different database engines. ex.. Oracle to Amazon Aurora.
+    - This process requires careful consideration of data formats, compatibility, and potential schema changes to ensure data integrity and application functionality.
+- CLOUD MIGRATIONS: _Database Migrations::Relational Database Migrations_
+  - Can be very large and very complex.
+    - ex.. moving on-prem MySQL or Oracle, to cloud-based relational database services like Amazon RDS or Azure SQL Database.
+  - Queried by using the Structured Query Language (SQL).
+- CLOUD MIGRATIONS: _Database Migrations::Non-relational Database Migrations_
+  - Non-relational databases are designed to hold unstructured information that is organized by type.
+  - This design leads to a great deal of flexibility and scalability.
+  - ex.. MongoDB or Cassandra, to cloud-based NoSQL database services like Amazon DynamoDB or Azure Cosmos DB.
 
 ## 4.1 Given a scenario, configure logging, monitoring, and alerting to maintain operational status
 
