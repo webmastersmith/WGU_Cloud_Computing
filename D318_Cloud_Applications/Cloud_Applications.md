@@ -1260,173 +1260,199 @@ Preparation:
   - This design leads to a great deal of flexibility and scalability.
   - ex.. MongoDB or Cassandra, to cloud-based NoSQL database services like Amazon DynamoDB or Azure Cosmos DB.
 
-## 4.1 Given a scenario, configure logging, monitoring, and alerting to maintain operational status
+## 4.1 Given a scenario, configure logging, monitoring, and alerting to MAINTAIN OPERATIONAL STATUS
 
-Maintaining Operational Status:
-
-- Maintaining Operational Status: Logging
-  - Logging involves the recording of events, activities, and errors within a system. It serves as a crucial tool for troubleshooting, monitoring, and analyzing the operational status of systems.
-- Maintaining Operational Status: Logging Collectors
-  - Collectors are tools or components that gather and aggregate log data from various sources, facilitating centralized analysis and storage.
-- Maintaining Operational Status: Simple Network Management Protocol (SNMP)
-  - SNMP is a protocol used to monitor and manage network devices. It allows for the collection and exchange of information between network devices and a central management system.
-- Maintaining Operational Status: Syslog
+- MAINTAIN OPERATIONAL STATUS: _Logging::Collectors::Simple Network Management Protocol (SNMP)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/configure-logging-1>
+  - SNMP is a **protocol** used to monitor and manage network devices.
+  - SNMP uses **collectors**(programs running on clients that send back data) to **aggregate** log data from various sources, facilitating **centralized** analysis and storage.
+- MAINTAIN OPERATIONAL STATUS: _Logging::Collectors::Syslog_
   - Syslog is a standard protocol for sending and receiving log messages across a network. It enables the centralization of log data, aiding in analysis and monitoring.
-- Maintaining Operational Status: Log Analysis
-  - Log analysis involves examining log data to identify patterns, anomalies, and potential issues. It provides insights into system behavior and performance.
-- Maintaining Operational Status: Log Entry Severity Categorization
+  - Linux collector(centralize data) is syslog.
+  - Can forward log data over the network.
+- MAINTAIN OPERATIONAL STATUS: _logging::Analysis_
+  - Log analysis involves **examining** log data to identify **patterns, anomalies, and potential issues**.
+- MAINTAIN OPERATIONAL STATUS: _logging::Severity Categorization_
   - Log entries are often categorized by severity levels (e.g., info, warning, error) to prioritize responses based on the criticality of events.
-- Maintaining Operational Status: Audits Using Logs
-  - Audits involve systematic examinations of systems, processes, and security controls to ensure compliance, identify vulnerabilities, and maintain operational integrity.
-- Types: Audits can be conducted for different purposes, including security audits, compliance audits, and performance audits.
-- Maintaining Operational Status Auditing: Access/Authentication Logs
-  - Maintaining operational status involves ensuring secure access to systems through robust access/authentication mechanisms. This includes user authentication, authorization, and access controls.
-- Maintaining Operational Status Auditing: System Logs
-  - Secure access controls at the system level prevent unauthorized entry and safeguard sensitive resources.
-- Maintaining Operational Status Auditing: Application Logs
-  - Application-level access controls protect specific software and data from unauthorized use.
-- Maintaining Operational Status Auditing: Automation Logs
-  - Automation involves the use of tools and scripts to perform repetitive tasks, ensuring consistency, efficiency, and timely responses to operational events.
-- Maintaining Operational Status Auditing: Trending
-  - Trending involves analyzing historical data to identify patterns and trends, helping predict potential issues and plan for system improvements or optimizations. It aids in proactive maintenance and capacity planning.
-- Maintaining Operational Status Through Monitoring: Baselines
+- MAINTAIN OPERATIONAL STATUS: _logging::Audits_
+  - Audits maintain an **entire record of what occurred** on a server.
+- MAINTAIN OPERATIONAL STATUS: _logging::Types::Access/Authentication_
+  - View file creation and access:
+    - Event Viewer Security log: Windows
+    - /var/log/secure: Linux
+- MAINTAIN OPERATIONAL STATUS: _logging::Types::System_
+  - view system logs:
+    - Event Viewer System log: Windows
+    - /var/log: central storage area for Linux log files
+- MAINTAIN OPERATIONAL STATUS: _logging::Types::Application_
+  - Logging what applications installed/running.
+    - Event Viewer Application log: Windows
+    - /var/log/apache: Apache (installed on Linux)
+    - /var/log/samba: Samba (installed on Linux)
+- MAINTAIN OPERATIONAL STATUS: _logging::Automation_
+  - Logging automation allows an **action to be taken on logged events**.
+  - ex.. Log indicates drive almost full, automate script to launch another storage drive.
+- MAINTAIN OPERATIONAL STATUS: _logging::Trending_
+  - Trending involves **analyzing historical data** to identify patterns and trends, helping predict potential issues and plan for system improvements or optimizations.
+  - It aids in proactive maintenance and capacity planning.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Baselines_
   - Baselines establish normal operating conditions by recording key performance metrics over time. Deviations from baselines can indicate potential issues or changes in system behavior.
-- Maintaining Operational Status Through Monitoring: Thresholds
-  - Thresholds are predefined limits set for various performance metrics. When thresholds are exceeded, alerts are triggered, allowing for proactive intervention before issues escalate.
-- Maintaining Operational Status Through: Tagging
-- Tagging involves associating metadata with resources for better organization and identification. It aids in tracking and managing components during monitoring.
-- Maintaining Operational Status Through: Log Scrubbing
-  - Log scrubbing is the process of removing sensitive or unnecessary information from log files to ensure compliance with security and privacy regulations.
-- Maintaining Operational Status Through Performance Monitoring: Applications
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Thresholds_
+  - **Trigger events** within performance **monitoring**.
+  - When thresholds are exceeded, alerts are triggered, allowing for proactive intervention before issues escalate.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Tagging_
+- **Uniquely identify** resources for **tracking**.
+- Tagging involves associating metadata with resources for better organization and identification.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Log Scrubbing_
+  - Log scrubbing is the process of **removing sensitive** or unnecessary **information from log files** to ensure compliance with security and privacy regulations.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Performance Monitoring::Applications_
   - Monitoring application performance ensures optimal user experience, identifies bottlenecks, and supports timely improvements.
-- Maintaining Operational Status Through Performance Monitoring: Infrastructure Components
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Performance Monitoring::Infrastructure Components_
   - Monitoring hardware and software components, such as servers and databases, helps maintain their efficient operation.
-- Maintaining Operational Status Through Monitoring: Resource Utilization
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Resource Utilization_
   - Tracking resource utilization (CPU, memory, storage) ensures efficient use and prevents resource exhaustion.
-- Maintaining Operational Status Through Availability Monitoring: SLA-Defined Uptime Requirements
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Availability::SLA-Defined Uptime Requirements_
+  - Allows administrators to **discover service outages** quickly.
   - Continuous monitoring of system availability ensures that services are accessible and meet user expectations.
-  - Monitoring uptime aligns with Service Level Agreement (SLA) commitments, ensuring compliance with agreed-upon service levels.
-- Maintaining Operational Status Through Verification of Continuous Monitoring Activities
-  - Regularly verifying and validating the effectiveness of continuous monitoring activities ensures that the monitoring system is functioning correctly and providing accurate information.
-- Maintaining Operational Status From Service Management Tool Integration
-  - Integration with service management tools streamlines incident response and resolution. It enables a more cohesive approach to addressing issues and aligning with broader organizational goals.
-- Maintaining Operational Status Through Alerting: Common Messaging Methods
-  - Common messaging methods facilitate the rapid dissemination of alerts to relevant personnel. This may include email notifications, SMS alerts, and integration with collaboration platforms like Slack or Microsoft Teams.
-- Maintaining Operational Status Through: Enable/Disable Alerts
-  - The ability to enable/disable alerts allows for flexibility based on specific circumstances. For instance, during system maintenance, certain non-critical alerts may be temporarily disabled to avoid unnecessary notifications.
-- Handling Alerting with Maintenance Mode
-  - Maintenance mode provides a mechanism to suppress alerts during planned maintenance activities, preventing false alarms and minimizing disruptions.
-- Maintaining Operational Status Through Alerting: Appropriate Responses
-  - Defining appropriate responses to different alert levels ensures that the right actions are taken based on the severity of the alert. This may include automated responses, escalation procedures, or manual intervention.
-- Maintaining Operational Status Through Alerting: Policies for Categorizing and Communicating Alerts
-  - Establishing policies for categorizing and communicating alerts ensures a standardized approach. Alerts can be categorized by severity levels, and communication plans can be predefined based on the type and impact of the alert.
+  - Monitoring uptime aligns with Service Level Agreement (**SLA**) commitments, ensuring **compliance** with agreed-upon service levels.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Verification of Continuous Monitoring Activities_
+  - Deliberate, ongoing, and automated system for verifying that systems are adhering to expected service levels.
+- MAINTAIN OPERATIONAL STATUS: _Monitoring::Service Management Tool Integration_
+  - **Syslog** and **Event Viewer** can centralize entries within their own systems and **forward data to cloud monitoring tools**.
+- MAINTAIN OPERATIONAL STATUS: _Alerting::Common Messaging Methods_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/configure-alerting>
+  - Auto-scaling and configuration management help with automation, however, in some cases, human sysadmin intervention is required.
+  - Alert communication methods include email notifications and SMS-based text messages and integration with collaboration platforms like Slack or Microsoft Teams.
+- MAINTAIN OPERATIONAL STATUS: _Alerting::Enable/Disable Alerts::Maintenance Mode_
+  - Enable/disable alerts testing or deploying a service to avoid overwhelming (and potentially false) information during the initial configuration stages.
+  - Maintenance mode provides a mechanism to **suppress alerts** during planned **maintenance** activities, preventing false alarms and minimizing disruptions.
+- MAINTAIN OPERATIONAL STATUS: _Alerting::Appropriate Responses_
+  - Once alerts are received, an appropriate response must be selected.
+  - Defining **appropriate responses** to **different alert levels** ensures that the right actions are taken based on the severity of the alert.
+  - This may include automated responses, escalation procedures, or manual intervention.
+- MAINTAIN OPERATIONAL STATUS: _Alerting::Policies for Categorizing and Communicating Alerts_
+  - Alerting administrators to changes in administrative privileges, malware, phishing, and unusual file management (deletions or copies).
   - Severity Levels: Assigning severity levels (e.g., critical, major, minor) to alerts helps prioritize responses and allocate resources efficiently.
-  - Communication Plans: Defining communication plans outlines who should be notified, through which channels, and with what information for each alert category.
 
-## 4.2 Given a scenario, maintain efficient operation of a cloud environment
+## 4.2 Given a scenario, MAINTAIN EFFICIENT OPERATION of a cloud environment
 
-Life-cycle Management: Develop roadmaps for system upgrades and migrations, ensuring timely transitions between old, current, and new versions.
-Deprecations and End-of-Life: Manage deprecations and end-of-life announcements for services and resources to avoid compatibility issues and security vulnerabilities.
-n-1 Policy: Maintain at least one previous version of software and configuration backups (n-1) to facilitate rollbacks if necessary.
-
-- Maintain efficient Operation of a Cloud Environment: Confirm Completion of Backups
-  - Regularly confirming the completion of backups ensures data integrity and facilitates disaster recovery. Verification processes should include testing data restoration.
-- Cloud Environment Life-Cycle Management: Roadmaps
-  - Developing roadmaps assists in planning and aligning life-cycle management activities with business goals and technology trends.
-- Cloud Environment Life-Cycle Management: Old/Current/New Versions
+- MAINTAIN EFFICIENT OPERATION: _Confirm Completion of Backups_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/confirm-backup-completions>
+  - Backups **managed** via consoles provided by the **CSP**, application **APIs**, or **command line** environments.
+  - Regularly **confirming the completion of backups** ensures data integrity and facilitates disaster recovery. Verification processes should include testing data restoration.
+- MAINTAIN EFFICIENT OPERATION: _Lifecycle Management::Roadmaps_
+  - **Tracks** the **lifecycle phases** of one or more hardware, service, or software systems in your organization.
+  - The roadmap is organized as a Gantt chart and displays all of the related systems for **comparison**.
+  - The chart is a useful reference for planning, budgeting, and understanding the overall position of deployments in the IT infrastructure.
+  - Phases: Development, Deployment, Maintenance, Deprecation.
+- MAINTAIN EFFICIENT OPERATION: _Lifecycle Management::Old/Current/New Versions_
   - Managing versions involves transitioning from old to current and planning for the adoption of new versions of software, services, or infrastructure components.
-- Cloud Environment Life-Cycle Management: Upgrading and Migrating Systems
-  - Planned upgrading and migration processes are essential for keeping systems up to date with the latest features and improvements.
-- Cloud Environment Life-Cycle Management: Deprecations or End of Life
+  - Phase: development, deployment.
+- MAINTAIN EFFICIENT OPERATION: _Lifecycle Management::Upgrading and Migrating Systems_
+  - Maintenance Phase: **services migrated** to physical to virtual (P2V) or on premises to the **cloud**.
+- MAINTAIN EFFICIENT OPERATION: _Lifecycle Management::Deprecations or End of Life_
+  - Support is usually still offered, but new deployments are discouraged.
   - Identifying and managing deprecated or end-of-life components helps prevent security vulnerabilities and ensures compatibility.
-- Cloud Infrastructure Change Management
-  - Change management processes are crucial for controlling modifications to the cloud environment, minimizing disruptions, and maintaining stability.
-- Cloud Asset Management: Configuration Management Database (CMDB)
-
-  - Maintaining a CMDB tracks configuration changes, relationships, and dependencies among assets, aiding in effective asset management.
-
-- Cloud Environment Patching: Features or Enhancements
-  - Patching includes applying updates for new features or enhancements to improve functionality.
-- Cloud Environment Patching: Fixes for Broken or Critical Infrastructure or Applications
-  - Timely application of patches addresses security vulnerabilities and resolves issues in infrastructure or applications.
-- Cloud Environment Patching: Hypervisors
+- MAINTAIN EFFICIENT OPERATION: _Change Management_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/change-management>
+  - Preparing, supporting, and **managing** new or updated business **processes** or technology.
+- MAINTAIN EFFICIENT OPERATION: _Asset Management::Configuration Management Database (CMDB)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/asset-management-1>
+  - Effective asset management ensures that budget money is spent efficiently and responsibly.
+  - Security also depends on asset management, because you can't secure what you don't know about.
+  - **CMDB stores information about hardware and software deployed throughout the company**. **Entries** in the database are referred to as **configuration items**.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Features or Enhancements_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/patching>
+  - Patching includes applying **updates** for **new features** or **enhancements** to improve functionality.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Fixes for Broken or Critical Infrastructure or Applications_
+  - Three primary motivators for patching are security flaws, service or application bugs.
+  - Apply the **vendor patch** system.
+  - Acquire **third-party solution**s from the **CSP marketplaces**.
+  - **Audit** the dashboard, **log files**, or other reports.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Hypervisors_
+  - **Updates to the hypervisor layer** on which VMs run.
   - The core software that manages virtual machines (VMs) requires regular patching to address security vulnerabilities and improve performance.
-- Cloud Environment Patching: VMs
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::VMs_
   - Individual VMs need to be patched with updates for their operating systems, applications, and other software components.
-- Cloud Environment Patching: Virtual Appliances
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Virtual Appliances_
   - Preconfigured software applications running on VMs also require patching for their specific software versions.
-- Cloud Environment Patching: Networking Components
-  - Routers, switches, and other network devices within the cloud environment need to be patched with updates from the manufacturer.
-- Cloud Environment Patching: Applications
-  - All applications running in the cloud, whether custom-developed or commercially available, require regular updates and patches to address vulnerabilities and improve functionality.
-- Cloud Environment Patching: Storage Components
-  - Storage devices like hard drives and network-attached storage (NAS) also require patching to ensure data integrity and security.
-- Cloud Environment Patching: Firmware
-  - Patches that update the low-level software running on hardware devices, such as BIOS or UEFI firmware.
-- Cloud Environment Patching: Software
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Networking Components_
+  - Routers, switches, and other **network devices** are usually Patched via Infrastructure as Code (**IaC**).
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Applications_
+  - **Vendor-specific patching software**.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Storage Components_
+  - Firmware and driver **updates** possibly required for private **cloud datacenters**.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Firmware_
+  - Patches hardware devices, such as BIOS or UEFI firmware. Must be tested carefully.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::Software_
   - Patches for operating systems, applications, and other software components.
-- Cloud Environment Patching: OS Patches
-  - Specific updates for the operating systems running on VMs, hypervisors, and other devices.
-- Cloud Environment Policies: n-1
-  - Following n-1 policies ensures one version behind the latest for stability.
-- Cloud Environment Policies: Rollbacks
-  - should be planned and tested in case of issues post-patching.
-- Maintaining Cloud Operations: Impacts of Process Improvements on Systems
-  - Assessing the impacts of process improvements on systems ensures that changes positively contribute to efficiency without causing disruptions.
-- Cloud Operations Upgrade Methods: Rolling Upgrades
+- MAINTAIN EFFICIENT OPERATION: _Patching::Scope of Cloud Elements to be Patched::OS_
+  - Patched via the OS vendor’s own services or the CSP.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Policies::n-1_
+  - Following n-1 policies ensures **one version behind the latest** for **stability**.
+- MAINTAIN EFFICIENT OPERATION: _Patching::Rollbacks_
+  - **Return** the **system** to an **earlier state** is to restore from a backup.
+  - should be **planned** and **tested** in case of issues **post-patching**.
+- MAINTAIN EFFICIENT OPERATION: _Impacts of Process Improvements on Systems_
+  - The goal of process improvement is to provide better service at a better price.
+  - This can be accomplished by **reviewing current business practices** and finding ways to make those practices **more efficient**.
+- MAINTAIN EFFICIENT OPERATION: _Upgrade Methods::Rolling Upgrades_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/upgrade-methods-1>
   - Gradually update individual instances while others keep running.
   - Pros: Minimal downtime, easy rollback.
   - Cons: Time-consuming, requires careful planning.
-- Cloud Operations Upgrade Methods: Blue-Green Deployment
-  - Have two identical environments: old (green) and new (blue).
-  - Switch traffic to the blue environment once the upgrade is complete.
+- MAINTAIN EFFICIENT OPERATION: _Upgrade Methods::Blue-Green Deployment_
+  - Have **two identical environments**: production (green) and copy of production (blue).
+    - **Update copy with changes**. Once tested, **switch** traffic to the copy.
   - Pros: Fast and safe, allows testing, no rollback risk.
   - Cons: Double the resources, complex setup.
-- Cloud Operations Upgrade Methods: Canary Deployment
-  - Deploy the update to a small group of users or a dedicated environment first.
+- MAINTAIN EFFICIENT OPERATION: _Upgrade Methods::Canary Deployment_
+  - Deploy the **update** to a **small group** of users or a dedicated environment first.
   - Monitor and test before wider rollout.
   - Pros: Low risk impact, valuable feedback, quick rollbacks.
   - Cons: Not ideal for complex applications, requires careful analysis.
-- Cloud Operations Upgrade Methods: Active-Passive Deployment
-  - Have two environments, active and passive.
+- MAINTAIN EFFICIENT OPERATION: _Upgrade Methods::Active-Passive Deployment_
+  - Have two environments, active and passive(same as blue/green?).
   - Upgrade the passive environment, test it, then switch roles.
   - Pros: High availability, planned maintenance, no downtime.
   - Cons: Double the resources, complex setup.
-- Cloud Operations Upgrade Methods: Development/QA/Production/DR
-  - Upgrade through development, QA, and finally production environments.
-  - Have a disaster recovery environment with the latest version.
-  - Pros: Structured and controlled approach, reduces risk of untested updates.
-  - Cons: Time-consuming, requires team coordination.
-- Cloud Operations: Choosing the Best Upgrade Method
-  - Consider: Application complexity, downtime tolerance, resource availability, team expertise.
-  - Generally:
-    - Rolling upgrades: Simple applications, low downtime tolerance.
-    - Blue-Green/Canary: Complex applications, some downtime tolerance.
-    - Active-Passive/Development/QA/Production: High availability, complex applications.
-- Maintaining Cloud Operations Dashboard and Reporting: Tagging
-  - Utilizing tagging enables efficient categorization and tracking of resources in the cloud environment.
-- Maintaining Cloud Operations Dashboard and Reporting: Costs
-  - Monitoring costs helps in optimizing resource usage and staying within budget.
-- Maintaining Cloud Operations Dashboard and Reporting: Chargebacks
-  - Assigning costs to specific departments or projects facilitates transparent cost allocation.
-- Maintaining Cloud Operations Dashboard and Reporting: Showbacks
+- MAINTAIN EFFICIENT OPERATION: _Upgrade Methods::Development/QA/Production/DR_
+  - **Development environment**: Developers create and test applications.
+  - **Quality assurance**: Software undergoes formal testing by automated and/or manual methods.
+  - **Production**: Software is in place for the intended consumers.
+  - **Disaster recovery**: An environment designed to be used when the production environment is offline.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Tagging_
+  - **Labels** assigned to **resources**.
+  - Utilizing tagging enables efficient categorization and **tracking** of resources in the cloud environment.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Costs::Chargebacks_
+  - **Monitoring costs** helps in optimizing resource usage and staying within budget.
+  - **Assigning costs to specific departments** or projects facilitates transparent **cost allocation**.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Costs::Showbacks_
+  - Report the utilization of services without billing the business unit.
   - Providing cost breakdowns fosters awareness of resource consumption.
-- Maintaining Cloud Operations Dashboard and Reporting: Elasticity Usage
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Elasticity Usage_
+  - **Tracking** annual **usage**, seasonal **growth**, regular changes in **demand**, and other **forecasting** information that helps ensure OpEx budget resources are available.
   - Tracking elasticity usage helps optimize resource allocation.
-- Maintaining Cloud Operations Dashboard and Reporting: Connectivity
-  - Monitoring connectivity ensures smooth communication between components.
-- Maintaining Cloud Operations Dashboard and Reporting: Latency
-  - Measuring latency helps identify performance issues.
-- Maintaining Cloud Operations Dashboard and Reporting: Capacity
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Connectivity_
+  - Monitoring where consumers are located geographically, network traffic patterns change over a day, week, month, or year.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Latency_
+  - **Delay** between when **information is sent** on a network until it **arrives** at its destination.
+  - High latency indicates network congestion, inefficient routing, and overwhelmed devices.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Capacity_
+  - How much of a **workload** the **infrastructure can maintain** for the services.
   - Monitoring capacity usage ensures scalability and prevents resource shortages.
-- Maintaining Cloud Operations Dashboard and Reporting: Incidents
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Incidents_
+  - **Displays the status of services**. Are they down? Is AWS having technical problems?
   - Tracking incidents helps in identifying and resolving issues promptly.
-- Maintaining Cloud Operations Dashboard and Reporting: Health
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Health_
   - Monitoring system health provides insights into the overall well-being of the cloud environment.
-- Maintaining Cloud Operations Dashboard and Reporting: Overall Utilization
+  - AWS Service Health Dashboard, Azure Service Health Dashboard, Google Cloud Status Dashboard
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Overall Utilization_
+  - CSPs provide dashboard of information for a holistic view of service availability, instance and network performance, capacity planning, and incident management.
   - Assessing overall utilization helps in resource planning and optimization.
-- Maintaining Cloud Operations Dashboard and Reporting: Availability
-  - Tracking availability ensures that services meet agreed-upon uptime requirements.
+  - AWS CloudWatch, Azure Monitor, GCP Cloud Monitoring.
+- MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Availability_
+  - CSP shows you what services are currently available.
 
 ## 4.3 Given a scenario, optimize cloud environments
 
