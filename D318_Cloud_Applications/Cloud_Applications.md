@@ -912,106 +912,151 @@ Preparation:
   - A written incident response plan will include a section that analyzes all aspects of the incident with the goal of improving.
   - Identifying **how** an **attacker** was able to **achieve** their **goals** or how an accidental action created a security incident provides the organization with the opportunity to mitigate it.
 
-## 3.1 Given a scenario, integrate components into a cloud solution
+## 3.1 Given a scenario, INTEGRATE COMPONENTS: into a cloud solution
 
 - Explain Cloud Solution Subscription Services?
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-subscription-services>
   - organization pays a **fee** on a regular schedule (usually monthly or annually) and gets **access** to a resource through the term of the **subscription**.
   - **pay-per-identity** (user or organization) model
-- Integrate Components Into a Cloud Solution: _File Subscriptions_
+- INTEGRATE COMPONENTS: _Subscription Services::File Subscriptions_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud storage solutions like Dropbox, Google Drive, or OneDrive, Apple iCloud.
-- Integrate Components Into a Communications Cloud Solution: _Email_
+- INTEGRATE COMPONENTS: _Subscription Services::Communications::Email_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Utilize cloud email services like Gmail, Microsoft Exchange Online, or G Suite.
-- Integrate Components Into a Communications Cloud Solution: _Voice over IP (VoIP)_
+- INTEGRATE COMPONENTS: _Subscription Services::Communications::Voice over IP (VoIP)_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Implement VoIP solutions like Skype for Business, Google Voice, or RingCentral.
-- Integrate Components Into a Communications Cloud Solution: _Messaging_
+- INTEGRATE COMPONENTS: _Subscription Services::Communications::Messaging_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud messaging solutions like Slack, Microsoft Teams, or WhatsApp for instant messaging.
-- Integrate Components Into a Cloud Solution: _Virtual Desktop Infrastructure (VDI)_
+- INTEGRATE COMPONENTS: _Subscription Services::Collaboration_
+- INTEGRATE COMPONENTS: _Subscription Services::Virtual Desktop Infrastructure (VDI)_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Utilize VDI solutions like Citrix Virtual Apps and Desktops, AWS WorkSpaces or Microsoft Azure Virtual Desktop.
-- Integrate Components Into a Cloud Solution: _Directory and Identity Services_
+- INTEGRATE COMPONENTS: _Subscription Services::Directory and Identity Services_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/manage-subscription-services-2>
   - Integrate cloud directory services like Azure Active Directory or Okta for **centralized user management**, single sign-on (SSO), and **access control** across all cloud resources and applications. Evaluate features like multi-factor authentication (MFA), user provisioning, and integration with other cloud services.
-- Integrate Components Into Cloud Resources: _IaaS (Infrastructure as a Service)_
+- INTEGRATE COMPONENTS: _Subscription Services::Cloud Resources::IaaS (Infrastructure as a Service)_
   - Utilize IaaS platforms like AWS EC2, Microsoft Azure VMs, or Google Cloud.
-- Integrate Components Into Cloud Resources: _PaaS (Platform as a Service)_
+- INTEGRATE COMPONENTS: _Subscription Services::Cloud Resources::PaaS (Platform as a Service)_
   - Leverage PaaS platforms like AWS Elastic Beanstalk, Azure App Service, or Google App Engine.
-- Integrate Components Into Cloud Resources: _SaaS (Software as a Service)_
+- INTEGRATE COMPONENTS: _Subscription Services::Cloud Resources::SaaS (Software as a Service)_
   - Integrate SaaS solutions like Salesforce, Microsoft Office 365, or Google Workspace.
-- Cloud Resources Provisioning: _Compute_
+- INTEGRATE COMPONENTS: _Provisioning Resources::Compute_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
   - In cloud architecture, the resources that provide processing functionality and services, often in the context of an isolated container or **VM**.
   - Compute resources encompass CPU, memory, storage, and network allocations.
   - Utilize cloud APIs or management tools to provision **virtual machines, containers, and serverless functions**.
-- Cloud Resources Provisioning: _Storage_
+- INTEGRATE COMPONENTS: _Provisioning Resources::Storage_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
   - Choose between various storage options like **object storage, block storage, or file storage** depending on your data access needs, performance requirements, and cost considerations.
   - Some data needs to be available very quickly, with no latency. Other data is archived and may be held only to satisfy data retention industry requirements.
-- Cloud Resources Provisioning: _Network_
+- INTEGRATE COMPONENTS: _Provisioning Resources::Network_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/provision-cloud-resources>
   - Configure **virtual networks(switches, routers), subnets, and firewalls** to secure your cloud environment, manage network traffic flow, and control user access to resources.
   - cloud-based virtual network can be combined with an on-premises physical network, as well as the creation of one or more virtual networks that exist entirely in the cloud.
-- Cloud Resources for Application Deployment: _Serverless_
-  - Also known as **FaaS**.
+- INTEGRATE COMPONENTS: _Application::Serverless_
+  - Serverless application development, also known as **FaaS**.
   - Utilize serverless platforms like AWS Lambda, Azure Functions, or Google Cloud Functions to **deploy code without managing servers or infrastructure**. This option is ideal for **event-driven applications** and simplifies deployment and management.
-- Cloud Resources for Application Deployment: _Deploying Virtual Machines (VMs) and Custom Images_
-  - Use pre-built images or create custom images containing specific software and configurations to deploy VMs quickly and consistently. This option provides greater control and flexibility for specific application deployments.
-- Cloud Resources for Application Deployment: _Templates_
-  - Leverage OS and solution templates to **simplify deployment** of common configurations and applications. This option saves time and ensures consistency across deployments.
+- INTEGRATE COMPONENTS: _Deploying Virtual Machines (VMs) and Custom Images_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/administer-virtual-machines-and-vm-templates>
+  - **Hypervisor** controls and **manages** hardware allocation to **VMs**.
+  - Using **templates** allows you to **re-create** specific software and configurations to deploy **VMs** quickly and consistently.
+- INTEGRATE COMPONENTS: _Templates::OS Templates_
+  - Leverage OS and solution templates to **simplify deployment** of **common configurations** and applications. This option saves time and ensures consistency across deployments.
   - Help prevent configuration mistakes.
   - A virtual machine template is a master copy of a virtual machine that usually includes the guest OS, a set of applications, and a specific VM configuration. Virtual machine templates are used when you need to deploy many VMs and ensure that they are **consistent and standardized**.
 
-## 3.2 Given a scenario, provision storage in cloud environments
+```xml
+<Hardware>
+  <CPU>
+    <PAE enabled="false"/>
+    <LongMOde enabled="true"/>
+  </CPU>
+  <Memory RAMSize="4096">
+  ...
+</Hardware>
+```
 
-Types of Cloud Storage:
+- INTEGRATE COMPONENTS: _Templates::Solution Templates_
+  - complete solution that includes multiple virtual servers, various services, and network configurations.
+  - Solution Templates: provide a collection of VMs, storage, and network configurations built from a template.
+- INTEGRATE COMPONENTS: _Identity Management_
+  - makes it easier for cloud administrators to **authorized** new **users** (or existing users whose roles have changed).
+  - Microsoft AD, LDAP, SSO. Assigned preconfigured roles.
+  - Roles created based on Least Privilege.
+- INTEGRATE COMPONENTS: _Containers::Configure Variables_
+  - A **container** is a **complete, portable** solution. It contains the application code, runtime, libraries, settings, and other components—everything needed for the software to run.
+  - Containers are running instances of container virtualization, built from configuration files called images.
+  - Images are customized by using environment variables.
+- INTEGRATE COMPONENTS: _Containers::Configure Secrets_
+  - confidential variables passed to a container.
+- INTEGRATE COMPONENTS: _Containers::Persistent Storage_
+  - Docker containers do not persistently store data.
+  - **Volumes**: stored on the host in a directory that is only modified by Docker.
+  - **Bind**: mounts stored anywhere on the host in locations that may be modified by processes other than Docker.
+  - **tmpfs**: stored in memory. These are a good choice for data that you don’t want to persist, such as security-sensitive information.
+- INTEGRATE COMPONENTS: _Auto-Scaling_
+  - adjusts **compute** power **up or down** based on the current **workload**.
+  - Saves **money**.
+- INTEGRATE COMPONENTS: _Post-Deployment Validation_
+  - applies to both development and infrastructure projects.
+  - ensure that newly deployed resources meet the requirements defined in the project.
 
-- Cloud Storage: Block
-  - Ideal for virtual machine disks and applications requiring fast, I/O-intensive operations.
-- Cloud Storage: Storage Area Network (SAN)
-  - Offers centralized management and scalability, perfect for large-scale storage needs. Zoning capabilities enhance security and data isolation.
-- Cloud Storage: Storage Area Network (SAN) Zoning
-  - SAN zoning is a critical component of managing data access and security within a Storage Area Network (SAN). It allows administrators to logically group storage devices (initiators) and targets (storage arrays) into zones, restricting communication and data access between them.
-  - Port-based zoning: Restricts communication between specific ports on initiators and targets. This is the most granular and secure option.
-  - WWN-based zoning: Controls communication based on the World Wide Name (WWN) of each device, which is a unique identifier. This offers a more flexible approach than port-based zoning.
-  - Group-based zoning: Allows grouping initiators and targets into zones, simplifying configuration and management for large deployments.
-  - Fabric-based zoning: Applies zoning rules across the entire fabric, offering a global level of control.
-- Cloud Storage: File
-  - Enables file sharing and collaboration, ideal for document management and media storage.
-- Cloud Storage: Network Attached Storage (NAS)
-  - Provides centralized file storage accessible by multiple clients.
-- Cloud Storage: Object
-  - Cost-effective solution for storing vast amounts of unstructured data like images and archives.
-- Cloud Storage: Object Tenancy
-  - Multi-tenancy allows sharing of storage resources while maintaining data isolation and security.
-- Cloud Storage: Object Buckets
+## 3.2 Given a scenario, PROVISION STORAGE in cloud environments
+
+- PROVISION STORAGE: _Types::Block::Storage Area Network (SAN)::Zoning_
+  - Data is divided into chunks called **blocks**.
+  - Block storage is not reliant on a server’s filesystem, and data chunks may be distributed across several storage devices.
+  - Block storage organizes the data for the benefit of the data itself (where file storage organizes data for the system’s benefit).
+  - Block storage is used with SANs, which can also be difficult and expensive to implement.
+- PROVISION STORAGE: _Types::File::Network Attached Storage (NAS)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-storage-types-1>
+  - **Data** is **stored** as a discrete **file**, such as a document, a spreadsheet, or an image file.
+  - This type of storage is **inexpensive** and useful for relatively small pieces of data.
+  - NAS devices use file storage.
+  - AWS Elastic File System (EFS), Azure File Storage, GCP Filestore
+- PROVISION STORAGE: _Types::Object::Tenants_
+  - Many organizations have **concerns** regarding data **security** and **privacy** in multi-tenant public cloud infrastructures.
+  - One key security factor is the **tenant identifier** that uniquely labels the consumer and helps filter access to resources.
+  - Multi-tenancy: allows sharing of storage resources while maintaining data isolation and security.
+- PROVISION STORAGE: _Types::Object::Buckets_
+  - Buckets are the primary **storage** unit for **data** objects.
   - Virtual containers within object storage systems used to organize and manage large data volumes.
-- Cloud Storage Tiers: Flash
+  - Buckets are given a **globally unique name** and location when they are created.
+- PROVISION STORAGE: _Tiers::Flash_
   - Highest performance tier with the fastest access times and lowest latency, ideal for demanding workloads.
-- Cloud Storage Tiers: Hybrid
+- PROVISION STORAGE: _Tiers::Hybrid_
   - Offers a balance of performance and cost by combining flash and spinning disk storage.
-- Cloud Storage Tiers: Spinning disks
+- PROVISION STORAGE: _Tiers::Spinning disks_
   - Affordable option for cold storage or less frequently accessed data.
-- Cloud Storage Tiers: Long-term
+- PROVISION STORAGE: _Tiers::Long-term_
   - Low-cost storage designed for long-term data retention and compliance requirements.
-- Cloud Storage Performance Considerations: Input/Output Operations per Second (IOPS)
-  - Measures storage performance for applications requiring high throughput.
-- Cloud Storage Performance Considerations: Read/Write Ratio
-  - Determines the proportion of read and write operations, influencing the choice of storage type.
-- Cloud Storage Protocols: Network File System (NFS)
+- PROVISION STORAGE: _Input/Output Operations per Second (IOPS) and Read/Write_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-input-output-per-second-iops>
+  - **IOPS**: Time taken from start to finish to complete read/write operations.
+  - **Throughput**: data transfer speed(MBps). Impacts performance.
+  - Both are needed to find best drive for data transfer needs.
+- PROVISION STORAGE: _Protocols::Network File System (NFS)_
   - Popular choice for file sharing across Unix and Linux systems.
-- Cloud Storage Protocols: Common Internet File System (CIFS)
+- PROVISION STORAGE: _Protocols::Common Internet File System (CIFS)_
   - Widely used for file sharing between Windows and other operating systems.
-- Cloud Storage Protocols: Internet Small Computer System Interface (iSCSI)
+  - Protocol called SMB(Server Message Block).
+- PROVISION STORAGE: _Protocols::Internet Small Computer System Interface (iSCSI)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/explain-san-storage-solutions>
   - Block-level storage protocol for accessing storage over IP networks.
-- Cloud Storage Protocols: Fibre Channel (FC)
+  - IP tunneling protocol that enables the transfer of SCSI data over an IP-based network to create a SAN.
+  - **Storage Area Network (SAN)**: devices provide greater scalability, fault tolerance, and performance than do NAS devices. SANs, however, are also significantly more complex and more expensive.
+- PROVISION STORAGE: _Protocols::Fibre Channel (FC)_
   - High-performance protocol for SAN environments, offering low latency and high throughput.
-- Cloud Storage Protocols: Non-Volatile Memory Express over Fabrics (NVMe-oF)
+  - Fibre Channel protocols carry SCSI commands(block-level data transfers) over fiber optic cables.
+  - This implementation requires specialized network devices. This is the most common SAN structure.
+- PROVISION STORAGE: _Protocols::Non-Volatile Memory Express over Fabrics (NVMe-oF)_
   - Emerging protocol connecting NVMe devices over Ethernet networks for high performance and scalability.
-- Cloud Storage Data Redundancy and Protection: RAID 0, 1, 5, 6, 10
+  - The original NVMe was developed for direct **attached** storage internal **SSD** devices.
+  - **NVMe-oF adds network** protocol functionality, exposing the storage to Fibre Channel or IP network infrastructures.
+- PROVISION STORAGE: _Redundant Array of Inexpensive Disks::RAID 0, 1, 5, 6, 10_
 
   - Employs multiple disks to store data redundantly, ensuring data availability in case of disk failure. Different RAID levels offer varying redundancy and performance levels.
   - Replication: Creates copies of data across different storage locations for disaster recovery and data availability.
@@ -1033,72 +1078,108 @@ Types of Cloud Storage:
 | 1, 0           | 1                        |
 | 1, 1           | 0                        |
 
-- Cloud Storage Features: Compression
-  - Reduces storage consumption by compressing data.
-- Cloud Storage Features: Deduplication
-  - Eliminates redundant data copies, saving storage space.
-- Cloud Storage Features: Thin Provisioning
+- PROVISION STORAGE: _Storage System Features::Compression_
+  - represents the original **data** in a **format** containing **fewer bits**.
+  - particularly useful for stored data that is not frequently accessed because decompressing the information **takes CPU time**.
+- PROVISION STORAGE: _Storage System Features::Deduplication_
+  - Eliminates redundant data copies, replacing the content with pointers.
+- PROVISION STORAGE: _Storage System Features::Thin Provisioning_
   - Allocates storage dynamically based on actual usage, minimizing upfront costs.
-- Cloud Storage Features: Thick Provisioning
+  - The organization will be billed only for the quantity of storage in use.
+  - The general trade-off between the thin and thick is cost savings versus performance.
+- PROVISION STORAGE: _Storage System Features::Thick Provisioning_
   - Allocates all storage space upfront, ensuring consistent performance.
-- Cloud Storage Features: User Quotas
+  - Business is charged for full storage allocation, even though less may be used.
+  - The general trade-off between the thin and thick is cost savings versus performance.
+- PROVISION STORAGE: _Storage System Features::Replication_
+  - Data may be replicated in multiple ways:
+    - **SAN replication**: replication between SAN storage structures
+    - **VM replication**: replication of VMs between host servers
+    - **Content delivery network (CDN) replication**: replication of cloud-stored data to datacenters near users to provide quicker access
+    - **Distributed file system replication**: replication of server-stored data to servers near the anticipated users to provide quicker access
+    - **Availability zone replication**: replication among datacenters in a regional environment to provide availability if a specific datacenter becomes inaccessible
+- PROVISION STORAGE: _User Quotas_
   - Sets limits on storage usage for individual users or groups.
-- Cloud Storage Features: Hyperconverged infrastructure
-  - Integrates compute, storage, and networking resources into a single platform for simplified management and scalability.
-  - x86 compute + Storage(SSD's) + VM software: emulate multiple VM's for efficient scaling.
-  - Cloud-like infrastructure on premises.
-  - [Hyperconvergence - Simple Is Beautiful](https://www.youtube.com/watch?v=rxoL-WTNvLc)
-  - [Why Hyperconverged Infrastructure is Important? | vSAN](https://www.youtube.com/watch?v=jOewMqQlxo8)
-  - ![hyper-converged infrastructure](img/hyper-converged_infrastructure.PNG)
-- Cloud Storage Features: Software-Defined Storage (SDS)
-  - Offers flexibility and cost-efficiency by leveraging software to manage storage resources.
+- PROVISION STORAGE: _Hyperconverged_
+  - **Hyperconverged**: Cloud-like infrastructure on premises.
+    - Integrates compute, storage, and networking resources into a single platform for simplified management and scalability.
+    - x86 compute + Storage(SSD's) + VM software: emulate multiple cloud VM's for efficient scaling.
+    - [Hyperconvergence - Simple Is Beautiful](https://www.youtube.com/watch?v=rxoL-WTNvLc)
+    - [Why Hyperconverged Infrastructure is Important? | vSAN](https://www.youtube.com/watch?v=jOewMqQlxo8)
+    - ![hyper-converged infrastructure](img/hyper-converged_infrastructure.PNG)
+- PROVISION STORAGE: _Software-Defined Storage (SDS)_
+  - Offers flexibility and cost-efficiency by leveraging **software** to **manage storage resources**.
+  - A storage architecture that separates the management software from the storage hardware.
+  - SDS resides between the data request and the hardware, abstracting the hardware, allowing storage control of SAN, NAS, or traditional storage.
 
-## 3.3 Given a scenario, deploy cloud networking solutions
+## 3.3 Given a scenario, deploy CLOUD NETWORKING solutions
 
-- Why is deploying cloud networking solutions essential?
-  - In today's digital world, a robust and scalable cloud network is essential for businesses of all sizes. This network acts as the backbone for communication, collaboration, and data transfer, enabling seamless operation and optimal performance. To achieve this, a strategic approach to deploying various services and technologies is crucial. This expanded response delves deeper into each component, providing a comprehensive understanding of cloud networking solutions:
-- Deploying Cloud Networking Solutions Fundamental Services: Dynamic Host Configuration Protocol (DHCP)
-  - Assigns IP addresses and network configurations automatically to devices, simplifying network management and ensuring consistent operation.
-- Deploying Cloud Networking Solutions Fundamental Services: Network Time Protocol (NTP)
-  - Synchronizes clocks across all devices, guaranteeing accurate timekeeping for critical applications and processes.
-- Deploying Cloud Networking Solutions Fundamental Services: Domain Name System (DNS)
-  - Translates domain names to IP addresses, enabling users to access resources by familiar names instead of cumbersome numerical addresses.
-- Deploying Cloud Networking Solutions Fundamental Services: Content Delivery Network (CDN)
-  - Distributes content across geographically dispersed servers, optimizing website performance and enhancing user experience, particularly for geographically diverse audiences.
-- Deploying Cloud Networking Solutions Fundamental Services: IP Address Management (IPAM)
-  - Provides tools and processes for managing and allocating IP addresses effectively within the cloud environment, ensuring efficient utilization and preventing conflicts.
-- Deploying Cloud Networking Solutions Secure Communication: Site-to-site VPN
-  - Connects two networks, facilitating secure communication and collaboration between geographically dispersed teams or departments.
-- Deploying Cloud Networking Solutions Secure Communication: Point-to-point VPN
-  - Establishes a secure connection between two individual devices, like a remote user's laptop and the corporate network.
-- Deploying Cloud Networking Solutions Secure Communication: Point-to-site VPN
-  - Enables remote users to connect securely to the cloud network from any location, fostering flexible work arrangements and enhanced productivity.
-- Deploying Cloud Networking Solutions Secure Communication: IPSec
-  - A suite of protocols that encrypts data traffic and establishes authentication procedures, ensuring the security and integrity of VPN connections.
-- Deploying Cloud Networking Solutions Secure Communication: Multiprotocol Label Switching (MPLS)
-  - Directs data traffic across private networks based on predefined labels, offering high performance and reliability for mission-critical applications.
-- Deploying Cloud Networking Solutions Virtual Routing: Dynamic and Static Routing
+- CLOUD NETWORKING: _Services::Dynamic Host Configuration Protocol (DHCP)_
+  - **Assigns IP addresses and network configurations automatically** to devices, simplifying network management and ensuring consistent operation.
+  - less prone to mistakes and less time consuming for administrators.
+- CLOUD NETWORKING: _Services::Network Time Protocol (NTP)_
+  - **Synchronizes clocks across all devices**, guaranteeing accurate timekeeping for critical applications and processes.
+- CLOUD NETWORKING: _Services::Domain Name System (DNS)_
+  - Translates **domain names to IP addresses**, enabling users to access resources by familiar names instead of cumbersome numerical addresses.
+  - Public zones provide name resolution for Internet-facing services, such as your organization’s public website.
+  - Private zones manage internal resources, such as your company’s VPC of internal servers, printers, and databases.
+  - AWS Route 53 DNS, Google Cloud DNS
+- CLOUD NETWORKING: _Services::Content Delivery Network (CDN)_
+  - **Distributes content across geographically dispersed servers**, optimizing website performance and enhancing user experience, particularly for geographically diverse audiences.
+- CLOUD NETWORKING: _Services::IP Address Management (IPAM)_
+  - Software consolidating **management** of multiple **DHCP** and **DNS** services to provide oversight into **IP address** allocation across an cloud enterprise **network**.
+- CLOUD NETWORKING: _Virtual Private Networks (VPNs)::Site-to-site_
+  - encrypted connection between two or more physical sites.
+- CLOUD NETWORKING: _Virtual Private Networks (VPNs)::Point-to-point_
+  - older, poor security, should be avoided.
+- CLOUD NETWORKING: _Virtual Private Networks (VPNs)::Point-to-site_
+  - encrypted **connection** from **single workstation** or device to **business** network.
+- CLOUD NETWORKING: _Virtual Private Networks (VPNs)::IPSec_
+  - A suite of **protocols** that **encrypts data** traffic and establishes authentication procedures, ensuring the security and integrity of VPN connections.
+  - Layer 2 encryption.
+- CLOUD NETWORKING: _Virtual Private Networks (VPNs)::Multiprotocol Label Switching (MPLS)_
+  - Directs data traffic across private networks based on predefined **labels**, offering **high performance** and reliability for mission-critical applications.
+- CLOUD NETWORKING: _Virtual Routing::Dynamic and Static Routing_
   - Dynamic routing protocols like BGP automatically determine the best path for data traffic, while static routing requires manual configuration for specific routes.
-- Deploying Cloud Networking Solutions Virtual Routing: Virtual Network Interface Controller (vNIC)
-  - Acts as a virtual network adapter for VMs, enabling their connection to the cloud network and facilitating communication between resources.
-- Deploying Cloud Networking Solutions Virtual Routing: Subnetting
-  - Divides a large network into smaller, more manageable segments, improving network efficiency and security.
-- Deploying Cloud Networking Security: Load Balancers
-  - Distribute incoming traffic across multiple servers, optimizing resource utilization, preventing overload, and ensuring smooth application performance.
-- Deploying Cloud Networking Security: Firewalls
+- CLOUD NETWORKING: _Virtual Routing::Virtual Network Interface Controller (vNIC)_
+  - Acts as a virtual network adapter for **VMs**, enabling their connection to the cloud network and facilitating **communication between resources**.
+  - Allow network access.
+- CLOUD NETWORKING: _Virtual Routing::Subnetting_
+  - **Divides** a large **network** into smaller, more manageable segments, improving network **efficiency** and **security**.
+- CLOUD NETWORKING: _Network Appliances::Load Balancers_
+  - **Distribute** incoming **traffic** across **multiple servers**, optimizing resource utilization, preventing overload, and ensuring smooth application performance.
+- CLOUD NETWORKING: _Network Appliances::Firewalls_
   - Implement security policies and control traffic flow, protecting the network from unauthorized access and malicious activities.
-- Deploying Cloud Networking Security: Virtual Private Cloud (VPC):
+  - WAFs examine network traffic, apply rules, and then either permit or deny traffic—to protect cloud resources.
+  - configure access control lists (ACLs) that consist of rules establishing criteria for accepted or blocked connections.
+  - AWS WAF, Azure WAF, Google Cloud Armor.
+- CLOUD NETWORKING: _Virtual Private Cloud (VPC)::Hub and Spoke_
   - Provides a logically isolated network within the cloud environment, offering greater control over resources and improved security.
-- Deploying Cloud Networking Security: Hub and Spoke
+  - SDNs design, Hub and spoke, which allows for centralized management.
+  - Azure Active Directory and DNS. All traffic passes through this network and can be governed by it.
   - Connects multiple VPCs to a central hub VPC, enabling secure communication between them and promoting efficient network management.
-- Deploying Cloud Networking Security: Peering
+- CLOUD NETWORKING: _Virtual Private Cloud (VPC)::Peering_
   - Establishes direct communication between VPCs without traversing the public internet, minimizing latency and enhancing performance and security.
-- Deploying Cloud Networking Security: VLAN/VXLAN/GENEVE
+  - Appear to customer as single network.
+- CLOUD NETWORKING: _VLAN/VXLAN/GENEVE_
   - Create virtualized networks within a single physical network, enabling isolation and resource allocation for specific applications or teams.
-- Deploying Cloud Networking Security: Single Root Input/Output Virtualization (SR-IOV)
-  - Allows VMs to directly access physical network adapters, bypassing the hypervisor and achieving superior network performance.
-- Deploying Cloud Networking Security: Software-defined Network (SDN)
-  - Decouples the network control plane from the data plane, enabling centralized management and programmatic control of the network, enhancing agility and responsiveness.
+  - **Virtual Local Area Network**:
+    - using software rules to isolate traffic to only the ports that are a member of the VLAN.
+    - Network frames are tagged with a VLAN identifier.
+    - The result is data isolation within a VLAN without having to maintain physically separate networks. VLANs are limited to 4094 networks.
+  - **Virtual Extensible Local Area Network**:
+    - Virtual extensible local area networks (VXLANs) extend the functionality of VLANs by adding increased scalability that is appropriate for cloud, on-premises, and hybrid networks. VXLANs support up to 16 million separate networks.
+  - **Generic Network Virtualization Encapsulation**:
+    - combined standard for **VXLANs** and **network virtualization** using generic routing encapsulation (NVGRE).
+- CLOUD NETWORKING: _Single Root Input/Output Virtualization (SR-IOV)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/identify-network-configurations>
+  - Allows VMs to **directly access physical network adapters**, **bypassing the hypervisor** and achieving superior network performance.
+- CLOUD NETWORKING: _Software-defined Network (SDN)_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-software-defined-network-sdn-2>
+  - Virtualize network management.
+  - **Decouples** the network **control plane** from the **data plane**, enabling centralized management and programmatic **control** of the **network**, enhancing agility and responsiveness.
+  - permits network administrators to manage/automate configurations for multiple devices, such as routers, switches, and load balancers.
+  - ![sdn](img/sdn.png)
 
 ## 3.4 Given a scenario, configure the appropriate compute sizing for a deployment
 

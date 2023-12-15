@@ -78,6 +78,10 @@
   - Network Information Service
 - NOC
   - Network Operations Center
+- NTP
+  - Network Time Protocol
+- NTS
+  - Network Time Security
 - RPO
   - Recovery Point Objective
 - RTO
