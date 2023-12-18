@@ -188,11 +188,11 @@
     - Studying historical data to identify patterns and predict future trends in resource usage, performance, and costs.
     - Establish baselines of normal behavior. Monitor for anomalies that may require capacity adjustments.
     - Optimize resource allocation and budget planning.
-- Capacity Planning Baselines
+- Capacity Planning: _Baselines_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
   - A **reference point for comparing** current performance and resource usage.
   - Established during initial deployment or after a period of stable operation.
-- Capacity Planning Patterns
+- Capacity Planning: _Patterns_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/trend-analysis-2>
   - **Recurring trends** in resource usage or system behavior.
   - Can be used to identify potential bottlenecks and **predict** future demands.
@@ -202,7 +202,7 @@
   - Outliers. Cannot predict.
   - Need to be investigated to identify the root cause and take corrective action.
   - For example, performance degradation for a web app is unexpected, based on the number of users running the application. Further investigation might point to an unrelated process running on the system (such as a backup or data deduplication process) that is consuming resources and negatively impacting the web app.
-- Capacity Planning Performance Capacity Planning
+- Capacity Planning: _Performance Capacity Planning_
   - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/performance-and-capacity-planning>
   - Ongoing **monitoring** of application performance, including user experience quality, CPU, memory, and disk usage, to ensure **optimal resource allocation**.
   - Effective capacity planning considers these licensing models and factors to ensure that resources are allocated efficiently and in line with business needs, user demands, and budget constraints
@@ -1454,161 +1454,232 @@ Preparation:
 - MAINTAIN EFFICIENT OPERATION: _Dashboard and Reporting::Availability_
   - CSP shows you what services are currently available.
 
-## 4.3 Given a scenario, optimize cloud environments
+## 4.3 Given a scenario, OPTIMIZE CLOUD ENVIRONMENTS
 
-- Optimize Cloud Environments: Right-Sizing
-  - Right-sizing involves matching cloud resources to the actual needs of workloads to optimize performance and cost-effectiveness.
-- Optimize Cloud Environment Right-Sizing: Auto-Scaling
-  - automated deployments and virtualization to provide the appropriate resources for the **current demand**.
-  - Automatically adjusting resources based on demand ensures optimal performance during peak times and cost savings during lulls.
-- Optimize Cloud Environment Right-Sizing: Horizontal Scaling
-  - Adding more instances of resources, such as servers, to distribute the workload and improve performance.
-- Optimize Cloud Environment Right-Sizing: Vertical Scaling
-  - Increasing the capacity of individual resources, such as upgrading CPU or memory, to handle increased demand.
-- Optimize Cloud Environment Right-Sizing: Cloud Bursting
-  - Extending workloads to the cloud during peak demand to avoid resource constraints.
-- Optimize Cloud Environment Compute: CPUs
-  - Aligning the number of CPUs with workload requirements prevents over-provisioning.
-- Optimize Cloud Environment Compute: GPUs
-  - Utilizing Graphics Processing Units for parallel processing tasks like AI and machine learning.
-- Optimize Cloud Environment Compute: Memory
-  - Allocating the right amount of memory to applications ensures optimal performance.
-- Optimize Cloud Environment Compute: Containers
-  - Efficiently managing containerized applications enhances resource utilization and deployment agility.
-- Optimize Cloud Environment Storage: Tiers
+- OPTIMIZE CLOUD ENVIRONMENTS: _Right-Sizing::Auto-Scaling_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/understand-the-right-sizing-concept>
+  - With traditional servers, administrators tended to over-purchase hardware, assuming demand for the service or application would increase over time. Often, this led to inefficient spending.
+  - **Right-Sizing**: **increase or decrease compute** capacity to **match** actual **demand**.
+    - The goal is to neither over-allocate resources (which can be expensive) nor under-allocate (which can reduce performance).
+  - **Auto-scaling**: adjusts the **compute** capabilities of instances **dynamically**.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Right-Sizing::Horizontal Scaling_
+  - Adding **more instances**(physical or virtual) of resources, such as servers, to distribute the workload and improve performance.
+  - also called: Scaling-Out.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Right-Sizing::Vertical Scaling_
+  - Increasing the capacity of individual resources, such as **upgrading** CPU or memory, to handle increased demand.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Right-Sizing::Cloud Bursting_
+  - **Extending workloads to the cloud** during **peak demand** to avoid resource constraints.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Compute::CPUs_
+  - Aligning the number of **CPUs** with **workload** requirements prevents over-provisioning.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Compute::GPUs_
+  - **Utilizing Graphics Processing Units for parallel processing** tasks like AI and machine learning.
+  - **GPU benefit**:
+    - Machine learning
+    - High-performance computing
+    - Graphics intensive
+    - Data analysis
+- OPTIMIZE CLOUD ENVIRONMENTS: _Compute::Memory_
+  - Allocating the **right amount of memory** to applications ensures optimal performance.
+  - **Workloads benefit**:
+    - Databases
+    - Big data analytics
+    - In-memory caches such as webapps
+- OPTIMIZE CLOUD ENVIRONMENTS: _Compute::Containers_
+  - Resources such as **CPU and memory** can be individually optimized to these **instances**.
+  - Container **instances benefit from auto-scaling**.
+  - **Services benefit**:
+    - Microservices
+    - Service-based applications
+    - Drupal
+    - WordPress
+    - CouchDB
+- OPTIMIZE CLOUD ENVIRONMENTS: _Storage::Tiers::Adaptive Optimization_
   - Utilizing different storage classes based on performance and cost requirements.
-- Optimize Cloud Environment Storage: Adaptive Optimization
-  - Automatically adjusting storage performance based on demand.
-- Optimize Cloud Environment Storage: IOPS
-  - Optimizing Input/Output Operations Per Second for storage efficiency.
-- Optimize Cloud Environment Storage: Capacity
-  - Scaling storage capacity based on data growth and access patterns.
-- Optimize Cloud Environment Storage: Deduplication
-  - Eliminating duplicate data to reduce storage space.
-- Optimize Cloud Environment Storage: Compression
-  - Reducing storage space by compressing data.
-- Optimize Cloud Environment Network: Bandwidth
-  - Optimizing data transfer rates based on usage patterns.
-- Optimize Cloud Environment Network: NICs
-  - Managing Network Interface Controllers to balance performance and cost.
-- Optimize Cloud Environment Network: Latency
-  - Minimizing network delays to enhance application responsiveness.
-- Optimize Cloud Environment Network: SDN
-  - Implementing Software-Defined Networking for agile and efficient network management.
-- Optimize Cloud Environment Network: Edge Computing
-  - Processing data closer to the source to reduce latency.
-- Optimize Cloud Environment Network: CDN
-  - Using Content Delivery Networks for fast and reliable content delivery.
-- Optimize Cloud Environments: Geographical Placement
-  - Distributing resources across different geographical locations for resilience and reduced latency.
-- Optimize Cloud Environments: Cluster Placement
-  - Grouping related resources for improved performance and reliability.
-- Optimize Cloud Environments Placement: Redundancy
-  - Implementing redundant resources to ensure high availability.
-- Optimize Cloud Environments Placement: Colocation
-  - Placing related resources together for efficient communication.
-- Optimize Cloud Environments: Generic Drivers and Firmware
-  - Using generic device drivers for standard components.
-- Optimize Cloud Environments: Vendor Drivers and Firmware
-  - Employing vendor-specific drivers for optimized performance.
-- Optimize Cloud Environments: Open Source Drivers and Firmware
-  - Leveraging open-source drivers and firmware for flexibility and community support.
+  - Storage features such as SSD versus HDD storage, IOPS transactions, and cost optimization.
+  - **Tiers**:
+    - **S**tandard:General-purpose tier using object storage and appropriate for frequent access
+    - **Intelligent tiering**: Useful for unknown or frequently changing data storage
+    - **Standard infrequent**:Long-term storage that is rarely accessed but must perform well when needed (backups)
+    - **Glacier**:Low-cost storage for very infrequently access data such as long-term archives
+  - **Adaptive Optimization**: **automatically adjusting** storage **tiers** to balance cost with performance based on demand.
+    - automatically **moving data between frequent and infrequent storage** media to optimize cost.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Storage::IOPS_
+  - **Input-output per second (IOPS)**: how quickly data can be read/write the drive.
+  - Optimization: selecting the appropriate storage disk type(SSD, HDD) for the instance.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Storage::Capacity_
+  - Not overpay for storage. **Scaling storage capacity** based on **data** growth and access patterns.
+  - **Thin provisioning**: storage grows dynamically up to that maximum size, consuming only what it needs.
+  - **Thick provisioning**: storage capacity that is then reserved for the instance, whether needed or not.
+  - **Cloud bursting**: Configure supplementary public cloud storage for when the organization’s private cloud storage is full.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Storage::Deduplication_
+  - **Remove duplicate blocks of data** from storage, replacing the data with **pointers** to a single instance.
+  - **Files benefit**:
+    - Files that are infrequently accessed or changed
+    - General-purpose file servers
+    - Backup storage locations
+    - Deployment image storage locations
+  - **Deduplication considerations**:
+    - Configure policies to govern when files become eligible for deduplication (infrequently accessed files).
+    - Configure deduplication well before a migration from on-premises to cloud storage.
+    - Configure deduplication to run periodically after the migration.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Storage::Compression_
+  - Reduce overall file size, but increasing compute to read data.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Network::Bandwidth_
+  - **Understand the current network topology, performance, and bandwidth**.
+  - Streamline communications paths within the network by removing unnecessary filters, proxies, or other devices that might slow performance (be sure to retain critical security appliances, however).
+  - Consider ways to optimize data, such as compression, and remove unnecessary data from the network.
+  - **Network segmentation** provides security, but it also provides performance **benefits by separating traffic**.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Network::Network Interface Controllers (NICs)_
+  - **MTU**: maximum transmission unit. Maximum amount of bytes that can be sent in each packet over the local network.
+  - **NIC Teaming**: multiple NICs for fault tolerance.
+  - CSPs offer network-optimized instances for various workloads.
+    - Applications that can use 100Gbps
+    - Databases
+    - Collaboration services
+    - High-performance web servers
+- OPTIMIZE CLOUD ENVIRONMENTS: _Network::Latency_
+  - Round-trip time.
+  - Optimizing network performance with settings and components such as MTU, NICs, network media, and devices.
+  - Placing data nearer to the users(CDN).
+  - Cache frequently used data.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Network::SDN_
+  - Same as latency.
+  - Configure shorter, more efficient paths and remove unneeded devices from the path.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Network::Edge Computing::CDN_
+  - Processing **data closer to the source** to reduce latency.
+  - Using Content Delivery Networks for **fast and reliable** content delivery.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Placement::Geographical_
+  - Edge locations are **placed near major metropolitan areas** for resilience and **reduced latency**.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Placement::Cluster Placement_
+  - **Grouping related resources** for improved **performance** and reliability.
+  - **Cluster optimization**:
+    - Use placement groups to create instances with low-latency connections.
+    - Select VM instances designed for cluster services.
+    - Select storage optimized for cluster services.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Placement::Redundancy_
+  - Redundancy **ensures high availability** and is a major benefit of cloud computing.
+  - In case of a natural disaster, man-made interference, or other outages that keep consumers from accessing cloud services.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Placement::Colocation_
+  - Colocation is a term describing a shared datacenter.
+  - The datacenter may be a private cloud, a hybrid cloud, or a managed service provider’s location.
+  - Companies that provide colocation services may offer **multiple geographically dispersed sites**. These sites may provide CDN and edge networking services as well as geographic redundancy.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Device Drivers and Firmware::Generic_
+  - While may be available, use vendor-created for best results.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Device Drivers and Firmware::Vendor_
+  - **Best** option is usually to use **vendor-created drivers** because rigorous testing by manufacturer.
+  - Updated device drivers fix bugs and expose new functionality.
+- OPTIMIZE CLOUD ENVIRONMENTS: _Device Drivers and Firmware::Open Source_
+  - Created for very **specialized hardware** devices or frequently **changing OSs**.
+  - **Test** the drivers **extensively** before placing them into **production**.
 
-## 4.4 Given a scenario, apply proper automation and orchestration techniques
+## 4.4 Given a scenario, apply proper AUTOMATION and ORCHESTRATION techniques
 
-- Proper Automation and Orchestration Techniques with Infrastructure as Code (IaC):
-  - Infrastructure as Code involves managing and provisioning infrastructure through machine-readable script files. It provides a consistent and reproducible way to deploy and configure infrastructure components.
-- Proper Automation and Orchestration Techniques with Infrastructure as Code (IaC): Infrastructure Components and Their Integration
-  - Define infrastructure components, such as servers, networks, and databases, and integrate them through code to ensure consistency and reliability.
-- Proper Automation and Orchestration Techniques: Continuous Integration/Continuous Deployment (CI/CD)
-  - CI/CD is a set of practices that involve automatically testing and deploying code changes. It enhances the speed, reliability, and efficiency of the development and deployment processes.
-- Proper Automation and Orchestration Techniques: Version Control
-  - Version control systems, like Git, enable tracking changes to code, configurations, and infrastructure. It ensures collaboration, rollback capabilities, and a history of modifications.
-- Proper Automation and Orchestration Techniques with Configuration Management:
-  - Configuration management involves managing and updating the configuration of servers and infrastructure components.
-- Proper Automation and Orchestration Techniques with Configuration Management: Playbook
-  - A playbook is a set of instructions specifying the desired state of the system. Tools like Ansible use playbooks for configuration management.
-- Proper Automation and Orchestration Techniques: Containers
+- AUTOMATION and ORCHESTRATION: _Infrastructure as Code::Infrastructure Components and Their Integration_
+  - In older network management models, devices such as routers and firewalls were configured manually on a per-device basis. Such a practice is error prone and inefficient.
+  - Infrastructure as Code involves **managing and provisioning infrastructure** through machine-readable **script** files. It provides a **consistent and reproducible** way to deploy and configure infrastructure components.
+  - Define infrastructure components, such as servers, networks, and databases, and integrate them through code to ensure **consistency and reliability**.
+- AUTOMATION and ORCHESTRATION: _Continuous Integration/Continuous Deployment (CI/CD)_
+  - CI/CD is a set of practices that involve **automatically testing and deploying code changes**.
+  - Help with configuration drift and decentralized management.
+  - **Manual changes** should **never** be made directly on individual devices.
+  - Enhances the speed, reliability, and efficiency of the development and deployment processes.
+- AUTOMATION and ORCHESTRATION: _Version Control_
+  - Version control systems, like Git, enable **tracking changes to code**, configurations, and infrastructure.
+  - Ensures collaboration, rollback capabilities, and a history of modifications.
+- AUTOMATION and ORCHESTRATION: _Configuration Management::Playbook_
+  - A playbook is a set of **instructions specifying the desired state** of the system.
+  - Tools like Ansible use playbooks for configuration management.
+  - Ansible is agentless; it connects via SSH to the managed nodes to manage configurations.
+- AUTOMATION and ORCHESTRATION: _Containers_
   - Containers encapsulate applications and their dependencies, providing a lightweight and consistent environment for deployment across various computing environments.
-- Proper Automation and Orchestration Techniques: Automation Activities
-  - Automate routine operations and tasks to enhance efficiency and reduce manual effort.
-- Proper Automation Activities: Updates
-  - Automate the process of updating software, applications, and configurations.
-- Proper Automation Activities: Scaling
-  - Automatically adjust resources to handle varying workloads through scaling.
-- Proper Automation Activities: Shutdowns
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Routine Operations_
+  - **Repetitive tasks**. These can include log file archiving, software deployments, or even account management jobs.
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Updates_
+  - Automate the process of **updating software, applications, and configurations**.
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Scaling_
+  - Automatically **adjust resources** to handle varying **workloads** through scaling.
+  - Combining automation tools with IaC practices gives a **predictable configuration**.
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Shutdowns_
   - Schedule automated shutdowns for non-peak hours to save resources.
-- Proper Automation Activities: Restarts
-  - Automate the restart of services to ensure continuous availability.
-- Proper Automation Activities: Create Internal APIs
-  - Automation can be used to create internal APIs for better integration between different components.
-- Proper Automation Activities Secure Scripting: No Hardcoded Passwords
-  - Avoid storing passwords directly in scripts.
-- Proper Automation Activities Secure Scripting: Use of Individual Service Accounts
-  - Utilize service accounts with limited privileges for automation tasks.
-- Proper Automation Activities Secure Scripting: Password Vaults
-  - Store and retrieve passwords securely from centralized password vaults.
-- Proper Automation Activities Secure Scripting: Key-Based Authentication
-  - Implement key-based authentication for secure access to systems.
-- Proper Automation Activities Orchestration Sequencing:
-  - Orchestration sequencing involves coordinating and sequencing automated tasks to ensure they run in the correct order.
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Restarts_
+  - **Agent** must be configured to **start automatically** on the system so that it becomes available again after the **reboot**.
+- AUTOMATION and ORCHESTRATION: _Automation Activities::Create Internal APIs_
+  - **Permit access to resources**. Quicker development by drawing from a pool of existing resources.
+- AUTOMATION and ORCHESTRATION: _Secure Scripting::No Hardcoded Passwords_
+  - **Avoid storing passwords directly in scripts**.
+- AUTOMATION and ORCHESTRATION: _Secure Scripting::Use of Individual Service Accounts_
+  - Utilize service accounts with **limited privileges** for automation tasks.
+- AUTOMATION and ORCHESTRATION: _Secure Scripting::Password Vaults_
+  - **Store and retrieve passwords securely** from **centralized** password vaults.
+- AUTOMATION and ORCHESTRATION: _Secure Scripting::Key-Based Authentication_
+  - Best for **secure access** to systems.
+- AUTOMATION and ORCHESTRATION: _Orchestration Sequencing_
+  - Orchestration sequencing involves **coordinating and sequencing automated tasks** to ensure they run in the correct order.
 
-## 4.5 Given a scenario, perform appropriate backup and restore operations
+## 4.5 Given a scenario, perform appropriate BACKUP and RESTORE operations
 
-- Backup and Restore Operations in the Cloud Backup Types: Incremental
-  - Backs up only the data that has changed since the last backup, reducing backup time and storage requirements.
-- Backup and Restore Operations in the Cloud Backup Types: Differential
+- BACKUP and RESTORE: _Backup Types::Incremental_
+  - Backs up **only the data that has changed since the last backup**, reducing backup time and storage requirements.
+  - **Resets the archive bit**, so only changes are backed up. Slowest to restore.
+- BACKUP and RESTORE: _Backup Types::Differential_
   - Backs up all changes since the last full backup, simplifying the restoration process compared to incremental backups.
-- Backup and Restore Operations in the Cloud Backup Types: Full
-  - Backs up all selected data every time, ensuring a complete snapshot of the system.
-- Backup and Restore Operations in the Cloud Backup Types: Synthetic Full
-  - Combines incremental and differential backups to create a full backup without directly copying all data.
-- Backup and Restore Operations in the Cloud Backup Types: Snapshot
+  - Does **not reset archive bit**, so each day includes everything from last complete backup.
+- BACKUP and RESTORE: _Backup Types::Full_
+  - **Complete backup** of the system. Fastest to restore.
+- BACKUP and RESTORE: _Backup Types::Synthetic Full_
+  - **Combines incremental and differential backups** to create a full backup without directly copying all data.
+- BACKUP and RESTORE: _Backup Types::Snapshot_
   - Captures the state of a system at a specific point in time, providing a quick recovery option.
-- Backup and Restore Operations in the Cloud Backup Objects:
-  - Various data elements can be backed up to ensure comprehensive data protection.
-- Backup and Restore Operations in the Cloud Backup Objects: Application-level Backup
-  - Backing up specific applications and their data.
-- Backup and Restore Operations in the Cloud Backup Objects: Filesystem Backup
-  - Backing up entire filesystems or specific directories.
-- Backup and Restore Operations in the Cloud Backup Objects: Database Dumps
-  - Backing up databases to capture their structure and content.
-- Backup and Restore Operations in the Cloud Backup Objects: Configuration Files
-  - Backing up configuration settings to restore system configurations.
-- Backup and Restore Operations in the Cloud Backup Targets:
-  - Different storage mediums serve as targets for storing backup data.
-- Backup and Restore Operations in the Cloud Backup Targets: Tape
-  - Traditional backup medium offering offline storage for long-term retention.
-- Backup and Restore Operations in the Cloud Backup Targets: Disk
-  - Fast and accessible storage for quick backup and recovery.
-- Backup and Restore Operations in the Cloud Backup Targets: Object
-  - Cloud-based object storage solutions for scalable and durable backups.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Retention
-  - Duration for which backup data is retained before being purged.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Schedules
-  - Defined times for automated backup processes.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Location
-  - Specifying where backup copies are stored, whether on-site or off-site.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: SLAs
-  - Adherence to Service Level Agreements governing backup and recovery processes.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Recovery Time Objective (RTO)
+  - Read-only **copy of data(state) at a specific point in time**.
+  - Also be referred to as images.
+- BACKUP and RESTORE: _Backup Objects::Application-level Backup_
+  - **Program**’s essential **configuration files**, executables, and supporting files.
+  - Backup before migration application to new version.
+- BACKUP and RESTORE: _Backup Objects::Filesystem Backup_
+  - Backing up entire filesystems(user data) or specific directories.
+  - Usually runs more often, because files change regularly.
+- BACKUP and RESTORE: _Backup Objects::Database Dumps_
+  - Backing up **databases** to capture their structure and **content**.
+  - **Dump** can be executed without **stopping database**.
+  - Dump gathers metadata into SQL statements that can recreate the database.
+- BACKUP and RESTORE: _Backup Objects::Configuration Files_
+  - Backing up configuration settings to **restore system configurations**.
+- BACKUP and RESTORE: _Backup Targets::Tape_
+  - Tapes often have a **good cost-to-capacity ratio**, have **excellent long-term archive ability**, and are easy to move and store.
+- BACKUP and RESTORE: _Backup Targets::Disk_
+  - **Fast** and accessible storage for **quick backup and recovery**.
+- BACKUP and RESTORE: _Backup Targets::Object_
+  - Cloud-based object storage solutions for **scalable** and **cost efficient**.
+- BACKUP and RESTORE: _Backup and Restore Policies::Retention_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/implement-backup-and-restore-policies>
+  - **Duration** for which **backup data is retained** before being purged.
+  - Retention Policies govern hwo long data must be stored.
+- BACKUP and RESTORE: _Backup and Restore Policies::Schedules_
+  - Defined times for **automated backup processes**.
+- BACKUP and RESTORE: _Backup and Restore Policies::Location_
+  - Specifying where **backup** copies are stored, whether **on-site or off-site**.
+- BACKUP and RESTORE: _Backup and Restore Policies::SLAs_
+  - **Adherence** to Service Level Agreements **governing backup and recovery processes**.
+- BACKUP and RESTORE: _Backup and Restore Policies::Recovery Time Objective (RTO)_
   - Maximum acceptable downtime for restoring services.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Recovery Point Objective (RPO)
+- BACKUP and RESTORE: _Backup and Restore Policies::Recovery Point Objective (RPO)_
   - Maximum allowable data loss during a system outage.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: Mean Time to Recovery (MTTR)
+- BACKUP and RESTORE: _Backup and Restore Policies::Mean Time to Recovery (MTTR)_
   - Average time required to recover from a system failure.
-- Backup and Restore Operations in the Cloud Backup and Restore Policies: 3-2-1 Rule
-  - Three Copies of Data: Keep at least three copies of your important data. This includes the original data and two additional copies.
-  - Two Different Media: Store the copies on two different types of media or storage devices. For example, you might have one copy on a primary server, another on external hard drives, and a third on cloud storage.
-  - One Copy Off Site: Keep one of the copies in an off-site or remote location. This provides protection against local disasters such as fires, floods, or other events that could affect the primary and secondary copies stored in the same physical location.
-- Restore Operations in the Cloud Methods: In Place
-  - Overwrites existing data with the restored data.
-- Restore Operations in the Cloud Methods: Alternate Location
-  - Recovers data onto a different storage device than its original location.
-- Restore Operations in the Cloud Methods: Restore Files
-  - Recovers specific individual files or folders from a backup or snapshot.
-- Restore Operations in the Cloud Methods: Snapshot
-  - Replicates the state of data at a specific point in time, allowing for rollback to that state.
+- BACKUP and RESTORE: _Backup and Restore Policies::3-2-1 Rule::Three Copies of Data_
+  - **Three Copies of Data**: Keep at least three copies of your important data. This includes the original data and two additional copies.
+- BACKUP and RESTORE: _Backup and Restore Policies::3-2-1 Rule::Two Different Media_
+  - **Two Different Media**: Store the copies on two different types of media or storage devices. For example, you might have one **copy** on a primary server, another on **external hard drives**, and a third on **cloud storage**.
+- BACKUP and RESTORE: _Backup and Restore Policies::3-2-1 Rule::One Copy Off Site_
+  - **One Copy Off Site**: Keep **one** of the **copies** in an **off-site** or remote location. This provides protection against local disasters such as fires, floods, or other events that could affect the primary and secondary copies stored in the same physical location.
+- BACKUP and RESTORE: _Restoration Methods::In Place_
+  - **Overwrites** existing data with the restored data.
+- BACKUP and RESTORE: _Restoration Methods::Alternate Location_
+  - **Recovers** data onto a **different storage device** than its original location.
+- BACKUP and RESTORE: _Restoration Methods::Restore Files_
+  - **Recovers** specific individual **files** or folders from a backup or snapshot.
+- BACKUP and RESTORE: _Restoration Methods::Snapshot_
+  - Replicates the **state** of data at a **specific point in time**, allowing for rollback to that state.
 
 ## 4.6 Given a scenario, perform disaster recovery tasks
 
