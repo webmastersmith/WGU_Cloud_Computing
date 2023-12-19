@@ -1661,11 +1661,11 @@ Preparation:
 - BACKUP and RESTORE: _Backup and Restore Policies::SLAs_
   - **Adherence** to Service Level Agreements **governing backup and recovery processes**.
 - BACKUP and RESTORE: _Backup and Restore Policies::Recovery Time Objective (RTO)_
-  - Maximum acceptable downtime for restoring services.
+  - **Maximum** acceptable **downtime** for **restoring services**.
 - BACKUP and RESTORE: _Backup and Restore Policies::Recovery Point Objective (RPO)_
-  - Maximum allowable data loss during a system outage.
+  - **Maximum** allowable **data loss** during a system outage.
 - BACKUP and RESTORE: _Backup and Restore Policies::Mean Time to Recovery (MTTR)_
-  - Average time required to recover from a system failure.
+  - **Average** time required to **recover** from a **system failure**.
 - BACKUP and RESTORE: _Backup and Restore Policies::3-2-1 Rule::Three Copies of Data_
   - **Three Copies of Data**: Keep at least three copies of your important data. This includes the original data and two additional copies.
 - BACKUP and RESTORE: _Backup and Restore Policies::3-2-1 Rule::Two Different Media_
@@ -1681,76 +1681,90 @@ Preparation:
 - BACKUP and RESTORE: _Restoration Methods::Snapshot_
   - Replicates the **state** of data at a **specific point in time**, allowing for rollback to that state.
 
-## 4.6 Given a scenario, perform disaster recovery tasks
+## 4.6 Given a scenario, perform DISASTER RECOVERY tasks
 
-- Disaster Recovery: Failovers
-  - Failovers involve switching from a primary system to a secondary or backup system to maintain continuous operations in the event of a failure. This can be automatic (auto-failover) or manually triggered.
-- Disaster Recovery: Failback
-  - Failback is the process of returning operations to the primary system after a failover event. It ensures a smooth transition back to the original environment once the issue causing the failover is resolved.
-- Disaster Recovery: Restore Backups
+- DISASTER RECOVERY: _Failovers_
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/configure-clusters-for-high-availability>
+  - Failovers involve **switching from a primary system to a secondary** or backup system to maintain continuous operations in the event of a failure. This can be automatic (auto-failover) or manually triggered.
+- DISASTER RECOVERY: _Failback_
+  - Failback is the process of **returning operations to the primary system** after a failover event.
+  - Ensures a smooth transition back to the original environment once the issue causing the failover is resolved.
+- DISASTER RECOVERY: _Restore Backups_
   - Restoring backups is a critical aspect of disaster recovery, involving the retrieval and deployment of backed-up data to resume normal operations.
-- Disaster Recovery: Replication
-  - Replication creates and maintains duplicate copies of data and infrastructure components to ensure availability and minimize data loss in the event of a disaster.
-- Disaster Recovery: Network Configurations
+  - Should have **one copy off site**.
+- DISASTER RECOVERY: _Replication_
+  - Replication **creates and maintains duplicate copies of data** and infrastructure components to ensure availability and minimize data loss in the event of a disaster.
+  - Can also be VMs. Redundant VMs(cloned copies) that can take over in event of failure.
+- DISASTER RECOVERY: _Network Configurations_
   - Network configurations play a crucial role in disaster recovery, defining how data and traffic flow between primary and secondary sites during failover and failback.
-- Disaster Recovery On-Premises and Cloud Sites: Hot Site
-  - A fully operational and redundant site that is ready to take over instantly.
-- Disaster Recovery On-Premises and Cloud Sites: Warm Site
-  - A partially configured site with essential infrastructure that can be quickly brought online when needed.
-- Disaster Recovery On-Premises and Cloud Sites: Cold Site
-  - A site with minimal infrastructure and equipment that requires more time for setup and configuration during a disaster.
-- Disaster Recovery: RPO (Recovery Point Objective)
-  - The maximum acceptable data loss measured in time before a disaster occurs.
-- Disaster Recovery: RTO (Recovery Time Objective)
-  - The maximum allowable downtime for systems and applications to be restored after a disaster.
-- Disaster Recovery: SLA (Service Level Agreement)
-  - Agreed-upon levels of service that the organization commits to maintaining during disaster recovery.
-- Disaster Recovery Requirements: Corporate Guidelines
+  - **NIC Teaming**: one or more NIC into a vNIC. Network redundancy.
+  - **Load Balancing**: Distributing load and redundancy.
+- DISASTER RECOVERY: _On-Premises and Cloud Sites::Hot Site_
+  - A **fully operational and redundant site** that is ready to take over instantly.
+  - building, equipment, full up to date copy of data.
+- DISASTER RECOVERY: _On-Premises and Cloud Sites::Warm Site_
+  - A **partially configured site with essential infrastructure** that can be quickly brought online when needed.
+  - Building and equipment, no data.
+- DISASTER RECOVERY: _On-Premises and Cloud Sites::Cold Site_
+  - A **site with minimal infrastructure** and equipment that requires more time for setup and configuration during a disaster.
+  - building.
+- DISASTER RECOVERY: _Requirements::RPO (Recovery Point Objective)_
+  - The **maximum acceptable data loss measured in time** before a disaster occurs.
+- DISASTER RECOVERY: _Requirements::RTO (Recovery Time Objective)_
+  - The **maximum allowable downtime** for systems and applications to be restored after a disaster.
+  - Time needed to maintain an organization’s **business continuity**.
+- DISASTER RECOVERY: _Requirements::SLA (Service Level Agreement)_
+  - **Agreed-upon** levels of **service** that the organization commits to maintaining during disaster recovery.
+  - Set the service requirements and **expectations** between a **consumer** and a **provider**.
+- DISASTER RECOVERY: _Requirements::Corporate Guidelines_
   - Internal policies and guidelines that shape disaster recovery planning based on business priorities.
-- Disaster Recovery Documentation: DR Kit
-  - A collection of essential documents, contact information, and procedures needed during a disaster.
-- Disaster Recovery Documentation: Playbook
+- DISASTER RECOVERY: _Documentation::DR Kit_
+  - A collection of **essential documents**, contact information, and **procedures** needed **during a disaster**.
+- DISASTER RECOVERY: _Documentation::Playbook_
   - A comprehensive guide detailing step-by-step procedures for responding to different disaster scenarios.
-- Disaster Recovery Documentation: Network Diagram
-  - Visual representation of the organization's network architecture, aiding in quick and accurate recovery.
-- Disaster Recovery Geographical Datacenter Requirements
-  - Considering geographical factors is crucial for effective disaster recovery.
-  - Organizations may need data centers in different geographical locations to mitigate the impact of regional disasters. Factors to consider include seismic activity, weather patterns, and accessibility.
+  - **Specific actionable procedures to address particular events**.
+- DISASTER RECOVERY: _Documentation::Network Diagram_
+  - **Visual representation** of the **organization's network architecture**, aiding in quick and accurate recovery.
+- DISASTER RECOVERY: _Geographical Datacenter Requirements_
+  - Organizations may need data centers in different geographical locations to **mitigate the impact of regional disasters**.
 
-## 5.1 Given a scenario, use the troubleshooting methodology to resolve cloud-related issues
+## 5.1 Given a scenario, use the TROUBLESHOOTING METHODOLOGY to resolve cloud-related issues
 
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 1. Identify the Problem
+- TROUBLESHOOTING METHODOLOGY: 1. Identify the Problem
 
-  - [Certmaster Learn Cloud+ Troubleshooting Methodology](https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/introduction-understand-the-troubleshooting-methodology-1)
+  - <https://learn.comptia.org/app/certmaster-learn-for-cloud-exam-cv0-003#read/section/introduction-understand-the-troubleshooting-methodology-1>
   - **Gather information** about the symptoms of the problem.
     - **Question the user** and identify any recent changes made to the cloud environment.
   - Identify the affected users, systems, and applications.
     - Inquire about **environmental or infrastructure changes**. ex.. someone working on electrical system, hvac, physical security.
     - Perform backups before implementing any changes to ensure data integrity.
   - Determine the time of onset and **any recent changes** by **reviewing logs** and monitoring systems for any relevant errors or warnings.
-  - Mnemonic: "**I Eat Three Eggs In Virginia Daily**"
+  - Mnemonic: "**I Do Eat Three Eggs In Virginia IP Daily**"
 
-  1. Identify the problem
-  2. Establish a theory of probable cause
-  3. Test the theory to determine the cause
-  4. Establish a plan of action to resolve the problem and implement the Solution
-  5. Implement the solution or escalate as necessary
-  6. Verify full system functionality
-  7. Document the findings, actions, and outcomes
+1. Identify the problem.
+2. Determine the scope of the problem.
+3. Establish a theory of probable cause, or question the obvious.
+4. Test the theory to determine the cause.
+5. Establish a plan of action.
+6. Implement the solution, or escalate.
+7. Verify full system functionality.
+8. Implement preventive measures.
+9. Perform a root cause analysis.
+10. Document findings, actions, and outcomes throughout the process.
 
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 2. Establish a Theory of Probable Cause (Question the Obvious)
+- TROUBLESHOOTING METHODOLOGY: 2. Establish a Theory of Probable Cause (Question the Obvious)
   - **Analyze information** to identify potential causes of the problem. It is essential to keep this step as simple as possible.
     - Conduct internal or external **research based on symptoms**.
   - Consider all possible factors, including hardware, software, network, configuration issues, and user error.
     - Question assumptions and validate any hypotheses regarding the root cause.
   - Prioritize the most likely causes based on the severity of the problem and the available evidence.
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 3. Test the Theory to Determine Cause
+- TROUBLESHOOTING METHODOLOGY: 3. Test the Theory to Determine Cause
   - Perform specific tests to **verify the suspected cause** of the problem.
     - If the theory is confirmed, proceed to determine the next steps for problem resolution.
   - This may involve collecting additional data, isolating the issue, or using diagnostic tools.
   - Document the results of the tests to confirm or disprove the theory.
     - If the theory is **not confirmed**, reevaluate and **establish a new theory or escalate** the issue for further investigation.
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 4,5. Establish a Plan of Action to Resolve the Problem and Implement the Solution
+- TROUBLESHOOTING METHODOLOGY: 4,5. Establish a Plan of Action to Resolve the Problem and Implement the Solution
   - **Establish a Plan of Action**
     - Develop a **step-by-step plan** outlining actions to be taken for issue resolution.
     - Consider the potential impact of the solution and any necessary **downtime**, **considering corporate policies and procedures**.
@@ -1758,299 +1772,340 @@ Preparation:
   - **Implement the Solution**
     - **Follow the plan of action** and do not deviate.
     - Make only one change at a time, then test the result.
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 6. Verify Full System Functionality and Implement Preventive Measures
+- TROUBLESHOOTING METHODOLOGY: 6. Verify Full System Functionality and Implement Preventive Measures
   - After implementing the solution, **thoroughly test** the cloud environment to ensure full functionality.
   - Perform a **root cause** analysis why the problem occurred.
   - Identify and implement **preventive measures** to mitigate the risk of similar issues in the future.
-- Troubleshooting Methodology Steps to Resolve Cloud-related Issues: 7. Document Findings, Actions, and Outcomes
+- TROUBLESHOOTING METHODOLOGY: 7. Document Findings, Actions, and Outcomes
   - Maintain **detailed documentation** throughout the entire problem resolution process.
   - Document findings, actions taken, and the outcomes of each step.
   - This documentation serves as a reference for future troubleshooting and analysis.
 
-## 5.2 Given a scenario, troubleshoot security issues
+## 5.2 Given a scenario, TROUBLESHOOT SECURITY issues
 
-Troubleshooting Security Issues:
-
-- Troubleshooting Security Issues: Privilege Missing
-  - Identify users or entities lacking necessary privileges.
-  - Grant appropriate permissions based on roles and responsibilities.
-- Troubleshooting Security Issues: Privilege Incomplete
+- TROUBLESHOOT SECURITY: _Privilege::Missing_
+  - **User should have access but does not**.
+  - Check:
+    - Member of necessary group.
+    - Correct role assigned.
+    - Correct subscription associated.
+- TROUBLESHOOT SECURITY: _Privilege::Incomplete_
   - Review access policies and ensure comprehensive coverage.
   - Validate that users have all required privileges for their roles.
-- Troubleshooting Security Issues: Privilege Escalation
-  - Investigate instances of unauthorized privilege escalation.
-  - Implement measures to prevent and detect unauthorized elevation.
-- Troubleshooting Security Issues: Privilege Keys
-  - Monitor and manage cryptographic keys securely.
-  - Rotate keys regularly to minimize the impact of potential compromises.
-- Troubleshooting Security Issues: Authentication
-  - Ensure proper authentication mechanisms are in place.
-  - Verify the integrity of user credentials.
-  - Monitor for suspicious login attempts.
-- Troubleshooting Security Issues: Authorization
-  - Review and validate access control lists (ACLs) and authorization policies.
-  - Ensure users only have access to resources necessary for their roles.
-- Troubleshooting Security Groups: Network Security Groups
-  - Validate and adjust network security group rules.
-  - Monitor for unauthorized network traffic.
-- Troubleshooting Security Groups: Directory Security Groups
-  - Review membership and permissions of directory security groups.
-  - Remove users who no longer require access.
-- Troubleshooting Security Keys and Certificates: Expired
-  - Regularly check for and renew expired certificates.
-  - Implement a certificate management process.
-- Troubleshooting Security Keys and Certificates: Revoked
-  - Update the certificate revocation list promptly.
-  - Investigate the cause of certificate revocations.
-- Troubleshooting Security Keys and Certificates: Trust
-  - Verify the trustworthiness of certificate authorities.
-  - Monitor for compromised trust relationships.
-- Troubleshooting Security Keys and Certificates: Compromised
-  - Investigate and remediate compromised keys or certificates immediately.
-  - Implement measures to detect and respond to compromises.
-- Troubleshooting Security Keys and Certificates: Misconfigured
-  - Review certificate configurations and ensure adherence to best practices.
-  - Regularly audit and update certificate configurations.
-- Troubleshooting Security: Misconfigured or Misapplied Policies
-  - Regularly review and update security policies.
-  - Audit policy implementation against security best practices.
-- Troubleshooting Data Security Issues: Unencrypted Data
-  - Identify and encrypt sensitive data at rest and in transit.
-  - Enforce encryption policies consistently.
-- Troubleshooting Data Security Issues: Data Breaches
-  - Investigate and respond to data breaches promptly.
-  - Implement measures to prevent future breaches.
-- Troubleshooting Data Security Issues: Misclassification
-  - Review data classification policies and classifications.
-  - Ensure accurate classification of sensitive data.
-- Troubleshooting Data Security Issues: Lack of Encryption in Protocols
-  - Enable encryption for communication protocols.
-  - Disable insecure protocols.
-- Troubleshooting Data Security Issues: Insecure Ciphers
-  - Update and secure cryptographic ciphers.
-  - Monitor for the use of deprecated or insecure ciphers.
-- Troubleshooting Security: Exposed Endpoints
-  - Review and secure publicly exposed endpoints.
-  - Implement access controls and monitor for unauthorized access.
-- Troubleshooting Misconfigured or Failed Security Appliances: IPS (Intrusion Prevention System)
-  - Validate and update IPS configurations.
-  - Investigate and remediate IPS failures.
-- Troubleshooting Misconfigured or Failed Security Appliances: IDS (Intrusion Detection System)
-  - Regularly test and update IDS rules.
-  - Monitor for false positives and negatives.
-- Troubleshooting Misconfigured or Failed Security Appliances: NAC (Network Access Control)
-  - Verify NAC policies and configurations.
-  - Investigate and address NAC failures.
-- Troubleshooting Misconfigured or Failed Security Appliances: WAF (Web Application Firewall)
-  - Review and update WAF configurations.
-  - Monitor and respond to WAF alerts.
-- Troubleshooting Unsupported Protocols:
-  - Identify and disable unsupported or deprecated protocols.
-  - Replace unsupported protocols with more secure alternatives.
-- Troubleshooting External/Internal Attacks
-  - Monitor for suspicious activities and anomalies.
-  - Implement intrusion detection and prevention measures.
-  - Collaborate with incident response teams to investigate and respond to attacks promptly.
+- TROUBLESHOOT SECURITY: _Privilege::Escalation_
+  - Cannot escalate privileges.
+  - Check:
+    - do they need to escalate privilege?
+    - role assigned have correct privileges?
+    - are they in sudo group?
+    - runas privileges?
+- TROUBLESHOOT SECURITY: _Privilege::Keys_
+  - SSH keys problem
+  - Check:
+    - has correct key?
+    - public key on destination?
+    - identity changed?
+- TROUBLESHOOT SECURITY: _Authentication_
+  - Cannot login.
+  - Check:
+    - user account exist?
+    - user approved to login?
+    - correct credentials?
+- TROUBLESHOOT SECURITY: _Authorization_
+  - Cannot access
+  - Check:
+    - subscription expired?
+    - group access?
+    - IAM policy blocking?
+    - resource running?
+- TROUBLESHOOT SECURITY: _Security Groups::Network Security Groups_
+  - Cannot access instance.
+  - Check:
+    - security group rule permits connectivity?
+    - network acl permit connectivity?
+- TROUBLESHOOT SECURITY: _Security Groups::Directory Security Groups_
+  - User cannot access file/folder
+  - Check:
+    - member of group?
+    - explicit permissions?
+    - inherited permissions?
+    - explicitly denied?
+- TROUBLESHOOT SECURITY: _Keys and Certificates::Expired_
+  - check expiration date of cert.
+- TROUBLESHOOT SECURITY: _Keys and Certificates::Revoked_
+  - role change?
+  - user not with company.
+  - different position.
+  - certificate compromised.
+- TROUBLESHOOT SECURITY: _Keys and Certificates::Trust_
+  - CA has the trust. Validates the identity of subordinate.
+  - The root CA is self-trusted. You must trust root for the chain to be trusted.
+- TROUBLESHOOT SECURITY: _Keys and Certificates::Compromised_
+  - No longer trusted cert.
+    - smart card lost.
+    - device lost with cert installed.
+    - website exploited.
+    - infrastructure expoited.
+- TROUBLESHOOT SECURITY: _Keys and Certificates::Misconfigured_
+  - client not configured to trust root CA.
+  - cert expired.
+  - identity changed.
+- TROUBLESHOOT SECURITY: _Misconfigured or Misapplied Policies_
+  - policy with wrong group or vm not member of group.
+  - not a member.
+  - typo in configuration.
+- TROUBLESHOOT SECURITY: _Data Security Issues::Unencrypted Data_
+  - unencrypted network traffic.
+  - unencrypted data at rest.
+- TROUBLESHOOT SECURITY: _Data Security Issues::Data Breaches_
+  - data labeled with poor access restrictions.
+  - permissions misconfigured.
+  - unencrypted network traffic.
+  - unencrypted data at rest.
+- TROUBLESHOOT SECURITY: _Data Security Issues::Misclassification_
+  - is data classification automated?
+  - data classified correctly.
+  - data going to correct storage area?
+  - roles configured correctly?
+- TROUBLESHOOT SECURITY: _Data Security Issues::Lack of Encryption in Protocols_
+  - IPSec configured to encrypt all network protocols.
+  - no http connections
+  - ftp limited. sftp, scp, ftps required.
+  - no telnet. ssh required.
+- TROUBLESHOOT SECURITY: _Data Security Issues::Insecure Ciphers_
+  - hash algorithms to confirm identity.
+- TROUBLESHOOT SECURITY: _Exposed Endpoints_
+  - rate limit exceeded.
+  - incorrect credentials.
+  - incorrect endpoint.
+  - DNS resolution problem.
+  - VPC endpoint policy incorrectly configured.
+  - gateway policy incorrectly configured.
+- TROUBLESHOOT SECURITY: _Misconfigured or Failed Security Appliances::IPS (Intrusion Prevention System)_
+  - True positive tells you the system detected a vulnerability when it actually does exist.
+  - False positive tells you the system detected a vulnerability when the action was actually legitimate.
+  - False negative tells you the system did not detect a vulnerability when it actually does exist.
+- TROUBLESHOOT SECURITY: _Misconfigured or Failed Security Appliances::IDS (Intrusion Detection System)_
+  - True positive tells you the system detected a vulnerability when it actually does exist.
+  - False positive tells you the system detected a vulnerability when the action was actually legitimate.
+  - False negative tells you the system did not detect a vulnerability when it actually does exist.
+- TROUBLESHOOT SECURITY: _Misconfigured or Failed Security Appliances::NAC (Network Access Control)_
+  - devices are excluded from checks.
+  - entry point excluded.
+- TROUBLESHOOT SECURITY: _Misconfigured or Failed Security Appliances::WAF (Web Application Firewall)_
+  - positioned correctly in front of web server?
+  - WAF rules correct.
+- TROUBLESHOOT SECURITY: _Unsupported Protocols_
+  - using secure protocols that protect data confidentiality, integrity, and authenticity through the transmission process.
+  - Most organizations will standardize on HTTPS for web-based traffic, IPsec for general network traffic, and SSH for remote administration.
+- TROUBLESHOOT SECURITY: _External/Internal Attacks_
+  - understand what data has been taken.
+  - notify impacted parties/legal.
+  - update virus definitions.
+  - reimage workstation.
 
-## 5.3 Given a scenario, troubleshoot deployment issues
+## 5.3 Given a scenario, troubleshoot DEPLOYMENT ISSUES
 
-- Troubleshooting Deployment: Connectivity Issues: Cloud Service Provider (CSP) or Internet Service Provider (ISP) Outages
+- DEPLOYMENT ISSUES: _Connectivity Issues::Cloud Service Provider (CSP) or Internet Service Provider (ISP) Outages_
   - Verify the status of the CSP or ISP.
   - Check for any reported outages or incidents.
-  - Investigate alternative connectivity options.
-- Troubleshooting Deployment Performance Degradation: Latency
-  - Measure and analyze latency between systems.
-  - Identify potential bottlenecks causing latency.
-  - Optimize network configurations for improved performance.
-- Troubleshooting Deployment Configurations: Scripts
+  - Investigate logs, cloud instance tags.
+  - misconfiguration of load balancer/network device.
+- DEPLOYMENT ISSUES: _Performance Degradation::Latency_
+  - misconfiguration of load balancer/network device.
+  - storage capacity, oversubscription.
+- DEPLOYMENT ISSUES: _Configurations::Scripts_
   - Review and debug scripts for errors.
   - Ensure scripts align with intended configurations.
-- Troubleshooting Deployment: Applications in Containers
-  - Verify container configurations.
-  - Check for dependencies and compatibility issues.
-- Troubleshooting Deployment: Misconfigured Templates
-  - Review templates used for deployment.
-  - Validate configurations against best practices.
-- Troubleshooting Deployment: Missing or Incorrect Tags
+- DEPLOYMENT ISSUES: _Applications in Containers_
+  - image valid.
+  - container engine running.
+  - hosting app running.
+  - adequate compute resources.
+- DEPLOYMENT ISSUES: _Misconfigured Templates_
+  - check template for configuration errors.
+- DEPLOYMENT ISSUES: _Missing or Incorrect Tags_
   - Inspect resource tags for accuracy.
   - Update tags as needed for proper resource management.
-- Troubleshooting Deployment Insufficient Capacity: Scaling
+- DEPLOYMENT ISSUES: _Insufficient Capacity::Scaling_
   - Assess scaling configurations for resource adequacy.
   - Address capacity issues by adjusting scaling settings.
-- Troubleshooting Deployment Insufficient Capacity: Compute
+- DEPLOYMENT ISSUES: _Insufficient Capacity::Compute_
   - Ensure sufficient compute resources for workloads.
-- Troubleshooting Deployment Insufficient Capacity: Storage
+- DEPLOYMENT ISSUES: _Insufficient Capacity::Storage_
   - Review storage configurations and capacity.
-- Troubleshooting Deployment Insufficient Capacity: Bandwidth Issues
+- DEPLOYMENT ISSUES: _Insufficient Capacity::Bandwidth Issues_
   - Analyze and optimize network bandwidth.
-- Troubleshooting Deployment Insufficient Capacity: Oversubscription
+- DEPLOYMENT ISSUES: _Insufficient Capacity::Oversubscription_
   - Check for oversubscription of resources and adjust if needed.
-- Troubleshooting Deployment: Licensing Issues
-  - Validate license status and expiration.
-  - Ensure compliance with licensing agreements.
-- Troubleshooting Deployment Vendor-Related Issues: Migrations of Vendors or Platforms
-  - Plan and execute vendor or platform migrations carefully.
-  - Verify compatibility and data migration processes.
-- Troubleshooting Deployment Vendor-Related Issues: Integration of Vendors or Platforms
+- DEPLOYMENT ISSUES: _Licensing Issues_
+  - billing and accounting dashboard.
+  - licensing agreements are for the proper department.
+- DEPLOYMENT ISSUES: _Vendor-Related Issues::Migrations of Vendors or Platforms_
+  - legacy app don't always function in cloud environment.
+  - misconfigured migration script.
+  - OS version compatibility.
+- DEPLOYMENT ISSUES: _Vendor-Related Issues::Integration of Vendors or Platforms_
   - Validate integration configurations.
   - Troubleshoot issues arising from vendor integrations.
-- Troubleshooting Deployment Vendor-Related Issues: API Request Limits
+- DEPLOYMENT ISSUES: _Vendor-Related Issues::API Request Limits_
   - Monitor API usage and ensure it adheres to limits.
   - Request API limit increases if necessary.
-- Troubleshooting Deployment Vendor-Related Issues: Cost or Billing Issues
+- DEPLOYMENT ISSUES: _Vendor-Related Issues::Cost or Billing Issues_
   - Review billing statements for accuracy.
   - Investigate unexpected costs and adjust resource usage if needed.
 
-## 5.4 Given a scenario, troubleshoot connectivity issues
+## 5.4 Given a scenario, troubleshoot CONNECTIVITY ISSUES
 
-- Troubleshooting Connectivity Issues with Network Security Group Misconfigurations: ACL (Access Control List)
+- CONNECTIVITY ISSUES: _Network Security Group Misconfigurations::ACL (Access Control List)_
   - Review ACL configurations for proper access permissions.
   - Adjust ACL rules to align with security requirements.
-- Troubleshooting Connectivity Issues with Network Security Group Misconfigurations: Inheritance
+- CONNECTIVITY ISSUES: _Network Security Group Misconfigurations::Inheritance_
   - Verify inheritance settings for network security groups.
   - Confirm that rules are inherited correctly from parent groups.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Peering
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Peering_
   - Validate peering configurations between network components.
   - Ensure peering relationships are established and functioning.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect Subnet
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Incorrect Subnet_
   - Check and correct any misconfigured subnet settings.
   - Ensure subnets align with intended network architecture.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect IP Address
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Incorrect IP Address_
   - Verify IP addresses for accuracy.
   - Correct any misconfigured IP addresses.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues: Incorrect IP Space
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Incorrect IP Space_
   - Confirm that IP spaces are correctly allocated.
   - Resolve conflicts in IP space assignments.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Default
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Routes::Default_
   - Verify the correct default gateway IP address and subnet mask are configured on network devices.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Static
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Routes::Static_
   - Double-check the accuracy of static route entries, including destination network, subnet mask, and next-hop gateway.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Routes: Dynamic
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Routes::Dynamic_
   - Verify the correct routing protocol configuration parameters, including metric values, timers, and network advertisements.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Firewall: Incorrectly Administered Micro-Segmentation
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Firewall::Incorrectly Administered Micro-Segmentation_
   - Validate micro-segmentation configurations.
   - Ensure that segmentation policies align with security requirements.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): VPN
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Network Address Translation (NAT)::VPN_
   - Verify NAT settings on both ends of the VPN connection.
   - Ensure port forwarding rules are configured for required VPN protocols/ports.
   - Adjust NAT timeouts or consider alternative VPN options.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): Source
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Network Address Translation (NAT)::Source_
   - Review NAT rules for affected applications and ensure proper translation.
   - Clear and refresh the NAT table to eliminate outdated entries.
   - Check for duplicate IP addresses and resolve conflicts.
-- Troubleshooting Connectivity Issues with Common Networking Configuration Issues Network Address Translation (NAT): Destination
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Network Address Translation (NAT)::Destination_
   - Verify NAT rules for desired destinations and add missing entries if needed.
   - Analyze network routing tables and address any routing loops.
   - Review firewall rules and ensure they allow access to the desired destinations.
-- Troubleshooting Connectivity Issues with Load Balancers: Methods
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::Methods_
   - Health checks: Verify that the load balancer is performing health checks on backend servers and removing unhealthy ones from the pool.
   - Logs: Analyze load balancer logs for errors or warnings that may indicate the source of the problem.
   - Traffic monitoring: Monitor load balancer traffic patterns to identify any anomalies or inconsistencies.
   - Test connections: Manually test connections to individual backend servers to pinpoint issues with specific servers or network connections.
-- Troubleshooting Connectivity Issues with Load Balancers: Headers
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::`Headers_
   - Host header: Ensure the host header is correctly configured in the load balancer and backend servers.
   - X-Forwarded- headers: **Verify that X-Forwarded-** headers are correctly forwarded to backend servers to ensure proper routing.
   - Custom headers: Check for any custom headers used by your application and ensure they are properly handled by the load balancer.
-- Troubleshooting Connectivity Issues with Load Balancers: Protocols
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::Protocols_
   - HTTP/HTTPS: Verify the load balancer is listening on the correct ports for HTTP and HTTPS traffic.
   - SSL certificates: Ensure valid and properly configured SSL certificates are installed on the load balancer and backend servers.
   - Application protocols: Check if your application uses any specific application protocols and ensure the load balancer supports them.
-- Troubleshooting Connectivity Issues with Load Balancers: Encryption
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::Encryption_
   - SSL configuration: Verify the SSL configuration for both the load balancer and backend servers.
   - Cipher suites: Ensure compatible cipher suites are chosen for SSL encryption.
   - Certificate chains: Check for missing or invalid intermediate certificates in the certificate chain.
-- Troubleshooting Connectivity Issues with Load Balancers: Back Ends
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::Back Ends_
   - Server health: Check the health and status of individual backend servers.
   - Server configuration: Verify the configuration of backend servers, including firewall rules and port settings.
   - Resource utilization: Monitor resource utilization on backend servers to identify any overloaded servers causing bottlenecks.
-- Troubleshooting Connectivity Issues with Load Balancers: Front Ends
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Load Balancers::Front Ends_
   - DNS configuration: Verify the DNS configuration is correct and pointing to the load balancer.
   - Firewall rules: Check firewall rules on the front end to ensure they allow incoming traffic to the load balancer.
   - Network connectivity: Test the network connectivity between the front end and the load balancer.
-- Troubleshooting Connectivity Issues with: DNS Records
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::DNS Records_
   - Verify the accuracy of DNS records for the affected domain name.
   - Flush the DNS cache on affected devices.
   - Check the status and accessibility of the DNS server.
   - Utilize online tools like MXToolbox to diagnose DNS issues.
-- Troubleshooting Connectivity Issues with: VLAN / VXLAN / GENEVE
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::VLAN / VXLAN / GENEVE_
   - Verify VLAN IDs and trunk ports are configured correctly.
   - Check tunnel configuration parameters (e.g., source/destination endpoints, encapsulation type).
   - Ensure consistent MTU settings across all devices involved in the communication.
   - Analyze spanning-tree protocol logs for potential loop issues.
-- Troubleshooting Connectivity Issues with: Proxy
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Proxy_
   - Verify the proxy address, port, and authentication credentials.
   - Check if the desired websites are explicitly blocked by the proxy.
   - Contact the proxy server administrator if overloaded or experiencing technical issues.
-- Troubleshooting Connectivity Issues with: Maximum Transmission Unit (MTU)
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Maximum Transmission Unit (MTU)_
   - Determine the optimal MTU size for the network path.
   - Configure all devices to use the same MTU setting.
   - Enable jumbo frames on network interfaces if needed.
-- Troubleshooting Connectivity Issues with: Quality of Service (QoS)
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Quality of Service (QoS)_
   - Verify QoS settings for affected traffic types and priorities.
   - Monitor network traffic and identify bandwidth bottlenecks.
   - Adjust QoS parameters or upgrade network infrastructure if necessary.
-- Troubleshooting Connectivity Issues with: Time Synchronization Issues
+- CONNECTIVITY ISSUES: _Common Networking Configuration Issues::Time Synchronization Issues_
   - Verify system clocks on all devices are synchronized with a reliable NTP server.
   - Check the NTP server itself for any connectivity or configuration problems.
   - Investigate potential sources of clock drift, such as hardware issues or software bugs.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: ping
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::ping_
   - Tests the reachability of a specific IP address and measures the response time.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: tracert/traceroute
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::tracert/traceroute_
   - Traces the route packets take to reach a specific destination, identifying potential bottlenecks or routing issues.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: flushdns
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::flushdns_
   - Clears the local DNS cache, potentially resolving issues caused by outdated or corrupted entries.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: ipconfig/ifconfig/ip
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::ipconfig/ifconfig/ip_
   - Provides information about the network configuration of your device, including IP addresses, subnet masks, and default gateways.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: nslookup/dig
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::nslookup/dig_
   - Resolves domain names to IP addresses and vice versa, helping identify DNS configuration issues.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: netstat/ss
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::netstat/ss_
   - Lists active network connections and provides information about their status, protocols, and ports.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: route
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::route_
   - Displays the routing table, which defines how packets are routed through the network.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: arp
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::arp_
   - Shows the Address Resolution Protocol (ARP) cache, which maps IP addresses to MAC addresses.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: curl
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::curl_
   - Sends HTTP requests to a specified URL, helping diagnose web server connectivity and configuration issues.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: Packet capture
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::Packet capture_
   - Captures all network traffic flowing through a specific interface, allowing for detailed analysis of network behavior and troubleshooting of complex issues.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: Packet analyzer
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::Packet analyzer_
   - Analyzes captured network traffic, providing insights into protocols, packet contents, and potential network problems.
-- Troubleshooting Connectivity Issues with Network Troubleshooting Tools: OpenSSL client
+- CONNECTIVITY ISSUES: _Network Troubleshooting Tools::OpenSSL client_
   - Tests the connection to an SSL/TLS server and verifies the server's certificate, helping identify SSL/TLS configuration issues.
 
-## 5.5 Given a scenario, troubleshoot common performance issues
+## 5.5 Given a scenario, troubleshoot common PERFORMANCE ISSUES
 
-- Troubleshooting Common Performance Issues with Resource Utilization: CPU
+- PERFORMANCE ISSUES: _Resource Utilization::CPU_
   - High CPU Utilization:
   - Resolution: Identify resource-intensive processes and optimize their execution. Consider load balancing and, if necessary, upgrade the CPU.
-- Troubleshooting Common Performance Issues with Resource Utilization: GPU
+- PERFORMANCE ISSUES: _Resource Utilization::GPU_
   - GPU Bottleneck:
   - Resolution: Optimize GPU-intensive applications, explore parallelization techniques, or consider upgrading to a more powerful GPU.
-- Troubleshooting Common Performance Issues with Resource Utilization: Memory
+- PERFORMANCE ISSUES: _Resource Utilization::Memory_
   - Memory Exhaustion:
   - Resolution: Identify and optimize memory-hungry processes. Consider increasing physical or virtual memory capacity.
-- Troubleshooting Common Performance Issues with Storage: I/O (Input/Output)
+- PERFORMANCE ISSUES: _Resource Utilization::Storage::I/O (Input/Output)_
   - I/O Bottleneck:
   - Resolution: Optimize I/O-intensive processes, distribute I/O load, or consider upgrading storage solutions for improved performance.
-- Troubleshooting Common Performance Issues with Storage: Capacity
+- PERFORMANCE ISSUES: _Resource Utilization::Storage::Capacity_
   - Overcapacity:
   - Resolution: Identify and optimize resource usage, consider load balancing strategies, and plan for capacity upgrades.
-- Troubleshooting Common Performance Issues with Network Bandwidth: Network Latency
+- PERFORMANCE ISSUES: _Resource Utilization::Network Bandwidth_
+- PERFORMANCE ISSUES: _Resource Utilization::Network Latency_
   - High Network Latency:
   - Resolution: Identify and resolve network bottlenecks, optimize routing configurations, and consider Quality of Service (QoS) settings for reduced latency.
-- Troubleshooting Common Performance Issues with Network Bandwidth: Replication
+- PERFORMANCE ISSUES: _Resource Utilization::Replication_
   - Replication Lag:
   - Resolution: Optimize replication configurations, ensure adequate network bandwidth, and monitor for potential issues in replication processes to reduce lag.
-- Troubleshooting Common Performance Issues with Network Bandwidth: Scaling
+- PERFORMANCE ISSUES: _Resource Utilization::Scaling_
   - Inefficient Scaling:
   - Resolution: Reevaluate scaling configurations, consider load balancing strategies, and ensure resources are effectively distributed across scaled instances.
   - Scaling Bottleneck:
   - Resolution: Identify and address bottlenecks in the scaling architecture, optimize scaling configurations, and ensure the scalability of underlying infrastructure for smoother scaling processes.
-- Troubleshooting Common Performance Issues with Application: Memory Management
+- PERFORMANCE ISSUES: _Application::Memory Management_
   - Memory Leaks: Identify and fix memory leaks. Use memory profiling tools for pinpointing issues.
   - Excessive Memory Usage: Optimize memory usage, employ efficient data structures, and scale resources if needed.
   - Garbage Collection Delays: Optimize code to reduce object creation, fine-tune garbage collection settings, and practice good memory management.
-- Troubleshooting Common Performance Issues with Application: Service Overload
+- PERFORMANCE ISSUES: _Application::Service Overload_
   - High Request Volume: Implement load balancing, scale resources horizontally, and optimize code for increased traffic.
   - Long Response Times: Optimize slow code paths, enhance database queries, and consider caching for frequently accessed data.
   - Concurrency Issues: Implement proper concurrency controls, use thread pools efficiently, and consider asynchronous processing.
@@ -2059,51 +2114,51 @@ Troubleshooting Security Issues:
   - Inefficient Code Paths: Profile and optimize critical code paths, identify bottlenecks, and refactor for better performance.
   - Insufficient Scalability: Design for horizontal scalability, use cloud auto-scaling, and ensure dynamic resource scaling.
   - Faulty Load Balancing: Verify load balancing configurations, consider session affinity, and monitor load balancer performance.
-- Troubleshooting Common Performance Issues with: Failed Load Balancer
+- PERFORMANCE ISSUES: _Incorrectly Configured or Failed Load Balancer_
   - Verify Load Balancer Configurations: Double-check load balancer settings for correctness, ensuring proper distribution of traffic among servers.
   - Consider Session Affinity: If applicable, implement session affinity to ensure consistent user sessions by directing requests to the same server.
   - Monitor Load Balancer Performance: Regularly monitor load balancer performance, identify potential issues, and address them promptly.
   - Check Health Checks: Ensure health checks are configured correctly to detect and route traffic away from unhealthy servers.
   - Scale Resources Appropriately: If the load balancer is struggling, consider scaling resources horizontally or upgrading to handle increased demand.
 
-## 5.6 Given a scenario, troubleshoot automation or orchestration issues
+## 5.6 Given a scenario, troubleshoot AUTOMATION or ORCHESTRATION ISSUES
 
-- Troubleshoot Automation or Orchestration Issues: Account Mismatches
+- AUTOMATION or ORCHESTRATION ISSUES: _Account Mismatches_
   - Verify credentials, username, password, API key, or access role.
   - Ensure proper permissions are granted and account is active.
-- Troubleshoot Automation or Orchestration Issues: Change Management Failures
+- AUTOMATION or ORCHESTRATION ISSUES: _Change Management Failures_
   - Review change management records.
   - Verify automation scripts reflect recent changes.
   - Implement a robust change communication process.
-- Troubleshoot Automation or Orchestration Issues: Server Name Changes
+- AUTOMATION or ORCHESTRATION ISSUES: _Server Name Changes_
   - Update scripts with the latest server names.
   - Consider using hostnames or DNS records instead of IP addresses.
   - Implement automated server name updates where feasible.
-- Troubleshoot Automation or Orchestration Issues: IP Address Changes
+- AUTOMATION or ORCHESTRATION ISSUES: _IP Address Changes_
   - Update scripts with the latest IP addresses.
   - Adjust routing configurations for the changes.
   - Ensure dependencies are met in the new location.
-- Troubleshoot Automation or Orchestration Issues: Location Changes
+- AUTOMATION or ORCHESTRATION ISSUES: _Location Changes_
   - Review and update scripts for location changes.
   - Adjust routing configurations.
   - Ensure dependencies are met in the new location.
-- Troubleshoot Automation or Orchestration Issues: Version/Feature Mismatch
+- AUTOMATION or ORCHESTRATION ISSUES: _Version/Feature Mismatch_
   - Verify software versions are consistent across all servers.
   - Update scripts to be compatible with the current environment.
   - Install and activate required features.
-- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: Deprecated Features
+- AUTOMATION or ORCHESTRATION ISSUES: _Automation Tool Incompatibility::Deprecated Features_
   - Identify and update scripts to use the latest features.
   - Find alternatives for deprecated functions or APIs.
   - Stay informed about upcoming deprecations.
-- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: API Version Incompatibility
+- AUTOMATION or ORCHESTRATION ISSUES: _Automation Tool Incompatibility::API Version Incompatibility_
   - Verify API versions are compatible.
   - Update scripts to use the correct API version.
   - Check for any known compatibility issues with the specific API implementation.
-- Troubleshoot Automation or Orchestration Issues: Job Validation Issue
+- AUTOMATION or ORCHESTRATION ISSUES: _Job Validation Issue_
   - Carefully review job inputs and parameters.
   - Ensure data formatting is correct.
   - Verify all required information is provided.
-- Troubleshoot Automation or Orchestration Issues with Automation Tool Incompatibility: Patching Failure
+- AUTOMATION or ORCHESTRATION ISSUES: _Patching Failure_
   - Review patching scripts for errors.
   - Verify patch compatibility.
   - Ensure sufficient system resources are available.
