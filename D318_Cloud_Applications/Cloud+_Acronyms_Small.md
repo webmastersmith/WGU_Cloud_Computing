@@ -100,6 +100,8 @@
   - Software-Defined Storage
 - SMT
   - Simultaneous Multithreading
+- SOC
+  - Security Operations Center
 - SSO
   - Single Sign-On
 - TPM
@@ -120,8 +122,8 @@
   - Virtual Graphics Processing Unit
 - VHD
   - Virtual Hard Disk
-- VLAN
-  - Virtual LAN
+- vLAN
+  - Virtual Local Area Network
 - VM
   - Virtual Machine
 - VMFS
@@ -137,9 +139,9 @@
 - VPN
   - Virtual Private Network
 - vRAM
-  - Virtual RAM
+  - Virtual Random Access Memory
 - vSAN
-  - Virtual SAN
+  - Virtual Storage Area Network
 - WAF
   - Web Application Firewall
 - WAN

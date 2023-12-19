@@ -1159,8 +1159,9 @@ Preparation:
   - Azure Active Directory and DNS. All traffic passes through this network and can be governed by it.
   - Connects multiple VPCs to a central hub VPC, enabling secure communication between them and promoting efficient network management.
 - CLOUD NETWORKING: _Virtual Private Cloud (VPC)::Peering_
-  - Establishes direct communication between VPCs without traversing the public internet, minimizing latency and enhancing performance and security.
+  - Establishes **direct communication between VPCs** without traversing the public internet, minimizing latency and enhancing performance and security.
   - Appear to customer as single network.
+  - Peering is used in the **hub-and-spoke model** to connect the spoke networks with the hub network. Note that the spoke networks are not peered to each other in the hub-and-spoke model.
 - CLOUD NETWORKING: _VLAN/VXLAN/GENEVE_
   - Create virtualized networks within a single physical network, enabling isolation and resource allocation for specific applications or teams.
   - **Virtual Local Area Network**:
