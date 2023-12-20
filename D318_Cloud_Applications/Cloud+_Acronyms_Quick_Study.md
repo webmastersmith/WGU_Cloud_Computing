@@ -6,6 +6,8 @@
   - Authentication, Authorization, and Accounting
 - ACL
   - Access Control List
+- ADC
+  - Application Delivery Controller
 - BCP
   - Business Continuity Plan
 - BGP

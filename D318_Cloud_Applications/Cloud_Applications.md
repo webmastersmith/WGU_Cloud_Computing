@@ -307,7 +307,7 @@
 - High Availability and Scaling in Scalability: _Horizontal scaling_
   - **Scaling additional instances(Adding VMs)** to meet the workload. Also known as scaling out.
 - High Availability and Scaling in Scalability: _Vertical scaling_
-  - **Upgrading|Adding** additional compute to **existing** instances.
+  - **Upgrading|Adding** additional resources to VMs. Compute, memory, NICs to **existing** instances.
 - High Availability and Scaling in Scalability: _Cloud bursting_
   - **Redirecting on-premises traffic**(ex.. to cloud) when current resources are at 100% utilization.
 
@@ -1080,7 +1080,7 @@ Preparation:
 
 - PROVISION STORAGE: _Storage System Features::Compression_
   - represents the original **data** in a **format** containing **fewer bits**.
-  - particularly useful for stored data that is not frequently accessed because decompressing the information **takes CPU time**.
+  - particularly useful for stored data that is **not frequently accessed** because decompressing the information **takes CPU time**.
 - PROVISION STORAGE: _Storage System Features::Deduplication_
   - Eliminates redundant data copies, replacing the content with pointers.
 - PROVISION STORAGE: _Storage System Features::Thin Provisioning_
