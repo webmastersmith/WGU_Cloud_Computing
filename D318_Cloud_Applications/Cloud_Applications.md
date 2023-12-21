@@ -13,6 +13,7 @@
 - Passing score: 750 (on a scale of 100—900)
   - Min Passing score: 75%
   - Min questions correct: 65 of 80 + 10(do not count towards score).
+    - This is relative, questions can have different score points depending on difficulty.
 
 | Domain                            | Percentage of Exam |
 | --------------------------------- | ------------------ |
