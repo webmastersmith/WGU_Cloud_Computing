@@ -705,6 +705,7 @@
     - EDR systems work by installing an agent on the workstation to manage the collection of information.
 - OS and APPLICATION SECURITY: _Host-based Intrusion Detection System (HIDS)/Host-based Intrusion Prevention System (HIPS)_
   - **HIDS detects** malicious activity while **HIPS** actively **prevents** it.
+  - organizations have bare-metal or virtual machines.
   - These tools provide valuable insights into system security and can help identify and respond to threats quickly.
 - OS and APPLICATION SECURITY: _Hardened Baselines::Single Function_
   - Baseline: Agreed-upon configurations for operating system version and applications that meet specific security requirements.

@@ -19,6 +19,7 @@
     const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
     fs.writeFileSync('./showdown.min.js', txt);
   }
+  // Highlight.js - highlight code blocks.
   // https://github.com/highlightjs/highlight.js#importing-the-library
   if (!fs.existsSync('./highlight.min.js')) {
     const txt = await (
@@ -99,11 +100,10 @@
   }
 
   // Add styling to '.card' class.
-
   const AnkiCSS =
     '.card {font-family: arial;font-size: 20px;text-align: center;color: black;background-color: white;} img { object-fit: contain;}.cloze {font-weight: bold;color: blue;}.nightMode .cloze{color: lightblue;}';
   const customCSS = `th {border: 1px solid;padding:4px 6px;background-color: #3399ff;}td {border: 1px solid;padding:4px 6px;}tbody tr:nth-child(odd) {background-color: #D3D3D3;}`;
-  const hljsCSS = fs.readFileSync('./hljs.css', 'utf-8'); // highlight.js css
+  const hljsCSS = fs.readFileSync('./hljs.css', 'utf-8'); // highlight css
   const css = `${AnkiCSS}${customCSS}${hljsCSS}`;
 
   // view all models. Update styling of your model.

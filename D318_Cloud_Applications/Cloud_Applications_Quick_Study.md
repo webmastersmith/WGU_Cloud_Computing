@@ -37,6 +37,7 @@
   - **Mandatory-based**: **Access via security model**. **Labels** set on objects (files) by the administrator. Users cannot manipulate these labels. Users are given matching classifications. If both match, user is granted access.
   - **Role-based**: Grants **access** based on predefined **roles** and associated permissions. Given to **groups**.
   - **ACL**: Access Control List. Lists who has access to resource and what level of access they have.
+  - **802.1X**: pNAC. Port Network Access Control. Must be authorized to access the switch ports. Can't just plug into ethernet port and start communication.
 
 - Describe: Business Continuity Plan, IRDR, Tabletop Exercise, Root Cause Analysis?
 
@@ -89,7 +90,7 @@
   9. Perform a root cause analysis.
   10. Document findings, actions, and outcomes throughout the process.
 
-- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, Packet Brokers, HA Firewalls?
+- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, Packet Brokers, HA Firewalls, HIDS, HIPS, EDR, FIM, Network Flows, LDAP, SAML Federation, DoH/DoT, DNSSEC?
 
   - **WAF**: web application firewall. Work at Layer 7 to protect web applications from common attacks like cross-site scripting, cross-site forgery, SQL injections and DDoS.
   - **vADC**: Virtual Application Delivery Controller. Load balances traffic across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection. Typically, these devices are placed in a DMZ.
@@ -98,7 +99,18 @@
   - **DLP**: Data Loss Prevention. Detects/Prevents data exfiltration.
   - **NAC**: Network Access Control. Combine several aspects of security into a single unit. Workstation security (endpoints): anti-virus, anti-spyware, patching, and vulnerability scans. Authentication: single sign-on and multifactor authentication. Network security: firewalls, network IDS, patching, and updated anti-virus definitions.
   - **Packet brokers**: Mirror network traffic to security and monitoring tools for analysis and troubleshooting. Exist between the network infrastructure and infrastructure security tools to gather information and **expose packet** to the appropriate **tools**.
-  - **HA Firewalls**: High Availibilty. Two or more firewalls for redundancy with failover.
+  - **HA Firewalls**: High Availability. Two or more firewalls for redundancy with failover.
+  - **HIDS**: Host based intrusion detection. monitoring activities and events at the host or individual instance level. Organizations have bare-metal or virtual machines, monitors identified threats by alerting malicious traffic.
+  - **HIPS**: Host based prevention detection. monitoring activities and events at the host or individual instance level. Organizations have bare-metal or virtual machines, actively prevents or mitigates identified threats by blocking or isolating malicious traffic.
+  - **EDR**: Endpoint Detection Response. Typically involves installing an agent on each endpoint to passively monitor for threats.
+  - **FIM**: File Integrity Monitor. Continuously monitors files for modifications and alerts on unauthorized changes.
+  - **Network Flows**: **visualize** and understand how data moves through a **network** infrastructure.
+    - Detect anomalous behavior, potential threats, bottlenecks or suspicious activity.
+  - **LDAP**: Lightweight Directory Access Protocol. Centralize information about clients, access, privileges on the network. Corporations use this along with Active Directory for AAA.
+  - **SAML Federation**: Security Assertion Markup Language. The markup that support Federation.
+    - Single Sign On across different organizations. ex.. log into github with your google credentials.
+  - **DoH/DoT**: DNS over HTTPS. DNS over TLS. Encrypting traffic to/from DNS server.
+  - **DNSSEC**: PKI certs preventing DNS hijacking. DNS identity checking.
 
 - Describe: P2V, V2V, SLA, Vendor Lock-in, MOU
 
@@ -144,6 +156,7 @@
   - **DR**: **Backup** and **recovery infrastructure** to ensure business continuity in case of an outage.
 
 - Describe Testing: Vulnerability, Penetration, Performance, Regression, Functional, Usability?
+
   - **Vulnerability**: Identifies **existing** weaknesses in the solution that could be exploited by attackers. The goal is to identify the vulnerability so that it can be **mitigated**.
   - **Penetration**: Simulates real-world attacks to test the **effectiveness of the security** measures.
     - **authorized** attempt to **identify security misconfigurations**.
@@ -155,3 +168,11 @@
   - **Functional testing**: **Tests** against specified **requirements**. Does it **do** what it’s **supposed to do**?
   - **Usability testing**: Assesses how easy and intuitive the solution is for users to interact with.
     - Performed by the **end-users** and provides direct **feedback** on the interface, features, and practical use.
+
+- Describe: Tagging, Chargebacks, Showbacks, Quotas?
+  - **Tagging**: **Labels** assigned to **resources**. Utilizing tagging enables efficient categorization and **tracking** of resources in the cloud environment.
+  - **Chargebacks**: **Monitoring costs** helps in optimizing resource usage and staying within budget.
+    - **Assigning costs to specific departments** or projects facilitates transparent **cost allocation**.
+  - **Showbacks**: Report the utilization of services **without billing** the business unit.
+    - Providing cost breakdowns fosters awareness of resource consumption.
+  - **Quotas**: Sets limits on resources for individual users or groups.
