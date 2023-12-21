@@ -78,9 +78,9 @@
   9. Perform a root cause analysis.
   10. Document findings, actions, and outcomes throughout the process.
 
-- Describe Security: WAF, ADC, IPS, IDS, DLP, NAC, Packet Brokers, HA Firewalls?
+- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, Packet Brokers, HA Firewalls?
   - **WAF**: web application firewall. Work at Layer 7 to protect web applications from common attacks like cross-site scripting, cross-site forgery, SQL injections and DDoS.
-  - **ADC**: Application Delivery Controller. Load balances traffic across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection. Typically, these devices are placed in a DMZ.
+  - **vADC**: Virtual Application Delivery Controller. Load balances traffic across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection. Typically, these devices are placed in a DMZ.
   - **IPS**: Intrusion Protection System. Monitor and Prevent malicious activity. Dynamically blocks the connection and traffic identified as a threat.
   - **IDS**: Intrusion Detection System. **Monitors** network traffic for malicious activity and prevents or **alerts** on detected threats. Passive devices that match network traffic and patterns against known vulnerabilities. Monitor/alert the network environment but do not stop.
   - **DLP**: Data Loss Prevention. Detects/Prevents data exfiltration.
@@ -106,3 +106,10 @@
   - **MTTR**: Mean Time to Recover. Average time required to **recover** from a **system failure**.
   - **Snapshot**: Replicates the **state** of data at a **specific point in time**, allowing for rollback to that state.
   - **3-2-1**: **Three Copies of Data**: Keep at least three copies of your important data. This includes the original data and two additional copies. **Two** separate forms of media(physical drive and cloud storage). **One** copy off site.
+  - d
+- Describe Licensing: Socket, Core, Volume, Subscription?
+  - **Volume**: licensing is a special type of software licensing setup that uses a single license key to authorize the software on multiple computers. For instance, a company may purchase a software license that allows up to 50 of their employees to use the software at the same time.
+  - **Socket**: based license means that a license for each physical socket is bought regardless of how many CPU cores it has. This license gets less expensive as the number of CPU cores per socket increase and load more VMs onto the system.
+  - **Core-based**: licensing requires all physical cores in the server to be licensed. Servers are licensed based on the number of processor cores in the physical server.
+  - **Per User**: cost per user.
+  - **Subscription**: model or the pay-as-you-grow model allows billing for only their use of resources.
