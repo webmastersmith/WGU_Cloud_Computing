@@ -39,18 +39,19 @@
   - **ACL**: Access Control List. Lists who has access to resource and what level of access they have.
   - **802.1X**: pNAC. Port Network Access Control. Must be authorized to access the switch ports. Can't just plug into ethernet port and start communication.
 
-- Describe: Business Continuity Plan, IRDR, Tabletop Exercise, Root Cause Analysis?
+- Describe: Business Continuity Plan, IRDR, Tabletop Exercise, Root Cause Analysis, Paper Test?
 
   - **business continuity plan**: A roadmap for maintaining essential business operations during any unexpected disruptions. It outlines response procedures, communication protocols, and recovery strategies to minimize downtime and ensure critical functions resume swiftly.
     - **BCP**: "The playbook for keeping the business open during disruptions."
   - **IRDR**: Incident response/disaster recovery documentation. A detailed guide for handling security incidents and data breaches. It describes roles and responsibilities, escalation procedures, forensic analysis methods, and disaster recovery steps to restore systems and data swiftly.
     - **IRDR**: "The manual for responding to security threats and recovering from disasters."
-  - **A tabletop exercise**: practical and interactive approach to simulate various disaster scenarios, allowing individuals to discuss and practice their roles and responsibilities during an incident. It tests the BCP and IRDR, identifies weaknesses, and improves response capability through simulated decision-making and communication.
+  - **A tabletop exercise**: practical and interactive(role play) approach to simulate various disaster scenarios, allowing individuals to discuss and practice their roles and responsibilities during an incident. It tests the BCP and IRDR, identifies weaknesses, and improves response capability through simulated decision-making and communication.
     - **Tabletop Exercise**: "Playing out a crisis to make sure everyone knows their roles."
   - **A root cause analysis**: An in-depth investigation to identify the underlying cause of an incident or problem. It involves gathering evidence, analyzing data, and tracing the root cause through a logical sequence of events. RCA helps prevent similar incidents and improve overall performance.
     - **Root Cause Analysis**: "Figuring out the real reason behind a problem to stop it from happening again."
+  - **Paper Test**: stakeholders examine the disaster recovery procedures in the organization, and suggestions are considered.
 
-- Describe Storage: Thin Provisioning, Thick Provisioning, Deduplication, SDS, iSCSI Storage, SAN, NAS, Object, Tenants, Buckets, Hyperconverged?
+- Describe Storage: Thin Provisioning, Thick Provisioning, Deduplication, SDS, iSCSI Storage, SAN, NAS, Object, Tenants, Buckets, Hyperconverged, LUN?
 
   - **Thin Provisioning**: **Allocates storage dynamically based on actual usage**, minimizing upfront costs.
   - **Thick Provisioning**: **Allocates all storage space upfront, ensuring consistent performance**.
@@ -65,6 +66,7 @@
   - **Hyperconverged**: Cloud-like infrastructure on premises.
     - Integrates compute, storage, and networking resources into a single platform for simplified management and scalability.
     - x86 compute + Storage(SSD's) + VM software: emulate multiple cloud VM's for efficient scaling.
+  - **LUN**: Logical Unit Number. Number used to identify a logical unit, which is a device addressed by the iSCSI protocol or by SAN.
 
 - Describe vLan, vxLAN, Affinity, Anti-Affinity, GENEVE, Micro-Segmentation:
 
@@ -90,15 +92,15 @@
   9. Perform a root cause analysis.
   10. Document findings, actions, and outcomes throughout the process.
 
-- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, Packet Brokers, HA Firewalls, HIDS, HIPS, EDR, FIM, Network Flows, LDAP, SAML Federation, DoH/DoT, DNSSEC?
+- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, NPB, HA Firewalls, HIDS, HIPS, EDR, FIM, Network Flows, LDAP, SAML Federation, DoH/DoT, DNSSEC, Risk Register, CMDB?
 
   - **WAF**: web application firewall. Work at Layer 7 to protect web applications from common attacks like cross-site scripting, cross-site forgery, SQL injections and DDoS.
-  - **vADC**: Virtual Application Delivery Controller. Load balances traffic across multiple servers and provides additional security features like URL filtering and denial-of-service (DoS) protection. Typically, these devices are placed in a DMZ.
+  - **vADC**: Virtual Application Delivery Controller. **Load balances** traffic across multiple servers and provides additional security features like **URL filtering** and denial-of-service (**DoS**) protection. Typically, these devices are placed in a DMZ.
   - **IPS**: Intrusion Protection System. Monitor and **Prevent** malicious activity. Dynamically blocks the connection and traffic identified as a threat.
   - **IDS**: Intrusion Detection System. **Monitors** network traffic for malicious activity and prevents or **alerts** on detected threats. Passive devices that match network traffic and patterns against known vulnerabilities. Monitor/alert the network environment but do not stop.
   - **DLP**: Data Loss Prevention. Detects/Prevents data exfiltration.
   - **NAC**: Network Access Control. Combine several aspects of security into a single unit. Workstation security (endpoints): anti-virus, anti-spyware, patching, and vulnerability scans. Authentication: single sign-on and multifactor authentication. Network security: firewalls, network IDS, patching, and updated anti-virus definitions.
-  - **Packet brokers**: Mirror network traffic to security and monitoring tools for analysis and troubleshooting. Exist between the network infrastructure and infrastructure security tools to gather information and **expose packet** to the appropriate **tools**.
+  - **NPB**: Network Packet brokers. Mirror network traffic to security and monitoring tools for analysis and troubleshooting. Exist between the network infrastructure and infrastructure security tools to gather information and **expose packet** to the appropriate **tools**.
   - **HA Firewalls**: High Availability. Two or more firewalls for redundancy with failover.
   - **HIDS**: Host based intrusion detection. monitoring activities and events at the host or individual instance level. Organizations have bare-metal or virtual machines, monitors identified threats by alerting malicious traffic.
   - **HIPS**: Host based prevention detection. monitoring activities and events at the host or individual instance level. Organizations have bare-metal or virtual machines, actively prevents or mitigates identified threats by blocking or isolating malicious traffic.
@@ -111,6 +113,8 @@
     - Single Sign On across different organizations. ex.. log into github with your google credentials.
   - **DoH/DoT**: DNS over HTTPS. DNS over TLS. Encrypting traffic to/from DNS server.
   - **DNSSEC**: PKI certs preventing DNS hijacking. DNS identity checking.
+  - **Risk Register**: Maintain a comprehensive record of identified vulnerabilities, their associated risks, and planned mitigation strategies.
+  - **CMDB**: Configuration Management Database. Stores information about hardware and software deployed throughout the company. **Entries** in the database are referred to as **configuration items**.
 
 - Describe: P2V, V2V, SLA, Vendor Lock-in, MOU
 
@@ -170,9 +174,21 @@
     - Performed by the **end-users** and provides direct **feedback** on the interface, features, and practical use.
 
 - Describe: Tagging, Chargebacks, Showbacks, Quotas?
+
   - **Tagging**: **Labels** assigned to **resources**. Utilizing tagging enables efficient categorization and **tracking** of resources in the cloud environment.
   - **Chargebacks**: **Monitoring costs** helps in optimizing resource usage and staying within budget.
     - **Assigning costs to specific departments** or projects facilitates transparent **cost allocation**.
   - **Showbacks**: Report the utilization of services **without billing** the business unit.
     - Providing cost breakdowns fosters awareness of resource consumption.
   - **Quotas**: Sets limits on resources for individual users or groups.
+
+- Describe Port Numbers: DNS, HTTP, NTP, SNMP, HTTPS, SMB-CIFs, LDAP(encrypted), MySQL, RDP?
+  - DNS: 53
+  - HTTP: 80
+  - NTP: 123
+  - SNMP: 161/162
+  - HTTPS: 443
+  - SMB-CIFs: 445
+  - LDAP(encrypted): 636
+  - MySQL: 3306
+  - RDP: 3389
