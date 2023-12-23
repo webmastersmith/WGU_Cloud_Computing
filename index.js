@@ -2,15 +2,11 @@
   const fs = await import('fs');
   const path = await import('path');
   // variables
-  // const dataArr = fs.readFileSync('D334_Cryptography/Cryptography.md', 'utf-8')?.split(/\r?\n/);
-  // const directoryPath = 'D318_Cloud_Applications/Cloud_Applications.md';
-  const directoryPath = 'D318_Cloud_Applications/Cloud_Applications_Quick_Study.md';
-  // const directoryPath = 'D318_Cloud_Applications/Cloud+_Acronyms_Small.md';
+  const directoryPath = 'D278_Scripting_and_Programming_Foundations/Scripting_Programming.md';
   const dataArr = fs.readFileSync(directoryPath, 'utf-8')?.split(/\r?\n/);
   // Get first line of Markdown as Anki Deck Title
   const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
-  // const removeLines = 25; // line before you want to start parsing. 0 is first line.
-  const removeLines = 2; // line before you want to start parsing. 0 is first line.
+  const removeLines = 10; // line before you want to start parsing. 0 is first line.
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
