@@ -2,9 +2,12 @@
 
 ## Quick Study
 
-- **Cloud GPU Pass-through**:
+- Cloud Hardware: GPU Pass-through, SR-IOV, Disk IOPS, Throughput?
 
-  - Assign a **dedicated** physical **GPU** to a **single VM**, providing exceptional performance for demanding workloads.
+  - **Pass-through**: Assign a **dedicated** physical **GPU** to a **single VM**, providing exceptional performance for demanding workloads.
+  - **SR-IOV**: Single Root Input/Output Virtualization. Allows VMs NIC to **directly access physical network adapters**, **bypassing the hypervisor** and achieving superior network performance.
+  - **Disk IOPS**: Input/Output per second. How many bits disk can **Read or Write** per second.
+  - **Throughput**: how fast disk can **transfer** the read/write bits.
 
 - What platform can be database as a service? (IaaS, PaaS, SaaS)
 
@@ -29,7 +32,7 @@
     - Peering is used in the **hub-and-spoke model** to connect the spoke networks with the hub network. Note that the spoke networks are not peered to each other in the hub-and-spoke model.
   - **Replication**: Creates **copies** of data across different storage locations **for disaster recovery** and **data availability**.
 
-- Describe Permissions: Discretionary-based, Non-Discretionary-based, Attribute-based, Mandatory-based, Role-based, ACL?
+- Describe Permissions: Discretionary-based, Non-Discretionary-based, Attribute-based, Mandatory-based, Role-based, ACL, 802.1X?
 
   - **Discretionary-based**: **Owner access** controls. Allows **users** to **control access** to their **own resources**. Access is managed with an access control list (ACL) that lists who has access and what level of access they have.
   - **Non-Discretionary-based**: **Rule based access control**. Access controlled by an **administrator** or system based on rules and policies.
@@ -39,7 +42,7 @@
   - **ACL**: Access Control List. Lists who has access to resource and what level of access they have.
   - **802.1X**: pNAC. Port Network Access Control. Must be authorized to access the switch ports. Can't just plug into ethernet port and start communication.
 
-- Describe: Business Continuity Plan, IRDR, Tabletop Exercise, Root Cause Analysis, Paper Test?
+- Describe: Business Continuity Plan, IRDR, Tabletop Exercise, Root Cause Analysis, N-1?
 
   - **business continuity plan**: A roadmap for maintaining essential business operations during any unexpected disruptions. It outlines response procedures, communication protocols, and recovery strategies to minimize downtime and ensure critical functions resume swiftly.
     - **BCP**: "The playbook for keeping the business open during disruptions."
@@ -49,9 +52,9 @@
     - **Tabletop Exercise**: "Playing out a crisis to make sure everyone knows their roles."
   - **A root cause analysis**: An in-depth investigation to identify the underlying cause of an incident or problem. It involves gathering evidence, analyzing data, and tracing the root cause through a logical sequence of events. RCA helps prevent similar incidents and improve overall performance.
     - **Root Cause Analysis**: "Figuring out the real reason behind a problem to stop it from happening again."
-  - **Paper Test**: stakeholders examine the disaster recovery procedures in the organization, and suggestions are considered.
+  - **N-1**: Following n-1 updating policies ensures **one version behind the latest** for **stability**.
 
-- Describe Storage: Thin Provisioning, Thick Provisioning, Deduplication, SDS, iSCSI Storage, SAN, NAS, Object, Tenants, Buckets, Hyperconverged, LUN?
+- Describe Storage: Thin Provisioning, Thick Provisioning, Deduplication, SDS, iSCSI Storage, SAN, NAS, Object, Tenants, Buckets, Hyperconverged, LUN, Oversubscription?
 
   - **Thin Provisioning**: **Allocates storage dynamically based on actual usage**, minimizing upfront costs.
   - **Thick Provisioning**: **Allocates all storage space upfront, ensuring consistent performance**.
@@ -67,14 +70,17 @@
     - Integrates compute, storage, and networking resources into a single platform for simplified management and scalability.
     - x86 compute + Storage(SSD's) + VM software: emulate multiple cloud VM's for efficient scaling.
   - **LUN**: Logical Unit Number. Number used to identify a logical unit, which is a device addressed by the iSCSI protocol or by SAN.
+  - **Oversubscription**: primarily employed for **cost** efficiency. It involves provisioning virtual resources that **collectively exceed the available physical resources**. This approach assumes that **saturation will not occur**, making it a common pattern for public cloud providers. Oversubscription can apply to CPU, memory, and network throughput.
 
-- Describe vLan, vxLAN, Affinity, Anti-Affinity, GENEVE, Micro-Segmentation:
+- Describe vLan, vxLAN, Affinity, Anti-Affinity, NVGRE, STT, GENEVE, Micro-Segmentation:
 
   - **vLAN**: Network at Layer 2 (the data link layer of the OSI model). This is accomplished by **tagging** data **frames** with vLAN membership information. Switch isolates the traffic to the appropriate vLAN. Router routes traffic between vLANs. Helps segment network. Ease congestion.
   - **vxLAN**: Improvements over vLAN. 16 million network segments(vLAN 4096). Provides **Tunneling** services. Better Link aggregation and Layer 3 routing. Greater scalability. **Stretching**: VXLAN traffic crosses between the local network and the cloud network using a bi-directional tunnel. Traffic **mirroring**: traffic and be sent to another network for auditing.
   - **Affinity**: Hypervisor affinity. Deliberate **grouping** of VM instances on a **single host for centralized management, high network throughput and low latency**. Reduces latency. Cons, Creates single point of failure, hard to scale.
   - **Anti-affinity**: deliberately **distributes** VM instances across **multiple hosts** to avoid **single points of failure**. Pros: Scaling, redundancy, failover. Cons: can be more difficult to monitor. slower performance.
-  - **GENEVE** Microsoft approach to overcome vLAN limitations. **Encapsulate packet to create compatibility with vLAN and Stateless Transfer Tunnel**. Usually required across **multi-cloud deployments**.
+  - **NVGRE**: Network Virtualization using Generic Routing Encapsulation. Used by Microsoft for network segmentation.
+  - **STT**: Stateless Transfer Tunnel. Another technology for segmenting networks.
+  - **GENEVE**: protocol designed to allow the coexistence of multiple network segmentation technologies (VXLAN, NVGRE, STT) within the same network infrastructure. Usually required across **multi-cloud deployments**.
   - **Micro-segmentation**: Zero Trust. **Dividing a network** at the **workload**(application) level. Reduced attack surface. Increased containment of security breaches. Increase compliance. Easier management via policies.
 
 - CompTIA Cloud Troubleshooting Methodology?
@@ -92,7 +98,7 @@
   9. Perform a root cause analysis.
   10. Document findings, actions, and outcomes throughout the process.
 
-- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, NPB, HA Firewalls, HIDS, HIPS, EDR, FIM, Network Flows, LDAP, SAML Federation, DoH/DoT, DNSSEC, Risk Register, CMDB?
+- Describe Security: WAF, vADC, IPS, IDS, DLP, NAC, NPB, HA Firewalls, HIDS, HIPS, EDR, FIM, Network Flows, LDAP, SAML, DoH/DoT, DNSSEC, Risk Register, CMDB CASB?
 
   - **WAF**: web application firewall. Work at Layer 7 to protect web applications from common attacks like cross-site scripting, cross-site forgery, SQL injections and DDoS.
   - **vADC**: Virtual Application Delivery Controller. **Load balances** traffic across multiple servers and provides additional security features like **URL filtering** and denial-of-service (**DoS**) protection. Typically, these devices are placed in a DMZ.
@@ -109,12 +115,13 @@
   - **Network Flows**: **visualize** and understand how data moves through a **network** infrastructure.
     - Detect anomalous behavior, potential threats, bottlenecks or suspicious activity.
   - **LDAP**: Lightweight Directory Access Protocol. Centralize information about clients, access, privileges on the network. Corporations use this along with Active Directory for AAA.
-  - **SAML Federation**: Security Assertion Markup Language. The markup that support Federation.
+  - **SAML**: Security Assertion Markup Language. The markup that support Federation SSO.
     - Single Sign On across different organizations. ex.. log into github with your google credentials.
   - **DoH/DoT**: DNS over HTTPS. DNS over TLS. Encrypting traffic to/from DNS server.
   - **DNSSEC**: PKI certs preventing DNS hijacking. DNS identity checking.
   - **Risk Register**: Maintain a comprehensive record of identified vulnerabilities, their associated risks, and planned mitigation strategies.
   - **CMDB**: Configuration Management Database. Stores information about hardware and software deployed throughout the company. **Entries** in the database are referred to as **configuration items**.
+  - **CASB**: act as **intermediaries(proxy)** between cloud applications and users, providing additional security and compliance controls. CASBs offer features like data encryption, access control, threat detection, and **compliance reporting**. Enforce rules, even if SaaS is a 3rd party.
 
 - Describe: P2V, V2V, SLA, Vendor Lock-in, MOU
 
@@ -139,14 +146,13 @@
   - **HA**: High Availability. Definition: The characteristic of a system where it continues to function despite the complete failure of any component within the architecture. However, HA acknowledges that there may be an interruption of service, but it **should not exceed the time limits defined by the Recovery Time Objective (RTO)**.
   - **Redundancy**: closely related to high availability but differs in that it ensures a system continues to function without degradation in performance even in the event of a complete component failure. **Redundancy does not imply any interruption of service** and is typically more challenging to achieve than simple high availability.
 
-- Describe Licensing: Socket, Core, Volume, Per, User, Subscription, Oversubscription?
+- Describe Licensing: Socket, Core, Volume, Per User, Subscription?
 
   - **Volume**: licensing is a special type of software licensing setup that uses a single license key to authorize the software on multiple computers. For instance, a company may purchase a software license that allows up to 50 of their employees to use the software at the same time.
   - **Socket**: based license means that a license for each physical socket is bought regardless of how many CPU cores it has. This license gets less expensive as the number of CPU cores per socket increase and load more VMs onto the system.
   - **Core-based**: licensing requires all physical cores in the server to be licensed. Servers are licensed based on the number of processor cores in the physical server.
   - **Per User**: cost per user.
   - **Subscription**: model or the **pay-as-you-grow** model allows billing for only their use of resources.
-  - **Oversubscription**: primarily employed for **cost** efficiency. It involves provisioning virtual resources that **collectively exceed the available physical resources**. This approach assumes that **saturation will not occur**, making it a common pattern for public cloud providers. Oversubscription can apply to CPU, memory, and network throughput.
 
 - Describe Environments: Development, QA, Staging, Production, Blue-Green, Canary, DR?
 
@@ -166,7 +172,7 @@
     - **authorized** attempt to **identify security misconfigurations**.
     - Such testing begins with an **analysis** of available resources, looking for older, unpatched, or vulnerable software.
   - **Performance**: Test **responsiveness** and **stability** of the solution **under load**.
-  - Regression **testing**: Also called **Post**-deployment validation.
+  - **Regression testing**: Also called **Post**-deployment validation.
     - Verifying changes do not effect other dependencies, **after** the update has been **deployed**.
     - Otherwise, the application has fallen back, or “regressed,” to an earlier stage of functionality.
   - **Functional testing**: **Tests** against specified **requirements**. Does it **do** what it’s **supposed to do**?
