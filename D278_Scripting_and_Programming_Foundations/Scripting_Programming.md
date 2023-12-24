@@ -5,8 +5,31 @@
 - <https://quizlet.com/781696862/d278-pre-assessment-scripting-and-programming-foundations-flash-cards/>
 - <https://quizlet.com/784336947/d278-exam-prep-flash-cards/>
 - <https://www.reddit.com/r/WGU/comments/14rq1yc/dirtshoes_guide_to_d278_scripting_and_programming/>
+- <https://www.reddit.com/r/WGU/comments/11uvpeh/d278_scripting_and_programming_foundations_aka/>
 - focus on chapters: 1, 2, 7.1, 7.2, 8, 9.
 - book ISBN: 978-1-394-13419-9
+
+Once you take the PA, review it hard and study the chapters it recommends.
+
+Absolutely don't overthink this class, it is a very VERY basic course that ultimately needs you to understand the concepts.
+
+The OA will be very similar to the PA.
+
+Understand the SDLC and which phase each diagram sits in: (Memorize this and whiteboard it) ADIC = UCAS
+
+Analysis has Use Case Design has class diagram Implementation has activity Testing has sequence
+
+Understand the fundamental difference between For and While loops
+
+Understand the fundamental difference between agile and waterfall
+
+Understand the different data types ( integer, float, boolean, string )
+
+Understand how to find the value of basic functions ( there are several of these to reference from in the PA )
+
+That makes up probably 75% of the real exam.
+
+I opened the class on a Tuesday in April and finished that Thursday with flying colors.
 
 ## Introduction to Computer Programming
 
@@ -27,8 +50,8 @@
 - What precedence rules does programming use?
   - Order in which operators are evaluated, similar to math (PEMDAS).
 - How does an integer differ from a float?
-  Integers: Whole numbers without decimals (e.g., -5, 0, 10).
-  Floats: Numbers with decimals (e.g., 3.14, -2.5).
+  - Integers: Whole numbers without decimals (e.g., -5, 0, 10).
+  - Floats: Numbers with decimals (e.g., 3.14, -2.5).
 - What happens if you divide two integers? A integer and float?
   - Integer/Integer: Results in an integer quotient (remainder discarded).
   - Integer/Float or Float/Float: Results in a float.

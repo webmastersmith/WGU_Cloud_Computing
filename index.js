@@ -155,7 +155,7 @@
     // get and remove section name
     const [s, ...rest] = block.split(/\r?\n/);
     // remove special characters from section name.
-    let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/]/g, '')?.trim() ?? 'Section';
+    let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/|]/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
     const cardsArr = [];
