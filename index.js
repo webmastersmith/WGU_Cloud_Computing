@@ -47,12 +47,16 @@
           .replace(/&quot;/g, '"');
       }
       return html.replace(/<pre>.*?<\/pre>/gs, (match) => {
-        // remove class because highlight.js adds span tags around each word?
-        const fix = match.replace(/ class=".*?"/g, '');
+        // console.log('match', match);
         // highlight.js returns html entities encoded text. Need to decode it back to Ascii.
-        const codeBlock = entitiesToAscii(hljs.highlightAuto(fix).value);
-        // override the style of Anki card.
-        const txt = codeBlock.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
+        const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
+        // console.log('codeBlock', codeBlock);
+        // remove weird span tags in the 'code' block
+        const fix = codeBlock.replace(/<code <.*?\/span>>/, '<code>');
+        // console.log('fix', fix);
+        // Add custom css to pre tags.
+        const txt = fix.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
+        // console.log('txt', txt);
         return txt;
       });
     },

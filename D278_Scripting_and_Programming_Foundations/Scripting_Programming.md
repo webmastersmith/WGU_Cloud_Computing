@@ -63,7 +63,7 @@
 - What does index reference?
   - Indexing: Accessing individual elements using their numerical position (starting from 0).
 - What is the purpose of each different data type?
-  - Specify the kind of data a variable can hold (e.g., integers, floats, strings, booleans).
+  - Specify the kind of data a variable can hold (e.g., `integers, floats, strings, booleans`).
   - Each type has distinct operations and storage requirements.
 
 ## Lesson 3 Questions | Control Structures
@@ -88,7 +88,8 @@
   - Arithmetic operators have a specific order of evaluation, similar to math (PEMDAS).
   - **Logical** operators generally have **lower** precedence than relational and arithmetic operators.
 - How is an infinite loop created?
-  - An infinite loop occurs when the condition for loop termination never becomes true. This can happen accidentally due to incorrect logic or intentionally for specific purposes.
+  - Loop termination never becomes true.
+  - Can happen accidentally due to incorrect logic or intentionally for specific purposes.
 - What is a sentinel value?
   - special value indicating the end of a list (array).
   - The loop iteration continues until it encounters the sentinel value.
@@ -97,20 +98,30 @@
   - **Condition**: The condition that determines if the loop continues (e.g., while variable < 10).
   - **Increment**: An optional step that updates the loop variable for each iteration (e.g., variable += 1).
 - What is difference in a while loop and do/while loop?
-  - while loop: Checks the condition before executing the loop body. It may not run at all if the initial condition is false.
-  - do/while loop: Executes the loop body first, then checks the condition. It will **always run at least once**.
+  - `while` loop: Checks the condition before executing the loop body. It may not run at all if the initial condition is false.
+  - `do/while` loop: Executes the loop body first, then checks the condition. It will **always run at least once**.
 - Which control structure is guaranteed to run only one time?
-  - The break statement within a loop or the if statement with no else branch can both be used to ensure a piece of code runs only once.
+  - The `break` statement within a loop or the `if` statement with no else branch can both be used to ensure a piece of code runs only once.
 - Which loop is used when you are unsure how many times you may need to iterate?
-  - A while loop or a do/while loop is suitable when you don't know the exact number of iterations needed.
+  - A `while` loop or a do/while loop is suitable when you don't know the exact number of iterations needed.
 - Which loop is used when you know how many times you want to iterate?
-  - A for loop is specifically designed for iterating a fixed number of times, often using a counter variable.
+  - A `for` loop is specifically designed for iterating a fixed number of times, often using a counter variable.
 
 ## Lesson 4 Questions | Functions
 
 - What is a function?
-  - A function is a reusable block of code that performs a specific task. It's like a mini-program within your main program.
-  - You define a function using the def keyword, followed by the function name, parentheses (which may contain parameters), and a colon.
+
+  - A function is a **reusable block of code** that performs a specific task. It's like a mini-program within your main program.
+
+  ```python
+  # python
+  def add(a, b):
+    result = a + b
+    print(result)
+
+  add(2, 2) # 4
+  ```
+
 - Why are functions useful?
   - Organization: Break down complex programs into smaller, manageable units.
   - Reusability: Write code once and use it multiple times in different parts of your program.
@@ -121,6 +132,7 @@
   - You call a function by using its name followed by parentheses, optionally providing arguments.
 
 ```python
+  # python
 def add(a, b):
   result = a + b
   print(result)
@@ -131,6 +143,16 @@ add(2, 2) # 4
 - What are parameters and arguments?
   - Parameters: Variables defined within the function's parentheses. They act as placeholders for values that will be passed when the function is called.
   - Arguments: Actual values provided during a function call. They are assigned to the corresponding parameters.
+
+```python
+  # python
+def add(a, b): # 'a' and 'b' are parameters. placeholders.
+  result = a + b
+  print(result)
+
+add(2, 2) # '2' and '2' are arguments. values.
+```
+
 - What happens if you define a function but do not call it?
   - Nothing happens. The function is defined but not executed until it's called.
 - What does a return statement do?
@@ -187,11 +209,12 @@ add(2, 2) # 4
   - **Sequence diagram**: shows the **logic** between software components and indicates the **order of events**.
     - ![sequence diagram](img/sequence.PNG)
   - **Activity diagram**: describe the flow of an activity or set of activities.
+    - ![activity diagram](img/activity.PNG)
 - Which UML diagrams are activity?
   - behavioral
   - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the analysis phase?
-  - Use case diagrams
+  - Use Case diagrams
   - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the design phase?
   - Class diagrams
@@ -202,31 +225,32 @@ add(2, 2) # 4
 - Which UML diagrams are used in the testing phase?
   - Sequence diagrams
   - ![sdlc](img/sdlc.PNG)
-- What is a use case diagram used for?
+- What is a Use Case diagram used for?
   - visually model **how a user interacts** with a software program.
   - ![use case diagram](img/Use_case.png)
-- What is a class diagram used for?
+- What is a Class diagram used for?
   - visually model the **classes of a computer program**, including data members and functions.
-- What is a sequence diagram used for?
+  - ![use case diagram](img/Use_case.png)
+- What is a Sequence diagram used for?
   - shows the **logic** between software components and indicates the **order of events**.
+  - ![sequence diagram](img/sequence.PNG)
 
 ## Lesson 8 Questions | Language Survey
 
 - What is the difference in a compiled language and an interpreted language? Which languages are compiled? Which languages are interpreted?
-  - Compiled languages: Translate their entire code into machine-readable instructions (bytecode) before execution. This results in faster runtime performance but requires recompilation after any code changes. Examples: C++, Java, Go.
-  - Interpreted languages: Execute code line by line without generating bytecode. This offers flexibility for rapid prototyping and debugging but may have slower performance. Examples: Python, JavaScript, Ruby.
-- What is the difference in statically typed and dynamically typed languages? Which languages are statically typed?
-  - Statically typed languages: Explicitly declare the data type of variables before using them. This enables early error detection and type safety but requires stricter syntax. Examples: Java, C#, TypeScript.
-- Which languages are dynamically typed?
-  - Dynamically typed languages: Infer data types automatically based on their usage. This offers more flexibility and conciseness but may lead to runtime errors. Examples: Python, JavaScript, Ruby.
-- Which languages are object oriented? What is the difference in an object-oriented language and a non object-oriented language? Which languages are not object oriented?
-  - Object-oriented languages: Group data (attributes) and functionality (methods) into objects, emphasizing data encapsulation and code reuse. They promote modularity and code organization. Examples: Java, Python, C++.
-  - Non-object-oriented languages: Focus on procedural programming, organizing code in procedures and functions, with less emphasis on objects. Examples: C, Assembly language, some scripting languages.
+  - **Compiled** languages: Translate their entire code into machine-readable instructions (bytecode) before execution. This results in faster runtime performance but requires recompilation after any code changes. Examples: `C++, Java, Go`.
+  - **Interpreted** languages: Execute code line by line without generating bytecode. This offers flexibility for rapid prototyping and debugging but may have slower performance. Examples: `Python, JavaScript, Ruby`.
+- What is the difference in statically typed and dynamically typed languages? Which languages are statically typed? Which languages are dynamically typed?
+  - **Statically** typed languages: Explicitly declare the data type of variables before using them. This enables early error detection and type safety but requires stricter syntax. Examples: `Java, C#, TypeScript`.
+  - **Dynamically** typed languages: Infer data types automatically based on their usage. This offers more flexibility and conciseness but may lead to runtime errors. Examples: `Python, JavaScript, Ruby`.
+- What is the difference in an object-oriented language and a non object-oriented language? Which languages are object oriented? Which languages are not object oriented?
+  - **Object-oriented** languages: Group data (attributes) and functionality (methods) into objects, emphasizing data encapsulation and code reuse. They promote modularity and code organization. Examples: `Java, Python, C++`.
+  - **Non-object-oriented** languages: Focus on procedural programming, organizing code in procedures and functions, with less emphasis on objects. Examples: `C, Assembly language, some scripting languages`.
 - How does a markup language differ from a programming or scripting language?
-  - Markup languages: Define the structure and layout of documents, like HTML for web pages, LaTeX for technical documents. They don't have complex logic or computation capabilities.
-  - Programming/Scripting languages: Focus on executing logic and computations, building and automating tasks, controlling program flow, and manipulating data.
+  - **Markup** languages: Define the structure and **layout** of documents, like `HTML` for web pages, `LaTeX` for technical documents. They don't have complex logic or computation capabilities.
+  - **Programming/Scripting** languages: Focus on executing **logic and computations**, building and automating tasks, controlling program flow, and manipulating data.
 - What is a programming library?
-  - Collections of pre-written code (functions, classes) providing reusable tools for specific tasks, like data manipulation, networking, GUI development.
+  - Collections of **pre-written code** (functions, classes) providing reusable tools for specific tasks, like data manipulation, networking, GUI development.
 - Why are programming libraries used?
   - They save time and effort, promote code reuse and consistency, and offer access to advanced functionalities.
 - Are libraries compiled or precompiled?
