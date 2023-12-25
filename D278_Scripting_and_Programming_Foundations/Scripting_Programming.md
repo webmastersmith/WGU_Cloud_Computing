@@ -21,8 +21,18 @@
   - Understand the fundamental difference between agile and waterfall
   - Understand the different data types ( integer, float, boolean, string )
   - Understand how to find the value of basic functions ( there are several of these to reference from in the PA )
-  - That makes up probably 75% of the real exam.
-  - I opened the class on a Tuesday in April and finished that Thursday with flying colors.
+
+| Lang   | OOP   | Static Typed | Compiled | Notes                                |
+| ------ | ----- | ------------ | -------- | ------------------------------------ |
+| C      | False | True         | True     | Procedural Oriented                  |
+| C++    | True  | True         | True     | Object Oriented                      |
+| C#     | True  | True         | True     | Object Oriented                      |
+| Java   | True  | True         | True     | Object Oriented                      |
+| JS     | True  | False        | False    | Object Oriented, but not class based |
+| Python | True  | False        | False    | Object Oriented                      |
+
+- That makes up probably 75% of the real exam.
+- I opened the class on a Tuesday in April and finished that Thursday with flying colors.
 
 ## Lesson 2 Questions | Programming Fundamentals
 
@@ -180,7 +190,7 @@ add(2, 2) # '2' and '2' are arguments. values.
   - The Software Development Life Cycle (SDLC) is a structured framework for planning, creating, testing, deploying, and maintaining software applications. It outlines the essential phases involved in bringing a software idea to life.
 - What are the four phases of SDLC and what activities takes place in each of the four phases?
   1. Analysis: goals of project.
-  2. Design: Build UML. -define how to build the program.
+  2. Design: wireframe. -define how to build the program.
   3. Implement: write code.
   4. Testing: check code meets goals.
 - In which phase do you write code?
@@ -230,7 +240,7 @@ add(2, 2) # '2' and '2' are arguments. values.
   - ![use case diagram](img/Use_case.png)
 - What is a Class diagram used for?
   - visually model the **classes of a computer program**, including data members and functions.
-  - ![use case diagram](img/Use_case.png)
+  - ![class diagram](img/class.PNG)
 - What is a Sequence diagram used for?
   - shows the **logic** between software components and indicates the **order of events**.
   - ![sequence diagram](img/sequence.PNG)
