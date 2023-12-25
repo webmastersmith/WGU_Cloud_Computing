@@ -29,36 +29,37 @@
 - What is the purpose of a variable?
   - Purpose: Store and manage data values during program execution.
 - How do you save a value to a variable?
-  - Saving values: Use the assignment operator (=), e.g., myVariable = 10.
+  - Saving values: Use the assignment operator (=), e.g., `myVariable = 10`.
 - What is a programming expression?
-  - Combinations of values, variables, operators, and function calls that produce a result.
+  - An expression may be a number like `80`, a variable name like `numApples`, or a simple calculation like `numApples + 1`.
 - What is an identifier?
-  Names given to variables, functions, and other program elements.
+  - Names given to variables, functions, and other program elements.
 - What constitutes a valid identifier?
-  - Valid rules: Typically start with a letter or underscore, followed by letters, numbers, or underscores. Case-sensitive in most languages.
+  - Valid rules: Typically start with a **letter or underscore**, followed by letters, numbers, or underscores. **Case-sensitive** in most languages.
 - What is a literal?
   - Fixed values directly written in code, e.g., 42, "hello", True.
 - What is an operator?
-  - Symbols performing operations on values, e.g., +, -, \*, /, %, ==, !=, &&, ||.
+  - Symbols performing operations on values, e.g., `+, -, *, /, %, ==, !=, &&, ||`.
 - What precedence rules does programming use?
   - Order in which operators are evaluated, similar to math (PEMDAS).
 - How does an integer differ from a float?
-  - Integers: Whole numbers without decimals (e.g., -5, 0, 10).
-  - Floats: Numbers with decimals (e.g., 3.14, -2.5).
+  - Integers: Whole numbers without decimals (e.g., `-5, 0, 10`).
+  - Floats: Numbers with decimals (e.g., `3.14, -2.5`).
 - What happens if you divide two integers? A integer and float?
   - Integer/Integer: Results in an integer quotient (remainder discarded).
   - Integer/Float or Float/Float: Results in a float.
 - What happens if you divide a nonzero floating point number by zero?
-  - Nonzero Float/Zero: Results in either positive or negative infinity, depending on the sign of the float.
+  - 0 is mathematically **undefined**. A divide-by-zero error occurs at runtime if a divisor is 0, causing a **program to terminate**.
 - How do you convert an item’s type?
-  - Changing a value's data type using explicit functions (e.g., int(), float(), str()).
+  - Changing a value's data type using explicit functions (e.g., `int(), float(), str()`).
 - What does the modulo operator do?
   - Returns the remainder of a division operation.
 - What is the difference in a variable and a constant?
-  - Variables: Values can change during program execution.
-  - Constants: Values remain fixed throughout the program.
+  - Variables: Values **can change** during program execution.
+  - Constants: Values remain **fixed** throughout the program.
 - How does an array work?
-  - Collections of multiple values stored under a single name.
+  - Collections of multiple values stored as a 'list', under a single name.
+  - each item being directly accessible.
 - What does index reference?
   - Indexing: Accessing individual elements using their numerical position (starting from 0).
 - What is the purpose of each different data type?
@@ -89,7 +90,8 @@
 - How is an infinite loop created?
   - An infinite loop occurs when the condition for loop termination never becomes true. This can happen accidentally due to incorrect logic or intentionally for specific purposes.
 - What is a sentinel value?
-  - A sentinel value is a special data value used as a flag to indicate the end of a loop iteration. The loop continues until it encounters the sentinel value.
+  - special value indicating the end of a list (array).
+  - The loop iteration continues until it encounters the sentinel value.
 - What are the three parts of a loop?
   - **Initialization**: Initializing the loop variable (e.g., setting it to 0).
   - **Condition**: The condition that determines if the loop continues (e.g., while variable < 10).
@@ -182,7 +184,7 @@ add(2, 2) # 4
 - Which UML diagrams are behavioral?
   - **Use case diagram**: visually model **how a user interacts** with a software program.
     - ![use case diagram](img/Use_case.png)
-  - **Sequence diagram**: shows interaction between software components and indicates the **order of events**.
+  - **Sequence diagram**: shows the **logic** between software components and indicates the **order of events**.
     - ![sequence diagram](img/sequence.PNG)
   - **Activity diagram**: describe the flow of an activity or set of activities.
 - Which UML diagrams are activity?
@@ -206,7 +208,7 @@ add(2, 2) # 4
 - What is a class diagram used for?
   - visually model the **classes of a computer program**, including data members and functions.
 - What is a sequence diagram used for?
-  - shows interaction between software components and indicates the **order of events**.
+  - shows the **logic** between software components and indicates the **order of events**.
 
 ## Lesson 8 Questions | Language Survey
 
