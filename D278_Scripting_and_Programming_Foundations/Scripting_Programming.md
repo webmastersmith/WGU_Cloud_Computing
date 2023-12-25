@@ -9,28 +9,20 @@
 - [wgu D278 Outline](https://srm--c.vf.force.com/apex/coursearticle?Id=kA03x000000spz1CAA)
 - focus on chapters: 1, 2, 7.1, 7.2, 8, 9.
 - book ISBN: 978-1-394-13419-9
-
-Once you take the PA, review it hard and study the chapters it recommends.
-
-Absolutely don't overthink this class, it is a very VERY basic course that ultimately needs you to understand the concepts.
-
-The OA will be very similar to the PA.
-
-Understand the SDLC and which phase each diagram sits in: (Memorize this and whiteboard it) ADIC = UCAS
-
-Analysis has Use Case Design has class diagram Implementation has activity Testing has sequence
-
-Understand the fundamental difference between For and While loops
-
-Understand the fundamental difference between agile and waterfall
-
-Understand the different data types ( integer, float, boolean, string )
-
-Understand how to find the value of basic functions ( there are several of these to reference from in the PA )
-
-That makes up probably 75% of the real exam.
-
-I opened the class on a Tuesday in April and finished that Thursday with flying colors.
+- Once you take the PA, review it hard and study the chapters it recommends.
+  - Absolutely don't overthink this class, it is a very VERY basic course that ultimately needs you to understand the concepts.
+  - The OA will be very similar to the PA.
+  - Understand the SDLC and which phase each diagram sits in: (Memorize this and whiteboard it) ADIC = UCAS
+    - Analysis Phase(goals) = Use Case Diagram
+    - Design Phase(wireframe) = Class Diagram
+    - Implementation Phase(write) = Activity Diagram
+    - Testing Phase(check) = Sequence Diagram
+  - Understand the fundamental difference between For and While loops
+  - Understand the fundamental difference between agile and waterfall
+  - Understand the different data types ( integer, float, boolean, string )
+  - Understand how to find the value of basic functions ( there are several of these to reference from in the PA )
+  - That makes up probably 75% of the real exam.
+  - I opened the class on a Tuesday in April and finished that Thursday with flying colors.
 
 ## Lesson 2 Questions | Programming Fundamentals
 
@@ -83,27 +75,28 @@ I opened the class on a Tuesday in April and finished that Thursday with flying 
 - What does the equality operator do? Does it work for all data types?
   - The == operator checks if two values are equal. It works for most data types (integers, floats, strings, etc.) However, for complex data types (like lists or dictionaries), it checks for reference equality, not content equality.
 - What are the four relational operators?
-  1. > : greater than
-  2. <: less than
-  3. > =: greater than or equal to
-  4. <=: less than or equal to
+  1. `>`: greater than
+  2. `<`: less than
+  3. `>=`: greater than or equal to
+  4. `<=`: less than or equal to
 - What are the three logical operators?
-  - and: True only if both conditions are true
-  - or: True if at least one condition is true
-  - not: Negates the condition
+  1. `and`: True only if both conditions are true
+  2. `or`: True if at least one condition is true
+  3. `not`: Negates the condition
 - Explain the precedence rules.
-  - Operators have a specific order of evaluation, similar to math (PEMDAS). Logical operators generally have lower precedence than relational and arithmetic operators. Consult the book for the specific order in Python.
+  - Arithmetic operators have a specific order of evaluation, similar to math (PEMDAS).
+  - **Logical** operators generally have **lower** precedence than relational and arithmetic operators.
 - How is an infinite loop created?
   - An infinite loop occurs when the condition for loop termination never becomes true. This can happen accidentally due to incorrect logic or intentionally for specific purposes.
 - What is a sentinel value?
   - A sentinel value is a special data value used as a flag to indicate the end of a loop iteration. The loop continues until it encounters the sentinel value.
 - What are the three parts of a loop?
-  - Initialization: Initializing the loop variable (e.g., setting it to 0).
-  - Condition: The condition that determines if the loop continues (e.g., while variable < 10).
-  - Increment: An optional step that updates the loop variable for each iteration (e.g., variable += 1).
+  - **Initialization**: Initializing the loop variable (e.g., setting it to 0).
+  - **Condition**: The condition that determines if the loop continues (e.g., while variable < 10).
+  - **Increment**: An optional step that updates the loop variable for each iteration (e.g., variable += 1).
 - What is difference in a while loop and do/while loop?
   - while loop: Checks the condition before executing the loop body. It may not run at all if the initial condition is false.
-  - do/while loop: Executes the loop body first, then checks the condition. It will always run at least once.
+  - do/while loop: Executes the loop body first, then checks the condition. It will **always run at least once**.
 - Which control structure is guaranteed to run only one time?
   - The break statement within a loop or the if statement with no else branch can both be used to ensure a piece of code runs only once.
 - Which loop is used when you are unsure how many times you may need to iterate?
@@ -162,53 +155,58 @@ add(2, 2) # 4
 - What is SDLC?
   - The Software Development Life Cycle (SDLC) is a structured framework for planning, creating, testing, deploying, and maintaining software applications. It outlines the essential phases involved in bringing a software idea to life.
 - What are the four phases of SDLC and what activities takes place in each of the four phases?
-  1. Planning and Requirement Analysis:
-     - Defining project goals, requirements, and feasibility.
-     - Gathering user input and understanding their needs.
-     - Creating project documentation and specifications.
-  2. Design and Development:
-     - Designing the software architecture, user interface, and workflows.
-     - Writing code based on the approved design.
-     - Implementing tests to ensure code functionality and quality.
-  3. Testing and Deployment:
-     - Thoroughly testing the software for bugs, errors, and usability.
-     - Fixing identified issues and refining the software.
-     - Deploying the software to production environments.
-  4. Maintenance and Support:
-     - Providing ongoing support to users and fixing any post-deployment issues.
-     - Monitoring system performance and making necessary updates.
-     - Adapting the software to changing user needs and market trends.
+  1. Analysis: goals of project.
+  2. Design: Build UML. -define how to build the program.
+  3. Implement: write code.
+  4. Testing: check code meets goals.
 - In which phase do you write code?
-  - The Design and Development phase is where the actual coding takes place. Developers write and test code modules based on the approved design specifications. This phase generally takes up a significant portion of the SDLC timeline.
+  - Implementation phase.
 - How does a waterfall approach differ from an agile approach?
   - Two primary approaches to implementing SDLC are waterfall and agile:
     - **Waterfall**: A sequential model where each phase is completed before moving to the next, providing well-defined milestones but less flexibility.
+      - Just like a waterfall, you never return back to source. You continue to complete task until done.
     - **Agile**: An iterative and incremental approach where development happens in short sprints, allowing for continuous feedback and adaptation to changing requirements.
+      - You do all 4 phases on small sprints, continuously building out the application.
 
 ## Lesson 7 Questions | Unified Modeling Language
 
 - What is UML?
-  - Unified Modeling Language (UML) is a standard visual language used to design, document, and communicate software systems. It provides a set of diagrams to represent different aspects of a system, helping developers and stakeholders understand its structure, behavior, and functionality.
+  - Unified Modeling Language (UML) uses different types of diagrams to **visualize the structure and behavior of programs**.
+  - UML consists of several structural and behavioral diagrams.
+    - A **structural** diagram visualizes **static** elements of software, such as the types of variables and functions used in the program.
+    - A **behavioral** diagram visualizes **dynamic** behavior of software, such as the flow of an algorithm.
 - Which UML diagrams are structural?
-  - Structural: Define the static aspects of a system, like classes, relationships, and attributes. Examples include class diagrams, object diagrams, and component diagrams.
+  - **Class diagram**: visually model the **classes of a computer program**, including data members and functions.
+    - A class is a code blueprint for creating an object that is composed of data members and functions that operate on those data members.
+    - ![class diagram](img/class.PNG)
 - Which UML diagrams are behavioral?
-  - Behavioral: Illustrate the dynamic behavior of a system, showing how things interact and change over time. Examples include state diagrams, sequence diagrams, and activity diagrams.
+  - **Use case diagram**: visually model **how a user interacts** with a software program.
+    - ![use case diagram](img/Use_case.png)
+  - **Sequence diagram**: shows interaction between software components and indicates the **order of events**.
+    - ![sequence diagram](img/sequence.PNG)
+  - **Activity diagram**: describe the flow of an activity or set of activities.
 - Which UML diagrams are activity?
-  - Specifically focus on workflows and business processes, outlining the activities, flows, and decisions involved in achieving a specific goal. They bridge the gap between structural and behavioral diagrams.
+  - behavioral
+  - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the analysis phase?
-  - Analysis: Use case diagrams, class diagrams, and activity diagrams to understand system requirements and define key actors, classes, and processes.
+  - Use case diagrams
+  - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the design phase?
-  - Design: Refine class diagrams, introduce sequence diagrams to show interactions between objects, and utilize state diagrams to detail object behavior.
+  - Class diagrams
+  - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the implementation phase?
-  - Implementation: Class diagrams serve as blueprints for coding, and sequence diagrams can guide component integration.
+  - Activity
+  - ![sdlc](img/sdlc.PNG)
 - Which UML diagrams are used in the testing phase?
-  - Testing: Sequence diagrams can help design test cases and verify expected behavior.
+  - Sequence diagrams
+  - ![sdlc](img/sdlc.PNG)
 - What is a use case diagram used for?
-  - Use Case Diagram: Visually maps actors and their interactions with the system, capturing overall functionality and usage scenarios.
+  - visually model **how a user interacts** with a software program.
+  - ![use case diagram](img/Use_case.png)
 - What is a class diagram used for?
-  - Class Diagram: Shows classes, their relationships, and attributes, providing a structural overview of the system.
+  - visually model the **classes of a computer program**, including data members and functions.
 - What is a sequence diagram used for?
-  - Sequence Diagram: Illustrates the sequence of messages exchanged between objects during a specific interaction, depicting how objects collaborate.
+  - shows interaction between software components and indicates the **order of events**.
 
 ## Lesson 8 Questions | Language Survey
 
