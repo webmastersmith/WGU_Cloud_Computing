@@ -32,7 +32,7 @@ That makes up probably 75% of the real exam.
 
 I opened the class on a Tuesday in April and finished that Thursday with flying colors.
 
-## Introduction to Computer Programming
+## Lesson 2 Questions | Programming Fundamentals
 
 - What is the purpose of a variable?
   - Purpose: Store and manage data values during program execution.
@@ -73,7 +73,7 @@ I opened the class on a Tuesday in April and finished that Thursday with flying 
   - Specify the kind of data a variable can hold (e.g., integers, floats, strings, booleans).
   - Each type has distinct operations and storage requirements.
 
-## Basic Constructs of Programming
+## Lesson 3 Questions | Control Structures
 
 - How does a branch differ from a loop?
   - Branch: Executes different parts of the code based on a condition. It's like a fork in the road, where the program takes one path or another.
@@ -215,15 +215,12 @@ add(2, 2) # 4
 - What is the difference in a compiled language and an interpreted language? Which languages are compiled? Which languages are interpreted?
   - Compiled languages: Translate their entire code into machine-readable instructions (bytecode) before execution. This results in faster runtime performance but requires recompilation after any code changes. Examples: C++, Java, Go.
   - Interpreted languages: Execute code line by line without generating bytecode. This offers flexibility for rapid prototyping and debugging but may have slower performance. Examples: Python, JavaScript, Ruby.
-- What is the difference in statically typed and dynamically typed languages?
-- Which languages are statically typed?
+- What is the difference in statically typed and dynamically typed languages? Which languages are statically typed?
   - Statically typed languages: Explicitly declare the data type of variables before using them. This enables early error detection and type safety but requires stricter syntax. Examples: Java, C#, TypeScript.
 - Which languages are dynamically typed?
   - Dynamically typed languages: Infer data types automatically based on their usage. This offers more flexibility and conciseness but may lead to runtime errors. Examples: Python, JavaScript, Ruby.
-- What is the difference in an object-oriented language and a non object-oriented language?
-- Which languages are object oriented?
+- Which languages are object oriented? What is the difference in an object-oriented language and a non object-oriented language? Which languages are not object oriented?
   - Object-oriented languages: Group data (attributes) and functionality (methods) into objects, emphasizing data encapsulation and code reuse. They promote modularity and code organization. Examples: Java, Python, C++.
-- Which languages are not object oriented?
   - Non-object-oriented languages: Focus on procedural programming, organizing code in procedures and functions, with less emphasis on objects. Examples: C, Assembly language, some scripting languages.
 - How does a markup language differ from a programming or scripting language?
   - Markup languages: Define the structure and layout of documents, like HTML for web pages, LaTeX for technical documents. They don't have complex logic or computation capabilities.
