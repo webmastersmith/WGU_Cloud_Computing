@@ -6,6 +6,7 @@
 - <https://quizlet.com/784336947/d278-exam-prep-flash-cards/>
 - <https://www.reddit.com/r/WGU/comments/14rq1yc/dirtshoes_guide_to_d278_scripting_and_programming/>
 - <https://www.reddit.com/r/WGU/comments/11uvpeh/d278_scripting_and_programming_foundations_aka/>
+- [wgu D278 Outline](https://srm--c.vf.force.com/apex/coursearticle?Id=kA03x000000spz1CAA)
 - focus on chapters: 1, 2, 7.1, 7.2, 8, 9.
 - book ISBN: 978-1-394-13419-9
 
@@ -123,6 +124,15 @@ I opened the class on a Tuesday in April and finished that Thursday with flying 
 - What is a function call?
   - A function call is when you invoke a function to execute its code.
   - You call a function by using its name followed by parentheses, optionally providing arguments.
+
+```python
+def add(a, b):
+  result = a + b
+  print(result)
+
+add(2, 2) # 4
+```
+
 - What are parameters and arguments?
   - Parameters: Variables defined within the function's parentheses. They act as placeholders for values that will be passed when the function is called.
   - Arguments: Actual values provided during a function call. They are assigned to the corresponding parameters.
