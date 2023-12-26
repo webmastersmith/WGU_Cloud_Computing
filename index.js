@@ -2,11 +2,11 @@
   const fs = await import('fs');
   const path = await import('path');
   // variables
-  const directoryPath = 'D278_Scripting_and_Programming_Foundations/Scripting_Programming.md';
+  const directoryPath = 'D335_Intro_Programming_Python/Intro_Python.md';
   const dataArr = fs.readFileSync(directoryPath, 'utf-8')?.split(/\r?\n/);
   // Get first line of Markdown as Anki Deck Title
   const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
-  const removeLines = 26; // line before you want to start parsing. 0 is first line.
+  const removeLines = 9; // line before you want to start parsing. 0 is first line.
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
@@ -44,16 +44,18 @@
           .replace(/&amp;/g, '&')
           .replace(/&lt;/g, '<')
           .replace(/&gt;/g, '>')
-          .replace(/&quot;/g, '"');
+          .replace(/&quot;/g, '"')
+          .replace(/&#x27;/g, "'")
+          .replace(/&#x39;/g, "'");
       }
       return html.replace(/<pre>.*?<\/pre>/gs, (match) => {
         // console.log('match', match);
         // highlight.js returns html entities encoded text. Need to decode it back to Ascii.
         const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
-        // console.log('codeBlock', codeBlock);
+        console.log('codeBlock', codeBlock);
         // remove weird span tags in the 'code' block
-        const fix = codeBlock.replace(/<code <.*?\/span>>/, '<code>');
-        // console.log('fix', fix);
+        const fix = codeBlock.replace(/<code .*?\/span>>/, '<code>');
+        console.log('fix', fix);
         // Add custom css to pre tags.
         const txt = fix.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
         // console.log('txt', txt);

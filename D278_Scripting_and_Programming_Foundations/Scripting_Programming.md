@@ -7,6 +7,7 @@
 - <https://www.reddit.com/r/WGU/comments/14rq1yc/dirtshoes_guide_to_d278_scripting_and_programming/>
 - <https://www.reddit.com/r/WGU/comments/11uvpeh/d278_scripting_and_programming_foundations_aka/>
 - [wgu D278 Outline](https://srm--c.vf.force.com/apex/coursearticle?Id=kA03x000000spz1CAA)
+- <https://ankiweb.net/shared/by-author/472161850>
 - focus on chapters: 1, 2, 7.1, 7.2, 8, 9.
 - book ISBN: 978-1-394-13419-9
 - Once you take the PA, review it hard and study the chapters it recommends.
