@@ -1,4 +1,7 @@
 
-a = [1,2,3,4,5]
-str = 'hello world'
-print(a[1:4]) # 2,3,4 -inclusive, exclusive.
+def add2(*args, **kwargs):
+  print(locals())
+print(add2(1,2,3,4, myKeyword='hello')) #
+
+
+print(globals())

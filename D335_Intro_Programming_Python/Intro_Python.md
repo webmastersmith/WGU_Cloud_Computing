@@ -9,7 +9,7 @@
 
 ## Data Structures
 
-- variables, list, set
+- variables, list, list comprehension, set
 
 ```python
 # VARIABLES
@@ -22,29 +22,63 @@ my_float = 1.2 # type(my_float) # float
 my_list = [1,2,3] # len(my_list) # 3
 my_list2 = [3,2,1]
 # Order matters in list
-my_list == my_list2 # false
+my_list == my_list2 # False
+b = my_list
+b.append(100) # mutates my_list because 'b' is a pointer.
+b = my_list.copy() # creates two copies.
 my_list.append(4) # add to list.
+my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
+my_list.remove('hello') # will error if 'hello' is not in list.
+my_list.pop() # returns end item. mutates list.
+
+# List Comprehension
+[2*item for item in my_list] # [2,4,6]
+[item for item in my_list if item % 2 == 0] # [2]
+str = 'my string is wonderful'
+def cleanWord(word):
+  return word.replace('i', '').lower()
+[cleanWord(word) for word in str.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
+# nested list comprehension
+[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
+
 
 # SET
+# cannot use slice. It is like a dict.
+# will only store unique items. Will not be in same order.
 my_set = {1,2,3} # unique values, others will be discarded.
 my_set2 = {3,2,1}
 # order does not matter in equality.
 my_set == my_set2 # true
+my_set.add(4) # adds to set.
+my_set[0] # error cannot get items from set this way.
+3 in my_set # True
+my_set.discard(100) # will not error if item does not exist.
 
 # TUPLES
 # cannot append or add to a tuple. Memory efficient because cannot grow.
 my_tup = (1,2,3) # type(my_tup) # tuple
 my_tup2 = (3,2,1) # order matters.
-my_tup == my_tup2 # false
+my_tup == my_tup2 # False
+a,b,c = my_tup # a=1,b=2,c=3
 
 # DICTIONARIES
 # keys must be unique.
 # order does not matter.
 my_dict = { # key : value
   'num1': 1,
-  'char2': 'two'
+  'char2': 'two',
 }
 my_dict['num1']
+my_dict['num100'] # error
+my_dict.get('num100', 100) # 100 is default if doesn't exist, else will return None.
+list(my_dict.keys())
+list(my_dict.values())
+list(my_dict.items()) # key, value pairs in a tuple. returned as an array.
+if 'num100' not in my_dict:
+  my_dict['num100'] = 100
+for key, value in my_dict.items():
+  print(key, value)
+[{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
 ```
 
 - operators, division, modulo, multiplication
@@ -98,7 +132,7 @@ bool({}) # False
 bool(None) # False
 ```
 
-- if, elif, else, Loops, While, Functions, None
+- if, elif, else, Loops, While, Pass, Functions, None
 
 ```python
 # Control Flow
@@ -108,19 +142,55 @@ elif b:
   print('b')
 else:
   print('?')
+# ternary
+b = 'Fizz' if a%3==0 else 'Buzz' # 'Fizz' or 'Buzz'.
 
 # LOOPS
 a = [1,2,3]
+# FOR
 for item in a:
   print(item) # '1\n2\n3\n'
-# while
+# Find Primes
+for num in range(2, 101):
+  for factor in range(2, int(num ** 0.5)+1):
+    if num % factor == 0:
+      break
+  else: # called when break statement exits loop. also used in while loops.
+    print(f'{num} is prime!')
+
+# WHILE
 while a[-1] < 4:
   print('hi')
   a[-1] = a[-1]+1
+while True:
+  if True:
+    break # exit loop. only breaks out of first loop it encounters.
+  if False:
+    continue # skip this iteration. can also be 'pass'.
+# Pass
+while True:
+  pass # will do nothing. acts like a placeholder. will not error.
 
 # Functions
-def add(a,b):
+# variables are function scoped.
+def add(a,b=0): # default value
   print(a+b)
+# KeyWords
+def keyWord(a='world', b='hello'):
+  print(b, a)
+keyWord(b='goodbye', a='bob') # goodbye bob. order doesn't matter.
+# ARGS, KEYWORD ARGS
+def add2(*args, **kwargs): # any amount of args, any keyword argument.
+  print(args, kwargs)
+add2(1,2,3,4, myKeyword='hello') # (1, 2, 3, 4) {'myKeyword': 'hello'}
+# locals()
+def add(a,b,c):
+  print(locals())
+add(1,2,3) # {'a':1, 'b':2, 'c':3}
+# globals()
+print(globals()) # returns all variables in global scope.
+# Lambda
+(lambda x: x+3)(5) # 8. only one line.
 
 # None -same as undefined in JS.
 print(print('I\'m None')) # I'm None, None
@@ -133,30 +203,206 @@ print(print('I\'m None')) # I'm None, None
 # Classes
 # Class constructors are Uppercase.
 class Dog:
+  hair = 'shaggy' # static variables that can be called on 'Dog' class. print(Dog.hair) # 'shaggy'
+  _collar = True # underscore tells you not to change it.
   def __init__(self, name, legs): # name, legs are attributes.
     self.name = name
     self.legs = legs
   # method
-  def speak(self): # self gives you access to all variables.
+  def speak(self): # self is the object. Gives you access to all variables.
     print(self.name + 'says bark')
+  def getCollar(self):
+    print(self._collar)
 type(Dog('rover', 4)) # 'Dog'
 my_dog = Dog('rover', 4) # initialize. Creates a 'my_dog' object which is an instance of 'Dog'.
 my_dog.speak() # 'rover says bark' -method call on the 'my_dog' object.
+my_dog.getCollar()
+
+# Extend Class
+class Cat(Dog):
+  def __inti__(self, age): # can override parent without super().
+    super().__init__() # calls the parent first
+    self.age = age
+  def speak:
+    print('meow')
+  def myAppend(self):
+    super().myAppend(item) # calls on the parent class.
 ```
 
-- slice
+- slice, string, format, multiline strings, range
 
-```python
+````python
 a = [1,2,3,4,5]
 str = 'hello world'
-print(a[1:4]) # [2,3,4] -inclusive, exclusive. returns list.
+a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
+a[:4] # [1,2,3,4] -same as 0:4, returns list.
+a[3:] # [4,5] -to end of string|list, returns list.
+a[::2] # [1,3,5] -every two, returns list.
+a[::-1] # [5,4,3,2,1] -backwards, returns list.
 
+# STRING
+str = 'my string is wonderful'
+str.split() # returns array. split on spaces.
+str.split('g') # returns array. removes match.
+def cleanWord(word):
+  return word.replace('i', '').lower()
+[cleanWord(word) for word in str.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
+# nested list comprehension
+[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
+
+# Format
+f'my string is {str}'
+
+# MultiLine Strings -4 backticks to escape.
+my_str = ```
+Hello
+World
+!
 ```
 
-- import
+# Range
+range(100) # 0-99
+range(1, 101) # 1-100
+````
+
+- Import, Module, Package, Errors
+  - module is simply a file with functions.
+  - package is multiple modules in directory.
 
 ```python
 # Import a module.
+import math # imports whole module.
+# import two functions from module
 from decimal import Decimal, getcontext
 
+# Module
+def add(a,b):
+  return a+b
+# Package
+__init__.py # this file is created inside directory. It is blank. Tells python this is a package.
+# in main:
+from directoryName.moduleName import functionName
+
+# Errors
+try:
+  1/0
+except Exception as e: # can have multiple 'except' errors. The first one will stop the execution.
+  print(type(e)) # ZeroDivisionError
+finally:
+  print('this always executes')
+
+# DECORATORS
+# handle exception function
+def handleException(func)
+  def wrapper():
+    try:
+      func()
+    except TypeError:
+      print('TypeError')
+    except ZeroDivisionError:
+      print('ZeroDivisionError')
+    except Exception: # catch all error.
+      print('WeirdError')
+  return wrapper
+
+@handleException # links exception function to causeError
+def causeError():
+  return 1/0
+causeError() # 'ZeroDivisionError'
+
+# RAISE ERROR
+@handleException
+def raiseError():
+  raise Exception()
+raiseError() # 'WeirdError'
+```
+
+- threads, process
+
+  - process: each process has own memory.
+  - threads: ways to share memory with two running programs in same process.
+
+- files
+
+```python
+# READ
+f = open('path/myFile.txt', 'r') # read mode.
+f.readline() # get text lines one at a time.
+f.readlines() # get entire file. Returns list of strings.
+for line in f.readlines():
+  print(line.strip()) # remove extra '\n' from print function.
+
+# WRITE -a=append
+f = open('path/file.txt', 'w') # create/overwrite new file.
+f.write('Line1\n') # will only write when buffer full or file closed.
+f.write('Line2\n')
+f.close() # forces buffer to write file.
+# To make sure file is closed.
+with open('path/file.txt', 'a') as f:
+  f.write('Line1\n')
+  f.write('Line2\n') # file will close when function stops.
+
+# CSV
+import csv
+with open('file.csv') as f:
+  reader = csv.reader(f, delimiter='\t') # delimiter is optional if comma separated.
+  next(reader) # skip header
+  for row in reader:
+    print(row) # each line will be a list.
+# CSV Dictionary
+with open('file.csv') as f:
+  reader = csv.DictReader(f, delimiter='\t') # delimiter is optional if comma separated.
+  next(reader) # skip header
+  for row in reader:
+    print(row) # each line will be a dictionary. header as key, value in csv.
+
+# JSON
+import json
+json.loads(jasonString) # same as JSON.parse()
+json.dumps(myList) # same as JSON.stringify()
+json.dumps(myList, separators=(',', ':')) # change sep
+```
+
+- pypi pip
+  - PyPi -Python Package Index. Is a repository of Python packages.
+  - <https://packaging.python.org/en/latest/tutorials/packaging-projects/>
+  - <https://pypi.org/>
+
+```python
+# pip
+# https://www.tutorialsteacher.com/python/pip-in-python
+
+pip3 --version # print python pip version
+pip list # list all packages
+pip show lorem # see details about package
+python3 -m pip show numpy
+pip help
+# upgrade
+pip upgrade # package installer for python
+py -m pip install --upgrade pip # admin
+
+# Install Package
+python3 -m pip install numpy
+pip install somePackage
+python -m pip install --upgrade SomePackage # to upgrade
+pip install "project-name==2.4" # specific version
+pip install "project-name~=2.4" # compatible with
+# Install from requirements
+# https://learnpython.com/blog/python-requirements-file/
+# https://towardsdatascience.com/requirements-vs-setuptools-python-ae3ee66e28af
+# https://realpython.com/lessons/using-requirement-files/
+# https://realpython.com/python-modules-packages/
+pip install -r requirements.txt
+
+# Uninstall
+pip uninstall lorem # uninstall package
+# uninstall all packages
+ pip freeze | xargs pip uninstall -y
+# remove all at once then
+pip uninstall -r requirements.txt -y # leave off -y to be asked to remove.
+
+# Development Mode -get custom dev requirements
+echo pytest > requirements-dev.txt
+pip install -r requirements-dev.txt # install requirements, then
+pytest
 ```
