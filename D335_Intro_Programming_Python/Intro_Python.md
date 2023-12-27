@@ -81,7 +81,7 @@ for key, value in my_dict.items():
 [{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
 ```
 
-- operators, division, modulo, multiplication
+- operators, division, modulo, multiplication, int, float
 
 ```python
 # Operators
@@ -113,6 +113,8 @@ True == True # True
 # LOGICAL -and or not
 True and True # True
 not True # False
+num > 3 and num < 5
+num < 3 or num > 5
 
 # MEMBERSHIP -in,
 10 in [1,2,3,4,5] # False
@@ -130,6 +132,12 @@ bool('') # False
 bool([]) # False
 bool({}) # False
 bool(None) # False
+
+# INT & FLOAT
+1+2 # int
+1+2.0 # float
+int(2.0) # 2
+float(2) # 2.0
 ```
 
 - if, elif, else, Loops, While, Pass, Functions, None
@@ -213,6 +221,7 @@ class Dog:
     print(self.name + 'says bark')
   def getCollar(self):
     print(self._collar)
+
 type(Dog('rover', 4)) # 'Dog'
 my_dog = Dog('rover', 4) # initialize. Creates a 'my_dog' object which is an instance of 'Dog'.
 my_dog.speak() # 'rover says bark' -method call on the 'my_dog' object.
@@ -230,8 +239,10 @@ class Cat(Dog):
 ```
 
 - slice, string, format, multiline strings, range
+  - multiline string is three backticks.
 
-````python
+```python
+# Slice
 a = [1,2,3,4,5]
 str = 'hello world'
 a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
@@ -251,19 +262,16 @@ def cleanWord(word):
 [cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
 
 # Format
-f'my string is {str}'
-
-# MultiLine Strings -4 backticks to escape.
-my_str = ```
-Hello
-World
-!
-```
+num = 4.9999
+f'my string is {num}' # my string is 4.9999
+f'{num:d}' # integer. float will be dropped. # 4
+f'{num:.2f}' # decimal zero two places. # 4.99
+f'{num:03d}' # leading decimal fill three places. # 004
 
 # Range
 range(100) # 0-99
 range(1, 101) # 1-100
-````
+```
 
 - Import, Module, Package, Errors
   - module is simply a file with functions.

@@ -52,10 +52,10 @@
         // console.log('match', match);
         // highlight.js returns html entities encoded text. Need to decode it back to Ascii.
         const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
-        console.log('codeBlock', codeBlock);
+        // console.log('codeBlock', codeBlock);
         // remove weird span tags in the 'code' block
-        const fix = codeBlock.replace(/<code .*?\/span>>/, '<code>');
-        console.log('fix', fix);
+        const fix = codeBlock.replace(/<code .*?\/span>>/, '<code class=hljs>');
+        // console.log('fix', fix);
         // Add custom css to pre tags.
         const txt = fix.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
         // console.log('txt', txt);
@@ -104,7 +104,7 @@
   // Add styling to '.card' class.
   const AnkiCSS =
     '.card {font-family: arial;font-size: 20px;text-align: center;color: black;background-color: white;} img { object-fit: contain;}.cloze {font-weight: bold;color: blue;}.nightMode .cloze{color: lightblue;}';
-  const customCSS = `th {border: 1px solid;padding:4px 6px;background-color: #3399ff;}td {border: 1px solid;padding:4px 6px;}tbody tr:nth-child(odd) {background-color: #D3D3D3;}`;
+  const customCSS = `th {border: 1px solid;padding:4px 6px;background-color: #3399ff;}td {border: 1px solid;padding:4px 6px;}tbody tr:nth-child(odd) {background-color: #D3D3D3;} pre{word-wrap: break-word;white-space: pre-wrap; word-break: break-word;}`;
   const hljsCSS = fs.readFileSync('./hljs.css', 'utf-8'); // highlight css
   const css = `${AnkiCSS}${customCSS}${hljsCSS}`;
 
@@ -165,6 +165,7 @@
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
     const cardsArr = [];
+    let isCodeBlock = false;
     for (const line of rest) {
       // console.log(line);
       // must be question if starts with '-'.
@@ -194,8 +195,10 @@
         continue;
       }
       // console.log(line);
+      // code blocks do not remove spacing.
+      if (line.startsWith('```')) isCodeBlock = !isCodeBlock;
       // need the blank lines for tables. Only trim if line is not blank.
-      const str = line.length > 0 ? line?.replace(/^(\s{2}|\t)/, '')?.trimEnd() : line;
+      const str = line.length > 0 && !isCodeBlock ? line?.replace(/^\s{2}|\t|\s+$/, '') : line;
       lastItem?.back?.push(str);
       cardsArr.push(lastItem);
     }
