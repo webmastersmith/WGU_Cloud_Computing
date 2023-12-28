@@ -7,6 +7,11 @@
 - [WGU D335 Cheat Sheet](https://srm--c.vf.force.com/apex/coursearticle?Id=kA00c000001DYibCAG)
 -
 
+## Help
+
+- `help(math)` # show methods and descriptions of 'math' library or python function.
+- `print(dir(int))` # only shows method names.
+
 ## Data Structures
 
 - variables, list, list comprehension, set
@@ -103,23 +108,58 @@ str = 'STRING1' + 'string2' # STRING1string2 -concate
 str = 'STR1' * 3 # 'STR1STR1STR1'
 ```
 
-- comparison, logical, membership operators, boolean
+- Equality Operators, Relational Operators, Logical Operators, Membership Operators, Boolean
+  - **Strings** compared by ASCII value. Capitals are less than lowercase. `'F' < 'f'` # True
+  - **Floating-point** types should not be compared using the equality operators.
+    - `5 <= 5.0` # True, 5 will be converted to float.
+  - **int and string** can be compared with equality operators.
+    - string and int comparison will result in TypeError. `3 < 'hi'` # TypeError
+  - **List/Tuples**
+    - Lists and tuples are compared via an ordered comparison of every element in the sequence.
+    - Every element between the sequences must compare as equal for an equality operator to evaluate to True.
+  - **Dictionaries**
+    - Dictionaries are compared only with `==` and `!=`.
+    - To be equal, two dictionaries must have the same set of keys and the same corresponding value for each key.
+  - **Membership** string, list, set, tuple, and dictionary(key only) can be searched with `in`.
+  - **Identity** `is` compares the memory address of two objects.
+    - return True only if the operands reference the same object.
+
+| Operator of Operations | Description                                    |
+| :--------------------- | :--------------------------------------------- |
+| ( )                    | Items within parentheses are evaluated first   |
+| `*` / % + -            | Arithmetic operators                           |
+| < <= > >= == != in     | Relational, equality, and membership operators |
+| not                    | not (logical NOT)                              |
+| and                    | Logical AND                                    |
+| or                     | Logical OR                                     |
 
 ```python
-# COMPARISON ==, <, <=, >, >=,
+# Equality Operators: ==, <, <=, >, >=
 True == True # True
+# Relational Operators
 4 < 5 # True
-
-# LOGICAL -and or not
+5 <= 5 # True
+# Logical Operators -and, or, not
 True and True # True
 not True # False
 num > 3 and num < 5
 num < 3 or num > 5
 
-# MEMBERSHIP -in,
+# MEMBERSHIP -in, not in
+my_bool = 'cat' in 'the cat in the hat' # True
 10 in [1,2,3,4,5] # False
 10 not in [1,2,3,4,5] # True
-my_bool = 'cat' in 'the cat in the hat' # True
+3 in {'A':1, 'B':2, 'C':3} # False, does not check value, only checks keys.
+
+# Identity -is, is not
+# Check whether two variables are the same object.
+my_str = 'hello'
+my_list = [1, 2, my_str, 3]
+my_dict = {'A':1, 'B':2, 'C':3}
+x = my_dict
+print(x is my_dict) # True
+print(my_str is my_list[2]) # True
+print(my_str is not my_list[3]) # True
 
 # BOOLEAN
 # True
@@ -151,7 +191,9 @@ elif b:
 else:
   print('?')
 # ternary
-b = 'Fizz' if a%3==0 else 'Buzz' # 'Fizz' or 'Buzz'.
+expr_when_true if condition else expr_when_false
+b = 'Fizz' if a%3==0 else 'Buzz' # 'b' will equal 'Fizz' or 'Buzz'.
+y = 0 if x < 100 else x
 
 # LOOPS
 a = [1,2,3]
@@ -202,7 +244,6 @@ print(globals()) # returns all variables in global scope.
 
 # None -same as undefined in JS.
 print(print('I\'m None')) # I'm None, None
-
 ```
 
 - classes
@@ -239,17 +280,20 @@ class Cat(Dog):
 ```
 
 - slice, string, format, multiline strings, range
-  - multiline string is three backticks.
+  - multiline string is three backticks, or enclosed in parens.
 
 ```python
 # Slice
-a = [1,2,3,4,5]
-str = 'hello world'
+a = [1,2,3,4,5] # will return array.
+my_str = 'hello world' # will return string.
+num = 12345 # convert to string, then slice.
 a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
 a[:4] # [1,2,3,4] -same as 0:4, returns list.
 a[3:] # [4,5] -to end of string|list, returns list.
 a[::2] # [1,3,5] -every two, returns list.
 a[::-1] # [5,4,3,2,1] -backwards, returns list.
+str(num)[-2:] # 45 return last two digits.
+
 
 # STRING
 str = 'my string is wonderful'

@@ -196,7 +196,7 @@
       }
       // console.log(line);
       // code blocks do not remove spacing.
-      if (line.startsWith('```')) isCodeBlock = !isCodeBlock;
+      if (line?.trimStart()?.startsWith('```')) isCodeBlock = !isCodeBlock;
       // need the blank lines for tables. Only trim if line is not blank.
       const str = line.length > 0 && !isCodeBlock ? line?.replace(/^\s{2}|\t|\s+$/, '') : line;
       lastItem?.back?.push(str);
