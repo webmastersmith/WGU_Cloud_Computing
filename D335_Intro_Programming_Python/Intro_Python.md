@@ -110,7 +110,7 @@ str = 'STR1' * 3 # 'STR1STR1STR1'
 
 - Equality Operators, Relational Operators, Logical Operators, Membership Operators, Boolean
   - **Strings** compared by ASCII value. Capitals are less than lowercase. `'F' < 'f'` # True
-  - **Floating-point** types should not be compared using the equality operators.
+  - **Floating-point** types should not be compared using the **equality** operators.
     - `5 <= 5.0` # True, 5 will be converted to float.
   - **int and string** can be compared with equality operators.
     - string and int comparison will result in TypeError. `3 < 'hi'` # TypeError
@@ -134,11 +134,12 @@ str = 'STR1' * 3 # 'STR1STR1STR1'
 | or                     | Logical OR                                     |
 
 ```python
-# Equality Operators: ==, <, <=, >, >=
-True == True # True
-# Relational Operators
+# Comparison Operators (also called Relational Operators)
+True == True # True (also called Equality Operators: ==, !=)
+True != True # False
 4 < 5 # True
 5 <= 5 # True
+
 # Logical Operators -and, or, not
 True and True # True
 not True # False
@@ -183,7 +184,7 @@ float(2) # 2.0
 - if, elif, else, Loops, While, Pass, Functions, None
 
 ```python
-# Control Flow
+# Control Flow -Branches
 if a:
   print('a')
 elif b:
@@ -204,9 +205,19 @@ for item in a:
 for num in range(2, 101):
   for factor in range(2, int(num ** 0.5)+1):
     if num % factor == 0:
-      break
-  else: # called when break statement exits loop. also used in while loops.
+      break # exit first loop you come to.
+  else: # executes only if the loop terminates normally and doesn't use a break statement.
     print(f'{num} is prime!')
+    continue # stop here and go to next iteration.
+# FOR Loop Index
+for i in range(len(a)):
+  v = a[i]  # Retrieve value of element in list.
+  print(f'Element {i}: {v}')
+for v in a:
+  i = a.index(v)  # Retrieve index of value in list
+  print(f'Element {i}: {v}')
+for (i, v) in enumerate(a):
+  print(f'Element {i}: {v}')
 
 # WHILE
 while a[-1] < 4:
@@ -315,6 +326,7 @@ f'{num:03d}' # leading decimal fill three places. # 004
 # Range
 range(100) # 0-99
 range(1, 101) # 1-100
+range(1, 101, 2) # 1,3,5,7,9..99
 ```
 
 - Import, Module, Package, Errors
@@ -324,7 +336,7 @@ range(1, 101) # 1-100
 ```python
 # Import a module.
 import math # imports whole module.
-# import two functions from module
+# import two functions from 'decimal' module
 from decimal import Decimal, getcontext
 
 # Module
@@ -419,42 +431,65 @@ json.dumps(myList, separators=(',', ':')) # change sep
   - PyPi -Python Package Index. Is a repository of Python packages.
   - <https://packaging.python.org/en/latest/tutorials/packaging-projects/>
   - <https://pypi.org/>
+  - pip is the package manager.
 
 ```python
-# pip
+# PIP
 # https://www.tutorialsteacher.com/python/pip-in-python
+# https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
+# Windows: py
+# Unix/MAC: python3
+py -m pip install --upgrade pip # windows. for unix/mac replace 'py' with 'python3'
+py -m pip --version # windows version
+# Package Info
+py -m pip list # list all packages
+py -m pip show numpy # package info
+py -m pip help # show help
 
-pip3 --version # print python pip version
-pip list # list all packages
-pip show lorem # see details about package
-python3 -m pip show numpy
-pip help
-# upgrade
-pip upgrade # package installer for python
-py -m pip install --upgrade pip # admin
+# Virtual Environment
+py -m venv .venv # windows. You can also install multiple environments. .venv, .vdev, .vprod...
+# Activating a virtual environment will put the virtual environment-specific python and pip executables into your shell’s PATH.
+# Windows
+.venv\Scripts\activate # adds .venv to path, local only.
+where python # to verify
+# Unix/MAC
+source .venv/bin/activate #
+which python # to verify
+# Deactivate
+deactivate # shell command or just close shell.
 
 # Install Package
-python3 -m pip install numpy
-pip install somePackage
-python -m pip install --upgrade SomePackage # to upgrade
-pip install "project-name==2.4" # specific version
-pip install "project-name~=2.4" # compatible with
+# https://pip.pypa.io/en/stable/cli/pip_install/
+py -m pip install SomePackage            # latest version
+py -m install "SomePackage==2.4" # specific version
+py -m install "SomePackage~=2.4" # compatible with
+py -m pip install 'SomePackage>=1.0.4'   # minimum version
+# Upgrade package
+py -m pip list --outdated # list what can be upgraded.
+py -m pip install --upgrade SomePackage # to upgrade. py -m pip install -U PackageName
+# Uninstall
+py -m pip uninstall lorem # uninstall package
+# uninstall all packages
+python3 -m pip freeze | xargs pip uninstall -y # unix/mac
+# remove all at once then
+py -m pip uninstall -r requirements.txt -y # leave off -y to be asked to remove.
+
+# Requirements.txt
 # Install from requirements
 # https://learnpython.com/blog/python-requirements-file/
 # https://towardsdatascience.com/requirements-vs-setuptools-python-ae3ee66e28af
 # https://realpython.com/lessons/using-requirement-files/
 # https://realpython.com/python-modules-packages/
-pip install -r requirements.txt
+py -m pip freeze > requirements.txt # produces requirements.txt file with list of all dependencies.
+# install from requirements.txt
+py -m pip install -r requirements.txt
 
-# Uninstall
-pip uninstall lorem # uninstall package
-# uninstall all packages
- pip freeze | xargs pip uninstall -y
-# remove all at once then
-pip uninstall -r requirements.txt -y # leave off -y to be asked to remove.
+# Development Mode -set up dev, prod files.
+# First create requirements.txt
+py -m pip freeze > requirements.txt
+# Dev
+py -m pip freeze > requirements-dev.txt # will begin with '-r requirements.txt'
+# Prod
+py -m pip freeze > requirements-prod.txt # will begin with '-r requirements.txt'
 
-# Development Mode -get custom dev requirements
-echo pytest > requirements-dev.txt
-pip install -r requirements-dev.txt # install requirements, then
-pytest
 ```
