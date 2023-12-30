@@ -187,15 +187,18 @@ float(2) # 2.0
 
 ```python
 # Slice
-a = [1,2,3,4,5] # will return array.
+# https://docs.python.org/3/library/functions.html#slice
+# returns copy. does not mutate. If it's a list, will return copy of items in a list.
+a = [1,2,3,4,5]
 my_str = 'hello world' # will return string.
 num = 12345 # convert to string, then slice.
+b = a[:] # shallow copy object. Same as a.copy()
 a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
 a[:4] # [1,2,3,4] -same as 0:4, returns list.
 a[3:] # [4,5] -to end of string|list, returns list.
 a[::2] # [1,3,5] -every two, returns list.
 a[::-1] # [5,4,3,2,1] -backwards, returns list.
-str(num)[-2:] # 45 return last two digits.
+str(num)[-2:] # '45' return copy of last two digits as string.
 
 # STRING
 s = 'hello ' + 'world' # hello world
@@ -290,10 +293,30 @@ def add(a,b=0): # default value
 # Pass
 def add(a,b):
   pass # nothing happens.
-# KeyWords
-def keyWord(a='world', b='hello'):
-  print(b, a)
-keyWord(b='goodbye', a='bob') # goodbye bob. order doesn't matter.
+
+# KEYWORDS -keyword arguments come last.
+def book(author, publisher, year, num_pages=0):
+  pass
+# positional arguments must be first. Keyword arguments come last.
+keyWord('bob', 'good-books', num_pages=400, year=2023)
+# Can mix
+def lots(a=1, b=2, c=3):
+  pass
+lots(c=5, a=4) # can mix with defaults any order.
+
+# Default values. if you make a parameter list/dict a default value, each time the function is called, it will append to the same list/dict that was created when function was loaded.
+def year_list( year, l=[]): # list gets created when function loads.
+  l.append(year)
+year_list(2023) # [2023]
+year_list(2022) # [2023, 2022]
+# Fix
+def year_list(year, l=None):
+  if l == None:
+    l = []
+  l.append(year)
+year_list(2023) # [2023]
+year_list(2022) # [2022]
+
 # ARGS, KEYWORD ARGS
 def add2(*args, **kwargs): # any amount of args, any keyword argument.
   print(args, kwargs)
