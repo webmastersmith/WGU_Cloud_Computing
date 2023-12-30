@@ -1,5 +1,3 @@
-from datetime import datetime, timedelta, date
-from dateutil.relativedelta import relativedelta
-
-m = timedelta(days=31)
-print(date(2023, 12, 31) - m)
+print(help(list))
+num = 4.9999
+print(f'{num:.2f}')

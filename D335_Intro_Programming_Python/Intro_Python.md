@@ -5,11 +5,10 @@
 - Programming in Python 3 ISBN: 979-8-203-91336-4
 - [WGU How to Pass D335](https://srm--c.vf.force.com/apex/coursearticle?Id=kA00c000001DYpDCAW)
 - [WGU D335 Cheat Sheet](https://srm--c.vf.force.com/apex/coursearticle?Id=kA00c000001DYibCAG)
--
 
 ## Help
 
-- `help(math)` # show methods and descriptions of 'math' library or python function.
+- `print(help(math))` # show methods and descriptions of 'math' library or python function.
 - `print(dir(int))` # only shows method names.
 
 ## Data Structures
@@ -142,9 +141,11 @@ True != True # False
 
 # Logical Operators -and, or, not
 True and True # True
+True or False # True
 not True # False
-num > 3 and num < 5
-num < 3 or num > 5
+num = 4
+num > 3 and num < 5 # True
+num <= 3 or num >= 5 # False
 
 # MEMBERSHIP -in, not in
 my_bool = 'cat' in 'the cat in the hat' # True
@@ -181,7 +182,57 @@ int(2.0) # 2
 float(2) # 2.0
 ```
 
+- slice, string, format, multiline strings, range
+  - multiline string is three backticks, or enclosed in parens.
+
+```python
+# Slice
+a = [1,2,3,4,5] # will return array.
+my_str = 'hello world' # will return string.
+num = 12345 # convert to string, then slice.
+a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
+a[:4] # [1,2,3,4] -same as 0:4, returns list.
+a[3:] # [4,5] -to end of string|list, returns list.
+a[::2] # [1,3,5] -every two, returns list.
+a[::-1] # [5,4,3,2,1] -backwards, returns list.
+str(num)[-2:] # 45 return last two digits.
+
+# STRING
+s = 'hello ' + 'world' # hello world
+s  += '!' # hello world!
+r = 'r' * 3 # 'rrr'
+s.split() # returns array. split on spaces.
+s.split('g') # returns array. removes match.
+def cleanWord(word):
+  return word.replace('i', '').lower()
+[cleanWord(word) for word in s.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
+# nested list comprehension
+[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
+
+# Format
+num = 4.9999
+f'my string is {num}' # my string is 4.9999
+f'{num:d}' # integer. float will be dropped. # 4
+f'{num:.2f}' # decimal zero two places. # 5.00
+f'{num:03d}' # leading decimal fill three places. # 004
+
+# Range
+range(100) # 0-99
+range(1, 101) # 1-100
+range(1, 101, 2) # 1,3,5,7,9..99
+```
+
 - if, elif, else, Loops, While, Pass, Functions, None
+  - **Functions**: with no return are called 'void function'. returns **None**.
+    - A function is also an object in Python, having a type, identity, and value.
+    - all variables are function scoped.
+    - **Namespace**: maps names to objects. Namespace is actually just a normal Python dictionary whose keys are the names and whose values are the objects and pointers to the memory location.
+    - **Scope**: where a name is visible.
+      - **Built-in** scope – Contains all of the built-in names of Python, such as int(), str(), list(), range(), etc.
+      - **Global** scope – Contains all globally defined names outside of any functions.
+      - **Local** scope – Usually refers to scope within the currently executing function, but is the same as global scope if no function is executing.
+    - **Scope Resolution**: The process of searching for a name in the available namespaces is called scope resolution.
+      - Local scope's namespace is the first checked, followed by the global scope, and finally the built-in scope. If the name cannot be found in any namespace, the interpreter generates a **NameError**.
 
 ```python
 # Control Flow -Branches
@@ -236,6 +287,9 @@ while True:
 # variables are function scoped.
 def add(a,b=0): # default value
   print(a+b)
+# Pass
+def add(a,b):
+  pass # nothing happens.
 # KeyWords
 def keyWord(a='world', b='hello'):
   print(b, a)
@@ -250,6 +304,13 @@ def add(a,b,c):
 add(1,2,3) # {'a':1, 'b':2, 'c':3}
 # globals()
 print(globals()) # returns all variables in global scope.
+# change global variable inside function
+# Modification of mutable global variables, such as list or dict containers, does not require a global statement.
+# This is called 'side effects'. -Avoid
+my_var = ''
+def change_global_var():
+  global my_var # if not called, 'my_var' will not be changed outside function call.
+  my_var = 'hi'
 # Lambda
 (lambda x: x+3)(5) # 8. only one line.
 
@@ -288,45 +349,6 @@ class Cat(Dog):
     print('meow')
   def myAppend(self):
     super().myAppend(item) # calls on the parent class.
-```
-
-- slice, string, format, multiline strings, range
-  - multiline string is three backticks, or enclosed in parens.
-
-```python
-# Slice
-a = [1,2,3,4,5] # will return array.
-my_str = 'hello world' # will return string.
-num = 12345 # convert to string, then slice.
-a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
-a[:4] # [1,2,3,4] -same as 0:4, returns list.
-a[3:] # [4,5] -to end of string|list, returns list.
-a[::2] # [1,3,5] -every two, returns list.
-a[::-1] # [5,4,3,2,1] -backwards, returns list.
-str(num)[-2:] # 45 return last two digits.
-
-
-# STRING
-str = 'my string is wonderful'
-str.split() # returns array. split on spaces.
-str.split('g') # returns array. removes match.
-def cleanWord(word):
-  return word.replace('i', '').lower()
-[cleanWord(word) for word in str.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
-# nested list comprehension
-[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
-
-# Format
-num = 4.9999
-f'my string is {num}' # my string is 4.9999
-f'{num:d}' # integer. float will be dropped. # 4
-f'{num:.2f}' # decimal zero two places. # 4.99
-f'{num:03d}' # leading decimal fill three places. # 004
-
-# Range
-range(100) # 0-99
-range(1, 101) # 1-100
-range(1, 101, 2) # 1,3,5,7,9..99
 ```
 
 - Import, Module, Package, Errors
@@ -425,6 +447,47 @@ import json
 json.loads(jasonString) # same as JSON.parse()
 json.dumps(myList) # same as JSON.stringify()
 json.dumps(myList, separators=(',', ':')) # change sep
+```
+
+- Date
+  - <https://docs.python.org/3/library/datetime.html>
+  - focus on: date, datetime, timedelta
+
+```python
+from datetime import datetime, date, timedelta
+# current day
+datetime.now() # 2023-12-28 13:35:39.021978 -Focus on date and time.
+date.today() # 2023-12-28 -Focus on just date.
+# custom day -all int
+datetime(year, month, day)
+# convert date to day-of-year.
+datetime.now().timetuple().tm_yday
+
+# MONTH
+month_number = datetime.strptime(month_name, '%b').month # 4
+# Month Name
+# To get just the month name, %b gives abbrevated form, %B gives full month name
+# %b => Jan
+# %B => January
+datetime.strftime(datetime.now(), '%a %b %d, %Y') # 'Thu Aug 10, 2017'
+datetime.strftime(datetime_object, '%B') # August
+
+# Timedelta
+today = date.today() # 2023-12-29
+# 'timedelta(days=0, seconds=0, microseconds=0, milliseconds=0, minutes=0, hours=0, weeks=0)
+# returns object with methods: days', 'max', 'microseconds', 'min', 'resolution', 'seconds', 'total_seconds'
+one_month = timedelta(days=30)
+print(one_month.)
+print(today + one_month) # 2024-01-28
+print(today - one_month) # 2023-11-29
+
+# RelativeDelta -Fixes uneven days in months: 28,30,31
+# pip install python-dateutil
+from datetime import date
+from dateutil.relativedelta import relativedelta
+date(2023, 12, 31) + relativedelta(months=+6) # 2024-06-30
+date(2023, 12, 31)+relativedelta(months=+2) # 2024-02-29
+date(2023, 12, 31) + relativedelta(months=-6) # 2023-06-30
 ```
 
 - pypi pip
