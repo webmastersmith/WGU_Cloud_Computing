@@ -21,12 +21,24 @@ my_num = 1 # type(my_num) # int
 my_string = 'hello' # type(my_string) # string
 my_float = 1.2 # type(my_float) # float
 
+# LIST SLICING
+# https://docs.python.org/3/library/functions.html#slice
+# returns copy. does not mutate. If it's a list, will return copy of items in a list.
+a = [1,2,3,4,5]
+num = 12345 # convert to string, then slice.
+b = a[:] # shallow copy object. Same as a.copy()
+a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
+a[:4] # [1,2,3,4] -same as 0:4, returns list.
+a[3:] # [4,5] -to end of string|list, returns list.
+a[::2] # [1,3,5] -every two, returns list.
+a[::-1] # [5,4,3,2,1] -reverse string or list. returns copy of item.
+
 # LIST
 # https://docs.python.org/3/tutorial/datastructures.html
 my_list = [1,2,3] # len(my_list) # 3
 my_list2 = [3,2,1]
 # Order matters in list
-my_list == my_list2 # False
+my_list == my_list2 # False. In comparison, each item is compared.
 b = my_list
 b.append(100) # mutates my_list because 'b' is a pointer.
 b = my_list.copy() # creates two copies.
@@ -34,8 +46,34 @@ my_list.append(4) # add to list.
 my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
 my_list.remove('hello') # will error if 'hello' is not in list.
 my_list.pop() # returns end item. mutates list.
+my_list.pop(list_index) # mutates list by index.
+my_list[-1] = 'bob' # change end item in list by index.
+my_list[1:3] = ["a", "b"] # does not insert list, but the items. [1, 'a', 'b']
+
+# CONCAT LIST
+my_list + my_list2 # [1,2,3,3,2,1]
+for x in my_list2:
+  my_list.append(x)
+[j for i in [my_list, my_list2] for j in i]
+my_list.extend(my-list2)
+l = [*my_list, *my_list2] # spread operator.
+
+# Int List Methods
+all(my_list) # True if every element in list != 0.
+any(my_list) # True if any element is True == 0.
+max(my_list) # return max value
+min(my_list) # return min value
+sum(my_list) # add all values.
 
 # List Comprehension
+# Nested if
+[variable for variable in string/list/dict(key) if condition True if condition2 True] # nested if
+# if else
+["Even" if n%2 ==0 else "Odd" for n in range(11)]
+# Nested for
+a = [[1,2],[3,4],[5,6],[7,8]]
+[[row[i] for row in a] for i in range(2)] # [[1,2,3,4], [5,6,7,8]]
+# like map.
 [2*item for item in my_list] # [2,4,6]
 [item for item in my_list if item % 2 == 0] # [2]
 str = 'my string is wonderful'
@@ -186,38 +224,60 @@ float(2) # 2.0
   - multiline string is three backticks, or enclosed in parens.
 
 ```python
-# Slice
-# https://docs.python.org/3/library/functions.html#slice
-# returns copy. does not mutate. If it's a list, will return copy of items in a list.
-a = [1,2,3,4,5]
-my_str = 'hello world' # will return string.
-num = 12345 # convert to string, then slice.
-b = a[:] # shallow copy object. Same as a.copy()
-a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
-a[:4] # [1,2,3,4] -same as 0:4, returns list.
-a[3:] # [4,5] -to end of string|list, returns list.
-a[::2] # [1,3,5] -every two, returns list.
-a[::-1] # [5,4,3,2,1] -backwards, returns list.
-str(num)[-2:] # '45' return copy of last two digits as string.
-
 # STRING
 s = 'hello ' + 'world' # hello world
 s  += '!' # hello world!
+weird = '.'.join([1,2,3]) # 1.2.3 -Joins with whatever char is passed to it. Returns new string.
 r = 'r' * 3 # 'rrr'
-s.split() # returns array. split on spaces.
+s.split() # returns array. Default split on spaces, \t. s.split(' ') # split only on spaces.
+list(s) # split on each char.
 s.split('g') # returns array. removes match.
+
+# STRING SLICING -Slice Notation [start(inclusive):stop(exclusive):step]
+# https://docs.python.org/3/library/functions.html#slice
+# returns copy. does not mutate. If it's a list, will return copy of items in a list.
+s = 'hello world' # will return string.
+num = 12345 # convert to string, then slice.
+s[6] # 'w'
+a = s[:] # shallow copy object. Same as a.copy()
+s[1:4] # [2,3,4] -inclusive, exclusive. returns list.
+s[:4] # [1,2,3,4] -same as 0:4, returns list.
+s[3:] # [4,5] -to end of string|list, returns list.
+s[::2] # [1,3,5] -every two, returns list.
+s[::-1] # [5,4,3,2,1] -reverse string or list. returns copy of item.
+str(num)[-2:] # '45' return copy of last two digits as string.
+
+# STRING Format
+num = 4.9999
+f'my string is {num}' # my string is 4.9999
+f'{num:d}' # integer. float will be dropped. # 4
+f'{num:.2f}' # round to two decimal places. Default fill is zero's. # 5.00
+f'{num:9.1f}' #       5.0 -Take up 9 spaces total.
+f'{num:03d}' # leading decimal fill three places. # 004
+f'{f_name:16}{l_name:8}' # f_name will take 16 spaces, even if name is shorter. Padded with 'space' char.
+# left-aligned, middle aligned, right aligned. Default padding is 'space' char.
+f'{'John':.<8}{'F':?^8}{'Ken':.>8}' # John....???F????.....Ken
+
+# https://docs.python.org/3/library/stdtypes.html#string-methods
+# CAPITALIZE
+s.capitalize() # Hello world. All other chars will be lowercased.
+# COUNT
+s.count('l') # 3
+s.count('ll') # 1
+# FIND
+s.find('y', start, end) # -1
+s.rfind('y', start, end) # -1 -Starts looking at end of string. Same options as find.
+# IN
+m = 'rld' in s # True
+# REPLACE
+S = s.replace('h', 'H').replace('w', 'W') # Returns Copy -Hello World
+
+# STRING LIST COMPREHENSION
 def cleanWord(word):
   return word.replace('i', '').lower()
 [cleanWord(word) for word in s.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
 # nested list comprehension
 [cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
-
-# Format
-num = 4.9999
-f'my string is {num}' # my string is 4.9999
-f'{num:d}' # integer. float will be dropped. # 4
-f'{num:.2f}' # decimal zero two places. # 5.00
-f'{num:03d}' # leading decimal fill three places. # 004
 
 # Range
 range(100) # 0-99
@@ -318,9 +378,9 @@ year_list(2023) # [2023]
 year_list(2022) # [2022]
 
 # ARGS, KEYWORD ARGS
-def add2(*args, **kwargs): # any amount of args, any keyword argument.
-  print(args, kwargs)
-add2(1,2,3,4, myKeyword='hello') # (1, 2, 3, 4) {'myKeyword': 'hello'}
+def add2(one, two, *args, **kwargs): # any amount of args, any keyword argument.
+  print(one, two, args, kwargs)
+add2(1,2,3,4, myKeyword='hello') # 1 2 (3, 4) {'myKeyword': 'hello'}
 # locals()
 def add(a,b,c):
   print(locals())
@@ -375,7 +435,7 @@ class Cat(Dog):
 ```
 
 - Import, Module, Package, Errors
-  - module is simply a file with functions.
+  - module is simply a file with functions that ends in '.py'.
   - package is multiple modules in directory.
 
 ```python
@@ -383,10 +443,21 @@ class Cat(Dog):
 import math # imports whole module.
 # import two functions from 'decimal' module
 from decimal import Decimal, getcontext
+a = math.pow(x,y)
 
-# Module
+# Module the name of module will be the file name unless called directly.
 def add(a,b):
   return a+b
+
+# This means the file was called directly(entry point). Typically used for code testing.
+if __name__ == '__main__':
+  # This code will run if the file was called directly.
+  # You want to write code that executes only when the script is run as a main program and not when it is imported as a module.
+  # You want to include test routines that run independently to validate functions defined in the file.
+  # You want to include demonstration code that will not execute upon module import.
+else:
+  # This code will run if code was imported.
+
 # Package
 __init__.py # this file is created inside directory. It is blank. Tells python this is a package.
 # in main:
