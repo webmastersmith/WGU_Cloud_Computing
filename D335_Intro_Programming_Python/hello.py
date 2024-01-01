@@ -2,13 +2,14 @@
 # print(help(dict.popitem))
 # print(help(dict))
 # print(help(slice))
-print(dir(list))
+# print(dir(list))
 # print(help(list.insert))
 # print(help(list))
 # print(help(list.reverse))
 # print(dir(__builtins__))
 # print(help(reversed))
 # print(help(str.join))
+print(help(list.sort))
 
 # s = 'hello woRld'
 # # print(s.capitalize())
@@ -19,3 +20,4 @@ print(dir(list))
 # print(a)
 
 # print(help(reversed))
+

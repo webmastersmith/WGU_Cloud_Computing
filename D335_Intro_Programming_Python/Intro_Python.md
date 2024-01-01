@@ -13,119 +13,14 @@
 
 ## Data Structures
 
-- variables, list, list comprehension, set
-
-```python
-# VARIABLES
-my_num = 1 # type(my_num) # int
-my_string = 'hello' # type(my_string) # string
-my_float = 1.2 # type(my_float) # float
-
-# LIST SLICING
-# https://docs.python.org/3/library/functions.html#slice
-# returns copy. does not mutate. If it's a list, will return copy of items in a list.
-a = [1,2,3,4,5]
-num = 12345 # convert to string, then slice.
-b = a[:] # shallow copy object. Same as a.copy()
-a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
-a[:4] # [1,2,3,4] -same as 0:4, returns list.
-a[3:] # [4,5] -to end of string|list, returns list.
-a[::2] # [1,3,5] -every two, returns list.
-a[::-1] # [5,4,3,2,1] -reverse string or list. returns copy of item.
-
-# LIST
-# https://docs.python.org/3/tutorial/datastructures.html
-my_list = [1,2,3] # len(my_list) # 3
-my_list2 = [3,2,1]
-# Order matters in list
-my_list == my_list2 # False. In comparison, each item is compared.
-b = my_list
-b.append(100) # mutates my_list because 'b' is a pointer.
-b = my_list.copy() # creates two copies.
-my_list.append(4) # add to list.
-my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
-my_list.remove('hello') # will error if 'hello' is not in list.
-my_list.pop() # returns end item. mutates list.
-my_list.pop(list_index) # mutates list by index.
-my_list[-1] = 'bob' # change end item in list by index.
-my_list[1:3] = ["a", "b"] # does not insert list, but the items. [1, 'a', 'b']
-
-# CONCAT LIST
-my_list + my_list2 # [1,2,3,3,2,1]
-for x in my_list2:
-  my_list.append(x)
-[j for i in [my_list, my_list2] for j in i]
-my_list.extend(my-list2)
-l = [*my_list, *my_list2] # spread operator.
-
-# Int List Methods
-all(my_list) # True if every element in list != 0.
-any(my_list) # True if any element is True == 0.
-max(my_list) # return max value
-min(my_list) # return min value
-sum(my_list) # add all values.
-
-# List Comprehension
-# Nested if
-[variable for variable in string/list/dict(key) if condition True if condition2 True] # nested if
-# if else
-["Even" if n%2 ==0 else "Odd" for n in range(11)]
-# Nested for
-a = [[1,2],[3,4],[5,6],[7,8]]
-[[row[i] for row in a] for i in range(2)] # [[1,2,3,4], [5,6,7,8]]
-# like map.
-[2*item for item in my_list] # [2,4,6]
-[item for item in my_list if item % 2 == 0] # [2]
-str = 'my string is wonderful'
-def cleanWord(word):
-  return word.replace('i', '').lower()
-[cleanWord(word) for word in str.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
-# nested list comprehension
-[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # returns array. Only words less than three chars.
-
-
-# SET
-# cannot use slice. It is like a dict.
-# will only store unique items. Will not be in same order.
-my_set = {1,2,3} # unique values, others will be discarded.
-my_set2 = {3,2,1}
-# order does not matter in equality.
-my_set == my_set2 # true
-my_set.add(4) # adds to set.
-my_set[0] # error cannot get items from set this way.
-3 in my_set # True
-my_set.discard(100) # will not error if item does not exist.
-
-# TUPLES
-# cannot append or add to a tuple. Memory efficient because cannot grow.
-my_tup = (1,2,3) # type(my_tup) # tuple
-my_tup2 = (3,2,1) # order matters.
-my_tup == my_tup2 # False
-a,b,c = my_tup # a=1,b=2,c=3
-
-# DICTIONARIES
-# keys must be unique.
-# order does not matter.
-my_dict = { # key : value
-  'num1': 1,
-  'char2': 'two',
-}
-my_dict['num1']
-my_dict['num100'] # error
-my_dict.get('num100', 100) # 100 is default if doesn't exist, else will return None.
-list(my_dict.keys())
-list(my_dict.values())
-list(my_dict.items()) # key, value pairs in a tuple. returned as an array.
-if 'num100' not in my_dict:
-  my_dict['num100'] = 100
-for key, value in my_dict.items():
-  print(key, value)
-[{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
-```
-
 - operators, division, modulo, multiplication, int, float
 
 ```python
+# int
+num = 6745
+# SLICE NOTATION
+str(num)[-2:] # '45' return copy of last two digits as string.
+
 # Operators
 n = 1 + 1 # 2
 n += 1 # 3
@@ -233,19 +128,20 @@ s.split() # returns array. Default split on spaces, \t. s.split(' ') # split onl
 list(s) # split on each char.
 s.split('g') # returns array. removes match.
 
-# STRING SLICING -Slice Notation [start(inclusive):stop(exclusive):step]
+# SLICE NOTATION [start(inclusive):stop(exclusive):step]
 # https://docs.python.org/3/library/functions.html#slice
 # returns copy. does not mutate. If it's a list, will return copy of items in a list.
 s = 'hello world' # will return string.
 num = 12345 # convert to string, then slice.
 s[6] # 'w'
 a = s[:] # shallow copy object. Same as a.copy()
-s[1:4] # [2,3,4] -inclusive, exclusive. returns list.
-s[:4] # [1,2,3,4] -same as 0:4, returns list.
-s[3:] # [4,5] -to end of string|list, returns list.
-s[::2] # [1,3,5] -every two, returns list.
-s[::-1] # [5,4,3,2,1] -reverse string or list. returns copy of item.
-str(num)[-2:] # '45' return copy of last two digits as string.
+a[-1]      # last item in the array
+a[-2:]     # last two items in the array
+a[:-2]     # everything except the last two items
+a[::-1]    # all items in the array, reversed
+a[1::-1]   # the first two items, reversed
+a[:-3:-1]  # the last two items, reversed
+a[-3::-1]  # everything except the last two items, reversed
 
 # STRING Format
 num = 4.9999
@@ -401,6 +297,133 @@ def change_global_var():
 print(print('I\'m None')) # I'm None, None
 ```
 
+- variables, list, list comprehension, sort, set
+
+```python
+# VARIABLES
+my_num = 1 # type(my_num) # int
+my_string = 'hello' # type(my_string) # string
+my_float = 1.2 # type(my_float) # float
+
+# LIST SLICE NOTATION
+# https://docs.python.org/3/library/functions.html#slice
+# returns copy. does not mutate. If it's a list, will return copy of items in a list.
+a = [1,2,3,4,5]
+num = 12345 # convert to string, then slice.
+b = a[:] # shallow copy object. Same as a.copy()
+a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
+a[:4] # [1,2,3,4] -same as 0:4, returns list.
+a[3:] # [4,5] -to end of string|list, returns list.
+a[::2] # [1,3,5] -every two, returns list.
+a[::-1] # [5,4,3,2,1] -reverse string or list. returns copy of item.
+
+# LIST
+# https://docs.python.org/3/tutorial/datastructures.html
+my_list = [1,2,3] # len(my_list) # 3
+my_list2 = [3,2,1]
+# Order matters in list
+my_list == my_list2 # False. In comparison, each item is compared.
+b = my_list
+b.append(100) # mutates my_list because 'b' is a pointer.
+b = my_list.copy() # creates two copies.
+my_list.append(4) # add to list.
+my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
+my_list.remove('hello') # will error if 'hello' is not in list.
+my_list.pop() # returns end item. mutates list.
+my_list.pop(list_index) # mutates list by index.
+my_list[-1] = 'bob' # change end item in list by index.
+my_list[1:3] = ["a", "b"] # does not insert list, but the items. [1, 'a', 'b']
+
+# CONCAT LIST
+my_list + my_list2 # [1,2,3,3,2,1]
+for x in my_list2:
+  my_list.append(x)
+[j for i in [my_list, my_list2] for j in i]
+my_list.extend(my-list2)
+l = [*my_list, *my_list2] # spread operator.
+
+# INDEX -List
+for i, item in enumerate(range(11)): # has optional start value, enumerate(range(11), start=100)
+for i in range(len(my_list)):
+  print(my_list[i])
+
+# Int List Methods
+all(my_list) # True if every element in list != 0.
+any(my_list) # True if any element is True == 0.
+max(my_list) # return max value
+min(my_list) # return min value
+sum(my_list) # add all values.
+
+# List Comprehension
+# Nested if
+[variable for variable in string/list/dict(key) if condition True if condition2 True] # nested if
+# if else
+["Even" if n%2 ==0 else "Odd" for n in range(11)]
+# Nested for
+a = [[1,2],[3,4],[5,6],[7,8]]
+[[row[i] for row in a] for i in range(2)] # [[1,2,3,4], [5,6,7,8]]
+# like map.
+a = list(map(lambda x: x ** 2, my_list)) # lambda x:
+a = list(map(int, my_list)) # Turn each item into int.
+a = [(i + 10) for i in range(11)]
+a = [sum(i) for i in range(11)]
+[2*item for item in my_list] # [2,4,6]
+[item for item in my_list if item % 2 == 0] # [2]
+str = 'my string is wonderful'
+def cleanWord(word):
+  return word.replace('i', '').lower()
+[cleanWord(word) for word in str.split() if len(cleanWord(word)) < 3] # returns array. Only words less than three chars.
+# nested list comprehension
+[cleanWord(word) for word in sentence.split() for sentence in str.split('.')] # return words less than three chars.
+
+# SORT -default lowest to highest.
+# https://docs.python.org/3/howto/sorting.html
+# in place, returns nothing.
+a.sort()
+a.sort(key=str.lower, reverse=False) # applies function to each item in list 'before' comparing. Does not mutate items.
+b = sorted(a, key=str.capitalize) # returns copy of array, sorted.
+
+# SET
+# cannot use slice. It is like a dict.
+# will only store unique items. Will not be in same order.
+my_set = {1,2,3} # unique values, others will be discarded.
+my_set2 = {3,2,1}
+# order does not matter in equality.
+my_set == my_set2 # true
+my_set.add(4) # adds to set.
+my_set[0] # error cannot get items from set this way.
+3 in my_set # True
+my_set.discard(100) # will not error if item does not exist.
+
+# TUPLES
+# cannot append or add to a tuple. Memory efficient because cannot grow.
+my_tup = (1,2,3) # type(my_tup) # tuple
+my_tup2 = (3,2,1) # order matters.
+my_tup == my_tup2 # False
+a,b,c = my_tup # a=1,b=2,c=3
+
+# DICTIONARIES
+# keys must be unique.
+# After 3.7 elements maintain their insertion order.
+my_dict = { # key : value
+  'num1': 1,
+  'char2': 'two',
+}
+d = dict('Bob'='999-999-0001', 'John'='999-999-0000') # these are the same.
+d = dict([('Bob', '999-999-0001'), ('John', '999-999-0000')]) # list of tuples
+my_dict['num1']
+my_dict['num100'] # error
+my_dict.get('num100', 100) # 100 is default if doesn't exist, else will return None.
+list(my_dict.keys())
+list(my_dict.values())
+list(my_dict.items()) # key, value pairs in a tuple. returned as an array.
+if 'num100' not in my_dict:
+  my_dict['num100'] = 100
+for key, value in my_dict.items():
+  print(key, value)
+[{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
+```
+
 - classes
 
 ```python
@@ -497,10 +520,20 @@ def raiseError():
 raiseError() # 'WeirdError'
 ```
 
-- threads, process
+- cmd line args, threads, process
 
   - process: each process has own memory.
   - threads: ways to share memory with two running programs in same process.
+
+```python
+# CMD LINE ARGS
+# python myText.py "arg1" "arg2"
+# arg is a list of strings. -always check len(). If did not add args, will get an 'IndexError'
+print(sys.arg) # ['myText.py', 'arg1', 'arg2']
+sys.arg[0] myText.py
+sys.arg[1] arg1
+sys.arg[2] arg2
+```
 
 - files
 

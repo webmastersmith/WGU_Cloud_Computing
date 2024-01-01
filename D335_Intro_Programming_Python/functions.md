@@ -15,16 +15,3 @@ if year % 4 == 0:
 msg = 'leap year' if is_leap_year else 'not a leap year'
 print(f'{year} - {msg}')
 ```
-
-## SORT
-
-- does not return. mutates in place.
-- better to use `sorted()` works with any iterable.
-  - <https://docs.python.org/3/howto/sorting.html>
-
-```python
-my_list = [3,7,1,6,2,9]
-print(sorted(my_list)) # [1, 2, 3, 6, 7, 9]. does not mutate original.
-my_list.sort()
-print(my_list) # [1, 2, 3, 6, 7, 9]
-```
