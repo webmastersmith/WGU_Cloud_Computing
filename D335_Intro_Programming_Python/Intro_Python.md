@@ -5,6 +5,9 @@
 - Programming in Python 3 ISBN: 979-8-203-91336-4
 - [WGU How to Pass D335](https://srm--c.vf.force.com/apex/coursearticle?Id=kA00c000001DYpDCAW)
 - [WGU D335 Cheat Sheet](https://srm--c.vf.force.com/apex/coursearticle?Id=kA00c000001DYibCAG)
+- study 3-13.
+- lessons 14-18 not as important
+- lessons 19-30 labs -important
 
 ## Help
 
@@ -115,10 +118,13 @@ int(2.0) # 2
 float(2) # 2.0
 ```
 
-- slice, string, format, multiline strings, range
+- print, string, format, multiline strings, range
   - multiline string is three backticks, or enclosed in parens.
 
 ```python
+# PRINT
+print(f'some string', end='') # no newline on end. default is '\n'
+
 # STRING
 s = 'hello ' + 'world' # hello world
 s  += '!' # hello world!
@@ -384,7 +390,7 @@ a.sort(key=str.lower, reverse=False) # applies function to each item in list 'be
 b = sorted(a, key=str.capitalize) # returns copy of array, sorted.
 
 # SET
-# cannot use slice. It is like a dict.
+# No Index, No Order. CanNOT use SLICE NOTATION. Looks similar to Dict.
 # will only store unique items. Will not be in same order.
 my_set = {1,2,3} # unique values, others will be discarded.
 my_set2 = {3,2,1}
@@ -396,13 +402,13 @@ my_set[0] # error cannot get items from set this way.
 my_set.discard(100) # will not error if item does not exist.
 
 # TUPLES
-# cannot append or add to a tuple. Memory efficient because cannot grow.
+# No Mutation. Cannot append or add to a tuple. Memory efficient because cannot grow.
 my_tup = (1,2,3) # type(my_tup) # tuple
 my_tup2 = (3,2,1) # order matters.
 my_tup == my_tup2 # False
 a,b,c = my_tup # a=1,b=2,c=3
 
-# DICTIONARIES
+# DICTIONARIES -iterable keys
 # keys must be unique.
 # After 3.7 elements maintain their insertion order.
 my_dict = { # key : value
@@ -414,12 +420,15 @@ d = dict([('Bob', '999-999-0001'), ('John', '999-999-0000')]) # list of tuples
 my_dict['num1']
 my_dict['num100'] # error
 my_dict.get('num100', 100) # 100 is default if doesn't exist, else will return None.
+# keys(), values(), items() are 'view objects'. Read only.
 list(my_dict.keys())
 list(my_dict.values())
 list(my_dict.items()) # key, value pairs in a tuple. returned as an array.
 if 'num100' not in my_dict:
   my_dict['num100'] = 100
-for key, value in my_dict.items():
+for key in my_dict: # only keys will be iterated.
+    print(key, my_dict[key])
+for key, value in my_dict.items(): # returned in tuple. Can be unpacked.
   print(key, value)
 [{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
 ```
@@ -462,7 +471,12 @@ class Cat(Dog):
   - package is multiple modules in directory.
 
 ```python
-# Import a module.
+# IMPORT
+# Custom Import
+import myFileName # same directory as the executing script. If in different directory, must be package.
+# x = myFileName.func1()
+
+# Python Module.
 import math # imports whole module.
 # import two functions from 'decimal' module
 from decimal import Decimal, getcontext
@@ -486,7 +500,7 @@ __init__.py # this file is created inside directory. It is blank. Tells python t
 # in main:
 from directoryName.moduleName import functionName
 
-# Errors
+# ERRORS
 try:
   1/0
 except Exception as e: # can have multiple 'except' errors. The first one will stop the execution.
@@ -496,19 +510,27 @@ finally:
 
 # DECORATORS
 # handle exception function
-def handleException(func)
+# https://docs.python.org/3/library/exceptions.html
+# EOFError input() hits an end-of-file condition (EOF) without reading any input
+# KeyError A dictionary key is not found in the set of keys
+# ZeroDivisionError Divide by zero error
+# ValueError Invalid value (Ex: Input mismatch)
+# IndexError Index out of bounds
+def handleException(func): # on error, returns 'None'
   def wrapper():
     try:
-      func()
-    except TypeError:
+      return func()
+    except (TypeError, KeyError): # will stop on first True except. multiple types.
       print('TypeError')
     except ZeroDivisionError:
       print('ZeroDivisionError')
-    except Exception: # catch all error.
+    except CustomError as custom_error:
+      print(custom_error)
+    except: # catch all error.
       print('WeirdError')
   return wrapper
 
-@handleException # links exception function to causeError
+@handleException # wraps causeError function in 'handleException'.
 def causeError():
   return 1/0
 causeError() # 'ZeroDivisionError'
@@ -516,6 +538,10 @@ causeError() # 'ZeroDivisionError'
 # RAISE ERROR
 @handleException
 def raiseError():
+  raise TypeError() # built-in
+  # or
+  raise CustomError('Custom Message.') # creates a new exception of type CustomError with a string argument.
+  # or
   raise Exception()
 raiseError() # 'WeirdError'
 ```

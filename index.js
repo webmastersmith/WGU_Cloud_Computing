@@ -6,7 +6,7 @@
   const dataArr = fs.readFileSync(directoryPath, 'utf-8')?.split(/\r?\n/);
   // Get first line of Markdown as Anki Deck Title
   const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
-  const removeLines = 9; // line before you want to start parsing. 0 is first line.
+  const removeLines = 11; // line before you want to start parsing. 0 is first line.
 
   // SHOWDOWN -markdown => html parser.
   // https://github.com/showdownjs/showdown/wiki
