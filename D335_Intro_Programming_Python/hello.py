@@ -1,3 +1,5 @@
+import csv
+import sys
 # print(help(dict.pop))
 # print(help(dict.popitem))
 # print(help(dict))
@@ -11,25 +13,9 @@
 # print(help(str.join))
 # print(help(list.sort))
 # print(help(reversed))
-
-
-def handleException(func):
-  def wrapper():
-    try:
-      return func()
-    except TypeError:
-      print('TypeError')
-    except ZeroDivisionError:
-      print('ZeroDivisionError')
-    except Exception: # catch all error.
-      print('WeirdError')
-  return wrapper
-
-@handleException # wraps causeError function in 'handleException'.
-def causeError():
-  return 1/0
-print(causeError()) # 'ZeroDivisionError'
-
+# print(dir(csv))
+# print(help(csv.reader))
+print(sys.path)
 
 
 

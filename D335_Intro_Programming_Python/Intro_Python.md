@@ -468,13 +468,20 @@ class Cat(Dog):
 
 - Import, Module, Package, Errors
   - module is simply a file with functions that ends in '.py'.
+    - dependency: any code that is imported.
   - package is multiple modules in directory.
+    - directory must include a file called `__init__.py`.
+  - built-in modules: pre-installed with python. ex.. sys, time, math...
+    - sys.path: list of directories to look for files.
 
 ```python
 # IMPORT
 # Custom Import
 import myFileName # same directory as the executing script. If in different directory, must be package.
 # x = myFileName.func1()
+# or
+from myFileName import func1, func2
+# x = func1()
 
 # Python Module.
 import math # imports whole module.
