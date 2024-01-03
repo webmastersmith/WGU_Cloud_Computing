@@ -128,9 +128,12 @@ print(f'some string', end='') # no newline on end. default is '\n'
 # STRING
 s = 'hello ' + 'world' # hello world
 s  += '!' # hello world!
+z = "%f" % (3.14) # string modulo
+z = "{} is a variable".format(myVar)
+z = f"{myVar} is a variable"
 weird = '.'.join([1,2,3]) # 1.2.3 -Joins with whatever char is passed to it. Returns new string.
 r = 'r' * 3 # 'rrr'
-s.split() # returns array. Default split on spaces, \t. s.split(' ') # split only on spaces.
+s.split() # returns list. Default split on spaces, \t. s.split(' ') # split only on spaces.
 list(s) # split on each char.
 s.split('g') # returns array. removes match.
 
@@ -333,20 +336,19 @@ b = my_list
 b.append(100) # mutates my_list because 'b' is a pointer.
 b = my_list.copy() # creates two copies.
 my_list.append(4) # add to list.
-my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
-my_list.remove('hello') # will error if 'hello' is not in list.
-my_list.pop() # returns end item. mutates list.
-my_list.pop(list_index) # mutates list by index.
+my_list.insert(index, item) # insert item at index. my_list.insert(1, 'hello') # [1, 'hello', 2, 3]
+my_list.remove('hello') # by value. Will error if 'hello' is not in list.
+my_list.pop(index) # by index. Returns end item. mutates list.
 my_list[-1] = 'bob' # change end item in list by index.
 my_list[1:3] = ["a", "b"] # does not insert list, but the items. [1, 'a', 'b']
 
 # CONCAT LIST
 my_list + my_list2 # [1,2,3,3,2,1]
+my_list.extend(my_list2)
+l = [*my_list, *my_list2] # spread operator.
 for x in my_list2:
   my_list.append(x)
 [j for i in [my_list, my_list2] for j in i]
-my_list.extend(my-list2)
-l = [*my_list, *my_list2] # spread operator.
 
 # INDEX -List
 for i, item in enumerate(range(11)): # has optional start value, enumerate(range(11), start=100)
@@ -385,12 +387,12 @@ def cleanWord(word):
 # SORT -default lowest to highest.
 # https://docs.python.org/3/howto/sorting.html
 # in place, returns nothing.
-a.sort()
+a.sort() # default, low to high.
 a.sort(key=str.lower, reverse=False) # applies function to each item in list 'before' comparing. Does not mutate items.
 b = sorted(a, key=str.capitalize) # returns copy of array, sorted.
 
 # SET
-# No Index, No Order. CanNOT use SLICE NOTATION. Looks similar to Dict.
+# NO INDEX, No Order. NO SLICE NOTATION. Looks similar to Dict.
 # will only store unique items. Will not be in same order.
 my_set = {1,2,3} # unique values, others will be discarded.
 my_set2 = {3,2,1}
@@ -399,7 +401,9 @@ my_set == my_set2 # true
 my_set.add(4) # adds to set.
 my_set[0] # error cannot get items from set this way.
 3 in my_set # True
+my_set.remove(100) # remove, will raise error if item not exist.
 my_set.discard(100) # will not error if item does not exist.
+my_set.pop() # no index, so takes out something random.
 
 # TUPLES
 # No Mutation. Cannot append or add to a tuple. Memory efficient because cannot grow.
@@ -431,6 +435,15 @@ for key in my_dict: # only keys will be iterated.
 for key, value in my_dict.items(): # returned in tuple. Can be unpacked.
   print(key, value)
 [{'letter': key, 'name': value} for key, value in my_dict.items()] # [{'letter': 'num1', 'name': 1}, {...}]
+
+# LIST TO DICT
+a = ['a', 1, 'b', 2, 'c', 3]
+def Convert(a):
+    it = iter(a)
+    res_dct = dict(zip(it, it))
+    return res_dct
+# or
+res_dct = {a[i]: a[i + 1] for i in range(0, len(a), 2)}
 ```
 
 - classes

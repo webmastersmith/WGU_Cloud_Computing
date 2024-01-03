@@ -1,5 +1,5 @@
-import csv
-import sys
+# import csv
+# import sys
 # print(help(dict.pop))
 # print(help(dict.popitem))
 # print(help(dict))
@@ -15,18 +15,25 @@ import sys
 # print(help(reversed))
 # print(dir(csv))
 # print(help(csv.reader))
-print(sys.path)
+# print(sys.path)
+a = ['a', 1, 'b', 2, 'c', 3, 'e', 4]
 
+student_grades = {
+    'Andrew': [56, 79, 90, 22, 50],
+    'Nisreen': [88, 62, 68, 75, 78],
+    'Alan': [95, 88, 92, 85, 85],
+    'Chang': [76, 88, 85, 82, 90],
+    'Tricia': [99, 92, 95, 89, 99]
+}
+student_grades2 = {
+    'Andrew2': [56, 79, 90, 22, 50],
+    'Nisreen2': [88, 62, 68, 75, 78],
+    'Alan2': [95, 88, 92, 85, 85],
+    'Chang2': [76, 88, 85, 82, 90],
+    'Tricia2': [99, 92, 95, 89, 99]
+}
 
-
-# student_grades = {
-#     'Andrew': [56, 79, 90, 22, 50],
-#     'Nisreen': [88, 62, 68, 75, 78],
-#     'Alan': [95, 88, 92, 85, 85],
-#     'Chang': [76, 88, 85, 82, 90],
-#     'Tricia': [99, 92, 95, 89, 99]
-# }
-
+print({a[i]: a[i+1] for i in range(0, len(a), 2)})
 # # Find the average score of each assignment.
 # avg_scores = {}
 # for name, grades in student_grades.items():
