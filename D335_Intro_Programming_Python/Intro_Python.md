@@ -148,9 +148,9 @@ a[-1]      # last item in the array
 a[-2:]     # last two items in the array
 a[:-2]     # everything except the last two items
 a[::-1]    # all items in the array, reversed
-a[1::-1]   # the first two items, reversed
-a[:-3:-1]  # the last two items, reversed
-a[-3::-1]  # everything except the last two items, reversed
+a[:-3:-1]  # everything except the last three items, reversed
+a[1::-1]   # everything except the first two items, reversed
+a[-3::-1]  # the last three items, reversed
 
 # STRING Format
 num = 4.9999
@@ -318,7 +318,6 @@ my_float = 1.2 # type(my_float) # float
 # https://docs.python.org/3/library/functions.html#slice
 # returns copy. does not mutate. If it's a list, will return copy of items in a list.
 a = [1,2,3,4,5]
-num = 12345 # convert to string, then slice.
 b = a[:] # shallow copy object. Same as a.copy()
 a[1:4] # [2,3,4] -inclusive, exclusive. returns list.
 a[:4] # [1,2,3,4] -same as 0:4, returns list.
@@ -406,7 +405,7 @@ my_set.discard(100) # will not error if item does not exist.
 my_set.pop() # no index, so takes out something random.
 
 # TUPLES
-# No Mutation. Cannot append or add to a tuple. Memory efficient because cannot grow.
+# No Mutation. Cannot add or remove from a tuple. Memory efficient because cannot shrink/grow.
 my_tup = (1,2,3) # type(my_tup) # tuple
 my_tup2 = (3,2,1) # order matters.
 my_tup == my_tup2 # False
