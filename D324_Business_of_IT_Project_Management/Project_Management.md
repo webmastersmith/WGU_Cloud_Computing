@@ -9,6 +9,15 @@
 - understand the process control change and what phase documents/artifacts fall under.
 - Get a basic understanding of what information the charts/tools are meant for.
 - role responsibilities, and order of operations for situations.
+- <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
+  - The process of how change is brought up and put into play. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
+  - Know what happens during all the steps of a project beginning with Initiation all the way to Closing
+  - Know differences and characteristic between functional, projectized, matrix structures. Given a scenario, be able to say "this is a functional structure" or "this is projectized", etc.
+  - Really know the different roles, what they can and cant do
+  - What encompasses the charter, scope, WBS
+  - Know the different risk strategies and be able to assign them to an example (accept, mitigate, transfer, avoid, exploit)
+  - Know the different communication methods, I had a ton of these which kind of surprised me. Know which one is appropriate for certain scenarios (this was a very annoying part of the test because the questions didn't have much context at all so I really had to guess at times)
+  - I memorized the formulas for CV, SV, CPI, SPI and literally had 0 questions on them which was unfortunate, I know some people get questions on them so may be valuable for you. Wasn't for me
 - CompTIA Project+ Study Guide, 3rd Edition by Kim Heldman (ISBN 978-1-119-89245-8)
   - Wiley/Sybex
 - briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
