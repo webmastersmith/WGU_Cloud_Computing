@@ -23,7 +23,7 @@
 
 - Passing Score: 710 (on a scale of 100-900 from max 90 questions).
 
-## 1.1 Explain the basic characteristics of a project and various METHODOLOGIES and FRAMEWORKS used in IT projects
+## 1.01 Explain the basic characteristics of a project and various METHODOLOGIES and FRAMEWORKS used in IT projects
 
 - Characteristics of a project::Start and finish
   - Start and Finish: Every project has a defined beginning and end, with measurable deliverables.
@@ -54,7 +54,7 @@
 - Methodologies and frameworks::Waterfall
   - Waterfall: A sequential methodology where phases follow a strict order, like planning, design, development, testing, and deployment.
 
-## 1.2 Compare and contrast AGILE vs. WATERFALL concepts
+## 1.02 Compare and contrast AGILE vs. WATERFALL concepts
 
 - AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::Requirements
   - Requirements: Highly changeable requirements favor agile methods like Scrum or Kanban, where adaptations happen easily. Waterfall methodology may struggle with frequent changes.
@@ -79,7 +79,7 @@
   - Agile: Frequent, informal communication through daily stand-up meetings, backlog updates, and collaborative tools.
   - Waterfall: More formal communication through reports, documentation, and structured meetings.
 
-## 1.3 Given a scenario, apply the CHANGE CONTROL process throughout the project life cycle
+## 1.03 Given a scenario, apply the CHANGE CONTROL process throughout the project life cycle
 
 briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
 
@@ -115,7 +115,7 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
 - CHANGE CONTROL::Project change management::Manage scope creep/scope change
   - Managing Scope Creep/Scope Change: Addressing situations where the project's scope (planned deliverables) unintentionally expands (scope creep). This may involve formal change control, negotiation with stakeholders, or potentially re-baselining the project.
 
-## 1.4 Given a scenario, perform RISK MANAGEMENT activities
+## 1.04 Given a scenario, perform RISK MANAGEMENT activities
 
 RISK MANAGEMENT
 
@@ -179,7 +179,7 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
 - RISK MANAGEMENT::Roles and responsibilities::Ownership
   - Ownership: Assigning specific individuals or teams the responsibility for monitoring, analyzing, and responding to various risks.
 
-## 1.5 Given a scenario, perform ISSUE MANAGEMENT activities
+## 1.05 Given a scenario, perform ISSUE MANAGEMENT activities
 
 - ISSUE MANAGEMENT::Roles and responsibilities::Escalation path
   - Points of escalation: Clearly defined paths for reporting identified issues to the appropriate individuals or teams based on their severity, impact, and expertise.
@@ -216,7 +216,7 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
     - Identifying patterns and trends in issues.
     - Improving future project planning and risk mitigation strategies.
 
-## 1.6 Given a scenario, apply schedule DEVELOPMENT and MANAGEMENT activities and techniques
+## 1.06 Given a scenario, apply schedule DEVELOPMENT and MANAGEMENT activities and techniques
 
 - DEVELOPMENT and MANAGEMENT::Upcoming milestones and activity identification::Sprint goals
   - Defining specific objectives and goals for each sprint, ensuring focused efforts and measurable progress.
@@ -267,3 +267,263 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
 - DEVELOPMENT and MANAGEMENT::Revise baseline vs. rebaseline
   - Revise Baseline: Updating the project baseline (initial plan) within a sprint to reflect minor changes or adjustments.
   - Rebaseline: More significant changes requiring a complete overhaul of the baseline, impacting future sprints and potentially requiring stakeholder approval.
+
+## 1.07 Compare and contrast QUALITY MANAGEMENT concepts and PERFORMANCE MANAGEMENT concepts
+
+- QUALITY and PERFORMANCE MANAGEMENT::Retrospective/lessons learned
+  - A collaborative session at the end of each sprint to reflect on what went well, what could be improved, and capture valuable insights for future projects (lessons learned).
+- QUALITY and PERFORMANCE MANAGEMENT::Sprint review
+  - A meeting at the end of each sprint to showcase completed work to stakeholders, gather feedback, and confirm alignment with project goals.
+- QUALITY and PERFORMANCE MANAGEMENT::Service-level agreement
+  - A formal contract outlining the expected performance and quality of service for a project or system, typically between internal teams or with external vendors.
+- QUALITY and PERFORMANCE MANAGEMENT::Key performance indicators—objectives and key results
+  - A framework for setting measurable goals (objectives) and specific, time-bound targets (key results) to track progress and evaluate the success of the project or service.
+- QUALITY and PERFORMANCE MANAGEMENT::Cost and schedule performance::Cost variance
+  - Cost Variance: The difference between the actual cost incurred and the budgeted cost for a specific activity or the entire project.
+- QUALITY and PERFORMANCE MANAGEMENT::Cost and schedule performance::Schedule variance
+  - Schedule Variance: The difference between the actual time taken to complete an activity or the project and the planned timeframe.
+- QUALITY and PERFORMANCE MANAGEMENT::Audits and inspections
+  - Formal assessments of the project's processes, documentation, and deliverables to identify potential issues, ensure compliance with regulations, and improve overall quality.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Unit testing
+  - Unit Testing: Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Smoke testing
+  - Smoke Testing: Basic testing to verify the core functionalities of a system are working before more in-depth testing begins.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Regression testing
+  - Regression Testing: Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Stress testing
+  - Stress Testing: Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Performance testing
+  - Performance Testing: Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
+- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::User acceptance testing
+  - User Acceptance Testing (UAT): Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
+- QUALITY and PERFORMANCE MANAGEMENT::Verification and validation
+  - Verification: Ensuring the system is built right (meets specifications and requirements).
+  - Validation: Ensuring the system is built to meet the actual needs of users and stakeholders.
+- QUALITY and PERFORMANCE MANAGEMENT::Post-implementation support/warranty period
+  - Providing ongoing support and maintenance for the delivered system after deployment, addressing any issues or bugs that may arise during the warranty period.
+
+## 1.08 Compare and contrast COMMUNICATION MANAGEMENT concepts
+
+COMMUNICATION MANAGEMENT
+
+- COMMUNICATION MANAGEMENT::Assess methods::Synchronous and asynchronous communication
+  - Synchronous: Real-time interaction like meetings, calls, or video conferences.
+  - Asynchronous: Communication with a time delay, like emails, messages, or project management tools.
+- COMMUNICATION MANAGEMENT::Assess methods::Written and verbal
+  - Written and Verbal: Choosing the appropriate format based on formality, complexity, and audience reach.
+- COMMUNICATION MANAGEMENT::Assess methods::Formal and informal
+  - Formal and Informal: Balancing professional structure with casual interaction for building rapport and fostering collaboration.
+- COMMUNICATION MANAGEMENT::Assess methods::External and internal
+  - External and Internal: Tailoring communication styles and platforms to stakeholders within and outside the project team.
+- COMMUNICATION MANAGEMENT::Develop communication platforms/modalities
+  - Selecting and implementing appropriate communication tools based on project needs, team preferences, and budget.
+  - This could include collaboration platforms, video conferencing solutions, project management software, instant messaging, and email.
+- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Language barriers
+  - Language barriers: Utilize translation tools, clarify terminology, and promote inclusive language.
+- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Time zones/geographical factors
+  - Time zones/geographical: Schedule meetings at convenient times, employ asynchronous communication channels, and consider cultural sensitivities.
+- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Technological factors
+  - Technological factors: Ensure reliable internet access, provide training on communication tools, and troubleshoot technical issues.
+- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Cultural differences
+  - Cultural differences: Adapt communication styles, show respect for diverse perspectives, and consider non-verbal cues.
+- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication security
+  - Communication security: Utilize secure platforms, implement access controls, and train on cybersecurity best practices.
+- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication integrity
+  - Communication integrity: Ensure accuracy, timeliness, and transparency in communication.
+- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication archiving
+  - Communication archiving: Document and store communication records for future reference and audit purposes.
+- COMMUNICATION MANAGEMENT::Controlling project communication::Escalating communication issues
+  - Define clear escalation paths for addressing communication breakdowns or complex issues.
+  - Involve relevant stakeholders at appropriate levels based on the severity of the issue.
+- COMMUNICATION MANAGEMENT::Controlling project communication::Revising the communication plan
+  - Monitor and evaluate the effectiveness of the communication plan throughout the project.
+  - Adapt and update the plan as needed to address changes in the project, team, or communication needs.
+
+## 1.09 Given a scenario, apply effective meeting MANAGEMENT TECHNIQUES
+
+- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Workshops
+  - Collaborative: Meetings designed to generate ideas, solve problems, and reach consensus.
+  - Workshops: Intensive sessions focused on specific topics or tasks, often involving hands-on activities.
+- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Focus groups
+  - Focus groups: Gathering feedback and insights from a targeted group of stakeholders.
+- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Joint application development/joint application review sessions
+  - Joint Application Development/Review Sessions: Collaborative sessions to develop or review applications with external partners.
+- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Brainstorming
+  - Brainstorming: Generating creative ideas in a free-flowing, open-minded environment.
+- MANAGEMENT TECHNIQUES::Meeting types::Informative::Demonstrations/presentations
+  - Demonstrations/Presentations: Showcasing features, functionalities, or progress on specific aspects of the project.
+- MANAGEMENT TECHNIQUES::Meeting types::Informative::Stand-ups
+  - Stand-ups: Short, daily meetings to update on progress and identify blockers.
+- MANAGEMENT TECHNIQUES::Meeting types::Informative::Status
+  - Status Meetings: Sharing project updates and addressing open issues.
+- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Refinement
+  - Refinement Meetings: Prioritizing and defining scope for upcoming work.
+- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Task setting
+  - Task Setting Meetings: Assigning tasks and responsibilities to team members.
+- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Project steering committee meeting
+  - Project Steering Committee Meetings: High-level decision-making involving key stakeholders.
+- MANAGEMENT TECHNIQUES::Agenda settings/publishing
+  - Creating a clear agenda outlining the meeting's goals, topics, and expected outcomes.
+  - Publishing the agenda beforehand to inform attendees and ensure focus.
+- MANAGEMENT TECHNIQUES::Roles::Facilitator
+  - Facilitator: Guides the meeting discussion, keeps track of time, and ensures participation from all attendees.
+- MANAGEMENT TECHNIQUES::Roles::Scribe
+  - Scribe: Documents key points, action items, and decisions made during the meeting.
+- MANAGEMENT TECHNIQUES::Roles::Attendees/target audience
+  - Attendees/Target Audience: Individuals involved in or impacted by the meeting's topic, invited to contribute actively or receive information.
+- MANAGEMENT TECHNIQUES::Timeboxing
+  - Allocating specific time slots for agenda items to improve efficiency and prevent meetings from running over.
+- MANAGEMENT TECHNIQUES::Action items
+  - Clear and actionable tasks assigned to individuals or teams during the meeting, with due dates and ownership accountability.
+- MANAGEMENT TECHNIQUES::Meeting minutes
+  - A concise written record summarizing key discussions, decisions, action items, and next steps.
+- MANAGEMENT TECHNIQUES::Follow-ups
+  - Ensuring assigned action items are completed and reported on in subsequent meetings.
+
+## 1.10 Given a scenario, perform basic activities related to TEAM and RESOURCE MANAGEMENT
+
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::Matrix
+  - Matrix: Teams report to both project managers and functional managers, creating cross-functional collaboration but potential for conflicting priorities.
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::Projectized
+  - Projectized: Project managers have full authority over dedicated teams focusing on specific projects, offering flexibility but potentially siloed knowledge.
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::Functional
+  - Functional: Teams are organized by specialized skills or departments, offering efficiency but limited visibility across projects.
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::Needs assessment
+  - Acquisition: Identifying and securing needed resources through hiring, purchasing, or contracting.
+  - Needs assessment: Analyzing project requirements to determine necessary resources.
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Maintenance
+  - Maintenance: Upgrading, repairing, and ensuring resource availability throughout the project.
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Hardware decommissioning
+  - Hardware Decommissioning: Safely retiring and disposing of outdated hardware.
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::End-of-life software
+  - End-of-Life Software: Migrating or transitioning away from outdated software solutions.
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Successor planning
+  - Succession Planning: Identifying and developing backups for critical roles to avoid disruptions.
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Human resources
+  - Human Resources: Skilled individuals assigned to project tasks.
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Physical resources
+  - Physical Resources: Equipment, facilities, and materials needed for project activities.
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Capital resources
+  - Capital Resources: Financial investments and funding allocated to the project.
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Internal vs. external
+  - Internal vs. External: Resources obtained from within or outside the organization.
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Shared vs. dedicated
+  - Shared vs. Dedicated: Resources used by multiple projects or exclusively assigned to one.
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::Feature/functionality
+  - Gap Analysis: Identifying discrepancies between the current state and desired state of a project in terms of:
+  - Feature/functionality: Comparing existing capabilities with required functionality.
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::Skills
+  - Skills: Assessing team skills against project requirements.
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::Utilization
+  - Utilization: Analyzing how efficiently resources are being used.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Maintaining project momentum
+  - Maintaining Project Momentum: Addressing motivational challenges and fostering a positive team environment.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Forming
+  - Characteristics: This initial stage is marked by introductions, establishing roles, and getting familiar with the project. There might be uncertainty and dependence on the project manager for guidance.
+  - Leadership approach: Focus on building trust, defining expectations, and fostering open communication. Provide clear direction and support team members as they learn about the project.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Storming
+  - Characteristics: This stage can involve disagreements, competition for roles, and potential conflict as team members adjust to working together. Power dynamics might be tested.
+  - Leadership approach: Facilitate healthy conflict resolution, encourage collaboration, and actively manage team dynamics. Foster a safe space for open communication and address any underlying issues.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Norming
+  - Characteristics: The team starts to establish cohesion, develop shared goals, and agree on working methods. Communication improves, and trust begins to build.
+  - Leadership approach: Delegate tasks, empower team members, and provide opportunities for individual and team growth. Monitor progress and address any remaining challenges.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Performing
+  - Characteristics: The team is at its peak efficiency, working effectively towards goals. Communication is open and collaborative, and members are confident and motivated.
+  - Leadership approach: Continue to provide support and guidance as needed, but focus on facilitating team autonomy and celebrating successes. Monitor performance metrics and adjust the plan as needed.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Adjourning
+  - Characteristics: The project nears completion, and team members start to prepare for disbanding. There might be mixed emotions as closure approaches.
+  - Leadership approach: Focus on ensuring a smooth project handover, finalizing deliverables, and providing proper closure for team members. Acknowledge their contributions and celebrate the project's achievements.
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Providing project team performance feedback
+  - Providing Project Team Performance Feedback: Guiding and motivating team members through constructive feedback and recognition.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Functional/extended vs. operational/core team members
+  - Functional/Extended: Individuals contributing from their primary department to specific project tasks.
+  - Operational/Core: Members dedicated full-time to the project team.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Sponsor
+  - Sponsor: Provides project funding and high-level direction.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Stakeholders
+  - Stakeholders: Individuals or groups interested in the project's success.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Senior management
+  - Senior Management: Offers strategic guidance and decision-making support.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product owner
+  - Product Owner (Agile): Prioritizes and defines product backlog for development.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Scrum master
+  - Scrum Master (Agile): Facilitates agile ceremonies and removes roadblocks for the team.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project manager (PM)
+  - Project Manager (PM): Plans, executes, and controls the project to meet objectives.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Program manager
+  - Program Manager: Oversees multiple related projects and ensures program-level goals are met.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product manager
+  - Gathering and managing product requirements: The PM acts as the voice of the customer, capturing their needs and translating them into actionable requirements for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Testers/quality assurance (QA) specialists
+  - Testers/QA Specialists: Evaluate and report on software quality.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Business analyst
+  - Business Analyst: Analyzes business requirements and translates them into project specifications.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Subject matter expert (SME)
+  - Subject Matter Expert (SME): Provides specialized knowledge and expertise to the project.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Architect
+  - Architect: Designs the overall system architecture and technical solutions.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Developers/engineers
+  - Developers/Engineers: Build and implement the project deliverables.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project management office (PMO)
+  - Project Management Office (PMO): Provides project management support, templates, and best practices.
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::End users
+  - End Users: Individuals who will ultimately use the project's deliverables.
+
+## 1.11 Explain important PROJECT PROCUREMENT and VENDOR SELECTION concepts
+
+- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Build
+  - Build: Develop the resources in-house using existing staff and equipment.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Buy
+  - Buy: Purchase the resources from external vendors.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Lease
+  - Lease: Rent the resources for a specific period.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Subscription/pay-as-you-go
+  - Subscription/Pay-as-you-go: Access resources on a subscription basis, paying for what you use.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for proposal (RFP)
+  - Request for Proposal (RFP): Issued to solicit proposals from multiple vendors for complex projects, detailing project requirements and evaluation criteria.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for bid (RFB)
+  - Request for Bid (RFB): Used for well-defined projects with standardized requirements, where vendors submit bids based on price and specifications.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for quote (RFQ)
+  - Request for Quote (RFQ): Used for simple purchases, requesting price quotes from multiple vendors for specific equipment or services.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for information (RFI)
+  - Request for Information (RFI): Used to gather information from vendors about their capabilities and offerings for a specific need.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Best value vs. lowest cost
+  - Best Value vs. Lowest Cost: Considering not just price but also factors like quality, reliability, experience, and service to determine the best overall value.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Cost-benefit analysis
+  - Cost-Benefit Analysis: Assessing the financial impact of a potential resource acquisition, considering both costs and benefits.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Market research
+  - Market Research: Investigating available vendors and market trends to identify the best options.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Competitive analysis
+  - Competitive Analysis: Comparing the capabilities and offerings of different vendors to identify the most competitive solution.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Qualifications
+  - Qualifications: Evaluating the vendor's experience, technical expertise, financial stability, and references.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Prequalified vendors/sellers
+  - Prequalified Vendors/Sellers: Selecting vendors from a pre-approved list based on specific criteria.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Demonstration
+  - Demonstration: Requesting a demonstration of the vendor's solution to assess its capabilities and fit for the project.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Technical approach
+  - Technical Approach: Evaluating the vendor's proposed technical solution for feasibility and effectiveness.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Physical and financial capacity
+  - Physical and Financial Capacity: Assessing the vendor's ability to deliver the resources within budget and timeframe.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::References
+  - References: Checking references provided by the vendor to verify their performance and reliability.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Time and material
+  - Time and Material: Vendor charges for labor and materials used, potentially exceeding budget if project scope changes.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Unit price
+  - Unit Price: Vendor charges a fixed price per unit of resource used, suitable for predictable projects.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Fixed price
+  - Fixed Price: Vendor charges a pre-determined price for delivering the entire project, offering cost certainty but with limited flexibility.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Cost plus
+  - Cost Plus: Vendor charges their costs plus a markup, providing transparency but potentially exceeding budget if costs overrun.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Maintenance agreement::Warranty
+  - Maintenance Agreement: Ongoing support and service agreement for acquired resources, with specific coverage and warranty terms.
+  - Warranty: Guarantees the vendor will repair or replace faulty resources within a specific timeframe.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Master service agreement::Purchase orders (POs)
+  - Master Service Agreement (MSA): Long-term agreement outlining general terms and conditions for future purchases from the vendor.
+    - Purchase Orders (POs): Specific orders issued under the MSA for individual purchases.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Master service agreement::Terms of reference (TOR)
+  - Terms of Reference (TOR): Detailed document outlining project scope, deliverables, and expectations for a specific engagement.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Statement of work (SOW)
+  - Statement of Work (SOW): Detailed document outlining the specific scope of work, deliverables, and timelines for a specific project.
+- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Non-disclosure agreement
+  - Non-Disclosure Agreement (NDA): Protects confidential information shared between the project and the vendor.
