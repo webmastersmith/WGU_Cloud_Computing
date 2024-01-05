@@ -4,11 +4,22 @@
 
 - Know all phases and what Doc's go in what phase.
   - Order of things (Initiating, Planned...etc.).
-  - know how to read the diagrams and charts.
+  - know how to read the diagrams, charts and graphs.
+  - Make sure you understand the definitions of all the material.
+  - Most of my questions contained a scenario of "what step is next?" or "what step is this task in?" -Know the Change Control Steps backward and forwards and what is in each step (Documents, Tasks)
 - Know the change management process steps.
 - understand the process control change and what phase documents/artifacts fall under.
 - Get a basic understanding of what information the charts/tools are meant for.
 - role responsibilities, and order of operations for situations.
+- <https://quizlet.com/406758061/pk0-004-project-best-study-guide-2019-flash-cards/>
+- <https://quizlet.com/698573077/project-exam-study-questions-flash-cards/>
+- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=55e10158-bd60-4564-9a45-af300116ced0>
+- <https://wgu.webex.com/recordingservice/sites/wgu/recording/53c657ca5726103bb6fa00505681e571/playback>
+- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8063f5b9-b20e-4b3e-9d84-af84017b5aa1>
+- <https://srm--c.vf.force.com/apex/FDP/CommonsExpandedSearch?courseCode=D324>
+- <https://wgu.libguides.com/c.php?g=949093&p=9426624>
+- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb2964e4-cc12-4ce0-a706-af23014b3e93>
+
 - <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
   - The process of how change is brought up and put into play. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
   - Know what happens during all the steps of a project beginning with Initiation all the way to Closing
@@ -20,7 +31,20 @@
   - I memorized the formulas for CV, SV, CPI, SPI and literally had 0 questions on them which was unfortunate, I know some people get questions on them so may be valuable for you. Wasn't for me
 - CompTIA Project+ Study Guide, 3rd Edition by Kim Heldman (ISBN 978-1-119-89245-8)
   - Wiley/Sybex
-- briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
+- BARD: briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
+
+- <https://www.reddit.com/r/WGU/comments/10z838f/passed_business_of_it_project_management_d324/>
+  - There are lots of questions on what is the BEST or what is the FIRST thing you should do in a situation.
+  - You have to know the order of actions in the processes for change control, scheduling management, etc.
+  - Know what roles within the project are responsible for what actions/management.
+  - Know all the types of charts and what they are used for. Know the phases and what occurs in each phase of a project.
+  - Conflict resolution types.
+  - Methods of dealing with risks.
+  - Terminology and acronyms such as SOW, RFP, RFQ, RFI, WBS, SLA, LOI, MOU, ERG, etc.
+  - Know differences between dependency types.
+  - Know functional, projectized, and the various matrix types of organizations.
+  - What documents are updated when certain events happen.
+  - What is contained within project management plan, scope management plan, etc.
 
 | DOMAIN                          | PERCENTAGE OF EXAMINATION |
 | ------------------------------- | ------------------------- |
@@ -536,3 +560,288 @@ COMMUNICATION MANAGEMENT
   - Statement of Work (SOW): Detailed document outlining the specific scope of work, deliverables, and timelines for a specific project.
 - PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Non-disclosure agreement
   - Non-Disclosure Agreement (NDA): Protects confidential information shared between the project and the vendor.
+
+## 2.1 Explain the VALUE of ARTIFACTS in the discovery/concept preparation phase for a project
+
+- VALUE of ARTIFACTS::Business case or business objective::Return on investment (ROI) analysis
+  - Business Case: A formal document outlining the project's justification, benefits, risks, and costs, convincing stakeholders of its value.
+  - Business Objective: The overall goal or desired outcome the project aims to achieve, driving its direction and success metrics.
+  - Evaluating the financial benefits of the project compared to its costs. Measures like net present value (NPV), payback period, and internal rate of return (IRR) help assess its profitability and feasibility.
+- VALUE of ARTIFACTS::Business case or business objective::Current state vs. future state
+  - Analyzing the current situation and challenges, then outlining the desired future state the project aims to achieve. This gap analysis helps define project scope and objectives.
+- VALUE of ARTIFACTS::Prequalified vendor
+  - A vendor who has already met defined criteria and proven their capabilities, making them eligible for further consideration or proposal submission.
+- VALUE of ARTIFACTS::Predetermined client
+  - A client who has already been identified and agreed upon for the project, potentially influencing its scope and requirements.
+- VALUE of ARTIFACTS::Preexisting contracts::Client SOW
+  - Existing agreements or obligations that might impact the project, such as vendor contracts, client agreements, or resource limitations.
+  - A document outlining the specific tasks, deliverables, and responsibilities expected from the client in the project.
+- VALUE of ARTIFACTS::Preexisting contracts::Client TOR
+  - A document outlining the project scope, objectives, and expectations from the client's perspective.
+- VALUE of ARTIFACTS::Financial concepts::Capital expenses (CapEx) vs. operational expenses (OpEx)
+  - Capital Expenses (CapEx): One-time investments in long-term assets like equipment or infrastructure, impacting initial project costs.
+  - Operational Expenses (OpEx): Ongoing costs associated with running the project, such as salaries, materials, and maintenance.
+
+## 2.2 Given a scenario, perform activities during the PROJECT INITIATION PHASE
+
+- PROJECT INITIATION PHASE::Develop the project charter::Project objectives
+  - This formal document outlines the project's purpose, objectives, scope, stakeholders, and key decisions. It serves as a roadmap and reference point throughout the project lifecycle.
+  - Clear and measurable statements defining what the project aims to achieve. These objectives should be SMART (Specific, Measurable, Achievable, Relevant, and Time-bound).
+- PROJECT INITIATION PHASE::Develop the project charter::Project success criteria
+  - How will you know the project is successful? Define specific metrics or benchmarks that demonstrate achievement of the objectives.
+- PROJECT INITIATION PHASE::Develop the project charter::Preliminary scope statement
+  - A high-level overview of the project's boundaries, what it includes and excludes. This statement helps manage expectations and prevent scope creep.
+- PROJECT INITIATION PHASE::Identify and assess stakeholders
+  - Individuals or groups impacted by or interested in the project's success. Analyze their roles, interests, and potential influence.
+- PROJECT INITIATION PHASE::Develop a responsibility assignment matrix (RAM)::Responsible, Accountable, Consulted, Informed (RACI)
+  - (Also known as RACI Matrix) This matrix clarifies roles and responsibilities for project tasks. Each task is assigned an owner (Responsible), decision-maker (Accountable), consulted party (Consulted), and informed party (Informed).
+- PROJECT INITIATION PHASE::Establish accepted communication channels
+  - Define the communication methods preferred by stakeholders and project team members. This ensures clear and timely information flow.
+- PROJECT INITIATION PHASE::Develop a records management plan::Data
+  - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
+- PROJECT INITIATION PHASE::Develop a records management plan::Documents
+  - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
+- PROJECT INITIATION PHASE::Define access requirements
+  - Determine who needs access to specific information and project documents, balancing security and collaboration needs.
+- PROJECT INITIATION PHASE::Review existing artifacts
+  - Analyze existing documents, reports, or data that could inform the project plan and avoid duplicating efforts.
+- PROJECT INITIATION PHASE::Determine solution design
+  - Choose the approach for achieving the project objectives. This could be waterfall, agile, hybrid, or another methodology.
+- PROJECT INITIATION PHASE::Conduct project kickoff methods
+  - Organize an initial meeting or event to introduce the project, team members, and key information to stakeholders. This sets the tone for collaboration and success.
+
+## 2.3 Given a scenario, perform activities during the PROJECT PLANNING PHASE
+
+- PROJECT PLANNING PHASE::Assess the resource pool::Preliminary procurement needs assessment
+  - Analyze available human, physical, and financial resources within the organization, considering skills, availability, and potential constraints.
+  - Identify any resources not available internally and that might require acquisition through vendors.
+- PROJECT PLANNING PHASE::Assign project resources
+  - Match team members with tasks based on their skills, experience, and workload capacity. Consider project needs and individual strengths.
+- PROJECT PLANNING PHASE::Train project team members
+  - Ensure team members have the necessary knowledge and skills to perform their assigned tasks effectively. This might involve workshops, training sessions, or access to resources.
+- PROJECT PLANNING PHASE::Develop a communication plan::Meeting cadence and methodologies
+  - Define communication channels, frequency, audience, and message content for stakeholders and team members. This ensures clear and timely information flow.
+  - Determine the frequency and format of project meetings (e.g., daily stand-ups, weekly status meetings) and choose suitable methodologies (e.g., agile stand-ups, waterfall progress reports).
+- PROJECT PLANNING PHASE::Develop a detailed scope statement
+  - Expands upon the preliminary statement, clearly defining the project's deliverables, exclusions, limitations, and acceptance criteria.
+- PROJECT PLANNING PHASE::Define units of work::Work breakdown structure (WBS)
+  - Breakdown project deliverables into smaller, manageable units of work (e.g., tasks, subtasks) for efficient planning and tracking.
+  - A hierarchical tree diagram outlining the project's deliverables and subtasks, providing a visual representation of scope and dependencies.
+- PROJECT PLANNING PHASE::Define units of work::Backlog
+  - A prioritized list of tasks or features in agile methodologies, reflecting the evolving project needs and development direction.
+- PROJECT PLANNING PHASE::Develop a project schedule::Establish cadences
+  - Estimate the time required for each task and create a timeline for project completion, considering dependencies and resource availability.
+  - Define regular checkpoints or review intervals throughout the project to assess progress, identify issues, and make adjustments.
+- PROJECT PLANNING PHASE::Determine budget considerations
+  - Estimate costs for all project activities, including personnel, equipment, materials, and potential risks. Develop a budget and track expenses to ensure financial control.
+- PROJECT PLANNING PHASE::Develop QA plan
+  - Define quality assurance processes and procedures to ensure project deliverables meet predefined standards and customer expectations.
+- PROJECT PLANNING PHASE::Perform an initial risk assessment
+  - Identify potential threats and opportunities that could impact the project, assess their likelihood and impact, and develop mitigation strategies.
+- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Operational training
+  - Outlines the steps and activities for transitioning the project from development to production or implementation.
+  - Train stakeholders and end users on how to use the project's deliverables effectively.
+- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Go live
+  - Execute the transition plan and release the project to its intended audience.
+- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Operational handoff
+  - Transfer responsibility for ongoing operation and maintenance of the project deliverables to the appropriate team.
+- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Internal audience
+  - Stakeholders within the organization who will benefit from or are impacted by the project.
+- PROJECT PLANNING PHASE::Develop a transition plan/release plan::External audience
+  - Customers, partners, or other stakeholders outside the organization who might use or be affected by the project.
+- PROJECT PLANNING PHASE::Develop a project management plan::Establish baselines and milestones
+  - A comprehensive document outlining the project's goals, scope, methodology, resources, schedule, budget, communication plan, risks, and change management procedures.
+  - Define key checkpoints and reference points for measuring project progress and achievement of objectives.
+- PROJECT PLANNING PHASE::Develop a project management plan::Establish minimally viable product
+  - Define a basic version of the deliverable with core functionalities, allowing for early feedback and iterative development.
+
+## 2.4 Given a scenario, perform activities during the PROJECT EXECUTION PHASE
+
+- PROJECT EXECUTION PHASE::Execute tasks according to the project management plan
+  - Implement the established plan, assign tasks, monitor progress, and ensure deliverables meet required quality standards.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Training
+  - Training: Equip users with skills and knowledge to navigate the change.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Ensure adoption
+  - Ensure Adoption: Encourage and incentivize use of the new solution.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Reinforce adoption over time
+  - Reinforce Adoption Over Time: Provide ongoing support and address lingering concerns.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Communication
+  - Communication: Keep stakeholders informed throughout the change process.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Documentation
+  - Documentation: Update policies, procedures, and other documents to reflect the change.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::New knowledge bases
+  - New Knowledge Bases: Establish new resources for users to access information.
+- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::New processes
+  - New Processes: Implement and refine revised workflows and practices.
+- PROJECT EXECUTION PHASE::Manage vendors::Enforce vendor rules of engagement
+  - Enforce Vendor Rules of Engagement: Ensure vendors adhere to agreed-upon contracts and expectations.
+- PROJECT EXECUTION PHASE::Manage vendors::Monitor performance
+  - Monitor Performance: Track vendor progress, deliverables, and compliance.
+- PROJECT EXECUTION PHASE::Manage vendors::Approve deliverables
+  - Approve Deliverables: Evaluate vendor work and accept deliverables that meet defined specifications.
+- PROJECT EXECUTION PHASE::Conduct project meetings and updates
+  - Hold regular meetings (e.g., status updates, team huddles) to share information, troubleshoot issues, and maintain team alignment.
+- PROJECT EXECUTION PHASE::Tracking/reporting::Team touch points
+  - Team Touch Points: Regularly check in with individual team members to monitor progress and provide support.
+- PROJECT EXECUTION PHASE::Tracking/reporting::Risk reporting
+  - Risk Reporting: Identify and report potential risks promptly to facilitate mitigation efforts.
+- PROJECT EXECUTION PHASE::Tracking/reporting::External status reporting
+  - External Status Reporting: Provide stakeholders with updates on project progress and key milestones achieved.
+- PROJECT EXECUTION PHASE::Tracking/reporting::Overall progress reporting
+  - Overall Progress Reporting: Track and report on overall project progress against baselines and timelines.
+- PROJECT EXECUTION PHASE::Tracking/reporting::Gap analysis
+  - Gap Analysis: Identify discrepancies between current state and desired state to inform adjustments.
+- PROJECT EXECUTION PHASE::Tracking/reporting::Ad hoc reporting
+  - Ad Hoc Reporting: Generate specific reports and analyses as needed by stakeholders.
+- PROJECT EXECUTION PHASE::Update the project budget
+  - Monitor expenses, track deviations from the budget, and adjust allocations as needed to stay within financial constraints.
+- PROJECT EXECUTION PHASE::Update the project timeline
+  - Track project progress, address delays, and revise the timeline as required to ensure timely completion.
+- PROJECT EXECUTION PHASE::Manage conflict::Smoothing
+  - Smoothing: Address situations calmly and empathetically, seeking common ground and collaborative solutions.
+- PROJECT EXECUTION PHASE::Manage conflict::Forcing
+  - Forcing: Assert authority to impose a solution when necessary, but sparingly and with clear justification.
+- PROJECT EXECUTION PHASE::Manage conflict::Compromise
+  - Compromise: Seek mutually agreeable solutions that address the concerns of all parties involved.
+- PROJECT EXECUTION PHASE::Manage conflict::Collaboration
+  - Collaboration: Work together to find creative solutions that benefit everyone.
+- PROJECT EXECUTION PHASE::Manage conflict::Avoiding
+  - Avoiding: Deferring conflict can be detrimental, but consider whether addressing it directly is productive at that specific time.
+- PROJECT EXECUTION PHASE::Coordinate a phase gate review
+  - Conduct formal reviews at project phase transitions to assess progress, address problems, and approve continued effort before advancing to the next phase.
+
+## 2.5 Explain the importance of activities performed during the CLOSING PHASE
+
+- CLOSING PHASE::Project evaluation
+  - Project Evaluation: Assess if the project achieved its objectives, met success criteria, and delivered expected value.
+- CLOSING PHASE::Validation of deliverables
+  - Validation of Deliverables: Confirm deliverables meet quality standards and acceptance criteria.
+- CLOSING PHASE::Closing contracts
+  - Closing Contracts: Finalize financial obligations, release vendors, and settle any outstanding invoices.
+- CLOSING PHASE::Removing access
+  - Removing Access: Revoke user access to project resources and secure sensitive information.
+- CLOSING PHASE::Releasing resources
+  - Releasing Resources: Reallocate personnel, equipment, and other resources back to the organization or release them as appropriate.
+- CLOSING PHASE::Project closure meeting
+  - Project Closure Meeting: Gather stakeholders to discuss achievements, lessons learned, and next steps.
+- CLOSING PHASE::Project closeout report
+  - Project Closeout Report: Compile a comprehensive document summarizing project completion, performance, and key takeaways.
+- CLOSING PHASE::Collecting feedback from stakeholders
+  - Collecting Feedback from Stakeholders: Gather valuable insights from all parties involved to inform future project planning.
+- CLOSING PHASE::Archiving documentation
+  - Archiving Documentation: Securely store project documents, records, and artifacts for future reference or legal requirements.
+- CLOSING PHASE::Budget reconciliation
+  - Budget Reconciliation: Compare final expenses with initial budget and identify variances.
+- CLOSING PHASE::Rewards and celebration
+  - Rewards and Celebration: Acknowledge team achievements and celebrate project completion to boost morale and foster team spirit.
+- CLOSING PHASE::Project sign-off
+  - Project Sign-off: Obtain formal approvals from key stakeholders signifying final acceptance and closure.
+
+## 3.1 Given a scenario, use the appropriate TOOLS throughout the project life cycle
+
+- TOOLS::Tracking charts::Gantt chart
+  - Gantt chart: Ideal for visualizing project tasks, dependencies, and timelines. Shows overall project roadmap and progress for tasks with well-defined durations.
+- TOOLS::Tracking charts::Budget burndown chart
+  - Budget burndown chart: Tracks actual spending against the planned budget over time. Helps identify potential budget overruns early.
+- TOOLS::Tracking charts::Project network diagram
+  - Project network diagram: Visualizes tasks and their dependencies using connected nodes and arrows. Useful for complex projects with intricate relationships between tasks.
+- TOOLS::Tracking charts::Milestone chart
+  - Milestone chart: Highlights key milestones and their timelines, providing a snapshot of major project achievements.
+- TOOLS::Tracking charts::Program Evaluation Review Technique (PERT) chart
+  - PERT chart: Estimates task durations with optimistic, most likely, and pessimistic scenarios. Useful for projects with uncertain task durations.
+- TOOLS::Tracking charts::Project organizational chart
+  - Project organizational chart: Shows the hierarchical structure of the project team, clarifying roles and reporting relationships.
+- TOOLS::Tools::Issue log
+  - Issue log: Tracks and manages identified problems or potential risks throughout the project.
+- TOOLS::Tools::Defect log
+  - Defect log: Logs identified bugs or errors in deliverables, facilitating tracking and resolution.
+- TOOLS::Tools::Change log
+  - Change log: Tracks and manages authorized changes made to the project scope, plan, or deliverables.
+- TOOLS::Tools::Risk report
+  - Risk report: Summarizes identified risks, their likelihood, impact, and mitigation strategies.
+- TOOLS::Tools::Risk register
+  - Risk register: Comprehensive documentation of all identified risks, their details, and mitigation plans.
+- TOOLS::Tools::Project dashboard
+  - Project dashboard: Visually summarizes key project metrics, risks, and progress in a single view.
+- TOOLS::Tools::Project status report
+  - Project status report: Formal document outlining the project's current status, progress, challenges, and future plans.
+- TOOLS::Tools::Version control tools
+  - Version control tools: Track and manage changes in documents, code, and other project deliverables.
+- TOOLS::Tools::Time-tracking tools
+  - Time-tracking tools: Record time spent on tasks and project activities, facilitating accurate budgeting and resource allocation.
+- TOOLS::Tools::Task board
+  - Task board: Visually manage tasks using cards representing different stages (e.g., to-do, in progress, done) within a Kanban approach.
+- TOOLS::Tools::Requirements Traceability Matrix
+  - Requirements Traceability Matrix: Links and tracks project requirements to specific deliverables, ensuring all needs are met.
+
+## 3.2 Compare and contrast various project management PRODUCTIVITY TOOLS
+
+- PRODUCTIVITY TOOLS::Communication tools::Email
+  - Email: Widely used, formal, asynchronous, good for documentation and archiving, but might lead to information overload.
+- PRODUCTIVITY TOOLS::Communication tools::Messaging::Short message service (SMS)
+  - Messaging: Real-time, informal, good for quick questions and updates, but can lack organization and context.
+  - SMS: Simple, direct, mobile-friendly, but limited to brief messages.
+- PRODUCTIVITY TOOLS::Communication tools::Messaging::Chat
+  - Chat: Group-oriented, persistent chat history, good for quick discussions, but can be distracting.
+- PRODUCTIVITY TOOLS::Communication tools::Telephone
+  - Telephone: Efficient for urgent matters, personal touch, but lacks visual cues and documentation.
+- PRODUCTIVITY TOOLS::Communication tools::Meetings/face-to-face
+  - Meetings/Face-to-Face: Ideal for complex discussions, team building, but time-consuming and not always feasible.
+- PRODUCTIVITY TOOLS::Communication tools::Video
+  - Video: Combines visuals with real-time interaction, good for remote teams, but requires bandwidth and potentially distracting environments.
+- PRODUCTIVITY TOOLS::Communication tools::Enterprise social media
+  - Enterprise Social Media: Internal social media platform for collaboration and engagement, but potential for information overload and security concerns.
+- PRODUCTIVITY TOOLS::Collaboration tools::Real-time, multi-authoring editing software
+  - Real-time, Multi-Authoring Editing Software: Simultaneous document editing, efficient for collaborative writing, but requires discipline to avoid conflicts.
+- PRODUCTIVITY TOOLS::Collaboration tools::File sharing platforms
+  - File Sharing Platforms: Centralized storage and access to project files, version control, but needs good organization and access management.
+- PRODUCTIVITY TOOLS::Collaboration tools::Workflow and e-signature platforms
+  - Workflow and E-Signature Platforms: Streamline document approvals and workflows, reduce paper reliance, but might require specific user roles and permissions.
+- PRODUCTIVITY TOOLS::Collaboration tools::Whiteboard
+  - Whiteboard: Visualize ideas and collaborate in real-time, good for brainstorming and planning, but lacks organization and recording capabilities.
+- PRODUCTIVITY TOOLS::Collaboration tools::Wiki knowledge base
+  - Wiki Knowledge Base: Collaborative knowledge repository, good for document sharing and reference, but relies on user contributions and maintenance.
+- PRODUCTIVITY TOOLS::Meeting tools::Real-time surveys/polling
+  - Real-time Surveys/Polling: Gather immediate feedback from participants, good for engagement, but limited in-depth discussion.
+- PRODUCTIVITY TOOLS::Meeting tools::Calendaring tools
+  - Calendaring Tools: Schedule meetings and appointments, track events, good for visibility and coordination, but requires consistent updates.
+- PRODUCTIVITY TOOLS::Meeting tools::Print media
+  - Print Media: Physical materials for handouts or presentations, tangible reference, but limited accessibility and updates.
+- PRODUCTIVITY TOOLS::Meeting tools::Conferencing platforms
+  - Conferencing Platforms: Integrated tools for audio/video meetings, screen sharing, and presentations, ideal for remote collaboration, but can be technically demanding.
+- PRODUCTIVITY TOOLS::Documentation and office production tools::Word processing
+  - Word Processing: Create and edit text documents, good for reports and proposals, but limited for data analysis or visualizations.
+- PRODUCTIVITY TOOLS::Documentation and office production tools::Spreadsheets
+  - Spreadsheets: Organize and analyze data, create charts and graphs, good for financial and technical information, but can be complex for non-technical users.
+- PRODUCTIVITY TOOLS::Documentation and office production tools::Presentation
+  - Presentation: Create impactful presentations with visuals and animations, good for stakeholder communication, but limited interactivity.
+- PRODUCTIVITY TOOLS::Documentation and office production tools::Charting/diagramming
+  - Charting/Diagramming: Design charts, graphs, and diagrams to visualize data and relationships, good for technical documentation and reports, but might require specific skills.
+- PRODUCTIVITY TOOLS::Project management scheduling tools::Cloud-based solutions vs. on-premises solutions
+  - Cloud-based Solutions: Accessible from anywhere, automatic updates, centralized data, but might have subscription costs and potential security concerns.
+  - On-Premises Solutions: Installed on local servers, full control over data and security, but requires IT infrastructure and maintenance.
+- PRODUCTIVITY TOOLS::Project management scheduling tools::Local installation
+  - Local Installation: Installed on individual computers, convenient for offline access, but limited data sharing and collaboration.
+- PRODUCTIVITY TOOLS::Ticketing/case management system
+  - Track issues, requests, and tasks, assign responsibility, monitor progress, good for centralized support and communication, but requires system setup and user training.
+
+## 3.3 Given a scenario, analyze quality and performance charts to inform PROJECT DECISIONS
+
+- PROJECT DECISIONS::Histograms
+  - Histograms: Show the frequency distribution of data points, helping identify patterns and potential outliers, e.g., defect frequency in software testing.
+- PROJECT DECISIONS::Pareto charts
+  - Pareto charts: Highlight the most frequent issues (e.g., bugs, errors) to prioritize improvement efforts based on impact (e.g., severity).
+- PROJECT DECISIONS::Run charts
+  - Run charts: Track trends over time, allowing you to monitor progress and identify potential deviations from expected quality levels.
+- PROJECT DECISIONS::Scatter diagrams
+  - Scatter diagrams: Explore relationships between two variables, e.g., defect rate vs. developer experience, to identify potential causes of quality issues.
+- PROJECT DECISIONS::Fishbone/Ishikawa diagrams
+  - Fishbone/Ishikawa diagrams: Visually identify and analyze the root causes of performance problems, facilitating targeted solutions.
+- PROJECT DECISIONS::Control charts
+  - Control charts: Monitor key performance indicators (KPIs) like project budget or schedule against predefined control limits, helping identify and address potential deviations early.
+- PROJECT DECISIONS::Burnup/burndown chart
+  - Burnup/Burndown charts: Track the remaining work (burnup) or completed work (burndown) against time, highlighting potential resource allocation issues or schedule delays.
+- PROJECT DECISIONS::Velocity chart
+  - Velocity chart: Measure the rate of completed work per iteration in agile projects, helping assess team capacity and predict future progress.
+- PROJECT DECISIONS::Decision tree
+  - Represent a tree-like structure with decision points and potential outcomes, allowing you to evaluate different options and make informed choices based on expected outcomes and risks.
