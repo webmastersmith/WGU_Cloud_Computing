@@ -3,6 +3,7 @@
 ## Quick Study
 
 - Before you take the exam, be certain you are familiar with the following terms: acceptance, action items, addition, balanced scorecard, cause-and-effect diagram, common causes of variances, control chart, decision trees, end-to-end testing, extinction, flowcharts, integration, integration testing, lessons learned, Pareto diagram, performance testing, prevention, regression testing, rework, run charts, smoke testing, starvation, statistical sampling, stress testing, testing, unit testing, user acceptance testing (UAT).
+
   - **Acceptance**: Formally acknowledging that a deliverable meets the agreed-upon requirements and can be integrated into the project or handed over to the client.
   - **Action Items**: Specific tasks assigned to individuals or teams to address identified issues, complete required work, or move the project forward.
   - **Addition**: Introducing new features, functionalities, or scope to the project, potentially impacting timelines, resources, and budgets.
@@ -30,6 +31,16 @@
   - **Testing**: Verifying that a system, component, or function meets its intended requirements and performs as expected.
   - **Unit Testing**: Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
   - **User Acceptance Testing (UAT)**: Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
+
+- Manager Types: Functional, Matrix, Projectized
+  - ![Manager Authority](img/project_authority.PNG)
+
+| Management Style | About                                                                 |
+| ---------------- | --------------------------------------------------------------------- |
+| Functional       | Specialized managers for each department                              |
+| Matrix           | PM's that assign work(weak), up to control pay, hiring/firing(strong) |
+| Projectized      | PM's have full control over pay, hiring/firing                        |
+
 - Be able to name the purpose for controlling quality.
   - Quality control involves monitoring work results to determine whether they comply with the standards set in the quality management plan.
 - Name the types of testing performed on technology projects.

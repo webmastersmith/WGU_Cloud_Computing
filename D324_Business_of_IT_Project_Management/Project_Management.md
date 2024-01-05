@@ -419,6 +419,12 @@ COMMUNICATION MANAGEMENT
 
 - TEAM and RESOURCE MANAGEMENT::Organizational structures::Matrix
   - Matrix: Teams report to both project managers and functional managers, creating cross-functional collaboration but potential for conflicting priorities.
+  - Project Manager is responsible for assigning work but does not have official authority over the people doing the work.
+  - **Weak matrix**: The functional manager retains all budget and staff management responsibilities. In this sense, the PM has less control over the project.
+  - **Strong matrix**: A PM has substantial control over the project. They may have management responsibilities for the budget and staff.
+  - Cons: employees feel like they have two bosses.
+  - ![Manager Authority](img/project_authority.PNG)
+  - ![Matrix organization](img/Strong-Matrix-Organizational-Structure-11.jpg)
 - TEAM and RESOURCE MANAGEMENT::Organizational structures::Projectized
   - Projectized: Project managers have full authority over dedicated teams focusing on specific projects, offering flexibility but potentially siloed knowledge.
   - Organization that pools resources around projects.
@@ -430,7 +436,7 @@ COMMUNICATION MANAGEMENT
   - Functional: Teams are organized by specialized skills or departments, offering efficiency but limited visibility across projects.
   - A single leader(president) with a few direct reports.
   - Suits small businesses. Easier to communicate, but easy to become siloed from other departments.
-  - Will have 'role' type functional managers.
+  - Will have 'specialized roles' of functional managers.
   - Ex.. all human resources personnel report to a Human Resources head(manager), who then reports to the president. Their primary teammates are people with similar job responsibilities and expertise.
   - ![functional organization](img/Functional-Orgainzational.webp)
 - TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::Needs assessment
