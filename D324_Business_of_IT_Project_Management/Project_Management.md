@@ -952,3 +952,40 @@ COMMUNICATION MANAGEMENT
   - Content Management Systems (CMS): Web-based platforms for creating, editing, and publishing content on websites and other digital platforms.
 - IT CONCEPTS::Cloud models::Software::Financial systems
   - Financial Systems: Industry-specific software for managing financial transactions, accounting, and financial reporting.
+
+## 4.5 Explain operational CHANGE-CONTROL PROCESS during an IT project
+
+- CHANGE-CONTROL PROCESS::IT infrastructure change control::Downtime/maintenance windows schedules
+  - Downtime/Maintenance Windows: Schedule planned outages for updates and minimize system disruptions.
+- CHANGE-CONTROL PROCESS::IT infrastructure change control::Customer notifications
+  - Customer Notifications: Inform customers about upcoming changes, impacts, and expected downtime.
+- CHANGE-CONTROL PROCESS::IT infrastructure change control::Rollback plans
+  - Rollback Plans: Have contingency plans to revert to a previous state if changes cause issues.
+- CHANGE-CONTROL PROCESS::IT infrastructure change control::Validation checks
+  - Validation Checks: Verify the functionality and stability of new configurations before deploying them.
+- CHANGE-CONTROL PROCESS::Software change control::Requirements definition
+  - Requirements Definition: Clearly define and document new software features and functionalities.
+- CHANGE-CONTROL PROCESS::Software change control::Risk assessment
+  - Risk Assessment: Identify and evaluate potential risks associated with changes.
+- CHANGE-CONTROL PROCESS::Software change control::Testing::Automated
+  - Testing Automated: Utilize automated testing tools for efficiency and repeatability.
+- CHANGE-CONTROL PROCESS::Software change control::Testing::Manual
+  - Testing Manual: Conduct manual testing for specific scenarios and user experience validation.
+- CHANGE-CONTROL PROCESS::Software change control::Approval
+  - Approval: Secure formal approval from stakeholders after successful testing and review.
+- CHANGE-CONTROL PROCESS::Software change control::Customer notifications
+  - Customer Notifications: Inform customers about new features and functionality updates.
+- CHANGE-CONTROL PROCESS::Software change control::Release
+  - Release: Deploy the approved changes to production environments.
+- CHANGE-CONTROL PROCESS::Differences between cloud vs. on premises in change control
+  - Frequency: Cloud environments often allow for more frequent and smaller changes due to the nature of updates and scalability.
+  - Impact: Changes on cloud platforms might need additional considerations for security and integration with existing cloud services.
+  - Validation: Testing and validation may require specific cloud-based tools and environments.
+- CHANGE-CONTROL PROCESS::Continuous integration/continuous deployment (CI/CD) process
+  - Automated Process: Streamlines code changes from development to production environments with minimal manual intervention.
+  - Faster Releases: Enables frequent deployments of software updates and features.
+  - Reduced Risks: Automates testing and validation, potentially reducing deployment issues.
+- CHANGE-CONTROL PROCESS::Production vs. beta/staging environments::Tiered architecture
+  - Production: Live environment where the final software version runs and serves users.
+  - Beta/Staging: Testing environments used to simulate production conditions and validate changes before release.
+  - Breaking down systems into independent layers (presentation, business logic, data) facilitates deployment and rollbacks of changes in specific layers without affecting others.
