@@ -2,15 +2,15 @@
 
 ## Tips
 
-- Know all phases and what Doc's go in what phase.
+- Know all **phases and what Doc's** go in what phase.
   - Order of things (Initiating, Planned...etc.).
   - know how to read the diagrams, charts and graphs.
   - Make sure you understand the definitions of all the material.
-  - Most of my questions contained a scenario of "what step is next?" or "what step is this task in?" -Know the Change Control Steps backward and forwards and what is in each step (Documents, Tasks)
-- Know the change management process steps.
+  - Most of my questions contained a scenario of "what step is next?" or "what step is this task in?" -Know the **Change Control Steps** backward and forwards and what is in each step (Documents, Tasks)
+- Know the **change management** process steps.
 - understand the process control change and what phase documents/artifacts fall under.
-- Get a basic understanding of what information the charts/tools are meant for.
-- role responsibilities, and order of operations for situations.
+- Get a basic understanding of what information the **charts/tools are meant for**.
+- **role responsibilities**, and **order of operations** for situations.
 - <https://quizlet.com/406758061/pk0-004-project-best-study-guide-2019-flash-cards/>
 - <https://quizlet.com/698573077/project-exam-study-questions-flash-cards/>
 - <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=55e10158-bd60-4564-9a45-af300116ced0>
@@ -21,30 +21,31 @@
 - <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb2964e4-cc12-4ce0-a706-af23014b3e93>
 
 - <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
-  - The process of how change is brought up and put into play. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
-  - Know what happens during all the steps of a project beginning with Initiation all the way to Closing
-  - Know differences and characteristic between functional, projectized, matrix structures. Given a scenario, be able to say "this is a functional structure" or "this is projectized", etc.
-  - Really know the different roles, what they can and cant do
-  - What encompasses the charter, scope, WBS
-  - Know the different risk strategies and be able to assign them to an example (accept, mitigate, transfer, avoid, exploit)
-  - Know the different communication methods, I had a ton of these which kind of surprised me. Know which one is appropriate for certain scenarios (this was a very annoying part of the test because the questions didn't have much context at all so I really had to guess at times)
-  - I memorized the formulas for CV, SV, CPI, SPI and literally had 0 questions on them which was unfortunate, I know some people get questions on them so may be valuable for you. Wasn't for me
+  - The **process of how change is brought up and put into play**. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
+  - Know what happens during all the **steps of a project beginning with Initiation all the way to Closing**.
+  - Know differences and **characteristic between functional, projectized, matrix structures**. Given a scenario, be able to say "this is a functional structure" or "this is projectized", etc.
+  - Really know the different **roles**, what they can and cant do.
+  - What encompasses the charter, scope, WBS.
+  - Know the different **risk strategies** and be able to assign them to an example (accept, mitigate, transfer, avoid, exploit).
+  - Know the different **communication methods**, I had a ton of these which kind of surprised me. Know which one is appropriate for certain scenarios (this was a very annoying part of the test because the questions didn't have much context at all so I really had to guess at times)
+  - I memorized the formulas for **CV, SV, CPI, SPI and literally had 0 questions** on them which was unfortunate, I know some people get questions on them so may be valuable for you. Wasn't for me
 - CompTIA Project+ Study Guide, 3rd Edition by Kim Heldman (ISBN 978-1-119-89245-8)
   - Wiley/Sybex
 - BARD: briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
 
 - <https://www.reddit.com/r/WGU/comments/10z838f/passed_business_of_it_project_management_d324/>
   - There are lots of questions on what is the BEST or what is the FIRST thing you should do in a situation.
-  - You have to know the order of actions in the processes for change control, scheduling management, etc.
-  - Know what roles within the project are responsible for what actions/management.
-  - Know all the types of charts and what they are used for. Know the phases and what occurs in each phase of a project.
-  - Conflict resolution types.
-  - Methods of dealing with risks.
-  - Terminology and acronyms such as SOW, RFP, RFQ, RFI, WBS, SLA, LOI, MOU, ERG, etc.
-  - Know differences between dependency types.
-  - Know functional, projectized, and the various matrix types of organizations.
-  - What documents are updated when certain events happen.
-  - What is contained within project management plan, scope management plan, etc.
+  - You have to know the **order of actions in the processes for change control**, scheduling management, etc.
+  - Know what **roles** within the project are responsible for what actions/management.
+  - Know all the **types of charts and what they are used for**.
+  - Know the **phases and what occurs in each phase** of a project.
+  - **Conflict resolution types**.
+  - Methods of dealing with **risks**.
+  - Terminology and acronyms such as **SOW, RFP, RFQ, RFI, WBS, SLA, LOI, MOU, ERG,** etc.
+  - Know differences between **dependency types**.
+  - Know **functional, projectized, and the various matrix types** of organizations.
+  - What **documents are updated** when certain **events happen**.
+  - What is contained within project management **plan, scope management plan**, etc.
 
 | DOMAIN                          | PERCENTAGE OF EXAMINATION |
 | ------------------------------- | ------------------------- |
@@ -60,6 +61,7 @@
 
 - Characteristics of a project::Start and finish
   - Start and Finish: Every project has a defined beginning and end, with measurable deliverables.
+  - Every project must meet three criteria: it is unique, has a specific reason or purpose, and is temporary, meaning it must have a start and finish.
 - Characteristics of a project::Unique
   - Unique: Each project is distinct, with specific goals, requirements, and resources.
 - Characteristics of a project::Reason/purpose
@@ -419,8 +421,18 @@ COMMUNICATION MANAGEMENT
   - Matrix: Teams report to both project managers and functional managers, creating cross-functional collaboration but potential for conflicting priorities.
 - TEAM and RESOURCE MANAGEMENT::Organizational structures::Projectized
   - Projectized: Project managers have full authority over dedicated teams focusing on specific projects, offering flexibility but potentially siloed knowledge.
+  - Organization that pools resources around projects.
+  - PM leads a group of people as long as a project exists. When the project ends, the team disbands and reforms around new projects.
+  - The PM owns the budget and line manager responsibilities. Therefore typically has more HR responsibilities.
+  - Looks similar to a functional organization. However, it will have PMs instead of specialized managers leading each team.
+  - ![Prjectized organization](img/projectized-organizational.webp)
 - TEAM and RESOURCE MANAGEMENT::Organizational structures::Functional
   - Functional: Teams are organized by specialized skills or departments, offering efficiency but limited visibility across projects.
+  - A single leader(president) with a few direct reports.
+  - Suits small businesses. Easier to communicate, but easy to become siloed from other departments.
+  - Will have 'role' type functional managers.
+  - Ex.. all human resources personnel report to a Human Resources head(manager), who then reports to the president. Their primary teammates are people with similar job responsibilities and expertise.
+  - ![functional organization](img/Functional-Orgainzational.webp)
 - TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::Needs assessment
   - Acquisition: Identifying and securing needed resources through hiring, purchasing, or contracting.
   - Needs assessment: Analyzing project requirements to determine necessary resources.
@@ -470,6 +482,7 @@ COMMUNICATION MANAGEMENT
   - Providing Project Team Performance Feedback: Guiding and motivating team members through constructive feedback and recognition.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Functional/extended vs. operational/core team members
   - Functional/Extended: Individuals contributing from their primary department to specific project tasks.
+    - Ex.. The functional manager retains the budget and people management responsibilities in a functional organization. The PM coordinates the project, but they have little relative authority over people or cost.
   - Operational/Core: Members dedicated full-time to the project team.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Sponsor
   - Sponsor: Provides project funding and high-level direction.
