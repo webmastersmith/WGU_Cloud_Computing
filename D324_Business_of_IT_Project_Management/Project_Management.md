@@ -68,8 +68,12 @@
   - Reason/Purpose: A project addresses a particular need or solves a problem, aiming to achieve a valuable outcome.
 - Characteristics of a project::Project as part of a program
   - Project as part of a Program: Programs group related projects that collectively contribute to a broader strategic objective.
+  - A program gathers several related projects to accomplish a big goal. Programs last longer than projects because they **run from the start of the first project to the end of the last project**.
+  - You must collaborate with other project teams and the program manager.
+  - You need to ensure your deliverables and schedule align with the program's plan and requirements.
 - Characteristics of a project::Project as part of a portfolio
   - Project as part of a Portfolio: A portfolio manages all the organization's projects, balancing resources and optimizing their contribution to strategic goals.
+  - The main **difference between portfolios and programs** is that **projects within a program are related to the program's objective**. Projects **within a portfolio do not need to be related**; they share a portfolio because they exist in the same arbitrary group of approved projects.
 - Methodologies and frameworks::DevSecOps
   - DevSecOps: Integrates security considerations into the entire software development lifecycle.
 - Methodologies and frameworks::DevOps
@@ -492,18 +496,26 @@ COMMUNICATION MANAGEMENT
   - Operational/Core: Members dedicated full-time to the project team.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Sponsor
   - Sponsor: Provides project funding and high-level direction.
+  - Accountable for a project. Provide vision, insight, and guidance throughout the project. The sponsor also serves in a governance role in most project frameworks.
+  - The sponsor will amplify the project’s visibility.
+  - Build support with other senior managers and advertise the project’s benefits throughout the organization.
+  - Secure funding and remove resource-related barriers.
+  - Approves deliverables and decides when a project starts and ends.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Stakeholders
-  - Stakeholders: Individuals or groups interested in the project's success.
+  - Stakeholders: Individuals or groups with vested interest in the project's success.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Senior management
   - Senior Management: Offers strategic guidance and decision-making support.
+  - Highest level of leadership.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product owner
   - Product Owner (Agile): Prioritizes and defines product backlog for development.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Scrum master
   - Scrum Master (Agile): Facilitates agile ceremonies and removes roadblocks for the team.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project manager (PM)
   - Project Manager (PM): Plans, executes, and controls the project to meet objectives.
+  - Lead Projects.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Program manager
   - Program Manager: Oversees multiple related projects and ensures program-level goals are met.
+  - Lead programs.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product manager
   - Gathering and managing product requirements: The PM acts as the voice of the customer, capturing their needs and translating them into actionable requirements for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Testers/quality assurance (QA) specialists
@@ -518,6 +530,8 @@ COMMUNICATION MANAGEMENT
   - Developers/Engineers: Build and implement the project deliverables.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project management office (PMO)
   - Project Management Office (PMO): Provides project management support, templates, and best practices.
+  - Manages the flow of projects.
+  - Tracks metrics for projects throughout the organization.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::End users
   - End Users: Individuals who will ultimately use the project's deliverables.
 
