@@ -57,7 +57,7 @@
 
 - Passing Score: 710 (on a scale of 100-900 from max 90 questions).
 
-## 1.01 Explain the basic characteristics of a project and various METHODOLOGIES and FRAMEWORKS used in IT projects
+## 1.01 Explain the basic CHARACTERISTICS of a PROJECT and various METHODOLOGIES and FRAMEWORKS used in IT projects
 
 - Characteristics of a project::Start and finish
   - Start and Finish: Every project has a defined beginning and end, with measurable deliverables.
@@ -72,7 +72,7 @@
   - You must collaborate with other project teams and the program manager.
   - You need to ensure your deliverables and schedule align with the program's plan and requirements.
 - Characteristics of a project::Project as part of a portfolio
-  - Project as part of a Portfolio: A portfolio manages all the organization's projects, balancing resources and optimizing their contribution to strategic goals.
+  - Project as part of a Portfolio: A portfolio **manages all the organization's projects**, balancing resources and optimizing their contribution to **strategic goals**.
   - The main **difference between portfolios and programs** is that **projects within a program are related to the program's objective**. Projects **within a portfolio do not need to be related**; they share a portfolio because they exist in the same arbitrary group of approved projects.
 - Methodologies and frameworks::DevSecOps
   - DevSecOps: Integrates security considerations into the entire software development lifecycle.
@@ -87,11 +87,19 @@
 - Methodologies and frameworks::Scrum
   - Scrum: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
 - Methodologies and frameworks::Scaled Agile Framework (SAFe)
-  - SAFe: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
+  - **Agile**: Iterative and Incremental Development(IID). Features are completed and released often throughout the project.
+    - Software development typically benefits from this type of framework. Constant feedback from incremental builds, help deliver an improved final product.
+    - Strengths: expected change.
+    - Weakness: scope creep creating missed deadlines.
+    - Use: project requirements will change often. Team is stable and self organized.
+  - **SAFe**: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
 - Methodologies and frameworks::Extreme programming (XP)
   - XP: Extreme Programming emphasizes close collaboration, iterative development, and continuous testing.
 - Methodologies and frameworks::Waterfall
-  - Waterfall: A sequential methodology where phases follow a strict order, like planning, design, development, testing, and deployment.
+  - Waterfall: A linear, sequential methodology and project framework where phases follow a strict order, like planning, design, development, testing, and deployment.
+  - Strengths: simplest, easy to learn and use.
+  - Weakness: not flexible. Change, starts project over from beginning(expensive).
+  - Use: when you have fixed requirements, no unknowns, and high change cost.
 
 ## 1.02 Compare and contrast AGILE vs. WATERFALL concepts
 
