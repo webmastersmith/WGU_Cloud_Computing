@@ -80,12 +80,80 @@
   - DevOps: Promotes collaboration and communication between development and operations teams to streamline software delivery.
 - Methodologies and frameworks::Kanban
   - Kanban: Uses a visual kanban board to track task flow and optimize workflow.
+  - **Main Focus:** Control work in progress (WIP) levels and manage workflows.
+  - 6 Core Practices:
+    1. Visualize work: Use a Kanban board to track work progress through stages.
+    2. Limit WIP: Reduce context switching and increase focus by restricting active tasks.
+    3. Make policies explicit: Define rules for moving work through stages for clarity.
+    4. Manage flow: Identify and eliminate workflow bottlenecks for efficiency.
+    5. Implement feedback loops: Measure workflow performance and use data for improvement.
+    6. Improve collaboratively: Experiment and continuously evolve the workflow.
+  - Key Features:
+    - Kanban board: Visualizes work, WIP limits, and workflow policies.
+    - 3 basic phases: To Do, In Progress, Done (can be customized).
+    - 4-part workflow: Prioritize backlog, pull work into progress, move through phases, start new work.
+  - Strengths:
+    - Simple to learn, flexible, applicable to any industry.
+    - Lightweight, focuses on routine work and clear policies.
+  - Weaknesses:
+    - Requires stable work environment, can struggle with large teams or high turnover.
+    - Cycle times may lengthen without set iterations and proper performance management.
+  - Use Cases:
+    - Teams with frequently changing backlogs (e.g., ticketing systems)
+    - Teams comfortable with less structure and stable workflows.
 - Methodologies and frameworks::PrRojects IN Controlled Environments (PRINCE2)
   - PRINCE2: A structured project management methodology emphasizing control and accountability.
 - Methodologies and frameworks::Software Development Life Cycle (SDLC)
   - SDLC: Defines a standardized approach to software development, guiding the process from planning to deployment.
 - Methodologies and frameworks::Scrum
-  - Scrum: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
+  - **Scrum**: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
+  - **Main Focus:** Delivering a potentially shippable product at the end of each iteration (sprint).
+  - Most common agile framework. Scrum **helps teams learn and get better by doing things and not just guessing**.
+  - The framework emphasizes empiricism and lean thinking, promoting continual improvement.
+  - Scrum is an all-or-nothing framework, requiring the use of all its parts for optimal results.
+  - It introduces roles like the Scrum team, product owner, Scrum master, and developers.
+  - Key Concepts:
+    - **Empiricism**: Decisions based on what is seen and known.
+    - **Lean thinking**: Minimize waste and inefficiency
+    - **All-or-nothing framework**: Use all elements or it's not Scrum
+    - **5 Values**: Commitment, focus, openness, respect, courage
+    - **3 Pillars**: Transparency, inspection, adaptation
+    - **4 Events**: Sprint planning, daily Scrum, sprint review, sprint retrospective
+  - Process:
+    - Product owner prioritizes work in product backlog.
+    - Team selects top items for sprint backlog.
+    - Team reviews results and adapts for next sprint.
+    - Repeat until backlog is empty.
+  - Roles:
+    - Scrum Team: Delivers increments of value (3-10 members)
+    - Product Owner: Owns and manages product backlog
+    - Scrum Master: Coaches team and improves Scrum usage
+    - Developers: Complete backlog items (not limited to software)
+  - Artifacts:
+    - Product Backlog: Ordered list of product changes
+    - Sprint Backlog: Team's plan for upcoming sprint
+    - Increment: Completed work that moves toward product goal
+  - Events:
+    - Sprint: Fixed-length iteration (1 week - 1 month)
+    - Sprint Planning: Discussing priorities and creating sprint backlog
+    - Daily Scrum: Developers review progress and plan next 24 hours
+    - Sprint Review: Sharing progress with stakeholders and adjusting backlog
+    - Sprint Retrospective: Team inspects how they worked and identifies improvements
+  - Strengths:
+    - Flexible, applicable to any industry
+    - Short cycles for feedback and responsiveness
+    - Customer-centric, early product delivery
+    - Pacing and task breakdown for large projects
+    - Continuous improvement and adaptation
+  - Weaknesses:
+    - Relies on trust in product owner's decisions
+    - Designed for single, high-performing teams
+    - Scaling up can be difficult
+    - Meeting schedule and pace might overwhelm some teams
+  - Use Cases:
+    - Highly cohesive, cross-functional teams
+    - Large, complex projects with unpredictable workflows
+    - Adaptable projects with unknown requirements
 - Methodologies and frameworks::Scaled Agile Framework (SAFe)
   - **Agile**: Iterative and Incremental Development(IID). Features are completed and released often throughout the project.
     - Software development typically benefits from this type of framework. Constant feedback from incremental builds, help deliver an improved final product.
