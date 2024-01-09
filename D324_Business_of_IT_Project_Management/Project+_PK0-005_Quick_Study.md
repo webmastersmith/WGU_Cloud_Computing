@@ -76,3 +76,18 @@
   - The formal sign-off documents that the customer accepts the project work and that the project meets the defined requirements. It also signals the official closure of the project and the transfer of the final product of the project to the organization.
 - Describe lessons learned.
   - Lessons learned describe the successes and failures of the project.
+
+## Notes
+
+- Projects begin with gap analysis. We compare where we are and where we want to go.
+
+## Project Life Cycle Phases
+
+- **Discovery Phase**
+  - first phase. determine whether project is worthwhile.
+  - **Business Case**: created here. Report that helps executives and stakeholders determine benefit or rewards.
+    - often includes: details about budget and timelines.
+  - Looks for ways to speed up the project: prequalified vendors, clients, contracts.
+- **Initiating Phase**
+  - formal authorization for a new project to begin.
+  -

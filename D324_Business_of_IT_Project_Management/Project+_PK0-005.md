@@ -305,10 +305,8 @@
 
 ## 1.03 Given a scenario, apply the CHANGE CONTROL process throughout the project life cycle
 
-briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
-
 - CHANGE CONTROL::Project-specific change control::Create/receive change requests
-  Change Conrtol: A formal process for managing any alterations to the project baseline (approved plan). It ensures proper evaluation, approval, and implementation of changes while minimizing disruption.
+  - Change Control: A formal process for managing any alterations to the project baseline (approved plan). It ensures proper evaluation, approval, and implementation of changes while minimizing disruption.
   - Create/Receive Change Requests: Anyone can propose changes through a formal request document.
 - CHANGE CONTROL::Project-specific change control::Document requests in the change control log
   - Document Requests: Log all requests in a Change Control Log (CCL) for tracking and analysis.
@@ -340,10 +338,6 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
   - Managing Scope Creep/Scope Change: Addressing situations where the project's scope (planned deliverables) unintentionally expands (scope creep). This may involve formal change control, negotiation with stakeholders, or potentially re-baselining the project.
 
 ## 1.04 Given a scenario, perform RISK MANAGEMENT activities
-
-RISK MANAGEMENT
-
-briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
 
 - RISK MANAGEMENT::General risks::New projects
   - New projects: Lack of experience, undefined requirements, or unrealistic planning can introduce risks.
@@ -528,8 +522,6 @@ briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Editi
 
 ## 1.08 Compare and contrast COMMUNICATION MANAGEMENT concepts
 
-COMMUNICATION MANAGEMENT
-
 - COMMUNICATION MANAGEMENT::Assess methods::Synchronous and asynchronous communication
   - Synchronous: Real-time interaction like meetings, calls, or video conferences.
   - Asynchronous: Communication with a time delay, like emails, messages, or project management tools.
@@ -693,16 +685,19 @@ COMMUNICATION MANAGEMENT
   - Highest level of leadership.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product owner_
   - Product Owner (Agile): Prioritizes and defines product backlog for development.
+  - They identify how to **improve a product** and are **accountable** for creating the most valuable product possible.
+  - A product owner tends to own a product for the entire product’s life cycle.
+  - Does **NOT** manage the team. **Proxy for the customer wants/needs**.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Scrum master_
   - Scrum Master (Agile): Facilitates agile ceremonies and removes roadblocks for the team.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Project manager (PM)_
-  - Project Manager (PM): Plans, executes, and controls the project to meet objectives.
+  - Project Manager (PM): Plans, executes, and **manages the project team** to meet objectives.
   - Lead Projects.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Program manager_
   - Program Manager: Oversees multiple related projects and ensures program-level goals are met.
   - Lead programs.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product manager_
-  - Gathering and managing product requirements: The PM acts as the voice of the customer, capturing their needs and translating them into actionable requirements for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
+  - Gathering and managing product requirements: The PM acts as the **voice of the customer, capturing their needs and translating them into actionable requirements** for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Testers/quality assurance (QA) specialists_
   - Testers/QA Specialists: Evaluate and report on software quality.
 - TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Business analyst_
