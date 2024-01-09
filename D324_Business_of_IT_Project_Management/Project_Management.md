@@ -75,12 +75,39 @@
   - Project as part of a Portfolio: A portfolio **manages all the organization's projects**, balancing resources and optimizing their contribution to **strategic goals**.
   - The main **difference between portfolios and programs** is that **projects within a program are related to the program's objective**. Projects **within a portfolio do not need to be related**; they share a portfolio because they exist in the same arbitrary group of approved projects.
 - Methodologies and frameworks::DevSecOps
-  - DevSecOps: Integrates security considerations into the entire software development lifecycle.
+  - **DevSecOps Main Focus**: Integrates security considerations into the entire software development lifecycle.
+  - DevSecOps: Baking Security into DevOps for Faster, **Secure Software Delivery**
+    - DevSecOps: **Integrates security throughout the DevOps pipeline**, automating checks and tests along with development and operations.
+    - Shared Responsibility: Security is everyone's job, not just a dedicated team's. This requires a cultural shift from centralized "security gurus" to decentralized ownership.
+    - Challenges: Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
+    - Benefits: Faster delivery, continuous security feedback, and reduced risk of breaches.
+    - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
 - Methodologies and frameworks::DevOps
   - DevOps: Promotes collaboration and communication between development and operations teams to streamline software delivery.
+  - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
+  - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
+  - Key features:
+    - Collaboration: Developers and operations work together on the same team.
+    - Automation: CI/CD automates builds, tests, and deployments for faster releases.
+    - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
+  - CI/CD:
+    - Continuous Integration: Developers merge code frequently, triggering automated tests for early feedback.
+    - Continuous Delivery: Code automatically prepared for release but deployment is manual (strategic control).
+    - Continuous Deployment: Code automatically released to production after integration and testing.
+  - Strengths:
+    - Faster delivery of quality software.
+    - Improved operational support and cross-functional collaboration.
+    - Reduced friction and project risks.
+  - Weaknesses:
+    - Requires specialized skills and cultural shift.
+    - Difficult to implement for large/legacy systems with minimal automation.
+  - Use Cases:
+    -Teams striving for CI/CD and faster releases.
+    -Companies with resources for cross-functional teams and automation tools.
 - Methodologies and frameworks::Kanban
   - Kanban: Uses a visual kanban board to track task flow and optimize workflow.
   - **Main Focus:** Control work in progress (WIP) levels and manage workflows.
+  - Simplest agile framework to learn and can be applied to any industry.
   - 6 Core Practices:
     1. Visualize work: Use a Kanban board to track work progress through stages.
     2. Limit WIP: Reduce context switching and increase focus by restricting active tasks.
@@ -101,10 +128,44 @@
   - Use Cases:
     - Teams with frequently changing backlogs (e.g., ticketing systems)
     - Teams comfortable with less structure and stable workflows.
-- Methodologies and frameworks::PrRojects IN Controlled Environments (PRINCE2)
-  - PRINCE2: A structured project management methodology emphasizing control and accountability.
+- Methodologies and frameworks::PRojects IN Controlled Environments (PRINCE2)
+  - PRINCE2 (PRojects IN Controlled Environments) is a process-based methodology for managing projects of any size and type. It emphasizes clear phases, roles, and tasks to control the project life cycle and reduce risk.
+  - Key features:
+    - Structured phases: 7 processes guide the project from initiation to closure.
+    - Defined roles and responsibilities: Teams understand who does what for accountability and efficiency.
+    - Focus on products: Product definition and quality are prioritized.
+    - Adaptability: Customize elements to suit the project's needs.
+    - Continual improvement: Learn from experience and refine future projects.
+  - Roles and Responsibilities:
+    - Team manager: Oversees teams and quality on large projects.
+    - Project board: Oversees the project, including executives, users, and suppliers.
+    - Executive: Represents business perspective and owns the business case.
+    - Senior user: Represents customer perspective.
+    - Senior supplier: Represents implementation partner perspective.
+  - Strengths:
+    - Adaptable to any project type and size.
+    - Easy to learn, facilitating quick team onboarding.
+    - Continuous improvement ensures project growth.
+    - High communication keeps stakeholders informed.
+  - Weaknesses:
+    - Extensive documentation can be cumbersome.
+    - Requires organizational buy-in for elements like the project control board.
+  - Use Cases:
+    - Process-focused organizations.
+    - Companies valuing documentation and stakeholder communication.
 - Methodologies and frameworks::Software Development Life Cycle (SDLC)
   - SDLC: Defines a standardized approach to software development, guiding the process from planning to deployment.
+  - **Main Focus**: A customizable framework for building software effectively and efficiently.
+  - Key features:
+    - Structured phases: Typically 5-8, covering planning, requirements, design, development, testing, analysis, and maintenance.
+    - Adaptable: Each company tailors the framework to its needs and projects.
+    - Continual improvement: Learnings from each cycle refine future projects.
+  - Strengths:
+    - Comprehensive: Covers all necessary tasks and documentation.
+    - Reduced risks, costs, and time: Through detailed planning and organization.
+  - Weaknesses:
+    - Rigid structure: May feel restrictive for agile teams.
+    - Time commitment: Thorough upfront planning can be challenging for some situations.
 - Methodologies and frameworks::Scrum
   - **Scrum**: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
   - **Main Focus:** Delivering a potentially shippable product at the end of each iteration (sprint).
@@ -161,8 +222,53 @@
     - Weakness: scope creep creating missed deadlines.
     - Use: project requirements will change often. Team is stable and self organized.
   - **SAFe**: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
+  - helping multiple teams work together in sync.
+  - Key Concepts:
+    - Agile at scale: Adapting agile tools for larger organizations.
+    - SAFe framework: Specific approach to agile at scale, featuring roles, practices, events, and artifacts.
+    - Agile team: Generic term for any agile team, regardless of chosen framework (Scrum, Kanban, etc.).
+    - Agile release train (ART): Groups related teams to collaborate and deliver larger products.
+    - Iteration: Fixed-time development increment (1-4 weeks, aligns with PI schedule).
+    - Program Increment (PI): Longer planning cycle (8-12 weeks) involving multiple teams.
+    - PI planning: Event for ARTs to synchronize goals, plan work, and address risks for an upcoming PI.
+  - Benefits:
+    - Business agility: Connects business and technology teams, aligning with larger goals.
+    - Scalability: Adapts to any organization size, from startups to large corporations.
+    - Coordination: Structures communication and collaboration among multiple teams.
+  - Weaknesses:
+    - Complexity: Adds new terms, layers, and staff, potentially conflicting with agile's simplicity.
+    - Limited team autonomy: Some decisions move to executives/staff, reducing team control.
+    - Rigid structure: ART cadences dictate team cadences, reducing flexibility.
+  - Use Cases:
+    - Companies with multi-team projects.
+    - Organizations with many agile teams needing coordination.
 - Methodologies and frameworks::Extreme programming (XP)
   - XP: Extreme Programming emphasizes close collaboration, iterative development, and continuous testing.
+  - Key Practices:
+    - **Pair programming**: Two developers work together on code, promoting continuous review and knowledge sharing.
+    - **Ten-minute build**: Ensures rapid feedback and keeps code clean through fast builds and tests.
+    - **Continuous integration**: Frequent merging of code to prevent conflicts and enable automated builds/tests.
+    - **Test-first programming**: Writing tests before code drives simplicity and quality.
+    - **Incremental design**: Small, frequent improvements over delayed releases.
+    - **Open workspace**: Fosters communication and teamwork by removing physical barriers.
+    - **On-site customer**: Integrates the customer into the team for direct feedback and collaboration.
+    - **40-hour workweeks**: Prioritizes developer well-being and avoids burnout.
+    - **User stories**: Clear and concise requirements format for effective communication.
+    - **Weekly and quarterly cycles**: Regular planning, adaptation, and reflection.
+    - **Built-in flexibility**: Slack in weekly plans allows for adjustments and unforeseen situations.
+  - Strengths:
+    - Highly efficient and adaptable.
+    - Prioritizes essential features and continuous improvement.
+    - Strong team cohesion and reduced project failure.
+    - Focus on developer well-being.
+  - Weaknesses:
+    - Limited scope to software development (not ideal for non-software projects).
+    - Potential for design neglect due to code-centric practices.
+    - Rapid pace and minimal documentation can be stressful and hinder onboarding.
+    - Reliance on face-to-face interaction (can be challenging for remote teams).
+  - Use Cases:
+    - Small, collocated teams with changing requirements and tight deadlines.
+    - Projects with strong test automation capabilities.
 - Methodologies and frameworks::Waterfall
   - Waterfall: A linear, sequential methodology and project framework where phases follow a strict order, like planning, design, development, testing, and deployment.
   - Strengths: simplest, easy to learn and use.
