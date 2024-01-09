@@ -59,22 +59,22 @@
 
 ## 1.01 Explain the basic CHARACTERISTICS of a PROJECT and various METHODOLOGIES and FRAMEWORKS used in IT projects
 
-- Characteristics of a project::Start and finish
+- Characteristics of a project::_Start and finish_
   - Start and Finish: Every project has a defined beginning and end, with measurable deliverables.
   - Every project must meet three criteria: it is unique, has a specific reason or purpose, and is temporary, meaning it must have a start and finish.
-- Characteristics of a project::Unique
+- Characteristics of a project::_Unique_
   - Unique: Each project is distinct, with specific goals, requirements, and resources.
-- Characteristics of a project::Reason/purpose
+- Characteristics of a project::_Reason/purpose_
   - Reason/Purpose: A project addresses a particular need or solves a problem, aiming to achieve a valuable outcome.
-- Characteristics of a project::Project as part of a program
+- Characteristics of a project::_Project as part of a program_
   - Project as part of a Program: Programs group related projects that collectively contribute to a broader strategic objective.
   - A program gathers several related projects to accomplish a big goal. Programs last longer than projects because they **run from the start of the first project to the end of the last project**.
   - You must collaborate with other project teams and the program manager.
   - You need to ensure your deliverables and schedule align with the program's plan and requirements.
-- Characteristics of a project::Project as part of a portfolio
+- Characteristics of a project::_Project as part of a portfolio_
   - Project as part of a Portfolio: A portfolio **manages all the organization's projects**, balancing resources and optimizing their contribution to **strategic goals**.
   - The main **difference between portfolios and programs** is that **projects within a program are related to the program's objective**. Projects **within a portfolio do not need to be related**; they share a portfolio because they exist in the same arbitrary group of approved projects.
-- Methodologies and frameworks::DevSecOps
+- Methodologies and frameworks::_DevSecOps_
   - **DevSecOps Main Focus**: Integrates security considerations into the entire software development lifecycle.
   - DevSecOps: Baking Security into DevOps for Faster, **Secure Software Delivery**
     - DevSecOps: **Integrates security throughout the DevOps pipeline**, automating checks and tests along with development and operations.
@@ -82,8 +82,9 @@
     - Challenges: Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
     - Benefits: Faster delivery, continuous security feedback, and reduced risk of breaches.
     - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
-- Methodologies and frameworks::DevOps
-  - DevOps: Promotes collaboration and communication between development and operations teams to streamline software delivery.
+- Methodologies and frameworks::_DevOps_
+  - DevOps: Integrate development and operations to facilitate quick feedback and evolution of software product.
+    - Promotes collaboration and communication between development and operations teams to streamline software delivery.
   - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
   - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
   - Key features:
@@ -104,8 +105,8 @@
   - Use Cases:
     -Teams striving for CI/CD and faster releases.
     -Companies with resources for cross-functional teams and automation tools.
-- Methodologies and frameworks::Kanban
-  - Kanban: Uses a visual kanban board to track task flow and optimize workflow.
+- Methodologies and frameworks::_Kanban_
+  - Kanban: Uses a visual kanban board(task board) to track task flow and optimize workflow.
   - **Main Focus:** Control work in progress (WIP) levels and manage workflows.
   - Simplest agile framework to learn and can be applied to any industry.
   - 6 Core Practices:
@@ -128,8 +129,9 @@
   - Use Cases:
     - Teams with frequently changing backlogs (e.g., ticketing systems)
     - Teams comfortable with less structure and stable workflows.
-- Methodologies and frameworks::PRojects IN Controlled Environments (PRINCE2)
+- Methodologies and frameworks::_PRojects IN Controlled Environments (PRINCE2)_
   - PRINCE2 (PRojects IN Controlled Environments) is a process-based methodology for managing projects of any size and type. It emphasizes clear phases, roles, and tasks to control the project life cycle and reduce risk.
+  - **Main Focus**: prioritizes governance. Clear framework with defined phases, roles, and tasks to keep projects on track.
   - Key features:
     - Structured phases: 7 processes guide the project from initiation to closure.
     - Defined roles and responsibilities: Teams understand who does what for accountability and efficiency.
@@ -153,7 +155,7 @@
   - Use Cases:
     - Process-focused organizations.
     - Companies valuing documentation and stakeholder communication.
-- Methodologies and frameworks::Software Development Life Cycle (SDLC)
+- Methodologies and frameworks::_Software Development Life Cycle (SDLC)_
   - SDLC: Defines a standardized approach to software development, guiding the process from planning to deployment.
   - **Main Focus**: A customizable framework for building software effectively and efficiently.
   - Key features:
@@ -166,9 +168,9 @@
   - Weaknesses:
     - Rigid structure: May feel restrictive for agile teams.
     - Time commitment: Thorough upfront planning can be challenging for some situations.
-- Methodologies and frameworks::Scrum
+- Methodologies and frameworks::_Scrum_
   - **Scrum**: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
-  - **Main Focus:** Delivering a potentially shippable product at the end of each iteration (sprint).
+  - **Main Focus:** Iteration planning, daily stand-ups, and iterative retrospectives to learn from and deliver a product at the end of each iteration (sprint).
   - Most common agile framework. Scrum **helps teams learn and get better by doing things and not just guessing**.
   - The framework emphasizes empiricism and lean thinking, promoting continual improvement.
   - Scrum is an all-or-nothing framework, requiring the use of all its parts for optimal results.
@@ -215,7 +217,7 @@
     - Highly cohesive, cross-functional teams
     - Large, complex projects with unpredictable workflows
     - Adaptable projects with unknown requirements
-- Methodologies and frameworks::Scaled Agile Framework (SAFe)
+- Methodologies and frameworks::_Scaled Agile Framework (SAFe)_
   - **Agile**: Iterative and Incremental Development(IID). Features are completed and released often throughout the project.
     - Software development typically benefits from this type of framework. Constant feedback from incremental builds, help deliver an improved final product.
     - Strengths: expected change.
@@ -223,6 +225,7 @@
     - Use: project requirements will change often. Team is stable and self organized.
   - **SAFe**: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
   - helping multiple teams work together in sync.
+  - **Main Focus**: agile principles at scale(project, program, portfolio, enterprise level).
   - Key Concepts:
     - Agile at scale: Adapting agile tools for larger organizations.
     - SAFe framework: Specific approach to agile at scale, featuring roles, practices, events, and artifacts.
@@ -242,7 +245,7 @@
   - Use Cases:
     - Companies with multi-team projects.
     - Organizations with many agile teams needing coordination.
-- Methodologies and frameworks::Extreme programming (XP)
+- Methodologies and frameworks::_Extreme programming (XP)_
   - XP: Extreme Programming emphasizes close collaboration, iterative development, and continuous testing.
   - Key Practices:
     - **Pair programming**: Two developers work together on code, promoting continuous review and knowledge sharing.
@@ -269,7 +272,7 @@
   - Use Cases:
     - Small, collocated teams with changing requirements and tight deadlines.
     - Projects with strong test automation capabilities.
-- Methodologies and frameworks::Waterfall
+- Methodologies and frameworks::_Waterfall_
   - Waterfall: A linear, sequential methodology and project framework where phases follow a strict order, like planning, design, development, testing, and deployment.
   - Strengths: simplest, easy to learn and use.
   - Weakness: not flexible. Change, starts project over from beginning(expensive).
@@ -277,26 +280,26 @@
 
 ## 1.02 Compare and contrast AGILE vs. WATERFALL concepts
 
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::Requirements
+- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Requirements_
   - Requirements: Highly changeable requirements favor agile methods like Scrum or Kanban, where adaptations happen easily. Waterfall methodology may struggle with frequent changes.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::Budget
+- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Budget_
   - Budget: Agile methods typically work within flexible budgets, adapting features based on available resources. Waterfall requires a fixed budget with clear scope.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::Schedule
+- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_ScheDdule_
   - Schedule: Agile methods embrace iterative development, potentially adapting deadlines with each iteration. Waterfall follows a predefined schedule with less room for adjustment.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::Cultural
+- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Cultural_
   - Cultural: Collaborative cultures thrive in agile settings, while top-down structures work better with Waterfall.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::Developmental
+- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Developmental_
   - Developmental: Complex projects or unfamiliar technology might benefit from Waterfall's structured approach. Agile methods excel in iterative development for evolving technologies.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::Industry standards
+- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Industry standards_
   - Industry Standards: Some industries (e.g., government) may have regulations impacting methodology choice.
-- AGILE vs. WATERFALL::Team composition::Product ownership::Roles and responsibilities
+- AGILE vs. WATERFALL::Team composition::Product ownership::_Roles and responsibilities_
   - Product Ownership: Agile methods rely on a designated product owner to prioritize backlog items and represent business needs. Waterfall focuses on project managers defining deliverables.
   - Roles and Responsibilities: Agile teams involve cross-functional members with shared responsibility. Waterfall often has designated roles with distinct tasks.
-- AGILE vs. WATERFALL::Team composition::Product ownership::Team size
+- AGILE vs. WATERFALL::Team composition::Product ownership::_Team size_
   - Team Size: Smaller teams tend to fit agile methods well due to close collaboration. Waterfall can manage larger teams with defined roles and communication structure.
-- AGILE vs. WATERFALL::Team composition::Product ownership::Resource allocation and commitment
+- AGILE vs. WATERFALL::Team composition::Product ownership::_Resource allocation and commitment_
   - Resource Allocation and Commitment: Agile methods require flexible resource allocation, adapting to changing task priorities. Waterfall expects pre-determined resource commitment based on the fixed plan.
-- AGILE vs. WATERFALL::Differences in communication methods
+- AGILE vs. WATERFALL::_Differences in communication methods_
   - Agile: Frequent, informal communication through daily stand-up meetings, backlog updates, and collaborative tools.
   - Waterfall: More formal communication through reports, documentation, and structured meetings.
 
@@ -603,7 +606,7 @@ COMMUNICATION MANAGEMENT
 
 ## 1.10 Given a scenario, perform basic activities related to TEAM and RESOURCE MANAGEMENT
 
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::Matrix
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Matrix_
   - Matrix: Teams report to both project managers and functional managers, creating cross-functional collaboration but potential for conflicting priorities.
   - Project Manager is responsible for assigning work but does not have official authority over the people doing the work.
   - **Weak matrix**: The functional manager retains all budget and staff management responsibilities. In this sense, the PM has less control over the project.
@@ -611,110 +614,110 @@ COMMUNICATION MANAGEMENT
   - Cons: employees feel like they have two bosses.
   - ![Manager Authority](img/project_authority.PNG)
   - ![Matrix organization](img/Strong-Matrix-Organizational-Structure-11.jpg)
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::Projectized
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Projectized_
   - Projectized: Project managers have full authority over dedicated teams focusing on specific projects, offering flexibility but potentially siloed knowledge.
   - Organization that pools resources around projects.
   - PM leads a group of people as long as a project exists. When the project ends, the team disbands and reforms around new projects.
   - The PM owns the budget and line manager responsibilities. Therefore typically has more HR responsibilities.
   - Looks similar to a functional organization. However, it will have PMs instead of specialized managers leading each team.
   - ![Prjectized organization](img/projectized-organizational.webp)
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::Functional
+- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Functional_
   - Functional: Teams are organized by specialized skills or departments, offering efficiency but limited visibility across projects.
   - A single leader(president) with a few direct reports.
   - Suits small businesses. Easier to communicate, but easy to become siloed from other departments.
   - Will have 'specialized roles' of functional managers.
   - Ex.. all human resources personnel report to a Human Resources head(manager), who then reports to the president. Their primary teammates are people with similar job responsibilities and expertise.
   - ![functional organization](img/Functional-Orgainzational.webp)
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::Needs assessment
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::_Needs assessment_
   - Acquisition: Identifying and securing needed resources through hiring, purchasing, or contracting.
   - Needs assessment: Analyzing project requirements to determine necessary resources.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Maintenance
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Maintenance_
   - Maintenance: Upgrading, repairing, and ensuring resource availability throughout the project.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Hardware decommissioning
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Hardware decommissioning_
   - Hardware Decommissioning: Safely retiring and disposing of outdated hardware.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::End-of-life software
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_End-of-life software_
   - End-of-Life Software: Migrating or transitioning away from outdated software solutions.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Successor planning
+- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Successor planning_
   - Succession Planning: Identifying and developing backups for critical roles to avoid disruptions.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Human resources
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Human resources_
   - Human Resources: Skilled individuals assigned to project tasks.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Physical resources
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Physical resources_
   - Physical Resources: Equipment, facilities, and materials needed for project activities.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Capital resources
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Capital resources_
   - Capital Resources: Financial investments and funding allocated to the project.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Internal vs. external
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Internal vs. external_
   - Internal vs. External: Resources obtained from within or outside the organization.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::Shared vs. dedicated
+- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Shared vs. dedicated_
   - Shared vs. Dedicated: Resources used by multiple projects or exclusively assigned to one.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::Feature/functionality
-  - Gap Analysis: Identifying discrepancies between the current state and desired state of a project in terms of:
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Feature/functionality_
+  - Gap Analysis: Identifying discrepancies between the current state and desired state of a project.
   - Feature/functionality: Comparing existing capabilities with required functionality.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::Skills
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Skills_
   - Skills: Assessing team skills against project requirements.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::Utilization
+- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Utilization_
   - Utilization: Analyzing how efficiently resources are being used.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Maintaining project momentum
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::_Maintaining project momentum_
   - Maintaining Project Momentum: Addressing motivational challenges and fostering a positive team environment.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Forming
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Forming_
   - Characteristics: This initial stage is marked by introductions, establishing roles, and getting familiar with the project. There might be uncertainty and dependence on the project manager for guidance.
   - Leadership approach: Focus on building trust, defining expectations, and fostering open communication. Provide clear direction and support team members as they learn about the project.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Storming
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Storming_
   - Characteristics: This stage can involve disagreements, competition for roles, and potential conflict as team members adjust to working together. Power dynamics might be tested.
   - Leadership approach: Facilitate healthy conflict resolution, encourage collaboration, and actively manage team dynamics. Foster a safe space for open communication and address any underlying issues.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Norming
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Norming_
   - Characteristics: The team starts to establish cohesion, develop shared goals, and agree on working methods. Communication improves, and trust begins to build.
   - Leadership approach: Delegate tasks, empower team members, and provide opportunities for individual and team growth. Monitor progress and address any remaining challenges.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Performing
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_PeDforming_
   - Characteristics: The team is at its peak efficiency, working effectively towards goals. Communication is open and collaborative, and members are confident and motivated.
   - Leadership approach: Continue to provide support and guidance as needed, but focus on facilitating team autonomy and celebrating successes. Monitor performance metrics and adjust the plan as needed.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::Adjourning
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Adjourning_
   - Characteristics: The project nears completion, and team members start to prepare for disbanding. There might be mixed emotions as closure approaches.
   - Leadership approach: Focus on ensuring a smooth project handover, finalizing deliverables, and providing proper closure for team members. Acknowledge their contributions and celebrate the project's achievements.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Providing project team performance feedback
+- TEAM and RESOURCE MANAGEMENT::Team performance considerations::_Providing project team performance feedback_
   - Providing Project Team Performance Feedback: Guiding and motivating team members through constructive feedback and recognition.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Functional/extended vs. operational/core team members
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Functional/extended vs. operational/core team members_
   - Functional/Extended: Individuals contributing from their primary department to specific project tasks.
     - Ex.. The functional manager retains the budget and people management responsibilities in a functional organization. The PM coordinates the project, but they have little relative authority over people or cost.
   - Operational/Core: Members dedicated full-time to the project team.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Sponsor
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Sponsor_
   - Sponsor: Provides project funding and high-level direction.
   - Accountable for a project. Provide vision, insight, and guidance throughout the project. The sponsor also serves in a governance role in most project frameworks.
   - The sponsor will amplify the project’s visibility.
   - Build support with other senior managers and advertise the project’s benefits throughout the organization.
   - Secure funding and remove resource-related barriers.
   - Approves deliverables and decides when a project starts and ends.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Stakeholders
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Stakeholders_
   - Stakeholders: Individuals or groups with vested interest in the project's success.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Senior management
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Senior management_
   - Senior Management: Offers strategic guidance and decision-making support.
   - Highest level of leadership.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product owner
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product owner_
   - Product Owner (Agile): Prioritizes and defines product backlog for development.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Scrum master
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Scrum master_
   - Scrum Master (Agile): Facilitates agile ceremonies and removes roadblocks for the team.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project manager (PM)
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Project manager (PM)_
   - Project Manager (PM): Plans, executes, and controls the project to meet objectives.
   - Lead Projects.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Program manager
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Program manager_
   - Program Manager: Oversees multiple related projects and ensures program-level goals are met.
   - Lead programs.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Product manager
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product manager_
   - Gathering and managing product requirements: The PM acts as the voice of the customer, capturing their needs and translating them into actionable requirements for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Testers/quality assurance (QA) specialists
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Testers/quality assurance (QA) specialists_
   - Testers/QA Specialists: Evaluate and report on software quality.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Business analyst
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Business analyst_
   - Business Analyst: Analyzes business requirements and translates them into project specifications.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Subject matter expert (SME)
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Subject matter expert (SME)_
   - Subject Matter Expert (SME): Provides specialized knowledge and expertise to the project.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Architect
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Architect_
   - Architect: Designs the overall system architecture and technical solutions.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Developers/engineers
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Developers/engineers_
   - Developers/Engineers: Build and implement the project deliverables.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::Project management office (PMO)
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Project management office (PMO)_
   - Project Management Office (PMO): Provides project management support, templates, and best practices.
   - Manages the flow of projects.
   - Tracks metrics for projects throughout the organization.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::End users
+- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_End users_
   - End Users: Individuals who will ultimately use the project's deliverables.
 
 ## 1.11 Explain important PROJECT PROCUREMENT and VENDOR SELECTION concepts
@@ -778,45 +781,45 @@ COMMUNICATION MANAGEMENT
 
 ## 2.1 Explain the VALUE of ARTIFACTS in the discovery/concept preparation phase for a project
 
-- VALUE of ARTIFACTS::Business case or business objective::Return on investment (ROI) analysis
+- VALUE of ARTIFACTS::Business case or business objective::_Return on investment (ROI) analysis_
   - Business Case: A formal document outlining the project's justification, benefits, risks, and costs, convincing stakeholders of its value.
   - Business Objective: The overall goal or desired outcome the project aims to achieve, driving its direction and success metrics.
-  - Evaluating the financial benefits of the project compared to its costs. Measures like net present value (NPV), payback period, and internal rate of return (IRR) help assess its profitability and feasibility.
-- VALUE of ARTIFACTS::Business case or business objective::Current state vs. future state
+  - ROI: Evaluating the financial benefits of the project compared to its costs. Measures like net present value (NPV), payback period, and internal rate of return (IRR) help assess its profitability and feasibility.
+- VALUE of ARTIFACTS::Business case or business objective::_Current state vs. future state_
   - Analyzing the current situation and challenges, then outlining the desired future state the project aims to achieve. This gap analysis helps define project scope and objectives.
-- VALUE of ARTIFACTS::Prequalified vendor
+- VALUE of ARTIFACTS::_Prequalified vendor_
   - A vendor who has already met defined criteria and proven their capabilities, making them eligible for further consideration or proposal submission.
-- VALUE of ARTIFACTS::Predetermined client
+- VALUE of ARTIFACTS::_Predetermined client_
   - A client who has already been identified and agreed upon for the project, potentially influencing its scope and requirements.
-- VALUE of ARTIFACTS::Preexisting contracts::Client SOW
+- VALUE of ARTIFACTS::Preexisting contracts::_Client SOW_
   - Existing agreements or obligations that might impact the project, such as vendor contracts, client agreements, or resource limitations.
   - A document outlining the specific tasks, deliverables, and responsibilities expected from the client in the project.
-- VALUE of ARTIFACTS::Preexisting contracts::Client TOR
+- VALUE of ARTIFACTS::Preexisting contracts::_Client TOR_
   - A document outlining the project scope, objectives, and expectations from the client's perspective.
-- VALUE of ARTIFACTS::Financial concepts::Capital expenses (CapEx) vs. operational expenses (OpEx)
+- VALUE of ARTIFACTS::Financial concepts::_Capital expenses (CapEx) vs. operational expenses (OpEx)_
   - Capital Expenses (CapEx): One-time investments in long-term assets like equipment or infrastructure, impacting initial project costs.
   - Operational Expenses (OpEx): Ongoing costs associated with running the project, such as salaries, materials, and maintenance.
 
 ## 2.2 Given a scenario, perform activities during the PROJECT INITIATION PHASE
 
-- PROJECT INITIATION PHASE::Develop the project charter::Project objectives
-  - This formal document outlines the project's purpose, objectives, scope, stakeholders, and key decisions. It serves as a roadmap and reference point throughout the project lifecycle.
+- PROJECT INITIATION PHASE::Develop the project charter::_Project objectives_
+  - This formal document **outlines the project's purpose, objectives, scope, stakeholders, and key decisions**. It serves as a **roadmap** and reference point throughout the project lifecycle.
   - Clear and measurable statements defining what the project aims to achieve. These objectives should be SMART (Specific, Measurable, Achievable, Relevant, and Time-bound).
-- PROJECT INITIATION PHASE::Develop the project charter::Project success criteria
+- PROJECT INITIATION PHASE::Develop the project charter::_Project success criteria_
   - How will you know the project is successful? Define specific metrics or benchmarks that demonstrate achievement of the objectives.
-- PROJECT INITIATION PHASE::Develop the project charter::Preliminary scope statement
+- PROJECT INITIATION PHASE::Develop the project charter::_Preliminary scope statement_
   - A high-level overview of the project's boundaries, what it includes and excludes. This statement helps manage expectations and prevent scope creep.
-- PROJECT INITIATION PHASE::Identify and assess stakeholders
+- PROJECT INITIATION PHASE::_Identify and assess stakeholders_
   - Individuals or groups impacted by or interested in the project's success. Analyze their roles, interests, and potential influence.
-- PROJECT INITIATION PHASE::Develop a responsibility assignment matrix (RAM)::Responsible, Accountable, Consulted, Informed (RACI)
+- PROJECT INITIATION PHASE::Develop a responsibility assignment matrix (RAM)::_Responsible, Accountable, Consulted, Informed (RACI)_
   - (Also known as RACI Matrix) This matrix clarifies roles and responsibilities for project tasks. Each task is assigned an owner (Responsible), decision-maker (Accountable), consulted party (Consulted), and informed party (Informed).
-- PROJECT INITIATION PHASE::Establish accepted communication channels
+- PROJECT INITIATION PHASE::_Establish accepted communication channels_
   - Define the communication methods preferred by stakeholders and project team members. This ensures clear and timely information flow.
-- PROJECT INITIATION PHASE::Develop a records management plan::Data
+- PROJECT INITIATION PHASE::Develop a records management plan::_Data_
   - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
-- PROJECT INITIATION PHASE::Develop a records management plan::Documents
+- PROJECT INITIATION PHASE::Develop a records management plan::_Documents_
   - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
-- PROJECT INITIATION PHASE::Define access requirements
+- PROJECT INITIATION PHASE::_Define access requirements_
   - Determine who needs access to specific information and project documents, balancing security and collaboration needs.
 - PROJECT INITIATION PHASE::Review existing artifacts
   - Analyze existing documents, reports, or data that could inform the project plan and avoid duplicating efforts.
