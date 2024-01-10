@@ -225,7 +225,7 @@
     - Use: project requirements will change often. Team is stable and self organized.
   - **SAFe**: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
   - helping multiple teams work together in sync.
-  - **Main Focus**: agile principles at scale(project, program, portfolio, enterprise level).
+  - **Main Focus**: agile principles at scale(project, program, portfolio, enterprise level) by grouping agile teams.
   - Key Concepts:
     - Agile at scale: Adapting agile tools for larger organizations.
     - SAFe framework: Specific approach to agile at scale, featuring roles, practices, events, and artifacts.
