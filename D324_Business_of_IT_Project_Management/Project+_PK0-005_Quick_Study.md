@@ -77,17 +77,181 @@
 - Describe lessons learned.
   - Lessons learned describe the successes and failures of the project.
 
-## Notes
+## Projects
 
-- Projects begin with gap analysis. We compare where we are and where we want to go.
+- **What Makes it a Project**
+  - **Unique**: meet specific business objective.
+  - **Temporary**: start and end date.
+  - **Purpose**: fulfill a purpose.
+  - **Stakeholder Satisfaction**: ends when stakeholder is satisfied.
+- **Needs and demands of why projects come about**
+  - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
+- **Business Case**
+  - created in discovery phase. Explains a justification for the project and if it is worthwhile.
+  - often includes: details about budget and timelines(start, end).
+  - **Description**: describe the project.
+  - **Justification**: benefits to organization.
+  - **Alignment to the Strategic Plan**: project aligns with organizations overall strategy.
+  - **Stakeholders**: anyone/organization with vested interest.
+  - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
+  - **High-Level Risk Analysis**: known risk documented.
+  - **Alternative Solutions**: expected results and impact from alternative solution.
+  - **Recommended Solutions**: expected results and impact.
+  - **Feasibility Study Results**: determine if project is doable and likely to succeed.
+- **Artifacts**
+  - preexisting knowledge or vetted vendors to be used in project planning.
+- **Project Selection Method**
+  - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
+- **Decision Model**
+  - apples-to-apples way of comparing projects and which one is the most benefit to company needs.
+  - **Rewards**
+    - Cost-benefit analysis, Scoring models, Payback period, Discounted cash flow, Net present value, Internal rate of return, Return on investment.
+  - **Constrained Optimization Model**
+    - mathmatical model for highly complex projects.
+- **Expert Judgement**
+  - expertise of stakeholder or other subject matter expert to make project decisions.
+  - Danger lies with relying on single technique to make selection.
+- **Programs**
+  - Programs are a collection or group of related projects that are managed together using coordinated processes and techniques.
+  - The collective management of a group of projects can bring about benefits that wouldn’t be achievable if the projects were managed separately.
+- **Portfolios**
+  - Portfolios are collections of programs, subportfolios, and projects that support strategic business goals or objectives.
+  - Portfolios may consist of projects that are not related.
 
 ## Project Life Cycle Phases
 
-- **Discovery Phase**
+- **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile.
-  - **Business Case**: created here. Report that helps executives and stakeholders determine benefit or rewards.
-    - often includes: details about budget and timelines.
+  - Business Case created and project is justified.
   - Looks for ways to speed up the project: prequalified vendors, clients, contracts.
 - **Initiating Phase**
+  - preliminary scope statement and project charter are created.
   - formal authorization for a new project to begin.
-  -
+    - Creating the preliminary scope statement
+    - Creating the project charter
+    - Identifying and assessing stakeholders
+    - Developing a responsibility assignment matrix (RAM)
+    - Establishing accepted communication channels
+    - Developing a records management plan
+    - Defining access requirements
+    - Reviewing existing artifacts
+    - Determining solution design Conducting the project kickoff
+- **Planning Phase**
+  - Prepare for the work of the project.
+  - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
+    - Develop a detailed project scope statement
+    - Develop a project schedule
+    - Determine budget considerations
+    - Develop a quality assurance plan
+    - Develop a communication plan
+    - Assess and assign project resources
+    - Perform an initial risk assessment
+    - Assess the resource pool and assign project resources
+    - Develop a project management plan
+    - Train project team members
+    - Define units of work Develop a transition plan/release plan
+- **Executing Phase**
+  - where work is performed, monitored, and tracked. If product does not conform, change request are created.
+    - Producing and verifying deliverables
+    - Implementing change management
+    - Managing vendors
+    - Tracking and reporting project results
+    - Updating project elements such as budget, risk, and timelines
+    - Managing conflict
+    - Monitoring the risks and issues log
+    - Performing quality assurance/governance activities such as coordinating phase gate reviews
+    - Monitoring the budget
+    - Conducting project meetings and updates
+- **Closing Phase**
+  - project closeout. contracts closed, team members released.
+  - validate deliverables, document acceptance of project work.
+    - Validating deliverables
+    - Closing contracts
+    - Removing access
+    - Releasing resources
+    - Holding the project closure meeting
+    - Writing the project closeout report
+    - Obtaining feedback and lesson learned
+    - Project sign-off
+    - Handing off the product to the organization
+    - Evaluating the project
+    - Archiving project documents
+    - Rewards and celebration
+
+## Team Members
+
+- **Stakeholders**
+  - Anyone/Organization who has a vested interest in the project.
+  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
+  - **Agile**: communication between team and stakeholder throughout the project.
+
+## Project Management Documents
+
+- Business case
+  - Discovery
+  - Justification for the project.
+- Preliminary scope statement
+  - Initiating
+  - Project objectives are defined; business problem the project will address is stated.
+- Project charter
+  - Initiating
+  - Authorizes the project to begin.
+- Responsibility assignment matrix (RAM)
+  - Initiating
+  - Defines stakeholder responsibilities. Incorporates the use of a RACI chart.
+  - RACI is a way to define responsibilities on the project and stands for responsible, accountable, consult, and inform.
+- Communication plan
+  - Planning
+  - Documents the types of information needs the stakeholders have, when the information should be distributed, and how the information will be delivered.
+- Project schedule
+  - Planning
+  - Determines the start and finish dates for project activities and assigns resources to the activities.
+- Scope statement
+  - Planning
+  - Documents the product description, key deliverables, success and acceptance criteria, key performance indicators, exclusions, assumptions, and constraints.
+- Project management plan
+  - Planning
+  - Consists of all the project planning documents such as charter, scope statement, schedule, and more.
+- Issue log
+  - Executing
+  - A list of issues, containing list numbers, descriptions, and owners.
+- Change log
+  - Executing
+  - Describes change requests and their disposition for the project.
+- Risk register
+  - Executing
+  - A list of risks and their descriptions.
+- Status report
+  - Executing
+  - A report to stakeholders on the status of the project deliverables, schedule, risks, issues, and more.
+- Dashboard information
+  - Executing
+  - An electronic reporting tool that lets users choose elements of the project to monitor project health and status.
+- Meeting agenda/meeting minutes
+  - Executing
+  - Meeting agendas describe the items to be discussed and addressed at upcoming meetings, and minutes recap what was discussed and the decisions made at the meeting.
+- Project closeout report
+  - Closing
+  - Reports on the final closeout of all phases of the project.
+
+## Financial and Performance Analysis
+
+- **Cost-Benefit Analysis**
+  - cost to produce vs financial gain.
+  - timeline of how quickly money can be recouped.
+- **Scoring Model**
+  - rating/weight each project or alternative solution from predefined list of criteria.
+  - often includes a 'minimum' rating. Project discarded if not meet minimum.
+- **Payback Period**
+  - time to recover from all cost of producing product.
+- **FV vs PV**
+  - include inflation into the cost.
+  - Future Value = Present Value(1+interest)^years
+- **ROI**
+  - percentage of gain for investment.
+  - (profit - cost) / cost = ROI percentage.
+- **IRR**
+  - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
+  - Higher better.
+- **Current State vs Future State or as is-to be**
+  - how change will effect the business in the future.

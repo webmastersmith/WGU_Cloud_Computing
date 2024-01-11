@@ -282,6 +282,17 @@
 
 - AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Requirements_
   - Requirements: Highly changeable requirements favor agile methods like Scrum or Kanban, where adaptations happen easily. Waterfall methodology may struggle with frequent changes.
+  - Define what the project delivers, how it works, and how it's used.
+  - Create a shared understanding for stakeholders and team members.
+  - Need to be precise and well-defined (regardless of methodology).
+  - **Waterfall**:
+    - Requirements upfront: All features listed before development starts.
+    - Limited flexibility: Changes cost time and money.
+    - Missed opportunities: Can't easily incorporate new ideas discovered during development.
+  - **Agile**:
+    - Progressive elaboration: Requirements evolve in iterations with frequent customer feedback.
+    - Faster adaptation: Easily incorporate new ideas and respond to changing needs.
+    - Reduced risk: Early feedback minimizes wasted effort on incorrect features.
 - AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Budget_
   - Budget: Agile methods typically work within flexible budgets, adapting features based on available resources. Waterfall requires a fixed budget with clear scope.
 - AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_ScheDdule_
