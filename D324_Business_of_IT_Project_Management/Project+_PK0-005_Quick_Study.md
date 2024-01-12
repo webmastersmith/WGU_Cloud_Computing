@@ -86,18 +86,22 @@
   - **Stakeholder Satisfaction**: ends when stakeholder is satisfied.
 - **Needs and demands of why projects come about**
   - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
+- **Steps to Validate a Project**
+  - write business case, identify and analyze stakeholders.
 - **Business Case**
   - created in discovery phase. Explains a justification for the project and if it is worthwhile.
   - often includes: details about budget and timelines(start, end).
-  - **Description**: describe the project.
+  - Jafar Dash.
   - **Justification**: benefits to organization.
   - **Alignment to the Strategic Plan**: project aligns with organizations overall strategy.
-  - **Stakeholders**: anyone/organization with vested interest.
-  - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
-  - **High-Level Risk Analysis**: known risk documented.
-  - **Alternative Solutions**: expected results and impact from alternative solution.
-  - **Recommended Solutions**: expected results and impact.
   - **Feasibility Study Results**: determine if project is doable and likely to succeed.
+  - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
+  - **Recommended Solutions**: expected results and impact.
+  -
+  - **Description**: describe the project.
+  - **Alternative Solutions**: expected results and impact from alternative solution.
+  - **Stakeholders**: anyone/organization with vested interest.
+  - **High-Level Risk Analysis**: known risk documented.
 - **Artifacts**
   - preexisting knowledge or vetted vendors to be used in project planning.
 - **Project Selection Method**
@@ -123,7 +127,9 @@
 - **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile.
   - Business Case created and project is justified.
-  - Looks for ways to speed up the project: prequalified vendors, clients, contracts.
+  - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
+  - **If project considered risky**
+    - Perform **feasibility study**: new projects, complex projects, risky projects.
 - **Initiating Phase**
   - preliminary scope statement and project charter are created.
   - formal authorization for a new project to begin.
@@ -237,7 +243,7 @@
 ## Financial and Performance Analysis
 
 - **Cost-Benefit Analysis**
-  - cost to produce vs financial gain.
+  - cost to produce vs benefit.
   - timeline of how quickly money can be recouped.
 - **Scoring Model**
   - rating/weight each project or alternative solution from predefined list of criteria.
@@ -253,5 +259,10 @@
 - **IRR**
   - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
   - Higher better.
-- **Current State vs Future State or as is-to be**
+- **Current State vs Future State or as is-to be, Performance Analysis**
   - how change will effect the business in the future.
+  - as is-to-be(also called performance analysis): means same.
+- **Discounted Cash Flow**
+  - total value of each years expected cash inflow, in 'todays' dollars.
+- **NPV**
+  - net present value.
