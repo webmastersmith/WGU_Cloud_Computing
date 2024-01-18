@@ -2,35 +2,80 @@
 
 ## Quick Study
 
-- Before you take the exam, be certain you are familiar with the following terms: acceptance, action items, addition, balanced scorecard, cause-and-effect diagram, common causes of variances, control chart, decision trees, end-to-end testing, extinction, flowcharts, integration, integration testing, lessons learned, Pareto diagram, performance testing, prevention, regression testing, rework, run charts, smoke testing, starvation, statistical sampling, stress testing, testing, unit testing, user acceptance testing (UAT).
+- **Acceptance**
+  - Formally acknowledging that a deliverable meets the agreed-upon requirements and can be integrated into the project or handed over to the client.
+- **Action Items**
+  - Specific tasks assigned to individuals or teams to address identified issues, complete required work, or move the project forward.
+- **Addition**
+  - Introducing new features, functionalities, or scope to the project, potentially impacting timelines, resources, and budgets.
+- **Balanced Scorecard**
+  - A performance measurement framework that considers various aspects beyond just financial metrics, such as customer satisfaction, internal processes, and learning and growth.
+- **Cause-and-Effect Diagram** (Fishbone Diagram)
+  - A visual tool used to identify and analyze the potential causes of a problem or issue.
+- **Common Causes of Variances**
+  - Deviations from planned performance metrics (e.g., schedule, budget) can be caused by factors like resource constraints, inaccurate estimations, or changes in requirements.
+- **Control Chart**
+  - A statistical tool used to monitor a process over time and identify potential deviations from acceptable ranges, enabling proactive corrective action.
+- **CRM (Customer Relationship Management)**
+  - manage relationship w/customers and future customers.
+  - Allows for tech support(notes, tracking problems).
+- **Data Structured/Unstructured, Data Warehouse, RDBMS, Primary Key, Foreign Key, EDRMS, CMS**
+  - Structured: labeled for easy searching. Modified to conform to standards.
+  - Unstructured: also called 'blob'. bulk data not labeled.
+  - Data Warehouse: gather multiple data sources together for analysis and decision-making.
+  - RDBMS: relational database. collection of structured data related to other data.
+  - Primary Key: unique key to identify data row.
+  - Foreign Key: when primary key is included as a column of another table. Used to relate two tables.
+  - EDRMS: electronic document and record management system. Manages access, create and delete of data.
+  - CMS: content management system. create website without technical knowledge.
+- **Decision Trees**
+  - Visual representations of possible choices and their consequences, helping to make informed decisions in complex situations.
+- **End-to-End Testing**
+  - Testing a complete system or application from beginning to end, ensuring its functionality and performance across all components and integrations.
+- **ERP (Enterprise Resource Planning)**
+  - back office software to coordinate: accounting, human resources, procurement...
+  - Allows for data sharing between roles. Data and API(functionality) reside on one system.
+- **ESG (Environmental, Social, and Governance)**
+  - Environmental: project impact to environment.
+  - Social: project impact among stakeholders, team members, customers.
+  - Governance: project monitoring, performance, changes, budget...
+- **Extinction**
+  - Ignoring or not reinforcing a behavior, leading to its eventual decrease or disappearance. Used in project management to address undesirable behaviors or recurring issues.
+- **Flowcharts**
+  - Visual diagrams depicting the steps or processes involved in a task or workflow, aiding in understanding and optimizing procedures.
+- **Integration**
+  - Combining individual components or modules into a functioning system, ensuring seamless communication and data exchange.
+- **Integration Testing**
+  - Testing the functionality and compatibility of different modules or components after they have been integrated into a system.
+- **Lessons Learned**
+  - Capturing and analyzing valuable insights gained from project experiences, both successful and unsuccessful, to improve future projects.
+- **Pareto Diagram (80/20 Rule)**
+  - A graphical representation highlighting that a small percentage of factors (e.g., 20%) often contributes to a large majority of the effects (e.g., 80%). Used to prioritize issues or areas for improvement.
+- **Performance Testing**
+  - Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
+- **Prevention**
+  - Taking proactive measures to avoid problems or issues before they occur, minimizing risks and disruptions.
+- **Regression Testing**
+  - Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
+- **Rework**
+  - Correcting errors or deficiencies in work that has already been completed, leading to additional time and resource costs.
+- **Run Charts**
+  - Visualizing data points over time to identify trends, patterns, and potential areas for improvement.
+- **Smoke Testing**
+  - Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
+- **Starvation**
+  - Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
+- **Statistical Sampling**
+  - Collecting and analyzing data from a representative sample of a population to draw inferences about the entire population, reducing the need to test everything.
+- **Stress Testing**
+  - Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
+- **Testing**
+  - Verifying that a system, component, or function meets its intended requirements and performs as expected.
+- **Unit Testing**
+  - Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
+- **User Acceptance Testing (UAT)**
 
-  - **Acceptance**: Formally acknowledging that a deliverable meets the agreed-upon requirements and can be integrated into the project or handed over to the client.
-  - **Action Items**: Specific tasks assigned to individuals or teams to address identified issues, complete required work, or move the project forward.
-  - **Addition**: Introducing new features, functionalities, or scope to the project, potentially impacting timelines, resources, and budgets.
-  - **Balanced Scorecard**: A performance measurement framework that considers various aspects beyond just financial metrics, such as customer satisfaction, internal processes, and learning and growth.
-  - **Cause-and-Effect Diagram** (Fishbone Diagram): A visual tool used to identify and analyze the potential causes of a problem or issue.
-  - **Common Causes of Variances**: Deviations from planned performance metrics (e.g., schedule, budget) can be caused by factors like resource constraints, inaccurate estimations, or changes in requirements.
-  - **Control Chart**: A statistical tool used to monitor a process over time and identify potential deviations from acceptable ranges, enabling proactive corrective action.
-  - **Decision Trees**: Visual representations of possible choices and their consequences, helping to make informed decisions in complex situations.
-  - **End-to-End Testing**: Testing a complete system or application from beginning to end, ensuring its functionality and performance across all components and integrations.
-  - **Extinction**: Ignoring or not reinforcing a behavior, leading to its eventual decrease or disappearance. Used in project management to address undesirable behaviors or recurring issues.
-  - **Flowcharts**: Visual diagrams depicting the steps or processes involved in a task or workflow, aiding in understanding and optimizing procedures.
-  - **Integration**: Combining individual components or modules into a functioning system, ensuring seamless communication and data exchange.
-  - **Integration Testing**: Testing the functionality and compatibility of different modules or components after they have been integrated into a system.
-  - **Lessons Learned**: Capturing and analyzing valuable insights gained from project experiences, both successful and unsuccessful, to improve future projects.
-  - **Pareto Diagram (80/20 Rule)**: A graphical representation highlighting that a small percentage of factors (e.g., 20%) often contributes to a large majority of the effects (e.g., 80%). Used to prioritize issues or areas for improvement.
-  - **Performance Testing**: Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
-  - **Prevention**: Taking proactive measures to avoid problems or issues before they occur, minimizing risks and disruptions.
-  - **Regression Testing**: Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
-  - **Rework**: Correcting errors or deficiencies in work that has already been completed, leading to additional time and resource costs.
-  - **Run Charts**: Visualizing data points over time to identify trends, patterns, and potential areas for improvement.
-  - **Smoke Testing**: Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
-  - **Starvation**: Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
-  - **Statistical Sampling**: Collecting and analyzing data from a representative sample of a population to draw inferences about the entire population, reducing the need to test everything.
-  - **Stress Testing**: Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
-  - **Testing**: Verifying that a system, component, or function meets its intended requirements and performs as expected.
-  - **Unit Testing**: Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
-  - **User Acceptance Testing (UAT)**: Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
+  - Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
 
 - Manager Types: Functional, Matrix, Projectized
   - ![Manager Authority](img/project_authority.PNG)
@@ -121,6 +166,12 @@
 - **Portfolios**
   - Portfolios are collections of programs, subportfolios, and projects that support strategic business goals or objectives.
   - Portfolios may consist of projects that are not related.
+- **Project Charter**
+  - ?
+- **Project Manager**
+  - project integration. leads team to complete project goals to stakeholder satisfaction.
+- **Project Manager Skills**
+  - leadership, communication, problem-solving, negotiation, organization, time management.
 
 ## Project Life Cycle Phases
 
@@ -266,3 +317,28 @@
   - total value of each years expected cash inflow, in 'todays' dollars.
 - **NPV**
   - net present value.
+
+## Data Confidentiality
+
+- **Data Confidentiality**
+  - protecting sensitive data that identify individuals personal information.
+- **GDPR (General Data Protection Regulation)**
+  - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
+- **PII (Personally Identifiable Information)**
+  - any information about an individual (social security number, date of birth, mothers maiden name, medical, biometric, financial, educational, employment...)
+  - organizations should develope policies and procedures(educate, train) to handle PII and data breaches.
+  - Anonymize sensitive data before sharing.
+- **Linkable PII**
+  - personal identifiable info that can be linked together to create SPII.
+  - name, address, email, MAC, phone, race, age, credit card...
+- **SPII (Sensitive Personally Identifiable Information)**
+  - subset of PII. Any single piece of data that could identify and cause harm or embarrassment.
+  - SSN, Passport, Drivers License, Biometric.
+- **PHI (Personal Health Information)**
+  - IIHI (Individually Identifiable Health Information)
+    - past, present, and future health or mental condition.
+- **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
+  - provides regulations for safekeeping **(ePHI) electronic Personal Health Information**.
+- **NIST (National Instituted of Standards and Technology)**
+  - federal agency creates frameworks and process to help protect information.
+  - describes 3 levels: low, medium, high impact.
