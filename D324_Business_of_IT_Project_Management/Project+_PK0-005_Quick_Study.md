@@ -131,47 +131,123 @@
   - **Stakeholder Satisfaction**: ends when stakeholder is satisfied.
 - **Needs and demands of why projects come about**
   - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
-- **Steps to Validate a Project**
-  - write business case, identify and analyze stakeholders.
+- **Architect**
+  - part of the IT team. design
+- **Business Analyst**
+  - gathering and documenting requirements for project.
 - **Business Case**
-  - created in discovery phase. Explains a justification for the project and if it is worthwhile.
-  - often includes: details about budget and timelines(start, end).
-  - Jafar Dash.
+  - Justifies the project's viability and alignment with business goals.
+  - created in discovery phase. Often includes details about budget and timelines(start, end).
+  - Analyzes the:
+    - Problem or opportunity the project addresses.
+    - Alternative solutions and their costs/benefits.
+    - Projected financial impact on the organization.
+    - Risks and mitigation strategies.
+  - Function:
+    - Secures executive buy-in and funding for the project.
+    - Demonstrates the value proposition and return on investment.
+    - Guides project prioritization and decision-making.
+    - Provides ongoing performance benchmarks and justification.
+  - mnemonic: 'JAFAR DASH'
   - **Justification**: benefits to organization.
   - **Alignment to the Strategic Plan**: project aligns with organizations overall strategy.
   - **Feasibility Study Results**: determine if project is doable and likely to succeed.
   - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
   - **Recommended Solutions**: expected results and impact.
-  -
   - **Description**: describe the project.
   - **Alternative Solutions**: expected results and impact from alternative solution.
   - **Stakeholders**: anyone/organization with vested interest.
   - **High-Level Risk Analysis**: known risk documented.
 - **Artifacts**
   - preexisting knowledge or vetted vendors to be used in project planning.
-- **Project Selection Method**
-  - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Decision Model**
   - apples-to-apples way of comparing projects and which one is the most benefit to company needs.
   - **Rewards**
     - Cost-benefit analysis, Scoring models, Payback period, Discounted cash flow, Net present value, Internal rate of return, Return on investment.
   - **Constrained Optimization Model**
     - mathmatical model for highly complex projects.
+- **Developer/Engineer**
+  - writing program code.
 - **Expert Judgement**
   - expertise of stakeholder or other subject matter expert to make project decisions.
   - Danger lies with relying on single technique to make selection.
 - **Programs**
   - Programs are a collection or group of related projects that are managed together using coordinated processes and techniques.
   - The collective management of a group of projects can bring about benefits that wouldn’t be achievable if the projects were managed separately.
+- **Program Manager**
+  - project managers report to them(makes them a stakeholder and your boss).
 - **Portfolios**
   - Portfolios are collections of programs, subportfolios, and projects that support strategic business goals or objectives.
   - Portfolios may consist of projects that are not related.
+- **Project Baseline**
+  - approved cost, schedule, scope, plans, and documents.
+  - used to measure performance/progress. Determine if on schedule, within budget or on target.
 - **Project Charter**
-  - ?
+  - Authorizes the project and defines its key elements.
+  - Describes the project's:
+    - Objective and deliverables
+    - Scope and boundaries
+    - Resources and budget
+    - Timeline and milestones
+    - Key stakeholders and roles
+    - Approval process and signatures
+  - Function:
+    - Serves as a formal reference point for the project team.
+    - Provides clarity and accountability.
+    - Enables resource allocation and project tracking.
+    - Creates a foundation for project governance.
+- **Preliminary Scope**
+  - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
+- **Project Selection Method**
+  - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
+- **Project Sponsor**
+  - usually executive that can assign money and resources to project.
+  - approves project charter by signing.
+  - Tie-breaker, champion, adviser of project.
+- **Senior Management Team**
+  - senior managers in charge of organizational goals, shareholders, board members happy.
+  - prioritize projects, authorize spending, assign team members.
+- **Stakeholder**
+  - Anyone/Organization with vested interest in the project.
+  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
+  - **Agile**: communication between team and stakeholder throughout the project.
+- **Stakeholder Analysis**
+  - asking questions to gather their interest and needs in project.
+- **Stakeholder Register**
+  - register to keep track of multiple stakeholders.
+  - shows level of influence and contact info.
+- **SMEs (Subject Matter Experts)**
+  - team members performing the work. have the specific knowledge and experience to do the work.
+- **Tester/QA**
+  - ensure requirements are met.
+- **Validate a Project**
+  - write business case, identify and analyze stakeholders.
+
+## Project Manager
+
 - **Project Manager**
   - project integration. leads team to complete project goals to stakeholder satisfaction.
 - **Project Manager Skills**
   - leadership, communication, problem-solving, negotiation, organization, time management.
+- **Managing a Project Team**
+  - manage team and resources for team.
+- **Communicating with Stakeholders and Team Members**
+  - sponsors, stakeholders, team members up-to-date.
+- **Scope**
+  - goals, deliverables, and requirements of the project.
+- **Risk**
+  - identify, manage, track, monitor risk.
+- **Budget**
+  - alert if cost higher than expected or funds running out.
+- **Schedule**
+  - key deliverables are performed on time.
+- **Quality Assurance**
+  - quality of deliverables meet standards
+- **Project Artifacts**
+  - documents, templates, agendas, diagrams. Project charter is artifact.
+- **PMO (Project Management Office)**
+  - place to manage projects, programs, portfolios.
+  - guidance to project managers with organization resources.
 
 ## Project Life Cycle Phases
 
@@ -234,13 +310,6 @@
     - Evaluating the project
     - Archiving project documents
     - Rewards and celebration
-
-## Team Members
-
-- **Stakeholders**
-  - Anyone/Organization who has a vested interest in the project.
-  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
-  - **Agile**: communication between team and stakeholder throughout the project.
 
 ## Project Management Documents
 
