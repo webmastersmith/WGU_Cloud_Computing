@@ -1,6 +1,6 @@
 # CompTIA Project+ PK0-005 Quick Study
 
-## Quick Study
+## Definitions
 
 - **Acceptance**
   - Formally acknowledging that a deliverable meets the agreed-upon requirements and can be integrated into the project or handed over to the client.
@@ -41,6 +41,15 @@
   - Governance: project monitoring, performance, changes, budget...
 - **Extinction**
   - Ignoring or not reinforcing a behavior, leading to its eventual decrease or disappearance. Used in project management to address undesirable behaviors or recurring issues.
+- **Functional, Matrix, and Projectized Management**
+  - ![Manager Authority](img/project_authority.PNG)
+
+| Management Style | About                                                                 |
+| ---------------- | --------------------------------------------------------------------- |
+| Functional       | Specialized managers for each department                              |
+| Matrix           | PM's that assign work(weak), up to control pay, hiring/firing(strong) |
+| Projectized      | PM's have full control over pay, hiring/firing                        |
+
 - **Flowcharts**
   - Visual diagrams depicting the steps or processes involved in a task or workflow, aiding in understanding and optimizing procedures.
 - **Integration**
@@ -74,18 +83,7 @@
 - **Unit Testing**
   - Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
 - **User Acceptance Testing (UAT)**
-
   - Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
-
-- Manager Types: Functional, Matrix, Projectized
-  - ![Manager Authority](img/project_authority.PNG)
-
-| Management Style | About                                                                 |
-| ---------------- | --------------------------------------------------------------------- |
-| Functional       | Specialized managers for each department                              |
-| Matrix           | PM's that assign work(weak), up to control pay, hiring/firing(strong) |
-| Projectized      | PM's have full control over pay, hiring/firing                        |
-
 - Be able to name the purpose for controlling quality.
   - Quality control involves monitoring work results to determine whether they comply with the standards set in the quality management plan.
 - Name the types of testing performed on technology projects.
@@ -122,22 +120,194 @@
 - Describe lessons learned.
   - Lessons learned describe the successes and failures of the project.
 
-## Projects
+## DevOps and DevSecOps
 
+- **DevOps**
+  - automating checks and tests along with development and operations.
+  - DevOps: Integrate development and operations to facilitate quick feedback and evolution of software product.
+    - Promotes collaboration and communication between development and operations teams to streamline software delivery.
+  - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
+  - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
+  - Key features:
+    - Collaboration: Developers and operations work together on the same team.
+    - Automation: CI/CD automates builds, tests, and deployments for faster releases.
+    - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
+  - CI/CD:
+    - Continuous Integration: Developers merge code frequently, triggering automated tests for early feedback.
+    - Continuous Delivery: Code automatically prepared for release but deployment is manual (strategic control).
+    - Continuous Deployment: Code automatically released to production after integration and testing.
+  - Strengths:
+    - Faster delivery of quality software.
+    - Improved operational support and cross-functional collaboration.
+    - Reduced friction and project risks.
+  - Weaknesses:
+    - Requires specialized skills and cultural shift.
+    - Difficult to implement for large/legacy systems with minimal automation.
+  - Use Cases:
+    -Teams striving for CI/CD and faster releases.
+    -Companies with resources for cross-functional teams and automation tools.
+- **DevSecOps**
+  - Baking Security into DevOps(entire software development lifecycle) for Faster, **Secure Software Delivery**
+    - Shared Responsibility: Security is everyone's job, not just a dedicated team's. This requires a cultural shift from centralized "security gurus" to decentralized ownership.
+    - Challenges: Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
+    - Benefits: Faster delivery, continuous security feedback, and reduced risk of breaches.
+    - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
+
+## Extreme Programming
+
+- **Extreme Programming**
+  - agile framework. software development. pair programming, emphasis on simplicity.
+  - XP: close collaboration, iterative development, and continuous testing.
+- **Extreme Programming Pair programming**
+  - Two developers work together on code, promoting continuous review and knowledge sharing.
+- **Extreme Programming Ten-minute build**
+  - Ensures rapid feedback and keeps code clean through fast builds and tests.
+- **Extreme Programming Continuous integration**
+  - Frequent merging of code to prevent conflicts and enable automated builds/tests.
+- **Extreme Programming Test-first programming**
+  - Writing tests before code drives simplicity and quality.
+- **Extreme Programming Incremental design**
+  - Small, frequent improvements over delayed releases.
+- **Extreme Programming Open workspace**
+  - Fosters communication and teamwork by removing physical barriers(walls). Everyone in same room.
+- **Extreme Programming On-site customer**
+  - Integrates the customer into the team for direct feedback and collaboration.
+- **Extreme Programming 40-hour workweeks**
+  - Prioritizes developer well-being and avoids burnout.
+- **Extreme Programming User stories**
+  - Clear and concise requirements format for effective communication.
+- **Extreme Programming Weekly and quarterly cycles**
+  - Regular planning, adaptation, and reflection.
+- **Extreme Programming Built-in flexibility**
+  - Slack in weekly plans allows for adjustments and unforeseen situations.
+- **3 Roles in Extreme Programming**
+  - Customer: decide features and priority.
+  - Tracker: capture metrics, progress, improvements.
+  - Coach: mentor team members.
+- **Extreme Programming Strengths**
+  - Highly efficient and adaptable.
+  - Prioritizes essential features and continuous improvement.
+  - Strong team cohesion and reduced project failure.
+  - Values developer well-being.
+- **Extreme Programming Weaknesses**
+  - Limited scope to software development (not ideal for non-software projects).
+  - Potential for design neglect due to code-centric practices.
+  - Rapid pace and minimal documentation can be stressful and hinder onboarding.
+  - Reliance on face-to-face interaction (can be challenging for remote teams).
+- **Extreme Programming Use Cases**
+  - Small, collocated teams with changing requirements and tight deadlines.
+  - Projects with strong test automation capabilities.
+
+## Kanban
+
+- **Kanban**
+  - agile framework.
+  - Kanban board: Visualizes work, WIP(work in progress) limits, and workflow policies.
+  - track task flow and optimize workflow.
+  - Simplest agile framework to learn and can be applied to any industry.
+- **Kanban 3 basic phases**
+  - To Do, In Progress, Done (can be customized).
+- **Kanban 6 Core Practices**
+  1. Visualize work: show phase work is in.
+  2. Limit WIP: prevent overwhelm, increase product quality by restricting active tasks.
+  3. Make policies explicit: clearly define how work moves through phases.
+  4. Manage flow: Identify and eliminate workflow bottlenecks for efficiency.
+  5. Implement feedback loops: Measure workflow performance and use data for improvement.
+  6. Improve collaboratively: Experiment and continuously evolve the workflow.
+- **Kanban 4-part workflow**
+  - Prioritize backlog, pull work into progress, move through phases, start new work.
+- **Kanban Strengths**
+  - Simple to learn, flexible, applicable to any industry with routine tasks.
+  - Lightweight, focuses on reasonable amount of work and clear policies.
+- **Kanban Weaknesses**
+  - Requires stable work environment, can struggle with large teams or high turnover.
+  - Cycle times may lengthen without set iterations and proper performance management.
+- **Kanban Use Cases**
+  - Teams with frequently changing backlogs (e.g., ticketing systems)
+  - Teams comfortable with less structure and stable workflows.
+
+## Scrum
+
+- **Scrum**
+  - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
+  - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
+  - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
+  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+- **Scrum 5 Values**
+  - Commitment, focus, openness, respect, courage.
+- **Scrum 3 Pillars**
+  - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
+- **Scrum Events**
+  - Sprint: iteration and all scrum events.
+  - Sprint planning: backlog created.
+  - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
+  - Sprint review: uncover issues early, confirm on track.
+  - Sprint retrospective: find improvement opportunities(improve scrum flow) from previous sprint.
+- **Scrum Key Artifacts**
+  - Product Backlog: list of changes.
+  - Product Goal: long term target.
+  - Sprint Backlog: plan for upcoming sprint.
+  - Sprint Goal: summarize value of sprint.
+  - Increment: meets the 'done' definition and move to next product goal.
+- **Scrum Strengths**
+  - short cycles allow responsive learning, complex problem solving fro unpredictable work.
+- **Scrum Weakness**
+  - teams must be highly cohesive, cross-functional. No large groups.
+
+## Methodology
+
+- **Agile and SAFe (Scaled Agile Framework)**
+  - **Agile**: iterative, incremental. delivers value early and often.
+    - Iterative: make improvements, get feedback.
+    - Incremental: small improvements at a time.
+    - Strengths: expected change.
+    - Weakness: scope creep, missed deadlines and less documentation.
+    - Use: project requirements will change often. Team is stable and self organized.
+  - **SAFe**: expand agile practices across multiple teams.
+- **PRINCE2**
+- **SDLC (Software Development Lifecycle)**
+  - produce high-quality, low-cost, thoroughly tested software.
+- **Waterfall**
+  - follows linear sequence. Work only flows one way.
+  - Use: when you have clear objectives, no unknowns, and high change cost.
+  - 6 phases:
+    - requirements: project requirements.
+    - design: actionable specifications.
+    - implementation: do work.
+    - testing: verify.
+    - delivery: deploy to customer.
+    - maintenance: customer support.
+
+## Projects and Members
+
+- **Project**
+  - temporary organization created to deliver one or more business products according to the business-case.
 - **What Makes it a Project**
+  - mnemonic: 'STU'
   - **Unique**: meet specific business objective.
   - **Temporary**: start and end date.
-  - **Purpose**: fulfill a purpose.
   - **Stakeholder Satisfaction**: ends when stakeholder is satisfied.
 - **Needs and demands of why projects come about**
   - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
 - **Architect**
   - part of the IT team. design
+- **Artifacts**
+  - preexisting knowledge or vetted vendors to be used in project planning.
 - **Business Analyst**
   - gathering and documenting requirements for project.
 - **Business Case**
-  - Justifies the project's viability and alignment with business goals.
+  - Justifies the project's viability(most important) and alignment with business goals.
+  - summarizes project and is first project proposal.
   - created in discovery phase. Often includes details about budget and timelines(start, end).
+  - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
+    - Executive Summary: brief summary. problem statement, solution, result.
+    - Problem Statement: problem trying to solve.
+      - Problem Analysis: more details about why project should be prioritized.
+    - Options: pros and cons of multiple solutions.
+    - Financial Overview: cost-benefit on investment.
+    - Project Definition: more info. scope, resources, milestones, timeline.
+    - Recommendation: analysis which option is best for organization objectives.
+    -
   - Analyzes the:
     - Problem or opportunity the project addresses.
     - Alternative solutions and their costs/benefits.
@@ -158,8 +328,15 @@
   - **Alternative Solutions**: expected results and impact from alternative solution.
   - **Stakeholders**: anyone/organization with vested interest.
   - **High-Level Risk Analysis**: known risk documented.
-- **Artifacts**
-  - preexisting knowledge or vetted vendors to be used in project planning.
+- **Business Storytelling: Current State vs Future State**
+  - either tell a good story of Current state vs. Future state with descriptive words or charts.
+  - both sides must use same metrics.
+  - Current State: whats going on right now.
+  - Future State: what will change after project.
+- **Customers: Internal, External, End-User**
+  - Internal: inside organization. easy feedback.
+  - External: outside organization. typically pay for product.
+  - End-User: physical user of final product.
 - **Decision Model**
   - apples-to-apples way of comparing projects and which one is the most benefit to company needs.
   - **Rewards**
@@ -171,14 +348,34 @@
 - **Expert Judgement**
   - expertise of stakeholder or other subject matter expert to make project decisions.
   - Danger lies with relying on single technique to make selection.
-- **Programs**
-  - Programs are a collection or group of related projects that are managed together using coordinated processes and techniques.
-  - The collective management of a group of projects can bring about benefits that wouldn’t be achievable if the projects were managed separately.
-- **Program Manager**
-  - project managers report to them(makes them a stakeholder and your boss).
+- **PMO (Project Management Office)**
+  - Functional department for all project managers.
+  - manages flow of projects and provides guidance to project managers with organization resources.
+- **PMO Supportive Project Management Office**
+  - Provides support when it is requested
+- **PMO Controlling Project Management Office**
+  - Monitors project performance and coordinates resource selection while allocating project managers to projects
+  - The controlling PMO coordinates communications and sets some project standards
+- **PMO Directive Project Management Office**
+  - Has full authority over projects, standards, and procedures
+  - It focuses on organizational strategy and will start, cancel, or adjust projects to ensure strategic alignment
 - **Portfolios**
-  - Portfolios are collections of programs, subportfolios, and projects that support strategic business goals or objectives.
-  - Portfolios may consist of projects that are not related.
+  - prioritize and execute multiple projects/programs more efficiently.
+  - support strategic business goals or objectives.
+  - Portfolios may consist of multiple projects/programs without related objectives.
+- **Portfolios Enterprise**
+  - contain all programs/projects.
+  - can be broken down into sub-portfolios at division or branch level.
+- **Portfolio Management**
+  - strategy to maintain and prioritize maximum programs/projects.
+- **Preliminary Scope**
+  - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
+- **Programs**
+  - group projects with related objectives to achieve a larger objective.
+  - bring about benefits that wouldn’t be achievable if the projects were managed separately.
+- **Program Manager**
+  - lead groups of projects. Operates at a more strategic level.
+  - project managers report to them(makes them a stakeholder and your boss).
 - **Project Baseline**
   - approved cost, schedule, scope, plans, and documents.
   - used to measure performance/progress. Determine if on schedule, within budget or on target.
@@ -196,17 +393,40 @@
     - Provides clarity and accountability.
     - Enables resource allocation and project tracking.
     - Creates a foundation for project governance.
-- **Preliminary Scope**
-  - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
+- **Project Manager**
+  - planning, organizing, leading team, on time, on budget and within scope.
+  - completes project goals to stakeholder/company satisfaction.
+- **Project Manager Skills**
+  - leadership, communication, problem-solving, negotiation, organization, time management.
+- **Project Manager: Managing a Project Team**
+  - manage team and resources for team.
+- **Project Manager: Communicating with Stakeholders and Team Members**
+  - sponsors, stakeholders, team members up-to-date.
+- **Project Manager Scope**
+  - goals, deliverables, and requirements of the project.
+- **Project Manager Risk**
+  - identify, manage, track, monitor risk.
+- **Project Manager Budget**
+  - alert if cost higher than expected or funds running out.
+- **Project Manager Schedule**
+  - key deliverables are performed on time.
+- **Project Manager Quality Assurance**
+  - quality of deliverables meet standards
+- **Project Manager Project Artifacts**
+  - documents, templates, agendas, diagrams. Project charter is artifact.
 - **Project Selection Method**
   - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Project Sponsor**
   - usually executive that can assign money and resources to project.
   - approves project charter by signing.
   - Tie-breaker, champion, adviser of project.
-- **Senior Management Team**
-  - senior managers in charge of organizational goals, shareholders, board members happy.
+- **Senior Management**
+  - highest level of leadership.
+  - control organizational goals, communicate with shareholders and board members.
   - prioritize projects, authorize spending, assign team members.
+- **Sponsors**
+  - single senior manager reviews/validates initial business case.
+  - secures funding and removes barriers.
 - **Stakeholder**
   - Anyone/Organization with vested interest in the project.
   - **Waterfall**: detailed requirements given to team. No further communication until project completion.
@@ -223,32 +443,6 @@
 - **Validate a Project**
   - write business case, identify and analyze stakeholders.
 
-## Project Manager
-
-- **Project Manager**
-  - project integration. leads team to complete project goals to stakeholder satisfaction.
-- **Project Manager Skills**
-  - leadership, communication, problem-solving, negotiation, organization, time management.
-- **Managing a Project Team**
-  - manage team and resources for team.
-- **Communicating with Stakeholders and Team Members**
-  - sponsors, stakeholders, team members up-to-date.
-- **Scope**
-  - goals, deliverables, and requirements of the project.
-- **Risk**
-  - identify, manage, track, monitor risk.
-- **Budget**
-  - alert if cost higher than expected or funds running out.
-- **Schedule**
-  - key deliverables are performed on time.
-- **Quality Assurance**
-  - quality of deliverables meet standards
-- **Project Artifacts**
-  - documents, templates, agendas, diagrams. Project charter is artifact.
-- **PMO (Project Management Office)**
-  - place to manage projects, programs, portfolios.
-  - guidance to project managers with organization resources.
-
 ## Project Life Cycle Phases
 
 - **Discovery/Concept Phase**
@@ -259,6 +453,7 @@
     - Perform **feasibility study**: new projects, complex projects, risky projects.
 - **Initiating Phase**
   - preliminary scope statement and project charter are created.
+  - team built, roles identified.
   - formal authorization for a new project to begin.
     - Creating the preliminary scope statement
     - Creating the project charter
@@ -362,20 +557,35 @@
 
 ## Financial and Performance Analysis
 
+- **Assumptions**
+  - future factors you state as true to present a financial plan.
+- **Benefit**
+  - money generated or saved from project.
+  - also called 'financial value' or 'revenue'.
+- **Cost**
+  - anything related to project that causes money to flow out of company.
 - **Cost-Benefit Analysis**
   - cost to produce vs benefit.
   - timeline of how quickly money can be recouped.
+- **Financial Analysis**
+  - assigning hard numbers to future events.
+- **Net Profit**
+  - NET = `benefit - cost`
+- **Revenue**
+  - money flowing into company as result of project.
 - **Scoring Model**
   - rating/weight each project or alternative solution from predefined list of criteria.
   - often includes a 'minimum' rating. Project discarded if not meet minimum.
 - **Payback Period**
   - time to recover from all cost of producing product.
-- **FV vs PV**
+- **FV (Future Value) vs PV (Present Value)**
   - include inflation into the cost.
   - Future Value = Present Value(1+interest)^years
 - **ROI**
   - percentage of gain for investment.
-  - (profit - cost) / cost = ROI percentage.
+  - ROI = `(net profit / cost) * 100` // same
+  - ROI = `(revenue - cost) * 100` // same
+  - ROI = `((Financial Value - cost) / cost) * 100` // same
 - **IRR**
   - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
   - Higher better.
