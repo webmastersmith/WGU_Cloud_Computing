@@ -120,38 +120,90 @@
 - Describe lessons learned.
   - Lessons learned describe the successes and failures of the project.
 
-## DevOps and DevSecOps
+## Agile and SAFe
+
+- **Agile**
+  - **Agile**: iterative, incremental. delivers value early and often.
+    - Iterative: make improvements, get feedback.
+    - Incremental: small improvements at a time.
+- **Agile Strengths**
+  - expected change.
+- **Agile Weakness**
+  - scope creep, missed deadlines and less documentation.
+- **Agile Use**
+  - project requirements will change often. Team is stable and self organized.
+- **SAFe (Scaled Agile Framework)**
+  - expand agile practices across multiple teams to work together.
+  - Agile Release Team (ART): related groups of agile teams to simplify communication, planning, schedules.
+  - Iteration: short term planning cycle.
+  - Program Increment: longer-term planning cycle.
+- **SAFe Strengths**
+  - allows scaling and project organization in bigger organizations with multiple agile teams.
+- **SAFe Weakness**
+  - adds layers of overhead to organization.
+- **SAFe Use**
+  - multiple agile teams that need to collaborate more effectively.
+
+## Data Confidentiality
+
+- **Data Confidentiality**
+  - protecting sensitive data that identify individuals personal information.
+- **GDPR (General Data Protection Regulation)**
+  - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
+- **PII (Personally Identifiable Information)**
+  - any information about an individual (social security number, date of birth, mothers maiden name, medical, biometric, financial, educational, employment...)
+  - organizations should develope policies and procedures(educate, train) to handle PII and data breaches.
+  - Anonymize sensitive data before sharing.
+- **Linkable PII**
+  - personal identifiable info that can be linked together to create SPII.
+  - name, address, email, MAC, phone, race, age, credit card...
+- **SPII (Sensitive Personally Identifiable Information)**
+  - subset of PII. Any single piece of data that could identify and cause harm or embarrassment.
+  - SSN, Passport, Drivers License, Biometric.
+- **PHI (Personal Health Information)**
+  - IIHI (Individually Identifiable Health Information)
+    - past, present, and future health or mental condition.
+- **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
+  - provides regulations for safekeeping **(ePHI) electronic Personal Health Information**.
+- **NIST (National Instituted of Standards and Technology)**
+  - federal agency creates frameworks and process to help protect information.
+  - describes 3 levels: low, medium, high impact.
+
+## DevOps, CI/CD and DevSecOps
 
 - **DevOps**
   - automating checks and tests along with development and operations.
-  - DevOps: Integrate development and operations to facilitate quick feedback and evolution of software product.
-    - Promotes collaboration and communication between development and operations teams to streamline software delivery.
   - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
   - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
-  - Key features:
-    - Collaboration: Developers and operations work together on the same team.
-    - Automation: CI/CD automates builds, tests, and deployments for faster releases.
-    - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
-  - CI/CD:
-    - Continuous Integration: Developers merge code frequently, triggering automated tests for early feedback.
-    - Continuous Delivery: Code automatically prepared for release but deployment is manual (strategic control).
-    - Continuous Deployment: Code automatically released to production after integration and testing.
-  - Strengths:
-    - Faster delivery of quality software.
-    - Improved operational support and cross-functional collaboration.
-    - Reduced friction and project risks.
-  - Weaknesses:
-    - Requires specialized skills and cultural shift.
-    - Difficult to implement for large/legacy systems with minimal automation.
-  - Use Cases:
-    -Teams striving for CI/CD and faster releases.
-    -Companies with resources for cross-functional teams and automation tools.
+  - Automation: CI/CD automates builds, tests, and deployments for faster releases.
+  - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
+- **DevOps Strengths**
+  - Faster delivery of quality software by eliminating the barrier between development and operations.
+  - Improved operational support and cross-functional collaboration.
+  - Reduced friction and project risks.
+- **DevOps Weaknesses**
+  - Requires specialized skills and cultural shift.
+  - Difficult to implement for large/legacy systems with minimal automation.
+- **DevOps Use Cases**
+  -Teams striving for CI/CD and faster releases w/ automation.
+  -Companies with resources for cross-functional teams and automation tools.
+- **DevOps 4 Phases**
+  - plan, code, build, test.
+- **CI/CD**
+  - Individual developers check their code into the main branch frequently, and automated tests run against the new code.
+- **Continuous Integration**
+  - Developers merge code frequently, triggering automated tests for early feedback.
+- **Continuous Delivery**
+  - Code automatically prepared for release but deployment is manual.
+- **Continuous Deployment**
+  - Code automatically prepared for release and deployment is automatic.
 - **DevSecOps**
   - Baking Security into DevOps(entire software development lifecycle) for Faster, **Secure Software Delivery**
-    - Shared Responsibility: Security is everyone's job, not just a dedicated team's. This requires a cultural shift from centralized "security gurus" to decentralized ownership.
-    - Challenges: Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
-    - Benefits: Faster delivery, continuous security feedback, and reduced risk of breaches.
-    - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
+  - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
+- **DevSecOps Strengths**
+  - Faster delivery, continuous security feedback, and reduced risk of breaches.
+- **DevSecOps Weaknesses**
+  - Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
 
 ## Extreme Programming
 
@@ -198,6 +250,48 @@
   - Small, collocated teams with changing requirements and tight deadlines.
   - Projects with strong test automation capabilities.
 
+## Financial and Performance Analysis
+
+- **Assumptions**
+  - future factors you state as true to present a financial plan.
+- **Benefit**
+  - money generated or saved from project.
+  - also called 'financial value' or 'revenue'.
+- **Cost**
+  - anything related to project that causes money to flow out of company.
+- **Cost-Benefit Analysis**
+  - cost to produce vs benefit.
+  - timeline of how quickly money can be recouped.
+- **Financial Analysis**
+  - assigning hard numbers to future events.
+- **Net Profit**
+  - NET = `benefit - cost`
+- **Revenue**
+  - money flowing into company as result of project.
+- **Scoring Model**
+  - rating/weight each project or alternative solution from predefined list of criteria.
+  - often includes a 'minimum' rating. Project discarded if not meet minimum.
+- **Payback Period**
+  - time to recover from all cost of producing product.
+- **FV (Future Value) vs PV (Present Value)**
+  - include inflation into the cost.
+  - Future Value = Present Value(1+interest)^years
+- **ROI**
+  - percentage of gain for investment.
+  - ROI = `(net profit / cost) * 100` // same
+  - ROI = `(revenue - cost) * 100` // same
+  - ROI = `((Financial Value - cost) / cost) * 100` // same
+- **IRR**
+  - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
+  - Higher better.
+- **Current State vs Future State or as is-to be, Performance Analysis**
+  - how change will effect the business in the future.
+  - as is-to-be(also called performance analysis): means same.
+- **Discounted Cash Flow**
+  - total value of each years expected cash inflow, in 'todays' dollars.
+- **NPV**
+  - net present value.
+
 ## Kanban
 
 - **Kanban**
@@ -225,6 +319,10 @@
 - **Kanban Use Cases**
   - Teams with frequently changing backlogs (e.g., ticketing systems)
   - Teams comfortable with less structure and stable workflows.
+
+## PRINCE2
+
+- **PRINCE2**
 
 ## Scrum
 
@@ -254,29 +352,28 @@
 - **Scrum Weakness**
   - teams must be highly cohesive, cross-functional. No large groups.
 
-## Methodology
+## Software Development Lifecycle SDLC
 
-- **Agile and SAFe (Scaled Agile Framework)**
-  - **Agile**: iterative, incremental. delivers value early and often.
-    - Iterative: make improvements, get feedback.
-    - Incremental: small improvements at a time.
-    - Strengths: expected change.
-    - Weakness: scope creep, missed deadlines and less documentation.
-    - Use: project requirements will change often. Team is stable and self organized.
-  - **SAFe**: expand agile practices across multiple teams.
-- **PRINCE2**
 - **SDLC (Software Development Lifecycle)**
   - produce high-quality, low-cost, thoroughly tested software.
-- **Waterfall**
-  - follows linear sequence. Work only flows one way.
-  - Use: when you have clear objectives, no unknowns, and high change cost.
-  - 6 phases:
-    - requirements: project requirements.
-    - design: actionable specifications.
-    - implementation: do work.
-    - testing: verify.
-    - delivery: deploy to customer.
-    - maintenance: customer support.
+- **SDLC 7 phases**
+  1. Planning: outline project scope and purpose.
+  2. Requirements: define resources needed and software purpose.
+  3. Design & Prototyping: specifications of software: language, security, interface.
+  4. Development: write code.
+  5. Testing: software compatibility and performs as expected.
+  6. Deployment: deploy to production environment.
+  7. Operations and Maintenance: support software.
+- **SDLC Waterfall Model**
+  - good for short task or well defined, no change projects.
+- **SDLC Iterative Model**
+  - hybrid. combines iterative with sequential models.
+- **SDLC Spiral Model**
+  - risk-centric iterative model.
+  - most complex and resource-intensive model. Projects can 'spiral' out of control with cost and scope.
+- **SDLC Agile Model**
+  - similar to iterative model, but with more customer feedback.
+  - helps with fast time-to-market projects.
 
 ## Projects and Members
 
@@ -555,69 +652,16 @@
   - Closing
   - Reports on the final closeout of all phases of the project.
 
-## Financial and Performance Analysis
+## Waterfall
 
-- **Assumptions**
-  - future factors you state as true to present a financial plan.
-- **Benefit**
-  - money generated or saved from project.
-  - also called 'financial value' or 'revenue'.
-- **Cost**
-  - anything related to project that causes money to flow out of company.
-- **Cost-Benefit Analysis**
-  - cost to produce vs benefit.
-  - timeline of how quickly money can be recouped.
-- **Financial Analysis**
-  - assigning hard numbers to future events.
-- **Net Profit**
-  - NET = `benefit - cost`
-- **Revenue**
-  - money flowing into company as result of project.
-- **Scoring Model**
-  - rating/weight each project or alternative solution from predefined list of criteria.
-  - often includes a 'minimum' rating. Project discarded if not meet minimum.
-- **Payback Period**
-  - time to recover from all cost of producing product.
-- **FV (Future Value) vs PV (Present Value)**
-  - include inflation into the cost.
-  - Future Value = Present Value(1+interest)^years
-- **ROI**
-  - percentage of gain for investment.
-  - ROI = `(net profit / cost) * 100` // same
-  - ROI = `(revenue - cost) * 100` // same
-  - ROI = `((Financial Value - cost) / cost) * 100` // same
-- **IRR**
-  - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
-  - Higher better.
-- **Current State vs Future State or as is-to be, Performance Analysis**
-  - how change will effect the business in the future.
-  - as is-to-be(also called performance analysis): means same.
-- **Discounted Cash Flow**
-  - total value of each years expected cash inflow, in 'todays' dollars.
-- **NPV**
-  - net present value.
-
-## Data Confidentiality
-
-- **Data Confidentiality**
-  - protecting sensitive data that identify individuals personal information.
-- **GDPR (General Data Protection Regulation)**
-  - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
-- **PII (Personally Identifiable Information)**
-  - any information about an individual (social security number, date of birth, mothers maiden name, medical, biometric, financial, educational, employment...)
-  - organizations should develope policies and procedures(educate, train) to handle PII and data breaches.
-  - Anonymize sensitive data before sharing.
-- **Linkable PII**
-  - personal identifiable info that can be linked together to create SPII.
-  - name, address, email, MAC, phone, race, age, credit card...
-- **SPII (Sensitive Personally Identifiable Information)**
-  - subset of PII. Any single piece of data that could identify and cause harm or embarrassment.
-  - SSN, Passport, Drivers License, Biometric.
-- **PHI (Personal Health Information)**
-  - IIHI (Individually Identifiable Health Information)
-    - past, present, and future health or mental condition.
-- **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
-  - provides regulations for safekeeping **(ePHI) electronic Personal Health Information**.
-- **NIST (National Instituted of Standards and Technology)**
-  - federal agency creates frameworks and process to help protect information.
-  - describes 3 levels: low, medium, high impact.
+- **Waterfall**
+  - follows linear sequence. Work only flows one way.
+- **Waterfall 6 phases**
+  1. requirements: project requirements.
+  2. design: actionable specifications.
+  3. implementation: do work.
+  4. testing: verify.
+  5. delivery: deploy to customer.
+  6. maintenance: customer support.
+- **Waterfall Use**
+  - when you have clear objectives, no unknowns, and high change cost.
