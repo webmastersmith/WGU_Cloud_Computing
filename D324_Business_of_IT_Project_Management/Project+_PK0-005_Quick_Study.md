@@ -72,6 +72,8 @@
   - Visualizing data points over time to identify trends, patterns, and potential areas for improvement.
 - **Smoke Testing**
   - Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
+- **Scope**
+  - project scope: boundaries of project. Outlines what work needs to be done and what won't be done to achieve the project's goals.
 - **Starvation**
   - Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
 - **Statistical Sampling**
