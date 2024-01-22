@@ -120,12 +120,29 @@
 - Describe lessons learned.
   - Lessons learned describe the successes and failures of the project.
 
-## Agile and SAFe
+## Agile
 
 - **Agile**
   - Agile: iterative, incremental. delivers value early and often. Teams small (3-10 members).
     - Iterative: make improvements, get feedback.
     - Incremental: small improvements at a time.
+  - cross-functional group that stays with project entire lifecycle.
+  - members fill multiple roles and have broad experience.
+- **Agile Communication: Stakeholder, Customer, Changes**
+  - Stakeholder: engage stakeholder all phases of project.
+  - Customer: customer communication with developer is vital.
+  - Communication Changes: embrace change. encourage communication.
+- **Agile Requirements**
+  - requirements dictate how the project looks and behaves.
+  - only need basic requirements at start of project.
+  - Collection of Requirements -> Product Creation -> Customer Review
+- **Agile Budget and Schedule**
+  - Budget: flexible. Good for **custom tailored work**.
+  - Schedule: loose and flexible. Only one iteration is planned in advance.
+- **Agile Environmental Factors: Culture, Development Processes, Industry Standards**
+  - Culture: team needs strong commitment(iterative, incremental design), good collaboration skills.
+  - Development Processes: customer review after each iteration, continuous testing can be expensive.
+  - Industry Standards: iterative and incremental.
 - **Agile Strengths**
   - expected change.
 - **Agile Weakness**
@@ -350,7 +367,7 @@
 - **Business Analyst**
   - gathering and documenting requirements for project.
 - **Business Case**
-  - Justifies the project's viability(most important) and alignment with business goals.
+  - **Justifies the project**'s viability(most important) and alignment with business goals.
   - summarizes project and is first project proposal.
   - created in discovery phase. Often includes details about budget and timelines(start, end).
   - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
@@ -426,10 +443,10 @@
   - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
 - **Product Owners**
   - help agile teams stay on track with cost, scope, and time.
-  - accountable to create MVP keeping to product vision.
+  - **creating a valuable product and identifying how to improve a product**. Keeping to product vision.
   - create work, but do not manage. Act as customer proxy.
 - **Product Manager**
-  - define product strategy, create roadmap on how product will improve and change over time.
+  - **define product strategy**, create roadmap on how product will improve and change over time.
 - **Programs**
   - group projects with related objectives to achieve a larger objective.
   - bring about benefits that wouldn’t be achievable if the projects were managed separately.
@@ -455,7 +472,7 @@
     - Creates a foundation for project governance.
 - **Project Manager**
   - manage teams in any framework as long as the project is active.
-  - planning, scheduling, documents, progress, risk, fixed time, cost and scope.
+  - **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
   - completes project goals to stakeholder/company satisfaction.
 - **Project Manager Skills**
   - leadership, communication, problem-solving, negotiation, organization, time management.
@@ -508,7 +525,7 @@
 
 - **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile.
-  - Business Case created and project is justified.
+  - **Business Case created(project is justified)**.
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
@@ -690,6 +707,8 @@
 - **Waterfall**
   - follows linear sequence. Work only flows one way. Teams any size.
   - documentation heavy.
+  - Regular on/off boarding(highly specialized members flow in and out of project as needed).
+  - Resources are typically fixed(backend, get python developer).
 - **Waterfall 6 phases**
   1. requirements: project requirements.
   2. design: actionable specifications.
@@ -697,5 +716,20 @@
   4. testing: verify.
   5. delivery: deploy to customer.
   6. maintenance: customer support.
+- **Waterfall Communication: Stakeholder, Customer, Changes**
+  - Stakeholder: provides comprehensive requirements at start, then review finished product.
+  - Customer: customer does not communicate with developer.
+  - Communication Changes: very few changes.
+- **Waterfall Requirements**
+  - requirements dictate how the project looks and behaves.
+  - requirements must all be stated at start of project.
+  - Collection of Requirements -> Product Creation -> Customer Review -> Maintenance Phase(fix after customer review).
+- **Waterfall Budget and Schedule**
+  - Budget: fixed, strict, predictable. Good for 'limited' budget.
+  - Schedule: predictable. Entire project is planned in advance.
+- **Waterfall Environmental Factors: Culture, Development Processes, Industry Standards**
+  - Culture: favors vast knowledge and role specialization.
+  - Development Processes: customer receives finished product.
+  - Industry Standards: linear and sequential. Heavy documentation.
 - **Waterfall Use**
   - when you have clear objectives, heavy documentation, and high change cost.
