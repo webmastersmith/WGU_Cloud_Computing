@@ -153,6 +153,14 @@
   - project requirements will change often. Team is stable and self organized.
   - agile is flexible. continually improvements through sprints.
 
+## Charts
+
+- **Project Organizational Chart**
+  - once you know project scope, the organizational chart helps to pick your team members.
+  - ![organizational chart](img/organizational_chart.PNG)
+- **Impact Grid -Stakeholder**
+  - ![stakeholder impact grid](img/impact_grid.PNG)
+
 ## Data Confidentiality
 
 - **Data Confidentiality**
@@ -363,11 +371,23 @@
 - **Needs and demands of why projects come about**
   - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
 - **Architect**
-  - part of the IT team. design
+  - part of the IT team. design. Make sure project interoperates with business goals.
+  - Responsibilities:
+    - Solution design
+    - System blueprints
+    - Evaluating systems against organizational standards
 - **Artifacts**
   - preexisting knowledge or vetted vendors to be used in project planning.
 - **Business Analyst**
   - gathering and documenting requirements for project.
+  - works between the business side and the IT side.
+  - Responsibilities:
+    - Helping to define the project
+    - Gathering business and technical requirements
+    - Ensuring requirements stay aligned to needs
+    - Interpreting business requirements
+    - Verifying deliverables against requirements
+    - Assisting with testing and validation of products
 - **Business Case**
   - **Justifies the project**'s viability(most important) and alignment with business goals.
   - summarizes project and is first project proposal.
@@ -406,10 +426,12 @@
   - both sides must use same metrics.
   - Current State: whats going on right now.
   - Future State: what will change after project.
+- **Core Team Members**
+  - also called 'operational' team members because they focus on day-to-day operations.
 - **Customers: Internal, External, End-User**
   - Internal: inside organization. easy feedback.
   - External: outside organization. typically pay for product.
-  - End-User: physical user of final product.
+  - End-User: physical user of final product. Can also provide insight on usability and functionality.
 - **Decision Model**
   - apples-to-apples way of comparing projects and which one is the most benefit to company needs.
   - **Rewards**
@@ -417,10 +439,16 @@
   - **Constrained Optimization Model**
     - mathmatical model for highly complex projects.
 - **Developer/Engineer**
-  - writing program code.
+  - writing program frontend/backend code.
+  - Responsibilities:
+    - Writing code to standards
+    - Building products according to the project plan or sprint backlog
+    - Reporting development progress to the project manager or product owner
 - **Expert Judgement**
   - expertise of stakeholder or other subject matter expert to make project decisions.
   - Danger lies with relying on single technique to make selection.
+- **Extended Team Member**
+  - work part time on multiple projects.
 - **PMO (Project Management Office)**
   - Functional department for all project managers.
   - manages flow of projects and provides guidance to project managers with organization resources.
@@ -473,9 +501,17 @@
     - Enables resource allocation and project tracking.
     - Creates a foundation for project governance.
 - **Project Manager**
-  - manage teams in any framework as long as the project is active.
-  - **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
+  - runs day-to-day management of teams in any framework as long as the project is active.
+  - responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
   - completes project goals to stakeholder/company satisfaction.
+  - Responsibilities:
+    - Building the project team and securing resources
+    - Building the project charter and defining the project’s scope
+    - Creating required project logs and processes, including the issue log, change log, and risk register
+    - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
+    - Preparing and delivering project status updates
+    - Tracking the project’s progress and status when compared to the schedule and budget
+    - Managing vendor relationships
 - **Project Manager Skills**
   - leadership, communication, problem-solving, negotiation, organization, time management.
 - **Project Manager: Managing a Project Team**
@@ -497,6 +533,7 @@
 - **Project Selection Method**
   - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Project Sponsor**
+  - ultimately responsible for the success or failure of project. Delegates operations to project manager.
   - usually executive that can assign money and resources to project.
   - approves project charter by signing.
   - Tie-breaker, champion, adviser of project.
@@ -511,6 +548,10 @@
   - Anyone/Organization with vested interest in the project.
   - **Waterfall**: detailed requirements given to team. No further communication until project completion.
   - **Agile**: communication between team and stakeholder throughout the project.
+  - Responsibilities:
+    - Must understand the project’s purpose and how it will affect them.
+    - Be transparent about their support or lack of support
+    - Provide timely feedback on the project’s progress
 - **Stakeholder Analysis**
   - asking questions to gather their interest and needs in project.
 - **Stakeholder Register**
@@ -519,9 +560,43 @@
 - **SMEs (Subject Matter Experts)**
   - team members performing the work. have the specific knowledge and experience to do the work.
 - **Tester/QA**
-  - ensure requirements are met.
+  - ensure requirements are met. help prevent errors.
 - **Validate a Project**
   - write business case, identify and analyze stakeholders.
+- **Vendor**
+  - third party provides resources.
+  - Responsibilities:
+    - Provide work outlined in contracts
+    - Maintain service level agreements
+    - Keep clear lines of communication open for business relationships
+
+## Project Initialize
+
+- **Initiating Project: Team Roles and Responsibilities**
+  - after project scope is finalized, identify people who will do the work and have the right skills.
+- **Initiating Project: RAM (Responsibility Assignment Matrix)**
+  - clarifies who is responsible for completing/managing activities in project.
+  - team members know assignment and who to work with.
+  - RACI:
+    - responsible: do the work.
+    - accountable: manage.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates.
+    - ![ram chart](img/ram_chart.PNG)
+- **Initiating Project: Stakeholder**
+  - engage stakeholder to build and manage relationship throughout project.
+- **Initiating Project: Performance Objectives**
+  - KPI (Key Performance Indicators): Measure project success.
+  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
+  - OKRs (Objective and Key Results): Aspirational goals. Generate change.
+- **Initiating Project: Project Charter**
+  - outlines project: parameters, purpose, expectations and vision.
+- **Initiating Project: Scope**
+  - detailed description of project elements. What work needs to be done to meet project goals.
+- **Initiating Project: Records Management**
+  - starts the generation of documentation.
+- **Initiating Project: Kickoff**
+  - live meeting with team. Discuss project purpose, goals, plan.
 
 ## Project Life Cycle Phases
 
