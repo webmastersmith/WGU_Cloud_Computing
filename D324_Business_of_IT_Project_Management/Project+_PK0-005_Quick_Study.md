@@ -114,7 +114,7 @@
 - Name the four reasons for project endings.
   - They are addition, starvation, integration, and extinction.
 - Understand the steps involved in closing a project.
-  - The steps are verification and validation of deliverables, obtaining sign-off, transition plan creation, revoking access, releasing project resources, closing out contracts, archiving documents, lessons learned, closure meeting, closeout report, celebration, and postimplementation support and warranty period.
+  - The steps are verification and validation of deliverables, obtaining sign-off, transition plan creation, revoking access, releasing project resources, closing out contracts, archiving documents, lessons learned, closure meeting, closeout report, celebration, and post-implementation support and warranty period.
 - Explain the purpose of obtaining formal customer or stakeholder sign-off.
   - The formal sign-off documents that the customer accepts the project work and that the project meets the defined requirements. It also signals the official closure of the project and the transfer of the final product of the project to the organization.
 - Describe lessons learned.
@@ -123,7 +123,7 @@
 ## Agile and SAFe
 
 - **Agile**
-  - **Agile**: iterative, incremental. delivers value early and often.
+  - Agile: iterative, incremental. delivers value early and often. Teams small (3-10 members).
     - Iterative: make improvements, get feedback.
     - Incremental: small improvements at a time.
 - **Agile Strengths**
@@ -132,17 +132,7 @@
   - scope creep, missed deadlines and less documentation.
 - **Agile Use**
   - project requirements will change often. Team is stable and self organized.
-- **SAFe (Scaled Agile Framework)**
-  - expand agile practices across multiple teams to work together.
-  - Agile Release Team (ART): related groups of agile teams to simplify communication, planning, schedules.
-  - Iteration: short term planning cycle.
-  - Program Increment: longer-term planning cycle.
-- **SAFe Strengths**
-  - allows scaling and project organization in bigger organizations with multiple agile teams.
-- **SAFe Weakness**
-  - adds layers of overhead to organization.
-- **SAFe Use**
-  - multiple agile teams that need to collaborate more effectively.
+  - agile is flexible. continually improvements through sprints.
 
 ## Data Confidentiality
 
@@ -323,57 +313,24 @@
 ## PRINCE2
 
 - **PRINCE2**
-
-## Scrum
-
-- **Scrum**
-  - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
-  - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
-  - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
-  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
-- **Scrum 5 Values**
-  - Commitment, focus, openness, respect, courage.
-- **Scrum 3 Pillars**
-  - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
-- **Scrum Events**
-  - Sprint: iteration and all scrum events.
-  - Sprint planning: backlog created.
-  - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
-  - Sprint review: uncover issues early, confirm on track.
-  - Sprint retrospective: find improvement opportunities(improve scrum flow) from previous sprint.
-- **Scrum Key Artifacts**
-  - Product Backlog: list of changes.
-  - Product Goal: long term target.
-  - Sprint Backlog: plan for upcoming sprint.
-  - Sprint Goal: summarize value of sprint.
-  - Increment: meets the 'done' definition and move to next product goal.
-- **Scrum Strengths**
-  - short cycles allow responsive learning, complex problem solving fro unpredictable work.
-- **Scrum Weakness**
-  - teams must be highly cohesive, cross-functional. No large groups.
-
-## Software Development Lifecycle SDLC
-
-- **SDLC (Software Development Lifecycle)**
-  - produce high-quality, low-cost, thoroughly tested software.
-- **SDLC 7 phases**
-  1. Planning: outline project scope and purpose.
-  2. Requirements: define resources needed and software purpose.
-  3. Design & Prototyping: specifications of software: language, security, interface.
-  4. Development: write code.
-  5. Testing: software compatibility and performs as expected.
-  6. Deployment: deploy to production environment.
-  7. Operations and Maintenance: support software.
-- **SDLC Waterfall Model**
-  - good for short task or well defined, no change projects.
-- **SDLC Iterative Model**
-  - hybrid. combines iterative with sequential models.
-- **SDLC Spiral Model**
-  - risk-centric iterative model.
-  - most complex and resource-intensive model. Projects can 'spiral' out of control with cost and scope.
-- **SDLC Agile Model**
-  - similar to iterative model, but with more customer feedback.
-  - helps with fast time-to-market projects.
+  - process-based methodology. Common in UK, EU, Canada, Australia.
+  - focus on clear project phases, roles, and responsibilities.
+  - originally waterfall methodology, but has embraced the agile model.
+  - has 7 principles, 7 themes, 7 processes.
+- **PRINCE2 Team Manager**
+  - management team member focused on helping project manager.
+- **PRINCE2 Project Board**
+  - authorizes resources and funding in support of project manager.
+- **PRINCE2 Project Board Three Roles**
+  1. **Executive**: member of upper management represents business perspective, owns project business case.
+  2. **Senior User**: represents customer perspective.
+  3. **Senior Supplier**: represents supplier perspective.
+- **PRINCE2 Strengths**
+  - very flexible with any project.
+  - greater upper management involvement.
+  - constant communication between project board, manager, and teams.
+- **PRINCE2 Weaknesses**
+  - extensive documentation.
 
 ## Projects and Members
 
@@ -467,6 +424,12 @@
   - strategy to maintain and prioritize maximum programs/projects.
 - **Preliminary Scope**
   - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
+- **Product Owners**
+  - help agile teams stay on track with cost, scope, and time.
+  - accountable to create MVP keeping to product vision.
+  - create work, but do not manage. Act as customer proxy.
+- **Product Manager**
+  - define product strategy, create roadmap on how product will improve and change over time.
 - **Programs**
   - group projects with related objectives to achieve a larger objective.
   - bring about benefits that wouldn’t be achievable if the projects were managed separately.
@@ -491,7 +454,8 @@
     - Enables resource allocation and project tracking.
     - Creates a foundation for project governance.
 - **Project Manager**
-  - planning, organizing, leading team, on time, on budget and within scope.
+  - manage teams in any framework as long as the project is active.
+  - planning, scheduling, documents, progress, risk, fixed time, cost and scope.
   - completes project goals to stakeholder/company satisfaction.
 - **Project Manager Skills**
   - leadership, communication, problem-solving, negotiation, organization, time management.
@@ -605,57 +569,127 @@
 
 ## Project Management Documents
 
-- Business case
+- **Business case**
   - Discovery
   - Justification for the project.
-- Preliminary scope statement
+- **Preliminary scope statement**
   - Initiating
   - Project objectives are defined; business problem the project will address is stated.
-- Project charter
+- **Project charter**
   - Initiating
   - Authorizes the project to begin.
-- Responsibility assignment matrix (RAM)
+- **Responsibility assignment matrix (RAM)**
   - Initiating
   - Defines stakeholder responsibilities. Incorporates the use of a RACI chart.
   - RACI is a way to define responsibilities on the project and stands for responsible, accountable, consult, and inform.
-- Communication plan
+- **Communication plan**
   - Planning
   - Documents the types of information needs the stakeholders have, when the information should be distributed, and how the information will be delivered.
-- Project schedule
+- **Project schedule**
   - Planning
   - Determines the start and finish dates for project activities and assigns resources to the activities.
-- Scope statement
+- **Scope statement**
   - Planning
   - Documents the product description, key deliverables, success and acceptance criteria, key performance indicators, exclusions, assumptions, and constraints.
-- Project management plan
+- **Project management plan**
   - Planning
   - Consists of all the project planning documents such as charter, scope statement, schedule, and more.
-- Issue log
+- **Issue log**
   - Executing
   - A list of issues, containing list numbers, descriptions, and owners.
-- Change log
+- **Change log**
   - Executing
   - Describes change requests and their disposition for the project.
-- Risk register
+- **Risk register**
   - Executing
   - A list of risks and their descriptions.
-- Status report
+- **Status report**
   - Executing
   - A report to stakeholders on the status of the project deliverables, schedule, risks, issues, and more.
-- Dashboard information
+- **Dashboard information**
   - Executing
   - An electronic reporting tool that lets users choose elements of the project to monitor project health and status.
-- Meeting agenda/meeting minutes
+- **Meeting agenda/meeting minutes**
   - Executing
   - Meeting agendas describe the items to be discussed and addressed at upcoming meetings, and minutes recap what was discussed and the decisions made at the meeting.
-- Project closeout report
+- **Project closeout report**
   - Closing
   - Reports on the final closeout of all phases of the project.
+
+## Scaled Agile Framework
+
+- **SAFe (Scaled Agile Framework)**
+  - expand agile practices across multiple teams to work together.
+  - Agile Release Team (ART): related groups of agile teams to simplify communication, planning, schedules.
+  - Iteration: short term planning cycle.
+  - Program Increment: longer-term planning cycle.
+- **SAFe Strengths**
+  - allows scaling and project organization in bigger organizations with multiple agile teams.
+- **SAFe Weakness**
+  - adds layers of overhead to organization.
+- **SAFe Use**
+  - multiple agile teams that need to collaborate more effectively.
+
+## Scrum
+
+- **Scrum**
+  - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
+  - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
+  - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
+  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+- **Scrum 5 Values**
+  - Commitment, focus, openness, respect, courage.
+- **Scrum 3 Pillars**
+  - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
+- **Scrum Events**
+  - Sprint: iteration and all scrum events.
+  - Sprint planning: backlog created.
+  - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
+  - Sprint review: uncover issues early, confirm on track.
+  - Sprint retrospective: find improvement opportunities(improve scrum flow) from previous sprint.
+- **Scrum Key Artifacts**
+  - Product Backlog: list of changes.
+  - Product Goal: long term target.
+  - Sprint Backlog: plan for upcoming sprint.
+  - Sprint Goal: summarize value of sprint.
+  - Increment: meets the 'done' definition and move to next product goal.
+- **Scrum Strengths**
+  - short cycles allow responsive learning, complex problem solving fro unpredictable work.
+- **Scrum Weakness**
+  - teams must be highly cohesive, cross-functional. No large groups.
+
+## Software Development Lifecycle SDLC
+
+- **SDLC (Software Development Lifecycle)**
+  - produce high-quality, low-cost, thoroughly tested software.
+- **SDLC 7 phases**
+  1. Planning: outline project scope and purpose.
+  2. Requirements: define resources needed and software purpose.
+  3. Design & Prototyping: specifications of software: language, security, interface.
+  4. Development: write code.
+  5. Testing: software compatibility and performs as expected.
+  6. Deployment: deploy to production environment.
+  7. Operations and Maintenance: support software.
+- **SDLC Waterfall Model**
+  - sequential model, good for short task or well defined, no change projects.
+- **SDLC Iterative Model**
+  - hybrid. combines iterative with sequential models.
+- **SDLC Spiral Model**
+  - risk-centric iterative model.
+  - most complex and resource-intensive model. Projects can 'spiral' out of control with cost and scope.
+- **SDLC Agile Model**
+  - similar to iterative model, but with more customer feedback.
+  - helps with fast time-to-market projects.
+- **SDLC Strengths**
+  - comprehensive framework.
+- **SDLC Weaknesses**
+  - project success depends on time spent on advanced planning.
 
 ## Waterfall
 
 - **Waterfall**
-  - follows linear sequence. Work only flows one way.
+  - follows linear sequence. Work only flows one way. Teams any size.
+  - documentation heavy.
 - **Waterfall 6 phases**
   1. requirements: project requirements.
   2. design: actionable specifications.
@@ -664,4 +698,4 @@
   5. delivery: deploy to customer.
   6. maintenance: customer support.
 - **Waterfall Use**
-  - when you have clear objectives, no unknowns, and high change cost.
+  - when you have clear objectives, heavy documentation, and high change cost.
