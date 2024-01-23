@@ -34,7 +34,7 @@
   - Testing a complete system or application from beginning to end, ensuring its functionality and performance across all components and integrations.
 - **ERP (Enterprise Resource Planning)**
   - back office software to coordinate: accounting, human resources, procurement...
-  - Allows for data sharing between roles. Data and API(functionality) reside on one system.
+  - centralizes management and access for data sharing between roles. Data and API(functionality) centralized.
 - **ESG (Environmental, Social, and Governance)**
   - Environmental: project impact to environment.
   - Social: project impact among stakeholders, team members, customers.
@@ -486,22 +486,10 @@
 - **Project Baseline**
   - approved cost, schedule, scope, plans, and documents.
   - used to measure performance/progress. Determine if on schedule, within budget or on target.
-- **Project Charter**
-  - Authorizes the project and defines its key elements.
-  - Describes the project's:
-    - Objective and deliverables
-    - Scope and boundaries
-    - Resources and budget
-    - Timeline and milestones
-    - Key stakeholders and roles
-    - Approval process and signatures
-  - Function:
-    - Serves as a formal reference point for the project team.
-    - Provides clarity and accountability.
-    - Enables resource allocation and project tracking.
-    - Creates a foundation for project governance.
 - **Project Manager**
   - runs day-to-day management of teams in any framework as long as the project is active.
+  - explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
+  - keeps project sponsor notified of status, conflicts and risk.
   - responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
   - completes project goals to stakeholder/company satisfaction.
   - Responsibilities:
@@ -517,7 +505,7 @@
 - **Project Manager: Managing a Project Team**
   - manage team and resources for team.
 - **Project Manager: Communicating with Stakeholders and Team Members**
-  - sponsors, stakeholders, team members up-to-date.
+  - sponsors, stakeholders, team members up-to-date. Start -> Finish.
 - **Project Manager Scope**
   - goals, deliverables, and requirements of the project.
 - **Project Manager Risk**
@@ -534,9 +522,17 @@
   - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Project Sponsor**
   - ultimately responsible for the success or failure of project. Delegates operations to project manager.
-  - usually executive that can assign money and resources to project.
+  - usually senior executive that assigns money and resources to project.
   - approves project charter by signing.
   - Tie-breaker, champion, adviser of project.
+  - Responsibilities:
+    - find/provide funding
+    - sign charter. Approve baseline(starting point of project, schedule, scope), high-level requirements.
+    - define business case.
+    - authorize assignment of human resources.
+    - assigns project manager and define their authority.
+    - negotiate support from key stakeholders. Champion and market project.
+    - enforce milestones by removing road blocks.
 - **Senior Management**
   - highest level of leadership.
   - control organizational goals, communicate with shareholders and board members.
@@ -570,10 +566,43 @@
     - Maintain service level agreements
     - Keep clear lines of communication open for business relationships
 
-## Project Initialize
+## Project Lifecycle Phase 1 Initialize
 
 - **Initiating Project: Team Roles and Responsibilities**
-  - after project scope is finalized, identify people who will do the work and have the right skills.
+  - formal authorization for a new project to begin.
+  - preliminary scope statement and project charter are created.
+    - after project scope is finalized, identify people who will do the work and have the right skills.
+  - build team, roles identified.
+- **Initiating Project: Scope**
+  - detailed description of project elements. What work needs to be done to meet project goals.
+- **Initiating Project: Project Charter**
+  - officially recognizes the project has begun.
+  - clarifies purpose and expectation for stakeholders.
+  - clarifies project manager role and authority level.
+  - Serves as a formal reference point for the project team: parameters, purpose, expectations and vision.
+  - Enables resource allocation and project tracking.
+  - use template or artifact from previous work.
+  - Describes the project's:
+    - Objective and deliverables
+    - Scope and boundaries
+    - Resources and budget
+    - Timeline and milestones
+    - Key stakeholders and roles
+    - Approval process and signatures
+- **Initiating Project: Stakeholder**
+  - engage stakeholder to build and manage relationship throughout project.
+  - Engagement Plan:
+    - Stakeholder: List the person or group.
+    - Point of Contact: If the stakeholder is not a person, list the person who represents the stakeholder.
+    - Power: List the power level from the Power/Impact Grid
+    - Influence: List their impact level from the Power/Impact Grid.
+    - Project Phase: List the project phases that you will need to engage with them
+    - Engagement Needs: Describe what they need or why they are a key stakeholder
+    - Engagement Approach: List the type of engagement you will conduct from the
+    - Power/Impact Grid
+      - ![impact grid](img/impact_grid.PNG)
+    - Methods: Capture how you will communicate with them
+    - Frequency: List a descriptive term of how often you will engage with the stakeholder
 - **Initiating Project: RAM (Responsibility Assignment Matrix)**
   - clarifies who is responsible for completing/managing activities in project.
   - team members know assignment and who to work with.
@@ -583,18 +612,22 @@
     - consulted: Subject Matter Experts.
     - informed: receive updates.
     - ![ram chart](img/ram_chart.PNG)
-- **Initiating Project: Stakeholder**
-  - engage stakeholder to build and manage relationship throughout project.
-- **Initiating Project: Performance Objectives**
-  - KPI (Key Performance Indicators): Measure project success.
-  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
-  - OKRs (Objective and Key Results): Aspirational goals. Generate change.
-- **Initiating Project: Project Charter**
-  - outlines project: parameters, purpose, expectations and vision.
-- **Initiating Project: Scope**
-  - detailed description of project elements. What work needs to be done to meet project goals.
 - **Initiating Project: Records Management**
   - starts the generation of documentation.
+- **Initiating Project: Establishing accepted communication channels**
+- **Initiating Project: Documents (Artifacts)**
+  - use artifacts to observe lessons learned from past experiences.
+  - Reviewing existing artifacts
+- **Initiating Project: Performance Objectives**
+  - KPI (Key Performance Indicators): Measure project success.
+    - leading(predictive work)/lagging(past work) indicators.
+  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
+  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
+  - Project Roadmap: high-level progress points. Objective summaries.
+  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
+  - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
+- **Initiating Project: Defining access requirements**
+  - dd
 - **Initiating Project: Kickoff**
   - live meeting with team. Discuss project purpose, goals, plan.
 
@@ -606,19 +639,6 @@
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
-- **Initiating Phase**
-  - preliminary scope statement and project charter are created.
-  - team built, roles identified.
-  - formal authorization for a new project to begin.
-    - Creating the preliminary scope statement
-    - Creating the project charter
-    - Identifying and assessing stakeholders
-    - Developing a responsibility assignment matrix (RAM)
-    - Establishing accepted communication channels
-    - Developing a records management plan
-    - Defining access requirements
-    - Reviewing existing artifacts
-    - Determining solution design Conducting the project kickoff
 - **Planning Phase**
   - Prepare for the work of the project.
   - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
