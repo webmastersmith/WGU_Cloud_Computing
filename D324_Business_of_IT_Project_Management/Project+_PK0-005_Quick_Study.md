@@ -482,6 +482,7 @@
   - bring about benefits that wouldn’t be achievable if the projects were managed separately.
 - **Program Manager**
   - lead groups of projects. Operates at a more strategic level.
+  - helps capitalize on the resources of multiple projects.
   - project managers report to them(makes them a stakeholder and your boss).
 - **Project Baseline**
   - approved cost, schedule, scope, plans, and documents.
@@ -557,10 +558,19 @@
     - Be transparent about their support or lack of support
     - Provide timely feedback on the project’s progress
 - **Stakeholder Analysis**
-  - asking questions to gather their interest and needs in project.
+  - asking questions to gather role(level of involvement, influence), needs/concerns.
+  - Questions:
+    - What is your interest in project?
+    - expectations of outcome?
+    - what is do you anticipate as your level of involvement?
+    - knowledge level in project? What do you see as special skills needed for successful outcome?
+    - what contributions are you anticipating making?
+    - How will project impact your organization positively/negatively?
+    - Are there other stakeholders expectations that conflict with yours?
+      - Use these questions to fill out the Stakeholder Analysis Grid:
+      - ![stakeholder impact grid](img/impact_grid.PNG)
 - **Stakeholder Register**
-  - register to keep track of multiple stakeholders.
-  - shows level of influence and contact info.
+  - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
 - **SMEs (Subject Matter Experts)**
   - team members performing the work. have the specific knowledge and experience to do the work.
 - **Team Member**
@@ -580,27 +590,28 @@
 
 ## Project Lifecycle Phase 1 Initialize
 
-- **Initiating Project: Team Roles and Responsibilities**
-  - formal authorization for a new project to begin.
-  - preliminary scope statement and project charter are created.
-    - after project scope is finalized, identify people who will do the work and have the right skills.
-  - build team, roles identified.
-- **Initiating Project: Scope**
-  - detailed description of project elements. What work needs to be done to meet project goals.
+- **Initiating Project**
+  - after business case is approved, formal authorization for a new project to begin.
+  - Next: preliminary scope statement, project charter, team assembled.
+- **Initiating Project: Preliminary Scope Statement**
+  - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
+  - **clearly defined reasons and objectives**(the problem trying to solve) and a high level description of the deliverables.
+    - objectives should be clear, measurable, actionable.
+    - questioning project requestor to ensure problem is clearly understood.
 - **Initiating Project: Project Charter**
-  - officially recognizes the project has begun.
-  - clarifies purpose and expectation for stakeholders.
-  - clarifies project manager role and authority level.
-  - Serves as a formal reference point for the project team: parameters, purpose, expectations and vision.
-  - Enables resource allocation and project tracking.
-  - use template or artifact from previous work.
+  - officially recognizes the project has begun. First official document of Approved project.
+  - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
+    - check PMO for template or required format. some answers can be taken from business case.
   - Describes the project's:
-    - Objective and deliverables
-    - Scope and boundaries
-    - Resources and budget
+    - Objective and deliverables: desired result. reference point: parameters, purpose, expectations and vision.
+    - Scope and boundaries: clarifies project manager and team members roles and authority level.
+    - Resources and budget: Enables resource allocation and project tracking.
     - Timeline and milestones
-    - Key stakeholders and roles
+    - Key stakeholders and roles: clarifies purpose and expectation for stakeholders.
     - Approval process and signatures
+- **Initiating Project: Team Roles and Responsibilities**
+  - after project scope is finalized, identify people who will do the work and have the right skills.
+  - build team, roles identified.
 - **Initiating Project: Stakeholder**
   - engage stakeholder to build and manage relationship throughout project.
   - Engagement Plan:
