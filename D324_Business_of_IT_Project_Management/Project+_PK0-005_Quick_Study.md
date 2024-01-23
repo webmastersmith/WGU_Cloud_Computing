@@ -486,6 +486,14 @@
 - **Project Baseline**
   - approved cost, schedule, scope, plans, and documents.
   - used to measure performance/progress. Determine if on schedule, within budget or on target.
+- **Project Management Office (PMO)**
+  - central location for guidance, standards, artifacts to project managers, programs and portfolios.
+  - allows organization to capitalize on the collective benefits of all projects.
+  - Functions:
+    - organized standards and processes.
+    - coordination of resources, templates, artifacts.
+    - governance and setting priorities.
+    - KPI, performance standards and nonperformance consequences.
 - **Project Manager**
   - runs day-to-day management of teams in any framework as long as the project is active.
   - explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
@@ -555,6 +563,10 @@
   - shows level of influence and contact info.
 - **SMEs (Subject Matter Experts)**
   - team members performing the work. have the specific knowledge and experience to do the work.
+- **Team Member**
+  - knowledgeable person either full time or part time on a project.
+  - keep timeline, cost of project.
+  - communicate with project manager risk, updates.
 - **Tester/QA**
   - ensure requirements are met. help prevent errors.
 - **Validate a Project**
