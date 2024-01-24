@@ -160,6 +160,23 @@
   - ![organizational chart](img/organizational_chart.PNG)
 - **Impact Grid -Stakeholder**
   - ![stakeholder impact grid](img/impact_grid.PNG)
+- **Initiating Project: RAM (Responsibility Assignment Matrix)**
+  - clarifies who is responsible for completing/managing activities in project.
+  - team members know assignment and who to work with.
+  - RACI:
+    - responsible: do the work.
+    - accountable: manage.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates.
+    - ![ram chart](img/ram_chart.PNG)
+- **Initiating Project: Performance Objectives**
+  - KPI (Key Performance Indicators): Measure project success.
+    - leading(predictive work)/lagging(past work) indicators.
+  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
+  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
+  - Project Roadmap: high-level progress points. Objective summaries.
+  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
+  - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
 
 ## Data Confidentiality
 
@@ -390,7 +407,7 @@
     - Assisting with testing and validation of products
 - **Business Case**
   - **Justifies the project**'s viability(most important) and alignment with business goals.
-  - summarizes project and is first project proposal.
+  - summarizes project and is first project proposal. Determines if project should proceed.
   - created in discovery phase. Often includes details about budget and timelines(start, end).
   - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
     - Executive Summary: brief summary. problem statement, solution, result.
@@ -550,7 +567,7 @@
   - single senior manager reviews/validates initial business case.
   - secures funding and removes barriers.
 - **Stakeholder**
-  - Anyone/Organization with vested interest in the project.
+  - Anyone/Organization with vested interest(positive or negative) in the project.
   - **Waterfall**: detailed requirements given to team. No further communication until project completion.
   - **Agile**: communication between team and stakeholder throughout the project.
   - Responsibilities:
@@ -601,17 +618,19 @@
 - **Initiating Project: Project Charter**
   - officially recognizes the project has begun. First official document of Approved project.
   - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
-    - check PMO for template or required format. some answers can be taken from business case.
-  - Describes the project's:
-    - Objective and deliverables: desired result. reference point: parameters, purpose, expectations and vision.
-    - Scope and boundaries: clarifies project manager and team members roles and authority level.
-    - Resources and budget: Enables resource allocation and project tracking.
-    - Timeline and milestones
+    - check project management office for template or required format. some answers can be taken from business case.
+    - use artifacts to observe lessons learned from past experiences.
+  - Project Charter Functions:
+    - Justify project: reiterate business case.
+    - Objective and deliverables: clearly define desired result, deliverables and start, end date.
+    - Scope and boundaries: clarifies project manager and team members(needed skills) roles and authority level.
+    - Assumptions: based on previous experience, you can expect similar.
+    - Timeline and milestones: tracking(on schedule) details on each stage of project.
+    - Requirements and budget: List all blockers, and high-level resource estimation.
     - Key stakeholders and roles: clarifies purpose and expectation for stakeholders.
-    - Approval process and signatures
-- **Initiating Project: Team Roles and Responsibilities**
-  - after project scope is finalized, identify people who will do the work and have the right skills.
-  - build team, roles identified.
+    - Constraints and Risk: Something fixed(must be worked around). Threat to project(missed deadline).
+    - Success criteria: delivered on time, within budget, meets goals(fit, regulations, quality, performance).
+    - Signatures: Project sponsor must review and sign off.
 - **Initiating Project: Stakeholder**
   - engage stakeholder to build and manage relationship throughout project.
   - Engagement Plan:
@@ -626,33 +645,18 @@
       - ![impact grid](img/impact_grid.PNG)
     - Methods: Capture how you will communicate with them
     - Frequency: List a descriptive term of how often you will engage with the stakeholder
-- **Initiating Project: RAM (Responsibility Assignment Matrix)**
-  - clarifies who is responsible for completing/managing activities in project.
-  - team members know assignment and who to work with.
-  - RACI:
-    - responsible: do the work.
-    - accountable: manage.
-    - consulted: Subject Matter Experts.
-    - informed: receive updates.
-    - ![ram chart](img/ram_chart.PNG)
-- **Initiating Project: Records Management**
-  - starts the generation of documentation.
-- **Initiating Project: Establishing accepted communication channels**
-- **Initiating Project: Documents (Artifacts)**
-  - use artifacts to observe lessons learned from past experiences.
-  - Reviewing existing artifacts
-- **Initiating Project: Performance Objectives**
-  - KPI (Key Performance Indicators): Measure project success.
-    - leading(predictive work)/lagging(past work) indicators.
-  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
-  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
-  - Project Roadmap: high-level progress points. Objective summaries.
-  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
-  - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
-- **Initiating Project: Defining access requirements**
-  - dd
+- **Initializing Project: Records Management**
+  - CRUD(create, read, update, delete) policies for documents and records.
+  - where records are stored, liaisons listed, classification.
+  - **Records Management System (RMS)**: software that manages record lifecycle.
+    - enforces government regulations retention policies.
+- **Initializing Project: Access Requirements**
+  - software that manages who can access what. Typically based on roles.
+  - access is least privilege(only what is required).
 - **Initiating Project: Kickoff**
   - live meeting with team. Discuss project purpose, goals, plan.
+  - after project charter is signed, identify people who will do the work and have the right skills.
+  - build team, roles identified.
 
 ## Project Life Cycle Phases
 
