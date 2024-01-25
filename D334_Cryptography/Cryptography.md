@@ -14,6 +14,7 @@
 - https://www.reddit.com/r/WGU/comments/v0szcv/thirdterm_bscc_c173_c916_c175_c839/
 - https://www.reddit.com/r/WGU/comments/v9plvw/passed_c839d334_intro_to_cryptography/
 - https://www.khanacademy.org/computing/computer-science
+- <https://unethical.info/2024/01/24/hacking-my-air-purifier/>
 
 ## WGU Tips
 

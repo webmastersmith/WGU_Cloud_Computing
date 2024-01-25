@@ -673,17 +673,62 @@
 - **Planning Phase**
   - Prepare for the work of the project.
   - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
-    - Develop a detailed project scope statement
-    - Develop a project schedule
-    - Determine budget considerations
-    - Develop a quality assurance plan
-    - Develop a communication plan
-    - Assess and assign project resources
-    - Perform an initial risk assessment
-    - Assess the resource pool and assign project resources
-    - Develop a project management plan
-    - Train project team members
-    - Define units of work Develop a transition plan/release plan
+- **Planning: Scope Statement**
+  - agreement between customer and project team about the deliverables and success criteria.
+- **Planning: Scope Statement Components**
+  - mnemonic: CAKE DAC
+  - criteria: standard that must be met to successful.
+  - acceptance: standard for successful deliverable.
+  - key deliverables: critical to success. specific and verifiable(measurable).
+  - exclusions: anything not included in project work.
+  -
+  - description: overall project goal.
+  - assumptions: believed to be true.
+  - constraints: restricts progress(weather, laws, budget, time).
+- **Planning: Requirements**
+  - description of what makes the project a success.
+  - can be part of scope statement or separate document.
+- **Planning: Project Constraints and Assumptions**
+  - constraints: restricts progress(weather, laws, budget, time).
+  - assumptions: believed to be true.
+- **Planning: Prince2**
+  - popular UK, EU methodology. Any size project. Known for step-by-step(small stages) progress.
+  - heavy documentation describes milestones of each step.
+- **Planning: DevOps and DevSecOps**
+  - DevOps: development team and operations team combined into one team. Improves collaboration.
+  - DevSecOps: add security responsibilities to team.
+- **Planning: SDLC**
+  - plan, design, build, test, deploy.
+  - waterfall and agile are methodologies of SDLC.
+- **Planning: Three Types of SDLC**
+  - waterfall, agile, hybrid.
+- **Planning: Hybrid SDLC**
+  - combining best parts of multiple methodologies(scrum+kanban = scrumban) to fit business goals.
+- **Planning: Agile**
+  - projects in small incremental portions.
+  - continuous stakeholder feedback.
+- **Planning: Difference Between Scrum and Kanban**
+  - both are agile methods and both are known as 'pull systems'.
+  - scrum: short sprints(time-bound).
+  - kanban: continuous workflow. Visual board to track progress.
+- **Planning: Scrum Team Roles**
+  - product owner: voice of the customer.
+  - scrum master: enforces scrum principles(daily standups).
+  - scrum team: cross-functional team doing short time-bound sprints to create the MVP(minimum viable product).
+    - user-stories are kept in backlog.
+- **Planning: Scrum Minimum Viable Product**
+  - MVP: breaking down features into small task that have enough features for customer to examine and provide feedback. Similar to prototype or mockup.
+- **Planning: Scrum Backlog**
+  - user stories needed to complete project.
+- **Planning: List Agile Methodologies**
+  - Extreme Programming(XP), Scrumban, feature-driven development, dynamic systems, Agile unified process.
+- **Planning: Solutions Architect in Solutions Design**
+  - solutions design: determine best technical solution for business problems.
+  - solutions architect: determines solution, works closely with team and project manager.
+
+## Project Lifecycle Phase 3 Scheduling
+
+- **Scheduling**
 
 ## Project Lifecycle Phase 4 Executing
 
