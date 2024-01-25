@@ -160,6 +160,7 @@
   - ![organizational chart](img/organizational_chart.PNG)
 - **Impact Grid -Stakeholder**
   - ![stakeholder impact grid](img/impact_grid.PNG)
+  - Salience Model
 - **Initiating Project: RAM (Responsibility Assignment Matrix)**
   - clarifies who is responsible for completing/managing activities in project.
   - team members know assignment and who to work with.
@@ -396,7 +397,7 @@
 - **Artifacts**
   - preexisting knowledge or vetted vendors to be used in project planning.
 - **Business Analyst**
-  - gathering and documenting requirements for project.
+  - **gathering and documenting** requirements for project.
   - works between the business side and the IT side.
   - Responsibilities:
     - Helping to define the project
@@ -548,9 +549,9 @@
   - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Project Sponsor**
   - ultimately responsible for the success or failure of project. Delegates operations to project manager.
-  - usually senior executive that assigns money and resources to project.
-  - approves project charter by signing.
-  - Tie-breaker, champion, adviser of project.
+  - usually **senior executive** that assigns **money** and **resources** to project.
+  - approves project charter by **signing**.
+  - **Tie-breaker, champion, adviser of project**.
   - Responsibilities:
     - find/provide funding
     - sign charter. Approve baseline(starting point of project, schedule, scope), high-level requirements.
@@ -605,7 +606,16 @@
     - Maintain service level agreements
     - Keep clear lines of communication open for business relationships
 
-## Project Lifecycle Phase 1 Initialize
+## Project Lifecycle Phase 1 Discovery
+
+- **Discovery/Concept Phase**
+  - first phase. determine whether project is worthwhile.
+  - **Business Case created(project is justified)**.
+  - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
+  - **If project considered risky**
+    - Perform **feasibility study**: new projects, complex projects, risky projects.
+
+## Project Lifecycle Phase 2 Initialize
 
 - **Initiating Project**
   - after business case is approved, formal authorization for a new project to begin.
@@ -658,14 +668,8 @@
   - after project charter is signed, identify people who will do the work and have the right skills.
   - build team, roles identified.
 
-## Project Life Cycle Phases
+## Project Lifecycle Phase 3 Planning
 
-- **Discovery/Concept Phase**
-  - first phase. determine whether project is worthwhile.
-  - **Business Case created(project is justified)**.
-  - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
-  - **If project considered risky**
-    - Perform **feasibility study**: new projects, complex projects, risky projects.
 - **Planning Phase**
   - Prepare for the work of the project.
   - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
@@ -680,6 +684,9 @@
     - Develop a project management plan
     - Train project team members
     - Define units of work Develop a transition plan/release plan
+
+## Project Lifecycle Phase 4 Executing
+
 - **Executing Phase**
   - where work is performed, monitored, and tracked. If product does not conform, change request are created.
     - Producing and verifying deliverables
@@ -692,6 +699,9 @@
     - Performing quality assurance/governance activities such as coordinating phase gate reviews
     - Monitoring the budget
     - Conducting project meetings and updates
+
+## Project Lifecycle Phase 5 Closing
+
 - **Closing Phase**
   - project closeout. contracts closed, team members released.
   - validate deliverables, document acceptance of project work.
