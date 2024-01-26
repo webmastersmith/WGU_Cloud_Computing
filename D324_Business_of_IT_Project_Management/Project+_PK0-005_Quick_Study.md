@@ -188,13 +188,16 @@
   - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
 - **Kanban Board**
-  - track progress in phases.
+  - track progress of complete project in stages. Entire team. Capacity Bound
   - ![kanban board](img/kanban.webp)
 - **PERT Chart**
   - Program Evaluation and Review Technique.
   - accurate estimate time required for **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
+- **Scrum Board**
+  - same as kanban board but only shows work of one sprint. Single sprint team. Time-bound.
+  - ![scrum board](img/Scrum-Board.png)
 
 ## Data Confidentiality
 
