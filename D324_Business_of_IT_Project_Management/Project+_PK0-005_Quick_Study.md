@@ -177,18 +177,24 @@
   - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
   - Project Roadmap: high-level progress points. Objective summaries.
   - Milestone Chart: project checkpoints. Timeline or plot deadlines.
+- **Burndown Chart**
+  - shows remaining time and work in each scrum sprint iteration.
+  - ![burndown chart](img/burndown.png)
+- **Critical Path Chart**
+  - shows delay time without effecting project completion time.
+  - critical path is longest path on chart.
+  - ![critical path chart](img/critical-path.png)
 - **Gantt Chart**
   - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
+- **Kanban Board**
+  - track progress in phases.
+  - ![kanban board](img/kanban.webp)
 - **PERT Chart**
   - Program Evaluation and Review Technique.
   - accurate estimate time required for **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
-- **Critical Path Chart**
-  - shows delay time without effecting project completion time.
-  - critical path is longest path on chart.
-  - ![critical path chart](img/critical-path.png)
 
 ## Data Confidentiality
 
