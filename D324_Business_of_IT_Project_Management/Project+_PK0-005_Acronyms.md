@@ -12,6 +12,8 @@
   - Continuous Integration/Continuous Deployment
 - CMS
   - Content Management System
+- CPA or CPM
+  - Critical Path Analysis or Critical Path Method
 - CRM
   - Customer Relationship Management
 - EDRMS
@@ -30,6 +32,8 @@
   - Joint Application Review
 - PaaS
   - Platform as a Service
+- PDM
+  - Precedence Diagraming Method
 - PERT
   - Program Evaluation Review Technique
 - PHI
