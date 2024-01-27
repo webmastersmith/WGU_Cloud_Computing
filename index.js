@@ -211,9 +211,8 @@
       // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
-        let tempFront = [];
+        let front = [];
         let picture = [];
-        let question = line;
         // check for images. Front images must have be separated with '%'.
         if (re.test(line)) {
           // split out one or more images. Escape is '~'.
@@ -222,22 +221,19 @@
             // check if img is an image
             if (re.test(str)) {
               // is image add picture and to front
-              tempFront.push(fixImagePath(str));
+              front.push(fixImagePath(str));
               picture.push(createImagePath(str));
             } else {
               // This is the question.
-              tempFront.push(str);
+              const h = str.length > 40 ? '###' : '##';
+              front.push(`${h} ${str.replace('-', '').trim()}`);
             }
           });
-          question = q;
-          // picture = lineArr.map((picName) => createImage(picName, 'Front'));
-          picture = lineArr.map((picName) => createImagePath(picName));
-          const pathArr = lineArr.map((p) => fixImagePath(p));
-          tempFront.push(pathArr);
+        } else {
+          // does not have image on front.
+          const h = line.length > 40 ? '###' : '##';
+          front.push(`${h} ${line.replace('-', '').trim()}`);
         }
-        // process front
-        const h = question.length > 40 ? '###' : '##';
-        const front = [`${h} ${question.replace('-', '').trim()}`, ...tempFront];
         // console.log(front);
         cardsArr.push({
           front,
