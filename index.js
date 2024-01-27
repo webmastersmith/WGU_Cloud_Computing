@@ -1,6 +1,10 @@
 (async function () {
   const fs = await import('fs');
   const path = await import('path');
+  // Image RegExp
+  const reStr = /!\[.*?\]\(.*?\)/;
+  const re = new RegExp(reStr, '');
+
   // variables
   // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005.md';
   // const removeLines = 59; // line before you want to start parsing. 0 is first line.
@@ -119,8 +123,8 @@
   // console.log(await sendToAnki('modelNamesAndIds'));
   // change default styling of cards.
   await sendToAnki('updateModelStyling', { model: { name: 'Basic', css } });
-  await sendToAnki('updateModelStyling', { model: { name: 'Basic (optional reversed card)', css } });
-  await sendToAnki('updateModelStyling', { model: { name: 'Basic (type in the answer)', css } });
+  // await sendToAnki('updateModelStyling', { model: { name: 'Basic (optional reversed card)', css } });
+  // await sendToAnki('updateModelStyling', { model: { name: 'Basic (type in the answer)', css } });
 
   // This function sends object to ANKI-CONNECT addon listening on port 8765.
   // https://github.com/amikey/anki-connect
@@ -163,6 +167,24 @@
   }
   // parsePage(dataArr); // for testing
 
+  // Images
+  // Image path
+  function createImagePath(line) {
+    const filename = line.split('/').pop().replace(')', '');
+    const picPath = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
+    return { filename, picPath };
+  }
+  // Change image path from relative to absolute
+  function fixImagePath(line) {
+    const { filename } = createImagePath(line);
+    return line.replace(/\(.*?\)/, `(${filename})`);
+  }
+  // Image Object for Anki
+  function createImage(line, side = 'Back') {
+    const { filename, picPath } = createImagePath(line);
+    return { path: picPath, filename, fields: [side] };
+  }
+
   // Turn each '##' block into Question and Answer Cards.
   function processBlocks(block) {
     // get and remove section name
@@ -177,27 +199,46 @@
       // console.log(line);
       // must be question if starts with '-'.
       if (line.startsWith('-')) {
-        const h = line.length > 40 ? '###' : '##';
-        const front = converter.makeHtml(`${h} ${line.replace('-', '').trim()}`);
+        let tempFront = [];
+        let picture = [];
+        let question = line;
+        // check for images. Front images must have 'question % image1 % image2'.
+        if (re.test(line)) {
+          // could have multiple images.
+          const [q, ...lineArr] = line.split('%').map((el) => el.trim());
+          question = q;
+          picture = lineArr.map((picName) => createImage(picName, 'Front'));
+          // const pathStr = lineArr.map((p) => fixImagePath(p)).join('/n');
+          // tempFront.push(pathStr);
+        }
+        // process front
+        const h = question.length > 40 ? '###' : '##';
+        const front = [`${h} ${question.replace('-', '').trim()}`, ...tempFront];
         // console.log(front);
         cardsArr.push({
           front,
           back: [],
-          picture: [],
+          picture,
         });
         continue;
       }
       // must be answer if starts with '  -'.
+      // lastItem is an Object {front, back, picture}.
       const lastItem = cardsArr.pop();
       // The very first line can be blank and will fall through to answer and end up undefined.
       if (!lastItem) continue;
       // check if line is image
-      if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
-        const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
-        const filename = picPath.split('/').pop();
-        const newPic = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
-        // create the picture data.
-        lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
+      // if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
+      if (re.test(line)) {
+        // const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
+        // const filename = picPath.split('/').pop();
+        // const newPic = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
+        // // create the picture data.
+        // lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
+        // cardsArr.push(lastItem);
+        lastItem.picture.push(createImage(line));
+        // lastItem.back.push(fixImagePath(line));
+        // console.log(JSON.stringify(lastItem, null, 2));
         cardsArr.push(lastItem);
         continue;
       }
@@ -212,8 +253,9 @@
     // console.log(cardsArr);
     // convert 'back' markdown to html.
     const cards = cardsArr.map((card) => {
+      const front = converter.makeHtml(card.front.join('\n'));
       const back = converter.makeHtml(card.back.join('\n'));
-      return { ...card, back };
+      return { ...card, front, back };
     });
     return { section, cards };
   }

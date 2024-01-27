@@ -630,7 +630,7 @@
 
 - **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile.
-  - **Business Case created(project is justified)**.
+- **Discover: Business Case**
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
@@ -749,6 +749,40 @@
 ## Project Lifecycle Phase 3 Scheduling
 
 - **Scheduling**
+  - defining units of work, cost, resources for a project.
+- **Scheduling: Define and Create WBS**
+  - Work Breakdown Structure: deliverable-oriented hierarchy that describes required work.
+  - major deliverables are broken down into smaller components, for time and cost estimation.
+  - ![work breakdown structure chart](img/WBS.jpg)
+- **Scheduling: WBS levels**
+  - highest level: project name.
+  - second level: major deliverables.
+  - sub levels: subprojects.
+  - lowest level: work package.
+  - ![work breakdown structure chart](img/WBS.jpg)
+- **Scheduling: WBS Dictionary**
+  - describes each deliverable, resources, tracking code(for accounting), criteria for success.
+  - similar to 'scope'.
+- **Scheduling: Analogous Estimating vs Bottom-Up Estimating**
+  - Analogous: estimating top-Down. Expert judgement, historical information.
+  - Bottom-Up: estimates for each work item, rolls them into a total.
+- **Scheduling: Task Sequencing**
+  - identify proper scheduling order of project activities.
+- **Scheduling: Two Major Relationships between Dependent Task**
+  - predecessor: project that must be completed before task.
+  - successor: project that must be completed after task.
+- **Scheduling: Four Types of Logical Relationships**
+  - finish-to-start (FS): predecessor must finish before successor can start.
+  - start-to-start (SS): predecessor must start before successor can start.
+  - start-to-finish (SF): predecessor must start before successor can finish.
+  - finish-to-finish (FF): predecessor must finish before successor finishes.
+- **Scheduling: Three Most Common Activity Estimators**
+  - Expert Judgement: someone experienced.
+  - Analogous or Top-Down: artifact(similar activities) from previous project.
+  - Parametric: quantitatively-based estimates (rate x quantity).
+- **Scheduling: Calculate Critical Path** % ![critical path](img/critical-path.png)
+  - which path adds up to the longest
+  - % ![critical path](img/critical-path.png)
 
 ## Project Lifecycle Phase 4 Executing
 
