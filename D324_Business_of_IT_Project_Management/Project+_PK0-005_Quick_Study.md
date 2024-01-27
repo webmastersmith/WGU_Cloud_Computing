@@ -748,7 +748,7 @@
 
 ## Project Lifecycle Phase 3 Scheduling
 
-- **Scheduling**
+- ![critical path](img/critical-path.png) % **Scheduling** % ![scrum board](img/Scrum-Board.png)
   - defining units of work, cost, resources for a project.
 - **Scheduling: Define and Create WBS**
   - Work Breakdown Structure: deliverable-oriented hierarchy that describes required work.

@@ -214,10 +214,21 @@
         let tempFront = [];
         let picture = [];
         let question = line;
-        // check for images. Front images must have 'question % image1 % image2'.
+        // check for images. Front images must have be separated with '%'.
         if (re.test(line)) {
-          // split out one or more images.
-          const [q, ...lineArr] = line.split('%').map((el) => el.trim());
+          // split out one or more images. Escape is '~'.
+          line.split(/(?<!~)%/).forEach((el) => {
+            const str = el.replace('~%', '%').trim();
+            // check if img is an image
+            if (re.test(str)) {
+              // is image add picture and to front
+              tempFront.push(fixImagePath(str));
+              picture.push(createImagePath(str));
+            } else {
+              // This is the question.
+              tempFront.push(str);
+            }
+          });
           question = q;
           // picture = lineArr.map((picName) => createImage(picName, 'Front'));
           picture = lineArr.map((picName) => createImagePath(picName));
