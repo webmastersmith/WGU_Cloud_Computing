@@ -109,7 +109,7 @@
           // picture,
         },
       });
-      // add images ot storeMediaFile
+      // add images to storeMediaFile
       if (picture.length > 0) {
         for (const { filename, picPath } of picture) {
           await sendToAnki('storeMediaFile', {
@@ -183,7 +183,7 @@
     const picPath = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
     return { filename, picPath };
   }
-  // Change image path from relative to absolute. // ![pic description]("C:\\my\path\\pic.jpg")
+  // Change image path from relative to filename. // ![pic description]("pic.jpg")
   function fixImagePath(line) {
     const { filename } = createImagePath(line);
     return line
@@ -191,11 +191,6 @@
       .replace(/\(.*?\)/, `(${filename})`)
       .replace(/^- /, '');
   }
-  // Image Object for Anki
-  // function createImage(line, side = 'Back') {
-  //   const { filename, picPath } = createImagePath(line);
-  //   return { path: picPath, filename, fields: [side] };
-  // }
 
   // Turn each '##' block into Question and Answer Cards.
   function processBlocks(block) {
@@ -218,9 +213,9 @@
           // split out one or more images. Escape is '~'.
           line.split(/(?<!~)%/).forEach((el) => {
             const str = el.replace('~%', '%').trim();
-            // check if img is an image
+            // check if 'str' is an image
             if (re.test(str)) {
-              // is image add picture and to front
+              // is image, push to picture and to front
               front.push(fixImagePath(str));
               picture.push(createImagePath(str));
             } else {
@@ -248,15 +243,7 @@
       // The very first line can be blank and will fall through to answer and end up undefined.
       if (!lastItem) continue;
       // check if line is image
-      // if (/.*!\[(.*)\]\((.*)\)/.test(line)) {
       if (re.test(line)) {
-        // const picPath = line.replace(/.*!\[.*\]\((.*)\)/, '$1');
-        // const filename = picPath.split('/').pop();
-        // const newPic = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
-        // // create the picture data.
-        // lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
-        // cardsArr.push(lastItem);
-        // lastItem.picture.push(createImage(line));
         lastItem.picture.push(createImagePath(line));
         lastItem.back.push(fixImagePath(line));
         // console.log(JSON.stringify(lastItem, null, 2));
@@ -272,7 +259,6 @@
       cardsArr.push(lastItem);
     }
     // console.log(cardsArr);
-    // convert 'back' markdown to html.
     const cards = cardsArr.map((card) => {
       const front = converter.makeHtml(card.front.join('\n'));
       const back = converter.makeHtml(card.back.join('\n'));
