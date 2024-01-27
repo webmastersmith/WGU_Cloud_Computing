@@ -782,7 +782,7 @@
   - Parametric: quantitatively-based estimates (rate x quantity).
 - **Scheduling: Calculate Critical Path** % ![critical path](img/critical-path.png)
   - which path adds up to the longest
-  - % ![critical path](img/critical-path.png)
+  - ![critical path](img/critical-path.png)
 
 ## Project Lifecycle Phase 4 Executing
 

@@ -106,9 +106,18 @@
             Front: front,
             Back: back,
           },
-          picture,
+          // picture,
         },
       });
+      // add images ot storeMediaFile
+      if (picture.length > 0) {
+        for (const { filename, picPath } of picture) {
+          await sendToAnki('storeMediaFile', {
+            filename,
+            path: picPath,
+          });
+        }
+      }
     }
   }
 
@@ -174,16 +183,19 @@
     const picPath = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
     return { filename, picPath };
   }
-  // Change image path from relative to absolute
+  // Change image path from relative to absolute. // ![pic description]("C:\\my\path\\pic.jpg")
   function fixImagePath(line) {
     const { filename } = createImagePath(line);
-    return line.replace(/\(.*?\)/, `(${filename})`);
+    return line
+      .trim()
+      .replace(/\(.*?\)/, `(${filename})`)
+      .replace(/^- /, '');
   }
   // Image Object for Anki
-  function createImage(line, side = 'Back') {
-    const { filename, picPath } = createImagePath(line);
-    return { path: picPath, filename, fields: [side] };
-  }
+  // function createImage(line, side = 'Back') {
+  //   const { filename, picPath } = createImagePath(line);
+  //   return { path: picPath, filename, fields: [side] };
+  // }
 
   // Turn each '##' block into Question and Answer Cards.
   function processBlocks(block) {
@@ -204,12 +216,13 @@
         let question = line;
         // check for images. Front images must have 'question % image1 % image2'.
         if (re.test(line)) {
-          // could have multiple images.
+          // split out one or more images.
           const [q, ...lineArr] = line.split('%').map((el) => el.trim());
           question = q;
-          picture = lineArr.map((picName) => createImage(picName, 'Front'));
-          // const pathStr = lineArr.map((p) => fixImagePath(p)).join('/n');
-          // tempFront.push(pathStr);
+          // picture = lineArr.map((picName) => createImage(picName, 'Front'));
+          picture = lineArr.map((picName) => createImagePath(picName));
+          const pathArr = lineArr.map((p) => fixImagePath(p));
+          tempFront.push(pathArr);
         }
         // process front
         const h = question.length > 40 ? '###' : '##';
@@ -236,8 +249,9 @@
         // // create the picture data.
         // lastItem.picture.push({ path: newPic, filename, fields: ['Back'] });
         // cardsArr.push(lastItem);
-        lastItem.picture.push(createImage(line));
-        // lastItem.back.push(fixImagePath(line));
+        // lastItem.picture.push(createImage(line));
+        lastItem.picture.push(createImagePath(line));
+        lastItem.back.push(fixImagePath(line));
         // console.log(JSON.stringify(lastItem, null, 2));
         cardsArr.push(lastItem);
         continue;
