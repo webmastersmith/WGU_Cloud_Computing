@@ -209,27 +209,22 @@
         let front = [];
         let picture = [];
         // check for images. Front images must have be separated with '%'.
-        if (re.test(line)) {
-          // split out one or more images. Escape is '~'.
-          line.split(/(?<!~)%/).forEach((el) => {
-            const str = el.replace('~%', '%').trim();
-            // check if 'str' is an image
-            if (re.test(str)) {
-              // is image, push to picture and to front
-              front.push(fixImagePath(str));
-              picture.push(createImagePath(str));
-            } else {
-              // This is the question.
-              const h = str.length > 40 ? '###' : '##';
-              front.push(`${h} ${str.replace('-', '').trim()}`);
-            }
-          });
-        } else {
-          // does not have image on front.
-          const h = line.length > 40 ? '###' : '##';
-          front.push(`${h} ${line.replace('-', '').trim()}`);
-        }
-        // console.log(front);
+        // split out one or more images. Escape '%' with '~'.
+        line.split(/(?<!~)%/).forEach((el) => {
+          const str = el.replace('~%', '%').trim();
+          // check if 'str' is an image
+          if (re.test(str)) {
+            // is image, push to picture and to front
+            front.push(fixImagePath(str));
+            picture.push(createImagePath(str));
+          } else {
+            // This is the question.
+            const h = str.length > 40 ? '###' : '##';
+            front.push(`${h} ${str.replace('-', '').trim()}`);
+          }
+        });
+
+        // Front is done. Push to cards array.
         cardsArr.push({
           front,
           back: [],
@@ -237,7 +232,9 @@
         });
         continue;
       }
-      // must be answer if starts with '  -'.
+
+      // BACK -must be answer if starts with '  -'.
+      // Back side could have multiple lines, so keep adding to 'lastItem'.
       // lastItem is an Object {front, back, picture}.
       const lastItem = cardsArr.pop();
       // The very first line can be blank and will fall through to answer and end up undefined.
@@ -247,7 +244,7 @@
         lastItem.picture.push(createImagePath(line));
         lastItem.back.push(fixImagePath(line));
         // console.log(JSON.stringify(lastItem, null, 2));
-        cardsArr.push(lastItem);
+        cardsArr.push(lastItem); // push lastItem back into the cardsArr.
         continue;
       }
       // console.log(line);
