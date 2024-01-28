@@ -489,12 +489,13 @@
 - **Extended Team Member**
   - work part time on multiple projects.
 - **Key Performance Indicator (KPI)**
-  - measures only the most crucial project points.
+  - operational metrics, that measures only the most crucial project points.
 - **Key Performance Indicator (KPI): Lagging and Leading Indicators**
   - Lagging: captured only after work is done.
   - Leading: predictive measures.
 - **Objective and Key Results (OKR)**
   - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
+  - less is more. focus on the critical needs.
   - Two parts:
     - Objective: goal and why it matters.
     - Key Result: what you need to do to meet the goal.
