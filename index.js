@@ -214,11 +214,10 @@
           const str = el.replace('~%', '%').trim();
           // check if 'str' is an image
           if (re.test(str)) {
-            // is image, push to picture and to front
             front.push(fixImagePath(str));
             picture.push(createImagePath(str));
           } else {
-            // This is the question.
+            // Not an image, must be a question.
             const h = str.length > 40 ? '###' : '##';
             front.push(`${h} ${str.replace('-', '').trim()}`);
           }

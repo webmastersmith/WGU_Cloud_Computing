@@ -142,8 +142,8 @@
   - Budget: flexible. Good for **custom tailored work**.
   - Schedule: loose and flexible. Only one iteration is planned in advance.
 - **Agile Environmental Factors: Culture, Development Processes, Industry Standards**
-  - Culture: team needs strong commitment(iterative, incremental design), good collaboration skills.
-  - Development Processes: customer review after each iteration, continuous testing can be expensive.
+  - Culture: cross-functional. Team needs strong commitment(iterative, incremental design), good collaboration skills.
+  - Development Processes: customer review after each iteration(small batches), continuous testing can be expensive.
   - Industry Standards: iterative and incremental.
 - **Agile Strengths**
   - expected change.
@@ -580,6 +580,15 @@
     - assigns project manager and define their authority.
     - negotiate support from key stakeholders. Champion and market project.
     - enforce milestones by removing road blocks.
+- **Responsibility Assignment Matrix (RAM)**
+  - created in the initiation phase.
+  - clarifies team member assignment(ownership roles) and who to work with.
+  - RACI: (what role does team member fall into?)
+    - responsible: do the work.
+    - accountable: manage.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates only.
+    - ![ram chart](img/ram_chart.PNG)
 - **Senior Management**
   - highest level of leadership.
   - control organizational goals, communicate with shareholders and board members.
@@ -611,11 +620,13 @@
   - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
 - **SMEs (Subject Matter Experts)**
   - team members performing the work. have the specific knowledge and experience to do the work.
-- **Team Member**
-  - knowledgeable person either full time or part time on a project.
-  - keep timeline, cost of project.
-  - communicate with project manager risk, updates.
-- **Tester/QA**
+- **Team Member and Extended Team Member**
+  - **Team Member**: knowledgeable person either full time.
+    - keep timeline, cost of project.
+    - communicate with project manager risk, updates.
+  - **Extended Team Member**: also called Fractional Team Member.
+    - Only available part time. Typically Subject Matter Expert.
+- **Tester/Quality Assurance**
   - ensure requirements are met. help prevent errors.
 - **Validate a Project**
   - write business case, identify and analyze stakeholders.
@@ -630,12 +641,13 @@
 
 - **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile.
+  - business case is created.
 - **Discover: Business Case**
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
 
-## Project Lifecycle Phase 2 Initialize
+## Project Lifecycle Phase 1 Initiating
 
 - **Initiating Project**
   - after business case is approved, formal authorization for a new project to begin.
@@ -688,7 +700,7 @@
   - after project charter is signed, identify people who will do the work and have the right skills.
   - build team, roles identified.
 
-## Project Lifecycle Phase 3 Planning
+## Project Lifecycle Phase 2 Planning
 
 - **Planning Phase**
   - Prepare for the work of the project.
@@ -746,7 +758,7 @@
   - solutions design: determine best technical solution for business problems.
   - solutions architect: determines solution, works closely with team and project manager.
 
-## Project Lifecycle Phase 3 Scheduling
+## Project Lifecycle Phase 2 Scheduling
 
 - **Scheduling**
   - defining units of work, cost, resources for a project.
@@ -780,11 +792,20 @@
   - Expert Judgement: someone experienced.
   - Analogous or Top-Down: artifact(similar activities) from previous project.
   - Parametric: quantitatively-based estimates (rate x quantity).
-- **Scheduling: Calculate Critical Path** % ![critical path](img/critical-path.png)
-  - which path adds up to the longest
+- **Scheduling: CPM**
+  - Critical Path Method: finding the longest stretch to dependencies(sequential activities).
+  - exposes task that risk missing the finish date.
+  - Three things needed:
+    - list of all project task.
+    - project dependencies.
+    - time each task will take.
+- **Scheduling: Calculate Critical Path**
+  - which path adds up to the longest. Any delay will result in missing the finish date.
   - ![critical path](img/critical-path.png)
+- **Define Critical Path Task**
+  - critical path task activity with zero or negative float.
 
-## Project Lifecycle Phase 4 Executing
+## Project Lifecycle Phase 3 Executing
 
 - **Executing Phase**
   - where work is performed, monitored, and tracked. If product does not conform, change request are created.
@@ -799,7 +820,7 @@
     - Monitoring the budget
     - Conducting project meetings and updates
 
-## Project Lifecycle Phase 5 Closing
+## Project Lifecycle Phase 4 Closing
 
 - **Closing Phase**
   - project closeout. contracts closed, team members released.
