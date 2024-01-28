@@ -209,9 +209,9 @@
         let front = [];
         let picture = [];
         // check for images. Front images must have be separated with '%'.
-        // split out one or more images. Escape '%' with '~'.
-        line.split(/(?<!~)%/).forEach((el) => {
-          const str = el.replace('~%', '%').trim();
+        // split out one or more images. Escape '%' with '%'.
+        line.split(/\s%\s/).forEach((el) => {
+          const str = el.replace('%%', '%').trim();
           // check if 'str' is an image
           if (re.test(str)) {
             front.push(fixImagePath(str));

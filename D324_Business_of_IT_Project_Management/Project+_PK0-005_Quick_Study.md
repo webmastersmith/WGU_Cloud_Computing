@@ -155,12 +155,8 @@
 
 ## Charts
 
-- **Project Organizational Chart**
-  - once you know project scope, the organizational chart helps to pick your team members.
-  - ![organizational chart](img/organizational_chart.PNG)
-- **Impact Grid -Stakeholder**
-  - ![stakeholder impact grid](img/impact_grid.PNG)
-  - Salience Model
+- **What Is the Name of Chart and Purpose?** % ![organizational chart](img/organizational_chart.PNG)
+  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
 - **Initiating Project: RAM (Responsibility Assignment Matrix)**
   - clarifies who is responsible for completing/managing activities in project.
   - team members know assignment and who to work with.
@@ -192,12 +188,17 @@
   - ![kanban board](img/kanban.webp)
 - **PERT Chart**
   - Program Evaluation and Review Technique.
-  - accurate estimate time required for **large, complex projects.**
+  - accurate time scheduling estimates. Used in **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
 - **Scrum Board**
   - same as kanban board but only shows work of one sprint. Single sprint team. Time-bound.
   - ![scrum board](img/Scrum-Board.png)
+- **Stakeholder Impact Grid**
+  - power: how much influence.
+  - impact: project effect on stakeholder.
+  - ![stakeholder impact grid](img/impact_grid.PNG)
+  - Salience Model
 
 ## Data Confidentiality
 
@@ -415,7 +416,7 @@
     - System blueprints
     - Evaluating systems against organizational standards
 - **Artifacts**
-  - preexisting knowledge or vetted vendors to be used in project planning.
+  - preexisting knowledge, documentation(lessons learned) or vetted vendors to be used in project planning.
 - **Business Analyst**
   - **gathering and documenting** requirements for project.
   - works between the business side and the IT side.
@@ -487,6 +488,17 @@
   - Danger lies with relying on single technique to make selection.
 - **Extended Team Member**
   - work part time on multiple projects.
+- **Key Performance Indicator (KPI)**
+  - measures only the most crucial project points.
+- **Key Performance Indicator (KPI): Lagging and Leading Indicators**
+  - Lagging: captured only after work is done.
+  - Leading: predictive measures.
+- **Objective and Key Results (OKR)**
+  - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
+  - Two parts:
+    - Objective: goal and why it matters.
+    - Key Result: what you need to do to meet the goal.
+  - ![okr](img/okr-objectives-key-results.avif)
 - **PMO (Project Management Office)**
   - Functional department for all project managers.
   - manages flow of projects and provides guidance to project managers with organization resources.
@@ -593,6 +605,12 @@
   - highest level of leadership.
   - control organizational goals, communicate with shareholders and board members.
   - prioritize projects, authorize spending, assign team members.
+- **SMART Objective**
+  - Specific: define exactly what is needed.
+  - Measurable: what change to look for.
+  - Achievable: realistic goal.
+  - Relevant: align with business goals.
+  - Time-Bound: target end date.
 - **Sponsors**
   - single senior manager reviews/validates initial business case.
   - secures funding and removes barriers.
@@ -614,7 +632,7 @@
     - what contributions are you anticipating making?
     - How will project impact your organization positively/negatively?
     - Are there other stakeholders expectations that conflict with yours?
-      - Use these questions to fill out the Stakeholder Analysis Grid:
+    - Use these questions to fill out the Stakeholder Analysis Grid:
       - ![stakeholder impact grid](img/impact_grid.PNG)
 - **Stakeholder Register**
   - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
