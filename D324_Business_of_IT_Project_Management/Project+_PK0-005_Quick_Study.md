@@ -181,8 +181,24 @@
   - critical path is longest path on chart.
   - ![critical path chart](img/critical-path.png)
 - **Gantt Chart**
-  - Gantt Chart: relationship and dependencies between task. planning, execution, closing phase.
+  - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
+  - planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
+- **Key Performance Indicator (KPI) and Leading and Lagging Indicators**
+  - operational metrics, that measures only the most crucial project points.
+  - Leading: predictive measures.
+  - Lagging: captured only after work is done.
+- **Milestone or Timeline Chart**
+  - simple timeline chart of project milestones. focus is on events.
+  - ![milestone chart](img/Milestone-Chart.png)
+  - ![milestone2 chart](img/milestone2.PNG)
+- **Objective and Key Results (OKR)**
+  - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
+  - less is more. focus on the critical needs.
+  - Two parts:
+    - Objective: goal and why it matters.
+    - Key Result: what you need to do to meet the goal.
+  - ![okr](img/okr-objectives-key-results.avif)
 - **Kanban Board**
   - track progress of complete project in stages. Entire team. Capacity Bound
   - ![kanban board](img/kanban.webp)
@@ -191,6 +207,10 @@
   - accurate time scheduling estimates. Used in **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
+- **Roadmap chart**
+  - high-level, strategic plan aimed to communicate your project goals and vision. focus is on events.
+  - ![roadmap chart](img/roadmap.png)
+  - ![roadmap2 chart](img/roadmap2.PNG)
 - **Scrum Board**
   - same as kanban board but only shows work of one sprint. Single sprint team. Time-bound.
   - ![scrum board](img/Scrum-Board.png)
