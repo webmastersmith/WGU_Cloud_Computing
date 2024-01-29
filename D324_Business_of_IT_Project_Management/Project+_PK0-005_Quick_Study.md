@@ -176,6 +176,7 @@
 - **Milestone or Timeline Chart**
   - simple timeline chart of project milestones. focus is on events.
   - ![milestone chart](img/Milestone-Chart.png)
+  - Milestone chart
   - ![milestone2 chart](img/milestone2.PNG)
 - **Objective and Key Results (OKR)**
   - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
@@ -184,6 +185,13 @@
     - Objective: goal and why it matters.
     - Key Result: what you need to do to meet the goal.
   - ![okr](img/okr-objectives-key-results.avif)
+
+|           | OKR                                                                     |
+| :-------- | :---------------------------------------------------------------------- |
+| Objective | Our website conversions haven’t been higher in the history of Acme Inc. |
+| KR 1      | Increase visitor-to-lead conversion rate from 2.5% to 5%                |
+| KR 2      | Increase sales-accepted leads from 30% to 50%                           |
+
 - **Organizational Chart**
   - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
   - ![organizational chart](img/organizational_chart.PNG)
@@ -220,6 +228,104 @@
   - impact: project effect on stakeholder.
   - ![stakeholder impact grid](img/impact_grid.PNG)
   - Salience Model
+- **Team Lifecycle Chart**
+  - teams will have a performance ebb and flow.
+  - Teams need different types of support and leadership through different positions of lifecycle.
+  - Forming:
+  - Storming:
+  - Norming:
+  - Performing:
+  - Adjourning:
+  - ![team lifecycle](img/team_lifecycle.png)
+
+## Communication Management and Meetings
+
+- **Synchronous Communication**
+  - real-time communication. Face-to-face(in person or videoconference) with all parties.
+- **Asynchronous Communication**
+  - delay in communication. email. documentation notes.
+- **Written Communication**
+  - exchanges occur through handwritten/typed messages.
+- **Verbal Communication**
+  - oral communication
+- **Nonverbal Communication**
+  - body language and appearance. Signals sent when in person.
+- **Formality Communication**
+  - company channels to communicate. Official record.
+- **Informal Communication**
+  - unofficial communication. Casual conversation between coworkers, group chatter before meeting. Nonverbal communication during meeting.
+- **Internal Communication**
+  - communication inside the business.
+- **External Communication**
+  - communication outside the business.
+- **Target Audience**
+  - who needs to be at the meeting.
+- **Facilitator**
+  - guides meeting progress. redirect flow if meeting off track.
+- **Scribe**
+  - records meeting minutes, action items, and follow-ups.
+  - mandatory for meeting on the official record.
+  - not needed for training sessions.
+- **Demonstrations and Presentations Meetings**
+  - video, slide show, actual product.
+- **Status Meeting**
+  - update on progress of project.
+- **Stand-ups**
+  - focused, quick meeting. Popular in Scrum Daily stand-ups. Sometimes doing it standing up.
+- **Decisive Meetings**
+  - decision-making meeting.
+- **Decisive Meeting: Task Setting**
+  - assign task to be completed.
+- **Decisive Meeting: Project Steering**
+  - to keep projects on track and successful.
+  - includes the PM and executive stakeholders. Offer support and guidance throughout project lifecycle.
+  - can represents voice of the customer.
+- **Refinement Meeting**
+  - also called: product refinement or backlog refinement.
+  - re-prioritize backlog items. Most important at top, broken down into task.
+- **Collaborative Meeting**
+  - interactive, problem solving meeting.
+- **Focus Groups**
+  - Project manager runs meeting to gather experiences, needs, problems from customers.
+- **Workshops**
+  - group with shared interest gather to exchange information and conduct research.
+  - solve problems or increase knowledge(skill development).
+- **Joint Application Development (JAD)**
+  - also called: joint application review.
+  - specific type of workshop that involves the customer in the design process.
+  - early feedback.
+- **Brainstorming: Rapid, Reverse, Stop-and-Go, Round-Robin**
+  - Rapid: group rapidly generates many ideas. everybody can participate. Quantity over quality.
+  - Reverse: look at problem from different angles. ex.. Why you couldn't solve problem.
+  - Stop-and-Go: brainstorm short duration then refine ideas. Quality over Quantity.
+  - Round-Robin: everyone gets equal voice.
+- **Agenda**
+  - meeting purpose and expectation. Shared in advance.
+- **Meeting Timeboxing**
+  - fixed maximum time on each agenda item.
+- **Meeting Action Items**
+  - list of task someone will complete after meeting.
+- **Meeting Minutes**
+  - written record of key points.
+- **Meeting Follow-up**
+  - after meeting email with minutes(meeting recap).
+- **Language Barriers, Time Zones, Geographical Factors**
+  - interpreters, appropriate communication formats.
+  - Time Zones adn Geographical Factors: what works best for them?
+- **Technology Factors**
+  - slower internet, older hardware. Project manager can provide tools needed.
+- **Cultural Differences**
+  - any group with social customs, behavior, habits, beliefs.
+  - foster respect for each others beliefs. Team bonding.
+- **Team Lifecycle: Forming, Storming, Norming, Performing, Adjourning**
+  - teams will have a performance ebb and flow.
+  - Teams need different types of support and leadership through different positions of lifecycle.
+  - Forming: team first time together.
+  - Storming: team figure out roles and each others flaws.
+  - Norming: positive exchange and cohesiveness between team members.
+  - Performing:
+  - Adjourning:
+  - ![team lifecycle](img/team_lifecycle.png)
 
 ## Data Confidentiality
 
