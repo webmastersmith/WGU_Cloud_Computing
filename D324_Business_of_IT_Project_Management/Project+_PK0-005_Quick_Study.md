@@ -692,12 +692,14 @@
   - after business case is approved, formal authorization for a new project to begin.
   - Next: preliminary scope statement, project charter, team assembled.
 - **Initiating Project: Preliminary Scope Statement**
+  - **clearly defines how the work will be done**.
   - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
-  - **clearly defined reasons and objectives**(the problem trying to solve) and a high level description of the deliverables.
     - objectives should be clear, measurable, actionable.
     - questioning project requestor to ensure problem is clearly understood.
 - **Initiating Project: Project Charter**
+  - **high level explanation of why the project exit**.
   - officially recognizes the project has begun. First official document of Approved project.
+  - source of truth for the project. It describes the vision and direction of the entire project.
   - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
     - check project management office for template or required format. some answers can be taken from business case.
     - use artifacts to observe lessons learned from past experiences.
