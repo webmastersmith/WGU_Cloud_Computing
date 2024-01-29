@@ -155,24 +155,6 @@
 
 ## Charts
 
-- **What Is the Name of Chart and Purpose?** % ![organizational chart](img/organizational_chart.PNG)
-  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
-- **Initiating Project: RAM (Responsibility Assignment Matrix)**
-  - clarifies who is responsible for completing/managing activities in project.
-  - team members know assignment and who to work with.
-  - RACI:
-    - responsible: do the work.
-    - accountable: manage.
-    - consulted: Subject Matter Experts.
-    - informed: receive updates.
-    - ![ram chart](img/ram_chart.PNG)
-- **Initiating Project: Performance Objectives**
-  - KPI (Key Performance Indicators): Measure project success.
-    - leading(predictive work)/lagging(past work) indicators.
-  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
-  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
-  - Project Roadmap: high-level progress points. Objective summaries.
-  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
 - **Burndown Chart**
   - shows remaining time and work in each scrum sprint iteration.
   - ![burndown chart](img/burndown.png)
@@ -184,6 +166,9 @@
   - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
   - planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
+- **Kanban Board**
+  - track progress of complete project in stages. Entire team. Capacity Bound
+  - ![kanban board](img/kanban.webp)
 - **Key Performance Indicator (KPI) and Leading and Lagging Indicators**
   - operational metrics, that measures only the most crucial project points.
   - Leading: predictive measures.
@@ -199,14 +184,30 @@
     - Objective: goal and why it matters.
     - Key Result: what you need to do to meet the goal.
   - ![okr](img/okr-objectives-key-results.avif)
-- **Kanban Board**
-  - track progress of complete project in stages. Entire team. Capacity Bound
-  - ![kanban board](img/kanban.webp)
+- **Organizational Chart**
+  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
+  - ![organizational chart](img/organizational_chart.PNG)
+- **Performance Objectives**
+  - KPI (Key Performance Indicators): Measure project success.
+    - leading(predictive work)/lagging(past work) indicators.
+  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
+  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
+  - Project Roadmap: high-level progress points. Objective summaries.
+  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
 - **PERT Chart**
   - Program Evaluation and Review Technique.
   - accurate time scheduling estimates. Used in **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
+- **RAM (Responsibility Assignment Matrix)**
+  - clarifies who is responsible for completing/managing activities in project.
+  - team members know assignment and who to work with.
+  - RACI:
+    - responsible: do the work.
+    - accountable: manage.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates.
+    - ![ram chart](img/ram_chart.PNG)
 - **Roadmap chart**
   - high-level, strategic plan aimed to communicate your project goals and vision. focus is on events.
   - ![roadmap chart](img/roadmap.png)
@@ -224,6 +225,14 @@
 
 - **Data Confidentiality**
   - protecting sensitive data that identify individuals personal information.
+- **Public Data**
+  - no restrictions
+- **Internal Data**
+  - within company only. Exposing would not violate laws or trust.
+- **Confidential Data**
+  - limited access to authorized users only.
+- **Restricted Data**
+  - top secret. Criminal charges if exposed.
 - **GDPR (General Data Protection Regulation)**
   - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
 - **PII (Personally Identifiable Information)**
@@ -240,12 +249,13 @@
   - IIHI (Individually Identifiable Health Information)
     - past, present, and future health or mental condition.
 - **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
-  - provides regulations for safekeeping **(ePHI) electronic Personal Health Information**.
+  - provides regulations for safekeeping persons personal health records.
+  - **(ePHI) electronic Personal Health Information**.
 - **NIST (National Instituted of Standards and Technology)**
   - federal agency creates frameworks and process to help protect information.
   - describes 3 levels: low, medium, high impact.
 
-## DevOps, CI/CD and DevSecOps
+## DevOps, DevSecOps and CI/CD
 
 - **DevOps**
   - automating checks and tests along with development and operations.
@@ -265,6 +275,13 @@
   -Companies with resources for cross-functional teams and automation tools.
 - **DevOps 4 Phases**
   - plan, code, build, test.
+- **DevSecOps**
+  - Baking Security into DevOps(entire software development lifecycle) for Faster, **Secure Software Delivery**
+  - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
+- **DevSecOps Strengths**
+  - Faster delivery, continuous security feedback, and reduced risk of breaches.
+- **DevSecOps Weaknesses**
+  - Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
 - **CI/CD**
   - Individual developers check their code into the main branch frequently, and automated tests run against the new code.
 - **Continuous Integration**
@@ -273,13 +290,6 @@
   - Code automatically prepared for release but deployment is manual.
 - **Continuous Deployment**
   - Code automatically prepared for release and deployment is automatic.
-- **DevSecOps**
-  - Baking Security into DevOps(entire software development lifecycle) for Faster, **Secure Software Delivery**
-  - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
-- **DevSecOps Strengths**
-  - Faster delivery, continuous security feedback, and reduced risk of breaches.
-- **DevSecOps Weaknesses**
-  - Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
 
 ## Extreme Programming
 
@@ -679,9 +689,9 @@
 ## Project Lifecycle Phase 1 Discovery
 
 - **Discovery/Concept Phase**
-  - first phase. determine whether project is worthwhile.
+  - first phase. determine whether project is worthwhile/justified.
   - business case is created.
-- **Discover: Business Case**
+- **Discovery: Business Case**
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
@@ -694,10 +704,19 @@
 - **Initiating Project: Preliminary Scope Statement**
   - **clearly defines how the work will be done**.
   - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
-    - objectives should be clear, measurable, actionable.
-    - questioning project requestor to ensure problem is clearly understood.
+  - preliminary scope statement and the scope statement are the same. Only difference is maturity.
+  - document grows with project becomes more mature. This document will be the reference for the planning phase.
+  - Functions:
+    - Scope Description: summary project intent and purpose.
+    - Acceptance Criteria: description of successful project.
+    - Deliverables: project boundaries and what team will deliver.
+    - Exclusions: what team will not deliver.
+    - Assumptions: the project unknowns as known.
+    - Constraints: what has to be worked around and could delay project.
 - **Initiating Project: Project Charter**
   - **high level explanation of why the project exit**.
+  - objectives should be clear, measurable, actionable.
+  - questioning project requestor to ensure problem is clearly understood.
   - officially recognizes the project has begun. First official document of Approved project.
   - source of truth for the project. It describes the vision and direction of the entire project.
   - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
@@ -714,6 +733,7 @@
     - Constraints and Risk: Something fixed(must be worked around). Threat to project(missed deadline).
     - Success criteria: delivered on time, within budget, meets goals(fit, regulations, quality, performance).
     - Signatures: Project sponsor must review and sign off.
+  - after project charter is signed, identify people who will do the work and have the right skills.
 - **Initiating Project: Stakeholder**
   - engage stakeholder to build and manage relationship throughout project.
   - Engagement Plan:
@@ -731,15 +751,19 @@
 - **Initializing Project: Records Management**
   - CRUD(create, read, update, delete) policies for documents and records.
   - where records are stored, liaisons listed, classification.
+  - Types of records:
+    - Management Artifacts: budget, stakeholder engagement...
+    - Artifacts: documents created as project moves along.
+    - Legal Documents: contracts.
+    - Communications: written communication: meeting notes, status reports.
   - **Records Management System (RMS)**: software that manages record lifecycle.
-    - enforces government regulations retention policies.
+    - enforces government regulations, retention policies.
 - **Initializing Project: Access Requirements**
-  - software that manages who can access what. Typically based on roles.
+  - software that manages employees can access. Typically based on roles.
   - access is least privilege(only what is required).
 - **Initiating Project: Kickoff**
   - live meeting with team. Discuss project purpose, goals, plan.
-  - after project charter is signed, identify people who will do the work and have the right skills.
-  - build team, roles identified.
+  - signifies start of the project work. Team roles identified.
 
 ## Project Lifecycle Phase 2 Planning
 
@@ -749,15 +773,14 @@
 - **Planning: Scope Statement**
   - agreement between customer and project team about the deliverables and success criteria.
 - **Planning: Scope Statement Components**
-  - mnemonic: CAKE DAC
-  - criteria: standard that must be met to successful.
-  - acceptance: standard for successful deliverable.
-  - key deliverables: critical to success. specific and verifiable(measurable).
-  - exclusions: anything not included in project work.
-  -
-  - description: overall project goal.
-  - assumptions: believed to be true.
-  - constraints: restricts progress(weather, laws, budget, time).
+  - living document. This is the preliminary scope statement as it grows to maturity.
+  - Functions:
+    - Description: summary project intent and purpose.
+    - Acceptance Criteria: description of successful project.
+    - Deliverables: project boundaries and what team will deliver. Specific and verifiable(measurable).
+    - Exclusions: what team will not deliver.
+    - Assumptions: believed to be true.
+    - Constraints: what has to be worked around and could delay project(weather, laws, budget, time).
 - **Planning: Requirements**
   - description of what makes the project a success.
   - can be part of scope statement or separate document.
