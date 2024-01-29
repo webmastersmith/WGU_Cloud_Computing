@@ -231,11 +231,11 @@
 - **Team Lifecycle Chart**
   - teams will have a performance ebb and flow.
   - Teams need different types of support and leadership through different positions of lifecycle.
-  - Forming:
-  - Storming:
-  - Norming:
-  - Performing:
-  - Adjourning:
+  - Forming: team first time together.
+  - Storming: team figure out roles and each others flaws.
+  - Norming: positive exchange and cohesiveness between team members.
+  - Performing: max cohesiveness and performance.
+  - Adjourning: team breaks apart.
   - ![team lifecycle](img/team_lifecycle.png)
 
 ## Communication Management and Meetings
@@ -323,9 +323,25 @@
   - Forming: team first time together.
   - Storming: team figure out roles and each others flaws.
   - Norming: positive exchange and cohesiveness between team members.
-  - Performing:
-  - Adjourning:
+  - Performing: max cohesiveness and performance.
+  - Adjourning: team breaks apart.
   - ![team lifecycle](img/team_lifecycle.png)
+- **Conflict Managing: Smoothing**
+  - redirect attention away from conflict.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Forcing**
+  - make the decision without discussing it.
+  - ex.. in a fire, just put it out, don't form a committee.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Compromise**
+  - both parties meet in the middle.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Collaboration**
+  - both parties collaborate new idea that works as a win-win for both parties.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Avoiding**
+  - ignore the conflict. Problem is small or not affecting performance.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
 
 ## Data Confidentiality
 
