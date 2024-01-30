@@ -16,9 +16,6 @@
   - Deviations from planned performance metrics (e.g., schedule, budget) can be caused by factors like resource constraints, inaccurate estimations, or changes in requirements.
 - **Control Chart**
   - A statistical tool used to monitor a process over time and identify potential deviations from acceptable ranges, enabling proactive corrective action.
-- **CRM (Customer Relationship Management)**
-  - manage relationship w/customers and future customers.
-  - Allows for tech support(notes, tracking problems).
 - **Data Structured/Unstructured, Data Warehouse, RDBMS, Primary Key, Foreign Key, EDRMS, CMS**
   - Structured: labeled for easy searching. Modified to conform to standards.
   - Unstructured: also called 'blob'. bulk data not labeled.
@@ -32,9 +29,6 @@
   - Visual representations of possible choices and their consequences, helping to make informed decisions in complex situations.
 - **End-to-End Testing**
   - Testing a complete system or application from beginning to end, ensuring its functionality and performance across all components and integrations.
-- **ERP (Enterprise Resource Planning)**
-  - back office software to coordinate: accounting, human resources, procurement...
-  - centralizes management and access for data sharing between roles. Data and API(functionality) centralized.
 - **ESG (Environmental, Social, and Governance)**
   - Environmental: project impact to environment.
   - Social: project impact among stakeholders, team members, customers.
@@ -130,6 +124,7 @@
     - Incremental: small improvements at a time.
   - cross-functional group that stays with project entire lifecycle.
   - members fill multiple roles and have broad experience.
+  - Backlog breaks work into smaller units.
 - **Agile Communication: Stakeholder, Customer, Changes**
   - Stakeholder: engage stakeholder all phases of project.
   - Customer: customer communication with developer is vital.
@@ -176,10 +171,18 @@
   - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
   - ![organizational chart](img/organizational_chart.PNG)
 - **Histogram**
+  - monitor process over time. Show varying frequency.
+  - ![histogram](img/Histogram.jpg)
 - **Pareto Chart**
+  - 80/20 rule. 80% problems solved with 20% cause.
+  - what generates the most benefit with least effort.
+  - ![pareto principle](img/Pareto-Chart_Example.png)
 - **Run Chart**
 - **Scatter Diagrams**
 - **Fishbone/Ishikaawa Diagrams**
+  - cause and effect diagram. Part of gap analysis.
+  - shows how various factors(fish bones) impact single outcome(fish head).
+  - ![fishbone chart](img/fishbone.jpg)
 - **Control Chart**
 - **Burnup/Burndown Chart**
 - **Velocity Chart**
@@ -298,16 +301,32 @@
   - ignore the conflict. Problem is small or not affecting performance.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 
-## Data Confidentiality
+## Data Confidentiality and Security
 
-- **Data Confidentiality**
-  - protecting sensitive data that identify individuals personal information.
-- **Public Data**
-  - no restrictions
-- **Internal Data**
-  - within company only. Exposing would not violate laws or trust.
+- **Access Data, Remote Access, MFA, Removable Media, Mobile Devices, Facility Access, Background Screening, Security Clearance**
+  - typically use roles. least privilege.
+  - remote access policy: who can connect and how.
+  - Multi-Factor Authentication: two or more credentials.
+    - something you know(password), something you are(biometrics), something you have(key card).
+  - Removable Media: usb restrictions.
+  - Mobile Devices: Mobile Device Management (MDM) software.
+  - Facility Access: prevent unauthorized access. Key cards, biometric locks...
+  - Background Screening: checks education, certificates, references, criminal history.
+  - Security Clearance: anyone who accesses national security information must pass credit and criminal investigation.
 - **Confidential Data**
   - limited access to authorized users only.
+- **Data Confidentiality**
+  - protecting sensitive data that identify individuals personal information.
+- **Internal Data**
+  - within company only. Exposing would not violate laws or trust.
+- **Intellectual Property**
+  - company owned data. Patents, copyrights, trademarks, trade secrets.
+- **Public Data**
+  - no restrictions
+- **Top Secret**
+  - exposure could damage national security.
+- **Trade Secrets**
+  - competitive advantage. Leaked data could result in great harm to business.
 - **Restricted Data**
   - top secret. Criminal charges if exposed.
 - **GDPR (General Data Protection Regulation)**
@@ -324,7 +343,7 @@
   - SSN, Passport, Drivers License, Biometric.
 - **PHI (Personal Health Information)**
   - IIHI (Individually Identifiable Health Information)
-    - past, present, and future health or mental condition.
+  - past, present, and future health or mental condition.
 - **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
   - provides regulations for safekeeping persons personal health records.
   - **(ePHI) electronic Personal Health Information**.
@@ -454,6 +473,64 @@
   - total value of each years expected cash inflow, in 'todays' dollars.
 - **NPV**
   - net present value.
+
+## IT Infrastructure and Software
+
+- **Describe: Computing Services, Multitiered Architecture, Networking and Connectivity, Storage, Data Wharehouse, Documentation**
+  - Computing Services: any IT infrastructure a project may need. Software(ERP), hardware(laptop, pc), services(IaaS, PaaS).
+  - Multitiered Architecture: divide software into tiers and layers. Modular design allows for redundancy.
+  - Networking and Connectivity: how various components connect(networking).
+  - Storage: data location, security, redundancy.
+  - Data Wharehouse: extensive database for reporting and analytics.
+  - Documentation: documentation about IT infrastructure.
+- **IaaS, PaaS, SaaS, XaaS**
+
+  - Infrastructure as a Service:
+  - Platform as a Service:
+  - Software as a Service:
+  - Anything as a Service:
+
+  | Platform | Cloud Provider Includes                                     |
+  | -------- | ----------------------------------------------------------- |
+  | IaaS     | physical hardware + hardware management software            |
+  | PaaS     | IaaS + OS + app development environment(java, python, node) |
+  | SaaS     | PaaS + complete app. You bring your data                    |
+  | XaaS     | any third party service.                                    |
+
+- **Ticketing or Case Management System**
+  - manages customer problem tickets. Automated workflow route customer problem to person who can help.
+- **Project Management Scheduling Tools**
+  - schedule, plan, and track project timeline.
+- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
+  - Calendaring: manage multiple calendar, schedules, time zones, alerts.
+  - Real-Time Survey Poll: quickly gather information from groups of people.
+  - Print Media: create posters, flip charts, brochures, manuals.
+  - Conference Platforms: video(zoom, teams).
+- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing, Wiki, **
+  - Word Processing: text document editor.
+  - Spreadsheets: data in tables.
+  - Presentation: slide show.
+  - Diagramming: visually represent process.
+  - Real-Time Multi-Authoring Editing Software: multiple people can collaborate at same time.
+  - File Sharing Platform: grant file access to multiple users.
+  - Wiki: everyone can contribute content. Best when multiple people contribute.
+  - Knowledge Base: specific authors contribute. Best for when appearance and simplicity matter(FAQ's).
+  - Whiteboard: virtual creative space.
+- **ERP (Enterprise Resource Planning)**
+  - back office software to coordinate: accounting, human resources, procurement...
+  - centralizes management and access for data sharing between roles. Data and API(functionality) centralized.
+- **Financial Systems**
+  - subset of ERP for the financial budget, spending, and cost estimates.
+- **Electronic Document Management System (EDMSs) and Records Management System (RMS)**
+  - both are the same thing.
+  - software that manages records(artifacts, documents, contracts) lifecycle.
+  - enforces government regulations, retention policies.
+- **Content Management System (CMS)**
+  - interface that hides code complexity from end-user.
+  - ex.. create website without technical knowledge.
+- **Customer Relationship Management (CRM)**
+  - manage relationship w/customers and future customers.
+  - Allows for tech support(notes, tracking problems).
 
 ## Kanban
 
@@ -600,6 +677,12 @@
 - **Key Performance Indicator (KPI): Lagging and Leading Indicators**
   - Lagging: captured only after work is done.
   - Leading: predictive measures.
+- **Milestone and Sprint Goals**
+  - Milestone:
+    - critical checkpoint in a project. Date dependant event.
+    - short milestones help keep project momentum, too many cause fatigue.
+  - Sprint Goals:
+    - at the start of agile sprint, sprint goal is created that reflects the expected outcome.
 - **Objective and Key Results (OKR)**
   - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
   - less is more. focus on the critical needs.
@@ -897,18 +980,52 @@
   - Extreme Programming(XP), Scrumban, feature-driven development, dynamic systems, Agile unified process.
 - **Planning: Solutions Architect in Solutions Design**
   - solutions design: determine best technical solution for business problems.
+    - function requirements: must haves from each stakeholder.
+    - Non-functional requirements: implied must haves. (clean restaurant if looking for eating place)
   - solutions architect: determines solution, works closely with team and project manager.
 
-## Project Lifecycle Phase 2 Planning Communication Plan
+## Project Lifecycle Phase 2 Planning: Communication/Escalation Plan
 
+- **Communication Plan**
+  - formed in phase 1, Initiating. Further refined in planning phase.
+  - keep everyone involved in a project informed, engaged and aligned.
+  - how team/stakeholders will receive project updates.
 - **Develop a Communication Plan: Meeting Cadence and Methodologies**
+  - depending on project size, stakeholder needs, urgency of project.
+  - Cadence: frequency and format of meetings.
+    - daily stand-up, weekly meetings, bi-weekly meetings.
+    - meet more, faster burn-out and scope creep. Meet less, harder to share progress or change plans.
+  - Methodology: most suitable type of communication based on project needs and audience.
+    - In-person meetings, video conferencing, phone calls, Asynchronous communication(email, sms, chat...)
+  - How To Do It:
+    - identify team/stakeholders, best meeting methodology and cadence(time zones, urgency), basic personal preferences, communication preference.
+    - project team:
+  - ![communication plan](img/communication_plan.webp)
+- **Communication Records**
+  - all the artifacts, meeting notes throughout the project.
+- **Communication Records: Security**
+  - proper classifying artifacts as company property.
+    - Public data: no restrictions.
+    - Confidential: authorized only.
+    - Critical: top secret. Authorized only. Could include criminal charges.
+- **Communication Records: Integrity**
+  - artifacts and messages are not missing or changed.
+  - proper meeting minutes by scribe.
+  - preventing artifacts from being deleted.
+- **Communication Records: Archiving**
+  - keeping artifacts per business or government law requirements.
+- **Escalation Plan**
+  - formed in phase 1, Initiating. Further refined in planning phase.
+  - artifact that outlines when event should be escalated and to whom.
+  - ![escalation plan](img/Escalation-Matrix.webp)
 
-## Project Lifecycle Phase 2 Scheduling
+## Project Lifecycle Phase 2 Planning: Scheduling
 
 - **Scheduling**
   - defining units of work, cost, resources for a project.
 - **Scheduling: Define and Create WBS**
   - Work Breakdown Structure: deliverable-oriented hierarchy that describes required work.
+    - waterfall.
   - major deliverables are broken down into smaller components, for time and cost estimation.
   - ![work breakdown structure chart](img/WBS.jpg)
 - **Scheduling: WBS levels**
@@ -1032,27 +1149,93 @@
   - Closing
   - Reports on the final closeout of all phases of the project.
 
-## Project Tools
+## Resources
 
-- **Ticketing or Case Management System**
-  - manages customer problem tickets. Automated workflow route customer problem to person who can help.
-- **Project Management Scheduling Tools**
-  - schedule, plan, and track project timeline.
-- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
-  - Calendaring: manage multiple calendar, schedules, time zones, alerts.
-  - Real-Time Survey Poll: quickly gather information from groups of people.
-  - Print Media: create posters, flip charts, brochures, manuals.
-  - Conference Platforms: video(zoom, teams).
-- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, **
-  - Word Processing: text document editor.
-  - Spreadsheets: data in tables.
-  - Presentation: slide show.
-  - Diagramming: visually represent process.
-  - Real-Time Multi-Authoring Editing Software: multiple people can collaborate at same time.
-  - File Sharing Platform: grant file access to multiple users.
-  - Wiki: everyone can contribute content. Best when multiple people contribute.
-  - Knowledge Base: specific authors contribute. Best for when appearance and simplicity matter(FAQ's).
-  - Whiteboard: virtual creative space.
+- **Project Resource, Human, Physical, Capital Resources**
+  - Project Resource: any useful material, object or person.
+  - Human: people.
+  - Physical: anything but people and money.
+  - Capital: money.
+- **Internal vs External, Shared vs Dedicated**
+  - Internal: inside the company.
+  - External: outside the company.
+  - Shared: shared across multiple projects.
+  - Dedicated: project team has item or team member full time.
+- **Resource Lifecycle Acquisition, Maintenance, Hardware Decommissioning, End-of-Life Software, Successor Planning**
+  - Acquisition: procure the goods. Hiring.
+  - Maintenance: updates(software), people(feedback, motivation support).
+  - Hardware Decommissioning: update tracking system, dispose of sensitive data.
+  - End-of-Life Software: vendor will no longer maintain software.
+  - Successor Planning: plan to replace critical roles if person leaves company.
+    - Identifies knowledge, skill, and responsibilities, then documents process and training of someone who would fit the role.
+- **Needs Assessment**
+  - defines what resources project needs. Skill, software, equipment...
+  - understand: project requirements, current resources, resource gaps.
+- **Gap Analysis: Feature/Functionality, Skills, Utilization**
+  - Gap Analysis: current state vs future state.
+  - Feature/Functionality: feature and functionality of resource should match needs.
+  - Skills: what employees(resource) have needed skill.
+  - Utilization: KPI effectiveness of resource utilization. Under 100% is underutilized, over 100% is overallocated.
+- **Resource Smoothing and Leveling**
+  - Smoothing: shifting schedule around to even out schedule.
+  - Leveling: adding more time to timeline.
+
+## Risk and Transition Planning
+
+- **Risk: Register, Owner, Manager, Analysis, Report**
+  - Risk Register: document of all known organization/project risk and impact.
+  - Risk Owner: Hold the 'Accountable' role on the RACI chart. There responsible to handle risk.
+    - senior management own organization risk and delegates risk management throughout organization.
+  - Risk Manger: administers risk register. Project Manger is risk manager of project.
+  - Risk Analysis: likelihood and impact of risk. Usually done in a 'Risk Assessment Meeting'.
+  - Risk Report: documentation about the organization risk management process.
+- **Risk vs Issues vs Changes**
+  - Risk: something you think will happen.
+  - Issues: something already happened.
+  - change: risk that could develope from change(software feature, person leaves company).
+- **Risk: New Projects, New Management, Regulatory Environment Change, Digital Transformation, Infrastructure End-of-Life, Merger and Acquisition, Reorganization, Major Cyber Event**
+  - Risk: something you think will happen outside your control.
+  - New Project: might need the resources you currently have.
+  - New Management: organization priorities may change.
+  - Regulatory Environment Change: laws may change.
+  - Digital Transformation: technology stack update.
+  - Infrastructure End-of-Life: no longer supported/maintained.
+  - Merger and Acquisition: company culture may change.
+  - Reorganization: restructure may disrupt team.
+  - Major Cyber Event: ransomware, data-breach.
+- **Negative Risk: Accept, Avoid, Mitigate, Transfer**
+  - Negative: cause harm organization.
+  - Accept: do nothing. accept consequences.
+  - Avoid: detour around risk.
+  - Mitigate: reduce impact.
+  - Transfer: third party(insurance).
+- **Positive Risk: Accept, Enhance, Exploit, Share**
+  - Positive: benefit organization.
+  - Accept: do nothing. accept positive risk.
+  - Enhance: increase positive effect of risk.
+  - Exploit: take steps to guarantee event will happen.
+  - Share: find other how would benefit.
+- **Qualitative Risk, Quantitative Risk and Quantitative Simulation. Risk Interconnectivity and Detectability**
+  - Qualitative: base on how people perceive risk.
+  - Quantitative: based on data.
+  - Quantitative Simulation: predicts risk from input data.
+  - Interconnectivity: how risk will effect more than one single event.
+  - Detectability: how quick risk is identified if it were to occur.
+- **Impact Analysis**
+  - evaluate impact of project. Change after successful project.
+- **Risk Probability, Impact and Scenario Analysis**
+  - Probability: measure chance of risk occurring.
+  - Impact: how risk will effect business.
+  - Scenario Analysis: what-if analysis. brainstorming to find new risk.
+- **Contingency Planning**
+  - if initial risk plan fails, fallback plan to mitigate risk.
+- **Transition Plan: Operational Training, Go Live, Operational Handoff, Internal and External Audience**
+  - Transition Plan: project is transferred within organization to functional group or outside organization.
+  - Operational Training: education to use, maintain, product long term.
+  - Go Live: project moves from test environment to production.
+  - Operational Handoff: transition work to permanent owners. They will oversee day-to-day activities.
+  - Internal Audience: current employees.
+  - External Audience: vendors or clients.
 
 ## Scaled Agile Framework
 
@@ -1130,6 +1313,7 @@
   - documentation heavy.
   - Regular on/off boarding(highly specialized members flow in and out of project as needed).
   - Resources are typically fixed(backend, get python developer).
+  - Work Breakdown Structure (WBS) breaks work into smaller units.
 - **Waterfall 6 phases**
   1. requirements: project requirements.
   2. design: actionable specifications.
