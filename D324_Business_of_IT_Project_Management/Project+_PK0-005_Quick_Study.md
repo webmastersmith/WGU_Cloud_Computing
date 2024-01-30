@@ -158,85 +158,33 @@
 - **Burndown Chart**
   - shows remaining time and work in each scrum sprint iteration.
   - ![burndown chart](img/burndown.png)
-- **Critical Path Chart**
-  - shows delay time without effecting project completion time.
-  - critical path is longest path on chart.
-  - ![critical path chart](img/critical-path.png)
 - **Gantt Chart**
   - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
   - planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
-- **Kanban Board**
-  - track progress of complete project in stages. Entire team. Capacity Bound
-  - ![kanban board](img/kanban.webp)
-- **Key Performance Indicator (KPI) and Leading and Lagging Indicators**
-  - operational metrics, that measures only the most crucial project points.
-  - Leading: predictive measures.
-  - Lagging: captured only after work is done.
-- **Milestone or Timeline Chart**
-  - simple timeline chart of project milestones. focus is on events.
-  - ![milestone chart](img/Milestone-Chart.png)
-  - Milestone chart
-  - ![milestone2 chart](img/milestone2.PNG)
-- **Objective and Key Results (OKR)**
-  - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
-  - less is more. focus on the critical needs.
-  - Two parts:
-    - Objective: goal and why it matters.
-    - Key Result: what you need to do to meet the goal.
-  - ![okr](img/okr-objectives-key-results.avif)
-
-|           | OKR                                                                     |
-| :-------- | :---------------------------------------------------------------------- |
-| Objective | Our website conversions haven’t been higher in the history of Acme Inc. |
-| KR 1      | Increase visitor-to-lead conversion rate from 2.5% to 5%                |
-| KR 2      | Increase sales-accepted leads from 30% to 50%                           |
-
-- **Organizational Chart**
-  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
-  - ![organizational chart](img/organizational_chart.PNG)
-- **Performance Objectives**
-  - KPI (Key Performance Indicators): Measure project success.
-    - leading(predictive work)/lagging(past work) indicators.
-  - SMART Objectives: Project Goals: Specific, Measurable, Achievable, Relevant, Timebound.
-  - OKRs (Objective and Key Results): Aspirational goals(drive teams to achieve goals slightly out of reach). Generate change. 'Less is more' approach.
-  - Project Roadmap: high-level progress points. Objective summaries.
-  - Milestone Chart: project checkpoints. Timeline or plot deadlines.
 - **PERT Chart**
   - Program Evaluation and Review Technique.
   - accurate time scheduling estimates. Used in **large, complex projects.**
   - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
   - ![pert](img/pert.png)
-- **RAM (Responsibility Assignment Matrix)**
-  - clarifies who is responsible for completing/managing activities in project.
-  - team members know assignment and who to work with.
-  - RACI:
-    - responsible: do the work.
-    - accountable: manage.
-    - consulted: Subject Matter Experts.
-    - informed: receive updates.
-    - ![ram chart](img/ram_chart.PNG)
-- **Roadmap chart**
-  - high-level, strategic plan aimed to communicate your project goals and vision. focus is on events.
-  - ![roadmap chart](img/roadmap.png)
-  - ![roadmap2 chart](img/roadmap2.PNG)
-- **Scrum Board**
-  - same as kanban board but only shows work of one sprint. Single sprint team. Time-bound.
-  - ![scrum board](img/Scrum-Board.png)
-- **Stakeholder Impact Grid**
-  - power: how much influence.
-  - impact: project effect on stakeholder.
-  - ![stakeholder impact grid](img/impact_grid.PNG)
-  - Salience Model
-- **Team Lifecycle Chart**
-  - teams will have a performance ebb and flow.
-  - Teams need different types of support and leadership through different positions of lifecycle.
-  - Forming: team first time together.
-  - Storming: team figure out roles and each others flaws.
-  - Norming: positive exchange and cohesiveness between team members.
-  - Performing: max cohesiveness and performance.
-  - Adjourning: team breaks apart.
-  - ![team lifecycle](img/team_lifecycle.png)
+- **Milestone or Timeline Chart**
+  - simple timeline chart of project milestones. focus is on events.
+  - ![milestone chart](img/Milestone-Chart.png)
+  - Milestone chart
+  - ![milestone2 chart](img/milestone2.PNG)
+- **Project Organizational Chart**
+  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
+  - ![organizational chart](img/organizational_chart.PNG)
+- **Histogram**
+- **Pareto Chart**
+- **Run Chart**
+- **Scatter Diagrams**
+- **Fishbone/Ishikaawa Diagrams**
+- **Control Chart**
+- **Burnup/Burndown Chart**
+- **Velocity Chart**
+- **Decision Tree**
+  - ![decision tree](img/decision_tree.png)
 
 ## Communication Management and Meetings
 
@@ -258,6 +206,13 @@
   - communication inside the business.
 - **External Communication**
   - communication outside the business.
+- **Communication Tools: Email, Messaging, Telephone, Meeting face-to-face, Video, Enterprise Social Media**
+  - Email: allow response at leisure.
+  - Messaging: SMS: text. Chat: exchange via internet.
+  - Telephone: fastest for large geographical boundaries.
+  - Meeting face-to-face: most information. body language, facial expressions, voice tone change.
+  - Video: blend face-to-face with telephone.
+  - Enterprise Social Media: internal communication network.
 - **Target Audience**
   - who needs to be at the meeting.
 - **Facilitator**
@@ -944,6 +899,10 @@
   - solutions design: determine best technical solution for business problems.
   - solutions architect: determines solution, works closely with team and project manager.
 
+## Project Lifecycle Phase 2 Planning Communication Plan
+
+- **Develop a Communication Plan: Meeting Cadence and Methodologies**
+
 ## Project Lifecycle Phase 2 Scheduling
 
 - **Scheduling**
@@ -1072,6 +1031,28 @@
 - **Project closeout report**
   - Closing
   - Reports on the final closeout of all phases of the project.
+
+## Project Tools
+
+- **Ticketing or Case Management System**
+  - manages customer problem tickets. Automated workflow route customer problem to person who can help.
+- **Project Management Scheduling Tools**
+  - schedule, plan, and track project timeline.
+- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
+  - Calendaring: manage multiple calendar, schedules, time zones, alerts.
+  - Real-Time Survey Poll: quickly gather information from groups of people.
+  - Print Media: create posters, flip charts, brochures, manuals.
+  - Conference Platforms: video(zoom, teams).
+- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, **
+  - Word Processing: text document editor.
+  - Spreadsheets: data in tables.
+  - Presentation: slide show.
+  - Diagramming: visually represent process.
+  - Real-Time Multi-Authoring Editing Software: multiple people can collaborate at same time.
+  - File Sharing Platform: grant file access to multiple users.
+  - Wiki: everyone can contribute content. Best when multiple people contribute.
+  - Knowledge Base: specific authors contribute. Best for when appearance and simplicity matter(FAQ's).
+  - Whiteboard: virtual creative space.
 
 ## Scaled Agile Framework
 
