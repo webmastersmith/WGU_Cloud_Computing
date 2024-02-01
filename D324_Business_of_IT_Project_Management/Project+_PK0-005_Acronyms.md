@@ -64,6 +64,8 @@
   - Request for Quote
 - ROI
   - Return on Investment
+- RTM
+  - Requirements Traceability Matrix
 - SaaS
   - Software as a Service
 - SAFe

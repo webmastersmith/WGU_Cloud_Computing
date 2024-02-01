@@ -574,6 +574,7 @@
   - Kanban board: Visualizes work, WIP(work in progress) limits, and workflow policies.
   - track task flow and optimize workflow.
   - Simplest agile framework to learn and can be applied to any industry.
+  - ![kanban board](img/kanban.webp)
 - **Kanban 3 basic phases**
   - To Do, In Progress, Done (can be customized).
 - **Kanban 6 Core Practices**
@@ -1215,6 +1216,12 @@
 - **MVP**
   - Minimum viable product: early version of product. Quick to get feedback.
   - MVP looks at the feature list and defines the bare minimum requirements for testing a product.
+- **Requirements Traceability Matrix (RTM)**
+  - document that links project requirements and the deliverables. maps how well project meets initial goal.
+  - Tracks how design documents, test cases, and deliverables align with specific requirements.
+  - Demonstrates that all requirements are addressed and tested.
+  - Provides a audit trail to show compliance and manage changes.
+  - ![requirements traceability matrix](img/traceability_matrix.png)
 
 ## Project Lifecycle Phase 4 Closing
 
