@@ -1,1214 +1,1544 @@
-# D324 Business of IT. Project+ PK0-005 Exam Objectives
+# CompTIA Project+ PK0-005
 
-## Tips
+## Definitions
 
-- Know all **phases and what Doc's** go in what phase (Order of things (Initiating, Planned...etc.)).
-- know how to read the diagrams, charts and graphs.
-- Make sure you understand the definitions of all the material.
-- Most of my questions contained a scenario of "what step is next?" or "what step is this task in?" -Know the **Change Control Steps** backward and forwards and what is in each step (Documents, Tasks)
-- Know the **change management** process steps.
-- understand the process control change and what phase documents/artifacts fall under.
-- Get a basic understanding of what information the **charts/tools are meant for**.
-- **role responsibilities**, and **order of operations** for situations.
-- <https://quizlet.com/406758061/pk0-004-project-best-study-guide-2019-flash-cards/>
-- <https://quizlet.com/698573077/project-exam-study-questions-flash-cards/>
-- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=55e10158-bd60-4564-9a45-af300116ced0>
-- <https://wgu.webex.com/recordingservice/sites/wgu/recording/53c657ca5726103bb6fa00505681e571/playback>
-- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=8063f5b9-b20e-4b3e-9d84-af84017b5aa1>
-- <https://srm--c.vf.force.com/apex/FDP/CommonsExpandedSearch?courseCode=D324>
-- <https://wgu.libguides.com/c.php?g=949093&p=9426624>
-- <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb2964e4-cc12-4ce0-a706-af23014b3e93>
+- **Acceptance**
+  - Formally acknowledging that a deliverable meets the agreed-upon requirements and can be integrated into the project or handed over to the client.
+- **Action Items**
+  - Specific tasks assigned to individuals or teams to address identified issues, complete required work, or move the project forward.
+- **Addition**
+  - Introducing new features, functionalities, or scope to the project, potentially impacting timelines, resources, and budgets.
+- **Balanced Scorecard**
+  - A performance measurement framework that considers various aspects beyond just financial metrics, such as customer satisfaction, internal processes, and learning and growth.
+- **Cause-and-Effect Diagram** (Fishbone Diagram)
+  - A visual tool used to identify and analyze the potential causes of a problem or issue.
+- **Common Causes of Variances**
+  - Deviations from planned performance metrics (e.g., schedule, budget) can be caused by factors like resource constraints, inaccurate estimations, or changes in requirements.
+- **Control Chart**
+  - A statistical tool used to monitor a process over time and identify potential deviations from acceptable ranges, enabling proactive corrective action.
+- **Data Structured/Unstructured, Data Warehouse, RDBMS, Primary Key, Foreign Key, EDRMS, CMS**
+  - Structured: labeled for easy searching. Modified to conform to standards.
+  - Unstructured: also called 'blob'. bulk data not labeled.
+  - Data Warehouse: gather multiple data sources together for analysis and decision-making.
+  - RDBMS: relational database. collection of structured data related to other data.
+  - Primary Key: unique key to identify data row.
+  - Foreign Key: when primary key is included as a column of another table. Used to relate two tables.
+  - EDRMS: electronic document and record management system. Manages access, create and delete of data.
+  - CMS: content management system. create website without technical knowledge.
+- **Decision Trees**
+  - Visual representations of possible choices and their consequences, helping to make informed decisions in complex situations.
+- **End-to-End Testing**
+  - Testing a complete system or application from beginning to end, ensuring its functionality and performance across all components and integrations.
+- **ESG (Environmental, Social, and Governance)**
+  - Environmental: project impact to environment.
+  - Social: project impact among stakeholders, team members, customers.
+  - Governance: project monitoring, performance, changes, budget...
+- **Extinction**
+  - Ignoring or not reinforcing a behavior, leading to its eventual decrease or disappearance. Used in project management to address undesirable behaviors or recurring issues.
+- **Functional, Matrix, and Projectized Management**
+  - ![Manager Authority](img/project_authority.PNG)
 
-- <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
-  - The **process of how change is brought up and put into play**. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
-  - Know what happens during all the **steps of a project beginning with Initiation all the way to Closing**.
-  - Know differences and **characteristic between functional, projectized, matrix structures**. Given a scenario, be able to say "this is a functional structure" or "this is projectized", etc.
-  - Really know the different **roles**, what they can and cant do.
-  - What encompasses the charter, scope, WBS.
-  - Know the different **risk strategies** and be able to assign them to an example (accept, mitigate, transfer, avoid, exploit).
-  - Know the different **communication methods**, I had a ton of these which kind of surprised me. Know which one is appropriate for certain scenarios (this was a very annoying part of the test because the questions didn't have much context at all so I really had to guess at times)
-  - I memorized the formulas for **CV, SV, CPI, SPI and literally had 0 questions** on them which was unfortunate, I know some people get questions on them so may be valuable for you. Wasn't for me
-- CompTIA Project+ Study Guide, 3rd Edition by Kim Heldman (ISBN 978-1-119-89245-8)
-  - Wiley/Sybex
-- BARD: briefly explain each topic from the book CompTIA Project+ Study Guide, 3rd Edition ISBN 978-1-119-89245-8:
+| Management Style | About                                                                 |
+| ---------------- | --------------------------------------------------------------------- |
+| Functional       | Specialized managers for each department                              |
+| Matrix           | PM's that assign work(weak), up to control pay, hiring/firing(strong) |
+| Projectized      | PM's have full control over pay, hiring/firing                        |
 
-- <https://www.reddit.com/r/WGU/comments/10z838f/passed_business_of_it_project_management_d324/>
-  - There are lots of questions on what is the BEST or what is the FIRST thing you should do in a situation.
-  - You have to know the **order of actions in the processes for change control**, scheduling management, etc.
-  - Know what **roles** within the project are responsible for what actions/management.
-  - Know all the **types of charts and what they are used for**.
-  - Know the **phases and what occurs in each phase** of a project.
-  - **Conflict resolution types**.
-  - Methods of dealing with **risks**.
-  - Terminology and acronyms such as **SOW, RFP, RFQ, RFI, WBS, SLA, LOI, MOU, ERG,** etc.
-  - Know differences between **dependency types**.
-  - Know **functional, projectized, and the various matrix types** of organizations.
-  - What **documents are updated** when certain **events happen**.
-  - What is contained within **project management plan, scope management plan**, etc.
+- **Flowcharts**
+  - Visual diagrams depicting the steps or processes involved in a task or workflow, aiding in understanding and optimizing procedures.
+- **Integration**
+  - Combining individual components or modules into a functioning system, ensuring seamless communication and data exchange.
+- **Integration Testing**
+  - Testing the functionality and compatibility of different modules or components after they have been integrated into a system.
+- **Lessons Learned**
+  - Capturing and analyzing valuable insights gained from project experiences, both successful and unsuccessful, to improve future projects.
+- **Pareto Diagram (80/20 Rule)**
+  - A graphical representation highlighting that a small percentage of factors (e.g., 20%) often contributes to a large majority of the effects (e.g., 80%). Used to prioritize issues or areas for improvement.
+- **Performance Testing**
+  - Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
+- **Prevention**
+  - Taking proactive measures to avoid problems or issues before they occur, minimizing risks and disruptions.
+- **Regression Testing**
+  - Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
+- **Rework**
+  - Correcting errors or deficiencies in work that has already been completed, leading to additional time and resource costs.
+- **Run Charts**
+  - Visualizing data points over time to identify trends, patterns, and potential areas for improvement.
+- **Smoke Testing**
+  - Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
+- **Scope**
+  - project scope: boundaries of project. Outlines what work needs to be done and what won't be done to achieve the project's goals.
+- **Starvation**
+  - Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
+- **Statistical Sampling**
+  - Collecting and analyzing data from a representative sample of a population to draw inferences about the entire population, reducing the need to test everything.
+- **Stress Testing**
+  - Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
+- **Testing**
+  - Verifying that a system, component, or function meets its intended requirements and performs as expected.
+- **Unit Testing**
+  - Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
+- **User Acceptance Testing (UAT)**
+  - Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
+- Be able to name the purpose for controlling quality.
+  - Quality control involves monitoring work results to determine whether they comply with the standards set in the quality management plan.
+- Name the types of testing performed on technology projects.
+  - The types are smoke, unit, integration, end- to- end, regression, stress, performance, and user acceptance testing.
+  - Be able to explain a histogram.
+    - A histogram displays data distributed over time. It is a type of bar chart.
+  - Be able to explain a fishbone diagram.
+    - A fishbone diagram is a cause-and-effect diagram, also known as an Ishikawa diagram.
+  - Be able to explain a Pareto chart. A Pareto chart is a histogram that rank-orders data by frequency over time.
+- Be able to explain a run chart.
+  - A run chart displays data as plots on a timeline.
+- Be able to explain a control chart.
+  - Control charts measure and display the variance of several samples of the same process over time.
+- Be able to explain a decision tree.
+  - Decision trees are diagrams that show the sequence of interrelated decisions and the expected results of choosing one alternative over the other.
+- Be able to explain a scatter diagram.
+  - A scatter diagram displays the relationship between two numerical variables and determines whether they are related to each other. It can also be used to prove or disprove cause-and-effect relationships. Scatter diagrams are also known as correlation charts.
+- Name the three common causes of variance.
+  - These are random variances, known or predictable variances, and variances that are always present in the process.
+- Name three actions that you can take when quality is not as expected.
+  - Three actions are rework, process adjustments, and acceptance.
+- Be able to describe an issue.
+  - An issue is something that could impact the project or delay the completion of deliverables. Risks become issues once they occur.
+- Be able to describe the issue log.
+  - The issue log is where information about issues are logged and may include an identification number, description, priority ranking, resolution plan, and other information.
+- Name the performance measurement tools that can be used for quality assessments.
+  - They are key performance indicators (KPIs), balanced scorecards, key objectives and results, and cost and schedule performance measures.
+- Name the four reasons for project endings.
+  - They are addition, starvation, integration, and extinction.
+- Understand the steps involved in closing a project.
+  - The steps are verification and validation of deliverables, obtaining sign-off, transition plan creation, revoking access, releasing project resources, closing out contracts, archiving documents, lessons learned, closure meeting, closeout report, celebration, and post-implementation support and warranty period.
+- Explain the purpose of obtaining formal customer or stakeholder sign-off.
+  - The formal sign-off documents that the customer accepts the project work and that the project meets the defined requirements. It also signals the official closure of the project and the transfer of the final product of the project to the organization.
+- Describe lessons learned.
+  - Lessons learned describe the successes and failures of the project.
 
-| DOMAIN                          | PERCENTAGE OF EXAMINATION |
-| ------------------------------- | ------------------------- |
-| 1.0 Project Management Concepts | 33%                       |
-| 2.0 Project Life Cycle Phases   | 30%                       |
-| 3.0 Tools and Documentation     | 19%                       |
-| 4.0 Basics of IT and Governance | 18%                       |
-| Total                           | 100%                      |
+## Agile
 
-- Passing Score: 710 (on a scale of 100-900 from max 90 questions).
+- **Agile**
+  - Agile: iterative, incremental. delivers value early and often. Teams small (3-10 members).
+    - Iterative: make improvements, get feedback.
+    - Incremental: small improvements at a time.
+  - cross-functional group that stays with project entire lifecycle.
+  - members fill multiple roles and have broad experience.
+  - Backlog breaks work into smaller units.
+- **Agile Communication: Stakeholder, Customer, Changes**
+  - Stakeholder: engage stakeholder all phases of project.
+  - Customer: customer communication with developer is vital.
+  - Communication Changes: embrace change. encourage communication.
+- **Agile Requirements**
+  - requirements dictate how the project looks and behaves.
+  - only need basic requirements at start of project.
+  - Collection of Requirements -> Product Creation -> Customer Review
+- **Agile Budget and Schedule**
+  - Budget: flexible. Good for **custom tailored work**.
+  - Schedule: loose and flexible. Only one iteration is planned in advance.
+- **Agile Environmental Factors: Culture, Development Processes, Industry Standards**
+  - Culture: cross-functional. Team needs strong commitment(iterative, incremental design), good collaboration skills.
+  - Development Processes: customer review after each iteration(small batches), continuous testing can be expensive.
+  - Industry Standards: iterative and incremental.
+- **Agile Strengths**
+  - expected change.
+- **Agile Weakness**
+  - scope creep, missed deadlines and less documentation.
+- **Agile Use**
+  - project requirements will change often. Team is stable and self organized.
+  - agile is flexible. continually improvements through sprints.
 
-## 1.01 Explain the basic CHARACTERISTICS of a PROJECT and various METHODOLOGIES and FRAMEWORKS used in IT projects
+## Backlog
 
-- Characteristics of a project::_Start and finish_
-  - Start and Finish: Every project has a defined beginning and end, with measurable deliverables.
-  - Every project must meet three criteria: it is unique, has a specific reason or purpose, and is temporary, meaning it must have a start and finish.
-- Characteristics of a project::_Unique_
-  - Unique: Each project is distinct, with specific goals, requirements, and resources.
-- Characteristics of a project::_Reason/purpose_
-  - Reason/Purpose: A project addresses a particular need or solves a problem, aiming to achieve a valuable outcome.
-- Characteristics of a project::_Project as part of a program_
-  - Project as part of a Program: Programs group related projects that collectively contribute to a broader strategic objective.
-  - A program gathers several related projects to accomplish a big goal. Programs last longer than projects because they **run from the start of the first project to the end of the last project**.
-  - You must collaborate with other project teams and the program manager.
-  - You need to ensure your deliverables and schedule align with the program's plan and requirements.
-- Characteristics of a project::_Project as part of a portfolio_
-  - Project as part of a Portfolio: A portfolio **manages all the organization's projects**, balancing resources and optimizing their contribution to **strategic goals**.
-  - The main **difference between portfolios and programs** is that **projects within a program are related to the program's objective**. Projects **within a portfolio do not need to be related**; they share a portfolio because they exist in the same arbitrary group of approved projects.
-- Methodologies and frameworks::_DevSecOps_
-  - **DevSecOps Main Focus**: Integrates security considerations into the entire software development lifecycle.
-  - DevSecOps: Baking Security into DevOps for Faster, **Secure Software Delivery**
-    - DevSecOps: **Integrates security throughout the DevOps pipeline**, automating checks and tests along with development and operations.
-    - Shared Responsibility: Security is everyone's job, not just a dedicated team's. This requires a cultural shift from centralized "security gurus" to decentralized ownership.
-    - Challenges: Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
-    - Benefits: Faster delivery, continuous security feedback, and reduced risk of breaches.
-    - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
-- Methodologies and frameworks::_DevOps_
-  - DevOps: Integrate development and operations to facilitate quick feedback and evolution of software product.
-    - Promotes collaboration and communication between development and operations teams to streamline software delivery.
+- **Backlog, Backlog Owner**
+  - backlog: body of work team will complete. Good for when there are too many unknowns to create a WBS.
+    - creates deliverables. Leave the execution details to the team.
+    - project backlog uses agile ceremonies to fix time and cost.
+    - scope of work remains flexible; a backlog-based team will deliver as much of the scope as they can fit into an iteration.
+  - backlog owner: refines the backlog, moving high priorities to top.
+- **Backlog: Epics, Features, User Stories, Task**
+  - Epics: main deliverable.
+  - Features: major feature.
+  - User Stories: smallest deliverable. same as 'WBS' work package.
+  - Task: action you take to complete the deliverable.
+  - ![backlog breakdown structure](img/backlog_breakdown.PNG)
+- **WBS vs Product Backlog vs Project Backlog**
+  - product backlog: alive as long as the product is active.
+  - project backlog: have start and end dates.
+
+|                         | WBS               | Project Backlog             | Product Backlog              |
+| :---------------------- | :---------------- | :-------------------------- | :--------------------------- |
+| Duration                | Length of project | Length of project           | As long as product is viable |
+| Scope                   | Fixed             | Flexible                    | Flexible                     |
+| Resources               | Fixed             | Fixed                       | Fixed                        |
+| Time                    | Fixed             | Fixed                       | Fixed                        |
+| Deliverable or Activity | Deliverable       | Deliverable                 | Deliverable                  |
+| Hierarchy               | Numbered Levels   | Epic > Feature > User Story | Epic > Feature > User Story  |
+| When Created            | Planning Phase    | All Phases                  | Entire Life Cycle            |
+
+## Charts
+
+- **Burnup/Burndown Chart**
+  - shows remaining time and work in each scrum sprint iteration.
+  - ![burndown chart](img/burndown.png)
+- **Critical Path Method (CPM)**
+  - shows how delay time will effect project.
+  - add all activities with dependencies to find longest path on chart.
+  - Float: the down time activity has and can still be completed on time.
+  - ![critical path chart](img/critical-path.png)
+- **Decision Tree**
+  - evaluate multiple possible outcomes.
+  - ![decision tree](img/decision_tree.png)
+- **Fishbone/Ishikaawa Diagrams**
+  - cause and effect diagram. Part of gap analysis.
+  - shows how various factors(fish bones) impact single outcome(fish head).
+  - ![fishbone chart](img/fishbone.jpg)
+- **Gantt Chart**
+  - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
+  - planning, execution, closing phase.
+  - ![Gantt chart](img/gantt.png)
+- **Milestone or Timeline Chart**
+  - simple timeline chart of project milestones. focus is on events.
+  - ![milestone chart](img/Milestone-Chart.png)
+  - Milestone chart
+  - ![milestone2 chart](img/milestone2.PNG)
+- **Project Organizational Chart**
+  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
+  - ![organizational chart](img/organizational_chart.PNG)
+- **Histogram**
+  - monitor process over time. Show varying frequency.
+  - ![histogram](img/Histogram.jpg)
+- **Pareto Chart**
+  - 80/20 rule. 80% problems solved with 20% cause.
+  - what generates the most benefit with least effort.
+  - ![pareto principle](img/Pareto-Chart_Example.png)
+- **Program Evaluation Review Technique (PERT) Chart**
+  - shows duration, activities, dependencies. Typically used in **large, complex projects.**
+  - Uses 3 point estimates: `optimistic time + pessimistic time + (4 * average time) / 6 = estimated time.`
+  - ![pert](img/pert.png)
+- **Project Network Diagram**
+  - visual model of the project schedule that shows sequence of activities and the dependencies.
+  - ![project network diagram](img/project_network_diagram.jpg)
+- **Run Chart**
+- **Scatter Diagrams**
+- **Control Chart**
+- **Velocity Chart**
+
+## Communication Management and Meetings
+
+- **Synchronous Communication**
+  - real-time communication. Face-to-face(in person or videoconference) with all parties.
+- **Asynchronous Communication**
+  - delay in communication. email. documentation notes.
+- **Written Communication**
+  - exchanges occur through handwritten/typed messages.
+- **Verbal Communication**
+  - oral communication
+- **Nonverbal Communication**
+  - body language and appearance. Signals sent when in person.
+- **Formality Communication**
+  - company channels to communicate. Official record.
+- **Informal Communication**
+  - unofficial communication. Casual conversation between coworkers, group chatter before meeting. Nonverbal communication during meeting.
+- **Internal Communication**
+  - communication inside the business.
+- **External Communication**
+  - communication outside the business.
+- **Communication Tools: Email, Messaging, Telephone, Meeting face-to-face, Video, Enterprise Social Media**
+  - Email: allow response at leisure.
+  - Messaging: SMS: text. Chat: exchange via internet.
+  - Telephone: fastest for large geographical boundaries.
+  - Meeting face-to-face: most information. body language, facial expressions, voice tone change.
+  - Video: blend face-to-face with telephone.
+  - Enterprise Social Media: internal communication network.
+- **Target Audience**
+  - who needs to be at the meeting.
+- **Facilitator**
+  - guides meeting progress. redirect flow if meeting off track.
+- **Scribe**
+  - records meeting minutes, action items, and follow-ups.
+  - mandatory for meeting on the official record.
+  - not needed for training sessions.
+- **Demonstrations and Presentations Meetings**
+  - video, slide show, actual product.
+- **Status Meeting**
+  - update on progress of project.
+- **Stand-ups**
+  - focused, quick meeting. Popular in Scrum Daily stand-ups. Sometimes doing it standing up.
+- **Decisive Meetings**
+  - decision-making meeting.
+- **Decisive Meeting: Task Setting**
+  - assign task to be completed.
+- **Decisive Meeting: Project Steering**
+  - to keep projects on track and successful.
+  - includes the PM and executive stakeholders. Offer support and guidance throughout project lifecycle.
+  - can represents voice of the customer.
+- **Refinement Meeting**
+  - also called: product refinement or backlog refinement.
+  - re-prioritize backlog items. Most important at top, broken down into task.
+- **Collaborative Meeting**
+  - interactive, problem solving meeting.
+- **Focus Groups**
+  - Project manager runs meeting to gather experiences, needs, problems from customers.
+- **Workshops**
+  - group with shared interest gather to exchange information and conduct research.
+  - solve problems or increase knowledge(skill development).
+- **Joint Application Development (JAD)**
+  - also called: joint application review.
+  - specific type of workshop that involves the customer in the design process.
+  - early feedback.
+- **Brainstorming: Rapid, Reverse, Stop-and-Go, Round-Robin**
+  - Rapid: group rapidly generates many ideas. everybody can participate. Quantity over quality.
+  - Reverse: look at problem from different angles. ex.. Why you couldn't solve problem.
+  - Stop-and-Go: brainstorm short duration then refine ideas. Quality over Quantity.
+  - Round-Robin: everyone gets equal voice.
+- **Agenda**
+  - meeting purpose and expectation. Shared in advance.
+- **Meeting Timeboxing**
+  - fixed maximum time on each agenda item.
+- **Meeting Action Items**
+  - list of task someone will complete after meeting.
+- **Meeting Minutes**
+  - written record of key points.
+- **Meeting Follow-up**
+  - after meeting email with minutes(meeting recap).
+- **Language Barriers, Time Zones, Geographical Factors**
+  - interpreters, appropriate communication formats.
+  - Time Zones adn Geographical Factors: what works best for them?
+- **Technology Factors**
+  - slower internet, older hardware. Project manager can provide tools needed.
+- **Cultural Differences**
+  - any group with social customs, behavior, habits, beliefs.
+  - foster respect for each others beliefs. Team bonding.
+- **Team Lifecycle: Forming, Storming, Norming, Performing, Adjourning**
+  - teams will have a performance ebb and flow.
+  - Teams need different types of support and leadership through different positions of lifecycle.
+  - Forming: team first time together.
+  - Storming: team figure out roles and each others flaws.
+  - Norming: positive exchange and cohesiveness between team members.
+  - Performing: max cohesiveness and performance.
+  - Adjourning: team breaks apart.
+  - ![team lifecycle](img/team_lifecycle.png)
+- **Conflict Managing: Smoothing**
+  - redirect attention away from conflict.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Forcing**
+  - make the decision without discussing it.
+  - ex.. in a fire, just put it out, don't form a committee.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Compromise**
+  - both parties meet in the middle.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Collaboration**
+  - both parties collaborate new idea that works as a win-win for both parties.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Avoiding**
+  - ignore the conflict. Problem is small or not affecting performance.
+  - ![conflict resolution](img/ConflictManagementStyles.jpg)
+
+## Data Confidentiality and Security
+
+- **Access Data, Remote Access, MFA, Removable Media, Mobile Devices, Facility Access, Background Screening, Security Clearance**
+  - typically use roles. least privilege.
+  - remote access policy: who can connect and how.
+  - Multi-Factor Authentication: two or more credentials.
+    - something you know(password), something you are(biometrics), something you have(key card).
+  - Removable Media: usb restrictions.
+  - Mobile Devices: Mobile Device Management (MDM) software.
+  - Facility Access: prevent unauthorized access. Key cards, biometric locks...
+  - Background Screening: checks education, certificates, references, criminal history.
+  - Security Clearance: anyone who accesses national security information must pass credit and criminal investigation.
+- **Confidential Data**
+  - limited access to authorized users only.
+- **Data Confidentiality**
+  - protecting sensitive data that identify individuals personal information.
+- **Internal Data**
+  - within company only. Exposing would not violate laws or trust.
+- **Intellectual Property**
+  - company owned data. Patents, copyrights, trademarks, trade secrets.
+- **Public Data**
+  - no restrictions
+- **Top Secret**
+  - exposure could damage national security.
+- **Trade Secrets**
+  - competitive advantage. Leaked data could result in great harm to business.
+- **Restricted Data**
+  - top secret. Criminal charges if exposed.
+- **GDPR (General Data Protection Regulation)**
+  - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
+- **PII (Personally Identifiable Information)**
+  - any information about an individual (social security number, date of birth, mothers maiden name, medical, biometric, financial, educational, employment...)
+  - organizations should develope policies and procedures(educate, train) to handle PII and data breaches.
+  - Anonymize sensitive data before sharing.
+- **Linkable PII**
+  - personal identifiable info that can be linked together to create SPII.
+  - name, address, email, MAC, phone, race, age, credit card...
+- **SPII (Sensitive Personally Identifiable Information)**
+  - subset of PII. Any single piece of data that could identify and cause harm or embarrassment.
+  - SSN, Passport, Drivers License, Biometric.
+- **PHI (Personal Health Information)**
+  - IIHI (Individually Identifiable Health Information)
+  - past, present, and future health or mental condition.
+- **HIPAA (Health Insurance Portability and Accountability Act of 1996)**
+  - provides regulations for safekeeping persons personal health records.
+  - **(ePHI) electronic Personal Health Information**.
+- **NIST (National Instituted of Standards and Technology)**
+  - federal agency creates frameworks and process to help protect information.
+  - describes 3 levels: low, medium, high impact.
+
+## DevOps, DevSecOps and CI/CD
+
+- **DevOps**
+  - automating checks and tests along with development and operations.
   - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
   - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
-  - Key features:
-    - Collaboration: Developers and operations work together on the same team.
-    - Automation: CI/CD automates builds, tests, and deployments for faster releases.
-    - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
-  - CI/CD:
-    - Continuous Integration: Developers merge code frequently, triggering automated tests for early feedback.
-    - Continuous Delivery: Code automatically prepared for release but deployment is manual (strategic control).
-    - Continuous Deployment: Code automatically released to production after integration and testing.
-  - Strengths:
-    - Faster delivery of quality software.
-    - Improved operational support and cross-functional collaboration.
-    - Reduced friction and project risks.
-  - Weaknesses:
-    - Requires specialized skills and cultural shift.
-    - Difficult to implement for large/legacy systems with minimal automation.
-  - Use Cases:
-    -Teams striving for CI/CD and faster releases.
-    -Companies with resources for cross-functional teams and automation tools.
-- Methodologies and frameworks::_Kanban_
-  - Kanban: Uses a visual kanban board(task board) to track task flow and optimize workflow.
-  - **Main Focus:** Control work in progress (WIP) levels and manage workflows.
+  - Automation: CI/CD automates builds, tests, and deployments for faster releases.
+  - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
+- **DevOps Strengths**
+  - Faster delivery of quality software by eliminating the barrier between development and operations.
+  - Improved operational support and cross-functional collaboration.
+  - Reduced friction and project risks.
+- **DevOps Weaknesses**
+  - Requires specialized skills and cultural shift.
+  - Difficult to implement for large/legacy systems with minimal automation.
+- **DevOps Use Cases**
+  -Teams striving for CI/CD and faster releases w/ automation.
+  -Companies with resources for cross-functional teams and automation tools.
+- **DevOps 4 Phases**
+  - plan, code, build, test.
+- **DevSecOps**
+  - Baking Security into DevOps(entire software development lifecycle) for Faster, **Secure Software Delivery**
+  - Importance: Secure systems are crucial for consumer trust, competitive advantage, and regulatory compliance.
+- **DevSecOps Strengths**
+  - Faster delivery, continuous security feedback, and reduced risk of breaches.
+- **DevSecOps Weaknesses**
+  - Users may need support and training, security teams must relinquish control, and frequent deployments create higher security demands.
+- **CI/CD**
+  - Individual developers check their code into the main branch frequently, and automated tests run against the new code.
+- **Continuous Integration**
+  - Developers merge code frequently, triggering automated tests for early feedback.
+- **Continuous Delivery**
+  - Code automatically prepared for release but deployment is manual.
+- **Continuous Deployment**
+  - Code automatically prepared for release and deployment is automatic.
+
+## Extreme Programming
+
+- **Extreme Programming**
+  - agile framework. software development. pair programming, emphasis on simplicity.
+  - XP: close collaboration, iterative development, and continuous testing.
+- **Extreme Programming Pair programming**
+  - Two developers work together on code, promoting continuous review and knowledge sharing.
+- **Extreme Programming Ten-minute build**
+  - Ensures rapid feedback and keeps code clean through fast builds and tests.
+- **Extreme Programming Continuous integration**
+  - Frequent merging of code to prevent conflicts and enable automated builds/tests.
+- **Extreme Programming Test-first programming**
+  - Writing tests before code drives simplicity and quality.
+- **Extreme Programming Incremental design**
+  - Small, frequent improvements over delayed releases.
+- **Extreme Programming Open workspace**
+  - Fosters communication and teamwork by removing physical barriers(walls). Everyone in same room.
+- **Extreme Programming On-site customer**
+  - Integrates the customer into the team for direct feedback and collaboration.
+- **Extreme Programming 40-hour workweeks**
+  - Prioritizes developer well-being and avoids burnout.
+- **Extreme Programming User stories**
+  - Clear and concise requirements format for effective communication.
+- **Extreme Programming Weekly and quarterly cycles**
+  - Regular planning, adaptation, and reflection.
+- **Extreme Programming Built-in flexibility**
+  - Slack in weekly plans allows for adjustments and unforeseen situations.
+- **3 Roles in Extreme Programming**
+  - Customer: decide features and priority.
+  - Tracker: capture metrics, progress, improvements.
+  - Coach: mentor team members.
+- **Extreme Programming Strengths**
+  - Highly efficient and adaptable.
+  - Prioritizes essential features and continuous improvement.
+  - Strong team cohesion and reduced project failure.
+  - Values developer well-being.
+- **Extreme Programming Weaknesses**
+  - Limited scope to software development (not ideal for non-software projects).
+  - Potential for design neglect due to code-centric practices.
+  - Rapid pace and minimal documentation can be stressful and hinder onboarding.
+  - Reliance on face-to-face interaction (can be challenging for remote teams).
+- **Extreme Programming Use Cases**
+  - Small, collocated teams with changing requirements and tight deadlines.
+  - Projects with strong test automation capabilities.
+
+## Financial and Performance Analysis
+
+- **Assumptions**
+  - future factors you state as true to present a financial plan.
+- **Benefit**
+  - money generated or saved from project.
+  - also called 'financial value' or 'revenue'.
+- **Cost**
+  - anything related to project that causes money to flow out of company.
+- **Cost-Benefit Analysis**
+  - cost to produce vs benefit.
+  - timeline of how quickly money can be recouped.
+- **Financial Analysis**
+  - assigning hard numbers to future events.
+- **Net Profit**
+  - NET = `benefit - cost`
+- **Revenue**
+  - money flowing into company as result of project.
+- **Scoring Model**
+  - rating/weight each project or alternative solution from predefined list of criteria.
+  - often includes a 'minimum' rating. Project discarded if not meet minimum.
+- **Payback Period**
+  - time to recover from all cost of producing product.
+- **FV (Future Value) vs PV (Present Value)**
+  - include inflation into the cost.
+  - Future Value = Present Value(1+interest)^years
+- **ROI**
+  - percentage of gain for investment.
+  - ROI = `(net profit / cost) * 100` // same
+  - ROI = `(revenue - cost) * 100` // same
+  - ROI = `((Financial Value - cost) / cost) * 100` // same
+- **IRR**
+  - Internal Rate of Return: profitability of an investment as an average percent over the life of the investment.
+  - Higher better.
+- **Current State vs Future State or as is-to be, Performance Analysis**
+  - how change will effect the business in the future.
+  - as is-to-be(also called performance analysis): means same.
+- **Discounted Cash Flow**
+  - total value of each years expected cash inflow, in 'todays' dollars.
+- **NPV**
+  - net present value.
+
+## IT Infrastructure and Software
+
+- **Describe: Computing Services, Multitiered Architecture, Networking and Connectivity, Storage, Data Wharehouse, Documentation**
+  - Computing Services: any IT infrastructure a project may need. Software(ERP), hardware(laptop, pc), services(IaaS, PaaS).
+  - Multitiered Architecture: divide software into tiers and layers. Modular design allows for redundancy.
+  - Networking and Connectivity: how various components connect(networking).
+  - Storage: data location, security, redundancy.
+  - Data Wharehouse: extensive database for reporting and analytics.
+  - Documentation: documentation about IT infrastructure.
+- **IaaS, PaaS, SaaS, XaaS**
+
+  - Infrastructure as a Service:
+  - Platform as a Service:
+  - Software as a Service:
+  - Anything as a Service:
+
+  | Platform | Cloud Provider Includes                                     |
+  | -------- | ----------------------------------------------------------- |
+  | IaaS     | physical hardware + hardware management software            |
+  | PaaS     | IaaS + OS + app development environment(java, python, node) |
+  | SaaS     | PaaS + complete app. You bring your data                    |
+  | XaaS     | any third party service.                                    |
+
+- **Ticketing or Case Management System**
+  - manages customer problem tickets. Automated workflow route customer problem to person who can help.
+- **Project Management Scheduling Tools**
+  - schedule, plan, and track project timeline.
+- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
+  - Calendaring: manage multiple calendar, schedules, time zones, alerts.
+  - Real-Time Survey Poll: quickly gather information from groups of people.
+  - Print Media: create posters, flip charts, brochures, manuals.
+  - Conference Platforms: video(zoom, teams).
+- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing, Wiki, **
+  - Word Processing: text document editor.
+  - Spreadsheets: data in tables.
+  - Presentation: slide show.
+  - Diagramming: visually represent process.
+  - Real-Time Multi-Authoring Editing Software: multiple people can collaborate at same time.
+  - File Sharing Platform: grant file access to multiple users.
+  - Wiki: everyone can contribute content. Best when multiple people contribute.
+  - Knowledge Base: specific authors contribute. Best for when appearance and simplicity matter(FAQ's).
+  - Whiteboard: virtual creative space.
+- **ERP (Enterprise Resource Planning)**
+  - back office software to coordinate: accounting, human resources, procurement...
+  - centralizes management and access for data sharing between roles. Data and API(functionality) centralized.
+- **Financial Systems**
+  - subset of ERP for the financial budget, spending, and cost estimates.
+- **Electronic Document Management System (EDMSs) and Records Management System (RMS)**
+  - both are the same thing.
+  - software that manages records(artifacts, documents, contracts) lifecycle.
+  - enforces government regulations, retention policies.
+- **Content Management System (CMS)**
+  - interface that hides code complexity from end-user.
+  - ex.. create website without technical knowledge.
+- **Customer Relationship Management (CRM)**
+  - manage relationship w/customers and future customers.
+  - Allows for tech support(notes, tracking problems).
+
+## Kanban
+
+- **Kanban**
+  - agile framework.
+  - Kanban board: Visualizes work, WIP(work in progress) limits, and workflow policies.
+  - track task flow and optimize workflow.
   - Simplest agile framework to learn and can be applied to any industry.
-  - 6 Core Practices:
-    1. Visualize work: Use a Kanban board to track work progress through stages.
-    2. Limit WIP: Reduce context switching and increase focus by restricting active tasks.
-    3. Make policies explicit: Define rules for moving work through stages for clarity.
-    4. Manage flow: Identify and eliminate workflow bottlenecks for efficiency.
-    5. Implement feedback loops: Measure workflow performance and use data for improvement.
-    6. Improve collaboratively: Experiment and continuously evolve the workflow.
-  - Key Features:
-    - Kanban board: Visualizes work, WIP limits, and workflow policies.
-    - 3 basic phases: To Do, In Progress, Done (can be customized).
-    - 4-part workflow: Prioritize backlog, pull work into progress, move through phases, start new work.
-  - Strengths:
-    - Simple to learn, flexible, applicable to any industry.
-    - Lightweight, focuses on routine work and clear policies.
-  - Weaknesses:
-    - Requires stable work environment, can struggle with large teams or high turnover.
-    - Cycle times may lengthen without set iterations and proper performance management.
-  - Use Cases:
-    - Teams with frequently changing backlogs (e.g., ticketing systems)
-    - Teams comfortable with less structure and stable workflows.
-- Methodologies and frameworks::_PRojects IN Controlled Environments (PRINCE2)_
-  - PRINCE2 (PRojects IN Controlled Environments) is a process-based methodology for managing projects of any size and type. It emphasizes clear phases, roles, and tasks to control the project life cycle and reduce risk.
-  - **Main Focus**: prioritizes governance. Clear framework with defined phases, roles, and tasks to keep projects on track.
-  - Key features:
-    - Structured phases: 7 processes guide the project from initiation to closure.
-    - Defined roles and responsibilities: Teams understand who does what for accountability and efficiency.
-    - Focus on products: Product definition and quality are prioritized.
-    - Adaptability: Customize elements to suit the project's needs.
-    - Continual improvement: Learn from experience and refine future projects.
-  - Roles and Responsibilities:
-    - Team manager: Oversees teams and quality on large projects.
-    - Project board: Oversees the project, including executives, users, and suppliers.
-    - Executive: Represents business perspective and owns the business case.
-    - Senior user: Represents customer perspective.
-    - Senior supplier: Represents implementation partner perspective.
-  - Strengths:
-    - Adaptable to any project type and size.
-    - Easy to learn, facilitating quick team onboarding.
-    - Continuous improvement ensures project growth.
-    - High communication keeps stakeholders informed.
-  - Weaknesses:
-    - Extensive documentation can be cumbersome.
-    - Requires organizational buy-in for elements like the project control board.
-  - Use Cases:
-    - Process-focused organizations.
-    - Companies valuing documentation and stakeholder communication.
-- Methodologies and frameworks::_Software Development Life Cycle (SDLC)_
-  - SDLC: Defines a standardized approach to software development, guiding the process from planning to deployment.
-  - **Main Focus**: A customizable framework for building software effectively and efficiently.
-  - Key features:
-    - Structured phases: Typically 5-8, covering planning, requirements, design, development, testing, analysis, and maintenance.
-    - Adaptable: Each company tailors the framework to its needs and projects.
-    - Continual improvement: Learnings from each cycle refine future projects.
-  - Strengths:
-    - Comprehensive: Covers all necessary tasks and documentation.
-    - Reduced risks, costs, and time: Through detailed planning and organization.
-  - Weaknesses:
-    - Rigid structure: May feel restrictive for agile teams.
-    - Time commitment: Thorough upfront planning can be challenging for some situations.
-- Methodologies and frameworks::_Scrum_
-  - **Scrum**: An iterative and incremental agile framework emphasizing short sprints and team collaboration.
-  - **Main Focus:** Iteration planning, daily stand-ups, and iterative retrospectives to learn from and deliver a product at the end of each iteration (sprint).
-  - Most common agile framework. Scrum **helps teams learn and get better by doing things and not just guessing**.
-  - The framework emphasizes empiricism and lean thinking, promoting continual improvement.
-  - Scrum is an all-or-nothing framework, requiring the use of all its parts for optimal results.
-  - It introduces roles like the Scrum team, product owner, Scrum master, and developers.
-  - Key Concepts:
-    - **Empiricism**: Decisions based on what is seen and known.
-    - **Lean thinking**: Minimize waste and inefficiency
-    - **All-or-nothing framework**: Use all elements or it's not Scrum
-    - **5 Values**: Commitment, focus, openness, respect, courage
-    - **3 Pillars**: Transparency, inspection, adaptation
-    - **4 Events**: Sprint planning, daily Scrum, sprint review, sprint retrospective
-  - Process:
-    - Product owner prioritizes work in product backlog.
-    - Team selects top items for sprint backlog.
-    - Team reviews results and adapts for next sprint.
-    - Repeat until backlog is empty.
-  - Roles:
-    - Scrum Team: Delivers increments of value (3-10 members)
-    - Product Owner: Owns and manages product backlog
-    - Scrum Master: Coaches team and improves Scrum usage
-    - Developers: Complete backlog items (not limited to software)
-  - Artifacts:
-    - Product Backlog: Ordered list of product changes
-    - Sprint Backlog: Team's plan for upcoming sprint
-    - Increment: Completed work that moves toward product goal
-  - Events:
-    - Sprint: Fixed-length iteration (1 week - 1 month)
-    - Sprint Planning: Discussing priorities and creating sprint backlog
-    - Daily Scrum: Developers review progress and plan next 24 hours
-    - Sprint Review: Sharing progress with stakeholders and adjusting backlog
-    - Sprint Retrospective: Team inspects how they worked and identifies improvements
-  - Strengths:
-    - Flexible, applicable to any industry
-    - Short cycles for feedback and responsiveness
-    - Customer-centric, early product delivery
-    - Pacing and task breakdown for large projects
-    - Continuous improvement and adaptation
-  - Weaknesses:
-    - Relies on trust in product owner's decisions
-    - Designed for single, high-performing teams
-    - Scaling up can be difficult
-    - Meeting schedule and pace might overwhelm some teams
-  - Use Cases:
-    - Highly cohesive, cross-functional teams
-    - Large, complex projects with unpredictable workflows
-    - Adaptable projects with unknown requirements
-- Methodologies and frameworks::_Scaled Agile Framework (SAFe)_
-  - **Agile**: Iterative and Incremental Development(IID). Features are completed and released often throughout the project.
-    - Software development typically benefits from this type of framework. Constant feedback from incremental builds, help deliver an improved final product.
-    - Strengths: expected change.
-    - Weakness: scope creep creating missed deadlines.
-    - Use: project requirements will change often. Team is stable and self organized.
-  - **SAFe**: Scaled Agile Framework for large-scale agile projects, adapting agile principles to enterprise teams.
-  - helping multiple teams work together in sync.
-  - **Main Focus**: agile principles at scale(project, program, portfolio, enterprise level) by grouping agile teams.
-  - Key Concepts:
-    - Agile at scale: Adapting agile tools for larger organizations.
-    - SAFe framework: Specific approach to agile at scale, featuring roles, practices, events, and artifacts.
-    - Agile team: Generic term for any agile team, regardless of chosen framework (Scrum, Kanban, etc.).
-    - Agile release train (ART): Groups related teams to collaborate and deliver larger products.
-    - Iteration: Fixed-time development increment (1-4 weeks, aligns with PI schedule).
-    - Program Increment (PI): Longer planning cycle (8-12 weeks) involving multiple teams.
-    - PI planning: Event for ARTs to synchronize goals, plan work, and address risks for an upcoming PI.
-  - Benefits:
-    - Business agility: Connects business and technology teams, aligning with larger goals.
-    - Scalability: Adapts to any organization size, from startups to large corporations.
-    - Coordination: Structures communication and collaboration among multiple teams.
-  - Weaknesses:
-    - Complexity: Adds new terms, layers, and staff, potentially conflicting with agile's simplicity.
-    - Limited team autonomy: Some decisions move to executives/staff, reducing team control.
-    - Rigid structure: ART cadences dictate team cadences, reducing flexibility.
-  - Use Cases:
-    - Companies with multi-team projects.
-    - Organizations with many agile teams needing coordination.
-- Methodologies and frameworks::_Extreme programming (XP)_
-  - XP: Extreme Programming emphasizes close collaboration, iterative development, and continuous testing.
-  - Key Practices:
-    - **Pair programming**: Two developers work together on code, promoting continuous review and knowledge sharing.
-    - **Ten-minute build**: Ensures rapid feedback and keeps code clean through fast builds and tests.
-    - **Continuous integration**: Frequent merging of code to prevent conflicts and enable automated builds/tests.
-    - **Test-first programming**: Writing tests before code drives simplicity and quality.
-    - **Incremental design**: Small, frequent improvements over delayed releases.
-    - **Open workspace**: Fosters communication and teamwork by removing physical barriers.
-    - **On-site customer**: Integrates the customer into the team for direct feedback and collaboration.
-    - **40-hour workweeks**: Prioritizes developer well-being and avoids burnout.
-    - **User stories**: Clear and concise requirements format for effective communication.
-    - **Weekly and quarterly cycles**: Regular planning, adaptation, and reflection.
-    - **Built-in flexibility**: Slack in weekly plans allows for adjustments and unforeseen situations.
-  - Strengths:
-    - Highly efficient and adaptable.
-    - Prioritizes essential features and continuous improvement.
-    - Strong team cohesion and reduced project failure.
-    - Focus on developer well-being.
-  - Weaknesses:
-    - Limited scope to software development (not ideal for non-software projects).
-    - Potential for design neglect due to code-centric practices.
-    - Rapid pace and minimal documentation can be stressful and hinder onboarding.
-    - Reliance on face-to-face interaction (can be challenging for remote teams).
-  - Use Cases:
-    - Small, collocated teams with changing requirements and tight deadlines.
-    - Projects with strong test automation capabilities.
-- Methodologies and frameworks::_Waterfall_
-  - Waterfall: A linear, sequential methodology and project framework where phases follow a strict order, like planning, design, development, testing, and deployment.
-  - Strengths: simplest, easy to learn and use.
-  - Weakness: not flexible. Change, starts project over from beginning(expensive).
-  - Use: when you have fixed requirements, no unknowns, and high change cost.
+- **Kanban 3 basic phases**
+  - To Do, In Progress, Done (can be customized).
+- **Kanban 6 Core Practices**
+  1. Visualize work: show phase work is in.
+  2. Limit WIP: prevent overwhelm, increase product quality by restricting active tasks.
+  3. Make policies explicit: clearly define how work moves through phases.
+  4. Manage flow: Identify and eliminate workflow bottlenecks for efficiency.
+  5. Implement feedback loops: Measure workflow performance and use data for improvement.
+  6. Improve collaboratively: Experiment and continuously evolve the workflow.
+- **Kanban 4-part workflow**
+  - Prioritize backlog, pull work into progress, move through phases, start new work.
+- **Kanban Strengths**
+  - Simple to learn, flexible, applicable to any industry with routine tasks.
+  - Lightweight, focuses on reasonable amount of work and clear policies.
+- **Kanban Weaknesses**
+  - Requires stable work environment, can struggle with large teams or high turnover.
+  - Cycle times may lengthen without set iterations and proper performance management.
+- **Kanban Use Cases**
+  - Teams with frequently changing backlogs (e.g., ticketing systems)
+  - Teams comfortable with less structure and stable workflows.
 
-## 1.02 Compare and contrast AGILE vs. WATERFALL concepts
+## PRINCE2
 
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Requirements_
-  - Requirements: Highly changeable requirements favor agile methods like Scrum or Kanban, where adaptations happen easily. Waterfall methodology may struggle with frequent changes.
-  - Define what the project delivers, how it works, and how it's used.
-  - Create a shared understanding for stakeholders and team members.
-  - Need to be precise and well-defined (regardless of methodology).
-  - **Waterfall**:
-    - Requirements upfront: All features listed before development starts.
-    - Limited flexibility: Changes cost time and money.
-    - Missed opportunities: Can't easily incorporate new ideas discovered during development.
-  - **Agile**:
-    - Progressive elaboration: Requirements evolve in iterations with frequent customer feedback.
-    - Faster adaptation: Easily incorporate new ideas and respond to changing needs.
-    - Reduced risk: Early feedback minimizes wasted effort on incorrect features.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_Budget_
-  - Budget: Agile methods typically work within flexible budgets, adapting features based on available resources. Waterfall requires a fixed budget with clear scope.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Tolerance for change/flexibility::_ScheDdule_
-  - Schedule: Agile methods embrace iterative development, potentially adapting deadlines with each iteration. Waterfall follows a predefined schedule with less room for adjustment.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Cultural_
-  - Cultural: Collaborative cultures thrive in agile settings, while top-down structures work better with Waterfall.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Developmental_
-  - Developmental: Complex projects or unfamiliar technology might benefit from Waterfall's structured approach. Agile methods excel in iterative development for evolving technologies.
-- AGILE vs. WATERFALL::Criteria for selecting a method::Environmental factors::_Industry standards_
-  - Industry Standards: Some industries (e.g., government) may have regulations impacting methodology choice.
-- AGILE vs. WATERFALL::Team composition::Product ownership::_Roles and responsibilities_
-  - Product Ownership: Agile methods rely on a designated product owner to prioritize backlog items and represent business needs. Waterfall focuses on project managers defining deliverables.
-  - Roles and Responsibilities: Agile teams involve cross-functional members with shared responsibility. Waterfall often has designated roles with distinct tasks.
-- AGILE vs. WATERFALL::Team composition::Product ownership::_Team size_
-  - Team Size: Smaller teams tend to fit agile methods well due to close collaboration. Waterfall can manage larger teams with defined roles and communication structure.
-- AGILE vs. WATERFALL::Team composition::Product ownership::_Resource allocation and commitment_
-  - Resource Allocation and Commitment: Agile methods require flexible resource allocation, adapting to changing task priorities. Waterfall expects pre-determined resource commitment based on the fixed plan.
-- AGILE vs. WATERFALL::_Differences in communication methods_
-  - Agile: Frequent, informal communication through daily stand-up meetings, backlog updates, and collaborative tools.
-  - Waterfall: More formal communication through reports, documentation, and structured meetings.
+- **PRINCE2**
+  - process-based methodology. Common in UK, EU, Canada, Australia.
+  - focus on clear project phases, roles, and responsibilities.
+  - originally waterfall methodology, but has embraced the agile model.
+  - has 7 principles, 7 themes, 7 processes.
+- **PRINCE2 Team Manager**
+  - management team member focused on helping project manager.
+- **PRINCE2 Project Board**
+  - authorizes resources and funding in support of project manager.
+- **PRINCE2 Project Board Three Roles**
+  1. **Executive**: member of upper management represents business perspective, owns project business case.
+  2. **Senior User**: represents customer perspective.
+  3. **Senior Supplier**: represents supplier perspective.
+- **PRINCE2 Strengths**
+  - very flexible with any project.
+  - greater upper management involvement.
+  - constant communication between project board, manager, and teams.
+- **PRINCE2 Weaknesses**
+  - extensive documentation.
 
-## 1.03 Given a scenario, apply the CHANGE CONTROL process throughout the project life cycle
+## Projects and Members
 
-- CHANGE CONTROL::Project-specific change control::Create/receive change requests
-  - Change Control: A formal process for managing any alterations to the project baseline (approved plan). It ensures proper evaluation, approval, and implementation of changes while minimizing disruption.
-  - Create/Receive Change Requests: Anyone can propose changes through a formal request document.
-- CHANGE CONTROL::Project-specific change control::Document requests in the change control log
-  - Document Requests: Log all requests in a Change Control Log (CCL) for tracking and analysis.
-- CHANGE CONTROL::Project-specific change control::Conduct a preliminary review
-  - Preliminary Review: Assess the request's validity, completeness, and potential impact on the project.
-- CHANGE CONTROL::Project-specific change control::Conduct impact assessments
-  - Impact Assessments: Analyze the effect of the change on various aspects like schedule, budget, resources, and risks.
-- CHANGE CONTROL::Project-specific change control::Document change recommendations
-  - Document Change Recommendations: Based on the assessment, recommend approval, rejection, or modification of the request.
-- CHANGE CONTROL::Project-specific change control::Determine decision makers
-  - Determine Decision Makers: Identify the individuals or committee (Change Control Board, CCB) authorized to approve or reject changes.
-- CHANGE CONTROL::Project-specific change control::Escalate to the change control board (CCB), if applicable
-  - Escalate to CCB: If needed, formally present the request and recommendations to the CCB for final decision.
-- CHANGE CONTROL::Project-specific change control::Document the status of approval in the change control log
-  - Document Status: Update the CCL with the approved decision (approve, reject, defer).
-- CHANGE CONTROL::Project-specific change control::Communicate the change status
-  - Communicate Change Status: Inform stakeholders about the decision and its implications.
-- CHANGE CONTROL::Project-specific change control::Update the project plan
-  - Update Project Plan: If approved, integrate the change into the project plan, adjusting schedules, tasks, resources, and budgets.
-- CHANGE CONTROL::Project-specific change control::Implement changes
-  - Implement Changes: Execute the approved change using proper procedures and controls.
-- CHANGE CONTROL::Project-specific change control::Validate the change implementation
-  - Validate Change Implementation: Verify that the change was implemented correctly and meets expectations.
-- CHANGE CONTROL::Project-specific change control::Communicate change deployment
-  - Communicate Change Deployment: Inform stakeholders about the successful implementation of the change.
-- CHANGE CONTROL::Project change management::Product change vs. project change
-  - Product Change vs. Project Change: Distinguishing between changes affecting the final product's features (product change) and those affecting the project's execution (project change).
-- CHANGE CONTROL::Project change management::Manage scope creep/scope change
-  - Managing Scope Creep/Scope Change: Addressing situations where the project's scope (planned deliverables) unintentionally expands (scope creep). This may involve formal change control, negotiation with stakeholders, or potentially re-baselining the project.
+- **Project**
+  - temporary organization created to deliver one or more business products according to the business-case.
+- **What Makes it a Project**
+  - mnemonic: 'STU'
+  - **Unique**: meet specific business objective.
+  - **Temporary**: start and end date.
+  - **Stakeholder Satisfaction**: ends when stakeholder is satisfied.
+- **Needs and demands of why projects come about**
+  - Market Demand, Organizational Need, Customer Request, Technological Advance, Legal Requirement, Ecological Impact, Social Need.
+- **Architect**
+  - part of the IT team. design. Make sure project interoperates with business goals.
+  - Responsibilities:
+    - Solution design
+    - System blueprints
+    - Evaluating systems against organizational standards
+- **Artifacts**
+  - preexisting knowledge, documentation(lessons learned) or vetted vendors to be used in project planning.
+- **Business Analyst**
+  - **gathering and documenting** requirements for project.
+  - works between the business side and the IT side.
+  - Responsibilities:
+    - Helping to define the project
+    - Gathering business and technical requirements
+    - Ensuring requirements stay aligned to needs
+    - Interpreting business requirements
+    - Verifying deliverables against requirements
+    - Assisting with testing and validation of products
+- **Business Case**
+  - **Justifies the project**'s viability(most important) and alignment with business goals.
+  - summarizes project and is first project proposal. Determines if project should proceed.
+  - created in discovery phase. Often includes details about budget and timelines(start, end).
+  - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
+    - Executive Summary: brief summary. problem statement, solution, result.
+    - Problem Statement: problem trying to solve.
+      - Problem Analysis: more details about why project should be prioritized.
+    - Options: pros and cons of multiple solutions.
+    - Financial Overview: cost-benefit on investment.
+    - Project Definition: more info. scope, resources, milestones, timeline.
+    - Recommendation: analysis which option is best for organization objectives.
+    -
+  - Analyzes the:
+    - Problem or opportunity the project addresses.
+    - Alternative solutions and their costs/benefits.
+    - Projected financial impact on the organization.
+    - Risks and mitigation strategies.
+  - Function:
+    - Secures executive buy-in and funding for the project.
+    - Demonstrates the value proposition and return on investment.
+    - Guides project prioritization and decision-making.
+    - Provides ongoing performance benchmarks and justification.
+  - mnemonic: 'JAFAR DASH'
+  - **Justification**: benefits to organization.
+  - **Alignment to the Strategic Plan**: project aligns with organizations overall strategy.
+  - **Feasibility Study Results**: determine if project is doable and likely to succeed.
+  - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
+  - **Recommended Solutions**: expected results and impact.
+  - **Description**: describe the project.
+  - **Alternative Solutions**: expected results and impact from alternative solution.
+  - **Stakeholders**: anyone/organization with vested interest.
+  - **High-Level Risk Analysis**: known risk documented.
+- **Business Storytelling: Current State vs Future State**
+  - either tell a good story of Current state vs. Future state with descriptive words or charts.
+  - both sides must use same metrics.
+  - Current State: whats going on right now.
+  - Future State: what will change after project.
+- **Core Team Members**
+  - also called 'operational' team members because they focus on day-to-day operations.
+- **Customers: Internal, External, End-User**
+  - Internal: inside organization. easy feedback.
+  - External: outside organization. typically pay for product.
+  - End-User: physical user of final product. Can also provide insight on usability and functionality.
+- **Decision Model**
+  - apples-to-apples way of comparing projects and which one is the most benefit to company needs.
+  - **Rewards**
+    - Cost-benefit analysis, Scoring models, Payback period, Discounted cash flow, Net present value, Internal rate of return, Return on investment.
+  - **Constrained Optimization Model**
+    - mathmatical model for highly complex projects.
+- **Developer/Engineer**
+  - writing program frontend/backend code.
+  - Responsibilities:
+    - Writing code to standards
+    - Building products according to the project plan or sprint backlog
+    - Reporting development progress to the project manager or product owner
+- **Expert Judgement**
+  - expertise of stakeholder or other subject matter expert to make project decisions.
+  - Danger lies with relying on single technique to make selection.
+- **Extended Team Member**
+  - work part time on multiple projects.
+- **Key Performance Indicator (KPI)**
+  - operational metrics, that measures only the most crucial project points.
+- **Key Performance Indicator (KPI): Lagging and Leading Indicators**
+  - Lagging: captured only after work is done.
+  - Leading: predictive measures.
+- **Milestone and Sprint Goals**
+  - Milestone:
+    - critical checkpoint in a project. Date dependant event.
+    - short milestones help keep project momentum, too many cause fatigue.
+  - Sprint Goals:
+    - at the start of agile sprint, sprint goal is created that reflects the expected outcome.
+- **Objective and Key Results (OKR)**
+  - aspirational, slightly out of reach goals to drive teams value further than they thought possible.
+  - less is more. focus on the critical needs.
+  - Two parts:
+    - Objective: goal and why it matters.
+    - Key Result: what you need to do to meet the goal.
+  - ![okr](img/okr-objectives-key-results.avif)
+- **PMO (Project Management Office)**
+  - Functional department for all project managers.
+  - manages flow of projects and provides guidance to project managers with organization resources.
+- **PMO Supportive Project Management Office**
+  - Provides support when it is requested
+- **PMO Controlling Project Management Office**
+  - Monitors project performance and coordinates resource selection while allocating project managers to projects
+  - The controlling PMO coordinates communications and sets some project standards
+- **PMO Directive Project Management Office**
+  - Has full authority over projects, standards, and procedures
+  - It focuses on organizational strategy and will start, cancel, or adjust projects to ensure strategic alignment
+- **Portfolios**
+  - prioritize and execute multiple projects/programs more efficiently.
+  - support strategic business goals or objectives.
+  - Portfolios may consist of multiple projects/programs without related objectives.
+- **Portfolios Enterprise**
+  - contain all programs/projects.
+  - can be broken down into sub-portfolios at division or branch level.
+- **Portfolio Management**
+  - strategy to maintain and prioritize maximum programs/projects.
+- **Preliminary Scope**
+  - Preliminary scope statement defines the objectives of the project and explains the business reason the project is trying to solve.
+- **Product Owners**
+  - help agile teams stay on track with cost, scope, and time.
+  - **creating a valuable product and identifying how to improve a product**. Keeping to product vision.
+  - create work, but do not manage. Act as customer proxy.
+- **Product Manager**
+  - **define product strategy**, create roadmap on how product will improve and change over time.
+- **Programs**
+  - group projects with related objectives to achieve a larger objective.
+  - bring about benefits that wouldn’t be achievable if the projects were managed separately.
+- **Program Manager**
+  - lead groups of projects. Operates at a more strategic level.
+  - helps capitalize on the resources of multiple projects.
+  - project managers report to them(makes them a stakeholder and your boss).
+- **Project Baseline**
+  - approved cost, schedule, scope, plans, and documents.
+  - used to measure performance/progress. Determine if on schedule, within budget or on target.
+- **Project Management Office (PMO)**
+  - central location for guidance, standards, artifacts to project managers, programs and portfolios.
+  - allows organization to capitalize on the collective benefits of all projects.
+  - Functions:
+    - organized standards and processes.
+    - coordination of resources, templates, artifacts.
+    - governance and setting priorities.
+    - KPI, performance standards and nonperformance consequences.
+- **Project Manager**
+  - runs day-to-day management of teams in any framework as long as the project is active.
+  - explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
+  - keeps project sponsor notified of status, conflicts and risk.
+  - responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
+  - completes project goals to stakeholder/company satisfaction.
+  - Responsibilities:
+    - Building the project team and securing resources
+    - Building the project charter and defining the project’s scope
+    - Creating required project logs and processes, including the issue log, change log, and risk register
+    - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
+    - Preparing and delivering project status updates
+    - Tracking the project’s progress and status when compared to the schedule and budget
+    - Managing vendor relationships
+- **Project Manager Skills**
+  - leadership, communication, problem-solving, negotiation, organization, time management.
+- **Project Manager: Managing a Project Team**
+  - manage team and resources for team.
+- **Project Manager: Communicating with Stakeholders and Team Members**
+  - sponsors, stakeholders, team members up-to-date. Start -> Finish.
+- **Project Manager Scope**
+  - goals, deliverables, and requirements of the project.
+- **Project Manager Risk**
+  - identify, manage, track, monitor risk.
+- **Project Manager Budget**
+  - alert if cost higher than expected or funds running out.
+- **Project Manager Schedule**
+  - key deliverables are performed on time.
+- **Project Manager Quality Assurance**
+  - quality of deliverables meet standards
+- **Project Manager Project Artifacts**
+  - documents, templates, agendas, diagrams. Project charter is artifact.
+- **Project Selection Method**
+  - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
+- **Project Sponsor**
+  - ultimately responsible for the success or failure of project. Delegates operations to project manager.
+  - usually **senior executive** that assigns **money** and **resources** to project.
+  - approves project charter by **signing**.
+  - **Tie-breaker, champion, adviser of project**.
+  - Responsibilities:
+    - find/provide funding
+    - sign charter. Approve baseline(starting point of project, schedule, scope), high-level requirements.
+    - define business case.
+    - authorize assignment of human resources.
+    - assigns project manager and define their authority.
+    - negotiate support from key stakeholders. Champion and market project.
+    - enforce milestones by removing road blocks.
+- **Senior Management**
+  - highest level of leadership.
+  - control organizational goals, communicate with shareholders and board members.
+  - prioritize projects, authorize spending, assign team members.
+- **SMART Objective**
+  - Specific: define exactly what is needed.
+  - Measurable: what change to look for.
+  - Achievable: realistic goal.
+  - Relevant: align with business goals.
+  - Time-Bound: target end date.
+- **Sponsors**
+  - single senior manager reviews/validates initial business case.
+  - secures funding and removes barriers.
+- **Stakeholder**
+  - Anyone/Organization with vested interest(positive or negative) in the project.
+  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
+  - **Agile**: communication between team and stakeholder throughout the project.
+  - Responsibilities:
+    - Must understand the project’s purpose and how it will affect them.
+    - Be transparent about their support or lack of support
+    - Provide timely feedback on the project’s progress
+- **Stakeholder Analysis**
+  - asking questions to gather role(level of involvement, influence), needs/concerns.
+  - Questions:
+    - What is your interest in project?
+    - expectations of outcome?
+    - what is do you anticipate as your level of involvement?
+    - knowledge level in project? What do you see as special skills needed for successful outcome?
+    - what contributions are you anticipating making?
+    - How will project impact your organization positively/negatively?
+    - Are there other stakeholders expectations that conflict with yours?
+    - Use these questions to fill out the Stakeholder Analysis Grid:
+      - ![stakeholder impact grid](img/impact_grid.PNG)
+- **Stakeholder Register**
+  - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
+- **SMEs (Subject Matter Experts)**
+  - team members performing the work. have the specific knowledge and experience to do the work.
+- **Team Member and Extended Team Member**
+  - **Team Member**: knowledgeable person either full time.
+    - keep timeline, cost of project.
+    - communicate with project manager risk, updates.
+  - **Extended Team Member**: also called Fractional Team Member.
+    - Only available part time. Typically Subject Matter Expert.
+- **Tester/Quality Assurance**
+  - ensure requirements are met. help prevent errors.
+- **Validate a Project**
+  - write business case, identify and analyze stakeholders.
+- **Vendor**
+  - third party provides resources.
+  - Responsibilities:
+    - Provide work outlined in contracts
+    - Maintain service level agreements
+    - Keep clear lines of communication open for business relationships
 
-## 1.04 Given a scenario, perform RISK MANAGEMENT activities
+## Project Lifecycle Phase 1 Discovery
 
-- RISK MANAGEMENT::General risks::New projects
-  - New projects: Lack of experience, undefined requirements, or unrealistic planning can introduce risks.
-- RISK MANAGEMENT::General risks::New management
-  - New management: Changes in leadership might disrupt established processes and communication.
-- RISK MANAGEMENT::General risks::Regulatory environment changes
-  - Regulatory environment changes: Compliance burdens or unexpected restrictions can impact project execution.
-- RISK MANAGEMENT::General risks::Digital transformation
-  - Digital transformation: Implementing new technologies can pose risks related to integration, adoption, and security.
-- RISK MANAGEMENT::General risks::Infrastructure end-of-life
-  - Infrastructure end-of-life: Aging hardware or software nearing retirement can create operational instability.
-- RISK MANAGEMENT::General risks::Merger and acquisition
-  - Merger and acquisition: Integrating two organizations can pose cultural challenges, resource conflicts, and integration complexities.
-- RISK MANAGEMENT::General risks::Reorganization
-  - Reorganization: Restructuring can disrupt established teams, communication paths, and project momentum.
-- RISK MANAGEMENT::General risks::Major cybersecurity event
-  - Major cybersecurity event: Data breaches, malware attacks, or system disruptions can severely impact project goals and reputation.
-- RISK MANAGEMENT::Known risk vs. unknown risk
-  - Known risks: Identified and anticipated threats with some understanding of their probability and impact.
-  - Unknown risks: Unforeseen threats with little to no information about their potential occurrence or effect.
-- RISK MANAGEMENT::Common risk responses::Development of contingency/fallback plans
-  - Contingency/fallback plans: Predefined actions to mitigate or recover from potential risks.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Negative risks::Accept
-  - Accept: Acknowledge the risk and its potential consequences but choose not to act.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Negative risks::Avoid
-  - Avoid: Modify the project plan to eliminate the risk entirely.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Negative risks::Mitigate
-  - Mitigate: Implement measures to reduce the likelihood or impact of the risk.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Negative risks::Transfer
-  - Transfer: Shift the responsibility or financial burden of the risk to another party (e.g., insurance).
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Positive risks::Accept
-  - Accept: Leverage the positive outcome without actively pursuing it.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Positive risks::Enhance
-  - Enhance: Increase the likelihood or benefit of the positive outcome.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Positive risks::Exploit
-  - Exploit: Actively pursue the positive outcome to maximize its benefits.
-- RISK MANAGEMENT::Common risk responses::Risk management strategies::Positive risks::Share
-  - Share: Partner with others to share the benefits or responsibilities associated with the positive risk.
-- RISK MANAGEMENT::Risk analysis::Qualitative::Interconnectivity
-  - Qualitative: Evaluating risks based on subjective assessments of their likelihood and impact (e.g., high/medium/low).
-  - Interconnectivity: Analyzing how interconnected risks are and how one might escalate another.
-- RISK MANAGEMENT::Risk analysis::Qualitative::Detectability
-  - Detectability: Assessing the ease of identifying and monitoring a risk before it materializes.
-- RISK MANAGEMENT::Risk analysis::Quantitative::Simulation
-  - Quantitative: Using data and mathematical models to estimate the probability and impact of risks (e.g., simulations).
-- RISK MANAGEMENT::Risk analysis::Impact analysis::Probability vs. impact
-  - Impact analysis: Evaluating the potential severity of a risk on project goals (e.g., cost, schedule, quality).
-  - Probability vs. impact: Balancing the likelihood of a risk occurring with its potential severity to prioritize responses.
-- RISK MANAGEMENT::Risk analysis::Situational/scenario analysis
-  - Situational/scenario analysis: Exploring different possible future scenarios to understand the range of potential outcomes due to various risks.
-- RISK MANAGEMENT::Connections between risks and issues
-  - Risks are potential problems, while issues are actual problems that have already occurred. Risks can inform strategies to prevent or mitigate issues, and managing issues effectively helps learn from and address similar risks in the future.
-- RISK MANAGEMENT::Connection between risks and changes
-  - Changes to the project plan or environment can introduce new risks, while addressing existing risks may require changes to the project approach.
-- RISK MANAGEMENT::Roles and responsibilities::Points of escalation
-  - Points of escalation: Defining clear escalation paths for identifying and reporting identified risks to appropriate stakeholders.
-- RISK MANAGEMENT::Roles and responsibilities::Ownership
-  - Ownership: Assigning specific individuals or teams the responsibility for monitoring, analyzing, and responding to various risks.
+- **Discovery/Concept Phase**
+  - first phase. determine whether project is worthwhile/justified.
+  - business case is created.
+- **Discovery: Business Case**
+  - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
+  - **If project considered risky**
+    - Perform **feasibility study**: new projects, complex projects, risky projects.
 
-## 1.05 Given a scenario, perform ISSUE MANAGEMENT activities
+## Project Lifecycle Phase 1 Initiating
 
-- ISSUE MANAGEMENT::Roles and responsibilities::Escalation path
-  - Points of escalation: Clearly defined paths for reporting identified issues to the appropriate individuals or teams based on their severity, impact, and expertise.
-- ISSUE MANAGEMENT::Roles and responsibilities::Ownership
-  - Ownership: Assigning specific individuals or teams the responsibility for managing and resolving different types of issues. This ensures accountability and efficient problem-solving.
-- ISSUE MANAGEMENT::Issue tracking
-  - Implementing a system to log, track, and manage issues throughout the project lifecycle. This system allows for:
-    - Centralized repository: Tracking all issues in one place for easy reference and analysis.
-    - Status updates: Monitoring progress towards resolution and identifying any delays.
-    - Assignment and communication: Assigning ownership and facilitating communication between stakeholders involved in resolving the issue.
-    - Trend analysis: Identifying recurring issues and potential areas for improvement in the project's processes or environment.
-- ISSUE MANAGEMENT::Connections between issues and changes
-  - Addressing issues often necessitates changes to the project plan, scope, or resources. Conversely, changes introduced during the project can lead to new issues. Effective project management requires understanding and managing these interdependencies.
-- ISSUE MANAGEMENT::Resolution plan::Execute contingency plans
-  - Execute contingency plans: If applicable, implementing pre-defined plans for handling specific types of issues.
-- ISSUE MANAGEMENT::Resolution plan::Root cause analysis
-  - Root cause analysis: Investigating the underlying reason behind the issue to prevent similar occurrences in the future.
-- ISSUE MANAGEMENT::Resolution plan::Prioritization::Issue severity
-  - Prioritization: Determining the order in which to address issues based on various factors, such as:
-  - Issue severity: High-impact issues causing significant disruption or risk should be prioritized.
-- ISSUE MANAGEMENT::Resolution plan::Prioritization::Impact to project
-  - Impact to project: Issues affecting critical project goals or timelines take precedence.
-- ISSUE MANAGEMENT::Resolution plan::Prioritization::Urgency
-  - Urgency: Time-sensitive issues requiring immediate attention should be addressed first.
-- ISSUE MANAGEMENT::Resolution plan::Prioritization::Scope of impact to organization
-  - Scope of impact to organization: Issues with wider organizational consequences might need higher priority.
-- ISSUE MANAGEMENT::Resolution plan::Prioritization::Issue escalation
-  - Issue escalation: Following the established escalation path for critical or complex issues requiring attention from higher levels of management.
-- ISSUE MANAGEMENT::Resolution plan::Work-arounds
-  - Temporary solutions or alternative approaches to circumvent the issue and minimize its impact on the project while a permanent fix is developed and implemented.
-- ISSUE MANAGEMENT::Outcome documentation
-  - Documenting the resolution process, including the identified issue, root cause analysis, implemented solution, and any changes made to the project plan or procedures. This helps with:
-    - Knowledge sharing and future reference.
-    - Identifying patterns and trends in issues.
-    - Improving future project planning and risk mitigation strategies.
+- **Initiating Project**
+  - after business case is approved, formal authorization for a new project to begin.
+  - Next: preliminary scope statement, project charter, team assembled.
+- **Initiating Project: Preliminary Scope Statement**
+  - **clearly defines how the work will be done**.
+  - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
+  - preliminary scope statement and the scope statement are the same. Only difference is maturity.
+  - document grows with project becomes more mature. This document will be the reference for the planning phase.
+  - Functions:
+    - Scope Description: summary project intent and purpose.
+    - Acceptance Criteria: description of successful project.
+    - Deliverables: project boundaries and what team will deliver.
+    - Exclusions: what team will not deliver.
+    - Assumptions: the project unknowns as known.
+    - Constraints: what has to be worked around and could delay project.
+- **Initiating Project: Project Charter**
+  - **high level explanation of why the project exit**.
+  - objectives should be clear, measurable, actionable.
+  - questioning project requestor to ensure problem is clearly understood.
+  - officially recognizes the project has begun. First official document of Approved project.
+  - source of truth for the project. It describes the vision and direction of the entire project.
+  - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
+    - check project management office for template or required format. some answers can be taken from business case.
+    - use artifacts to observe lessons learned from past experiences.
+  - Project Charter Functions:
+    - Justify project: reiterate business case.
+    - Objective and deliverables: clearly define desired result, deliverables and start, end date.
+    - Scope and boundaries: clarifies project manager and team members(needed skills) roles and authority level.
+    - Assumptions: based on previous experience, you can expect similar.
+    - Timeline and milestones: tracking(on schedule) details on each stage of project.
+    - Requirements and budget: List all blockers, and high-level resource estimation.
+    - Key stakeholders and roles: clarifies purpose and expectation for stakeholders.
+    - Constraints and Risk: Something fixed(must be worked around). Threat to project(missed deadline).
+    - Success criteria: delivered on time, within budget, meets goals(fit, regulations, quality, performance).
+    - Signatures: Project sponsor must review and sign off.
+  - after project charter is signed, identify people who will do the work and have the right skills.
+- **Initiating Project: Stakeholder**
+  - engage stakeholder to build and manage relationship throughout project.
+  - Engagement Plan:
+    - Stakeholder: List the person or group.
+    - Point of Contact: If the stakeholder is not a person, list the person who represents the stakeholder.
+    - Power: List the power level from the Power/Impact Grid
+    - Influence: List their impact level from the Power/Impact Grid.
+    - Project Phase: List the project phases that you will need to engage with them
+    - Engagement Needs: Describe what they need or why they are a key stakeholder
+    - Engagement Approach: List the type of engagement you will conduct from the
+    - Power/Impact Grid
+      - ![impact grid](img/impact_grid.PNG)
+    - Methods: Capture how you will communicate with them
+    - Frequency: List a descriptive term of how often you will engage with the stakeholder
+- **Initializing Project: Records Management**
+  - CRUD(create, read, update, delete) policies for documents and records.
+  - where records are stored, liaisons listed, classification.
+  - Types of records:
+    - Management Artifacts: budget, stakeholder engagement...
+    - Artifacts: documents created as project moves along.
+    - Legal Documents: contracts.
+    - Communications: written communication: meeting notes, status reports.
+  - **Records Management System (RMS)**: software that manages record lifecycle.
+    - enforces government regulations, retention policies.
+- **Initializing Project: Access Requirements**
+  - software that manages employees can access. Typically based on roles.
+  - access is least privilege(only what is required).
+- **Initiating Project: Kickoff**
+  - live meeting with team. Discuss project purpose, goals, plan.
+  - signifies start of the project work. Team roles identified.
 
-## 1.06 Given a scenario, apply schedule DEVELOPMENT and MANAGEMENT activities and techniques
+## Project Lifecycle Phase 2 Planning
 
-- DEVELOPMENT and MANAGEMENT::Upcoming milestones and activity identification::Sprint goals
-  - Defining specific objectives and goals for each sprint, ensuring focused efforts and measurable progress.
-  - Ordering activities within a sprint based on dependencies and priorities, optimizing workflow and resource allocation.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Dependencies::Hard logic/mandatory
-  - Hard Logic/Mandatory: Strict dependencies that must be followed for successful project execution.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Dependencies::Soft logic/discretionary
-  - Soft Logic/Discretionary: Preferred order, but some flexibility exists in sequencing.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Dependencies::External
-  - External: Dependencies on factors outside the team's control (e.g., vendor deliveries).
-- DEVELOPMENT and MANAGEMENT::Sequencing::Dependencies::Internal
-  - Internal: Dependencies between team activities.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Dependencies::Issue escalation
-  - Issue Escalation: Dependencies related to resolving identified issues before proceeding.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Successor/predecessor relationships::Start-to-start
-  - Start-to-Start: Both activities begin at the same time.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Successor/predecessor relationships::Start-to-finish
-  - Start-to-Finish: One activity starts when the other finishes.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Successor/predecessor relationships::Finish-to-finish
-  - Finish-to-Finish: Both activities finish at the same time.
-- DEVELOPMENT and MANAGEMENT::Sequencing::Successor/predecessor relationships::Finish-to-start
-  - Finish-to-Start: One activity starts when the other finishes.
-- DEVELOPMENT and MANAGEMENT::Resource loading
-  - Assigning team members to specific activities based on their skills, availability, and workload capacity.
-- DEVELOPMENT and MANAGEMENT::Estimating techniques::Determine contingency reserves/buffers
-  - Allocating additional time or resources within the sprint to handle unforeseen challenges or fluctuations in workload.
-- DEVELOPMENT and MANAGEMENT::Story estimation/story points::Epics
-  - Breaking down larger user stories into smaller, more manageable tasks and assigning point values based on complexity and effort.
-  - High-level user stories representing broader features or functionalities, further broken down into smaller stories.
-- DEVELOPMENT and MANAGEMENT::Story estimation/story points::Tasks
-  - Individual, well-defined units of work assigned to team members within a story.
-- DEVELOPMENT and MANAGEMENT::Scheduling tools
-  - Software applications used to visualize and manage the project schedule, track progress, and identify potential issues.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Contingency reserves/buffer utilization
-  - Contingency reserves/buffer utilization: Adapting buffer usage based on actual needs.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Critical path analysis
-  - Critical path analysis: Identifying the sequence of activities with no slack time, critical for project completion.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Impacts to cadence
-  - Impacts to cadence: Adjusting the schedule to maintain consistent sprint duration if necessary.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Forecasting
-  - Forecasting: Predicting future progress and potential challenges to adapt the schedule proactively.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Publication and sharing
-  - Publication and sharing: Communicating the updated schedule to stakeholders.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Sprint planning
-  - Collaborative session at the beginning of each sprint to define the scope, goals, and tasks for the upcoming iteration.
-- DEVELOPMENT and MANAGEMENT::Schedule maintenance::Backlog prioritization
-  - Ordering user stories and tasks within the backlog based on their importance, urgency, and dependencies.
-- DEVELOPMENT and MANAGEMENT::Revise baseline vs. rebaseline
-  - Revise Baseline: Updating the project baseline (initial plan) within a sprint to reflect minor changes or adjustments.
-  - Rebaseline: More significant changes requiring a complete overhaul of the baseline, impacting future sprints and potentially requiring stakeholder approval.
+- **Planning Phase**
+  - Prepare for the work of the project.
+  - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
+- **Planning: Scope Statement**
+  - agreement between customer and project team about the deliverables and success criteria.
+- **Planning: Scope Statement Components**
+  - living document. This is the preliminary scope statement as it grows to maturity.
+  - Functions:
+    - Description: summary project intent and purpose.
+    - Acceptance Criteria: description of successful project.
+    - Deliverables: project boundaries and what team will deliver. Specific and verifiable(measurable).
+    - Exclusions: what team will not deliver.
+    - Assumptions: believed to be true.
+    - Constraints: what has to be worked around and could delay project(weather, laws, budget, time).
+- **Planning: Requirements**
+  - description of what makes the project a success.
+  - can be part of scope statement or separate document.
+- **Planning: Project Constraints and Assumptions**
+  - constraints: restricts progress(weather, laws, budget, time).
+  - assumptions: believed to be true.
+- **Planning: Prince2**
+  - popular UK, EU methodology. Any size project. Known for step-by-step(small stages) progress.
+  - heavy documentation describes milestones of each step.
+- **Planning: DevOps and DevSecOps**
+  - DevOps: development team and operations team combined into one team. Improves collaboration.
+  - DevSecOps: add security responsibilities to team.
+- **Planning: SDLC**
+  - plan, design, build, test, deploy.
+  - waterfall and agile are methodologies of SDLC.
+- **Planning: Three Types of SDLC**
+  - waterfall, agile, hybrid.
+- **Planning: Hybrid SDLC**
+  - combining best parts of multiple methodologies(scrum+kanban = scrumban) to fit business goals.
+- **Planning: Agile**
+  - projects in small incremental portions.
+  - continuous stakeholder feedback.
+- **Planning: Difference Between Scrum and Kanban**
+  - both are agile methods and both are known as 'pull systems'.
+  - scrum: short sprints(time-bound).
+  - kanban: continuous workflow. Visual board to track progress.
+- **Planning: Scrum Team Roles**
+  - product owner: voice of the customer.
+  - scrum master: enforces scrum principles(daily standups).
+  - scrum team: cross-functional team doing short time-bound sprints to create the MVP(minimum viable product).
+    - user-stories are kept in backlog.
+- **Planning: Scrum Minimum Viable Product**
+  - MVP: breaking down features into small task that have enough features for customer to examine and provide feedback. Similar to prototype or mockup.
+- **Planning: Scrum Backlog**
+  - user stories needed to complete project.
+- **Planning: List Agile Methodologies**
+  - Extreme Programming(XP), Scrumban, feature-driven development, dynamic systems, Agile unified process.
+- **Planning: Solutions Architect in Solutions Design**
+  - solutions design: determine best technical solution for business problems.
+    - function requirements: must haves from each stakeholder.
+    - Non-functional requirements: implied must haves. (clean restaurant if looking for eating place)
+  - solutions architect: determines solution, works closely with team and project manager.
+- **Planning: Project Management Plan**
+  - documents that describes what the team will deliver and how they will deliver them.
+    - Scope Statement
+    - WBS or Backlog
+    - Resource Plan
+    - Project Schedule
+    - Quality Management Plan
+    - Risk Management Plan
+    - Communication Plan
+    - Stakeholder Management Plan
+    - Project Baseline
+    - Project Budget
+    - Project Plan Approval.
 
-## 1.07 Compare and contrast QUALITY MANAGEMENT concepts and PERFORMANCE MANAGEMENT concepts
+## Project Lifecycle Phase 2 Planning: Communication, Escalation Plan, Budget, Purchasing
 
-- QUALITY and PERFORMANCE MANAGEMENT::Retrospective/lessons learned
-  - A collaborative session at the end of each sprint to reflect on what went well, what could be improved, and capture valuable insights for future projects (lessons learned).
-- QUALITY and PERFORMANCE MANAGEMENT::Sprint review
-  - A meeting at the end of each sprint to showcase completed work to stakeholders, gather feedback, and confirm alignment with project goals.
-- QUALITY and PERFORMANCE MANAGEMENT::Service-level agreement
-  - A formal contract outlining the expected performance and quality of service for a project or system, typically between internal teams or with external vendors.
-- QUALITY and PERFORMANCE MANAGEMENT::Key performance indicators—objectives and key results
-  - A framework for setting measurable goals (objectives) and specific, time-bound targets (key results) to track progress and evaluate the success of the project or service.
-- QUALITY and PERFORMANCE MANAGEMENT::Cost and schedule performance::Cost variance
-  - Cost Variance: The difference between the actual cost incurred and the budgeted cost for a specific activity or the entire project.
-- QUALITY and PERFORMANCE MANAGEMENT::Cost and schedule performance::Schedule variance
-  - Schedule Variance: The difference between the actual time taken to complete an activity or the project and the planned timeframe.
-- QUALITY and PERFORMANCE MANAGEMENT::Audits and inspections
-  - Formal assessments of the project's processes, documentation, and deliverables to identify potential issues, ensure compliance with regulations, and improve overall quality.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Unit testing
-  - Unit Testing: Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Smoke testing
-  - Smoke Testing: Basic testing to verify the core functionalities of a system are working before more in-depth testing begins.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Regression testing
-  - Regression Testing: Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Stress testing
-  - Stress Testing: Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::Performance testing
-  - Performance Testing: Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
-- QUALITY and PERFORMANCE MANAGEMENT::Test plan and testing cycles::User acceptance testing
-  - User Acceptance Testing (UAT): Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
-- QUALITY and PERFORMANCE MANAGEMENT::Verification and validation
-  - Verification: Ensuring the system is built right (meets specifications and requirements).
-  - Validation: Ensuring the system is built to meet the actual needs of users and stakeholders.
-- QUALITY and PERFORMANCE MANAGEMENT::Post-implementation support/warranty period
-  - Providing ongoing support and maintenance for the delivered system after deployment, addressing any issues or bugs that may arise during the warranty period.
+- **Communication Plan**
+  - formed in phase 1, Initiating. Further refined in planning phase.
+  - keep everyone involved in a project informed, engaged and aligned.
+  - how team/stakeholders will receive project updates.
+- **Develop a Communication Plan: Meeting Cadence and Methodologies**
+  - depending on project size, stakeholder needs, urgency of project.
+  - Cadence: frequency and format of meetings.
+    - daily stand-up, weekly meetings, bi-weekly meetings.
+    - meet more, faster burn-out and scope creep. Meet less, harder to share progress or change plans.
+  - Methodology: most suitable type of communication based on project needs and audience.
+    - In-person meetings, video conferencing, phone calls, Asynchronous communication(email, sms, chat...)
+  - How To Do It:
+    - identify team/stakeholders, best meeting methodology and cadence(time zones, urgency), basic personal preferences, communication preference.
+    - project team:
+  - ![communication plan](img/communication_plan.webp)
+- **Communication Records**
+  - all the artifacts, meeting notes throughout the project.
+- **Communication Records: Security**
+  - proper classifying artifacts as company property.
+    - Public data: no restrictions.
+    - Confidential: authorized only.
+    - Critical: top secret. Authorized only. Could include criminal charges.
+- **Communication Records: Integrity**
+  - artifacts and messages are not missing or changed.
+  - proper meeting minutes by scribe.
+  - preventing artifacts from being deleted.
+- **Communication Records: Archiving**
+  - keeping artifacts per business or government law requirements.
+- **Escalation Plan**
+  - formed in phase 1, Initiating. Further refined in planning phase.
+  - artifact that outlines when event should be escalated and to whom.
+  - ![escalation plan](img/Escalation-Matrix.webp)
+- **Budget: Manage Reserves, Documentation, Update**
+  - Budget: summary of all resource cost.
+  - Manage Reserves: know how much reserves you have.
+    - ![budget reserves](img/budget.PNG)
+  - Document: document each estimate for future review.
+  - Update: update budget when changes occur.
+- **Purchasing: Build, Buy, Lease, Subscription**
+  - Build: you create it in-house.
+  - Buy: third party purchase.
+  - Lease: fixed-term contract.
+  - Subscription: flat fee for service.
+- **Purchasing: RFI, RFP, RFB, RFQ, SOW, PO, TOR, Non-Disclosure, Warranty**
+  - Request for Information (RFI): information about capabilities, and experience of vendors.
+  - Request for Proposal (RFP): solicit multiple vendors proposed solution to your problem.
+  - Request for Bid (RFB): competitive bids for a well-defined project with specific requirements.
+  - Request for Quote (RFQ): pricing quotes for clearly defined goods or services.
+  - Statement of Work: formal document that outlines the work a vendor needs to deliver.
+  - Purchase Order: request for specific goods or services.
+  - Terms of Reference: shared understanding of a group’s scope of work or expectations.
+  - Non-Disclosure Agreement: won’t share specific information with others.
+  - Warranty: vendor’s commitment to resolving defects.
+- **Purchasing: Price vs Value, Cost-Benefit, Market Research, Competitive Analysis, Qualifications, Pre-qualified Vendors, Demonstration, Technical Approach, Financial Capacity, References**
+  - Price vs. Value:
+    - Best Value: features, quality, service, and long-term impact on your product.
+    - Lowest Cost: Useful for standard items where quality differences are minimal.
+  - Cost-Benefit Analysis: Quantify the costs and benefits associated with each vendor option.
+  - Market Research: insights through industry reports, expert opinions, and user reviews.
+  - Competitive Analysis: Compare the strengths and weaknesses of different vendors.
+  - Qualifications: Ensure they have the skills and resources to deliver on your project requirements.
+  - Pre-qualified Vendors/Sellers: existing lists of approved vendors.
+  - Demonstration: Request a live demonstration of the vendor's product or service.
+  - Technical Approach: Assess their ability to integrate with your existing systems.
+  - Physical and Financial Capacity: vendor has the physical resources and financial stability to deliver.
+  - References: Contact existing customers or partners of the vendor.
+- **Purchasing: Time and Material, Unit Price, Fixed Price, Cost Plus**
+  - Time and Material: You pay for the vendor's time and actual materials used.
+  - Unit Price: fixed price per unit.
+  - Fixed Price: single price, up-front.
+  - Cost Plus: pay vendor cost plus fixed fee.
 
-## 1.08 Compare and contrast COMMUNICATION MANAGEMENT concepts
+## Project Lifecycle Phase 2 Planning: Scheduling, Dependencies, Estimation, Baselines, Testing
 
-- COMMUNICATION MANAGEMENT::Assess methods::Synchronous and asynchronous communication
-  - Synchronous: Real-time interaction like meetings, calls, or video conferences.
-  - Asynchronous: Communication with a time delay, like emails, messages, or project management tools.
-- COMMUNICATION MANAGEMENT::Assess methods::Written and verbal
-  - Written and Verbal: Choosing the appropriate format based on formality, complexity, and audience reach.
-- COMMUNICATION MANAGEMENT::Assess methods::Formal and informal
-  - Formal and Informal: Balancing professional structure with casual interaction for building rapport and fostering collaboration.
-- COMMUNICATION MANAGEMENT::Assess methods::External and internal
-  - External and Internal: Tailoring communication styles and platforms to stakeholders within and outside the project team.
-- COMMUNICATION MANAGEMENT::Develop communication platforms/modalities
-  - Selecting and implementing appropriate communication tools based on project needs, team preferences, and budget.
-  - This could include collaboration platforms, video conferencing solutions, project management software, instant messaging, and email.
-- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Language barriers
-  - Language barriers: Utilize translation tools, clarify terminology, and promote inclusive language.
-- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Time zones/geographical factors
-  - Time zones/geographical: Schedule meetings at convenient times, employ asynchronous communication channels, and consider cultural sensitivities.
-- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Technological factors
-  - Technological factors: Ensure reliable internet access, provide training on communication tools, and troubleshoot technical issues.
-- COMMUNICATION MANAGEMENT::Manage project communication::Overcoming communication challenges::Cultural differences
-  - Cultural differences: Adapt communication styles, show respect for diverse perspectives, and consider non-verbal cues.
-- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication security
-  - Communication security: Utilize secure platforms, implement access controls, and train on cybersecurity best practices.
-- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication integrity
-  - Communication integrity: Ensure accuracy, timeliness, and transparency in communication.
-- COMMUNICATION MANAGEMENT::Manage project communication::Maintaining communication records::Communication archiving
-  - Communication archiving: Document and store communication records for future reference and audit purposes.
-- COMMUNICATION MANAGEMENT::Controlling project communication::Escalating communication issues
-  - Define clear escalation paths for addressing communication breakdowns or complex issues.
-  - Involve relevant stakeholders at appropriate levels based on the severity of the issue.
-- COMMUNICATION MANAGEMENT::Controlling project communication::Revising the communication plan
-  - Monitor and evaluate the effectiveness of the communication plan throughout the project.
-  - Adapt and update the plan as needed to address changes in the project, team, or communication needs.
+- **Scheduling**
+  - defining units of work, cost, resources for a project.
+- **Scheduling: Define and Create WBS**
+  - Work Breakdown Structure: deliverable-oriented hierarchy that describes required work.
+    - waterfall.
+  - major deliverables are broken down into smaller components, for time and cost estimation.
+  - ![work breakdown structure chart](img/WBS.jpg)
+- **Scheduling: WBS levels**
+  - highest level: project name.
+  - second level: major deliverables.
+  - sub levels: subprojects.
+  - lowest level: work package.
+  - ![work breakdown structure chart](img/WBS.jpg)
+- **Scheduling: WBS Dictionary**
+  - describes each deliverable, resources, tracking code(for accounting), criteria for success.
+  - similar to 'scope'.
+- **Scheduling: Analogous Estimating vs Bottom-Up Estimating**
+  - Analogous: estimating top-Down. Expert judgement, historical information.
+  - Bottom-Up: estimates for each work item, rolls them into a total.
+- **Scheduling: Task Sequencing**
+  - identify proper scheduling order of project activities.
+- **Scheduling: Two Major Relationships between Dependent Task**
+  - predecessor: project that must be completed before task.
+  - successor: project that must be completed after task.
+- **Scheduling: Three Most Common Activity Estimators**
+  - Expert Judgement: someone experienced.
+  - Analogous or Top-Down: artifact(similar activities) from previous project.
+  - Parametric: quantitatively-based estimates (rate x quantity).
+- **Scheduling: CPM**
+  - Critical Path Method: finding the longest stretch to dependencies(sequential activities).
+  - exposes task that risk missing the finish date.
+  - Three things needed:
+    - list of all project task.
+    - project dependencies.
+    - time each task will take.
+- **Scheduling: Calculate Critical Path**
+  - which path adds up to the longest. Any delay will result in missing the finish date.
+  - ![critical path](img/critical-path.png)
+- **Scheduling: Responsibility Assignment Matrix (RAM)**
+  - created in the initiation phase. Activities are added in the planning phase.
+  - clarifies team member assignment(ownership roles) and who to work with.
+  - every activity must have one and only one accountable person.
+  - **RACI**: (what role does team member fall into?)
+    - responsible: do the work.
+    - accountable: manager.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates only(stakeholder, senior manager...).
+    - ![ram chart](img/ram_chart.PNG)
+- **Define Critical Path Task**
+  - critical path task activity with zero or negative float.
+- **Dependencies and Sequencing. Predecessor and Successor. Four Types of Logical Relationships: FS, SS, SF, FF**
+  - Dependency: relationship between activities. One activity cannot start until other is finished.
+  - Sequencing: order the work must be completed in.
+  - predecessor: before task.
+  - successor: after task.
+  - finish-to-start (FS): predecessor must finish before successor can start.
+  - start-to-start (SS): predecessor must start before successor can start.
+  - start-to-finish (SF): predecessor must start before successor can finish.
+  - finish-to-finish (FF): predecessor must finish before successor finishes.
+- **Dependency: Mandatory, Discretionary, External, Internal**
+  - Mandatory Dependency: Hard logic. unavoidable. must have due to legal, contracts...
+  - Discretionary Dependency: Soft logic. preference only.
+  - External Dependency: outside organization control.
+  - Internal Dependency: inside organization.
+- **Estimation: Top-Down, Bottom-Up, Three Point**
+  - Top-Down: estimate entire project.
+  - Bottom-Up: estimate smallest task first, then add up.
+  - Three Point: `optimistic time + pessimistic time + (4 * average time) / 6 = estimated time.`.
+- **Estimation: Story Points, Task**
+  - Story Points: use size to visualize cost relative to other User Stories. That is translated into numbers.
+  - ![story points](img/story_points.PNG)
+  - Task: break down into user stories or work packages.
+- **Estimation: Indirect Cost, Resource Cost, Contingency Reserve**
+  - Indirect Cost: not related to specific activity. Overhead cost(building and supplies expense, insurance).
+  - Resource Cost: tangible items or activities.
+  - Contingency Reserve: financial reserve when things go wrong. Buffer of time, money, and resources.
+- **Estimation: Reserve Analysis**
+  - decision tree analysis.
+- **Baselines**
+  - project starting point. Track project progress.
+- **Baseline: Setup**
+  1. Scope Baseline: review scope statement, identify critical deliverables.
+  2. Schedule Baseline: review project duration and deadline.
+  3. Cost Baseline: total project cost plus total contingency reserve.
+  - Obtain stakeholder approval.
+- **Testing: Automation, Manual, Unit, Regression, Smoke, User Acceptance, Performance, Stress**
+  - Automation Testing: enables continuous integration.
+  - Manual Testing: time consuming and expensive. person must complete every step.
+  - Unit Testing: smallest piece of functionality in software.
+  - Regression Testing: change did not effect existing code.
+  - Smoke Testing: run before deploy. Confirms main features are working.
+  - User Acceptance Testing: final output test.
+  - Performance Testing: stable under workloads.
+  - Stress Testing: performance test exceeding expected conditions.
+- **Service after Go-Live: SLA, Post-Implementation Support, Warranty**
+  - Service Level Agreement: contract guaranteeing a level of service.
+  - Post-Implementation Support: support after go-live.
+  - Warranty: guarantees that a product will meet specific requirements.
 
-## 1.09 Given a scenario, apply effective meeting MANAGEMENT TECHNIQUES
+## Project Lifecycle Phase 3 Executing
 
-- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Workshops
-  - Collaborative: Meetings designed to generate ideas, solve problems, and reach consensus.
-  - Workshops: Intensive sessions focused on specific topics or tasks, often involving hands-on activities.
-- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Focus groups
-  - Focus groups: Gathering feedback and insights from a targeted group of stakeholders.
-- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Joint application development/joint application review sessions
-  - Joint Application Development/Review Sessions: Collaborative sessions to develop or review applications with external partners.
-- MANAGEMENT TECHNIQUES::Meeting types::Collaborative::Brainstorming
-  - Brainstorming: Generating creative ideas in a free-flowing, open-minded environment.
-- MANAGEMENT TECHNIQUES::Meeting types::Informative::Demonstrations/presentations
-  - Demonstrations/Presentations: Showcasing features, functionalities, or progress on specific aspects of the project.
-- MANAGEMENT TECHNIQUES::Meeting types::Informative::Stand-ups
-  - Stand-ups: Short, daily meetings to update on progress and identify blockers.
-- MANAGEMENT TECHNIQUES::Meeting types::Informative::Status
-  - Status Meetings: Sharing project updates and addressing open issues.
-- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Refinement
-  - Refinement Meetings: Prioritizing and defining scope for upcoming work.
-- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Task setting
-  - Task Setting Meetings: Assigning tasks and responsibilities to team members.
-- MANAGEMENT TECHNIQUES::Meeting types::Decisive::Project steering committee meeting
-  - Project Steering Committee Meetings: High-level decision-making involving key stakeholders.
-- MANAGEMENT TECHNIQUES::Agenda settings/publishing
-  - Creating a clear agenda outlining the meeting's goals, topics, and expected outcomes.
-  - Publishing the agenda beforehand to inform attendees and ensure focus.
-- MANAGEMENT TECHNIQUES::Roles::Facilitator
-  - Facilitator: Guides the meeting discussion, keeps track of time, and ensures participation from all attendees.
-- MANAGEMENT TECHNIQUES::Roles::Scribe
-  - Scribe: Documents key points, action items, and decisions made during the meeting.
-- MANAGEMENT TECHNIQUES::Roles::Attendees/target audience
-  - Attendees/Target Audience: Individuals involved in or impacted by the meeting's topic, invited to contribute actively or receive information.
-- MANAGEMENT TECHNIQUES::Timeboxing
-  - Allocating specific time slots for agenda items to improve efficiency and prevent meetings from running over.
-- MANAGEMENT TECHNIQUES::Action items
-  - Clear and actionable tasks assigned to individuals or teams during the meeting, with due dates and ownership accountability.
-- MANAGEMENT TECHNIQUES::Meeting minutes
-  - A concise written record summarizing key discussions, decisions, action items, and next steps.
-- MANAGEMENT TECHNIQUES::Follow-ups
-  - Ensuring assigned action items are completed and reported on in subsequent meetings.
+- **Executing Phase**
+  - where work is performed, monitored, and tracked. If product does not conform, change request are created.
+    - Producing and verifying deliverables
+    - Implementing change management
+    - Managing vendors
+    - Tracking and reporting project results
+    - Updating project elements such as budget, risk, and timelines
+    - Managing conflict
+    - Monitoring the risks and issues log
+    - Performing quality assurance/governance activities such as coordinating phase gate reviews
+    - Monitoring the budget
+    - Conducting project meetings and updates
+- **MVP**
+  - Minimum viable product: early version of product. Quick to get feedback.
+  - MVP looks at the feature list and defines the bare minimum requirements for testing a product.
 
-## 1.10 Given a scenario, perform basic activities related to TEAM and RESOURCE MANAGEMENT
+## Project Lifecycle Phase 4 Closing
 
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Matrix_
-  - Matrix: Teams report to both project managers and functional managers, creating cross-functional collaboration but potential for conflicting priorities.
-  - Project Manager is responsible for assigning work but does not have official authority over the people doing the work.
-  - **Weak matrix**: The functional manager retains all budget and staff management responsibilities. In this sense, the PM has less control over the project.
-  - **Strong matrix**: A PM has substantial control over the project. They may have management responsibilities for the budget and staff.
-  - Cons: employees feel like they have two bosses.
-  - ![Manager Authority](img/project_authority.PNG)
-  - ![Matrix organization](img/Strong-Matrix-Organizational-Structure-11.jpg)
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Projectized_
-  - Projectized: Project managers have full authority over dedicated teams focusing on specific projects, offering flexibility but potentially siloed knowledge.
-  - Organization that pools resources around projects.
-  - PM leads a group of people as long as a project exists. When the project ends, the team disbands and reforms around new projects.
-  - The PM owns the budget and line manager responsibilities. Therefore typically has more HR responsibilities.
-  - Looks similar to a functional organization. However, it will have PMs instead of specialized managers leading each team.
-  - ![Prjectized organization](img/projectized-organizational.webp)
-- TEAM and RESOURCE MANAGEMENT::Organizational structures::_Functional_
-  - Functional: Teams are organized by specialized skills or departments, offering efficiency but limited visibility across projects.
-  - A single leader(president) with a few direct reports.
-  - Suits small businesses. Easier to communicate, but easy to become siloed from other departments.
-  - Will have 'specialized roles' of functional managers.
-  - Ex.. all human resources personnel report to a Human Resources head(manager), who then reports to the president. Their primary teammates are people with similar job responsibilities and expertise.
-  - ![functional organization](img/Functional-Orgainzational.webp)
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::Acquisition::_Needs assessment_
-  - Acquisition: Identifying and securing needed resources through hiring, purchasing, or contracting.
-  - Needs assessment: Analyzing project requirements to determine necessary resources.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Maintenance_
-  - Maintenance: Upgrading, repairing, and ensuring resource availability throughout the project.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Hardware decommissioning_
-  - Hardware Decommissioning: Safely retiring and disposing of outdated hardware.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_End-of-life software_
-  - End-of-Life Software: Migrating or transitioning away from outdated software solutions.
-- TEAM and RESOURCE MANAGEMENT::Resource life cycle::_Successor planning_
-  - Succession Planning: Identifying and developing backups for critical roles to avoid disruptions.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Human resources_
-  - Human Resources: Skilled individuals assigned to project tasks.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Physical resources_
-  - Physical Resources: Equipment, facilities, and materials needed for project activities.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Capital resources_
-  - Capital Resources: Financial investments and funding allocated to the project.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Internal vs. external_
-  - Internal vs. External: Resources obtained from within or outside the organization.
-- TEAM and RESOURCE MANAGEMENT::Resource types and criticality::_Shared vs. dedicated_
-  - Shared vs. Dedicated: Resources used by multiple projects or exclusively assigned to one.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Feature/functionality_
-  - Gap Analysis: Identifying discrepancies between the current state and desired state of a project.
-  - Feature/functionality: Comparing existing capabilities with required functionality.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Skills_
-  - Skills: Assessing team skills against project requirements.
-- TEAM and RESOURCE MANAGEMENT::Gap analysis::_Utilization_
-  - Utilization: Analyzing how efficiently resources are being used.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::_Maintaining project momentum_
-  - Maintaining Project Momentum: Addressing motivational challenges and fostering a positive team environment.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Forming_
-  - Characteristics: This initial stage is marked by introductions, establishing roles, and getting familiar with the project. There might be uncertainty and dependence on the project manager for guidance.
-  - Leadership approach: Focus on building trust, defining expectations, and fostering open communication. Provide clear direction and support team members as they learn about the project.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Storming_
-  - Characteristics: This stage can involve disagreements, competition for roles, and potential conflict as team members adjust to working together. Power dynamics might be tested.
-  - Leadership approach: Facilitate healthy conflict resolution, encourage collaboration, and actively manage team dynamics. Foster a safe space for open communication and address any underlying issues.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Norming_
-  - Characteristics: The team starts to establish cohesion, develop shared goals, and agree on working methods. Communication improves, and trust begins to build.
-  - Leadership approach: Delegate tasks, empower team members, and provide opportunities for individual and team growth. Monitor progress and address any remaining challenges.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_PeDforming_
-  - Characteristics: The team is at its peak efficiency, working effectively towards goals. Communication is open and collaborative, and members are confident and motivated.
-  - Leadership approach: Continue to provide support and guidance as needed, but focus on facilitating team autonomy and celebrating successes. Monitor performance metrics and adjust the plan as needed.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::Assessing team life cycle::_Adjourning_
-  - Characteristics: The project nears completion, and team members start to prepare for disbanding. There might be mixed emotions as closure approaches.
-  - Leadership approach: Focus on ensuring a smooth project handover, finalizing deliverables, and providing proper closure for team members. Acknowledge their contributions and celebrate the project's achievements.
-- TEAM and RESOURCE MANAGEMENT::Team performance considerations::_Providing project team performance feedback_
-  - Providing Project Team Performance Feedback: Guiding and motivating team members through constructive feedback and recognition.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Functional/extended vs. operational/core team members_
-  - Functional/Extended: Individuals contributing from their primary department to specific project tasks.
-    - Ex.. The functional manager retains the budget and people management responsibilities in a functional organization. The PM coordinates the project, but they have little relative authority over people or cost.
-  - Operational/Core: Members dedicated full-time to the project team.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Sponsor_
-  - Sponsor: Provides project funding and high-level direction.
-  - Accountable for a project. Provide vision, insight, and guidance throughout the project. The sponsor also serves in a governance role in most project frameworks.
-  - The sponsor will amplify the project’s visibility.
-  - Build support with other senior managers and advertise the project’s benefits throughout the organization.
-  - Secure funding and remove resource-related barriers.
-  - Approves deliverables and decides when a project starts and ends.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Stakeholders_
-  - Stakeholders: Individuals or groups with vested interest in the project's success.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Senior management_
-  - Senior Management: Offers strategic guidance and decision-making support.
-  - Highest level of leadership.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product owner_
-  - Product Owner (Agile): Prioritizes and defines product backlog for development.
-  - They identify how to **improve a product** and are **accountable** for creating the most valuable product possible.
-  - A product owner tends to own a product for the entire product’s life cycle.
-  - Does **NOT** manage the team. **Proxy for the customer wants/needs**.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Scrum master_
-  - Scrum Master (Agile): Facilitates agile ceremonies and removes roadblocks for the team.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Project manager (PM)_
-  - Project Manager (PM): Plans, executes, and **manages the project team** to meet objectives.
-  - Lead Projects.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Program manager_
-  - Program Manager: Oversees multiple related projects and ensures program-level goals are met.
-  - Lead programs.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Product manager_
-  - Gathering and managing product requirements: The PM acts as the **voice of the customer, capturing their needs and translating them into actionable requirements** for the development team. They prioritize features and functionalities based on impact, feasibility, and market needs.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Testers/quality assurance (QA) specialists_
-  - Testers/QA Specialists: Evaluate and report on software quality.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Business analyst_
-  - Business Analyst: Analyzes business requirements and translates them into project specifications.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Subject matter expert (SME)_
-  - Subject Matter Expert (SME): Provides specialized knowledge and expertise to the project.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Architect_
-  - Architect: Designs the overall system architecture and technical solutions.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Developers/engineers_
-  - Developers/Engineers: Build and implement the project deliverables.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_Project management office (PMO)_
-  - Project Management Office (PMO): Provides project management support, templates, and best practices.
-  - Manages the flow of projects.
-  - Tracks metrics for projects throughout the organization.
-- TEAM and RESOURCE MANAGEMENT::Roles and responsibilities::_End users_
-  - End Users: Individuals who will ultimately use the project's deliverables.
+- **Closing Phase**
+  - project closeout. contracts closed, team members released.
+  - validate deliverables, document acceptance of project work.
+    - Validating deliverables
+    - Closing contracts
+    - Removing access
+    - Releasing resources
+    - Holding the project closure meeting
+    - Writing the project closeout report
+    - Obtaining feedback and lesson learned
+    - Project sign-off
+    - Handing off the product to the organization
+    - Evaluating the project
+    - Archiving project documents
+    - Rewards and celebration
 
-## 1.11 Explain important PROJECT PROCUREMENT and VENDOR SELECTION concepts
+## Project Management Documents
 
-- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Build
-  - Build: Develop the resources in-house using existing staff and equipment.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Buy
-  - Buy: Purchase the resources from external vendors.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Lease
-  - Lease: Rent the resources for a specific period.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Resource procurement methods::Subscription/pay-as-you-go
-  - Subscription/Pay-as-you-go: Access resources on a subscription basis, paying for what you use.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for proposal (RFP)
-  - Request for Proposal (RFP): Issued to solicit proposals from multiple vendors for complex projects, detailing project requirements and evaluation criteria.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for bid (RFB)
-  - Request for Bid (RFB): Used for well-defined projects with standardized requirements, where vendors submit bids based on price and specifications.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for quote (RFQ)
-  - Request for Quote (RFQ): Used for simple purchases, requesting price quotes from multiple vendors for specific equipment or services.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Exploratory documents::Request for information (RFI)
-  - Request for Information (RFI): Used to gather information from vendors about their capabilities and offerings for a specific need.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Best value vs. lowest cost
-  - Best Value vs. Lowest Cost: Considering not just price but also factors like quality, reliability, experience, and service to determine the best overall value.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Cost-benefit analysis
-  - Cost-Benefit Analysis: Assessing the financial impact of a potential resource acquisition, considering both costs and benefits.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Market research
-  - Market Research: Investigating available vendors and market trends to identify the best options.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Competitive analysis
-  - Competitive Analysis: Comparing the capabilities and offerings of different vendors to identify the most competitive solution.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Qualifications
-  - Qualifications: Evaluating the vendor's experience, technical expertise, financial stability, and references.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Prequalified vendors/sellers
-  - Prequalified Vendors/Sellers: Selecting vendors from a pre-approved list based on specific criteria.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Demonstration
-  - Demonstration: Requesting a demonstration of the vendor's solution to assess its capabilities and fit for the project.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Technical approach
-  - Technical Approach: Evaluating the vendor's proposed technical solution for feasibility and effectiveness.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::Physical and financial capacity
-  - Physical and Financial Capacity: Assessing the vendor's ability to deliver the resources within budget and timeframe.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Vendor evaluation techniques::References
-  - References: Checking references provided by the vendor to verify their performance and reliability.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Time and material
-  - Time and Material: Vendor charges for labor and materials used, potentially exceeding budget if project scope changes.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Unit price
-  - Unit Price: Vendor charges a fixed price per unit of resource used, suitable for predictable projects.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Fixed price
-  - Fixed Price: Vendor charges a pre-determined price for delivering the entire project, offering cost certainty but with limited flexibility.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Cost plus
-  - Cost Plus: Vendor charges their costs plus a markup, providing transparency but potentially exceeding budget if costs overrun.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Maintenance agreement::Warranty
-  - Maintenance Agreement: Ongoing support and service agreement for acquired resources, with specific coverage and warranty terms.
-  - Warranty: Guarantees the vendor will repair or replace faulty resources within a specific timeframe.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Master service agreement::Purchase orders (POs)
-  - Master Service Agreement (MSA): Long-term agreement outlining general terms and conditions for future purchases from the vendor.
-    - Purchase Orders (POs): Specific orders issued under the MSA for individual purchases.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Master service agreement::Terms of reference (TOR)
-  - Terms of Reference (TOR): Detailed document outlining project scope, deliverables, and expectations for a specific engagement.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Statement of work (SOW)
-  - Statement of Work (SOW): Detailed document outlining the specific scope of work, deliverables, and timelines for a specific project.
-- PROJECT PROCUREMENT and VENDOR SELECTION::Contract considerations and types::Non-disclosure agreement
-  - Non-Disclosure Agreement (NDA): Protects confidential information shared between the project and the vendor.
+- **Business case**
+  - Discovery
+  - Justification for the project.
+- **Preliminary scope statement**
+  - Initiating
+  - Project objectives are defined; business problem the project will address is stated.
+- **Project charter**
+  - Initiating
+  - Authorizes the project to begin.
+- **Responsibility assignment matrix (RAM)**
+  - Initiating
+  - Defines stakeholder responsibilities. Incorporates the use of a RACI chart.
+  - RACI is a way to define responsibilities on the project and stands for responsible, accountable, consult, and inform.
+- **Communication plan**
+  - Planning
+  - Documents the types of information needs the stakeholders have, when the information should be distributed, and how the information will be delivered.
+- **Project schedule**
+  - Planning
+  - Determines the start and finish dates for project activities and assigns resources to the activities.
+- **Scope statement**
+  - Planning
+  - Documents the product description, key deliverables, success and acceptance criteria, key performance indicators, exclusions, assumptions, and constraints.
+- **Project management plan**
+  - Planning
+  - Consists of all the project planning documents such as charter, scope statement, schedule, and more.
+- **Issue log**
+  - Executing
+  - A list of issues, containing list numbers, descriptions, and owners.
+- **Change log**
+  - Executing
+  - Describes change requests and their disposition for the project.
+- **Risk register**
+  - Executing
+  - A list of risks and their descriptions.
+- **Status report**
+  - Executing
+  - A report to stakeholders on the status of the project deliverables, schedule, risks, issues, and more.
+- **Dashboard information**
+  - Executing
+  - An electronic reporting tool that lets users choose elements of the project to monitor project health and status.
+- **Meeting agenda/meeting minutes**
+  - Executing
+  - Meeting agendas describe the items to be discussed and addressed at upcoming meetings, and minutes recap what was discussed and the decisions made at the meeting.
+- **Project closeout report**
+  - Closing
+  - Reports on the final closeout of all phases of the project.
 
-## 2.1 Explain the VALUE of ARTIFACTS in the discovery/concept preparation phase for a project
+## Resources
 
-- VALUE of ARTIFACTS::Business case or business objective::_Return on investment (ROI) analysis_
-  - Business Case: A formal document outlining the project's justification, benefits, risks, and costs, convincing stakeholders of its value.
-  - Business Objective: The overall goal or desired outcome the project aims to achieve, driving its direction and success metrics.
-  - ROI: Evaluating the financial benefits of the project compared to its costs. Measures like net present value (NPV), payback period, and internal rate of return (IRR) help assess its profitability and feasibility.
-- VALUE of ARTIFACTS::Business case or business objective::_Current state vs. future state_
-  - Analyzing the current situation and challenges, then outlining the desired future state the project aims to achieve. This gap analysis helps define project scope and objectives.
-- VALUE of ARTIFACTS::_Prequalified vendor_
-  - A vendor who has already met defined criteria and proven their capabilities, making them eligible for further consideration or proposal submission.
-- VALUE of ARTIFACTS::_Predetermined client_
-  - A client who has already been identified and agreed upon for the project, potentially influencing its scope and requirements.
-- VALUE of ARTIFACTS::Preexisting contracts::_Client SOW_
-  - Existing agreements or obligations that might impact the project, such as vendor contracts, client agreements, or resource limitations.
-  - A document outlining the specific tasks, deliverables, and responsibilities expected from the client in the project.
-- VALUE of ARTIFACTS::Preexisting contracts::_Client TOR_
-  - A document outlining the project scope, objectives, and expectations from the client's perspective.
-- VALUE of ARTIFACTS::Financial concepts::_Capital expenses (CapEx) vs. operational expenses (OpEx)_
-  - Capital Expenses (CapEx): One-time investments in long-term assets like equipment or infrastructure, impacting initial project costs.
-  - Operational Expenses (OpEx): Ongoing costs associated with running the project, such as salaries, materials, and maintenance.
+- **Project Resource, Human, Physical, Capital Resources**
+  - Project Resource: any useful material, object or person.
+  - Human: people.
+  - Physical: anything but people and money.
+  - Capital: money.
+- **Internal vs External, Shared vs Dedicated**
+  - Internal: inside the company.
+  - External: outside the company.
+  - Shared: shared across multiple projects.
+  - Dedicated: project team has item or team member full time.
+- **Resource Lifecycle Acquisition, Maintenance, Hardware Decommissioning, End-of-Life Software, Successor Planning**
+  - Acquisition: procure the goods. Hiring.
+  - Maintenance: updates(software), people(feedback, motivation support).
+  - Hardware Decommissioning: update tracking system, dispose of sensitive data.
+  - End-of-Life Software: vendor will no longer maintain software.
+  - Successor Planning: plan to replace critical roles if person leaves company.
+    - Identifies knowledge, skill, and responsibilities, then documents process and training of someone who would fit the role.
+- **Needs Assessment**
+  - defines what resources project needs. Skill, software, equipment...
+  - understand: project requirements, current resources, resource gaps.
+- **Gap Analysis: Feature/Functionality, Skills, Utilization**
+  - Gap Analysis: current state vs future state.
+  - Feature/Functionality: feature and functionality of resource should match needs.
+  - Skills: what employees(resource) have needed skill.
+  - Utilization: KPI effectiveness of resource utilization. Under 100% is underutilized, over 100% is overallocated.
+- **Resource Smoothing and Leveling**
+  - Smoothing: shifting schedule around to even out schedule.
+  - Leveling: adding more time to timeline.
 
-## 2.2 Given a scenario, perform activities during the PROJECT INITIATION PHASE
+## Risk and Transition Planning
 
-- PROJECT INITIATION PHASE::Develop the project charter::_Project objectives_
-  - This formal document **outlines the project's purpose, objectives, scope, stakeholders, and key decisions**. It serves as a **roadmap** and reference point throughout the project lifecycle.
-  - Clear and measurable statements defining what the project aims to achieve. These objectives should be SMART (Specific, Measurable, Achievable, Relevant, and Time-bound).
-- PROJECT INITIATION PHASE::Develop the project charter::_Project success criteria_
-  - How will you know the project is successful? Define specific metrics or benchmarks that demonstrate achievement of the objectives.
-- PROJECT INITIATION PHASE::Develop the project charter::_Preliminary scope statement_
-  - A high-level overview of the project's boundaries, what it includes and excludes. This statement helps manage expectations and prevent scope creep.
-- PROJECT INITIATION PHASE::_Identify and assess stakeholders_
-  - Individuals or groups impacted by or interested in the project's success. Analyze their roles, interests, and potential influence.
-- PROJECT INITIATION PHASE::Develop a responsibility assignment matrix (RAM)::_Responsible, Accountable, Consulted, Informed (RACI)_
-  - (Also known as RACI Matrix) This matrix clarifies roles and responsibilities for project tasks. Each task is assigned an owner (Responsible), decision-maker (Accountable), consulted party (Consulted), and informed party (Informed).
-- PROJECT INITIATION PHASE::_Establish accepted communication channels_
-  - Define the communication methods preferred by stakeholders and project team members. This ensures clear and timely information flow.
-- PROJECT INITIATION PHASE::Develop a records management plan::_Data_
-  - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
-- PROJECT INITIATION PHASE::Develop a records management plan::_Documents_
-  - Outlines how project data, documents, and other records will be created, stored, secured, accessed, and disposed of. Compliance and future reference are key considerations.
-- PROJECT INITIATION PHASE::_Define access requirements_
-  - Determine who needs access to specific information and project documents, balancing security and collaboration needs.
-- PROJECT INITIATION PHASE::Review existing artifacts
-  - Analyze existing documents, reports, or data that could inform the project plan and avoid duplicating efforts.
-- PROJECT INITIATION PHASE::Determine solution design
-  - Choose the approach for achieving the project objectives. This could be waterfall, agile, hybrid, or another methodology.
-- PROJECT INITIATION PHASE::Conduct project kickoff methods
-  - Organize an initial meeting or event to introduce the project, team members, and key information to stakeholders. This sets the tone for collaboration and success.
+- **Risk: Register, Owner, Manager, Analysis, Report**
+  - Risk Register: document of all known organization/project risk and impact.
+  - Risk Owner: Hold the 'Accountable' role on the RACI chart. There responsible to handle risk.
+    - senior management own organization risk and delegates risk management throughout organization.
+  - Risk Manger: administers risk register. Project Manger is risk manager of project.
+  - Risk Analysis: likelihood and impact of risk. Usually done in a 'Risk Assessment Meeting'.
+  - Risk Report: documentation about the organization risk management process.
+- **Risk vs Issues vs Changes**
+  - Risk: something you think will happen.
+  - Issues: something already happened.
+  - change: risk that could develope from change(software feature, person leaves company).
+- **Risk: New Projects, New Management, Regulatory Environment Change, Digital Transformation, Infrastructure End-of-Life, Merger and Acquisition, Reorganization, Major Cyber Event**
+  - Risk: something you think will happen outside your control.
+  - New Project: might need the resources you currently have.
+  - New Management: organization priorities may change.
+  - Regulatory Environment Change: laws may change.
+  - Digital Transformation: technology stack update.
+  - Infrastructure End-of-Life: no longer supported/maintained.
+  - Merger and Acquisition: company culture may change.
+  - Reorganization: restructure may disrupt team.
+  - Major Cyber Event: ransomware, data-breach.
+- **Negative Risk: Accept, Avoid, Mitigate, Transfer**
+  - Negative: cause harm organization.
+  - Accept: do nothing. accept consequences.
+  - Avoid: detour around risk.
+  - Mitigate: reduce impact.
+  - Transfer: third party(insurance).
+- **Positive Risk: Accept, Enhance, Exploit, Share**
+  - Positive: benefit organization.
+  - Accept: do nothing. accept positive risk.
+  - Enhance: increase positive effect of risk.
+  - Exploit: take steps to guarantee event will happen.
+  - Share: find other how would benefit.
+- **Qualitative Risk, Quantitative Risk and Quantitative Simulation. Risk Interconnectivity and Detectability**
+  - Qualitative: base on how people perceive risk.
+  - Quantitative: based on data.
+  - Quantitative Simulation: predicts risk from input data.
+  - Interconnectivity: how risk will effect more than one single event.
+  - Detectability: how quick risk is identified if it were to occur.
+- **Impact Analysis**
+  - evaluate impact of project. Change after successful project.
+- **Risk Probability, Impact and Scenario Analysis**
+  - Probability: measure chance of risk occurring.
+  - Impact: how risk will effect business.
+  - Scenario Analysis: what-if analysis. brainstorming to find new risk.
+- **Contingency Planning**
+  - if initial risk plan fails, fallback plan to mitigate risk.
+- **Transition Plan: Operational Training, Go Live, Operational Handoff, Internal and External Audience**
+  - Transition Plan: project is transferred within organization to functional group or outside organization.
+  - Operational Training: education to use, maintain, product long term.
+  - Go Live: project moves from test environment to production.
+  - Operational Handoff: transition work to permanent owners. They will oversee day-to-day activities.
+  - Internal Audience: current employees.
+  - External Audience: vendors or clients.
 
-## 2.3 Given a scenario, perform activities during the PROJECT PLANNING PHASE
+## Scaled Agile Framework
 
-- PROJECT PLANNING PHASE::Assess the resource pool::Preliminary procurement needs assessment
-  - Analyze available human, physical, and financial resources within the organization, considering skills, availability, and potential constraints.
-  - Identify any resources not available internally and that might require acquisition through vendors.
-- PROJECT PLANNING PHASE::Assign project resources
-  - Match team members with tasks based on their skills, experience, and workload capacity. Consider project needs and individual strengths.
-- PROJECT PLANNING PHASE::Train project team members
-  - Ensure team members have the necessary knowledge and skills to perform their assigned tasks effectively. This might involve workshops, training sessions, or access to resources.
-- PROJECT PLANNING PHASE::Develop a communication plan::Meeting cadence and methodologies
-  - Define communication channels, frequency, audience, and message content for stakeholders and team members. This ensures clear and timely information flow.
-  - Determine the frequency and format of project meetings (e.g., daily stand-ups, weekly status meetings) and choose suitable methodologies (e.g., agile stand-ups, waterfall progress reports).
-- PROJECT PLANNING PHASE::Develop a detailed scope statement
-  - Expands upon the preliminary statement, clearly defining the project's deliverables, exclusions, limitations, and acceptance criteria.
-- PROJECT PLANNING PHASE::Define units of work::Work breakdown structure (WBS)
-  - Breakdown project deliverables into smaller, manageable units of work (e.g., tasks, subtasks) for efficient planning and tracking.
-  - A hierarchical tree diagram outlining the project's deliverables and subtasks, providing a visual representation of scope and dependencies.
-- PROJECT PLANNING PHASE::Define units of work::Backlog
-  - A prioritized list of tasks or features in agile methodologies, reflecting the evolving project needs and development direction.
-- PROJECT PLANNING PHASE::Develop a project schedule::Establish cadences
-  - Estimate the time required for each task and create a timeline for project completion, considering dependencies and resource availability.
-  - Define regular checkpoints or review intervals throughout the project to assess progress, identify issues, and make adjustments.
-- PROJECT PLANNING PHASE::Determine budget considerations
-  - Estimate costs for all project activities, including personnel, equipment, materials, and potential risks. Develop a budget and track expenses to ensure financial control.
-- PROJECT PLANNING PHASE::Develop QA plan
-  - Define quality assurance processes and procedures to ensure project deliverables meet predefined standards and customer expectations.
-- PROJECT PLANNING PHASE::Perform an initial risk assessment
-  - Identify potential threats and opportunities that could impact the project, assess their likelihood and impact, and develop mitigation strategies.
-- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Operational training
-  - Outlines the steps and activities for transitioning the project from development to production or implementation.
-  - Train stakeholders and end users on how to use the project's deliverables effectively.
-- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Go live
-  - Execute the transition plan and release the project to its intended audience.
-- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Operational handoff
-  - Transfer responsibility for ongoing operation and maintenance of the project deliverables to the appropriate team.
-- PROJECT PLANNING PHASE::Develop a transition plan/release plan::Internal audience
-  - Stakeholders within the organization who will benefit from or are impacted by the project.
-- PROJECT PLANNING PHASE::Develop a transition plan/release plan::External audience
-  - Customers, partners, or other stakeholders outside the organization who might use or be affected by the project.
-- PROJECT PLANNING PHASE::Develop a project management plan::Establish baselines and milestones
-  - A comprehensive document outlining the project's goals, scope, methodology, resources, schedule, budget, communication plan, risks, and change management procedures.
-  - Define key checkpoints and reference points for measuring project progress and achievement of objectives.
-- PROJECT PLANNING PHASE::Develop a project management plan::Establish minimally viable product
-  - Define a basic version of the deliverable with core functionalities, allowing for early feedback and iterative development.
+- **SAFe (Scaled Agile Framework)**
+  - expand agile practices across multiple teams to work together.
+  - Agile Release Team (ART): related groups of agile teams to simplify communication, planning, schedules.
+  - Iteration: short term planning cycle.
+  - Program Increment: longer-term planning cycle.
+- **SAFe Strengths**
+  - allows scaling and project organization in bigger organizations with multiple agile teams.
+- **SAFe Weakness**
+  - adds layers of overhead to organization.
+- **SAFe Use**
+  - multiple agile teams that need to collaborate more effectively.
 
-## 2.4 Given a scenario, perform activities during the PROJECT EXECUTION PHASE
+## Scrum
 
-- PROJECT EXECUTION PHASE::Execute tasks according to the project management plan
-  - Implement the established plan, assign tasks, monitor progress, and ensure deliverables meet required quality standards.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Training
-  - Training: Equip users with skills and knowledge to navigate the change.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Ensure adoption
-  - Ensure Adoption: Encourage and incentivize use of the new solution.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Reinforce adoption over time
-  - Reinforce Adoption Over Time: Provide ongoing support and address lingering concerns.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Communication
-  - Communication: Keep stakeholders informed throughout the change process.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::Documentation
-  - Documentation: Update policies, procedures, and other documents to reflect the change.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::New knowledge bases
-  - New Knowledge Bases: Establish new resources for users to access information.
-- PROJECT EXECUTION PHASE::Implement organizational change management::Impacts and responses::New processes
-  - New Processes: Implement and refine revised workflows and practices.
-- PROJECT EXECUTION PHASE::Manage vendors::Enforce vendor rules of engagement
-  - Enforce Vendor Rules of Engagement: Ensure vendors adhere to agreed-upon contracts and expectations.
-- PROJECT EXECUTION PHASE::Manage vendors::Monitor performance
-  - Monitor Performance: Track vendor progress, deliverables, and compliance.
-- PROJECT EXECUTION PHASE::Manage vendors::Approve deliverables
-  - Approve Deliverables: Evaluate vendor work and accept deliverables that meet defined specifications.
-- PROJECT EXECUTION PHASE::Conduct project meetings and updates
-  - Hold regular meetings (e.g., status updates, team huddles) to share information, troubleshoot issues, and maintain team alignment.
-- PROJECT EXECUTION PHASE::Tracking/reporting::Team touch points
-  - Team Touch Points: Regularly check in with individual team members to monitor progress and provide support.
-- PROJECT EXECUTION PHASE::Tracking/reporting::Risk reporting
-  - Risk Reporting: Identify and report potential risks promptly to facilitate mitigation efforts.
-- PROJECT EXECUTION PHASE::Tracking/reporting::External status reporting
-  - External Status Reporting: Provide stakeholders with updates on project progress and key milestones achieved.
-- PROJECT EXECUTION PHASE::Tracking/reporting::Overall progress reporting
-  - Overall Progress Reporting: Track and report on overall project progress against baselines and timelines.
-- PROJECT EXECUTION PHASE::Tracking/reporting::Gap analysis
-  - Gap Analysis: Identify discrepancies between current state and desired state to inform adjustments.
-- PROJECT EXECUTION PHASE::Tracking/reporting::Ad hoc reporting
-  - Ad Hoc Reporting: Generate specific reports and analyses as needed by stakeholders.
-- PROJECT EXECUTION PHASE::Update the project budget
-  - Monitor expenses, track deviations from the budget, and adjust allocations as needed to stay within financial constraints.
-- PROJECT EXECUTION PHASE::Update the project timeline
-  - Track project progress, address delays, and revise the timeline as required to ensure timely completion.
-- PROJECT EXECUTION PHASE::Manage conflict::Smoothing
-  - Smoothing: Address situations calmly and empathetically, seeking common ground and collaborative solutions.
-- PROJECT EXECUTION PHASE::Manage conflict::Forcing
-  - Forcing: Assert authority to impose a solution when necessary, but sparingly and with clear justification.
-- PROJECT EXECUTION PHASE::Manage conflict::Compromise
-  - Compromise: Seek mutually agreeable solutions that address the concerns of all parties involved.
-- PROJECT EXECUTION PHASE::Manage conflict::Collaboration
-  - Collaboration: Work together to find creative solutions that benefit everyone.
-- PROJECT EXECUTION PHASE::Manage conflict::Avoiding
-  - Avoiding: Deferring conflict can be detrimental, but consider whether addressing it directly is productive at that specific time.
-- PROJECT EXECUTION PHASE::Coordinate a phase gate review
-  - Conduct formal reviews at project phase transitions to assess progress, address problems, and approve continued effort before advancing to the next phase.
+- **Scrum**
+  - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
+  - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
+  - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
+  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+- **Scrum 5 Values**
+  - Commitment, focus, openness, respect, courage.
+- **Scrum 3 Pillars**
+  - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
+- **Scrum Events**
+  - Sprint: iteration and all scrum events.
+  - Epic: large project
+  - User Stories: smaller units of work stored in the backlog.
+  - Backlog: where user stories are stored, higher is more priority.
+  - Sprint planning: backlog created.
+  - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
+  - Sprint review: uncover issues early, confirm on track.
+  - Sprint retrospective: find improvement opportunities(improve scrum flow) from previous sprint.
+- **Scrum Key Artifacts**
+  - Product Backlog: list of changes.
+  - Product Goal: long term target.
+  - Sprint Backlog: plan for upcoming sprint.
+  - Sprint Goal: summarize value of sprint.
+  - Increment: meets the 'done' definition and move to next product goal.
+- **Scrum Strengths**
+  - short cycles allow responsive learning, complex problem solving fro unpredictable work.
+- **Scrum Weakness**
+  - teams must be highly cohesive, cross-functional. No large groups.
 
-## 2.5 Explain the importance of activities performed during the CLOSING PHASE
+## Software Development Lifecycle SDLC
 
-- CLOSING PHASE::Project evaluation
-  - Project Evaluation: Assess if the project achieved its objectives, met success criteria, and delivered expected value.
-- CLOSING PHASE::Validation of deliverables
-  - Validation of Deliverables: Confirm deliverables meet quality standards and acceptance criteria.
-- CLOSING PHASE::Closing contracts
-  - Closing Contracts: Finalize financial obligations, release vendors, and settle any outstanding invoices.
-- CLOSING PHASE::Removing access
-  - Removing Access: Revoke user access to project resources and secure sensitive information.
-- CLOSING PHASE::Releasing resources
-  - Releasing Resources: Reallocate personnel, equipment, and other resources back to the organization or release them as appropriate.
-- CLOSING PHASE::Project closure meeting
-  - Project Closure Meeting: Gather stakeholders to discuss achievements, lessons learned, and next steps.
-- CLOSING PHASE::Project closeout report
-  - Project Closeout Report: Compile a comprehensive document summarizing project completion, performance, and key takeaways.
-- CLOSING PHASE::Collecting feedback from stakeholders
-  - Collecting Feedback from Stakeholders: Gather valuable insights from all parties involved to inform future project planning.
-- CLOSING PHASE::Archiving documentation
-  - Archiving Documentation: Securely store project documents, records, and artifacts for future reference or legal requirements.
-- CLOSING PHASE::Budget reconciliation
-  - Budget Reconciliation: Compare final expenses with initial budget and identify variances.
-- CLOSING PHASE::Rewards and celebration
-  - Rewards and Celebration: Acknowledge team achievements and celebrate project completion to boost morale and foster team spirit.
-- CLOSING PHASE::Project sign-off
-  - Project Sign-off: Obtain formal approvals from key stakeholders signifying final acceptance and closure.
+- **SDLC (Software Development Lifecycle)**
+  - produce high-quality, low-cost, thoroughly tested software.
+- **SDLC 7 phases**
+  1. Planning: outline project scope and purpose.
+  2. Requirements: define resources needed and software purpose.
+  3. Design & Prototyping: specifications of software: language, security, interface.
+  4. Development: write code.
+  5. Testing: software compatibility and performs as expected.
+  6. Deployment: deploy to production environment.
+  7. Operations and Maintenance: support software.
+- **SDLC Waterfall Model**
+  - sequential model, good for short task or well defined, no change projects.
+- **SDLC Iterative Model**
+  - hybrid. combines iterative with sequential models.
+- **SDLC Spiral Model**
+  - risk-centric iterative model.
+  - most complex and resource-intensive model. Projects can 'spiral' out of control with cost and scope.
+- **SDLC Agile Model**
+  - similar to iterative model, but with more customer feedback.
+  - helps with fast time-to-market projects.
+- **SDLC Strengths**
+  - comprehensive framework.
+- **SDLC Weaknesses**
+  - project success depends on time spent on advanced planning.
 
-## 3.1 Given a scenario, use the appropriate TOOLS throughout the project life cycle
+## Waterfall
 
-- TOOLS::Tracking charts::Gantt chart
-  - Gantt chart: Ideal for visualizing project tasks, dependencies, and timelines. Shows overall project roadmap and progress for tasks with well-defined durations.
-- TOOLS::Tracking charts::Budget burndown chart
-  - Budget burndown chart: Tracks actual spending against the planned budget over time. Helps identify potential budget overruns early.
-- TOOLS::Tracking charts::Project network diagram
-  - Project network diagram: Visualizes tasks and their dependencies using connected nodes and arrows. Useful for complex projects with intricate relationships between tasks.
-- TOOLS::Tracking charts::Milestone chart
-  - Milestone chart: Highlights key milestones and their timelines, providing a snapshot of major project achievements.
-- TOOLS::Tracking charts::Program Evaluation Review Technique (PERT) chart
-  - PERT chart: Estimates task durations with optimistic, most likely, and pessimistic scenarios. Useful for projects with uncertain task durations.
-- TOOLS::Tracking charts::Project organizational chart
-  - Project organizational chart: Shows the hierarchical structure of the project team, clarifying roles and reporting relationships.
-- TOOLS::Tools::Issue log
-  - Issue log: Tracks and manages identified problems or potential risks throughout the project.
-- TOOLS::Tools::Defect log
-  - Defect log: Logs identified bugs or errors in deliverables, facilitating tracking and resolution.
-- TOOLS::Tools::Change log
-  - Change log: Tracks and manages authorized changes made to the project scope, plan, or deliverables.
-- TOOLS::Tools::Risk report
-  - Risk report: Summarizes identified risks, their likelihood, impact, and mitigation strategies.
-- TOOLS::Tools::Risk register
-  - Risk register: Comprehensive documentation of all identified risks, their details, and mitigation plans.
-- TOOLS::Tools::Project dashboard
-  - Project dashboard: Visually summarizes key project metrics, risks, and progress in a single view.
-- TOOLS::Tools::Project status report
-  - Project status report: Formal document outlining the project's current status, progress, challenges, and future plans.
-- TOOLS::Tools::Version control tools
-  - Version control tools: Track and manage changes in documents, code, and other project deliverables.
-- TOOLS::Tools::Time-tracking tools
-  - Time-tracking tools: Record time spent on tasks and project activities, facilitating accurate budgeting and resource allocation.
-- TOOLS::Tools::Task board
-  - Task board: Visually manage tasks using cards representing different stages (e.g., to-do, in progress, done) within a Kanban approach.
-- TOOLS::Tools::Requirements Traceability Matrix
-  - Requirements Traceability Matrix: Links and tracks project requirements to specific deliverables, ensuring all needs are met.
+- **Waterfall**
+  - follows linear sequence. Work only flows one way. Teams any size.
+  - documentation heavy.
+  - Regular on/off boarding(highly specialized members flow in and out of project as needed).
+  - Resources are typically fixed(backend, get python developer).
+  - Work Breakdown Structure (WBS) breaks work into smaller units.
+- **Waterfall 6 phases**
+  1. requirements: project requirements.
+  2. design: actionable specifications.
+  3. implementation: do work.
+  4. testing: verify.
+  5. delivery: deploy to customer.
+  6. maintenance: customer support.
+- **Waterfall Communication: Stakeholder, Customer, Changes**
+  - Stakeholder: provides comprehensive requirements at start, then review finished product.
+  - Customer: customer does not communicate with developer.
+  - Communication Changes: very few changes.
+- **Waterfall Requirements**
+  - requirements dictate how the project looks and behaves.
+  - requirements must all be stated at start of project.
+  - Collection of Requirements -> Product Creation -> Customer Review -> Maintenance Phase(fix after customer review).
+- **Waterfall Budget and Schedule**
+  - Budget: fixed, strict, predictable. Good for 'limited' budget.
+  - Schedule: predictable. Entire project is planned in advance.
+- **Waterfall Environmental Factors: Culture, Development Processes, Industry Standards**
+  - Culture: favors vast knowledge and role specialization.
+  - Development Processes: customer receives finished product.
+  - Industry Standards: linear and sequential. Heavy documentation.
+- **Waterfall Use**
+  - when you have clear objectives, heavy documentation, and high change cost.
 
-## 3.2 Compare and contrast various project management PRODUCTIVITY TOOLS
+## Quality Assurance
 
-- PRODUCTIVITY TOOLS::Communication tools::Email
-  - Email: Widely used, formal, asynchronous, good for documentation and archiving, but might lead to information overload.
-- PRODUCTIVITY TOOLS::Communication tools::Messaging::Short message service (SMS)
-  - Messaging: Real-time, informal, good for quick questions and updates, but can lack organization and context.
-  - SMS: Simple, direct, mobile-friendly, but limited to brief messages.
-- PRODUCTIVITY TOOLS::Communication tools::Messaging::Chat
-  - Chat: Group-oriented, persistent chat history, good for quick discussions, but can be distracting.
-- PRODUCTIVITY TOOLS::Communication tools::Telephone
-  - Telephone: Efficient for urgent matters, personal touch, but lacks visual cues and documentation.
-- PRODUCTIVITY TOOLS::Communication tools::Meetings/face-to-face
-  - Meetings/Face-to-Face: Ideal for complex discussions, team building, but time-consuming and not always feasible.
-- PRODUCTIVITY TOOLS::Communication tools::Video
-  - Video: Combines visuals with real-time interaction, good for remote teams, but requires bandwidth and potentially distracting environments.
-- PRODUCTIVITY TOOLS::Communication tools::Enterprise social media
-  - Enterprise Social Media: Internal social media platform for collaboration and engagement, but potential for information overload and security concerns.
-- PRODUCTIVITY TOOLS::Collaboration tools::Real-time, multi-authoring editing software
-  - Real-time, Multi-Authoring Editing Software: Simultaneous document editing, efficient for collaborative writing, but requires discipline to avoid conflicts.
-- PRODUCTIVITY TOOLS::Collaboration tools::File sharing platforms
-  - File Sharing Platforms: Centralized storage and access to project files, version control, but needs good organization and access management.
-- PRODUCTIVITY TOOLS::Collaboration tools::Workflow and e-signature platforms
-  - Workflow and E-Signature Platforms: Streamline document approvals and workflows, reduce paper reliance, but might require specific user roles and permissions.
-- PRODUCTIVITY TOOLS::Collaboration tools::Whiteboard
-  - Whiteboard: Visualize ideas and collaborate in real-time, good for brainstorming and planning, but lacks organization and recording capabilities.
-- PRODUCTIVITY TOOLS::Collaboration tools::Wiki knowledge base
-  - Wiki Knowledge Base: Collaborative knowledge repository, good for document sharing and reference, but relies on user contributions and maintenance.
-- PRODUCTIVITY TOOLS::Meeting tools::Real-time surveys/polling
-  - Real-time Surveys/Polling: Gather immediate feedback from participants, good for engagement, but limited in-depth discussion.
-- PRODUCTIVITY TOOLS::Meeting tools::Calendaring tools
-  - Calendaring Tools: Schedule meetings and appointments, track events, good for visibility and coordination, but requires consistent updates.
-- PRODUCTIVITY TOOLS::Meeting tools::Print media
-  - Print Media: Physical materials for handouts or presentations, tangible reference, but limited accessibility and updates.
-- PRODUCTIVITY TOOLS::Meeting tools::Conferencing platforms
-  - Conferencing Platforms: Integrated tools for audio/video meetings, screen sharing, and presentations, ideal for remote collaboration, but can be technically demanding.
-- PRODUCTIVITY TOOLS::Documentation and office production tools::Word processing
-  - Word Processing: Create and edit text documents, good for reports and proposals, but limited for data analysis or visualizations.
-- PRODUCTIVITY TOOLS::Documentation and office production tools::Spreadsheets
-  - Spreadsheets: Organize and analyze data, create charts and graphs, good for financial and technical information, but can be complex for non-technical users.
-- PRODUCTIVITY TOOLS::Documentation and office production tools::Presentation
-  - Presentation: Create impactful presentations with visuals and animations, good for stakeholder communication, but limited interactivity.
-- PRODUCTIVITY TOOLS::Documentation and office production tools::Charting/diagramming
-  - Charting/Diagramming: Design charts, graphs, and diagrams to visualize data and relationships, good for technical documentation and reports, but might require specific skills.
-- PRODUCTIVITY TOOLS::Project management scheduling tools::Cloud-based solutions vs. on-premises solutions
-  - Cloud-based Solutions: Accessible from anywhere, automatic updates, centralized data, but might have subscription costs and potential security concerns.
-  - On-Premises Solutions: Installed on local servers, full control over data and security, but requires IT infrastructure and maintenance.
-- PRODUCTIVITY TOOLS::Project management scheduling tools::Local installation
-  - Local Installation: Installed on individual computers, convenient for offline access, but limited data sharing and collaboration.
-- PRODUCTIVITY TOOLS::Ticketing/case management system
-  - Track issues, requests, and tasks, assign responsibility, monitor progress, good for centralized support and communication, but requires system setup and user training.
+- **Quality Assurance: Verification, Validation, Lessons Learned, Inspection, Audit**
+  - QA: Policies, procedures, and tools designed to ensure defect-free development and delivery.
+  - Verification: confirms product meets specifications.
+  - Validation: product meets customer satisfaction.
+  - Lessons Learned: reflect how change can improve product quality.
+  - Inspection: examine finished product.
+  - Audit: review processes for quality assurance issues.
+  - **QA Plan Contents**:
+    - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
+    - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
+    - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
+    - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
+  - **QA Plan Questions**:
+    - how to prevent risk from escaping?
+    - how verify meet expectations?
+    - how prevent defects?
+    - how to recognize and improve process?
+    - how to handle defects from customer?
 
-## 3.3 Given a scenario, analyze quality and performance charts to inform PROJECT DECISIONS
+## Work Breakdown Structure
 
-- PROJECT DECISIONS::Histograms
-  - Histograms: Show the frequency distribution of data points, helping identify patterns and potential outliers, e.g., defect frequency in software testing.
-- PROJECT DECISIONS::Pareto charts
-  - Pareto charts: Highlight the most frequent issues (e.g., bugs, errors) to prioritize improvement efforts based on impact (e.g., severity).
-- PROJECT DECISIONS::Run charts
-  - Run charts: Track trends over time, allowing you to monitor progress and identify potential deviations from expected quality levels.
-- PROJECT DECISIONS::Scatter diagrams
-  - Scatter diagrams: Explore relationships between two variables, e.g., defect rate vs. developer experience, to identify potential causes of quality issues.
-- PROJECT DECISIONS::Fishbone/Ishikawa diagrams
-  - Fishbone/Ishikawa diagrams: Visually identify and analyze the root causes of performance problems, facilitating targeted solutions.
-- PROJECT DECISIONS::Control charts
-  - Control charts: Monitor key performance indicators (KPIs) like project budget or schedule against predefined control limits, helping identify and address potential deviations early.
-- PROJECT DECISIONS::Burnup/burndown chart
-  - Burnup/Burndown charts: Track the remaining work (burnup) or completed work (burndown) against time, highlighting potential resource allocation issues or schedule delays.
-- PROJECT DECISIONS::Velocity chart
-  - Velocity chart: Measure the rate of completed work per iteration in agile projects, helping assess team capacity and predict future progress.
-- PROJECT DECISIONS::Decision tree
-  - Represent a tree-like structure with decision points and potential outcomes, allowing you to evaluate different options and make informed choices based on expected outcomes and risks.
+- **WBS**
+  - waterfall way of breaking down large projects into deliverables.
+  - Each level of the WBS clarifies the work required at that level.
+  - Lower levels provide more detail and granularity on how the higher-level work will be accomplished.
+  - The structure helps identify all necessary tasks and ensures no crucial work is missed.
+  - It facilitates work estimation and resource allocation based on the size and complexity of each unit.
+  - Creation Process:
+    - Determine Scope: review Statement of Work (SOW). Expectations of project.
+      - Level 1: Project (totality of entire project)
+    - Identify deliverables, team members, resources.
+      - Level 2: Main catagories. Breaks down the project into major deliverables or phases.
+      - Level 3: Further breaks down each deliverable/phase into smaller sub-deliverables/sub-phases.
+      - Level 4 on onward: breaking down units of work until you reach the level of individual tasks.
+  - ![wbs](img/wbs.webp)
+  - ![wbs2](img/WBS.jpg)
+- **WBS vs Backlog**
+  - WBS assumes that scope, time, and cost are fixed and works to control them.
+  - WBS has more structure than a backlog in its design. The WBS has specific numbering conventions and design rules, including MECE and the 100% rule.
 
-## 4.1 Summarize basic ENVIRONMENTAL, SOCIAL, and GOVERNANCE (ESG) FACTORS related to project management activities
+|                         | WBS               | Project Backlog             | Product Backlog              |
+| :---------------------- | :---------------- | :-------------------------- | :--------------------------- |
+| Duration                | Length of project | Length of project           | As long as product is viable |
+| Scope                   | Fixed             | Flexible                    | Flexible                     |
+| Resources               | Fixed             | Fixed                       | Fixed                        |
+| Time                    | Fixed             | Fixed                       | Fixed                        |
+| Deliverable or Activity | Deliverable       | Deliverable                 | Deliverable                  |
+| Hierarchy               | Numbered Levels   | Epic > Feature > User Story | Epic > Feature > User Story  |
+| When Created            | Planning Phase    | All Phases                  | Entire Life Cycle            |
 
-- ENVIRONMENTAL, SOCIAL, and GOVERNANCE FACTORS::ENVIRONMENTAL, SOCIAL, and GOVERNANCE FACTORS::Project impact to the local and global environment
-  - Resource consumption: Analyze energy, water, and material usage, seeking ways to reduce and optimize.
-  - Waste management: Minimize waste generation, prioritize recycling and sustainable disposal methods.
-  - Pollution control: Understand and mitigate potential air, water, and noise pollution generated by project activities.
-  - Biodiversity and ecosystem impacts: Assess potential effects on local flora and fauna, seeking to minimize disruption and promote conservation.
-- ENVIRONMENTAL, SOCIAL, and GOVERNANCE FACTORS::Awareness of applicable regulations and standards
-  - Identify relevant environmental laws, regulations, and industry standards applicable to project activities.
-  - Ensure compliance with regulations to avoid legal risks and environmental damage.
-  - Consider adopting voluntary sustainability standards to demonstrate commitment and best practices.
-- ENVIRONMENTAL, SOCIAL, and GOVERNANCE FACTORS::Awareness of company vision, mission statements, and values
-  - Understand the company's environmental vision, mission, and sustainability goals.
-  - Align project activities with these goals, demonstrating commitment to corporate values.
-  - Communicate the project's ESG contributions to stakeholders, building trust and positive brand perception.
-- ENVIRONMENTAL, SOCIAL, and GOVERNANCE FACTORS::Project impact to company brand value
-  - Reputation and public perception: Consumers are increasingly conscious of companies' environmental and social practices.
-  - Attracting and retaining talent: Employees value companies committed to sustainability and responsible practices.
-  - Access to funding and partnerships: Investors and partners increasingly prioritize ESG-conscious organizations.
-
-## 4.2 Explain relevant information SECURITY CONCEPTS impacting project management concepts
-
-- SECURITY CONCEPTS::Physical security::Mobile device considerations
-  - Mobile Device Considerations: Implementing secure storage, encryption, and password policies for sensitive data accessed on mobile devices.
-- SECURITY CONCEPTS::Physical security::Removable media considerations
-  - Removable Media Considerations: Restricting unauthorized use of removable drives and implementing data wiping procedures.
-- SECURITY CONCEPTS::Physical security::Facility access
-  - Facility Access: Controlling physical access to project resources through keycards, security cameras, and controlled entry points.
-- SECURITY CONCEPTS::Operational security::Background screening
-  - Background Screening: Conducting background checks on personnel with access to sensitive information.
-- SECURITY CONCEPTS::Operational security::Clearance requirements
-  - Clearance Requirements: Ensuring personnel have appropriate security clearances for handling classified information.
-- SECURITY CONCEPTS::Digital security::Resource access and permissions
-  - Resource Access and Permissions: Granting access to project resources and information on a need-to-know basis with defined permissions.
-- SECURITY CONCEPTS::Digital security::Remote access restrictions
-  - Remote Access Restrictions: Implementing secure protocols and multifactor authentication for remote access to project data.
-- SECURITY CONCEPTS::Digital security::Multifactor authentication
-  - Multifactor Authentication: Requiring additional verification factors beyond passwords for accessing sensitive systems.
-- SECURITY CONCEPTS::Data security::Data classification
-  - Data Classification: Classifying project data based on sensitivity (e.g., confidential, internal, public) to determine appropriate protection measures.
-- SECURITY CONCEPTS::Data security::Classification of information based on sensitivity of the data::Intellectual property
-  - Intellectual Property: Protecting project-related intellectual property through copyrights, patents, and trade secrets.
-- SECURITY CONCEPTS::Data security::Classification of information based on sensitivity of the data::Trade secrets
-  - Intellectual Property: Protecting project-related intellectual property through copyrights, patents, and trade secrets.
-- SECURITY CONCEPTS::Data security::Classification of information based on sensitivity of the data::National security information
-  - National Security Information: Adhering to strict protocols and regulations if handling classified information.
-- SECURITY CONCEPTS::Data security::Access on a need-to-know basis
-  - Access on a Need-to-Know Basis: Granting access to classified information only to individuals with a legitimate need for it.
-- SECURITY CONCEPTS::Corporate IT security policies and restrictions::Branding restrictions
-  - Branding Restrictions: Ensuring project materials and communications comply with corporate branding guidelines to avoid trademark infringement.
-
-## 4.3 Explain relevant COMPLIANCE and PRIVACY considerations impacting project management
-
-- COMPLIANCE and PRIVACY::Data confidentiality::Sensitive data types::Personally identifiable information (PII)
-  -Protecting Sensitive Data Types: Ensuring the security and privacy of sensitive data like personally identifiable information (PII) and personal health information (PHI).
-  -PII Examples: Names, addresses, social security numbers, financial information, biometric data.
-- COMPLIANCE and PRIVACY::Data confidentiality::Sensitive data types::Personal health information (PHI)
-  -PHI Examples: Medical records, diagnoses, treatment plans, genetic information.
-- COMPLIANCE and PRIVACY::Legal and regulatory impacts
-  - Country-, State-, Province-Specific Regulations: Complying with relevant privacy regulations like GDPR (EU), CCPA (California), HIPPA (US healthcare).
-  - Industry-Specific Considerations: Adhering to regulations specific to your industry, like finance, healthcare, or education.
-- COMPLIANCE and PRIVACY::Country-, state-, province-specific privacy regulations
-  - Data Classification and Handling: Classifying data based on sensitivity and implementing appropriate security measures.
-  - Data Access and Permissions: Granting access to data only on a need-to-know basis with defined permissions and audit trails.
-  - Data Breach Response: Having a plan in place for identifying, reporting, and mitigating data breaches.
-  - Training and Awareness: Educating team members about relevant regulations and how to handle sensitive data securely.
-  - Project Documentation and Communication: Ensuring that documentation and communication comply with privacy regulations.
-- COMPLIANCE and PRIVACY::Awareness of industry- or organization-specific compliance concerns impacting a project
-  - Identifying project-specific compliance concerns based on internal policies, contracts, and agreements.
-  - Implementing necessary compliance measures as part of the project plan.
-  - Reporting compliance issues and seeking guidance from legal or compliance teams.
-
-## 4.4 Summarize basic IT CONCEPTS relevant to IT project management
-
-- IT CONCEPTS::Infrastructure::Computing services
-  - Computing Services: Servers, desktops, virtual machines, and other hardware/software combinations providing processing power and services.
-- IT CONCEPTS::Infrastructure::Multitiered architecture
-  - Multitiered Architecture: Breaking down applications into independent, layered components (presentation, business logic, data) for better scalability and maintainability.
-- IT CONCEPTS::Infrastructure::Networking and connectivity
-  - Networking and Connectivity: Network protocols, devices, and connections enabling communication between system components and users.
-- IT CONCEPTS::Infrastructure::Storage
-  - Storage: Physical and virtual data storage solutions like hard drives, solid-state drives, and cloud storage for data persistence and access.
-- IT CONCEPTS::Infrastructure::Data warehouse
-  - Data Warehouse: Centralized repository for historical data extracted from different sources, facilitating data analysis and reporting.
-- IT CONCEPTS::Infrastructure::Documentation
-  - Documentation: Technical and user-friendly documentation of systems, architecture, and processes for reference and understanding.
-- IT CONCEPTS::Cloud models::Platform as a service (PaaS)
-  - Platform as a Service (PaaS): Provides the platform (operating system, development tools, database) to build and deploy applications without managing the underlying infrastructure.
-- IT CONCEPTS::Cloud models::Infrastructure as a service (Iaas)
-  - Infrastructure as a Service (IaaS): Offers on-demand access to virtualized computing resources (servers, storage, networking) for deploying and managing applications.
-- IT CONCEPTS::Cloud models::Software as a service (SaaS)
-  - Software as a Service (SaaS): Delivers applications over the internet, eliminating the need for local installation and maintenance.
-- IT CONCEPTS::Cloud models::Anything as a service (XaaS)
-  - Anything as a Service (XaaS): Broad term encompassing any service delivered on-demand over the internet (e.g., Backup as a Service, Security as a Service).
-- IT CONCEPTS::Cloud models::Software::Enterprise resource planning
-  - Enterprise Resource Planning (ERP): Integrated software suite for managing core business processes like finance, HR, manufacturing, and supply chain.
-- IT CONCEPTS::Cloud models::Software::Customer relationship management
-  - Customer Relationship Management (CRM): Tools for managing customer interactions, tracking leads, and automating marketing and sales processes.
-- IT CONCEPTS::Cloud models::Software::Databases
-  - Databases: Structured repositories for storing, organizing, and accessing data efficiently.
-- IT CONCEPTS::Cloud models::Software::Electronic document and record management systems
-  - Electronic Document and Record Management Systems (EDRMS): Manage the storage, retrieval, and lifecycle of electronic documents and records.
-- IT CONCEPTS::Cloud models::Software::Content management systems
-  - Content Management Systems (CMS): Web-based platforms for creating, editing, and publishing content on websites and other digital platforms.
-- IT CONCEPTS::Cloud models::Software::Financial systems
-  - Financial Systems: Industry-specific software for managing financial transactions, accounting, and financial reporting.
-
-## 4.5 Explain operational CHANGE-CONTROL PROCESS during an IT project
-
-- CHANGE-CONTROL PROCESS::IT infrastructure change control::Downtime/maintenance windows schedules
-  - Downtime/Maintenance Windows: Schedule planned outages for updates and minimize system disruptions.
-- CHANGE-CONTROL PROCESS::IT infrastructure change control::Customer notifications
-  - Customer Notifications: Inform customers about upcoming changes, impacts, and expected downtime.
-- CHANGE-CONTROL PROCESS::IT infrastructure change control::Rollback plans
-  - Rollback Plans: Have contingency plans to revert to a previous state if changes cause issues.
-- CHANGE-CONTROL PROCESS::IT infrastructure change control::Validation checks
-  - Validation Checks: Verify the functionality and stability of new configurations before deploying them.
-- CHANGE-CONTROL PROCESS::Software change control::Requirements definition
-  - Requirements Definition: Clearly define and document new software features and functionalities.
-- CHANGE-CONTROL PROCESS::Software change control::Risk assessment
-  - Risk Assessment: Identify and evaluate potential risks associated with changes.
-- CHANGE-CONTROL PROCESS::Software change control::Testing::Automated
-  - Testing Automated: Utilize automated testing tools for efficiency and repeatability.
-- CHANGE-CONTROL PROCESS::Software change control::Testing::Manual
-  - Testing Manual: Conduct manual testing for specific scenarios and user experience validation.
-- CHANGE-CONTROL PROCESS::Software change control::Approval
-  - Approval: Secure formal approval from stakeholders after successful testing and review.
-- CHANGE-CONTROL PROCESS::Software change control::Customer notifications
-  - Customer Notifications: Inform customers about new features and functionality updates.
-- CHANGE-CONTROL PROCESS::Software change control::Release
-  - Release: Deploy the approved changes to production environments.
-- CHANGE-CONTROL PROCESS::Differences between cloud vs. on premises in change control
-  - Frequency: Cloud environments often allow for more frequent and smaller changes due to the nature of updates and scalability.
-  - Impact: Changes on cloud platforms might need additional considerations for security and integration with existing cloud services.
-  - Validation: Testing and validation may require specific cloud-based tools and environments.
-- CHANGE-CONTROL PROCESS::Continuous integration/continuous deployment (CI/CD) process
-  - Automated Process: Streamlines code changes from development to production environments with minimal manual intervention.
-  - Faster Releases: Enables frequent deployments of software updates and features.
-  - Reduced Risks: Automates testing and validation, potentially reducing deployment issues.
-- CHANGE-CONTROL PROCESS::Production vs. beta/staging environments::Tiered architecture
-  - Production: Live environment where the final software version runs and serves users.
-  - Beta/Staging: Testing environments used to simulate production conditions and validate changes before release.
-  - Breaking down systems into independent layers (presentation, business logic, data) facilitates deployment and rollbacks of changes in specific layers without affecting others.
+- **WBS Dictionary, Work Package, Task**
+  - Dictionary: itemized list with id number. Includes more information about item.
+  - Work Package: one or more deliverables that need to be created together.
+    - collectively develop deliverable.
+  - Task: many little activities to create the project.
+- **WBS MECE**
+  - Mutually Exclusive: no overlaps. each label no repeated.
+  - Collectively Exhaustive: Together, all work packages encompass the entire project.
+- **WBS Rules**
+  - can estimate cost, time, resources.
+  - 8/80. Element should last at least 8hrs but no more than 80hrs.
+  - will fit in reporting period(report on project status).
+  - produces measurable deliverable.
+  - breaking down further wouldn't help project.
