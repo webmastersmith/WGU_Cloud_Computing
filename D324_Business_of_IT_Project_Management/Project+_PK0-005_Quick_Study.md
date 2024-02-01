@@ -148,20 +148,52 @@
   - project requirements will change often. Team is stable and self organized.
   - agile is flexible. continually improvements through sprints.
 
+## Backlog
+
+- **Backlog, Backlog Owner**
+  - backlog: body of work team will complete. Good for when there are too many unknowns to create a WBS.
+    - creates deliverables. Leave the execution details to the team.
+    - project backlog uses agile ceremonies to fix time and cost.
+    - scope of work remains flexible; a backlog-based team will deliver as much of the scope as they can fit into an iteration.
+  - backlog owner: refines the backlog, moving high priorities to top.
+- **Backlog: Epics, Features, User Stories, Task**
+  - Epics: main deliverable.
+  - Features: major feature.
+  - User Stories: smallest deliverable. same as 'WBS' work package.
+  - Task: action you take to complete the deliverable.
+  - ![backlog breakdown structure](img/backlog_breakdown.PNG)
+- **WBS vs Product Backlog vs Project Backlog**
+  - product backlog: alive as long as the product is active.
+  - project backlog: have start and end dates.
+
+|                         | WBS               | Project Backlog             | Product Backlog              |
+| :---------------------- | :---------------- | :-------------------------- | :--------------------------- |
+| Duration                | Length of project | Length of project           | As long as product is viable |
+| Scope                   | Fixed             | Flexible                    | Flexible                     |
+| Resources               | Fixed             | Fixed                       | Fixed                        |
+| Time                    | Fixed             | Fixed                       | Fixed                        |
+| Deliverable or Activity | Deliverable       | Deliverable                 | Deliverable                  |
+| Hierarchy               | Numbered Levels   | Epic > Feature > User Story | Epic > Feature > User Story  |
+| When Created            | Planning Phase    | All Phases                  | Entire Life Cycle            |
+
 ## Charts
 
-- **Burndown Chart**
+- **Burnup/Burndown Chart**
   - shows remaining time and work in each scrum sprint iteration.
   - ![burndown chart](img/burndown.png)
+- **Critical Path Method (CPM)**
+  - shows how delay time will effect project.
+  - add all activities with dependencies to find longest path on chart.
+  - Float: the down time activity has and can still be completed on time.
+  - ![critical path chart](img/critical-path.png)
+- **Fishbone/Ishikaawa Diagrams**
+  - cause and effect diagram. Part of gap analysis.
+  - shows how various factors(fish bones) impact single outcome(fish head).
+  - ![fishbone chart](img/fishbone.jpg)
 - **Gantt Chart**
   - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
   - planning, execution, closing phase.
   - ![Gantt chart](img/gantt.png)
-- **PERT Chart**
-  - Program Evaluation and Review Technique.
-  - accurate time scheduling estimates. Used in **large, complex projects.**
-  - Uses 3 point estimates: `shortest time + longest time + (4 * average time) / 6 = estimated time.`
-  - ![pert](img/pert.png)
 - **Milestone or Timeline Chart**
   - simple timeline chart of project milestones. focus is on events.
   - ![milestone chart](img/Milestone-Chart.png)
@@ -177,14 +209,16 @@
   - 80/20 rule. 80% problems solved with 20% cause.
   - what generates the most benefit with least effort.
   - ![pareto principle](img/Pareto-Chart_Example.png)
+- **Program Evaluation Review Technique (PERT) Chart**
+  - shows duration, activities, dependencies. Typically used in **large, complex projects.**
+  - Uses 3 point estimates: `optimistic time + pessimistic time + (4 * average time) / 6 = estimated time.`
+  - ![pert](img/pert.png)
+- **Project Network Diagram**
+  - visual model of the project schedule that shows sequence of activities and the dependencies.
+  - ![project network diagram](img/project_network_diagram.jpg)
 - **Run Chart**
 - **Scatter Diagrams**
-- **Fishbone/Ishikaawa Diagrams**
-  - cause and effect diagram. Part of gap analysis.
-  - shows how various factors(fish bones) impact single outcome(fish head).
-  - ![fishbone chart](img/fishbone.jpg)
 - **Control Chart**
-- **Burnup/Burndown Chart**
 - **Velocity Chart**
 - **Decision Tree**
   - ![decision tree](img/decision_tree.png)
@@ -783,15 +817,6 @@
     - assigns project manager and define their authority.
     - negotiate support from key stakeholders. Champion and market project.
     - enforce milestones by removing road blocks.
-- **Responsibility Assignment Matrix (RAM)**
-  - created in the initiation phase.
-  - clarifies team member assignment(ownership roles) and who to work with.
-  - RACI: (what role does team member fall into?)
-    - responsible: do the work.
-    - accountable: manage.
-    - consulted: Subject Matter Experts.
-    - informed: receive updates only.
-    - ![ram chart](img/ram_chart.PNG)
 - **Senior Management**
   - highest level of leadership.
   - control organizational goals, communicate with shareholders and board members.
@@ -1019,7 +1044,7 @@
   - artifact that outlines when event should be escalated and to whom.
   - ![escalation plan](img/Escalation-Matrix.webp)
 
-## Project Lifecycle Phase 2 Planning: Scheduling
+## Project Lifecycle Phase 2 Planning: Scheduling, Dependencies, and Estimation
 
 - **Scheduling**
   - defining units of work, cost, resources for a project.
@@ -1045,11 +1070,6 @@
 - **Scheduling: Two Major Relationships between Dependent Task**
   - predecessor: project that must be completed before task.
   - successor: project that must be completed after task.
-- **Scheduling: Four Types of Logical Relationships**
-  - finish-to-start (FS): predecessor must finish before successor can start.
-  - start-to-start (SS): predecessor must start before successor can start.
-  - start-to-finish (SF): predecessor must start before successor can finish.
-  - finish-to-finish (FF): predecessor must finish before successor finishes.
 - **Scheduling: Three Most Common Activity Estimators**
   - Expert Judgement: someone experienced.
   - Analogous or Top-Down: artifact(similar activities) from previous project.
@@ -1064,8 +1084,40 @@
 - **Scheduling: Calculate Critical Path**
   - which path adds up to the longest. Any delay will result in missing the finish date.
   - ![critical path](img/critical-path.png)
+- **Scheduling: Responsibility Assignment Matrix (RAM)**
+  - created in the initiation phase. Activities are added in the planning phase.
+  - clarifies team member assignment(ownership roles) and who to work with.
+  - every activity must have one and only one accountable person.
+  - **RACI**: (what role does team member fall into?)
+    - responsible: do the work.
+    - accountable: manager.
+    - consulted: Subject Matter Experts.
+    - informed: receive updates only(stakeholder, senior manager...).
+    - ![ram chart](img/ram_chart.PNG)
 - **Define Critical Path Task**
   - critical path task activity with zero or negative float.
+- **Dependencies and Sequencing. Predecessor and Successor. Four Types of Logical Relationships: FS, SS, SF, FF**
+  - Dependency: relationship between activities. One activity cannot start until other is finished.
+  - Sequencing: order the work must be completed in.
+  - predecessor: before task.
+  - successor: after task.
+  - finish-to-start (FS): predecessor must finish before successor can start.
+  - start-to-start (SS): predecessor must start before successor can start.
+  - start-to-finish (SF): predecessor must start before successor can finish.
+  - finish-to-finish (FF): predecessor must finish before successor finishes.
+- **Dependency: Mandatory, Discretionary, External, Internal**
+  - Mandatory Dependency: Hard logic. unavoidable. must have due to legal, contracts...
+  - Discretionary Dependency: Soft logic. preference only.
+  - External Dependency: outside organization control.
+  - Internal Dependency: inside organization.
+- **Estimation: Top-Down, Bottom-Up, Three Point**
+  - Top-Down: estimate entire project.
+  - Bottom-Up: estimate smallest task first, then add up.
+  - Three Point: `optimistic time + pessimistic time + (4 * average time) / 6 = estimated time.`.
+- **Estimation: Story Points, Task**
+  - Story Points: use size to visualize cost relative to other User Stories. That is translated into numbers.
+  - ![story points](img/story_points.PNG)
+  - Task: break down into user stories or work packages.
 
 ## Project Lifecycle Phase 3 Executing
 
@@ -1264,6 +1316,9 @@
   - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
 - **Scrum Events**
   - Sprint: iteration and all scrum events.
+  - Epic: large project
+  - User Stories: smaller units of work stored in the backlog.
+  - Backlog: where user stories are stored, higher is more priority.
   - Sprint planning: backlog created.
   - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
   - Sprint review: uncover issues early, confirm on track.
@@ -1338,3 +1393,49 @@
   - Industry Standards: linear and sequential. Heavy documentation.
 - **Waterfall Use**
   - when you have clear objectives, heavy documentation, and high change cost.
+
+## Work Breakdown Structure
+
+- **WBS**
+  - waterfall way of breaking down large projects into deliverables.
+  - Each level of the WBS clarifies the work required at that level.
+  - Lower levels provide more detail and granularity on how the higher-level work will be accomplished.
+  - The structure helps identify all necessary tasks and ensures no crucial work is missed.
+  - It facilitates work estimation and resource allocation based on the size and complexity of each unit.
+  - Creation Process:
+    - Determine Scope: review Statement of Work (SOW). Expectations of project.
+      - Level 1: Project (totality of entire project)
+    - Identify deliverables, team members, resources.
+      - Level 2: Main catagories. Breaks down the project into major deliverables or phases.
+      - Level 3: Further breaks down each deliverable/phase into smaller sub-deliverables/sub-phases.
+      - Level 4 on onward: breaking down units of work until you reach the level of individual tasks.
+  - ![wbs](img/wbs.webp)
+  - ![wbs2](img/WBS.jpg)
+- **WBS vs Backlog**
+  - WBS assumes that scope, time, and cost are fixed and works to control them.
+  - WBS has more structure than a backlog in its design. The WBS has specific numbering conventions and design rules, including MECE and the 100% rule.
+
+|                         | WBS               | Project Backlog             | Product Backlog              |
+| :---------------------- | :---------------- | :-------------------------- | :--------------------------- |
+| Duration                | Length of project | Length of project           | As long as product is viable |
+| Scope                   | Fixed             | Flexible                    | Flexible                     |
+| Resources               | Fixed             | Fixed                       | Fixed                        |
+| Time                    | Fixed             | Fixed                       | Fixed                        |
+| Deliverable or Activity | Deliverable       | Deliverable                 | Deliverable                  |
+| Hierarchy               | Numbered Levels   | Epic > Feature > User Story | Epic > Feature > User Story  |
+| When Created            | Planning Phase    | All Phases                  | Entire Life Cycle            |
+
+- **WBS Dictionary, Work Package, Task**
+  - Dictionary: itemized list with id number. Includes more information about item.
+  - Work Package: one or more deliverables that need to be created together.
+    - collectively develop deliverable.
+  - Task: many little activities to create the project.
+- **WBS MECE**
+  - Mutually Exclusive: no overlaps. each label no repeated.
+  - Collectively Exhaustive: Together, all work packages encompass the entire project.
+- **WBS Rules**
+  - can estimate cost, time, resources.
+  - 8/80. Element should last at least 8hrs but no more than 80hrs.
+  - will fit in reporting period(report on project status).
+  - produces measurable deliverable.
+  - breaking down further wouldn't help project.
