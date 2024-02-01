@@ -179,8 +179,13 @@
 ## Charts
 
 - **Burnup/Burndown Chart**
-  - shows remaining time and work in each scrum sprint iteration.
-  - ![burndown chart](img/burndown.png)
+  - help manage scope and time. Both charts plot target work and actual work.
+  - Burnup
+    - show total amount of work completed each day.
+    - ![burnup chart](img/burnup.PNG)
+  - Burndown
+    - shows remaining time and work in each scrum sprint iteration.
+    - ![burndown chart](img/burndown.png)
 - **Critical Path Method (CPM)**
   - shows how delay time will effect project.
   - add all activities with dependencies to find longest path on chart.
@@ -220,9 +225,16 @@
   - visual model of the project schedule that shows sequence of activities and the dependencies.
   - ![project network diagram](img/project_network_diagram.jpg)
 - **Run Chart**
+  - time or sequence on the horizontal axis. Corresponding data is measured on the vertical axis.
+  - ![run chart](img/run_chart.jpg)
 - **Scatter Diagrams**
+  - visual chart that plots pairs of numerical values; shows the level of correlation between two variables.
+  - helps you determine root cause.
+  - ![scatter diagram](img/scatter_diagram.png)
 - **Control Chart**
 - **Velocity Chart**
+  - how many story points completed per iteration
+  - ![velocity chart](img/velocity_chart.PNG)
 
 ## Communication Management and Meetings
 
@@ -1222,6 +1234,59 @@
   - Demonstrates that all requirements are addressed and tested.
   - Provides a audit trail to show compliance and manage changes.
   - ![requirements traceability matrix](img/traceability_matrix.png)
+- **Tools: Time-Tracking, Task Board, Version Control, Issue Log, Defect Log, Change Log**
+  - Time-Tracking: tracks how long to complete task. Set realistic goals.
+  - Task Board: similar to kanban board. show each work item as a card.
+    - ![task board](img/task_board.PNG)
+  - Version Control: traceability tool for source code. ex.. git.
+  - Issue Log: problem arises you have no control of. Record problem, who found it, date.
+  - Defect Log: fails to meet specification. Record problem, resolution, date, found by, impact.
+  - Change Log: project activities differ from project plan. Record description, impact, date, who.
+- **Meetings: Team Touch Point, Sprint, Stakeholder, Conditional, Phase Gate Review, Change Control, Ad Hoc**
+  - Team Touch Point: update projects overall progress and solve problems(brainstorm solutions).
+  - Sprint Meetings: discuss progress. Add, prioritize backlog.
+  - Stakeholder Meetings: projects overall progress. Gather feedback. Highlight what's next.
+  - Conditional Meetings: meetings on request when you need support from a specific group.
+  - Phase Gate Review Meeting: checkpoint review of project deliverables and performance at the end of each phase or sub-phase.
+    - a management review or sign-off may be required.
+  - Change Control Meeting: review change request.
+  - Ad Hoc Meeting: unscheduled meeting to deliver project updates.
+- **Feedback**
+  - all feedback(negative or positive) help create better product.
+- **Issue Management**
+  - Identify: find and record issue.
+  - Analyze: determine cause of issue.
+  - Resolve: decide what to do.
+  - Monitor: confirm issue resolved.
+- **Issue Tracking: Severity, Urgency, Impact, Escalation**
+  - Issue Tracking: project manager maintains list of issues.
+  - Severity:
+    - Critical: system is down.
+    - Major: system working, one or more features down.
+    - Minor: not working as expected.
+    - Low: cosmetic defects.
+  - Urgency:
+    - Critical: resolve immediately.
+    - Major: resolve within hours.
+    - Minor: resolve within days.
+    - Low: resolve when convenient.
+  - Impact:
+    - High: project may not finish.
+    - Medium: project delayed.
+    - Low: project will be fine.
+  - Escalation:
+    - High: plan in place, escalated.
+    - Medium: plan in place, not escalated.
+    - Low: no plan to escalate.
+- **Root Cause Analysis**
+  - Root Cause Analysis: technique used to determine the true cause of the problem.
+    - use scatter diagram to find root cause.
+    - use run chart.
+- **Root Cause Analysis Five Whys, Fishbone**
+  - Asking why five times to determine root cause.
+  1. why is problem happening?
+  2. why...
+  - Fishbone: multiple potential causes to problem.
 
 ## Project Lifecycle Phase 4 Closing
 
