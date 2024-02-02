@@ -1368,12 +1368,20 @@
   - Documentation: allows maintenance team maintain deliverable over time.
   - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
   - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
-- **Closing: Validation of Deliverables, Closing Contracts, Removing Access, Releasing Resources, Project Evaluation**
+- **Closing: Validation of Deliverables, Closing Contracts, Removing Access, Releasing Resources**
   - Validation of Deliverables: deliverables transfer to owners. Confirm met objective and completed deliverable.
   - Closing Contracts: after stakeholder approval, confirm deliverables.
   - Reconcile the Budget: after all contracts paid. Research and resolve any discrepancies.
   - ![project closeout checklist](img/project_closeout_checklist.PNG)
+- **Closing: Project Evaluation, Project Closeout Report, Collect Feedback from Stakeholders, Remove Access, Release Resources, Archive Documentation**
   - Project Evaluation: lessons learned. What could we do better.
+  - develop summary report of KPI.
+  - Project Closeout Report: document closure meeting.
+    - Project Overview, highlights, performance analysis, challenges, future considerations, lessons learned, financial summary, transition summary, closure approval request.
+  - Collect Feedback from Stakeholders: send survey after close.
+  - Remove Access: unnecessary access. keys, badges, logins.
+  - Release Resources: formally acknowledge end of project. Notify all involved.
+  - Archive Documentation: project documentation(notes, recordings, documents, contracts).
 
 ## Project Management Documents
 
