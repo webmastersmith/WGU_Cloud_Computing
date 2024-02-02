@@ -186,6 +186,12 @@
   - Burndown
     - shows remaining time and work in each scrum sprint iteration.
     - ![burndown chart](img/burndown.png)
+- **Control Chart**
+  - track the variation in a process over time.
+  - center line is 'mean'.
+  - upper line is upper control limit.
+  - lower line is lower control limit.
+  - ![control chart](img/Control-Charts.jpg)
 - **Critical Path Method (CPM)**
   - shows how delay time will effect project.
   - add all activities with dependencies to find longest path on chart.
@@ -231,7 +237,6 @@
   - visual chart that plots pairs of numerical values; shows the level of correlation between two variables.
   - helps you determine root cause.
   - ![scatter diagram](img/scatter_diagram.png)
-- **Control Chart**
 - **Velocity Chart**
   - how many story points completed per iteration
   - ![velocity chart](img/velocity_chart.PNG)
