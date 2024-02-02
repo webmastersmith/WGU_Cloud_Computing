@@ -1283,6 +1283,10 @@
     - High: plan in place, escalated.
     - Medium: plan in place, not escalated.
     - Low: no plan to escalate.
+- **Issues Resolution Plan**
+  - Verify Issue Resolution: make sure fix did not cause other problems.
+  - Remove Workarounds: should be temporary.
+  - Complete Outcome Documentation: update issue log.
 - **Root Cause Analysis**
   - Root Cause Analysis: technique used to determine the true cause of the problem.
     - use scatter diagram to find root cause.
@@ -1292,6 +1296,25 @@
   1. why is problem happening?
   2. why...
   - Fishbone: multiple potential causes to problem.
+- **Change Control, Scope Creep, Change Request Form, Change Log**
+  - Change Control: the channel to request, record and get approval for.
+    - Change control improves traceability for project requirements.
+    - The purpose of change control is to manage changes to the scope, time, and cost baselines.
+  - Scope Creep: Scope creep is an unapproved change.
+  - Change Request Form: information about change request.
+  - Change Log: all change request for project.
+- **Change Request: Evaluate Impact, Determine Decision Maker, CCB, Communicate Change Status, Update Project Plan, Validate Change Implementation, Communicate Change Deployment**
+  - Evaluate Impact: project manager conducts impact assessment for every change request.
+    - how change would affect the project’s resources, budget, scope, and schedule.
+  - Determine Decision Maker: person/group with authority to approve change.
+  - Change Control Board (CCB): owns project changes.
+  - Communicate Change Status: let relevant parties know about change.
+  - Update Project Plan: reflect new change, scope, deliverable, budget.
+  - Validate Change Implementation: project manager, change requester, and change reviewer will validate the change implementation.
+  - Communicate Change Deployment: After validation, PM notifies stakeholders of the completed change.
+- **Change Request IT: Maintenance Window**
+  - Maintenance Window: system may be offline. Changes are planned downtime events.
+  - Customer Notifications: notification sent out to customers.
 
 ## Project Lifecycle Phase 4 Closing
 
