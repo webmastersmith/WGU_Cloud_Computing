@@ -67,7 +67,8 @@
 - **Smoke Testing**
   - Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
 - **Scope**
-  - project scope: boundaries of project. Outlines what work needs to be done and what won't be done to achieve the project's goals.
+  - project scope: boundaries of project. Outlines what work will and won't be done.
+  - Deliverables, Task/Activities, Timeline/Milestones, Budget, Quality Standards, Resource, Exclusions.
 - **Starvation**
   - Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
 - **Statistical Sampling**
@@ -1312,14 +1313,33 @@
   - Update Project Plan: reflect new change, scope, deliverable, budget.
   - Validate Change Implementation: project manager, change requester, and change reviewer will validate the change implementation.
   - Communicate Change Deployment: After validation, PM notifies stakeholders of the completed change.
-- **Change Request IT: Maintenance Window**
+- **Change Request IT: Infrastructure and Maintenance Window, Standard, Normal, Emergency**
+  - Infrastructure Changes: require advanced notice if they disrupt customer.
   - Maintenance Window: system may be offline. Changes are planned downtime events.
   - Customer Notifications: notification sent out to customers.
+  - Standard Change: recurring routine change.
+  - Normal Change: no set process. Does not happen often.
+  - Emergency Change: unplanned. no advance notice.
+- **Change Request IT: Rollback Plan, Validation Checks**
+  - Rollback Plans: undo change if it doesn't have expected outcome.
+  - Validation Checks: confirm behaves as expected. If problem, record in defect log.
+- **Tiered Architecture**
+  - the different 'tier' environments: development, testing, production.
+- **Performance Monitoring: Cost Variance, Schedule Variance**
+  - Track Permformance: burndown chart, gap analysis.
+  - Cost Variance: difference between Earned Value and Actual Cost. Monitor if project is on schedule and budget.
+  - Schedule Variance: monitor if project is on schedule.
+  - ![earned value management](img/evm_chart.PNG)
+- **Project Schedule: Rebaseline, Dashboard**
+  - Rebaseline: if project strays so far from baseline, it's no longer usable.
+    - ex.. project gets two weeks behind, all the post work will always be two weeks behind.
+  - Dashboard: typically one screen with KPI show most important.
 
 ## Project Lifecycle Phase 4 Closing
 
 - **Closing Phase**
   - project closeout. contracts closed, team members released.
+  - Project teams can use **organizational change management (OCM)** to reduce the strain caused by change.
   - validate deliverables, document acceptance of project work.
     - Validating deliverables
     - Closing contracts
@@ -1333,6 +1353,27 @@
     - Evaluating the project
     - Archiving project documents
     - Rewards and celebration
+- **Closing: OCM**
+  - Organizational Change Management (OCM): structured change.
+  - think about how a project affects people in the organization.
+  - what you need them to do differently to make the project’s outcome successful.
+  - provide the necessary artifacts and support to help them.
+  - monitor and reinforce adoption.
+  - ![organizational change management](img/ocm.PNG)
+- **Organizational Change Mnangement: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
+  - Training: learn how to use deliverable.
+  - New Knowledge Base: info about deliverable.
+  - New Process: processes are updated to reflect current deliverable. Processes are documented instructions that describe how to complete tasks.
+  - Communication: underpins every aspect of OCM. Start early and often.
+  - Documentation: allows maintenance team maintain deliverable over time.
+  - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
+  - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
+- **Closing: Validation of Deliverables, Closing Contracts, Removing Access, Releasing Resources, Project Evaluation**
+  - Validation of Deliverables: deliverables transfer to owners. Confirm met objective and completed deliverable.
+  - Closing Contracts: after stakeholder approval, confirm deliverables.
+  - Reconcile the Budget: after all contracts paid. Research and resolve any discrepancies.
+  - ![project closeout checklist](img/project_closeout_checklist.PNG)
+  - Project Evaluation: lessons learned. What could we do better.
 
 ## Project Management Documents
 
