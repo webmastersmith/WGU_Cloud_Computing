@@ -5,7 +5,8 @@
 - Know all **phases and what Doc's** go in what phase (Order of things (Initiating, Planned...etc.)).
 - know how to read the diagrams, charts and graphs.
 - Make sure you understand the definitions of all the material.
-- Most of my questions contained a scenario of "what step is next?" or "what step is this task in?" -Know the **Change Control Steps** backward and forwards and what is in each step (Documents, Tasks)
+- Most of my questions contained a scenario of "what step is next?" or "what step is this task in?"
+- Know the **Change Control Steps** backward and forwards and what is in each step (Documents, Tasks)
 - Know the **change management** process steps.
 - understand the process control change and what phase documents/artifacts fall under.
 - Get a basic understanding of what information the **charts/tools are meant for**.

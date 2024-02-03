@@ -1033,7 +1033,7 @@
     - Scope Statement
     - WBS or Backlog
     - Resource Plan
-    - Project Schedule
+    - Project Schedule (Gantt chart, PERT chart)
     - Quality Management Plan
     - Risk Management Plan
     - Communication Plan

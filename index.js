@@ -6,11 +6,11 @@
   const re = new RegExp(reStr, '');
 
   // variables
-  // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005.md';
-  // const removeLines = 59; // line before you want to start parsing. 0 is first line.
+  const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Exam_Objectives.md';
+  const removeLines = 59; // line before you want to start parsing. 0 is first line.
 
-  const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Quick_Study.md';
-  const removeLines = 2;
+  // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005.md';
+  // const removeLines = 2;
 
   // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Acronyms.md';
   // const removeLines = 2;
