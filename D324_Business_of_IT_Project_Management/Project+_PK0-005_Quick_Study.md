@@ -107,6 +107,38 @@
 
 ## Change Control Steps
 
+- The change request process uses two documents:
+  - **change request form**: information about change(project name, date, description, reason...).
+  - **change log**: all change request for project.
+  - mnemonic: Initiate Examine Decide Integrate.
+
+1. Initiate the request
+   1. requester initiates by submitting a **change request form** to the project manager.
+2. Evaluate impacts
+   1. conduct a thorough impact assessment.
+   2. analyze how the change will effect the project’s **resources, budget, scope, and schedule**.
+   3. PM will create an information package outlining the change request, schedule changes, scope changes, risks, resource requirements, and notable impacts.
+   4. PM will document change recommendations directly in the **change log**.
+3. Decide on an outcome
+   1. identify and get sign-off from the decision makers(authority to make change).
+      1. Operational Change: little impact. Normal day-to-day business. PM, functional manager, or CCB.
+      2. Strategic Change: effects all aspects of business. project sponsor, CCB, and PMO.
+      3. Risk Owner: If risk is involved, risk owner will contribute to decision.
+      4. Technical Changes: SMEs will be involved in decision.
+      5. Software Changes: Technical, Product Owner, and Architectural approval is needed.
+4. Implement the change
+   1. Communicate Change: stakeholders, project requester, team.
+   2. Update project plan and if needed the RACI, business case, or stakeholder management plan.
+   3. Capture the project **baselines before and after** changing the project plan.
+   4. Validate Change:
+      1. Project manager: evaluates impact and verifies if as expected.
+      2. Change Requester: validates results meet requirements.
+      3. Change Reviewer: compare outcome against business requirements. In agile its product owner. could also be SME or functional manager.
+   5. PM notifies stakeholders of completed change.
+   6. Update status in change log.
+
+## Other
+
 1. Identify and document the change:
 
    Clearly define the proposed change, including its impact on scope, schedule, budget, quality, and risk.
@@ -142,6 +174,12 @@
 
 ## Roles and Responsibilities
 
+- **Architect**
+  - part of the IT team. design. Make sure project interoperates with business goals.
+  - Responsibilities:
+    - Solution design
+    - System blueprints
+    - Evaluating systems against organizational standards
 - **Business Analyst**
   - deeply understands company priorities and is also familiar with project.
   - **gathering and documenting** requirements for project.
@@ -154,14 +192,43 @@
     - Verifying deliverables against requirements
     - Assisting with testing and validation of products
 - **Project Manager**
-  - **define product strategy**, create roadmap on how product will improve and change over time.
-  - build team.
-  - create project charter and define scope.
-  - set processes for updating logs: change log, risk register, issue log.
-  - ensure project deliverables are met.
-  - deliver updates: status, schedule, budget...
-- Stakeholder
-- Team Member
+  - runs day-to-day management of teams in any framework as long as the project is active.
+  - explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
+  - keeps project sponsor notified of status, conflicts and risk.
+  - responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
+  - completes project goals to stakeholder/company satisfaction.
+  - Responsibilities:
+    - Building the project team and securing resources
+    - Building the project charter and defining the project’s scope
+    - Creating required project logs and processes, including the issue log, change log, and risk register
+    - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
+    - Preparing and delivering project status updates
+    - Tracking the project’s progress and status when compared to the schedule and budget
+    - Managing vendor relationships
+- **Stakeholder**
+  - Anyone/Organization with vested interest(positive or negative) in the project.
+  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
+  - **Agile**: communication between team and stakeholder throughout the project.
+  - Responsibilities:
+    - Must understand the project’s purpose and how it will affect them.
+    - Be transparent about their support or lack of support
+    - Provide timely feedback on the project’s progress
+- **Subject Matter Experts (SMEs)**
+  - team members performing the work. have the specific knowledge and experience to do the work.
+- **Team Member and Extended Team Member**
+  - **Team Member**: knowledgeable person either full time.
+    - keep timeline, cost of project.
+    - communicate with project manager risk, updates.
+  - **Extended Team Member**: also called Fractional Team Member.
+    - Only available part time. Typically Subject Matter Expert.
+- **Tester/Quality Assurance**
+  - ensure requirements are met. help prevent errors.
+- **Vendor**
+  - third party provides resources.
+  - Responsibilities:
+    - Provide work outlined in contracts
+    - Maintain service level agreements
+    - Keep clear lines of communication open for business relationships
 
 ## Risk Strategies
 
