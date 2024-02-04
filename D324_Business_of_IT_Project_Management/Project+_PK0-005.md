@@ -180,67 +180,121 @@
 ## Charts
 
 - **Burnup/Burndown Chart**
-  - help manage scope and time. Both charts plot target work and actual work.
-  - Burnup
+  - Purpose: track work progress.
+  - Compares **activities** with **time**.
+  - Both charts plot **target work** and **actual work**.
+  - **Burnup**
     - show total amount of work completed each day.
     - ![burnup chart](img/burnup.PNG)
-  - Burndown
+  - **Burndown**
     - shows remaining time and work in each scrum sprint iteration.
     - ![burndown chart](img/burndown.png)
-- **Control Chart**
-  - track the variation in a process over time.
+- **Control/Behavior Chart**
+  - Purpose: monitor process stability.
+  - Track the variation in a process over time.
   - center line is 'mean'.
   - upper line is upper control limit.
   - lower line is lower control limit.
   - ![control chart](img/Control-Charts.jpg)
 - **Critical Path Method (CPM)**
-  - shows how delay time will effect project.
+  - Purpose: project planning and execution. Find
+  - shows how delay time will effect project. This image uses a Gantt chart to display CPM.
   - add all activities with dependencies to find longest path on chart.
-  - Float: the down time activity has and can still be completed on time.
+  - Float: the down time an activity can have and can still be completed on time.
   - ![critical path chart](img/critical-path.png)
 - **Decision Tree**
-  - evaluate multiple possible outcomes.
+  - Purpose: evaluate multiple possible outcomes.
+  - Helps when making choices based on specific criteria.
   - ![decision tree](img/decision_tree.png)
 - **Fishbone/Ishikaawa Diagrams**
+  - Purpose: visualize multiple **potential causes** of a problem.
   - cause and effect diagram. Part of gap analysis.
   - shows how various factors(fish bones) impact single outcome(fish head).
   - ![fishbone chart](img/fishbone.jpg)
 - **Gantt Chart**
-  - Gantt Chart: highly detailed relationship and dependencies between task. focus is on task.
-  - planning, execution, closing phase.
+  - Purpose: focus on project planning and execution.
+  - compares relationship and dependencies between task.
   - ![Gantt chart](img/gantt.png)
 - **Milestone or Timeline Chart**
-  - simple timeline chart of project milestones. focus is on events.
+  - Purpose: focus on project planning and execution.
+  - Timeline chart of project milestones.
   - ![milestone chart](img/Milestone-Chart.png)
   - Milestone chart
   - ![milestone2 chart](img/milestone2.PNG)
 - **Project Organizational Chart**
+  - Purpose: focus on project planning and execution.
   - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
   - ![organizational chart](img/organizational_chart.PNG)
 - **Histogram**
-  - monitor process over time. Show varying frequency.
+  - Purpose: shows data distribution.
+  - Monitor process over time. Shows varying frequency.
   - ![histogram](img/Histogram.jpg)
 - **Pareto Chart**
+  - Purpose: quickly identify the most significant areas to focus on for improvement.
   - 80/20 rule. 80% problems solved with 20% cause.
-  - what generates the most benefit with least effort.
+  - specifically ranks and visualizes causes based on their frequency or impact.
   - ![pareto principle](img/Pareto-Chart_Example.png)
 - **Program Evaluation Review Technique (PERT) Chart**
-  - shows duration, activities, dependencies. Typically used in **large, complex projects.**
-  - Uses 3 point estimates: `optimistic time + pessimistic time + (4 * average time) / 6 = estimated time.`
+  - Purpose: estimates project timelines.
+  - Improved planning and scheduling: By visualizing the tasks and their dependencies.
+  - Risk Identification: show critical path.
+  - Nodes: milestones. Checkpoints as team progresses through project.
+  - Arrow: show dependency. Task will need to be completed before next task.
+  - Time for each task uses the **three point estimate** method:
+    - `estimated time = optimistic time + pessimistic time + (4 * average time) / 6`
   - ![pert](img/pert.png)
 - **Project Network Diagram**
+  - Purpose: shows project dependencies.
   - visual model of the project schedule that shows sequence of activities and the dependencies.
   - ![project network diagram](img/project_network_diagram.jpg)
 - **Run Chart**
+  - Purpose: tracks data over time.
   - time or sequence on the horizontal axis. Corresponding data is measured on the vertical axis.
   - ![run chart](img/run_chart.jpg)
 - **Scatter Diagrams**
-  - visual chart that plots pairs of numerical values; shows the level of correlation between two variables.
-  - helps you determine root cause.
+  - Purpose: identify relationships between variables.
+  - helps with root cause analysis.
   - ![scatter diagram](img/scatter_diagram.png)
 - **Velocity Chart**
-  - how many story points completed per iteration
+  - Purpose: measures team output over time.
+  - ex.. How many story points completed per iteration.
   - ![velocity chart](img/velocity_chart.PNG)
+
+## Change Control Steps
+
+- **The change request process uses two documents**
+  - **change request form**: information about change(project name, date, description, reason...).
+  - **change log**: all change request for project.
+- **List Four Steps of Change Control**
+  - mnemonic: Initiate Examine Decide Integrate.
+  1. Initiate the request
+  2. Evaluate impacts
+  3. Decide on an outcome
+  4. Implement the change
+- **Initiate the request**
+  - requester initiates by submitting a **change request form** to the project manager.
+- **Evaluate impacts**
+  - conduct a thorough impact assessment.
+  - analyze how the change will effect the project’s **resources, budget, scope, and schedule**.
+  - PM will create an information package outlining the change request, schedule changes, scope changes, risks, resource requirements, and notable impacts.
+  - PM will document change recommendations directly in the **change log**.
+- **Decide on an outcome**
+  - identify and get sign-off from the decision makers(authority to make change).
+    - Operational Change: little impact. Normal day-to-day business. PM, functional manager, or CCB.
+    - Strategic Change: effects all aspects of business. project sponsor, CCB, and PMO.
+    - Risk Owner: If risk is involved, risk owner will contribute to decision.
+    - Technical Changes: SMEs will be involved in decision.
+    - Software Changes: Technical, Product Owner, and Architectural approval is needed.
+- **Implement the change**
+  - Communicate Change: stakeholders, project requester, team.
+  - Update project plan and if needed the RACI, business case, or stakeholder management plan.
+  - Capture the project **baselines before and after** changing the project plan.
+  - Validate Change:
+    - Project manager: evaluates impact and verifies if as expected.
+    - Change Requester: validates results meet requirements.
+    - Change Reviewer: compare outcome against business requirements. In agile its product owner. could also be SME or functional manager.
+  - PM notifies stakeholders of completed change.
+  - Update status in change log.
 
 ## Communication Management and Meetings
 
@@ -264,7 +318,7 @@
   - communication outside the business.
 - **Communication Tools: Email, Messaging, Telephone, Meeting face-to-face, Video, Enterprise Social Media**
   - Email: allow response at leisure.
-  - Messaging: SMS: text. Chat: exchange via internet.
+  - Messaging: SMS: text. Chat: exchange via internet. response at leisure.
   - Telephone: fastest for large geographical boundaries.
   - Meeting face-to-face: most information. body language, facial expressions, voice tone change.
   - Video: blend face-to-face with telephone.
@@ -281,6 +335,9 @@
   - video, slide show, actual product.
 - **Status Meeting**
   - update on progress of project.
+- **Gate/Phase Gate Meeting**
+  - A checkpoint review of project deliverables and performance at the end of each phase or sub-phase.
+  - management review or sign-off may be required.
 - **Stand-ups**
   - focused, quick meeting. Popular in Scrum Daily stand-ups. Sometimes doing it standing up.
 - **Decisive Meetings**
@@ -559,7 +616,7 @@
   - Real-Time Survey Poll: quickly gather information from groups of people.
   - Print Media: create posters, flip charts, brochures, manuals.
   - Conference Platforms: video(zoom, teams).
-- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing, Wiki, **
+- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing, Wiki**
   - Word Processing: text document editor.
   - Spreadsheets: data in tables.
   - Presentation: slide show.

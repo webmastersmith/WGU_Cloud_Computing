@@ -105,72 +105,87 @@
 
 ## Charts
 
+## Documents
+
 ## Change Control Steps
 
-- The change request process uses two documents:
-  - **change request form**: information about change(project name, date, description, reason...).
-  - **change log**: all change request for project.
-  - mnemonic: Initiate Examine Decide Integrate.
+## Frameworks
 
-1. Initiate the request
-   1. requester initiates by submitting a **change request form** to the project manager.
-2. Evaluate impacts
-   1. conduct a thorough impact assessment.
-   2. analyze how the change will effect the project’s **resources, budget, scope, and schedule**.
-   3. PM will create an information package outlining the change request, schedule changes, scope changes, risks, resource requirements, and notable impacts.
-   4. PM will document change recommendations directly in the **change log**.
-3. Decide on an outcome
-   1. identify and get sign-off from the decision makers(authority to make change).
-      1. Operational Change: little impact. Normal day-to-day business. PM, functional manager, or CCB.
-      2. Strategic Change: effects all aspects of business. project sponsor, CCB, and PMO.
-      3. Risk Owner: If risk is involved, risk owner will contribute to decision.
-      4. Technical Changes: SMEs will be involved in decision.
-      5. Software Changes: Technical, Product Owner, and Architectural approval is needed.
-4. Implement the change
-   1. Communicate Change: stakeholders, project requester, team.
-   2. Update project plan and if needed the RACI, business case, or stakeholder management plan.
-   3. Capture the project **baselines before and after** changing the project plan.
-   4. Validate Change:
-      1. Project manager: evaluates impact and verifies if as expected.
-      2. Change Requester: validates results meet requirements.
-      3. Change Reviewer: compare outcome against business requirements. In agile its product owner. could also be SME or functional manager.
-   5. PM notifies stakeholders of completed change.
-   6. Update status in change log.
-
-## Other
-
-1. Identify and document the change:
-
-   Clearly define the proposed change, including its impact on scope, schedule, budget, quality, and risk.
-   Document the rationale behind the change and who is proposing it.
-
-2. Submit the change request:
-
-   Follow established procedures for submitting change requests, typically through a dedicated form or system.
-   Ensure all necessary information is provided for proper evaluation.
-   Change control board is used by many companies.
-
-3. Evaluate the change request:
-
-   A designated team or individual assesses the potential impact of the change on various aspects of the project.
-   This evaluation considers factors like feasibility, cost, benefits, resource availability, and alignment with project goals.
-
-4. Decision and approval:
-
-   Based on the evaluation, a decision is made to approve, reject, or defer the change.
-   Approval usually comes from a pre-defined authority based on the significance of the change.
-   Communication of the decision to all stakeholders is crucial.
-
-5. Implement the change:
-
-   If approved, the change is implemented according to a defined plan.
-   This might involve updating project documents, communicating adjustments to the team, and allocating necessary resources.
-
-6. Document and monitor:
-
-   Change Control Log.
-   All approved changes and their implementation details are documented for future reference and audit purposes.
-   The impact of the change is monitored to ensure it aligns with expectations and doesn't lead to unintended consequences.
+- **Agile**
+  - Agile: iterative, incremental. delivers value early and often. Teams small (3-10 members).
+    - Iterative: make improvements, get feedback.
+    - Incremental: small improvements at a time.
+  - cross-functional group that stays with project entire lifecycle.
+  - members fill multiple roles and have broad experience.
+  - Backlog breaks work into smaller units.
+- **DevOps**
+  - automating checks and tests along with development and operations.
+  - Problem: Siloed development and operations teams create communication barriers, inefficiencies, and slow code delivery.
+  - Solution: DevOps integrates these teams, practices, and tools to optimize the entire software delivery process.
+  - Automation: CI/CD automates builds, tests, and deployments for faster releases.
+  - Continuous feedback: Early detection and fix of bugs through frequent integration and monitoring.
+- **Extreme Programming**
+  - agile framework. software development. pair programming, emphasis on simplicity.
+  - XP: close collaboration, iterative development, and continuous testing.
+  - **Extreme Programming Pair programming**
+    - Two developers work together on code, promoting continuous review and knowledge sharing.
+- **Kanban**
+  - agile framework.
+  - Kanban board: Visualizes work, WIP(work in progress) limits, and workflow policies.
+  - track task flow and optimize workflow.
+  - Simplest agile framework to learn and can be applied to any industry.
+  - ![kanban board](img/kanban.webp)
+  - **Kanban 3 basic phases**
+    - To Do, In Progress, Done (can be customized).
+  - **Kanban 6 Core Practices**
+    1. Visualize work: show phase work is in.
+    2. Limit WIP: prevent overwhelm, increase product quality by restricting active tasks.
+    3. Make policies explicit: clearly define how work moves through phases.
+    4. Manage flow: Identify and eliminate workflow bottlenecks for efficiency.
+    5. Implement feedback loops: Measure workflow performance and use data for improvement.
+    6. Improve collaboratively: Experiment and continuously evolve the workflow.
+- **PRINCE2**
+  - process-based methodology. Common in UK, EU, Canada, Australia.
+  - focus on clear project phases, roles, and responsibilities.
+  - originally waterfall methodology, but has embraced the agile model.
+  - has 7 principles, 7 themes, 7 processes.
+- **SAFe (Scaled Agile Framework)**
+  - expand agile practices across multiple teams to work together.
+  - Agile Release Team (ART): related groups of agile teams to simplify communication, planning, schedules.
+  - Iteration: short term planning cycle.
+  - Program Increment: longer-term planning cycle.
+- **Scrum**
+  - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
+  - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
+  - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
+  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+  - **Scrum 5 Values**
+    - Commitment, focus, openness, respect, courage.
+  - **Scrum 3 Pillars**
+    - Transparency(clear goals), inspection(asses work), adaptation(make adjustments from feedback).
+- **SDLC (Software Development Lifecycle)**
+  - produce high-quality, low-cost, thoroughly tested software.
+  - **SDLC 7 phases**
+    1. Planning: outline project scope and purpose.
+    2. Requirements: define resources needed and software purpose.
+    3. Design & Prototyping: specifications of software: language, security, interface.
+    4. Development: write code.
+    5. Testing: software compatibility and performs as expected.
+    6. Deployment: deploy to production environment.
+    7. Operations and Maintenance: support software.
+- **Waterfall**
+  - follows linear sequence. Work only flows one way. Teams any size.
+  - documentation heavy.
+  - Regular on/off boarding(highly specialized members flow in and out of project as needed).
+  - Resources are typically fixed(backend, get python developer).
+  - Work Breakdown Structure (WBS) breaks work into smaller units.
+- **Waterfall 6 phases**
+  1. requirements: project requirements.
+  2. design: actionable specifications.
+  3. implementation: do work.
+  4. testing: verify.
+  5. delivery: deploy to customer.
+  6. maintenance: customer support.
 
 ## Roles and Responsibilities
 
