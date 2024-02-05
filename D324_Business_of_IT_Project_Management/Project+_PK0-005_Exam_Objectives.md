@@ -19,6 +19,11 @@
 - <https://srm--c.vf.force.com/apex/FDP/CommonsExpandedSearch?courseCode=D324>
 - <https://wgu.libguides.com/c.php?g=949093&p=9426624>
 - <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=cb2964e4-cc12-4ce0-a706-af23014b3e93>
+- <https://github.com/cheat-sheets/project-management-cheat-sheet>
+- <https://drive.google.com/file/d/0B62C7HpuIwINQXE0ZHZvd0htNW8/view?usp=sharing>
+- <https://www.brainscape.com/packs/comptia-project-19263134?origin=genome>
+- <https://docs.google.com/document/d/1m6n3yVAcU91ynZIqJ5HAcdB4iLMZNWIc-a2nP5Gd1kc/edit?pli=1#heading=h.574qxxof3o33>
+- <https://www.testpreptraining.com/blog/comptia-project-pk0-004-study-guide/>
 
 - <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
   - The **process of how change is brought up and put into play**. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step

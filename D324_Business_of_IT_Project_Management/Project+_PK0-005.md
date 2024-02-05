@@ -299,9 +299,9 @@
 ## Communication Management and Meetings
 
 - **Synchronous Communication**
-  - real-time communication. Face-to-face(in person or videoconference) with all parties.
+  - real-time communication. Face-to-face(in person, phone or videoconference) with all parties.
 - **Asynchronous Communication**
-  - delay in communication. email. documentation notes.
+  - delay in communication. email, SMS. Leaves documentation notes.
 - **Written Communication**
   - exchanges occur through handwritten/typed messages.
 - **Verbal Communication**
@@ -313,9 +313,9 @@
 - **Informal Communication**
   - unofficial communication. Casual conversation between coworkers, group chatter before meeting. Nonverbal communication during meeting.
 - **Internal Communication**
-  - communication inside the business.
+  - recipients work inside the business.
 - **External Communication**
-  - communication outside the business.
+  - recipients work outside the business.
 - **Communication Tools: Email, Messaging, Telephone, Meeting face-to-face, Video, Enterprise Social Media**
   - Email: allow response at leisure.
   - Messaging: SMS: text. Chat: exchange via internet. response at leisure.
@@ -347,10 +347,11 @@
 - **Decisive Meeting: Project Steering**
   - to keep projects on track and successful.
   - includes the PM and executive stakeholders. Offer support and guidance throughout project lifecycle.
-  - can represents voice of the customer.
+  - can represent voice of the customer.
 - **Refinement Meeting**
-  - also called: product refinement or backlog refinement.
-  - re-prioritize backlog items. Most important at top, broken down into task.
+  - also called: **product refinement** or **backlog refinement**.
+  - meetings to bring the most valuable idea to the top and turn into a plan.
+  - top item in the list are broken down into small tasks and prioritized.
 - **Collaborative Meeting**
   - interactive, problem solving meeting.
 - **Focus Groups**
@@ -894,6 +895,8 @@
     - assigns project manager and define their authority.
     - negotiate support from key stakeholders. Champion and market project.
     - enforce milestones by removing road blocks.
+- **Resource Pool**
+  - list of all the resources that are available to the project team. This includes people, equipment, and materials.
 - **Senior Management**
   - highest level of leadership.
   - control organizational goals, communicate with shareholders and board members.
@@ -1192,8 +1195,8 @@
   - describes each deliverable, resources, tracking code(for accounting), criteria for success.
   - similar to 'scope'.
 - **Scheduling: Analogous Estimating vs Bottom-Up Estimating**
-  - Analogous: estimating top-Down. Expert judgement, historical information.
-  - Bottom-Up: estimates for each work item, rolls them into a total.
+  - Analogous: estimating top-Down. Expert judgement, historical information(past projects).
+  - Bottom-Up: estimating the total cost of individual tasks with the lowest level of detail.
 - **Scheduling: Task Sequencing**
   - identify proper scheduling order of project activities.
 - **Scheduling: Two Major Relationships between Dependent Task**
@@ -1522,12 +1525,27 @@
 
 ## Risk and Transition Planning
 
+- **Risk Management**
+  - Identify Risk: list of potential risk. Recorded in risk register.
+  - Analyze Risk: likelihood and impact on project success. Assign priority levels().
+  - Treat Risk: create risk strategy and owner.
+  - Monitor Risk: create plan to monitor risk, and response plans.
+- **Risk Assessment Meeting**
+  - Planning Phase. Prioritize risk and create plan(risk analysis).
+  - Brainstorm **'What if'** questions with: Project team, key stakeholders, SMEs, project sponsor.
+  - Questions:
+    - What if key team member left?
+    - What if storm takes power out?
+    - What if we find SaaS solution and don't have to build it?
+    - What if vendor can take over training?
 - **Risk: Register, Owner, Manager, Analysis, Report**
   - Risk Register: document of all known organization/project risk and impact.
-  - Risk Owner: Hold the 'Accountable' role on the RACI chart. There responsible to handle risk.
+  - ![risk register example](img/Risk_Chart.png)
+  - Risk Owner: Hold the 'Accountable' role on the RACI chart. Develops a response strategy for an individual risk. Identifying when the risk occurs and reacting appropriately.
     - senior management own organization risk and delegates risk management throughout organization.
-  - Risk Manger: administers risk register. Project Manger is risk manager of project.
+  - Risk Manager: oversees risk register. Project Manger is risk manager of project.
   - Risk Analysis: likelihood and impact of risk. Usually done in a 'Risk Assessment Meeting'.
+  - ![risk analysis](img/Risk_Matrix.png)
   - Risk Report: documentation about the organization risk management process.
 - **Risk vs Issues vs Changes**
   - Risk: something you think will happen.
@@ -1535,10 +1553,10 @@
   - change: risk that could develope from change(software feature, person leaves company).
 - **Risk: New Projects, New Management, Regulatory Environment Change, Digital Transformation, Infrastructure End-of-Life, Merger and Acquisition, Reorganization, Major Cyber Event**
   - Risk: something you think will happen outside your control.
-  - New Project: might need the resources you currently have.
+  - New Project: might need the resources you already allocated to other projects.
   - New Management: organization priorities may change.
   - Regulatory Environment Change: laws may change.
-  - Digital Transformation: technology stack update.
+  - Digital Transformation: technology stack update breaks stack.
   - Infrastructure End-of-Life: no longer supported/maintained.
   - Merger and Acquisition: company culture may change.
   - Reorganization: restructure may disrupt team.
@@ -1577,6 +1595,134 @@
   - Internal Audience: current employees.
   - External Audience: vendors or clients.
 
+## Roles and Responsibilities
+
+- **Architect**
+  - part of the IT team. design. Make sure project interoperates with business goals.
+  - Responsibilities:
+    - Solution design
+    - System blueprints
+    - Evaluating systems against organizational standards
+- **Business Analyst**
+  - deeply understands company priorities and is also familiar with project.
+  - **gathering and documenting** requirements for project.
+  - Translates between business and IT.
+  - Responsibilities:
+    - Helping to define the project
+    - Gathering business and technical requirements
+    - Ensuring requirements stay aligned to needs
+    - Interpreting business requirements
+    - Verifying deliverables against requirements
+    - Assisting with testing and validation of products
+- **Project Manager**
+
+  - Once the PM has defined tasks, durations, resources, and costs, they need to seek baseline approval from the project stakeholders. This is a formal process that ensures that everyone is on the same page and that there is a clear understanding of the project scope, schedule, budget, and risks.
+  -
+  - **Project Schedule**
+
+    - define project scope: identify key deliverables and objectives.
+    - define units of work: breaking work items into small, estimable pieces. WBS(waterfall) or project backlog(agile).
+    - milestones:
+    - sequence activities: logical order task must be completed in.
+    -
+    - Sequence Activities:
+
+    Determine the logical order in which tasks and activities should be performed. Identify dependencies between different tasks.
+
+    - Estimate Resource Requirements:
+
+    Determine the resources (human, material, equipment) required for each task. Consider the availability and skills of team members.
+
+Estimate Task Durations:
+
+    Estimate the time needed to complete each task. Use historical data, expert judgment, or other estimation techniques.
+
+Develop a Gantt Chart:
+
+    Create a Gantt chart to visually represent the project schedule. This chart shows tasks, durations, dependencies, and timelines.
+
+Allocate Resources:
+
+    Assign resources to specific tasks based on their availability, skills, and the project requirements.
+
+Identify Critical Path:
+
+    Determine the critical path, which is the sequence of tasks that, if delayed, would affect the project's overall duration.
+
+Consider Contingency:
+
+    Include contingency time for unexpected delays or issues. This helps manage project risks and uncertainties.
+
+Adjust Based on Constraints:
+
+    Consider any constraints such as budget limitations, resource constraints, or regulatory requirements when finalizing the schedule.
+
+Review and Get Approval:
+
+    Review the project schedule with stakeholders and obtain their approval. Ensure alignment with project objectives.
+
+Communicate the Schedule:
+
+    Clearly communicate the finalized schedule to all project team members. Ensure everyone understands their roles and responsibilities.
+
+Monitor and Control:
+
+    Continuously monitor the project schedule throughout the project lifecycle. Make adjustments as needed to accommodate changes or unforeseen circumstances.
+
+Document Changes:
+
+    Document any changes to the schedule and ensure that stakeholders are informed. Use a change control process to manage modifications.
+
+Close Out the Schedule:
+
+    Once the project is completed, analyze the schedule's performance and document lessons learned for future projects.
+    -
+
+- create project schedule: define task, WBS(task duration, phases, sequence, CPM), validate constraints,
+-
+- runs day-to-day management of teams in any framework as long as the project is active.
+- explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
+- keeps project sponsor notified of status, conflicts and risk.
+- responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
+- completes project goals to stakeholder/company satisfaction.
+- Responsibilities:
+  - Building the project team and securing resources
+  - Building the project charter and defining the project’s scope
+  - Creating required project logs and processes, including the issue log, change log, and risk register
+  - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
+  - Preparing and delivering project status updates
+  - Tracking the project’s progress and status when compared to the schedule and budget
+  - Managing vendor relationships
+- **Stakeholder**
+  - Anyone/Organization with vested interest(positive or negative) in the project.
+  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
+  - **Agile**: communication between team and stakeholder throughout the project.
+  - Responsibilities:
+    - Must understand the project’s purpose and how it will affect them.
+    - Be transparent about their support or lack of support
+    - Provide timely feedback on the project’s progress
+- **Subject Matter Experts (SMEs)**
+  - Knowledgeable team members performing the work.
+  - Responsibilities:
+    - have the specific knowledge and experience needed to do the work.
+- **Team Member and Extended Team Member**
+  - **Team Member**: knowledgeable person either full time.
+    - keep timeline, cost of project.
+    - communicate with project manager risk, updates.
+  - **Extended Team Member**: also called Fractional Team Member.
+    - Only available part time. Typically Subject Matter Expert.
+- **Tester/Quality Assurance**
+  - ensure requirements are met.
+  - Responsibilities:
+    - perform thorough testing to ensure product meets approval.
+    - offer feedback to help prevent future errors.
+- **Vendor**
+  - third party provides resources.
+  - Responsibilities:
+    - Provide work outlined in contracts
+    - Maintain service level agreements
+    - Keep clear lines of communication open for business relationships
+
 ## Scaled Agile Framework
 
 - **SAFe (Scaled Agile Framework)**
@@ -1606,7 +1752,7 @@
   - Sprint: iteration and all scrum events.
   - Epic: large project
   - User Stories: smaller units of work stored in the backlog.
-  - Backlog: where user stories are stored, higher is more priority.
+  - Backlog: list of all the work that needs to be done in order to complete the project. User Stories are stored, higher is more priority.
   - Sprint planning: backlog created.
   - Daily Scrum: review progress, plan next 24 hours(daily stand-up).
   - Sprint review: uncover issues early, confirm on track.
