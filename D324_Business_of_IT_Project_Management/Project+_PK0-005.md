@@ -126,6 +126,7 @@
   - cross-functional group that stays with project entire lifecycle.
   - members fill multiple roles and have broad experience.
   - Backlog breaks work into smaller units.
+  - ![agile workflow](img/agile_workflow.PNG)
 - **Agile Communication: Stakeholder, Customer, Changes**
   - Stakeholder: engage stakeholder all phases of project.
   - Customer: customer communication with developer is vital.
