@@ -47,3 +47,8 @@ My first OA had several questions about SQL Sublanguages and what each do, the s
 - My first OA had one question about when you would use an Artifical Key
 
 Additionally, I have attached a SQL Cheatsheet I have been using for awhile, it covers a lot of things on this exam and it should help.
+
+## Database Management Video
+
+- Business Concept: anything you need to track for business. ex.. Employee name, Phone, Department...
+-
