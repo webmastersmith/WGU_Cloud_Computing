@@ -23,7 +23,7 @@
   - RDBMS: relational database. collection of structured data related to other data.
   - Primary Key: unique key to identify data row.
   - Foreign Key: when primary key is included as a column of another table. Used to relate two tables.
-  - EDRMS: electronic document and record management system. Manages access, create and delete of data.
+  - EDM/ERM: electronic document and record management. Manages access, create and delete of data. Signing.
   - CMS: content management system. create website without technical knowledge.
 - **Decision Trees**
   - Visual representations of possible choices and their consequences, helping to make informed decisions in complex situations.
@@ -398,34 +398,40 @@
   - Adjourning: team breaks apart.
   - ![team lifecycle](img/team_lifecycle.png)
 - **Conflict Managing: Smoothing**
-  - redirect attention away from conflict.
+  - redirect attention away from conflict. Usually temporary fix.
+  - ex.. your both right.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Forcing**
   - make the decision without discussing it.
   - ex.. in a fire, just put it out, don't form a committee.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Compromise**
-  - both parties meet in the middle.
+  - both parties gives up something and meet in the middle.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
-- **Conflict Managing: Collaboration**
+- **Conflict Managing: Confronting**
+  - fact finding, data driven. win-win for everybody.
+- **Conflict Managing: Collaboration/Negotiating**
   - both parties collaborate new idea that works as a win-win for both parties.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Avoiding**
   - ignore the conflict. Problem is small or not affecting performance.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
+- **Conflict Managing: Getting Help for Disgruntled Team Members**
+  - minor: communication between members. Find their fears.
+  - major: HR, Policies, get the facts.
 
 ## Data Confidentiality and Security
 
 - **Access Data, Remote Access, MFA, Removable Media, Mobile Devices, Facility Access, Background Screening, Security Clearance**
-  - typically use roles. least privilege.
+  - access data: typically use roles. least privilege.
   - remote access policy: who can connect and how.
-  - Multi-Factor Authentication: two or more credentials.
+  - multi-factor authentication (MFA): two or more credentials.
     - something you know(password), something you are(biometrics), something you have(key card).
-  - Removable Media: usb restrictions.
-  - Mobile Devices: Mobile Device Management (MDM) software.
-  - Facility Access: prevent unauthorized access. Key cards, biometric locks...
-  - Background Screening: checks education, certificates, references, criminal history.
-  - Security Clearance: anyone who accesses national security information must pass credit and criminal investigation.
+  - removable media: usb restrictions.
+  - mobile devices: Mobile Device Management (MDM) software.
+  - facility access: prevent unauthorized access. Key cards, biometric locks...
+  - background screening: checks education, certificates, references, criminal history.
+  - security clearance: anyone who accesses national security information must pass credit and criminal investigation.
 - **Confidential Data**
   - limited access to authorized users only.
 - **Data Confidentiality**
@@ -1507,6 +1513,27 @@
   - Closing
   - Reports on the final closeout of all phases of the project.
 
+## Quality Assurance
+
+- **Quality Assurance: Verification, Validation, Lessons Learned, Inspection, Audit**
+  - QA: Policies, procedures, and tools designed to ensure defect-free development and delivery.
+  - Verification: confirms product meets specifications.
+  - Validation: product meets customer satisfaction.
+  - Lessons Learned: reflect how change can improve product quality.
+  - Inspection: examine finished product.
+  - Audit: review processes for quality assurance issues.
+  - **QA Plan Contents**:
+    - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
+    - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
+    - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
+    - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
+  - **QA Plan Questions**:
+    - how to prevent risk from escaping?
+    - how verify meet expectations?
+    - how prevent defects?
+    - how to recognize and improve process?
+    - how to handle defects from customer?
+
 ## Resources
 
 - **Project Resource, Human, Physical, Capital Resources**
@@ -1850,44 +1877,31 @@ Close Out the Schedule:
 - **Waterfall Use**
   - when you have clear objectives, heavy documentation, and high change cost.
 
-## Quality Assurance
-
-- **Quality Assurance: Verification, Validation, Lessons Learned, Inspection, Audit**
-  - QA: Policies, procedures, and tools designed to ensure defect-free development and delivery.
-  - Verification: confirms product meets specifications.
-  - Validation: product meets customer satisfaction.
-  - Lessons Learned: reflect how change can improve product quality.
-  - Inspection: examine finished product.
-  - Audit: review processes for quality assurance issues.
-  - **QA Plan Contents**:
-    - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
-    - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
-    - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
-    - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
-  - **QA Plan Questions**:
-    - how to prevent risk from escaping?
-    - how verify meet expectations?
-    - how prevent defects?
-    - how to recognize and improve process?
-    - how to handle defects from customer?
-
 ## Work Breakdown Structure
 
 - **WBS**
   - waterfall way of breaking down large projects into deliverables.
-  - Each level of the WBS clarifies the work required at that level.
-  - Lower levels provide more detail and granularity on how the higher-level work will be accomplished.
-  - The structure helps identify all necessary tasks and ensures no crucial work is missed.
-  - It facilitates work estimation and resource allocation based on the size and complexity of each unit.
-  - Creation Process:
-    - Determine Scope: review Statement of Work (SOW). Expectations of project.
-      - Level 1: Project (totality of entire project)
+  - find the Business **WHAT** not the 'how'. What do we need?
+  - find Functional Requirements: what does the project need to do?
+  - find Non-Functional Requirements: color, size...
+  - project charter -> scope statement -> business,functional,non-functional -> WBS.
+  - **Purpose**:
+    - The structure helps identify all necessary tasks and ensures no crucial work is missed.
+    - It facilitates work estimation and resource allocation based on the size and complexity of each unit.
+    - each level of the WBS clarifies the work required at that level.
+    - lower levels provide more detail and granularity on how the higher-level work will be accomplished.
+  - **Creation Process**:
+    - Determine Scope: review Statement of Work (SOW), Business 'WHAT', Function/Non-Functional requirements.
+    - Each WBS Level: brief description, resources, cost, time.
+      - WBS Level 1: Project (totality of entire project)
     - Identify deliverables, team members, resources.
-      - Level 2: Main catagories. Breaks down the project into major deliverables or phases.
-      - Level 3: Further breaks down each deliverable/phase into smaller sub-deliverables/sub-phases.
-      - Level 4 on onward: breaking down units of work until you reach the level of individual tasks.
-  - ![wbs](img/wbs.webp)
-  - ![wbs2](img/WBS.jpg)
+      - WBS Level 2: Main catagories. Breaks down the project into major deliverables or phases.
+      - WBS Level 3: Further breaks down each deliverable/phase into smaller sub-deliverables/sub-phases.
+      - WBS Level 4 on onward: breaking down units of work until you reach the level of **Work Packages**.
+  - ![wbs2](img/wbs2.jpg)
+- **Creating the Work Package**
+  - work package (WP): requirements are decomposed until time and money can be accurately estimated.
+  - decomposing. Breaking each requirement into smaller and smaller manageable pieces.
 - **WBS vs Backlog**
   - WBS assumes that scope, time, and cost are fixed and works to control them.
   - WBS has more structure than a backlog in its design. The WBS has specific numbering conventions and design rules, including MECE and the 100% rule.
