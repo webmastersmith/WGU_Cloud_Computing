@@ -126,6 +126,7 @@
   - cross-functional group that stays with project entire lifecycle.
   - members fill multiple roles and have broad experience.
   - Backlog breaks work into smaller units.
+  - Agile Methodologies: SCRUM, Lean, XP, Feature Driven, Dynamic Systems Dev Model, Agile Unified Process, Hybrid.
   - ![agile workflow](img/agile_workflow.PNG)
 - **Agile Communication: Stakeholder, Customer, Changes**
   - Stakeholder: engage stakeholder all phases of project.
@@ -957,16 +958,21 @@
 - **Discovery/Concept Phase**
   - first phase. determine whether project is worthwhile/justified.
   - business case is created.
+  - high level estimate of cost and time.
 - **Discovery: Business Case**
   - Looks for ways(artifacts) to speed up the project: prequalified vendors, clients, contracts.
   - **If project considered risky**
     - Perform **feasibility study**: new projects, complex projects, risky projects.
 
-## Project Lifecycle Phase 1 Initiating
+## Project Lifecycle Phase 2 Initiating
 
 - **Initiating Project**
   - after business case is approved, formal authorization for a new project to begin.
   - Next: preliminary scope statement, project charter, team assembled.
+  - Project Charter
+  - High Level Scope
+  - RACI: Responsible, Accountable, Consulted, Informed.
+  - Project kickoff meeting.
 - **Initiating Project: Preliminary Scope Statement**
   - **clearly defines how the work will be done**.
   - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
@@ -1031,11 +1037,19 @@
   - live meeting with team. Discuss project purpose, goals, plan.
   - signifies start of the project work. Team roles identified.
 
-## Project Lifecycle Phase 2 Planning
+## Project Lifecycle Phase 3 Planning
 
 - **Planning Phase**
   - Prepare for the work of the project.
   - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
+  - Create Schedule
+  - WBS -details of bit and pieces.
+  - Resources
+  - Risk and QA(testing to make sure meets spec).
+  - Communication plan -how to communicate project to stakeholders.
+  - Procurement plan -steps to procure resources(items, people).
+  - Change management plan
+  - budget
 - **Planning: Scope Statement**
   - agreement between customer and project team about the deliverables and success criteria.
 - **Planning: Scope Statement Components**
@@ -1103,7 +1117,7 @@
     - Project Budget
     - Project Plan Approval.
 
-## Project Lifecycle Phase 2 Planning: Communication, Escalation Plan, Budget, Purchasing
+## Project Lifecycle Phase 3 Planning: Communication, Escalation Plan, Budget, Purchasing
 
 - **Communication Plan**
   - formed in phase 1, Initiating. Further refined in planning phase.
@@ -1177,7 +1191,7 @@
   - Fixed Price: single price, up-front.
   - Cost Plus: pay vendor cost plus fixed fee.
 
-## Project Lifecycle Phase 2 Planning: Scheduling, Dependencies, Estimation, Baselines, Testing
+## Project Lifecycle Phase 3 Planning: Scheduling, Dependencies, Estimation, Baselines, Testing
 
 - **Scheduling**
   - defining units of work, cost, resources for a project.
@@ -1278,7 +1292,7 @@
   - Post-Implementation Support: support after go-live.
   - Warranty: guarantees that a product will meet specific requirements.
 
-## Project Lifecycle Phase 3 Executing
+## Project Lifecycle Phase 4 Executing
 
 - **Executing Phase**
   - where work is performed, monitored, and tracked. If product does not conform, change request are created.
@@ -1288,7 +1302,7 @@
     - Tracking and reporting project results
     - Updating project elements such as budget, risk, and timelines
     - Managing conflict
-    - Monitoring the risks and issues log
+    - Risks and issues log
     - Performing quality assurance/governance activities such as coordinating phase gate reviews
     - Monitoring the budget
     - Conducting project meetings and updates
@@ -1396,20 +1410,20 @@
     - ex.. project gets two weeks behind, all the post work will always be two weeks behind.
   - Dashboard: typically one screen with KPI show most important.
 
-## Project Lifecycle Phase 4 Closing
+## Project Lifecycle Phase 5 Closing
 
 - **Closing Phase**
   - project closeout. contracts closed, team members released.
   - Project teams can use **organizational change management (OCM)** to reduce the strain caused by change.
   - validate deliverables, document acceptance of project work.
-    - Validating deliverables
+    - Validating deliverables -pass operations testing and final customer.
     - Closing contracts
     - Removing access
     - Releasing resources
     - Holding the project closure meeting
     - Writing the project closeout report
     - Obtaining feedback and lesson learned
-    - Project sign-off
+    - Project sign-off!
     - Handing off the product to the organization
     - Evaluating the project
     - Archiving project documents
@@ -1744,7 +1758,8 @@ Close Out the Schedule:
   - iterative and incremental agile framework doing short sprints and team collaboration with daily stand-ups.
   - emphasizes empiricism(**learn from doing not just guessing**) and lean thinking(**focus on value**), promoting continual improvement.
   - Scrum is an **all-or-nothing framework**, requiring the use of all its parts for optimal results.
-  - It introduces roles like the Scrum team(3-9 peeps), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+  - It introduces roles like the Scrum team(3-9 members), product owner(backlog owner), Scrum master(implement scrum principles), and developers(remaining team).
+  - Self organized, self directed. Flexible, Daily Stand-ups, short sprints(each deliver a project. ~1 week)
 - **Scrum 5 Values**
   - Commitment, focus, openness, respect, courage.
 - **Scrum 3 Pillars**
@@ -1796,11 +1811,17 @@ Close Out the Schedule:
 - **SDLC Weaknesses**
   - project success depends on time spent on advanced planning.
 
+## System Development Life Cycle SDLC
+
+- SDLC
+  - classic way of looking at system and development.
+  - planning -> analysis -> design -> implementation -> maintenance.
+
 ## Waterfall
 
 - **Waterfall**
   - follows linear sequence. Work only flows one way. Teams any size.
-  - documentation heavy.
+  - documentation heavy. Steps known in advance. Scope and deliverables defined in advance.
   - Regular on/off boarding(highly specialized members flow in and out of project as needed).
   - Resources are typically fixed(backend, get python developer).
   - Work Breakdown Structure (WBS) breaks work into smaller units.
