@@ -150,6 +150,8 @@
 - **Agile Use**
   - project requirements will change often. Team is stable and self organized.
   - agile is flexible. continually improvements through sprints.
+- **Agile Three Question: Daily Standup**
+  - What did I accomplish yesterday? What will I do today? What obstacles prevent progress?
 
 ## Backlog
 
@@ -178,6 +180,38 @@
 | Deliverable or Activity | Deliverable       | Deliverable                 | Deliverable                  |
 | Hierarchy               | Numbered Levels   | Epic > Feature > User Story | Epic > Feature > User Story  |
 | When Created            | Planning Phase    | All Phases                  | Entire Life Cycle            |
+
+## Business Case
+
+- **Business Case**
+  - **Justifies the project**'s viability(most important) and alignment with business goals.
+  - summarizes project and is first project proposal. Determines if project should proceed.
+  - created in discovery phase. Often includes details about budget and timelines(start, end).
+  - key stakeholders come together and discuss how much will cost vs benefit. All group input is added to business case.
+  - **Analyzes**:
+    - Problem or opportunity the project addresses.
+    - Alternative solutions and their costs/benefits.
+    - Projected financial impact on the organization.
+    - Risks and mitigation strategies.
+  - **Function**:
+    - Secures executive buy-in and funding for the project.
+    - Demonstrates the value proposition and return on investment.
+    - Guides project prioritization and decision-making.
+    - Provides ongoing performance benchmarks and justification.
+- **Business Case Creation**:
+  - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
+  - Executive Summary: brief summary. problem statement, solution, result.
+    - Justification: benefits to organization.
+    - Alignment to the Strategic Plan: project aligns with organizations overall strategy.
+    - Analysis of the Problem or Opportunity: gap analysis: compare where we are and where we want to go.
+    - Financial Overview: cost-benefit on investment.
+  - Problem Statement: problem trying to solve.
+  - Project Definition: more info. scope, resources, milestones, timeline.
+  - Options: pros and cons of multiple solutions.
+    - Feasibility Study Results: determine if project is doable and likely to succeed.
+  - Recommendation: analysis which option is best for organization objectives.
+  - Stakeholders: anyone/organization with vested interest.
+  - High-Level Risk Analysis: known risk documented.
 
 ## Charts
 
@@ -553,6 +587,30 @@
 
 ## Financial and Performance Analysis
 
+- **Cost Estimation Techniques: Analogous, Parametric, Bottom-Up, Three Point**
+  - Analogous: estimating top-Down. Expert judgement, historical information(past projects).
+  - Parametric: `units x cost`. When repeating same type of work.
+  - Bottom-Up: estimating the total cost of individual tasks with the lowest level of detail(WBS).
+  - Three Point: optimistic, pessimistic, average.
+- **Budgeting**
+  - work closely w/team. define type of estimate(analogous, bottom-up, three point).
+  - SMEs and acutal workers
+  - templates from PMO.
+  - document assumptions.
+- **Tracking Expenses**
+  - label categories: labor, supplies, hardware, software, travel...
+- **Earned Value Management: PV, AV, EV, CV, CPI, SV, SPI**
+  - EVM: measures actual expenses to date against 'Cost Baseline'.
+  - PV: planned value. estimating budgeted expense for time period. ex.. This month we plan to spend 'x'.
+  - AC: actual value. Amount spent in a time period. ex.. Currently we have spent 'x'.
+  - EV: earned value. `actual work completed x planned`. ex.. We are ahead of schedule.
+  - CV: cost variance. Money. expenses ahead/behind vs. actual expenses. `CV = EV - AC`. <0 bad. >0 good.
+  - CPI: cost performance index. `CPI = EV/AC`. Same as CV, shown as ratio.
+  - SV: schedule variance. Time. schedule ahead/behind vs. planned time. `SV = EV - PV`
+  - SPI: schedule performance index. `SPI = EV/PV`. Same SV show as ratio.
+- **Burn Rate**
+  - how fast are spending the budget. `burn rate = total budget / monthly money spent`
+  -
 - **Assumptions**
   - future factors you state as true to present a financial plan.
 - **Benefit**
@@ -731,39 +789,6 @@
     - Interpreting business requirements
     - Verifying deliverables against requirements
     - Assisting with testing and validation of products
-- **Business Case**
-  - **Justifies the project**'s viability(most important) and alignment with business goals.
-  - summarizes project and is first project proposal. Determines if project should proceed.
-  - created in discovery phase. Often includes details about budget and timelines(start, end).
-  - mnemonic: 'Executive Statements Offer Financial Projects Recommendation'
-    - Executive Summary: brief summary. problem statement, solution, result.
-    - Problem Statement: problem trying to solve.
-      - Problem Analysis: more details about why project should be prioritized.
-    - Options: pros and cons of multiple solutions.
-    - Financial Overview: cost-benefit on investment.
-    - Project Definition: more info. scope, resources, milestones, timeline.
-    - Recommendation: analysis which option is best for organization objectives.
-    -
-  - Analyzes the:
-    - Problem or opportunity the project addresses.
-    - Alternative solutions and their costs/benefits.
-    - Projected financial impact on the organization.
-    - Risks and mitigation strategies.
-  - Function:
-    - Secures executive buy-in and funding for the project.
-    - Demonstrates the value proposition and return on investment.
-    - Guides project prioritization and decision-making.
-    - Provides ongoing performance benchmarks and justification.
-  - mnemonic: 'JAFAR DASH'
-  - **Justification**: benefits to organization.
-  - **Alignment to the Strategic Plan**: project aligns with organizations overall strategy.
-  - **Feasibility Study Results**: determine if project is doable and likely to succeed.
-  - **Analysis of the Problem or Opportunity**: gap analysis: compare where we are and where we want to go.
-  - **Recommended Solutions**: expected results and impact.
-  - **Description**: describe the project.
-  - **Alternative Solutions**: expected results and impact from alternative solution.
-  - **Stakeholders**: anyone/organization with vested interest.
-  - **High-Level Risk Analysis**: known risk documented.
 - **Business Storytelling: Current State vs Future State**
   - either tell a good story of Current state vs. Future state with descriptive words or charts.
   - both sides must use same metrics.
@@ -891,6 +916,7 @@
 - **Project Selection Method**
   - senior members choose project based on documents provided (market share, financial benefits, return on investment, customer satisfaction, and public perception).
 - **Project Sponsor**
+  - the stakeholder that gives you the go-no go.
   - ultimately responsible for the success or failure of project. Delegates operations to project manager.
   - usually **senior executive** that assigns **money** and **resources** to project.
   - approves project charter by **signing**.
@@ -959,6 +985,32 @@
     - Maintain service level agreements
     - Keep clear lines of communication open for business relationships
 
+## Project Charter
+
+- **Project Charter**
+  - source of truth for the project. It describes the vision and direction of the entire project and once signed by project sponsor, it's the first official document recognizing project has begun.
+  - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
+  - **Purpose**:
+    - outlines projects purpose, scope, and key stakeholders.
+    - defines project goals, objectives and success criteria.
+    - outlines project scope(what will and won't be done), boundaries, and deliverables.
+    - identifies key stakeholders(anyone with vested interest, good or bad).
+    - documents initial assumptions(unknown), constraints(blockers), and risk(known).
+- **Project Charter Functions**:
+  - Objective and deliverables: clearly define desired result, deliverables and start, end date.
+  - Scope and boundaries: clarifies project manager and team members(needed skills) roles and authority level.
+  - Assumptions: based on previous experience, you can expect similar.
+  - Timeline and milestones: tracking(on schedule) details on each stage of project.
+  - Requirements and budget: List all blockers, and high-level resource estimation.
+  - Stakeholder Register: clarifies roles, contact, and expectation for stakeholders.
+  - Constraints and Risk: Something fixed(must be worked around). Threat to project(missed deadline).
+  - Success criteria: delivered on time, within budget, meets goals(fit, regulations, quality, performance).
+  - Signatures: Project sponsor must review and sign off.
+- **Project Charter Creation**:
+  - business case is the starter for charter creation.
+  - check the PMO: for artifacts, lessons learned, and templates.
+  - after project charter is signed, identify people who will do the work and have the right skills.
+
 ## Project Lifecycle Phase 1 Discovery
 
 - **Discovery/Concept Phase**
@@ -991,27 +1043,6 @@
     - Exclusions: what team will not deliver.
     - Assumptions: the project unknowns as known.
     - Constraints: what has to be worked around and could delay project.
-- **Initiating Project: Project Charter**
-  - **high level explanation of why the project exit**.
-  - objectives should be clear, measurable, actionable.
-  - questioning project requestor to ensure problem is clearly understood.
-  - officially recognizes the project has begun. First official document of Approved project.
-  - source of truth for the project. It describes the vision and direction of the entire project.
-  - written by product manager and delivered to all stakeholders, but signed and approved by project sponsor.
-    - check project management office for template or required format. some answers can be taken from business case.
-    - use artifacts to observe lessons learned from past experiences.
-  - Project Charter Functions:
-    - Justify project: reiterate business case.
-    - Objective and deliverables: clearly define desired result, deliverables and start, end date.
-    - Scope and boundaries: clarifies project manager and team members(needed skills) roles and authority level.
-    - Assumptions: based on previous experience, you can expect similar.
-    - Timeline and milestones: tracking(on schedule) details on each stage of project.
-    - Requirements and budget: List all blockers, and high-level resource estimation.
-    - Key stakeholders and roles: clarifies purpose and expectation for stakeholders.
-    - Constraints and Risk: Something fixed(must be worked around). Threat to project(missed deadline).
-    - Success criteria: delivered on time, within budget, meets goals(fit, regulations, quality, performance).
-    - Signatures: Project sponsor must review and sign off.
-  - after project charter is signed, identify people who will do the work and have the right skills.
 - **Initiating Project: Stakeholder**
   - engage stakeholder to build and manage relationship throughout project.
   - Engagement Plan:
@@ -1045,17 +1076,22 @@
 
 ## Project Lifecycle Phase 3 Planning
 
-- **Planning Phase**
+- **Planning: Project Management Plan**
+  - documents that describes what the team will deliver and how they will deliver them.
   - Prepare for the work of the project.
   - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
-  - Create Schedule
-  - WBS -details of bit and pieces.
-  - Resources
-  - Risk and QA(testing to make sure meets spec).
-  - Communication plan -how to communicate project to stakeholders.
-  - Procurement plan -steps to procure resources(items, people).
-  - Change management plan
-  - budget
+    - Scope Statement
+    - WBS or Backlog
+    - Resource Plan
+    - Project Schedule (Gantt chart, PERT chart)
+    - Quality Management Plan
+    - Risk Management Plan
+    - Communication Plan: how to communicate project to stakeholders.
+    - Stakeholder Management Plan
+    - Project Baseline
+    - Project Budget
+    - Project Plan Approval.
+    - Change management plan
 - **Planning: Scope Statement**
   - agreement between customer and project team about the deliverables and success criteria.
 - **Planning: Scope Statement Components**
@@ -1109,19 +1145,6 @@
     - function requirements: must haves from each stakeholder.
     - Non-functional requirements: implied must haves. (clean restaurant if looking for eating place)
   - solutions architect: determines solution, works closely with team and project manager.
-- **Planning: Project Management Plan**
-  - documents that describes what the team will deliver and how they will deliver them.
-    - Scope Statement
-    - WBS or Backlog
-    - Resource Plan
-    - Project Schedule (Gantt chart, PERT chart)
-    - Quality Management Plan
-    - Risk Management Plan
-    - Communication Plan
-    - Stakeholder Management Plan
-    - Project Baseline
-    - Project Budget
-    - Project Plan Approval.
 
 ## Project Lifecycle Phase 3 Planning: Communication, Escalation Plan, Budget, Purchasing
 
@@ -1168,12 +1191,13 @@
   - Buy: third party purchase.
   - Lease: fixed-term contract.
   - Subscription: flat fee for service.
-- **Purchasing: RFI, RFP, RFB, RFQ, SOW, PO, TOR, Non-Disclosure, Warranty**
-  - Request for Information (RFI): information about capabilities, and experience of vendors.
+- **Purchasing: RFI, RFP, RFB, RFQ, SOW, SLA, PO, TOR, Non-Disclosure, Warranty**
+  - Request for Information (RFI): request information about capabilities, and experience of vendors.
   - Request for Proposal (RFP): solicit multiple vendors proposed solution to your problem.
   - Request for Bid (RFB): competitive bids for a well-defined project with specific requirements.
   - Request for Quote (RFQ): pricing quotes for clearly defined goods or services.
-  - Statement of Work: formal document that outlines the work a vendor needs to deliver.
+  - Statement of Work: formal document that outlines the work a vendor needs to deliver. (work activities, timeframes, milestones).
+  - Service Level Agreement (SLA): up time, performance...
   - Purchase Order: request for specific goods or services.
   - Terms of Reference: shared understanding of a group’s scope of work or expectations.
   - Non-Disclosure Agreement: won’t share specific information with others.
@@ -1281,6 +1305,8 @@
   - project starting point. Track project progress.
 - **Baseline: Setup**
   1. Scope Baseline: review scope statement, identify critical deliverables.
+     1. WBS
+     2. WBS dictionary.
   2. Schedule Baseline: review project duration and deadline.
   3. Cost Baseline: total project cost plus total contingency reserve.
   - Obtain stakeholder approval.
@@ -1290,7 +1316,7 @@
   - Unit Testing: smallest piece of functionality in software.
   - Regression Testing: change did not effect existing code.
   - Smoke Testing: run before deploy. Confirms main features are working.
-  - User Acceptance Testing: final output test.
+  - User Acceptance Testing: Does user like it? Final test.
   - Performance Testing: stable under workloads.
   - Stress Testing: performance test exceeding expected conditions.
 - **Service after Go-Live: SLA, Post-Implementation Support, Warranty**
@@ -1422,18 +1448,18 @@
   - project closeout. contracts closed, team members released.
   - Project teams can use **organizational change management (OCM)** to reduce the strain caused by change.
   - validate deliverables, document acceptance of project work.
-    - Validating deliverables -pass operations testing and final customer.
-    - Closing contracts
-    - Removing access
-    - Releasing resources
-    - Holding the project closure meeting
-    - Writing the project closeout report
-    - Obtaining feedback and lesson learned
-    - Project sign-off!
-    - Handing off the product to the organization
-    - Evaluating the project
-    - Archiving project documents
-    - Rewards and celebration
+    - Project Sign-off: formal written sign-off from project sponsor.
+    - Transfer Product: pass operations testing and final customer.
+    - Releasing resources: team members. Removing access.
+    - Closing contracts: make sure all terms and conditions are satisfied.
+    - Administrative Closure: writing the project closeout report.
+    - Archiving project documents: PMO. Retention policies.
+    - Lessons Learned: project closure meeting, obtaining feedback and lesson learned. Rewards and celebration.
+- **Closing: Project Endings**
+  - Addition: evolve into operations. Maintaining the deliverable.
+  - Starvation: canceled, resources pulled, other projects take priority.
+  - Integration: merge into another project.
+  - Extinction: natural death. completes.
 - **Closing: OCM**
   - Organizational Change Management (OCM): structured change.
   - think about how a project affects people in the organization.
@@ -1441,7 +1467,7 @@
   - provide the necessary artifacts and support to help them.
   - monitor and reinforce adoption.
   - ![organizational change management](img/ocm.PNG)
-- **Organizational Change Mnangement: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
+- **Organizational Change Management: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
   - Training: learn how to use deliverable.
   - New Knowledge Base: info about deliverable.
   - New Process: processes are updated to reflect current deliverable. Processes are documented instructions that describe how to complete tasks.
@@ -1469,19 +1495,34 @@
 - **Business case**
   - Discovery
   - Justification for the project.
+- **Cost benefit analysis**
+  - Discovery
+  - is expense justified by return investment.
+- **Statement of Work (SOW)**
+  - Initiating
+  - SOW is crucial in establishing preliminary scope statement. Gets created after business case approval.
+  - SOW will define what is the 'go live' or end phase of project.
 - **Preliminary scope statement**
   - Initiating
   - Project objectives are defined; business problem the project will address is stated.
 - **Project charter**
   - Initiating
   - Authorizes the project to begin.
+- **Stakeholder Register**
+  - Initiating
+  - Defines stakeholder role, contact, and involvement in project.
 - **Responsibility assignment matrix (RAM)**
   - Initiating
-  - Defines stakeholder responsibilities. Incorporates the use of a RACI chart.
+  - Also called RACI matrix.
+  - table that clearly defines the roles and responsibilities of each individual or team involved in a project.
   - RACI is a way to define responsibilities on the project and stands for responsible, accountable, consult, and inform.
 - **Communication plan**
   - Planning
-  - Documents the types of information needs the stakeholders have, when the information should be distributed, and how the information will be delivered.
+  - how project information will be shared among stakeholders throughout the project lifecycle.
+  - defines which stakeholders needs information, when do they need it, and how the information will be delivered.
+  - chart that show:
+    - stakeholder contact info, roles, responsibilities.
+    - their preferred communication channel(email, text, phone), cadence, escalation procedures.
 - **Project schedule**
   - Planning
   - Determines the start and finish dates for project activities and assigns resources to the activities.
@@ -1491,12 +1532,18 @@
 - **Project management plan**
   - Planning
   - Consists of all the project planning documents such as charter, scope statement, schedule, and more.
+- **Action Plan**
+  - Planning
+  - Create task from WBS.
 - **Issue log**
   - Executing
   - A list of issues, containing list numbers, descriptions, and owners.
 - **Change log**
   - Executing
   - Describes change requests and their disposition for the project.
+- **Action Items**
+  - Executing
+  - Describe tasks or activities that need to be completed within a project.
 - **Risk register**
   - Executing
   - A list of risks and their descriptions.
@@ -1918,6 +1965,8 @@ Close Out the Schedule:
 
 - **WBS Dictionary, Work Package, Task**
   - Dictionary: itemized list with id number. Includes more information about item.
+    - ![wbs](img/wbs2.jpg)
+    - ![wbs dictionary](img/Work-Breakdown-Structure-Dictionary.webp)
   - Work Package: one or more deliverables that need to be created together.
     - collectively develop deliverable.
   - Task: many little activities to create the project.

@@ -25,6 +25,8 @@
 - <https://docs.google.com/document/d/1m6n3yVAcU91ynZIqJ5HAcdB4iLMZNWIc-a2nP5Gd1kc/edit?pli=1#heading=h.574qxxof3o33>
 - <https://www.testpreptraining.com/blog/comptia-project-pk0-004-study-guide/>
 - <https://youtube.com/playlist?list=PLMG1RAn5gDJALkSDCDJiZs17n0EV0HAJg>
+- <https://www.youtube.com/watch?v=ZKOL-rZ79gs>
+- <https://www.youtube.com/watch?v=aTEK0BmsH-g>
 
 - <https://www.reddit.com/r/CompTIA/comments/vgue64/project_passed_barelywhat_i_did/>
   - The **process of how change is brought up and put into play**. Know every. single. step. front and back, had a lot of questions regarding what to be done after a certain step
