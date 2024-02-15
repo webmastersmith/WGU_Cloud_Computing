@@ -263,7 +263,7 @@
     - `estimated time = optimistic time + pessimistic time + (4 * average time) / 6`
   - ![pert](img/pert.png)
 - **Project Network Diagram**
-  - Purpose: shows project dependencies(sequencies).
+  - Purpose: shows project dependencies(sequence).
   - visual model of the project schedule that shows sequence of activities and the dependencies.
   - ![project network diagram](img/project_network_diagram.jpg)
 - **Run Chart**
@@ -1017,6 +1017,13 @@
   - High Level Scope
   - RACI: Responsible, Accountable, Consulted, Informed.
   - Project kickoff meeting.
+  - feasibility studies, cost-benefit analysis, risk assessment, project charter development, and obtaining stakeholder buy-in. Validating the business case is a key activity within these.
+  - Steps:
+    1. business case is validated and project is authorized.
+    2. determining budget constraints happens before or alongside project team identification.
+    3. once project team is identified, PM consults their ideas into the project charter.
+    4. project schedule is created with input from team.
+    5. Project charter is updated with all the new information.
 - **Initiating Project: Preliminary Scope Statement**
   - **clearly defines how the work will be done**.
   - after business case, preliminary scope statement is **first artifact created** and will become part of the project charter.
@@ -1059,6 +1066,8 @@
 - **Initiating Project: Kickoff**
   - live meeting with team. Discuss project purpose, goals, plan.
   - signifies start of the project work. Team roles identified.
+- **Validate Business Case**
+  - assessing the project's projected benefits, costs, risks, and alignment with organizational goals. It ensures the project is worthwhile and addresses a business need before significant resources are committed.
 
 ## Project Lifecycle Phase 3 Planning
 
