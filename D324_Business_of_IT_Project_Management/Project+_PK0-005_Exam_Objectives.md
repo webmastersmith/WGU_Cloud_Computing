@@ -64,6 +64,8 @@
 | Total                           | 100%                      |
 
 - Passing Score: 710 (on a scale of 100-900 from max 90 questions).
+  - 900-100=800. 710-100=610. 610/800=**76 to pass**. You must get 69`*` of 90 question correct.
+  - `*`each question can have a different point value, so this is just a rough estimate.
 
 ## 1.01 Explain the basic CHARACTERISTICS of a PROJECT and various METHODOLOGIES and FRAMEWORKS used in IT projects
 

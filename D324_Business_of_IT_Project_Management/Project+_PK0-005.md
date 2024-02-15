@@ -48,24 +48,14 @@
   - Visual diagrams depicting the steps or processes involved in a task or workflow, aiding in understanding and optimizing procedures.
 - **Integration**
   - Combining individual components or modules into a functioning system, ensuring seamless communication and data exchange.
-- **Integration Testing**
-  - Testing the functionality and compatibility of different modules or components after they have been integrated into a system.
 - **Lessons Learned**
   - Capturing and analyzing valuable insights gained from project experiences, both successful and unsuccessful, to improve future projects.
 - **Pareto Diagram (80/20 Rule)**
   - A graphical representation highlighting that a small percentage of factors (e.g., 20%) often contributes to a large majority of the effects (e.g., 80%). Used to prioritize issues or areas for improvement.
-- **Performance Testing**
-  - Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
 - **Prevention**
   - Taking proactive measures to avoid problems or issues before they occur, minimizing risks and disruptions.
-- **Regression Testing**
-  - Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
 - **Rework**
   - Correcting errors or deficiencies in work that has already been completed, leading to additional time and resource costs.
-- **Run Charts**
-  - Visualizing data points over time to identify trends, patterns, and potential areas for improvement.
-- **Smoke Testing**
-  - Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
 - **Scope**
   - project scope: boundaries of project. Outlines what work will and won't be done.
   - Deliverables, Task/Activities, Timeline/Milestones, Budget, Quality Standards, Resource, Exclusions.
@@ -73,14 +63,6 @@
   - Depriving a process of resources it needs to function effectively, leading to delays, inefficiency, and potential failures.
 - **Statistical Sampling**
   - Collecting and analyzing data from a representative sample of a population to draw inferences about the entire population, reducing the need to test everything.
-- **Stress Testing**
-  - Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
-- **Testing**
-  - Verifying that a system, component, or function meets its intended requirements and performs as expected.
-- **Unit Testing**
-  - Testing individual units of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
-- **User Acceptance Testing (UAT)**
-  - Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
 - Be able to name the purpose for controlling quality.
   - Quality control involves monitoring work results to determine whether they comply with the standards set in the quality management plan.
 - Name the types of testing performed on technology projects.
@@ -226,15 +208,16 @@
     - shows remaining time and work in each scrum sprint iteration.
     - ![burndown chart](img/burndown.png)
 - **Control/Behavior Chart**
-  - Purpose: monitor process stability.
+  - Purpose: monitor process **stability**.
   - Track the variation in a process over time.
   - center line is 'mean'.
   - upper line is upper control limit.
   - lower line is lower control limit.
+  - **Rule of seven** says seven **consecutive** data points fall on either side of the mean, process is **out of control** and needs adjustment.
   - ![control chart](img/Control-Charts.jpg)
 - **Critical Path Method (CPM)**
-  - Purpose: project planning and execution. Find
-  - shows how delay time will effect project. This image uses a Gantt chart to display CPM.
+  - Purpose: project planning and execution.
+  - shows how delay time will effect project. This image uses a Gantt chart to display critical path method.
   - add all activities with dependencies to find longest path on chart.
   - Float: the down time an activity can have and can still be completed on time.
   - ![critical path chart](img/critical-path.png)
@@ -280,7 +263,7 @@
     - `estimated time = optimistic time + pessimistic time + (4 * average time) / 6`
   - ![pert](img/pert.png)
 - **Project Network Diagram**
-  - Purpose: shows project dependencies.
+  - Purpose: shows project dependencies(sequencies).
   - visual model of the project schedule that shows sequence of activities and the dependencies.
   - ![project network diagram](img/project_network_diagram.jpg)
 - **Run Chart**
@@ -629,9 +612,9 @@
   - PV: planned value. estimating budgeted expense for time period. ex.. This month we plan to spend 'x'.
   - AC: actual value. Amount spent in a time period. ex.. Currently we have spent 'x'.
   - EV: earned value. `actual work completed x planned`. ex.. We are ahead of schedule.
-  - CV: cost variance. Money. expenses ahead/behind vs. actual expenses. `CV = EV - AC`. <0 bad. >0 good.
+  - CV: cost variance. Money. expenses ahead/behind vs. actual expenses. `CV = EV-AC`. <0 bad. >0 good.
   - CPI: cost performance index. `CPI = EV/AC`. Same as CV, shown as ratio.
-  - SV: schedule variance. Time. schedule ahead/behind vs. planned time. `SV = EV - PV`
+  - SV: schedule variance. Time. schedule ahead/behind vs. planned time. `SV = EV-PV`
   - SPI: schedule performance index. `SPI = EV/PV`. Same SV show as ratio.
 - **Burn Rate**
   - how fast are spending the budget. `burn rate = total budget / monthly money spent`
@@ -680,7 +663,8 @@
 
 - **Describe: Computing Services, Multitiered Architecture, Networking and Connectivity, Storage, Data Wharehouse, Documentation**
   - Computing Services: any IT infrastructure a project may need. Software(ERP), hardware(laptop, pc), services(IaaS, PaaS).
-  - Multitiered Architecture: divide software into tiers and layers. Modular design allows for redundancy.
+  - Multitiered Architecture: divide software into tiers and layers. allows for redundancy, enterprise solutions.
+    - three-tier design uses presentation, application, and data.
   - Networking and Connectivity: how various components connect(networking).
   - Storage: data location, security, redundancy.
   - Data Wharehouse: extensive database for reporting and analytics.
@@ -968,28 +952,6 @@
 - **Sponsors**
   - single senior manager reviews/validates initial business case.
   - secures funding and removes barriers.
-- **Stakeholder**
-  - Anyone/Organization with vested interest(positive or negative) in the project.
-  - **Waterfall**: detailed requirements given to team. No further communication until project completion.
-  - **Agile**: communication between team and stakeholder throughout the project.
-  - Responsibilities:
-    - Must understand the project’s purpose and how it will affect them.
-    - Be transparent about their support or lack of support
-    - Provide timely feedback on the project’s progress
-- **Stakeholder Analysis**
-  - asking questions to gather role(level of involvement, influence), needs/concerns.
-  - Questions:
-    - What is your interest in project?
-    - expectations of outcome?
-    - what is do you anticipate as your level of involvement?
-    - knowledge level in project? What do you see as special skills needed for successful outcome?
-    - what contributions are you anticipating making?
-    - How will project impact your organization positively/negatively?
-    - Are there other stakeholders expectations that conflict with yours?
-    - Use these questions to fill out the Stakeholder Analysis Grid:
-      - ![stakeholder impact grid](img/impact_grid.PNG)
-- **Stakeholder Register**
-  - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
 - **SMEs (Subject Matter Experts)**
   - team members performing the work. have the specific knowledge and experience to do the work.
 - **Team Member and Extended Team Member**
@@ -1102,22 +1064,9 @@
 
 - **Planning: Project Management Plan**
   - documents that describes what the team will deliver and how they will deliver them.
-  - Prepare for the work of the project.
-  - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
-    - Scope Statement
-    - WBS or Backlog
-    - Resource Plan
-    - Project Schedule (Gantt chart, PERT chart)
-    - Quality Management Plan
-    - Risk Management Plan
-    - Communication Plan: how to communicate project to stakeholders.
-    - Stakeholder Management Plan
-    - Project Baseline
-    - Project Budget
-    - Project Plan Approval.
-    - Change management plan
 - **Planning: Scope Statement**
   - agreement between customer and project team about the deliverables and success criteria.
+  - what will and won't be delivered.
 - **Planning: Scope Statement Components**
   - living document. This is the preliminary scope statement as it grows to maturity.
   - Functions:
@@ -1224,7 +1173,7 @@
     - looking for lowest qualified bidder who meets your specifications.
   - Request for Quote (RFQ): pricing quotes for clearly defined goods or services.
   - Statement of Work: formal document that outlines the work a vendor needs to deliver. (work activities, timeframes, milestones, pricing).
-  - Service Level Agreement (SLA): vendor guarantee of up time, performance...
+  - Service Level Agreement (SLA): service contract that specifies performance expectations and consequences.
   - Purchase Order: request for specific goods or services.
   - Terms of Reference: shared understanding of a group’s scope of work or expectations.
   - Non-Disclosure Agreement: won’t share specific information with others.
@@ -1599,6 +1548,25 @@
   - Closing
   - Reports on the final closeout of all phases of the project.
 
+## Project Management Plan
+
+- **Planning: Project Management Plan**
+  - documents that describes what the team will deliver and how they will deliver them.
+  - Prepare for the work of the project.
+  - Objectives broken down into manageable units of work. Creation of plans or documents that are used throughout the project to ensure that goals of the project are being met.
+    - Scope Statement
+    - WBS or Backlog
+    - Resource Plan
+    - Project Schedule (Gantt chart, PERT chart)
+    - Quality Management Plan
+    - Risk Management Plan
+    - Communication Plan: how to communicate project to stakeholders.
+    - Stakeholder Management Plan
+    - Project Baseline
+    - Project Budget
+    - Project Plan Approval.
+    - Change management plan
+
 ## Project Schedule
 
 - **Creating Project Schedule**
@@ -1611,24 +1579,41 @@
 
 ## Quality Assurance
 
+- **Quality Assurance**
+  - ensuring that project deliverables meet defined standards and requirements.
+  - QA plan is created during planning phase and refined throughout the project.
+  - QA is a **proactive, preventative** approach, focusing on identifying and preventing potential defects **throughout the project lifecycle** not just testing after development.
+  - Quality Control is always monitoring and it's meant to be a "course correction" to the project if things are veering off task.
+  - QA activities are **independent of project teams** and often performed by a dedicated QA team or external auditors.
 - **Quality Assurance: Verification, Validation, Lessons Learned, Inspection, Audit**
   - QA: Policies, procedures, and tools designed to ensure defect-free development and delivery.
-  - Verification: confirms product meets specifications.
-  - Validation: product meets customer satisfaction.
+  - Verification: confirms product meets specifications. Internal quality. Does project satisfy scope?
+  - Validation: product meets customer satisfaction. Desirability. Does product do what customer wants?
   - Lessons Learned: reflect how change can improve product quality.
   - Inspection: examine finished product.
   - Audit: review processes for quality assurance issues.
-  - **QA Plan Contents**:
-    - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
-    - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
-    - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
-    - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
+- **QA Plan Contents and Questions**:
+  - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
+  - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
+  - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
+  - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
   - **QA Plan Questions**:
     - how to prevent risk from escaping?
     - how verify meet expectations?
     - how prevent defects?
     - how to recognize and improve process?
     - how to handle defects from customer?
+- **QA: Creating a Test Plan**
+  - document that describes how a project will verify that the project’s outputs meet the expected quality.
+- **QA: Testing, Automated, Unit, Regression, Smoke, UAT, Performance, Stress, Integration**
+  - **Testing**: Verifying that a system, component, or function meets its intended requirements and performs as expected.
+  - **Unit Testing**: Testing individual units(smallest piece of functionality) of code (e.g., functions, modules) in isolation to ensure they work properly before integration into the larger system.
+  - **Regression Testing**: Re-testing previously tested functionality after changes or updates to ensure they haven't introduced new bugs or regressions.
+  - **Smoke Testing**: Basic testing to verify that the core functionalities of a system are working before more in-depth testing begins.
+  - **User Acceptance Testing (UAT)**: Final testing conducted by end users or stakeholders to ensure the system meets their needs and expectations before being deployed or released.
+  - **Performance Testing**: Evaluating the system's ability to handle expected load and stress, ensuring it meets performance requirements under various conditions.
+  - **Stress Testing**: Testing a system beyond its expected load or capacity to identify its breaking point and ensure it can handle peak demand or unexpected situations.
+  - **Integration Testing**: Testing the functionality and compatibility of different modules or components after they have been integrated into a system.
 
 ## Resources
 
@@ -1872,6 +1857,21 @@ Close Out the Schedule:
     - Must understand the project’s purpose and how it will affect them.
     - Be transparent about their support or lack of support
     - Provide timely feedback on the project’s progress
+- **Stakeholder Analysis**
+  - Initiating Phase. Foundation for entire project.
+  - asking questions to gather role(level of involvement, influence), needs/concerns.
+  - Questions:
+    - What is your interest in project?
+    - expectations of outcome?
+    - what is do you anticipate as your level of involvement?
+    - knowledge level in project? What do you see as special skills needed for successful outcome?
+    - what contributions are you anticipating making?
+    - How will project impact your organization positively/negatively?
+    - Are there other stakeholders expectations that conflict with yours?
+    - Use these questions to fill out the Stakeholder Analysis Grid:
+      - ![stakeholder impact grid](img/impact_grid.PNG)
+- **Stakeholder Register**
+  - roster with name, phone, role(level of involvement, influence), needs/concerns. Tracks multiple stakeholders.
 - **Subject Matter Experts (SMEs)**
   - Knowledgeable team members performing the work.
   - Responsibilities:
