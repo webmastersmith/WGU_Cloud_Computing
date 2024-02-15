@@ -298,9 +298,14 @@
 
 ## Change Control Steps
 
+- **Change Management Plan**
+  - processes and procedures for introducing and managing changes to a project or organization in a controlled and effective manner.
+- **Change Control Steps**
+  - Change control in project management helps ensure that any modification to the project baseline (scope, schedule, budget) is evaluated, approved, and implemented in a controlled manner.
 - **The change request process uses two documents**
   - **change request form**: information about change(project name, date, description, reason...).
   - **change log**: all change request for project.
+  - ![change request form](img/Change-Request.jpg)
 - **List Four Steps of Change Control**
   - mnemonic: Initiate Examine Decide Integrate.
   1. Initiate the request
@@ -311,7 +316,7 @@
   - requester initiates by submitting a **change request form** to the project manager.
 - **Evaluate impacts**
   - conduct a thorough impact assessment.
-  - analyze how the change will effect the project’s **resources, budget, scope, and schedule**.
+  - analyze how the change will effect the project’s constraints: **scope, cost and time**.
   - PM will create an information package outlining the change request, schedule changes, scope changes, risks, resource requirements, and notable impacts.
   - PM will document change recommendations directly in the **change log**.
 - **Decide on an outcome**
@@ -331,6 +336,19 @@
     - Change Reviewer: compare outcome against business requirements. In agile its product owner. could also be SME or functional manager.
   - PM notifies stakeholders of completed change.
   - Update status in change log.
+
+## Change Management -Organizational OCM
+
+- **Organizational Change Management**
+  - process to make changes in an organization.
+- **Organizational Change Management: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
+  - Training: learn how to use deliverable.
+  - New Knowledge Base: info about deliverable.
+  - New Process: processes are updated to reflect current deliverable. Processes are documented instructions that describe how to complete tasks.
+  - Communication: underpins every aspect of OCM. Start early and often.
+  - Documentation: allows maintenance team maintain deliverable over time.
+  - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
+  - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
 
 ## Communication Management and Meetings
 
@@ -376,48 +394,54 @@
   - management review or sign-off may be required.
 - **Stand-ups**
   - focused, quick meeting. Popular in Scrum Daily stand-ups. Sometimes doing it standing up.
+  - Three Questions covered:
+    - What did I accomplish yesterday?
+    - What will I do today?
+    - What obstacles prevent progress?
 - **Decisive Meetings**
   - decision-making meeting.
 - **Decisive Meeting: Task Setting**
-  - assign task to be completed.
+  - after decision is made, task are assigned to be completed.
 - **Decisive Meeting: Project Steering**
-  - to keep projects on track and successful.
-  - includes the PM and executive stakeholders. Offer support and guidance throughout project lifecycle.
-  - can represent voice of the customer.
+  - keeping project on track(schedule) and successful(approved project task deliverables).
+  - includes the PM and executive stakeholders and can represent voice of the customer.
+  - support and guidance throughout project lifecycle.
 - **Refinement Meeting**
   - also called: **product refinement** or **backlog refinement**.
-  - meetings to bring the most valuable idea to the top and turn into a plan.
-  - top item in the list are broken down into small tasks and prioritized.
+  - meetings to bring the most valuable ideas to the top(backlog) and has highest priority.
+    - top item are then broken down into small tasks and prioritized.
 - **Collaborative Meeting**
   - interactive, problem solving meeting.
 - **Focus Groups**
   - Project manager runs meeting to gather experiences, needs, problems from customers.
+  - gather **qualitative**(from experience) data and opinions about a particular product, service, or concept.
 - **Workshops**
   - group with shared interest gather to exchange information and conduct research.
   - solve problems or increase knowledge(skill development).
 - **Joint Application Development (JAD)**
-  - also called: joint application review.
-  - specific type of workshop that involves the customer in the design process.
-  - early feedback.
+  - also called: **joint application review (JAR)**.
+  - specific type of workshop that **involves the customer in the design process**.
+  - **early feedback**.
 - **Brainstorming: Rapid, Reverse, Stop-and-Go, Round-Robin**
   - Rapid: group rapidly generates many ideas. everybody can participate. Quantity over quality.
   - Reverse: look at problem from different angles. ex.. Why you couldn't solve problem.
   - Stop-and-Go: brainstorm short duration then refine ideas. Quality over Quantity.
   - Round-Robin: everyone gets equal voice.
-- **Agenda**
-  - meeting purpose and expectation. Shared in advance.
+- **Meeting Agenda**
+  - meeting schedule, purpose and expectation. Shared in advance.
 - **Meeting Timeboxing**
-  - fixed maximum time on each agenda item.
+  - controls duration and cadence of meeting.
+  - each meeting agenda item will have defined start and stop times.
 - **Meeting Action Items**
-  - list of task someone will complete after meeting.
+  - specific tasks or deliverables assigned to individuals or teams as a result of a project meeting.
 - **Meeting Minutes**
   - written record of key points.
 - **Meeting Follow-up**
   - after meeting email with minutes(meeting recap).
-- **Language Barriers, Time Zones, Geographical Factors**
+- **Special Needs for Meeting: Language Barriers, Time Zones, Geographical Factors**
   - interpreters, appropriate communication formats.
-  - Time Zones adn Geographical Factors: what works best for them?
-- **Technology Factors**
+  - Time Zones and Geographical Factors: what works best for them?
+- **Meeting Problems: Technology Factors**
   - slower internet, older hardware. Project manager can provide tools needed.
 - **Cultural Differences**
   - any group with social customs, behavior, habits, beliefs.
@@ -426,7 +450,7 @@
   - teams will have a performance ebb and flow.
   - Teams need different types of support and leadership through different positions of lifecycle.
   - Forming: team first time together.
-  - Storming: team figure out roles and each others flaws.
+  - Storming: team figure out roles and initial friction from each others flaws.
   - Norming: positive exchange and cohesiveness between team members.
   - Performing: max cohesiveness and performance.
   - Adjourning: team breaks apart.
@@ -436,14 +460,15 @@
   - ex.. your both right.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Forcing**
-  - make the decision without discussing it.
+  - make the decision without discussing it or use your authority to override others.
   - ex.. in a fire, just put it out, don't form a committee.
+  - ex.. parents tell their children 'because I told you so!'
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Compromise**
   - both parties gives up something and meet in the middle.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Confronting**
-  - fact finding, data driven. win-win for everybody.
+  - fact finding, data driven. Data makes the decision. win-win for everybody.
 - **Conflict Managing: Collaboration/Negotiating**
   - both parties collaborate new idea that works as a win-win for both parties.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
@@ -451,8 +476,8 @@
   - ignore the conflict. Problem is small or not affecting performance.
   - ![conflict resolution](img/ConflictManagementStyles.jpg)
 - **Conflict Managing: Getting Help for Disgruntled Team Members**
-  - minor: communication between members. Find their fears.
-  - major: HR, Policies, get the facts.
+  - minor: open communication between members. one-on-one's to find their fears.
+  - major: HR/Legal, Company Policies. Make sure to get the facts.
 
 ## Data Confidentiality and Security
 
@@ -678,12 +703,11 @@
   - manages customer problem tickets. Automated workflow route customer problem to person who can help.
 - **Project Management Scheduling Tools**
   - schedule, plan, and track project timeline.
-- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
+- **Meeting Tools: Calendaring, Real-Time Survey Poll, Print Media, Conference Platforms, Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing Platform, Wiki and Knowledge Base, Whiteboard**
   - Calendaring: manage multiple calendar, schedules, time zones, alerts.
   - Real-Time Survey Poll: quickly gather information from groups of people.
   - Print Media: create posters, flip charts, brochures, manuals.
   - Conference Platforms: video(zoom, teams).
-- **Productivity Tools: Word Processing, Spreadsheet, Presentation, Diagramming, Real-Time Multi-Authoring Editing Software, File Sharing, Wiki**
   - Word Processing: text document editor.
   - Spreadsheets: data in tables.
   - Presentation: slide show.
@@ -1177,7 +1201,7 @@
 - **Communication Records: Archiving**
   - keeping artifacts per business or government law requirements.
 - **Escalation Plan**
-  - formed in phase 1, Initiating. Further refined in planning phase.
+  - formed in phase 1, Initiating(sponsor). Further refined in planning phase(key stakeholders).
   - artifact that outlines when event should be escalated and to whom.
   - ![escalation plan](img/Escalation-Matrix.webp)
 - **Budget: Manage Reserves, Documentation, Update**
@@ -1192,16 +1216,28 @@
   - Lease: fixed-term contract.
   - Subscription: flat fee for service.
 - **Purchasing: RFI, RFP, RFB, RFQ, SOW, SLA, PO, TOR, Non-Disclosure, Warranty**
-  - Request for Information (RFI): request information about capabilities, and experience of vendors.
-  - Request for Proposal (RFP): solicit multiple vendors proposed solution to your problem.
-  - Request for Bid (RFB): competitive bids for a well-defined project with specific requirements.
+
+  - Request for Information (RFI): planning. request specific information about capabilities, and experience of vendors. Used to qualify and shortlist vendors.
+  - Request for Proposal (RFP): when you clearly understand your needs, solicit multiple vendors proposed solution to your problem.
+    - vendors return their qualifications, approach, methodology, pricing.
+  - Request for Bid (RFB): competitive bids for a **well-defined project** with specific requirements.
+    - looking for lowest qualified bidder who meets your specifications.
   - Request for Quote (RFQ): pricing quotes for clearly defined goods or services.
-  - Statement of Work: formal document that outlines the work a vendor needs to deliver. (work activities, timeframes, milestones).
-  - Service Level Agreement (SLA): up time, performance...
+  - Statement of Work: formal document that outlines the work a vendor needs to deliver. (work activities, timeframes, milestones, pricing).
+  - Service Level Agreement (SLA): vendor guarantee of up time, performance...
   - Purchase Order: request for specific goods or services.
   - Terms of Reference: shared understanding of a group’s scope of work or expectations.
   - Non-Disclosure Agreement: won’t share specific information with others.
   - Warranty: vendor’s commitment to resolving defects.
+
+| Feature            | RFI                   | RFP                   | RFB                   | RFQ                |
+| :----------------- | :-------------------- | :-------------------- | :-------------------- | :----------------- |
+| Issued at          | Planning stage        | Planning stage        | Procurement stage     | Procurement stage  |
+| Purpose            | Clarification, info   | Detailed proposal     | Competitive pricing   | Pricing comparison |
+| Level of detail    | Low                   | High                  | Moderate              | Low                |
+| Emphasis           | Information gathering | Vendor qualifications | Specific specs, price | Price              |
+| Selection criteria | Not applicable        | Qualifications, price | Price, qualifications | Price              |
+
 - **Purchasing: Price vs Value, Cost-Benefit, Market Research, Competitive Analysis, Qualifications, Pre-qualified Vendors, Demonstration, Technical Approach, Financial Capacity, References**
   - Price vs. Value:
     - Best Value: features, quality, service, and long-term impact on your product.
@@ -1455,6 +1491,14 @@
     - Administrative Closure: writing the project closeout report.
     - Archiving project documents: PMO. Retention policies.
     - Lessons Learned: project closure meeting, obtaining feedback and lesson learned. Rewards and celebration.
+  - **The closing phase deliverables include the following:**
+
+| Activities             | Artifacts               | Meetings                | Outcomes          |
+| :--------------------- | :---------------------- | :---------------------- | :---------------- |
+| Project evaluation     | Reconciled budget       | Project closure meeting | Approval to close |
+| Deliverable validation | Project closeout report | Celebration             | Closed contracts  |
+|                        | Document archive        |                         | Project sign-off  |
+
 - **Closing: Project Endings**
   - Addition: evolve into operations. Maintaining the deliverable.
   - Starvation: canceled, resources pulled, other projects take priority.
@@ -1467,14 +1511,6 @@
   - provide the necessary artifacts and support to help them.
   - monitor and reinforce adoption.
   - ![organizational change management](img/ocm.PNG)
-- **Organizational Change Management: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
-  - Training: learn how to use deliverable.
-  - New Knowledge Base: info about deliverable.
-  - New Process: processes are updated to reflect current deliverable. Processes are documented instructions that describe how to complete tasks.
-  - Communication: underpins every aspect of OCM. Start early and often.
-  - Documentation: allows maintenance team maintain deliverable over time.
-  - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
-  - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
 - **Closing: Validation of Deliverables, Closing Contracts, Removing Access, Releasing Resources**
   - Validation of Deliverables: deliverables transfer to owners. Confirm met objective and completed deliverable.
   - Closing Contracts: after stakeholder approval, confirm deliverables.
@@ -1505,12 +1541,13 @@
 - **Preliminary scope statement**
   - Initiating
   - Project objectives are defined; business problem the project will address is stated.
+  - Using the SOW statement and business case.
 - **Project charter**
   - Initiating
   - Authorizes the project to begin.
-- **Stakeholder Register**
+- **Stakeholder Register/Matrix**
   - Initiating
-  - Defines stakeholder role, contact, and involvement in project.
+  - Chart that defines stakeholder role, contact, and involvement in project.
 - **Responsibility assignment matrix (RAM)**
   - Initiating
   - Also called RACI matrix.
@@ -1520,7 +1557,7 @@
   - Planning
   - how project information will be shared among stakeholders throughout the project lifecycle.
   - defines which stakeholders needs information, when do they need it, and how the information will be delivered.
-  - chart that show:
+  - Communication plan is a chart that shows:
     - stakeholder contact info, roles, responsibilities.
     - their preferred communication channel(email, text, phone), cadence, escalation procedures.
 - **Project schedule**
@@ -1535,15 +1572,17 @@
 - **Action Plan**
   - Planning
   - Create task from WBS.
+  - Describe tasks or activities that need to be completed within a project.
+- **Escalation Plan**
+  - Planning
+  - escalation plan is crucial for handling unforeseen issues that require involvement beyond the immediate team.
+  - who do you contact and at what threshold of risk? The project sponsor? stakeholders?
 - **Issue log**
   - Executing
   - A list of issues, containing list numbers, descriptions, and owners.
 - **Change log**
   - Executing
   - Describes change requests and their disposition for the project.
-- **Action Items**
-  - Executing
-  - Describe tasks or activities that need to be completed within a project.
 - **Risk register**
   - Executing
   - A list of risks and their descriptions.
@@ -1559,6 +1598,16 @@
 - **Project closeout report**
   - Closing
   - Reports on the final closeout of all phases of the project.
+
+## Project Schedule
+
+- **Creating Project Schedule**
+  1. Define units of work
+     1. Milestones
+     2. WBS: work packages -> tasks or AGILE: backlog -> sprints.
+  2. Sequence activities
+     1. Find dependencies: mandatory, discretionary, external, internal.
+  3. Assign Resources. RACI matrix. Which resources are responsible for which tasks.
 
 ## Quality Assurance
 
@@ -1615,10 +1664,33 @@
 ## Risk and Transition Planning
 
 - **Risk Management**
-  - Identify Risk: list of potential risk. Recorded in risk register.
-  - Analyze Risk: likelihood and impact on project success. Assign priority levels().
-  - Treat Risk: create risk strategy and owner.
-  - Monitor Risk: create plan to monitor risk, and response plans.
+  - identifying, assessing, and mitigating potential threats to a project's success.
+  - helps project managers proactively address uncertainties and minimize their negative impact on cost, schedule, and scope.
+  - **Risk Identification**: actively searching for potential risks, both positive and negative.
+  - Risk Assessment: evaluated based on their likelihood of occurrence and the potential severity of their impact.
+    - **Qualitative and quantitative methods** are used to assign probability and impact scores, helping prioritize risks.
+  - **Risk Response Planning**: different strategies are chosen to address each risk:
+    - Avoid: Modify the project plan to eliminate the risk entirely.
+    - Mitigate: Implement actions to reduce the probability or impact of the risk.
+    - Transfer: Share the risk with another party (e.g., insurance).
+    - Accept: Monitor the risk and be prepared to react if it occurs.
+  - **Risk Monitoring and Control**: continuously monitored, with their status and response plans updated as needed.
+    - Regular risk reviews and communication with stakeholders are crucial for effective control.
+- **Common Risk Identification Techniques**
+  - Brainstorming: Brainstorming sessions with stakeholders to identify potential risks.
+  - Historical analysis: Reviewing past projects for similar risks and their impacts.
+  - Expert judgment: Leveraging the knowledge and experience of subject matter experts.
+  - Checklist approaches: Using standardized checklists of project-specific risks.
+  - Delphi technique: Gathering anonymous expert opinions through multiple rounds of questionnaires.
+- **Qualitative and Quantitative Risk Assessment Methods**
+  - Qualitative: base on how people perceive risk.
+    - Probability scoring: Assigning subjective scores (e.g., high, medium, low) to the likelihood of a risk occurring.
+    - Impact scoring: Assigning subjective scores (e.g., high, medium, low) to the severity of a risk's impact.
+    - Risk matrix: Utilizing a grid to map probability and impact scores, visualizing risk priority.
+  - Quantitative: based on data.
+    - Monte Carlo simulation: Performing statistical simulations to model possible future outcomes and risk impact.
+    - Expected monetary value (EMV): Calculating the average cost of a risk based on its probability and impact.
+    - Cost-benefit analysis: Comparing the potential costs and benefits of different risk response strategies.
 - **Risk Assessment Meeting**
   - Planning Phase. Prioritize risk and create plan(risk analysis).
   - Brainstorm **'What if'** questions with: Project team, key stakeholders, SMEs, project sponsor.
@@ -1650,7 +1722,18 @@
   - Merger and Acquisition: company culture may change.
   - Reorganization: restructure may disrupt team.
   - Major Cyber Event: ransomware, data-breach.
-- **Negative Risk: Accept, Avoid, Mitigate, Transfer**
+- **Risk Monitoring and Control**
+  - Regularly review and update the risk register as the project progresses.
+  - Monitor key risk indicators to identify early signs of potential problems.
+  - Implement contingency plans if predicted risks occur.
+  - Communicate risk updates and mitigation actions to stakeholders.
+  - Conduct regular risk reviews to assess the effectiveness of response strategies.
+  - **Risk Handling: ex.. vendor resource depletion**
+    1. talk to function managers about work around.
+    2. inform stakeholders.
+    3. if necessary issue change request(is project behind schedule?) for a new vendor(last resort).
+    4. escalation meeting with sponsor(last resort).
+- **Different Negative Risk Response Strategies: Accept, Avoid, Mitigate, Transfer**
   - Negative: cause harm organization.
   - Accept: do nothing. accept consequences.
   - Avoid: detour around risk.
@@ -1661,15 +1744,14 @@
   - Accept: do nothing. accept positive risk.
   - Enhance: increase positive effect of risk.
   - Exploit: take steps to guarantee event will happen.
-  - Share: find other how would benefit.
-- **Qualitative Risk, Quantitative Risk and Quantitative Simulation. Risk Interconnectivity and Detectability**
-  - Qualitative: base on how people perceive risk.
-  - Quantitative: based on data.
+  - Share: find others who would benefit.
+- **Quantitative Simulation, Risk Interconnectivity and Detectability**
   - Quantitative Simulation: predicts risk from input data.
   - Interconnectivity: how risk will effect more than one single event.
   - Detectability: how quick risk is identified if it were to occur.
-- **Impact Analysis**
-  - evaluate impact of project. Change after successful project.
+- **Risk Impact Analysis**
+  - identify and assess the potential consequences of various events or changes on a project.
+  - proactively evaluating potential impacts, project managers can make informed decisions, mitigate risks, and ensure project success.
 - **Risk Probability, Impact and Scenario Analysis**
   - Probability: measure chance of risk occurring.
   - Impact: how risk will effect business.
