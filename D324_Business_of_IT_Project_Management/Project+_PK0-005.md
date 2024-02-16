@@ -202,7 +202,7 @@
   - Compares **activities** with **time**.
   - Both charts plot **target work** and **actual work**.
   - **Burnup**
-    - show total amount of work completed each day.
+    - show total amount of work completed each day(velocity).
     - ![burnup chart](img/burnup.PNG)
   - **Burndown**
     - shows remaining time and work in each scrum sprint iteration.
@@ -227,7 +227,7 @@
   - ![decision tree](img/decision_tree.png)
 - **Fishbone/Ishikaawa Diagrams**
   - Purpose: visualize multiple **potential causes** of a problem.
-  - cause and effect diagram. Part of gap analysis.
+  - **cause and effect diagram**. Part of gap analysis.
   - shows how various factors(fish bones) impact single outcome(fish head).
   - ![fishbone chart](img/fishbone.jpg)
 - **Gantt Chart**
