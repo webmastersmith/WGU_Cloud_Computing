@@ -202,7 +202,7 @@
   - Compares **activities** with **time**.
   - Both charts plot **target work** and **actual work**.
   - **Burnup**
-    - show total amount of work completed each day(velocity).
+    - show total amount of work completed each day.
     - ![burnup chart](img/burnup.PNG)
   - **Burndown**
     - shows remaining time and work in each scrum sprint iteration.
@@ -285,16 +285,16 @@
   - processes and procedures for introducing and managing changes to a project or organization in a controlled and effective manner.
 - **Change Control Steps**
   - Change control in project management helps ensure that any modification to the project baseline (scope, schedule, budget) is evaluated, approved, and implemented in a controlled manner.
+  - mnemonic: Initiate Examine Decide Integrate.
+  - **CompTIA Four Steps of Change Control**
+    1. Initiate the request
+    2. Evaluate impacts
+    3. Decide on an outcome
+    4. Implement the change
 - **The change request process uses two documents**
   - **change request form**: information about change(project name, date, description, reason...).
   - **change log**: all change request for project.
   - ![change request form](img/Change-Request.jpg)
-- **List Four Steps of Change Control**
-  - mnemonic: Initiate Examine Decide Integrate.
-  1. Initiate the request
-  2. Evaluate impacts
-  3. Decide on an outcome
-  4. Implement the change
 - **Initiate the request**
   - requester initiates by submitting a **change request form** to the project manager.
 - **Evaluate impacts**
