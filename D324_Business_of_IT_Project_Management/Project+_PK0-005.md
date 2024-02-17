@@ -319,11 +319,16 @@
     - Change Reviewer: compare outcome against business requirements. In agile its product owner. could also be SME or functional manager.
   - PM notifies stakeholders of completed change.
   - Update status in change log.
-
-## Change Management -Organizational OCM
-
 - **Organizational Change Management**
-  - process to make changes in an organization.
+  - best practices and processes to make changes in an organization.
+  - employees and companies are resistant to change.
+    - employees: habits, fear, lack of understanding, persoanl values.
+    - companies: structural rigidities, resource limitations, cultural, political.
+- **OCM: Strategies to manage Resistance**
+  - communication: actively listen, be transparent about why change is needed.
+  - participation: involve stakeholders, employees. Empower them to contribute.
+  - training and support: coaching/mentoring, training resources.
+  - incentives: reward those who embrace change.
 - **Organizational Change Management: Training, New Knowledge Base, New Process, Communication, Documentation, Ensure Adoption, Reinforce Adoption Over Time**
   - Training: learn how to use deliverable.
   - New Knowledge Base: info about deliverable.
@@ -332,6 +337,11 @@
   - Documentation: allows maintenance team maintain deliverable over time.
   - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
   - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
+- **Change Control Orders**
+  - Scope: project is over/under delivering(timeline, budget). Brings back into alignment with project management plan.
+  - Product Change: product is finished, but new features or changes are wanted.
+  - Team Improvement: phase gate, lessons learned. Team keeps improving systems and processes.
+  - Strategic Change: company direction changes, this keeps project in alignment without being canceled.
 
 ## Communication Management and Meetings
 
@@ -371,13 +381,23 @@
 - **Demonstrations and Presentations Meetings**
   - video, slide show, actual product.
 - **Status Meeting**
-  - update on progress of project.
+  - meetings to update progress of project.
+  - Initiating: Fewer status meetings might be needed as the project scope and goals are being defined.
+  - Planning: More frequent meetings might be necessary to finalize plans, schedules, and resource allocation.
+  - Executing: Regular status meetings are crucial to monitor progress, track milestones, and identify issues early.
+  - Closing: Fewer meetings might be required as the project wraps up and final deliverables are completed.
 - **Gate/Phase Gate Meeting**
-  - A checkpoint review of project deliverables and performance at the end of each phase or sub-phase.
+  - A checkpoint review of project deliverables and performance at the end of each lifecycle phase or sub-phase.
+  - ensure project feasibility, alignment, and readiness before moving forward.
+  - These meetings involve key stakeholders and serve as critical decision points throughout the project lifecycle.
   - management review or sign-off may be required.
+  - Examples:
+    - After the **Initiating phase**: This gate meeting, often called the "**Go/No Go**" meeting, focuses on whether the project remains feasible and aligns with strategic goals.
+    - After the **Planning phase**: This gate meeting, sometimes called the "**Stage Gate" or "Baselining**" meeting, reviews the detailed project plan, budget, schedule, and risk assessments to ensure everything is ready for execution.
+    - After **key milestones or control points**: Throughout the project execution phases, additional gate meetings can be held to assess progress against deliverables, identify and address emerging risks, and determine if adjustments are needed before proceeding further.
 - **Stand-ups**
   - focused, quick meeting. Popular in Scrum Daily stand-ups. Sometimes doing it standing up.
-  - Three Questions covered:
+  - **Three Questions covered**:
     - What did I accomplish yesterday?
     - What will I do today?
     - What obstacles prevent progress?
@@ -391,13 +411,18 @@
   - support and guidance throughout project lifecycle.
 - **Refinement Meeting**
   - also called: **product refinement** or **backlog refinement**.
-  - meetings to bring the most valuable ideas to the top(backlog) and has highest priority.
+  - meetings to bring the most valuable ideas to the top(e.g. backlog. Top items have higher priority).
     - top item are then broken down into small tasks and prioritized.
 - **Collaborative Meeting**
   - interactive, problem solving meeting.
 - **Focus Groups**
   - Project manager runs meeting to gather experiences, needs, problems from customers.
-  - gather **qualitative**(from experience) data and opinions about a particular product, service, or concept.
+  - gather **qualitative**(customer preference) data and opinions about a particular product, service, or concept.
+  - stakeholders can see real-time, genuine reactions to their products from real customers.
+  - **dual-moderator focus group**: two moderators. One lead facilitator. Other ensures covering all the content.
+  - **dueling-moderator focus group**: two moderators. moderators are actively engaged and take opposite views.
+  - **two-way focus group**: one group to observe another focus group’s session.
+  - **respondent-moderator focus group**: participants as moderators, creating dynamic energy with many new ideas.
 - **Workshops**
   - group with shared interest gather to exchange information and conduct research.
   - solve problems or increase knowledge(skill development).
@@ -434,7 +459,7 @@
   - Teams need different types of support and leadership through different positions of lifecycle.
   - Forming: team first time together.
   - Storming: team figure out roles and initial friction from each others flaws.
-  - Norming: positive exchange and cohesiveness between team members.
+  - Norming: positive exchange and cohesiveness between team members(team building).
   - Performing: max cohesiveness and performance.
   - Adjourning: team breaks apart.
   - ![team lifecycle](img/team_lifecycle.png)
@@ -489,7 +514,7 @@
 - **Trade Secrets**
   - competitive advantage. Leaked data could result in great harm to business.
 - **Restricted Data**
-  - top secret. Criminal charges if exposed.
+  - only those authorized. need-to-know only with business justification.
 - **GDPR (General Data Protection Regulation)**
   - EU PII data handling requirements. Also adds to NIST, classifying: cookies, radio frequency tags, IP addresses as PII.
 - **PII (Personally Identifiable Information)**
@@ -596,10 +621,10 @@
 ## Financial and Performance Analysis
 
 - **Cost Estimation Techniques: Analogous, Parametric, Bottom-Up, Three Point**
-  - Analogous: estimating top-Down. Expert judgement, historical information(past projects).
-  - Parametric: `units x cost`. When repeating same type of work.
+  - Analogous: same as Top-Down. Entire project. Expert judgement, historical information(past projects).
+  - Parametric: `units x cost`. augments either bottom-up or top-down estimates with **historical data**.
   - Bottom-Up: estimating the total cost of individual tasks with the lowest level of detail(WBS).
-  - Three Point: optimistic, pessimistic, average.
+  - Three Point: optimistic, pessimistic, average. Factors multiple scenarios, creates averages.
 - **Budgeting**
   - work closely w/team. define type of estimate(analogous, bottom-up, three point).
   - SMEs and acutal workers
@@ -847,10 +872,9 @@
   - Functional department for all project managers.
   - manages flow of projects and provides guidance to project managers with organization resources.
 - **PMO Supportive Project Management Office**
-  - Provides support when it is requested
+  - Provides support when it is requested.
 - **PMO Controlling Project Management Office**
-  - Monitors project performance and coordinates resource selection while allocating project managers to projects
-  - The controlling PMO coordinates communications and sets some project standards
+  - actively monitors project performance. However, this PMO does not have full authority.
 - **PMO Directive Project Management Office**
   - Has full authority over projects, standards, and procedures
   - It focuses on organizational strategy and will start, cancel, or adjust projects to ensure strategic alignment
@@ -1085,6 +1109,11 @@
     - Exclusions: what team will not deliver.
     - Assumptions: believed to be true.
     - Constraints: what has to be worked around and could delay project(weather, laws, budget, time).
+- **Planning Functional vs Non-Functional Requirements**
+  - Usability: non-functional. is solution user friendly.
+  - Compliance: non-functional. comply with regulations.
+  - Features: functional. what deliverable does.
+  - Implementation: functional. how it works.
 - **Planning: Requirements**
   - description of what makes the project a success.
   - can be part of scope statement or separate document.
@@ -1175,12 +1204,11 @@
   - Subscription: flat fee for service.
 - **Purchasing: RFI, RFP, RFB, RFQ, SOW, SLA, PO, TOR, Non-Disclosure, Warranty**
 
-  - Request for Information (RFI): planning. request specific information about capabilities, and experience of vendors. Used to qualify and shortlist vendors.
-  - Request for Proposal (RFP): when you clearly understand your needs, solicit multiple vendors proposed solution to your problem.
+  - Request for Information (RFI): planning. **learn more** about **solutions** vendor offers. Qualify and shortlist vendors.
+  - Request for Proposal (RFP): when you clearly understand your needs, solicit **multiple vendors** proposed **solutions** to your problem.S
     - vendors return their qualifications, approach, methodology, pricing.
-  - Request for Bid (RFB): competitive bids for a **well-defined project** with specific requirements.
-    - looking for lowest qualified bidder who meets your specifications.
-  - Request for Quote (RFQ): pricing quotes for clearly defined goods or services.
+  - Request for Bid (RFB): solicit **proposals** while vendors **compete** on **price**. competitive bids for a **well-defined project** with specific requirements.
+  - Request for Quote (RFQ): formal document requesting **pricing quotes** for **clearly defined goods** or services.
   - Statement of Work: formal document that outlines the work a vendor needs to deliver. (work activities, timeframes, milestones, pricing).
   - Service Level Agreement (SLA): service contract that specifies performance expectations and consequences.
   - Purchase Order: request for specific goods or services.
@@ -1629,8 +1657,9 @@
 - **Project Resource, Human, Physical, Capital Resources**
   - Project Resource: any useful material, object or person.
   - Human: people.
-  - Physical: anything but people and money.
+  - Physical: anything but people and money(including equipment, office supplies, buildings, and other assets).
   - Capital: money.
+  - Procured: external resources. Part of procurement plan(Find and manage suitable vendors).
 - **Internal vs External, Shared vs Dedicated**
   - Internal: inside the company.
   - External: outside the company.
@@ -1654,6 +1683,10 @@
 - **Resource Smoothing and Leveling**
   - Smoothing: shifting schedule around to even out schedule.
   - Leveling: adding more time to timeline.
+- **Resource Management Plan**
+  - Retirement: begins before resource fails. Allows time to prepare.
+  - Maintenance and Improvement: runs simultaneously together. adjusted, reconfigured, training.
+  - Acquisition: company brings resources into the company. Procurement of goods, recruitment and hiring employees.
 
 ## Risk and Transition Planning
 
@@ -1750,6 +1783,17 @@
   - Probability: measure chance of risk occurring.
   - Impact: how risk will effect business.
   - Scenario Analysis: what-if analysis. brainstorming to find new risk.
+- **Risk: SWOT Analysis**
+  - strategic planning tool used to assess a project's internal and external environment.
+  - SWOT analysis is typically conducted during the Planning phase of the project lifecycle.
+  - Strengths/weakneesses are internal, opportunities/threats external to organization.
+    - Strengths: Positive internal factors that give the project an advantage.
+    - Weaknesses: Negative internal factors that hinder the project's success.
+    - Opportunities: External factors that can be leveraged to benefit the project.
+    - Threats: External factors that could negatively impact the project.
+  - It can be applied to various aspects of a project, including resource allocation, risk management, and stakeholder engagement.
+  - Project managers should consider both quantitative and qualitative factors when performing a SWOT analysis.
+  - The results of a SWOT analysis should be documented and communicated to stakeholders.
 - **Contingency Planning**
   - if initial risk plan fails, fallback plan to mitigate risk.
 - **Transition Plan: Operational Training, Go Live, Operational Handoff, Internal and External Audience**
