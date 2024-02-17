@@ -251,7 +251,7 @@
   - ![pareto principle](img/Pareto-Chart_Example.png)
 - **Program Evaluation Review Technique (PERT) Chart**
   - Purpose: estimates project timelines.
-  - Improved planning and scheduling: By visualizing the tasks and their dependencies.
+  - Weighted Average. Improved planning and scheduling: By visualizing the tasks and their dependencies.
   - Risk Identification: show critical path.
   - Nodes: milestones. Checkpoints as team progresses through project.
   - Arrow: show dependency. Task will need to be completed before next task.
@@ -278,9 +278,13 @@
   - visual tool for assessing current state skills of team.
   - find areas that need development.
   - ![skills matrix](img/skills_matrix.PNG)
-- **Velocity Chart**
+- **Throughput Chart**
   - Purpose: measures team output over time.
-  - ex.. How many story points completed per iteration.
+  - number of items completed per iteration.
+  - ![throughput chart](img/Throughput_Run_Chart_Tutorial_Part_4.png)
+- **Velocity Chart**
+  - Purpose: measures team **story points** output over time.
+  - ex.. How many **story points** completed per iteration.
   - ![velocity chart](img/velocity_chart.PNG)
 
 ## Change Control Steps
@@ -350,7 +354,7 @@
 ## Communication Management and Meetings
 
 - **Synchronous Communication**
-  - real-time communication. Face-to-face(in person, phone or videoconference) with all parties.
+  - real-time communication. Face-to-face(in person, phone or video conference) with all parties.
 - **Asynchronous Communication**
   - delay in communication. email, SMS. Leaves documentation notes.
 - **Written Communication**
@@ -374,6 +378,12 @@
   - Meeting face-to-face: most information. body language, facial expressions, voice tone change.
   - Video: blend face-to-face with telephone.
   - Enterprise Social Media: internal communication network.
+- **Communication: Channels, Artifacts, Recipients, Goals**
+  - Ways to communicate ideas.
+  - Channels: best method to communicate: Email, Video, Face-to-Face...
+  - Artifacts: presentations, slides, pictures, documents.
+  - Recipients: who will receive communication.
+  - Goals: define purpose of communication.
 - **Target Audience**
   - who needs to be at the meeting.
 - **Facilitator**
@@ -1372,7 +1382,8 @@
   - Minimum viable product: early version of product. Quick to get feedback.
   - MVP looks at the feature list and defines the bare minimum requirements for testing a product.
 - **Requirements Traceability Matrix (RTM)**
-  - document that links project requirements and the deliverables. maps how well project meets initial goal.
+  - document that links **project requirements** and the deliverables. maps how well project meets initial goal.
+  - impact analysis.
   - Tracks how design documents, test cases, and deliverables align with specific requirements.
   - Demonstrates that all requirements are addressed and tested.
   - Provides a audit trail to show compliance and manage changes.
@@ -1793,10 +1804,12 @@
   - Enhance: increase positive effect of risk.
   - Exploit: take steps to guarantee event will happen.
   - Share: find others who would benefit.
-- **Quantitative Simulation, Risk Interconnectivity and Detectability**
+- **Quantitative Simulation, Risk Interconnectivity, Detectability, Quality Escape, Quality Audit**
   - Quantitative Simulation: predicts risk from input data.
   - Interconnectivity: how risk will effect more than one single event.
   - Detectability: how quick risk is identified if it were to occur.
+  - Quality Escape: unacceptable deviation or defect not detected.
+  - Quality Audit: test functionality and document defects.
 - **Risk Impact Analysis**
   - identify and assess the potential consequences of various events or changes on a project.
   - proactively evaluating potential impacts, project managers can make informed decisions, mitigate risks, and ensure project success.
