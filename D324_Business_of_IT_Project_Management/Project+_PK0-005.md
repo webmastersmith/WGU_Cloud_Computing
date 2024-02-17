@@ -234,20 +234,16 @@
   - Purpose: focus on project planning and execution.
   - compares relationship and dependencies between task.
   - ![Gantt chart](img/gantt.png)
+- **Histogram**
+  - Purpose: shows data distribution.
+  - Monitor process over time. Shows varying frequency.
+  - ![histogram](img/Histogram.jpg)
 - **Milestone or Timeline Chart**
   - Purpose: focus on project planning and execution.
   - Timeline chart of project milestones.
   - ![milestone chart](img/Milestone-Chart.png)
   - Milestone chart
   - ![milestone2 chart](img/milestone2.PNG)
-- **Project Organizational Chart**
-  - Purpose: focus on project planning and execution.
-  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
-  - ![organizational chart](img/organizational_chart.PNG)
-- **Histogram**
-  - Purpose: shows data distribution.
-  - Monitor process over time. Shows varying frequency.
-  - ![histogram](img/Histogram.jpg)
 - **Pareto Chart**
   - Purpose: quickly identify the most significant areas to focus on for improvement.
   - 80/20 rule. 80% problems solved with 20% cause.
@@ -266,6 +262,10 @@
   - Purpose: shows project dependencies(sequence).
   - visual model of the project schedule that shows sequence of activities and the dependencies.
   - ![project network diagram](img/project_network_diagram.jpg)
+- **Project Organizational Chart**
+  - Purpose: focus on project planning and execution.
+  - Project Organizational Chart: once you know project scope, the organizational chart helps to pick your team members.
+  - ![organizational chart](img/organizational_chart.PNG)
 - **Run Chart**
   - Purpose: tracks data over time.
   - time or sequence on the horizontal axis. Corresponding data is measured on the vertical axis.
@@ -274,6 +274,10 @@
   - Purpose: identify relationships between variables.
   - helps with root cause analysis.
   - ![scatter diagram](img/scatter_diagram.png)
+- **Skills Matrix**
+  - visual tool for assessing current state skills of team.
+  - find areas that need development.
+  - ![skills matrix](img/skills_matrix.PNG)
 - **Velocity Chart**
   - Purpose: measures team output over time.
   - ex.. How many story points completed per iteration.
@@ -1197,11 +1201,15 @@
     - ![budget reserves](img/budget.PNG)
   - Document: document each estimate for future review.
   - Update: update budget when changes occur.
-- **Purchasing: Build, Buy, Lease, Subscription**
+- **Purchasing: Build, Buy, Lease, Subscription, Capacity, Reference, Value, Cost-Benefit**
   - Build: you create it in-house.
   - Buy: third party purchase.
   - Lease: fixed-term contract.
   - Subscription: flat fee for service.
+  - Capacity: can vendor supply the demand.
+  - Reference: talk to other vendor clients about vendor reputation.
+  - Value: most value at reasonable cost.
+  - Cost-Benefit: cost vs benefit analysis.
 - **Purchasing: RFI, RFP, RFB, RFQ, SOW, SLA, PO, TOR, Non-Disclosure, Warranty**
 
   - Request for Information (RFI): planning. **learn more** about **solutions** vendor offers. Qualify and shortlist vendors.
@@ -1469,7 +1477,8 @@
 - **Closing Phase**
   - project closeout. contracts closed, team members released.
   - Project teams can use **organizational change management (OCM)** to reduce the strain caused by change.
-  - validate deliverables, document acceptance of project work.
+  - transfer of deliverables occurs after validation of deliverables.
+  - all stakeholders have validated deliverables, document acceptance of project work.
     - Project Sign-off: formal written sign-off from project sponsor.
     - Transfer Product: pass operations testing and final customer.
     - Releasing resources: team members. Removing access.
@@ -1511,6 +1520,11 @@
   - Remove Access: unnecessary access. keys, badges, logins.
   - Release Resources: formally acknowledge end of project. Notify all involved.
   - Archive Documentation: project documentation(notes, recordings, documents, contracts).
+- **Closeout Summary**
+  - Performance analysis: summarize project scope, schedule, budget.
+  - Financial summary: cost baseline and reserve usage.
+  - Transition summary: how project affected company operations, who operation owners are.
+  - Lessons learned summary: lessons learned from every phase, retrospective, closure meeting.
 
 ## Project Management Documents
 
@@ -1629,17 +1643,19 @@
   - Lessons Learned: reflect how change can improve product quality.
   - Inspection: examine finished product.
   - Audit: review processes for quality assurance issues.
-- **QA Plan Contents and Questions**:
+- **QA: Assurance, Control, Standards, Objectives, Roles and Responsibilities, Deliverables and Approach**:
+  - Quality Assurance: encompasses quality control/standards/objectives. Quality processes and procedures.
+  - Quality Control: inspecting finished work.
   - Quality Standards: document any industry or regulatory standards that apply to the project, such as health codes.
   - Quality Objectives: create a list of measurable quality targets. The project will have multiple quality metrics, such as on-time delivery and the number of defects.
   - Roles and Responsibilities: identify the people responsible for managing the program, adhering to standards, and evaluating products against the standards.
   - Deliverables and Approach: identify all deliverables and processes subject to QA activities. Then, list the necessary QC activities, standards, and when they will occur for each deliverable or process.
-  - **QA Plan Questions**:
-    - how to prevent risk from escaping?
-    - how verify meet expectations?
-    - how prevent defects?
-    - how to recognize and improve process?
-    - how to handle defects from customer?
+- **QA Plan Questions**:
+  - how to prevent risk from escaping?
+  - how verify meet expectations?
+  - how prevent defects?
+  - how to recognize and improve process?
+  - how to handle defects from customer?
 - **QA: Creating a Test Plan**
   - document that describes how a project will verify that the project’s outputs meet the expected quality.
 - **QA: Testing, Automated, Unit, Regression, Smoke, UAT, Performance, Stress, Integration**
@@ -1789,9 +1805,9 @@
   - Impact: how risk will effect business.
   - Scenario Analysis: what-if analysis. brainstorming to find new risk.
 - **Risk: SWOT Analysis**
+  - Strengths/weakneesses are internal, opportunities/threats external to organization.
   - strategic planning tool used to assess a project's internal and external environment.
   - SWOT analysis is typically conducted during the Planning phase of the project lifecycle.
-  - Strengths/weakneesses are internal, opportunities/threats external to organization.
     - Strengths: Positive internal factors that give the project an advantage.
     - Weaknesses: Negative internal factors that hinder the project's success.
     - Opportunities: External factors that can be leveraged to benefit the project.
@@ -1799,8 +1815,12 @@
   - It can be applied to various aspects of a project, including resource allocation, risk management, and stakeholder engagement.
   - Project managers should consider both quantitative and qualitative factors when performing a SWOT analysis.
   - The results of a SWOT analysis should be documented and communicated to stakeholders.
-- **Contingency Planning**
-  - if initial risk plan fails, fallback plan to mitigate risk.
+- **Contingency Planning: Management Reserve, Resource Cost, Expected Monetary Value, Contingency Reserve**
+  - Contingency: if initial risk plan fails, fallback plan to mitigate risk.
+  - Contingency Reserve: calculated buffer of time and budget to cover documented risk.
+  - Management Reserve: additional sum of time/money that covers 'unknown unknowns'
+  - Expected Monetary Value: each risks probability and impact assessment.
+  - Resource Cost: all resource will incur expense.
 - **Transition Plan: Operational Training, Go Live, Operational Handoff, Internal and External Audience**
   - Transition Plan: project is transferred within organization to functional group or outside organization.
   - Operational Training: education to use, maintain, product long term.
@@ -2080,7 +2100,11 @@ Close Out the Schedule:
   - **Creation Process**:
     - Determine Scope: review Statement of Work (SOW), Business 'WHAT', Function/Non-Functional requirements.
     - Each WBS Level: brief description, resources, cost, time.
-      - WBS Level 1: Project (totality of entire project)
+    - Level: main label. Top level of section.
+    - Element: each sub-section. The label.
+    - Leg: group of elements with a shared ancestor.
+    - Work Package: where cost and time can be calculated. element without a child element.
+    - ![wbs labels](img/wbs3.jpg)
     - Identify deliverables, team members, resources.
       - WBS Level 2: Main catagories. Breaks down the project into major deliverables or phases.
       - WBS Level 3: Further breaks down each deliverable/phase into smaller sub-deliverables/sub-phases.
