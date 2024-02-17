@@ -850,11 +850,11 @@
   - Danger lies with relying on single technique to make selection.
 - **Extended Team Member**
   - work part time on multiple projects.
-- **Key Performance Indicator (KPI)**
-  - operational metrics, that measures only the most crucial project points.
-- **Key Performance Indicator (KPI): Lagging and Leading Indicators**
+- **Key Performance Indicator (KPI): Lagging and Leading Indicators, SMART**
+  - KPI: key metrics to estimate overall health. Measures only the most crucial project points.
   - Lagging: captured only after work is done.
   - Leading: predictive measures.
+  - SMART: specific, measurable, achievable, relevant, time-bound. realistic goals that can be achieved.
 - **Milestone and Sprint Goals**
   - Milestone:
     - critical checkpoint in a project. Date dependant event.
@@ -1205,7 +1205,7 @@
 - **Purchasing: RFI, RFP, RFB, RFQ, SOW, SLA, PO, TOR, Non-Disclosure, Warranty**
 
   - Request for Information (RFI): planning. **learn more** about **solutions** vendor offers. Qualify and shortlist vendors.
-  - Request for Proposal (RFP): when you clearly understand your needs, solicit **multiple vendors** proposed **solutions** to your problem.S
+  - Request for Proposal (RFP): when you clearly understand your needs, solicit **multiple vendors proposed solutions**.
     - vendors return their qualifications, approach, methodology, pricing.
   - Request for Bid (RFB): solicit **proposals** while vendors **compete** on **price**. competitive bids for a **well-defined project** with specific requirements.
   - Request for Quote (RFQ): formal document requesting **pricing quotes** for **clearly defined goods** or services.
@@ -1687,6 +1687,11 @@
   - Retirement: begins before resource fails. Allows time to prepare.
   - Maintenance and Improvement: runs simultaneously together. adjusted, reconfigured, training.
   - Acquisition: company brings resources into the company. Procurement of goods, recruitment and hiring employees.
+- **Resource Procurement**
+  - Build: create solution in house.
+  - Buy: third party purchase.
+  - Lease: fixed-term contract. Initial fee and recurring payments.
+  - Subscribe: all-inclusive rental model for flat fee and set duration.
 
 ## Risk and Transition Planning
 
