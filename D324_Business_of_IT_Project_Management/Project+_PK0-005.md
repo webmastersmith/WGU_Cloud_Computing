@@ -345,7 +345,7 @@
   - Documentation: allows maintenance team maintain deliverable over time.
   - Ensure Adoption: must make concerted effort to promote user adoption. Extra support for new adopters.
   - Reinforce Adoption Over Time: create plan to sustain adoption. Communication is key.
-- **Change Control Orders**
+- **Change Control: Scope, Product Change, Team Improvement, Strategic Change**
   - Scope: project is over/under delivering(timeline, budget). Brings back into alignment with project management plan.
   - Product Change: product is finished, but new features or changes are wanted.
   - Team Improvement: phase gate, lessons learned. Team keeps improving systems and processes.
@@ -1204,6 +1204,10 @@
 - **Escalation Plan**
   - formed in phase 1, Initiating(sponsor). Further refined in planning phase(key stakeholders).
   - artifact that outlines when event should be escalated and to whom.
+  - when issues arise and require prompt attention beyond the immediate team's capacity.
+  - Purpose: defines a structured process for addressing and resolving **issues, risks, or roadblocks** encountered during a project.
+  - Trigger: Activated when a situation arises that exceeds the authority level of the project team.
+  - Change Order vs Escalation Plan: Change order focuses on changing project scope, escalation plan focuses on project risk/issues/roadblocks.
   - ![escalation plan](img/Escalation-Matrix.webp)
 - **Budget: Manage Reserves, Documentation, Update**
   - Budget: summary of all resource cost.
