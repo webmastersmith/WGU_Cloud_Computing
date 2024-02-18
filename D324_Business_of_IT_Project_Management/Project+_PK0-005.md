@@ -286,6 +286,11 @@
   - Purpose: measures team **story points** output over time.
   - ex.. How many **story points** completed per iteration.
   - ![velocity chart](img/velocity_chart.PNG)
+  - **Velocity Burndown Chart**
+  - ![sprint velocity chart](img/sprint_burndown.png)
+  1. Estimation statistic: The vertical axis represents total story points in project.
+  2. Remaining values: The red line represents the **total amount of work left** in the sprint.
+  3. Guideline: The grey line shows an approximation of **where your team should be**, assuming linear progress. If the red line is below this line, your ahead of schedule.
 
 ## Change Control Steps
 
