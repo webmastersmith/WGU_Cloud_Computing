@@ -1,0 +1,306 @@
+# D426 Database Management Foundations Terms
+
+## 1. Introduction to Databases
+
+- **Data**
+  - Data is numeric, textual, visual, or audio information that describes real-world systems.
+- **analog**
+  - Historically, data was mostly analog, encoded as continuous variations on various physical media.
+- **digital**
+  - Today, data is mostly digital, encoded as zeros and ones on electronic and magnetic media.
+- **database**
+  - A database is a collection of data in a structured format. In principle, databases can be stored on paper or even clay tablets. In practice, however, modern databases are invariably stored on computers.
+- **database system / database management system / DBMS**
+  - A database system, also known as a database management system or DBMS, is software that reads and writes data in a database. Database systems ensure data is secure, internally consistent, and available at all times. These functions are challenging for large databases with many users, so database systems are complex.
+- **query language**
+  - A query language is a specialized programming language, designed specifically for database systems.
+- **database application**
+  - A database application is software that helps business users interact with database systems.
+- **database administrator**
+  - A database administrator is responsible for securing the database system against unauthorized users. A database administrator enforces procedures for user access and database system availability.
+- **database designer**
+  - A database designer determines the format of each data element and the overall database structure. Database designers must balance several priorities, including storage, response time, and support for rules that govern the data. Since these priorities often conflict, database design is technically challenging.
+- **database programmer**
+  - A database programmer develops computer programs that utilize a database.
+- **database user**
+  - A database user is a consumer of data in a database. Database users request, update, or use stored data to generate reports or information. Database users usually access the database via applications but can also submit queries directly to the database system.
+- **transaction**
+  - A transaction is a group of queries that must be either completed or rejected as a whole. Execution of some, but not all, queries results in inconsistent or incorrect data.
+- **architecture**
+  - The architecture of a database system describes the internal components and the relationships between components.
+- **query processor**
+  - The query processor interprets queries, creates a plan to modify the database or retrieve data, and returns query results to the application.
+- **query optimization**
+  - The query processor performs query optimization to ensure the most efficient instructions are executed on the data.
+- **storage manager**
+  - The storage manager translates the query processor instructions into low-level file-system commands that modify or retrieve data.
+- **indexes**
+  - The storage manager uses indexes to quickly locate data.
+- **transaction manager**
+  - The transaction manager ensures transactions are properly executed.
+- **log**
+  - The log is a file containing a complete record of all inserts, updates, and deletes processed by the database.
+- **catalog / data dictionary**
+  - The catalog, also known as a data dictionary, is a directory of tables, columns, indexes, and other database objects.
+- **relational database**
+  - A relational database stores data in tables, columns, and rows, similar to a spreadsheet.
+- **SQL**
+  - SQL stands for Structured Query Language and includes statements that read and write data, create and delete tables, and administer the database system.
+- **big data**
+  - The growth of the internet in the 1990s generated massive volumes of online data, called big data, often with poorly structured or missing information.
+- **NoSQL**
+  - The newer non-relational systems are called NoSQL, for 'not only SQL', and are optimized for big data.
+- **Open source**
+  - Open source software is software that anyone can inspect, copy, and modify with no licensing fee.
+- **query**
+  - A query is a command for a database that typically inserts new data, retrieves data, updates data, or deletes data from a database.
+- **query language**
+  - A query language is a computer programming language for writing database queries.
+- **CRUD**
+  - The four common queries are sometimes referred to as CRUD operations, an acronym for Create, Read, Update, and Delete data.
+- **Structured Query Language / SQL**
+  - Structured Query Language, or SQL, is the standard query language of relational database systems.
+- **statement**
+  - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data: .
+- **INSERT**
+  - INSERT inserts rows into a table.
+- **SELECT**
+  - SELECT retrieves data from a table.
+- **UPDATE**
+  - UPDATE modifies data in a table.
+- **DELETE**
+  - DELETE deletes rows from a table.
+- **CREATE TABLE**
+  - The SQL CREATE TABLE statement creates a new table by specifying the table and column names.
+- **data type**
+  - Each column is assigned a data type that indicates the format of column values. Data types can be numeric, textual, or complex.
+- **database design**
+  - A database design is a specification of database objects such as tables, columns, data types, and indexes. Database design also refers to the process used to develop the specification.
+- **analysis**
+  - The analysis phase specifies database requirements without regard to a specific database system.
+- **ER diagrams**
+  - Entities, relationships, and attributes are depicted in ER diagrams: .
+- **logical design**
+  - The logical design phase implements database requirements in a specific database system.
+- **key**
+  - A key is a column used to identify individual rows of a table.
+- **table diagram**
+  - The logical design is depicted in a table diagram.
+- **schema**
+  - The logical design, as specified in SQL and depicted in a table diagram, is called a database schema.
+- **physical design**
+  - The physical design phase adds indexes and specifies how tables are organized on storage media.
+- **data independence**
+  - The principle that physical design never affects query results is called data independence.
+- **application programming interface / API**
+  - An application programming interface, or API, is a library of procedures or classes that links a host programming language to a database.
+- **MySQL**
+  - MySQL is a leading relational database system sponsored by Oracle.
+- **MySQL Community / MySQL Server**
+  - MySQL Community, commonly called MySQL Server, is a free edition.
+- **MySQL Enterprise**
+  - MySQL Enterprise is a paid edition for managing commercial databases. MySQL Enterprise includes MySQL Server and additional administrative applications.
+- **root account**
+  - The root account, the administrative account that has full control of MySQL.
+- **MySQL Command-Line Client**
+  - The MySQL Command-Line Client is a text interface included in the MySQL Server download. The Command-Line Client allows developers to connect to the database server, perform administrative functions, and execute SQL statements.
+- **error code**
+  - MySQL Server returns an error code and description when an SQL statement is syntactically incorrect or the database cannot execute the statement.
+- **MySQL Workbench**
+  - MySQL Workbench is installed with MySQL Server and allows developers to execute SQL commands using an editor.
+
+## 2. Relational Databases
+
+- **database model**
+  - A database model is a conceptual framework for database systems, with three parts:\n - **Data structures** that prescribe how data is organized.\n - **Operations** that manipulate data structures.\n - **Rules** that govern valid data.
+- **relational model**
+  - The relational model is a database model based on a tabular data structure. The model was published in 1970 by E. F. Codd of IBM and released in commercial products around 1980. The data structure, operations, and rules are standardized in SQL, the universal query language of relational databases.
+- **big data**
+  - The rise of the internet in the 1990s generated big data, characterized by unprecedented data volumes and rapidly changing data structures.
+- **set**
+  - A set is an unordered collection of elements enclosed in braces.
+- **tuple**
+  - A tuple is an ordered collection of elements enclosed in parentheses.
+- **table**
+  - A table has a name, a fixed tuple of columns, and a varying set of rows.
+- **column**
+  - A column has a name and a data type.
+- **row**
+  - A row is an unnamed tuple of values. Each value corresponds to a column and belongs to the column's data type.
+- **data type**
+  - A data type is a named set of values, from which column values are drawn.
+- **relational algebra**
+  - These operations are collectively called relational algebra and are the theoretical foundation of the SQL language.
+- **Relational rules**
+  - Relational rules are part of the relational model and govern data in every relational database.
+- **Business rules**
+  - Business rules are based on business policy and specific to a particular database.
+- **constraints**
+  - Relational rules are implemented as SQL constraints and enforced by the database system.
+- **Structured Query Language / SQL**
+  - Structured Query Language (SQL) is a high-level computer language for storing, manipulating, and retrieving data.
+- **statement**
+  - An SQL statement is a complete command composed of one or more clauses.
+- **clause**
+  - A clause groups SQL keywords like SELECT, FROM, and WHERE with table names like City, column names like Name, and conditions like Population > 100000.
+- **Data Definition Language**
+  - Data Definition Language (DDL) defines the structure of the database.
+- **Data Query Language**
+  - Data Query Language (DQL) retrieves data from the database.
+- **Data Manipulation Language**
+  - Data Manipulation Language (DML) manipulates data stored in a database.
+- **Data Control Language**
+  - Data Control Language (DCL) controls database user access.
+- **Data Transaction Language**
+  - Data Transaction Language (DTL) manages database transactions.
+- **database system instance**
+  - A database system instance is a single executing copy of a database system. Personal computers usually run just one instance of a database system. Shared computers, such as computers used for cloud services, usually run multiple instances of a database system.
+- **CREATE DATABASE DatabaseName**
+  - CREATE DATABASE DatabaseName creates a new database.
+- **DROP DATABASE DatabaseName**
+  - DROP DATABASE DatabaseName deletes a database, including all tables in the database.
+- **USE DatabaseName**
+  - USE DatabaseName selects a default database for use in subsequent SQL statements.
+- **SHOW DATABASES**
+  - SHOW DATABASES lists all databases in the database system instance.
+- **SHOW TABLES**
+  - SHOW TABLES lists all tables in the default database.
+- **SHOW COLUMNS FROM TableName**
+  - SHOW COLUMNS FROM TableName lists all columns in the TableName table of the default database.
+- **SHOW CREATE TABLE TableName**
+  - SHOW CREATE TABLE TableName shows the CREATE TABLE statement for the TableName table of the default database.
+- **table**
+  - A table has a name, a fixed sequence of columns, and a varying set of rows.
+- **column**
+  - A column has a name and a data type.
+- **row**
+  - A row is an unnamed sequence of values. Each value corresponds to a column and belongs to the column's data type.
+- **cell**
+  - A cell is a single column of a single row.
+- **empty table**
+  - A table without rows is called an empty table.
+- **data independence**
+  - Rule 4 is called data independence.
+- **CREATE TABLE**
+  - The CREATE TABLE statement creates a new table by specifying the table name, column names, and column data types.
+- **DROP TABLE**
+  - The DROP TABLE statement deletes a table, along with all the table's rows, from a database.
+- **ALTER TABLE**
+  - The ALTER TABLE statement adds, deletes, or modifies columns on an existing table.
+- **data type**
+  - A data type is a named set of values from which column values are drawn.
+- **Integer**
+  - Integer data types represent positive and negative integers.
+- **Decimal**
+  - Decimal data types represent numbers with fractional values.
+- **Character**
+  - Character data types represent textual characters.
+- **Date and time**
+  - Date and time data types represent date, time, or both. Some date and time data types include a time zone or specify a time interval.
+- **Binary**
+  - Binary data types store data exactly as the data appears in memory or computer files, bit for bit.
+- **Spatial**
+  - Spatial data types store geometric information, such as lines, polygons, and map coordinates.
+- **Document**
+  - Document data types contain textual data in a structured format such as XML or JSON.
+- **signed**
+  - A signed number may be negative.
+- **unsigned**
+  - An unsigned number cannot be negative.
+- **operator / operands**
+  - An operator is a symbol that computes a value from one or more other values, called operands:
+    - **Arithmetic operators** compute numeric values from numeric operands.
+    - **Comparison operators** compute logical values TRUE or FALSE. Operands may be numeric, character, and other data types.
+    - **Logical operators** compute logical values from logical operands.
+- **unary**
+  - A unary operator has one operand.
+- **binary**
+  - A binary operator has two operands.
+- **expression**
+  - An expression is a string of operators, operands, and parentheses that evaluates to a single value. Operands may be column names or fixed values. The value of an expression may be any data type.
+- **operator precedence**
+  - Operators in an expression are evaluated in the order of operator precedence, shown in the table below. Operators of the same precedence are evaluated from left to right. Regardless of operator precedence, expressions enclosed in parentheses are evaluated before any operators outside the parentheses are applied.
+- **SELECT / FROM**
+  - The SELECT statement selects rows from a table. The statement has a SELECT clause and a FROM clause. The FROM clause specifies the table from which rows are selected. The SELECT clause specifies one or more expressions, separated by commas, that determine what values are returned for each row.
+- **result table**
+  - The SELECT statement returns a set of rows, called the result table.
+- **LIMIT**
+  - MySQL has a LIMIT clause that limits the number of rows returned by a SELECT statement.
+- **condition**
+  - A condition is an expression that evaluates to a logical value.
+- **WHERE**
+  - A SELECT statement has an optional WHERE clause that specifies a condition for selecting rows. A row is selected when the condition is TRUE for the row values. A row is omitted when the condition is either FALSE or NULL.
+- **NULL**
+  - NULL is a special value that represents either unknown or inapplicable data.
+- **NOT NULL**
+  - The NOT NULL constraint prevents a column from having a NULL value. Statements that insert NULL, or update a value to NULL, are automatically rejected. NOT NULL follows the column name and data type in a CREATE TABLE statement.
+- **IS NULL / IS NOT NULL**
+  - Instead, the IS NULL and IS NOT NULL operators must be used to select NULL values. Value IS NULL returns TRUE when the value is NULL. Value IS NOT NULL returns TRUE when the value is not NULL.
+- **truth tables**
+  - The value of logical expressions containing NULL operands is defined in truth tables.
+- **INSERT**
+  - The INSERT statement adds rows to a table.
+- **INSERT INTO**
+  - The INSERT INTO clause names the table and columns where data is to be added. The keyword INTO is optional.
+- **VALUES**
+  - The VALUES clause specifies the column values to be added.
+- **DEFAULT**
+  - The optional DEFAULT keyword and default value follow the column name and data type in a CREATE TABLE statement. The column is assigned the default value, rather than NULL, when omitted from an INSERT statement.
+- **UPDATE**
+  - The UPDATE statement modifies existing rows in a table.
+- **SET**
+  - The UPDATE statement uses the SET clause to specify the new column values.
+- **DELETE**
+  - The DELETE statement deletes existing rows in a table.
+- **FROM**
+  - The FROM keyword is followed by the table name whose rows are to be deleted.
+- **TRUNCATE**
+  - The TRUNCATE statement deletes all rows from a table.
+- **primary key**
+  - A primary key is a column, or group of columns, used to identify a row.
+- **simple primary key**
+  - A simple primary key consists of a single column.
+- **composite primary key**
+  - A composite primary key consists of multiple columns.
+- **Minimal**
+  - Minimal. All primary key columns are necessary for uniqueness. When any column is removed, the resulting simple or composite column is no longer unique.
+- **PRIMARY KEY**
+  - The PRIMARY KEY constraint in a CREATE TABLE statement names the table's primary key. The PRIMARY KEY constraint ensures that a column or group of columns is always unique and non-null.
+- **auto-increment column**
+  - An auto-increment column is a numeric column that is assigned an automatically incrementing value when a new row is inserted.
+- **AUTO_INCREMENT**
+  - The AUTO_INCREMENT keyword defines an auto-increment column. AUTO_INCREMENT follows the column's data type in a CREATE TABLE statement.
+- **foreign key**
+  - A foreign key is a column, or group of columns, that refer to a primary key.
+- **Referential integrity**
+  - Referential integrity requires foreign key values must either be NULL or match some value of the referenced primary key.
+- **FOREIGN KEY / REFERENCES**
+  - A foreign key constraint is added to a CREATE TABLE statement with the FOREIGN KEY and REFERENCES keywords.
+- **fully NULL**
+  - A fully NULL foreign key is a simple or composite foreign key in which all columns are NULL.
+- **Referential integrity**
+  - Referential integrity is a relational rule that requires foreign key values are either fully NULL or match some primary key value.
+- **RESTRICT**
+  - RESTRICT rejects an insert, update, or delete that violates referential integrity.
+- **SET NULL**
+  - SET NULL sets invalid foreign keys to NULL.
+- **SET DEFAULT**
+  - SET DEFAULT sets invalid foreign keys to the foreign key default value.
+- **CASCADE**
+  - CASCADE propagates primary key changes to foreign keys.
+- **ON UPDATE / ON DELETE**
+  - Actions are specified in the optional ON UPDATE and ON DELETE clauses of the FOREIGN KEY constraint. ON UPDATE and ON DELETE are followed by either RESTRICT, SET NULL, SET DEFAULT, or CASCADE.
+- **constraint**
+  - A constraint is a rule that governs allowable values in a database. Constraints are based on relational and business rules, and implemented with special keywords in a CREATE TABLE statement. The database automatically rejects insert, update, and delete statements that violate a constraint.
+- **column constraint**
+  - A column constraint appears after the column name and data type in a CREATE TABLE statement. Column constraints govern values in a single column.
+- **table constraint**
+  - A table constraint appears in a separate clause of a CREATE TABLE statement and governs values in one or more columns.
+- **UNIQUE**
+  - The UNIQUE constraint ensures that values in a column, or group of columns, are unique.
+- **CHECK**
+  - The CHECK constraint specifies an expression on one or more columns of a table. The constraint is violated when the expression is FALSE and satisfied when the expression is either TRUE or NULL.
+- **CONSTRAINT**
+  - Table constraints may be named using the optional CONSTRAINT keyword, followed by the constraint name and declaration
+
+## 3. Complex Queries

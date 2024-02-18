@@ -8,6 +8,11 @@
 - <https://quizlet.com/875102425/d426-data-management-foundations-zybook-terms-definitions-flash-cards/?i=5fcyeb&x=1qqt>
 - <https://www.reddit.com/r/WGU/comments/13kp9hn/d426_v2_data_management_foundations_here_is_how_i/>
 
+## Videos
+
+- <https://www.youtube.com/watch?v=GFQaEYEc8_8>
+- <https://www.youtube.com/watch?v=8wUUMOKAK-c>
+
 My first OA had several questions about SQL Sublanguages and what each do, the second had none.
 
 -My first OA had several questions about Data Normalization and Normal Forms/Boyce Codd, My second had none.
@@ -51,4 +56,3 @@ Additionally, I have attached a SQL Cheatsheet I have been using for awhile, it 
 ## Database Management Video
 
 - Business Concept: anything you need to track for business. ex.. Employee name, Phone, Department...
--
