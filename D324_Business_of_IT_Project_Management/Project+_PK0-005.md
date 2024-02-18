@@ -1866,84 +1866,20 @@
     - Verifying deliverables against requirements
     - Assisting with testing and validation of products
 - **Project Manager**
-
   - Once the PM has defined tasks, durations, resources, and costs, they need to seek baseline approval from the project stakeholders. This is a formal process that ensures that everyone is on the same page and that there is a clear understanding of the project scope, schedule, budget, and risks.
-  -
-  - **Project Schedule**
-
-    - define project scope: identify key deliverables and objectives.
-    - define units of work: breaking work items into small, estimable pieces. WBS(waterfall) or project backlog(agile).
-    - milestones:
-    - sequence activities: logical order task must be completed in.
-    -
-    - Sequence Activities:
-
-    Determine the logical order in which tasks and activities should be performed. Identify dependencies between different tasks.
-
-    - Estimate Resource Requirements:
-
-    Determine the resources (human, material, equipment) required for each task. Consider the availability and skills of team members.
-
-Estimate Task Durations:
-
-    Estimate the time needed to complete each task. Use historical data, expert judgment, or other estimation techniques.
-
-Develop a Gantt Chart:
-
-    Create a Gantt chart to visually represent the project schedule. This chart shows tasks, durations, dependencies, and timelines.
-
-Allocate Resources:
-
-    Assign resources to specific tasks based on their availability, skills, and the project requirements.
-
-Identify Critical Path:
-
-    Determine the critical path, which is the sequence of tasks that, if delayed, would affect the project's overall duration.
-
-Consider Contingency:
-
-    Include contingency time for unexpected delays or issues. This helps manage project risks and uncertainties.
-
-Adjust Based on Constraints:
-
-    Consider any constraints such as budget limitations, resource constraints, or regulatory requirements when finalizing the schedule.
-
-Review and Get Approval:
-
-    Review the project schedule with stakeholders and obtain their approval. Ensure alignment with project objectives.
-
-Communicate the Schedule:
-
-    Clearly communicate the finalized schedule to all project team members. Ensure everyone understands their roles and responsibilities.
-
-Monitor and Control:
-
-    Continuously monitor the project schedule throughout the project lifecycle. Make adjustments as needed to accommodate changes or unforeseen circumstances.
-
-Document Changes:
-
-    Document any changes to the schedule and ensure that stakeholders are informed. Use a change control process to manage modifications.
-
-Close Out the Schedule:
-
-    Once the project is completed, analyze the schedule's performance and document lessons learned for future projects.
-    -
-
-- create project schedule: define task, WBS(task duration, phases, sequence, CPM), validate constraints,
--
-- runs day-to-day management of teams in any framework as long as the project is active.
-- explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
-- keeps project sponsor notified of status, conflicts and risk.
-- responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
-- completes project goals to stakeholder/company satisfaction.
-- Responsibilities:
-  - Building the project team and securing resources
-  - Building the project charter and defining the project’s scope
-  - Creating required project logs and processes, including the issue log, change log, and risk register
-  - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
-  - Preparing and delivering project status updates
-  - Tracking the project’s progress and status when compared to the schedule and budget
-  - Managing vendor relationships
+  - runs day-to-day management of teams in any framework as long as the project is active.
+  - explains benefits of project to stakeholder. All stakeholders(something to gain or lose) must be sold and sign-off, otherwise project may be blocked.
+  - keeps project sponsor notified of status, conflicts and risk.
+  - responsibilities: **planning, scheduling, documents, progress, risk, fixed time, cost and scope**.
+  - completes project goals to stakeholder/company satisfaction.
+  - Responsibilities:
+    - Building the project team and securing resources
+    - Building the project charter and defining the project’s scope
+    - Creating required project logs and processes, including the issue log, change log, and risk register
+    - Ensuring project deliverables are met which includes making sure team members have the right skills and resources for activity completion on the activity list
+    - Preparing and delivering project status updates
+    - Tracking the project’s progress and status when compared to the schedule and budget
+    - Managing vendor relationships
 - **Stakeholder**
   - Anyone/Organization with vested interest(positive or negative) in the project.
   - **Waterfall**: detailed requirements given to team. No further communication until project completion.
