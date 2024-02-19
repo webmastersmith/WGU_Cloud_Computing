@@ -460,64 +460,252 @@ CREATE TABLE Employee (
 
 - **foreign key**
   - A foreign key is a column, or group of columns, that refer to a primary key.
+  - ![foreign key](img/foreign_key.PNG)
 - **Referential integrity**
   - Referential integrity requires foreign key values must either be NULL or match some value of the referenced primary key.
 - **FOREIGN KEY / REFERENCES**
-  - A foreign key constraint is added to a CREATE TABLE statement with the FOREIGN KEY and REFERENCES keywords.
+  - A foreign key constraint is added to a `CREATE TABLE` statement with the `FOREIGN KEY` and `REFERENCES` keywords.
+  - When a **foreign key constraint** is specified, the **database rejects insert, update, and delete** statements that **violate referential integrity**.
+
+```sql
+CREATE TABLE Department (
+   Code      TINYINT UNSIGNED,
+   Name      VARCHAR(20),
+   ManagerID SMALLINT UNSIGNED,
+   PRIMARY KEY (Code),
+   FOREIGN KEY (ManagerID) REFERENCES Employee(ID)
+);
+```
 
 ## 2.11 Referential integrity
 
 - **fully NULL**
-  - A fully NULL foreign key is a simple or composite foreign key in which all columns are NULL.
+  - A fully NULL foreign key is a simple or composite foreign key in which **all columns** are `NULL`.
 - **Referential integrity**
-  - Referential integrity is a relational rule that requires foreign key values are either fully NULL or match some primary key value.
+  - Referential integrity is a relational rule that requires foreign key values are either fully `NULL` or match some primary key value.
 - **RESTRICT**
-  - RESTRICT rejects an insert, update, or delete that violates referential integrity.
+  - `RESTRICT` rejects an insert, update, or delete that violates referential integrity.
+  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
+  - `CASCADE` applies to **primary key** update and delete only.
+
+```sql
+CREATE TABLE TableName(
+    ID varchar(20),
+    Enrollment INT,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE `RESTRICT`
+    );
+```
+
 - **SET NULL**
-  - SET NULL sets invalid foreign keys to NULL.
+  - `SET NULL` sets invalid foreign keys to NULL.
+  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
+  - `CASCADE` applies to **primary key** update and delete only.
+
+```sql
+CREATE TABLE TableName(
+    ID varchar(20),
+    Enrollment INT,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE SET NULL
+    );
+```
+
 - **SET DEFAULT**
-  - SET DEFAULT sets invalid foreign keys to the foreign key default value.
+  - `SET DEFAULT` sets invalid foreign keys to the foreign key default value.
+  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
+  - `CASCADE` applies to **primary key** update and delete only.
+
+```sql
+CREATE TABLE TableName(
+    ID varchar(20),
+    Enrollment INT DEFAULT 0,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE SET DEFAULT
+    );
+```
+
 - **CASCADE**
-  - CASCADE propagates primary key changes to foreign keys.
+  - `CASCADE` propagates primary key changes to foreign keys.
+  - If a primary key is deleted, rows containing matching foreign keys are deleted. If a primary key is updated, matching foreign keys are updated to the same value.
+  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
+  - `CASCADE` applies to **primary key** update and delete only.
+
+```sql
+CREATE TABLE TableName(
+    ID varchar(20),
+    Enrollment INT,
+    PRIMARY KEY(ID),
+    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name)
+      ON DELETE CASCADE
+      ON UPDATE CASCADE
+    );
+```
+
 - **ON UPDATE / ON DELETE**
   - Actions are specified in the optional ON UPDATE and ON DELETE clauses of the FOREIGN KEY constraint. ON UPDATE and ON DELETE are followed by either RESTRICT, SET NULL, SET DEFAULT, or CASCADE.
 
 ## 2.12 Constraints
 
 - **constraint**
-  - A constraint is a rule that governs allowable values in a database. Constraints are based on relational and business rules, and implemented with special keywords in a CREATE TABLE statement. The database automatically rejects insert, update, and delete statements that violate a constraint.
+  - A constraint is a rule that governs **allowable** values in a database. **Constraints are based on relational and business rules**.
+  - The database automatically rejects insert, update, and delete statements that violate a constraint.
+  - `NOT NULL`
+  - `DEFAULT`
+  - `PRIMARY KEY`
+  - `FOREIGN KEY`
 - **column constraint**
-  - A column constraint appears after the column name and data type in a CREATE TABLE statement. Column constraints govern values in a single column.
+  - A column constraint appears after the column name and data type in a `CREATE TABLE` statement. Column constraints govern values in a single column.
+
+```sql
+CREATE TABLE Employee (
+   ID             INT,
+   Name           VARCHAR(20) NOT NULL, -- NOT NULL, Column Constraint
+   DepartmentCode INT DEFAULT 999,
+   PRIMARY KEY (ID), -- Column or Table Constraint
+   FOREIGN KEY (DepartmentCode) REFERENCES Department (Code) -- Table Constraint
+);
+```
+
 - **table constraint**
-  - A table constraint appears in a separate clause of a CREATE TABLE statement and governs values in one or more columns.
+  - A table constraint appears in a separate clause of a `CREATE TABLE` statement and governs values in one or more columns.
+
+```sql
+CREATE TABLE Employee (
+   ID             INT,
+   Name           VARCHAR(20) NOT NULL, -- NOT NULL, Column Constraint
+   DepartmentCode INT DEFAULT 999,
+   PRIMARY KEY (ID), -- Column or Table Constraint
+   FOREIGN KEY (DepartmentCode) REFERENCES Department (Code) -- Table Constraint
+);
+```
+
 - **UNIQUE**
   - The UNIQUE constraint ensures that values in a column, or group of columns, are unique.
+
+```sql
+CREATE TABLE Employee (
+   ID         SMALLINT UNSIGNED,
+   Name       VARCHAR(60),
+   Extension  CHAR(4),
+   Username   VARCHAR(50) UNIQUE,
+   UNIQUE (Name, Extension),
+   PRIMARY KEY (ID)
+);
+```
+
 - **CHECK**
   - The CHECK constraint specifies an expression on one or more columns of a table. The constraint is violated when the expression is FALSE and satisfied when the expression is either TRUE or NULL.
+
+```sql
+CREATE TABLE Employee (
+   ID        SMALLINT UNSIGNED,
+   Name      VARCHAR(60),
+   BirthDate DATE,
+   HireDate  DATE CHECK (HireDate >= '2000-01-01' AND HireDate <= '2019-12-31'),
+   Size      VARCHAR(6) CHECK (Size IN ('small', 'medium', 'large')),
+   CHECK (BirthDate < HireDate),
+   PRIMARY KEY (ID)
+);
+```
+
 - **CONSTRAINT**
-  - Table constraints may be named using the optional CONSTRAINT keyword, followed by the constraint name and declaration
+  - Table constraints may be **named** using the optional `CONSTRAINT` keyword, followed by the constraint name and declaration
+  - **Adding and dropping constraints**
+    - Constraints are added and dropped with the `ALTER TABLE` TableName followed by an `ADD`, `DROP`, or `CHANGE` clause.
+
+```sql
+CREATE TABLE Employee (
+   ID             INT,
+   Name           VARCHAR(20) NOT NULL,
+   DepartmentCode INT DEFAULT 999,
+  CONSTRAINT EmployeePK PRIMARY KEY (ID),
+  CONSTRAINT EmployeeDepartmentFK FOREIGN KEY (DepartmentCode) REFERENCES Department (Code)
+);
+
+-- Query Statement
+SELECT Column_Name, Constraint_Name
+FROM Employee
+WHERE EmployeePK = 1;
+```
 
 ## 3.1 Special operators and clauses
 
 - **IN**
-  - The IN operator is used in a WHERE clause to determine if a value matches one of several values.
+  - The `IN` operator is used in a `WHERE` clause to determine if a value matches one of several values.
+
+```sql
+SELECT *
+FROM CountryLanguage
+WHERE Language IN ('Dutch', 'Kongo', 'Albanian');
+```
+
 - **BETWEEN**
-  - The BETWEEN operator provides an alternative way to determine if a value is between two other values. The operator is written value BETWEEN minValue AND maxValue and is equivalent to value >= minValue AND value <= maxValue.
+  - The `BETWEEN` operator provides an alternative way to determine if a value is between two other values. The operator is written value `BETWEEN` minValue `AND` maxValue and is equivalent to:
+  - `value >= minValue AND value <= maxValue`.
+
+```sql
+SELECT Name
+FROM Employee
+WHERE HireDate BETWEEN '2000-01-01' AND '2020-01-01';
+```
+
 - **LIKE**
-  - The LIKE operator, when used in a WHERE clause, matches text against a pattern using the two wildcard characters `% and _`.
+  - The LIKE operator, when used in a WHERE clause, matches text against a pattern using the two wildcard characters `%` and `_`.
+  - `%` matches any number of characters. e.g. `LIKE 'L%t'` matches "Lt", "Lot", "Lift", and "Lol cat".
+  - `_` matches exactly one character. e.g. `LIKE 'L_t`' matches "Lot" and "Lit" but not "Lt" and "Loot".
+
+```sql
+SELECT *
+FROM CountryLanguage
+WHERE CountryCode LIKE 'A_W';
+```
+
 - **BINARY**
-  - The LIKE operator performs case-insensitive pattern matching by default or case-sensitive pattern matching if followed by the BINARY keyword.
+  - The `LIKE` operator performs case-insensitive pattern matching by default or case-sensitive pattern matching if followed by the `BINARY` keyword.
 - **DISTINCT**
-  - The DISTINCT clause is used with a SELECT statement to return only unique or 'distinct' values.
+  - The `DISTINCT` clause is used with a `SELECT` statement to return only unique or 'distinct' values.
+
+```sql
+SELECT DISTINCT Language
+FROM CountryLanguage
+WHERE IsOfficial = 'F';
+```
+
 - **ORDER BY**
-  - The ORDER BY clause orders selected rows by one or more columns in ascending (alphabetic or increasing) order.
+  - The `ORDER BY` clause orders selected rows by one or more columns in ascending (alphabetic or increasing) order.
+
+```sql
+SELECT *
+FROM CountryLanguage
+ORDER BY Language DESC;
+```
+
 - **DESC**
-  - The DESC keyword with the ORDER BY clause orders rows in descending order.
+  - The `DESC` keyword with the `ORDER BY` clause orders rows in descending order.
+
+```sql
+SELECT *
+FROM CountryLanguage
+ORDER BY Language DESC;
+```
 
 ## 3.2 Simple functions
 
 - **function / argument**
   - A function operates on an expression enclosed in parentheses, called an argument, and returns a value. Usually, the argument is a simple expression, such as a column name or fixed value. Some functions have several arguments, separated by commas, and a few have no arguments at all.
+- **ABS()**
+  - Returns the absolute value.
+  - `SELECT ABS(-5); -- returns 5`
+- **LOWER()**
+  - returns lowercase.
+  - `SELECT LOWER(MySQL); -- returns mysql`
+- **TRIM()**
+  - removes leading and trailing whitespace.
+  - `SELECT TRIM('   hello   '); -- returns 'hello'`
+- **HOUR(), MINUTE(), SECOND()**
+  - returns hour or minute or second from timestamp.
+  - `SELECT HOUR('22:11:45'); -- returns 22`
 
 ## 3.3 Aggregate functions
 
