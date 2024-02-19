@@ -124,29 +124,44 @@
 ## 2.1 Relational model
 
 - **database model**
-  - A database model is a conceptual framework for database systems, with three parts:\n - **Data structures** that prescribe how data is organized.\n - **Operations** that manipulate data structures.\n - **Rules** that govern valid data.
+  - A database model is a conceptual framework for database systems, with three parts:
+    - **Data structures** that prescribe how data is organized.
+      - data structures form the backbone of efficient and organized information storage.
+      - Each database model relies on specific structures to represent entities, attributes, and relationships, ensuring data integrity and facilitating smooth retrieval and manipulation.
+      - e.g. relational model: primary key, foreign key, data types(INT, STRING...), indexes.
+    - **Operations** that manipulate data structures.
+    - **Rules** that govern valid data.
 - **relational model**
-  - The relational model is a database model based on a tabular data structure. The model was published in 1970 by E. F. Codd of IBM and released in commercial products around 1980. The data structure, operations, and rules are standardized in SQL, the universal query language of relational databases.
+  - The relational model is a database model based on a **tabular data structure**. The model was published in 1970 by E. F. Codd of IBM and released in commercial products around 1980. The data structure, operations, and rules are standardized in **SQL**, the **universal query language of relational databases**.
 - **big data**
   - The rise of the internet in the 1990s generated big data, characterized by unprecedented data volumes and rapidly changing data structures.
 - **set**
-  - A set is an unordered collection of elements enclosed in braces.
+  - A set is an **unordered** collection of elements enclosed in braces.
+  - e.g. {a, b, c} and {c, b, a} are the same, since sets are **not** ordered.
 - **tuple**
-  - A tuple is an ordered collection of elements enclosed in parentheses.
+  - A tuple is an **ordered** collection of elements enclosed in parentheses.
+  - e.g. (a, b, c) and (c, b, a) are different, since tuples are ordered.
 - **table**
-  - A table has a name, a fixed tuple of columns, and a varying set of rows.
+  - A table has a name, a fixed **tuple of columns**, and a varying **set of rows**.
+  - all these are the same: **Table, File, Relation**.
 - **column**
   - A column has a name and a data type.
+  - all these are the same: **Column, Field, Attribute**
 - **row**
   - A row is an unnamed tuple of values. Each value corresponds to a column and belongs to the column's data type.
+  - since rows are a set, rows have no inherit order.
+  - all these are the same: **Row, Record, Tuple**
 - **data type**
   - A data type is a named set of values, from which column values are drawn.
 - **relational algebra**
   - These operations are collectively called relational algebra and are the theoretical foundation of the SQL language.
 - **Relational rules**
+  - Rules are logical constraints that ensure data is valid.
   - Relational rules are part of the relational model and govern data in every relational database.
 - **Business rules**
+  - Rules are logical constraints that ensure data is valid.
   - Business rules are based on business policy and specific to a particular database.
+  - e.g. All rows of the 'Employee' table must have a valid entry in the 'DepartCode' column.
 - **constraints**
   - Relational rules are implemented as SQL constraints and enforced by the database system.
 
@@ -154,44 +169,68 @@
 
 - **Structured Query Language / SQL**
   - Structured Query Language (SQL) is a high-level computer language for storing, manipulating, and retrieving data.
+  - SQL is the standard language for relational databases, and is commonly supported in non-relational databases.
+- **SQL Statement Literals: Strings, Numbers, Binary**
+  - Explicit values that are string, numeric, or binary.
+    - Strings must be surrounded by single quotes or double quotes. e.g. `'string' or "string"`.
+    - Numeric. `123`
+    - Binary values are represented with x'0' where the 0 is any hex value. e.g. `x'ofa2'`.
+- **SQL Statement Keywords**
+  - Words with special meaning.
+  - e.g. `SELECT, FROM, WHERE`.
+- **SQL Statement Identifiers**
+  - Objects from the database like tables, columns...
+  - e.g. `City, Name, Population`.
 - **statement**
   - An SQL statement is a complete command composed of one or more clauses.
+  - e.g. `SELECT * FROM table WHERE column > 1000`
 - **clause**
   - A clause groups SQL keywords like SELECT, FROM, and WHERE with table names like City, column names like Name, and conditions like Population > 100000.
 - **Data Definition Language**
   - Data Definition Language (DDL) defines the structure of the database.
-- **Data Query Language**
-  - Data Query Language (DQL) retrieves data from the database.
+  - `CREATE, ALTER, DROP`
 - **Data Manipulation Language**
   - Data Manipulation Language (DML) manipulates data stored in a database.
+  - `INSERT, UPDATE, DELETE`
+- **Data Query Language**
+  - Data Query Language (DQL) retrieves data from the database.
+  - `SELECT`
 - **Data Control Language**
   - Data Control Language (DCL) controls database user access.
+  - `GRANT, REVOKE`
 - **Data Transaction Language**
   - Data Transaction Language (DTL) manages database transactions.
+  - `SAVEPOINT, ROLLBACK, COMMIT`
 
 ## 2.3 Managing databases
 
 - **database system instance**
   - A database system instance is a single executing copy of a database system. Personal computers usually run just one instance of a database system. Shared computers, such as computers used for cloud services, usually run multiple instances of a database system.
-- **CREATE DATABASE DatabaseName**
-  - CREATE DATABASE DatabaseName creates a new database.
-- **DROP DATABASE DatabaseName**
-  - DROP DATABASE DatabaseName deletes a database, including all tables in the database.
-- **USE DatabaseName**
-  - USE DatabaseName selects a default database for use in subsequent SQL statements.
+- **CREATE DATABASE database_name**
+  - `CREATE DATABASE database_name` creates a new database.
+- **DROP DATABASE database_name**
+  - `DROP DATABASE database_name` deletes a database, including all tables in the database.
+- **USE database_name**
+  - `USE database_name` selects a default database for use in subsequent SQL statements.
 - **SHOW DATABASES**
-  - SHOW DATABASES lists all databases in the database system instance.
+  - `SHOW DATABASES` lists all databases in the database system instance.
 - **SHOW TABLES**
-  - SHOW TABLES lists all tables in the default database.
-- **SHOW COLUMNS FROM TableName**
-  - SHOW COLUMNS FROM TableName lists all columns in the TableName table of the default database.
-- **SHOW CREATE TABLE TableName**
-  - SHOW CREATE TABLE TableName shows the CREATE TABLE statement for the TableName table of the default database.
+  - `SHOW TABLES` lists all tables in the default database.
+- **SHOW COLUMNS FROM table_name**
+  - `SHOW COLUMNS` FROM table_name lists all columns in the table_name table of the default database.
+- **SHOW CREATE TABLE table_name**
+  - `SHOW CREATE TABLE table_name` shows the CREATE TABLE statement for the table_name table of the default database.
 
 ## 2.4 Tables
 
 - **table**
-  - A table has a name, a fixed sequence of columns, and a varying set of rows.
+  - A table has a name, a fixed sequence of columns(**tuple**), and a varying **set** of rows.
+- **table rules**
+  - Exactly one value per cell. A cell may not contain multiple values. Unknown data is represented with a special `NULL` value.
+  - No duplicate column names. Duplicate column names are allowed in different tables, but not in the same table.
+  - No duplicate rows. No two rows may have identical values in all columns.
+  - **No row order**. Rows are not ordered. The organization of rows on a storage device, such as a disk drive, never affects query results.
+    - **data independence**. Data independence allows database administrators to improve query performance by **changing the organization of data on storage devices**, without affecting query results.
 - **column**
   - A column has a name and a data type.
 - **row**
@@ -203,16 +242,41 @@
 - **data independence**
   - Rule 4 is called data independence.
 - **CREATE TABLE**
-  - The CREATE TABLE statement creates a new table by specifying the table name, column names, and column data types.
+  - DDL
+  - The `CREATE TABLE` statement creates a new table by specifying the table name, column names, and column data types.
 - **DROP TABLE**
-  - The DROP TABLE statement deletes a table, along with all the table's rows, from a database.
+  - DDL
+  - The `DROP TABLE` statement deletes a table, along with all the table's rows, from a database.
+  - `DROP TABLE TableName;`
 - **ALTER TABLE**
-  - The ALTER TABLE statement adds, deletes, or modifies columns on an existing table.
+  - DDL
+  - The `ALTER TABLE` statement adds, deletes, or modifies columns on an existing table.
+
+| ALTER TABLE clause | Description       | Syntax                                                                      |
+| :----------------- | :---------------- | :-------------------------------------------------------------------------- |
+| ADD                | Adds a column     | `ALTER TABLE TableName ADD ColumnName DataType;`                            |
+| CHANGE             | Modifies a column | `ALTER TABLE TableName CHANGE CurrentColumnName NewColumnName NewDataType;` |
+| DROP               | Deletes a column  | `ALTER TABLE TableName DROP ColumnName;`                                    |
 
 ## 2.5 Data types
 
 - **data type**
   - A data type is a named set of values from which column values are drawn.
+  - `INT` or `INTEGER` — positive and negative integer values.
+  - `VARCHAR(N)` — values with 0 to N characters.
+  - `CHAR(N)` - fixed string value, if string is less than stated, space padding will be added.
+  - `DATE` — date values
+  - `DECIMAL(N, D)` — numeric values with total N digits, of which D digits follow the decimal point
+
+| Category      | Data type | Value               |
+| :------------ | :-------- | :------------------ |
+| Integer       | INT       | -9281344            |
+| Decimal       | FLOAT     | 3.1415              |
+| Character     | VARCHAR   | Chicago             |
+| Date and time | DATETIME  | 12/25/2020 10:35:00 |
+| Binary        | BLOB      | 1001011101 . . .    |
+| Spatial       | POINT     | (2.5, 33.44)        |
+
 - **Integer**
   - Integer data types represent positive and negative integers.
 - **Decimal**
@@ -232,6 +296,15 @@
 - **unsigned**
   - An unsigned number cannot be negative.
 
+| Category | Data type      | Storage | Notes                                                               |
+| :------- | :------------- | :------ | :------------------------------------------------------------------ |
+| Integer  | TINYINT        | 1 byte  | Signed -128 to 127. Unsigned 0 to 255                               |
+| Integer  | SMALLINT       | 2 bytes | Signed -32,768 to 32,767. Unsigned 0 to 65,535                      |
+| Integer  | MEDIUMINT      | 3 bytes | Signed -8,388,608 to 8,388,607. Unsigned 0 to 16,777,215            |
+| Integer  | INTEGER or INT | 4 bytes | Signed -2,147,483,648 to 2,147,483,647. Unsigned 0 to 4,294,967,295 |
+| Integer  | BIGINT         | 8 bytes | Signed -263 to 263 -1. Unsigned 0 to 264 -1                         |
+| Decimal  | DECIMAL(M,D)   | Varies  | M = total digits, D = after decimal                                 |
+
 ## 2.6 Selecting rows
 
 - **operator / operands**
@@ -239,73 +312,149 @@
     - **Arithmetic operators** compute numeric values from numeric operands.
     - **Comparison operators** compute logical values TRUE or FALSE. Operands may be numeric, character, and other data types.
     - **Logical operators** compute logical values from logical operands.
+
+| Operator   | Description                                                            | Example | Value |
+| :--------- | :--------------------------------------------------------------------- | :------ | :---- |
+| +          | Adds two numeric values                                                | 4 + 3   | 7     |
+| - (unary)  | Reverses the sign of one numeric value                                 | -(-2)   | 2     |
+| - (binary) | Subtracts one numeric value from another                               | 11 - 5  | 6     |
+| `*`        | Multiplies two numeric values                                          | 3 \* 5  | 15    |
+| /          | Divides one numeric value by another                                   | 4 / 2   | 2     |
+| % (modulo) | Divides one numeric value by another and returns the integer remainder | 5 % 2   | 1     |
+| ^          | Raises one numeric value to the power of another                       | 5^2     | 25    |
+| =          | Compares two values for equality                                       | 1 = 2   | FALSE |
+| !=         | Compares two values for inequality                                     | 1 != 2  | TRUE  |
+
 - **unary**
   - A unary operator has one operand.
+  - `- (unary). Reverses the sign of one numeric value: -(-2) = 2`
 - **binary**
   - A binary operator has two operands.
+  - `- (binary). Subtracts one numeric value from another: 11 - 5 = 6`
 - **expression**
   - An expression is a string of operators, operands, and parentheses that evaluates to a single value. Operands may be column names or fixed values. The value of an expression may be any data type.
+  - e.g. `Salary > 34000 AND Department = 'Marketing'`
 - **operator precedence**
-  - Operators in an expression are evaluated in the order of operator precedence, shown in the table below. Operators of the same precedence are evaluated from left to right. Regardless of operator precedence, expressions enclosed in parentheses are evaluated before any operators outside the parentheses are applied.
+  - Operators in an expression are evaluated in the order of operator precedence, shown in the table below. Operators of the same precedence are evaluated from left to right. Regardless of operator precedence, expressions enclosed in parentheses are evaluated before any operators outside the parentheses are applied. PEDMAS.
 - **SELECT / FROM**
-  - The SELECT statement selects rows from a table. The statement has a SELECT clause and a FROM clause. The FROM clause specifies the table from which rows are selected. The SELECT clause specifies one or more expressions, separated by commas, that determine what values are returned for each row.
+  - The `SELECT` statement selects rows from a table. The statement has a `SELECT` clause and a FROM clause. The FROM clause specifies the table from which rows are selected. The `SELECT` clause specifies one or more expressions, separated by commas, that determine what values are returned for each row.
 - **result table**
-  - The SELECT statement returns a set of rows, called the result table.
+  - The `SELECT` statement returns a set of rows, called the result table.
 - **LIMIT**
-  - MySQL has a LIMIT clause that limits the number of rows returned by a SELECT statement.
+  - MySQL has a `LIMIT` clause that limits the number of rows returned by a `SELECT` statement.
 - **condition**
   - A condition is an expression that evaluates to a logical value.
 - **WHERE**
-  - A SELECT statement has an optional WHERE clause that specifies a condition for selecting rows. A row is selected when the condition is TRUE for the row values. A row is omitted when the condition is either FALSE or NULL.
+  - A `SELECT` statement has an optional `WHERE` clause that specifies a condition for selecting rows. A row is selected when the condition is TRUE for the row values. A row is omitted when the condition is either `FALSE` or `NULL`.
 
 ## 2.7 Null values
 
 - **NULL**
-  - NULL is a special value that represents either unknown or inapplicable data.
+  - `NULL` is a special value that represents either **unknown** or **inapplicable data**.
 - **NOT NULL**
-  - The NOT NULL constraint prevents a column from having a NULL value. Statements that insert NULL, or update a value to NULL, are automatically rejected. NOT NULL follows the column name and data type in a CREATE TABLE statement.
-- **IS NULL / IS NOT NULL**
-  - Instead, the IS NULL and IS NOT NULL operators must be used to select NULL values. Value IS NULL returns TRUE when the value is NULL. Value IS NOT NULL returns TRUE when the value is not NULL.
+  - The `NOT NULL` constraint prevents a column from having a `NULL` value. Statements that insert `NULL`, or update a value to `NULL`, are automatically rejected. `NOT NULL` follows the column name and data type in a `CREATE TABLE` statement.
+- **IS NULL / IS `NOT NULL`**
+  - Instead, the IS `NULL` and IS `NOT NULL` operators must be used to select `NULL` values. Value IS `NULL` returns `TRUE` when the value is `NULL`. Value IS `NOT NULL` returns `TRUE` when the value is not `NULL`.
 - **truth tables**
-  - The value of logical expressions containing NULL operands is defined in truth tables.
+  - The value of logical expressions containing `NULL` operands is defined in truth tables.
 
 ## 2.8 Inserting, updating, and deleting rows
 
 - **INSERT**
-  - The INSERT statement adds rows to a table.
+  - The `INSERT` statement adds rows to a table.
+  - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
 - **INSERT INTO**
-  - The INSERT INTO clause names the table and columns where data is to be added. The keyword INTO is optional.
+  - The `INSERT INTO` clause names the table and columns where data is to be added. The keyword `INTO` is optional.
+  - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
 - **VALUES**
-  - The VALUES clause specifies the column values to be added.
+  - The `VALUES` clause specifies the column values to be added.
+  - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
 - **DEFAULT**
-  - The optional DEFAULT keyword and default value follow the column name and data type in a CREATE TABLE statement. The column is assigned the default value, rather than NULL, when omitted from an INSERT statement.
+  - The optional `DEFAULT` keyword and default value follow the column name and data type in a `CREATE TABLE` statement. The column is assigned the default value, rather than NULL, when omitted from an INSERT statement.
 - **UPDATE**
-  - The UPDATE statement modifies existing rows in a table.
+
+  - The `UPDATE` statement modifies existing rows in a table.
+  - The `UPDATE` statement uses the `SET` clause to specify the new column values.
+  - An optional `WHERE` clause specifies which rows are updated. Omitting the `WHERE` clause results in all rows being updated.
+
+  ```sql
+  UPDATE Employee
+  SET Name = 'Tom Snead',
+      BirthDate = '2000-03-15'
+  WHERE ID = 5384;
+  ```
+
 - **SET**
-  - The UPDATE statement uses the SET clause to specify the new column values.
+  - The `UPDATE` statement uses the SET clause to specify the new column values.
 - **DELETE**
-  - The DELETE statement deletes existing rows in a table.
+  - The `DELETE` statement deletes existing rows in a table.
+  - `DELETE FROM TableName WHERE condition;` -- delete rows that returns true.
+  - `DELETE FROM TableName;` -- delete all rows.
 - **FROM**
-  - The FROM keyword is followed by the table name whose rows are to be deleted.
+  - The `FROM` keyword is followed by the table name whose rows are to be deleted.
 - **TRUNCATE**
-  - The TRUNCATE statement deletes all rows from a table.
+  - The `TRUNCATE` statement **deletes all rows** from a table.
+  - `TRUNCATE TABLE TableName;` -- delete all table rows.
+- **MERGE**
+  - selects data from one table, called the **source**, and inserts the data to another table, called the **target**.
+  - MySQL does not support the `MERGE` statement.
 
 ## 2.9 Primary keys
 
 - **primary key**
   - A primary key is a column, or group of columns, used to identify a row.
+  - The primary key is usually the table's first column and appears on the left of table diagrams, but the position is not significant to the database.
+  - **Primary keys (simple or composite) must be**:
+    - `UNIQUE`. This rule ensures that each value identifies at most one row.
+    - `NOT NULL`. This rule ensures that each value identifies at least one row.
 - **simple primary key**
   - A simple primary key consists of a single column.
+
+```sql
+CREATE TABLE Employee (
+   ID        SMALLINT UNSIGNED,
+   Name      VARCHAR(60),
+   Salary    DECIMAL(7,2),
+   PRIMARY KEY (ID)
+);
+```
+
 - **composite primary key**
   - A composite primary key consists of multiple columns.
+
+```sql
+CREATE TABLE Family (
+   ID           SMALLINT UNSIGNED,
+   Number       SMALLINT UNSIGNED,
+   Relationship VARCHAR(20),
+   Name         VARCHAR(60),
+   PRIMARY KEY(ID, Number)
+);
+```
+
 - **Minimal**
   - Minimal. All primary key columns are necessary for uniqueness. When any column is removed, the resulting simple or composite column is no longer unique.
 - **PRIMARY KEY**
   - The PRIMARY KEY constraint in a CREATE TABLE statement names the table's primary key. The PRIMARY KEY constraint ensures that a column or group of columns is always unique and non-null.
 - **auto-increment column**
-  - An auto-increment column is a numeric column that is assigned an automatically incrementing value when a new row is inserted.
+  - An auto-increment column is a numeric column that is assigned an **automatically incrementing value** when a new row is inserted.
+
+```sql
+CREATE TABLE Employee (
+   ID        SMALLINT UNSIGNED AUTO_INCREMENT,
+   Name      VARCHAR(60),
+   BirthDate DATE,
+   Salary    DECIMAL(7,2),
+   PRIMARY KEY (ID)
+);
+```
+
 - **AUTO_INCREMENT**
   - The AUTO_INCREMENT keyword defines an auto-increment column. AUTO_INCREMENT follows the column's data type in a CREATE TABLE statement.
+  - Database users occasionally make the following errors when inserting primary keys:
+    - Inserting values for auto-increment primary keys.
+    - Omitting values for primary keys that are not auto-increment columns.
+    - MySQL allows insertion of a specific value to an auto-increment column. However, overriding auto-increment for a primary key is usually a mistake.
 
 ## 2.10 Foreign keys
 
