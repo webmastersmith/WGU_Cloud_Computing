@@ -4,6 +4,7 @@
   // Image RegExp
   const reStr = /!\[.*?\]\(.*?\)/;
   const re = new RegExp(reStr, '');
+  let total = 0;
 
   // variables
   // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Exam_Objectives.md';
@@ -62,14 +63,13 @@
       return html.replace(/<pre>.*?<\/pre>/gs, (match) => {
         // console.log('match', match);
         // highlight.js returns html entities encoded text. Need to decode it back to Ascii.
-        const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
+        // const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
         // console.log('codeBlock', codeBlock);
         // remove weird span tags in the 'code' block
-        const fix = codeBlock.replace(/<code .*?\/span>>/, '<code class=hljs>');
+        // const fix = codeBlock.replace(/<code .*?\/span>>/, '<code class=hljs>');
         // console.log('fix', fix);
         // Add custom css to pre tags.
-        const txt = fix.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
-        // console.log('txt', txt);
+        const txt = match.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
         return txt;
       });
     },
@@ -177,13 +177,14 @@
   // parsePage(dataArr); // for testing
 
   // Images
-  // Image path
+  // Image path -pushed into pictures array.
   function createImagePath(line) {
     const filename = line.split('/').pop().replace(')', '');
     const picPath = path.join(process.cwd(), directoryPath.split('/')[0], 'img', filename);
     return { filename, picPath };
   }
   // Change image path from relative to filename. // ![pic description]("pic.jpg")
+  // inline with front or back of card.
   function fixImagePath(line) {
     const { filename } = createImagePath(line);
     return line
@@ -192,74 +193,72 @@
       .replace(/^- /, '');
   }
 
+  function createFrontCard(blob) {
+    // console.log(blob);
+    let rawFront = '';
+    const frontPictures = [];
+    // check for images. Front images must have be separated with '%'.
+    blob.split(/\s%\s/).forEach((el) => {
+      // remove any escapes.
+      const str = el.replace('%%', '%').trim();
+      // console.log(str);
+      // check if 'str' is an image
+      if (re.test(str)) {
+        rawFront += `${fixImagePath(str)}\n`;
+        frontPictures.push(createImagePath(str));
+      } else {
+        // Not an image, must be a question.
+        const h = str.length > 40 ? '###' : '##';
+        rawFront += `${h} ${str.replace('-', '').trim()}\n`;
+      }
+    });
+    return { front: converter.makeHtml(rawFront), frontPictures };
+  }
+  function createBackCard(blobArr) {
+    let rawBack = '';
+    const backPictures = [];
+    // loop all lines. fix images.
+    for (const line of blobArr) {
+      if (re.test(line)) {
+        backPictures.push(createImagePath(line));
+        rawBack += `${fixImagePath(line)}\n`;
+      } else {
+        rawBack += `${line.replace(/^  /, '')}\n`;
+      }
+    }
+    return { back: converter.makeHtml(rawBack), backPictures };
+  }
+
   // Turn each '##' block into Question and Answer Cards.
   function processBlocks(block) {
+    // console.log(block);
     // get and remove section name
-    const [s, ...rest] = block.split(/\r?\n/);
+    const [s, blankLine, ...rest] = block.split(/\r?\n/);
     // remove special characters from section name.
     let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/|]/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
-    const cardsArr = [];
-    let isCodeBlock = false;
-    for (const line of rest) {
-      // console.log(line);
-      // must be question if starts with '-'.
-      if (line.startsWith('-')) {
-        let front = [];
-        let picture = [];
-        // check for images. Front images must have be separated with '%'.
-        // split out one or more images. Escape '%' with '%'.
-        line.split(/\s%\s/).forEach((el) => {
-          const str = el.replace('%%', '%').trim();
-          // check if 'str' is an image
-          if (re.test(str)) {
-            front.push(fixImagePath(str));
-            picture.push(createImagePath(str));
-          } else {
-            // Not an image, must be a question.
-            const h = str.length > 40 ? '###' : '##';
-            front.push(`${h} ${str.replace('-', '').trim()}`);
-          }
-        });
+    // split front and back of card.
+    const rawCards = rest
+      .join('\n')
+      .split(/^\- /gm)
+      .map((b) => {
+        const [rawFront, ...rawBack] = b.split('\n');
+        return { rawFront, rawBack };
+      });
+    // console.log(rawCards);
 
-        // Front is done. Push to cards array.
-        cardsArr.push({
-          front,
-          back: [],
-          picture,
-        });
-        continue;
-      }
-
-      // BACK -must be answer if starts with '  -'.
-      // Back side could have multiple lines, so keep adding to 'lastItem'.
-      // lastItem is an Object {front, back, picture}.
-      const lastItem = cardsArr.pop();
-      // The very first line can be blank and will fall through to answer and end up undefined.
-      if (!lastItem) continue;
-      // check if line is image
-      if (re.test(line)) {
-        lastItem.picture.push(createImagePath(line));
-        lastItem.back.push(fixImagePath(line));
-        // console.log(JSON.stringify(lastItem, null, 2));
-        cardsArr.push(lastItem); // push lastItem back into the cardsArr.
-        continue;
-      }
-      // console.log(line);
-      // code blocks do not remove spacing.
-      if (line?.trimStart()?.startsWith('```')) isCodeBlock = !isCodeBlock;
-      // need the blank lines for tables. Only trim if line is not blank.
-      const str = line.length > 0 && !isCodeBlock ? line?.replace(/^\s{2}|\t|\s+$/, '') : line;
-      lastItem?.back?.push(str);
-      cardsArr.push(lastItem);
-    }
-    // console.log(cardsArr);
-    const cards = cardsArr.map((card) => {
-      const front = converter.makeHtml(card.front.join('\n'));
-      const back = converter.makeHtml(card.back.join('\n'));
-      return { ...card, front, back };
+    const cards = rawCards.map(({ rawFront, rawBack }) => {
+      // console.log(rawFront);
+      const { front, frontPictures } = createFrontCard(rawFront);
+      // console.log(front);
+      const { back, backPictures } = createBackCard(rawBack);
+      // console.log(back, backPictures);
+      return { front, back, picture: frontPictures.concat(backPictures) };
     });
+    // console.log(section, cards.length);
+    total += cards.length;
     return { section, cards };
   }
+  // console.log('Total Cards: ', total);
 })();

@@ -27,6 +27,10 @@
 
 ## 1.2 Database systems
 
+- **Authorization**
+  - . Many database users should have limited access to specific tables, columns, or rows of a database. Database systems authorize individual users to access specific data.
+- **Rules**
+  - Database systems ensure data is consistent with structural and business rules.
 - **transaction**
   - A transaction is a group of queries that must be either completed or rejected as a whole. Execution of some, but not all, queries results in inconsistent or incorrect data.
 - **architecture**
@@ -41,20 +45,28 @@
   - The storage manager uses indexes to quickly locate data.
 - **transaction manager**
   - The transaction manager ensures transactions are properly executed.
+- **Metadata**
+  - Metadata is data about the database, such as column names and the number of rows in each table.
 - **log**
   - The log is a file containing a complete record of all inserts, updates, and deletes processed by the database.
 - **catalog / data dictionary**
   - The catalog, also known as a data dictionary, is a directory of tables, columns, indexes, and other database objects.
 - **relational database**
   - A relational database stores data in tables, columns, and rows, similar to a spreadsheet.
+  - Relational systems are ideal for databases that require an accurate record of every transaction, such as banking, airline reservation systems, and student records.
+  - All relational database systems support the SQL query language.
 - **SQL**
   - SQL stands for Structured Query Language and includes statements that read and write data, create and delete tables, and administer the database system.
+  - All relational database systems support the SQL query language.
 - **big data**
   - The growth of the internet in the 1990s generated massive volumes of online data, called big data, often with poorly structured or missing information.
+  - MongoDB: big data, open source, noSQL
 - **NoSQL**
   - The newer non-relational systems are called NoSQL, for 'not only SQL', and are optimized for big data.
+  - MongoDB: big data, open source, noSQL
 - **Open source**
   - Open source software is software that anyone can inspect, copy, and modify with no licensing fee.
+  - MongoDB: big data, open source, noSQL
 
 ## 1.3 Query languages
 
@@ -69,15 +81,15 @@
 - **statement**
   - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data: .
 - **INSERT**
-  - INSERT inserts rows into a table.
+  - `INSERT` inserts rows into a table.
 - **SELECT**
-  - SELECT retrieves data from a table.
+  - `SELECT` retrieves data from a table.
 - **UPDATE**
-  - UPDATE modifies data in a table.
+  - `UPDATE` modifies data in a table.
 - **DELETE**
-  - DELETE deletes rows from a table.
+  - `DELETE` deletes rows from a table.
 - **CREATE TABLE**
-  - The SQL CREATE TABLE statement creates a new table by specifying the table and column names.
+  - The SQL `CREATE TABLE` statement creates a new table by specifying the table and column names.
 - **data type**
   - Each column is assigned a data type that indicates the format of column values. Data types can be numeric, textual, or complex.
 
@@ -87,22 +99,31 @@
   - A database design is a specification of database objects such as tables, columns, data types, and indexes. Database design also refers to the process used to develop the specification.
 - **analysis**
   - The analysis phase specifies database requirements without regard to a specific database system.
+  - Requirements are represented as **entities, relationships, and attributes**.
 - **ER diagrams**
-  - Entities, relationships, and attributes are depicted in ER diagrams: .
+  - Entities, relationships, and attributes are depicted in ER diagrams.
+  - ![er diagram](img/er_diagram.PNG)
 - **logical design**
   - The logical design phase implements database requirements in a specific database system.
+  - For relational database systems, logical design converts entities, relationships, and attributes into **tables, keys, and columns**.
+  - The logical design, as specified in SQL and depicted in a table diagram, is called a database **schema**.
+  - ![logical diagram](img/logical_diagram.PNG)
 - **key**
   - A key is a column used to identify individual rows of a table.
+  - Tables, keys, and columns are specified in SQL with `CREATE TABLE` statements.
 - **table diagram**
   - The logical design is depicted in a table diagram.
+  - ![logical diagram](img/logical_diagram.PNG)
 - **schema**
   - The logical design, as specified in SQL and depicted in a table diagram, is called a database schema.
 - **physical design**
-  - The physical design phase adds indexes and specifies how tables are organized on storage media.
+  - The physical design phase adds indexes and specifies how tables are organized on **storage media**.
 - **data independence**
   - The principle that physical design never affects query results is called data independence.
+  - Physical design affects query processing speed but never affects the query result.
+  - When database designers modify indexes or row order, **applications run faster** or slower but **always generate the same results**.
 - **application programming interface / API**
-  - An application programming interface, or API, is a library of procedures or classes that links a host programming language to a database.
+  - An application programming interface, or API, is **a library of procedures or classes** that links a host programming language to a database.
 
 ## 1.5 MySQL
 
@@ -360,7 +381,7 @@
 
 ## 2.8 Inserting, updating, and deleting rows
 
-- **INSERT**
+- **MySQL INSERT**
   - The `INSERT` statement adds rows to a table.
   - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
 - **INSERT INTO**
@@ -371,18 +392,17 @@
   - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
 - **DEFAULT**
   - The optional `DEFAULT` keyword and default value follow the column name and data type in a `CREATE TABLE` statement. The column is assigned the default value, rather than NULL, when omitted from an INSERT statement.
-- **UPDATE**
-
+- **MySQL UPDATE**
   - The `UPDATE` statement modifies existing rows in a table.
   - The `UPDATE` statement uses the `SET` clause to specify the new column values.
   - An optional `WHERE` clause specifies which rows are updated. Omitting the `WHERE` clause results in all rows being updated.
 
-  ```sql
-  UPDATE Employee
-  SET Name = 'Tom Snead',
-      BirthDate = '2000-03-15'
-  WHERE ID = 5384;
-  ```
+```sql
+UPDATE Employee
+SET Name = 'Tom Snead',
+    BirthDate = '2000-03-15'
+WHERE ID = 5384;
+```
 
 - **SET**
   - The `UPDATE` statement uses the SET clause to specify the new column values.
@@ -712,19 +732,28 @@ ORDER BY Language DESC;
 - **aggregate function**
   - An aggregate function processes values from a set of rows and returns a summary value.
 - **COUNT()**
-  - COUNT() counts the number of rows in the set.
+  - `COUNT()` counts the number of rows in the set.
 - **MIN()**
-  - MIN() finds the minimum value in the set.
+  - `MIN()` finds the minimum value in the set.
 - **MAX()**
-  - MAX() finds the maximum value in the set.
+  - `MAX()` finds the maximum value in the set.
 - **SUM()**
-  - SUM() sums all the values in the set.
+  - `SUM()` sums all the values in the set.
 - **AVG()**
-  - AVG() computes the arithmetic mean of all the values in the set.
+  - `AVG()` computes the arithmetic mean of all the values in the set.
 - **GROUP BY**
-  - The GROUP BY clause consists of the GROUP BY keyword and one or more columns. Each simple or composite value of the column(s) becomes a group. The query computes the aggregate function separately, and returns one row, for each group.
+  - The `GROUP BY`clause consists of the GROUP BY keyword and one or more columns. Each simple or composite value of the column(s) becomes a group. The query computes the aggregate function separately, and returns one row, for each group.
 - **HAVING**
-  - The HAVING clause is used with the GROUP BY clause to filter group results.
+  - The `HAVING` clause is used with the `GROUP BY` clause to **filter group results**.
+
+```sql
+SELECT column_name
+FROM table_name
+WHERE condition
+GROUP BY column_name
+  HAVING condition
+ORDER BY column_name;
+```
 
 ## 3.4 Join queries
 
