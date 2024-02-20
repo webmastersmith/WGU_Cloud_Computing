@@ -72,7 +72,7 @@
 
 - **query**
   - A query is a command for a database that typically inserts new data, retrieves data, updates data, or deletes data from a database.
-- **query language**
+- **query_language**
   - A query language is a computer programming language for writing database queries.
 - **CRUD**
   - The four common queries are sometimes referred to as CRUD operations, an acronym for Create, Read, Update, and Delete data.
@@ -118,11 +118,13 @@
   - The logical design, as specified in SQL and depicted in a table diagram, is called a database schema.
 - **physical design**
   - The physical design phase adds indexes and specifies how tables are organized on **storage media**.
+  - Physical design affects query processing speed but never affects the query result.
 - **data independence**
   - The principle that physical design never affects query results is called data independence.
   - Physical design affects query processing speed but never affects the query result.
   - When database designers modify indexes or row order, **applications run faster** or slower but **always generate the same results**.
 - **application programming interface / API**
+  - simplify the use of SQL with a general-purpose language.
   - An application programming interface, or API, is **a library of procedures or classes** that links a host programming language to a database.
 
 ## 1.5 MySQL
@@ -136,13 +138,15 @@
 - **root account**
   - The root account, the administrative account that has full control of MySQL.
 - **MySQL Command-Line Client**
-  - The MySQL Command-Line Client is a text interface included in the MySQL Server download. The Command-Line Client allows developers to connect to the database server, perform administrative functions, and execute SQL statements.
+  - The MySQL Command-Line Client is a text interface **included in the MySQL Server download**. The Command-Line Client allows developers to connect to the database server, perform administrative functions, and execute SQL statements.
+  - ![mysql](img/mysql.PNG)
+  - The animation above shows the user typing SQL commands that use the 'world' database, a database that is usually installed with MySQL.
 - **error code**
-  - MySQL Server returns an error code and description when an SQL statement is syntactically incorrect or the database cannot execute the statement.
+  - MySQL Server returns an error code and description when an **SQL statement is syntactically incorrect** or the **database cannot execute the statement**.
 - **MySQL Workbench**
   - MySQL Workbench is installed with MySQL Server and allows developers to execute SQL commands using an editor.
 
-## 2.1 Relational model
+## 2.01 Relational model
 
 - **database model**
   - A database model is a conceptual framework for database systems, with three parts:
@@ -172,7 +176,7 @@
   - A row is an unnamed tuple of values. Each value corresponds to a column and belongs to the column's data type.
   - since rows are a set, rows have no inherit order.
   - all these are the same: **Row, Record, Tuple**
-- **data type**
+- **relational data type**
   - A data type is a named set of values, from which column values are drawn.
 - **relational algebra**
   - These operations are collectively called relational algebra and are the theoretical foundation of the SQL language.
@@ -186,7 +190,7 @@
 - **constraints**
   - Relational rules are implemented as SQL constraints and enforced by the database system.
 
-## 2.2 Structured Query Language
+## 2.02 Structured Query Language
 
 - **Structured Query Language / SQL**
   - Structured Query Language (SQL) is a high-level computer language for storing, manipulating, and retrieving data.
@@ -206,7 +210,7 @@
   - An SQL statement is a complete command composed of one or more clauses.
   - e.g. `SELECT * FROM table WHERE column > 1000`
 - **clause**
-  - A clause groups SQL keywords like SELECT, FROM, and WHERE with table names like City, column names like Name, and conditions like Population > 100000.
+  - A clause groups SQL keywords like `SELECT`, `FROM`, and `WHERE` with table names like City, column names like Name, and conditions like Population > 100000.
 - **Data Definition Language**
   - Data Definition Language (DDL) defines the structure of the database.
   - `CREATE, ALTER, DROP`
@@ -223,7 +227,7 @@
   - Data Transaction Language (DTL) manages database transactions.
   - `SAVEPOINT, ROLLBACK, COMMIT`
 
-## 2.3 Managing databases
+## 2.03 Managing databases
 
 - **database system instance**
   - A database system instance is a single executing copy of a database system. Personal computers usually run just one instance of a database system. Shared computers, such as computers used for cloud services, usually run multiple instances of a database system.
@@ -242,7 +246,7 @@
 - **SHOW CREATE TABLE table_name**
   - `SHOW CREATE TABLE table_name` shows the CREATE TABLE statement for the table_name table of the default database.
 
-## 2.4 Tables
+## 2.04 Tables
 
 - **table**
   - A table has a name, a fixed sequence of columns(**tuple**), and a varying **set** of rows.
@@ -279,7 +283,7 @@
 | CHANGE             | Modifies a column | `ALTER TABLE TableName CHANGE CurrentColumnName NewColumnName NewDataType;` |
 | DROP               | Deletes a column  | `ALTER TABLE TableName DROP ColumnName;`                                    |
 
-## 2.5 Data types
+## 2.05 Data types
 
 - **data type**
   - A data type is a named set of values from which column values are drawn.
@@ -326,7 +330,7 @@
 | Integer  | BIGINT         | 8 bytes | Signed -263 to 263 -1. Unsigned 0 to 264 -1                         |
 | Decimal  | DECIMAL(M,D)   | Varies  | M = total digits, D = after decimal                                 |
 
-## 2.6 Selecting rows
+## 2.06 Selecting rows
 
 - **operator / operands**
   - An operator is a symbol that computes a value from one or more other values, called operands:
@@ -368,18 +372,18 @@
 - **WHERE**
   - A `SELECT` statement has an optional `WHERE` clause that specifies a condition for selecting rows. A row is selected when the condition is TRUE for the row values. A row is omitted when the condition is either `FALSE` or `NULL`.
 
-## 2.7 Null values
+## 2.07 Null values
 
 - **NULL**
   - `NULL` is a special value that represents either **unknown** or **inapplicable data**.
 - **NOT NULL**
   - The `NOT NULL` constraint prevents a column from having a `NULL` value. Statements that insert `NULL`, or update a value to `NULL`, are automatically rejected. `NOT NULL` follows the column name and data type in a `CREATE TABLE` statement.
-- **IS NULL / IS `NOT NULL`**
-  - Instead, the IS `NULL` and IS `NOT NULL` operators must be used to select `NULL` values. Value IS `NULL` returns `TRUE` when the value is `NULL`. Value IS `NOT NULL` returns `TRUE` when the value is not `NULL`.
+- **IS NULL / IS NOT NULL**
+  - Instead, the `IS NULL` and `IS NOT NULL` operators must be used to select `NULL` values. Value `IS NULL` returns `TRUE` when the value is `NULL`. Value `IS NOT NULL` returns `TRUE` when the value is not `NULL`.
 - **truth tables**
   - The value of logical expressions containing `NULL` operands is defined in truth tables.
 
-## 2.8 Inserting, updating, and deleting rows
+## 2.08 Inserting, updating, and deleting rows
 
 - **MySQL INSERT**
   - The `INSERT` statement adds rows to a table.
@@ -419,7 +423,7 @@ WHERE ID = 5384;
   - selects data from one table, called the **source**, and inserts the data to another table, called the **target**.
   - MySQL does not support the `MERGE` statement.
 
-## 2.9 Primary keys
+## 2.09 Primary keys
 
 - **primary key**
   - A primary key is a column, or group of columns, used to identify a row.
@@ -563,7 +567,7 @@ CREATE TABLE TableName(
 ```
 
 - **ON UPDATE / ON DELETE**
-  - Actions are specified in the optional ON UPDATE and ON DELETE clauses of the FOREIGN KEY constraint. ON UPDATE and ON DELETE are followed by either RESTRICT, SET NULL, SET DEFAULT, or CASCADE.
+  - Actions are specified in the optional `ON UPDATE` and `ON DELETE` clauses of the `FOREIGN KEY` constraint. `ON UPDATE` and `ON DELETE` are followed by either `RESTRICT`, `SET` `NULL`, `SET DEFAULT`, or `CASCADE`.
 
 ## 2.12 Constraints
 
@@ -758,68 +762,214 @@ ORDER BY column_name;
 ## 3.4 Join queries
 
 - **join / left table / right table**
-  - A join is a SELECT statement that combines data from two tables, known as the left table and right table, into a single result.
+  - A join is a `SELECT` statement that **combines data from two tables**, known as the left table and right table, into a single result.
 - **AS**
-  - To simplify queries or result tables, a column name can be replaced with an alias. The alias follows the column name, separated by an optional AS keyword.
+  - To simplify queries or result tables, a column name can be replaced with an **alias**. The alias follows the column name, separated by an optional `AS` keyword.
+  - e.g. `SELECT some_long_column_name AS short_name`
 - **join clause**
-  - A join clause determines how a join query handles unmatched rows. Two common join clauses are: .
+  - A join clause determines how a join query handles unmatched rows. Two common join clauses are:
 - **INNER JOIN**
-  - INNER JOIN selects only matching left and right table rows.
+  - `INNER JOIN` selects **only matching** left and right table rows.
+  - `INNER` is optional
+
+```sql
+SELECT
+  column_name AS group,
+  column_name2 AS supervisor
+FROM table1 t1
+JOIN table2 t2
+  ON t1.ID = t2.ID; -- only matching TRUE rows will be joined.
+```
+
 - **FULL JOIN**
-  - FULL JOIN selects all left and right table rows, regardless of match.
+  - `FULL JOIN` selects **all** left and right table rows, regardless of match.
+
+```sql
+SELECT
+  column_name AS group,
+  column_name2 AS supervisor
+FROM table1 t1
+FULL JOIN table2 t2
+  ON t1.ID = t2.ID; -- all rows from both tables will be joined.
+```
+
 - **ON**
-  - The ON clause specifies the join columns.
+  - The `ON` clause specifies the join columns.
 - **LEFT JOIN**
-  - LEFT JOIN selects all left table rows, but only matching right table rows.
+  - `LEFT JOIN` selects **all left table rows**, but only matching right table rows.
+
+```sql
+SELECT
+  column_name AS group,
+  column_name2 AS supervisor
+FROM table1 t1
+LEFT JOIN table2 t2
+  ON t1.ID = t2.ID; -- all rows from t1 will be joined with matching rows from t2.
+```
+
 - **RIGHT JOIN**
-  - RIGHT JOIN selects all right table rows, but only matching left table rows.
+  - `RIGHT JOIN` selects **all right table rows**, but only matching left table rows.
+  - right join can be confusing, most avoid it's usage. You can switch the table order to `LEFT JOIN` the table of your choose.
+
+```sql
+SELECT
+  column_name AS group,
+  column_name2 AS supervisor
+FROM table1 t1
+RIGHT JOIN table2 t2
+  ON t1.ID = t2.ID; -- all rows from t2 will be joined with matching rows from t1.
+```
+
 - **outer join**
-  - An outer join is any join that selects unmatched rows, including left, right, and full joins.
+  - An outer join is **any join that selects unmatched rows**, including left, right, and full joins.
 - **UNION**
-  - The UNION keyword combines the two results into one table.
+  - The `UNION` keyword **combines the two results into one table**.
+
+```sql
+SELECT d.name, e.name
+FROM Department d, Employee e
+WHERE d.ID = e.ID
+UNION -- both results will be one table.
+SELECT name, NULL
+FROM Department
+WHERE column_name NOT IN (SELECT ID FROM Employee)
+   OR column_name IS NULL;
+```
 
 ## 3.5 Equijoins, self-joins, and cross-joins
 
 - **equijoin**
-  - An equijoin compares columns of two tables with the = operator.
+  - An equijoin compares columns of two tables with the **=** operator.
 - **non-equijoin**
-  - A non-equijoin compares columns with an operator other than =, such as < and >.
+  - A non-equijoin compares columns with an operator other than =, such as **< and >**.
 - **self-join**
-  - A self-join joins a table to itself.
+  - A self-join **joins a table to itself**.
+
+| ID   | Name            | Manager |
+| :--- | :-------------- | :------ |
+| 2538 | Lisa Ellison    | 8820    |
+| 5384 | Sam Snead       | 8820    |
+| 6381 | Maria Rodriguez | 8820    |
+| 8820 | Jiho Chen       | NULL    |
+
+```sql
+SELECT A.Name, B.Name
+FROM table1 A
+JOIN tab1e1 B -- same table
+  ON B.ID = A.Manager;
+```
+
 - **cross-join**
-  - A cross-join combines two tables without comparing columns.
+  - A cross-join combines two tables **without comparing columns**.
 - **CROSS JOIN**
-  - A cross-join uses a CROSS JOIN clause without an ON clause.
+  - A cross-join uses a `CROSS JOIN` clause **without** an `ON` clause.
+
+```sql
+SELECT *
+FROM table1
+CROSS JOIN table2; -- join both tables.
+```
 
 ## 3.6 Subqueries
 
 - **subquery / nested query / inner query**
-  - A subquery, sometimes called a nested query or inner query, is a query within another SQL query.
+  - A subquery, sometimes called a **nested query** or **inner query**, is a query within another SQL query.
+  - precedence order is higher. PEDMAS.
+
+```sql
+SELECT *
+FROM table1
+WHERE Percentage IN
+    (SELECT Percentage
+    FROM table1
+    WHERE column_name = 'ABW');
+```
+
 - **correlated**
-  - A subquery is correlated when the subquery's WHERE clause references a column from the outer query.
+  - A subquery is correlated when the subquery's `WHERE` clause references a column from the outer query.
+
+```sql
+SELECT Name, CountryCode, Population
+FROM City C
+WHERE Population >
+    (SELECT AVG(Population)
+    FROM City
+    WHERE CountryCode = C.CountryCode); -- C.CountryCode references the first query.
+```
+
 - **alias**
   - An alias is a temporary name assigned to a column or table.
 - **AS**
-  - The AS keyword follows a column or table name to create an alias.
+  - An alias is a temporary name assigned to a column or table.
+  - The `AS` keyword follows a column or table name to **create an alias**.
 - **EXISTS**
-  - Correlated subqueries commonly use the EXISTS operator, which returns TRUE if a subquery selects at least one row and FALSE if no rows are selected.
+  - **Correlated subqueries** commonly use the `EXISTS` operator.
+  - returns `TRUE` if a subquery selects at least one row and `FALSE` if **no rows** are selected.
 - **NOT EXISTS**
-  - The NOT EXISTS operator returns TRUE if a subquery selects no rows and FALSE if at least one row is selected.
+  - The `NOT EXISTS` operator returns `TRUE` if a subquery selects **no rows** and `FALSE` if at least one row is selected.
 - **flattening**
   - Replacing a subquery with an equivalent join is called flattening a query.
+  - joins are usually faster.
+
+```sql
+SELECT *
+FROM table1
+WHERE column_ID IN
+   (SELECT column_ID
+   FROM table2
+   WHERE column_name != 'Business')
+-- replace with
+SELECT *
+FROM table1 t1
+JOIN table2 t2
+  ON t1.ID = t2.ID
+WHERE column_name != 'Business'
+
+```
 
 ## 3.8 View tables
 
 - **view table / view query**
-  - A view table is a table name associated with a SELECT statement, called the view query.
+  - A view table is a table name associated with a `SELECT` statement, called the view query.
+
+```sql
+CREATE VIEW ManagerView -- name of new view table
+AS SELECT DepartmentName, EmployeeName AS ManagerName -- column names
+   FROM Department, Employee
+   WHERE ManagerID = EmployeeID;
+```
+
 - **CREATE VIEW**
   - The CREATE VIEW statement creates a view table and specifies the view name, query, and, optionally, column names. If column names are not specified, column names are the same as in the view query result table.
+
+```sql
+CREATE VIEW ManagerView -- name of new view table
+AS SELECT DepartmentName, EmployeeName AS ManagerName -- column names
+   FROM Department, Employee
+   WHERE ManagerID = EmployeeID;
+
+-- to use it
+SELECT ManagerName
+FROM ManagerView
+WHERE DepartmentName = 'Sales';
+```
+
 - **base table**
   - A table specified in the view query's FROM clause is called a base table.
+  - not normally stored after using.
 - **materialized view**
-  - A materialized view is a view for which data is stored at all times.
+  - A materialized view is a view for which **view table data is stored** at all times.
+  - Whenever a view table changes, the corresponding view tables can also change, so materialized views must be refreshed.
 - **WITH CHECK OPTION**
-  - When WITH CHECK OPTION is specified, the database rejects inserts and updates that do not satisfy the view query WHERE clause.
+  - When `WITH CHECK OPTION` is specified, the database rejects inserts and updates that do not satisfy the view query `WHERE` clause, the database generates an error message that explains the violation.
+
+```sql
+CREATE VIEW SalesEmployee (ID, Name, Department)
+AS SELECT *
+    FROM Employee
+    WHERE DepartmentCode = 51
+WITH CHECK OPTION; -- any row not matching WHERE will throw error.
+```
 
 ## 3.9 Relational algebra
 
@@ -859,54 +1009,96 @@ ORDER BY column_name;
 ## 4.1 Entities, relationships, and attributes
 
 - **entity-relationship model**
-  - An entity-relationship model is a high-level representation of data requirements, ignoring implementation details.
+  - Database design begins with verbal or written requirements for the database. Requirements are formalized as an entity-relationship model and then implemented in SQL
+  - An entity-relationship model is a **high-level representation of data requirements**, ignoring implementation details.
 - **entity**
   - An entity is a person, place, product, concept, or activity.
+  - ![entity](img/logical_diagram.PNG)
 - **relationship**
   - A relationship is a statement about two entities.
+  - ![entity](img/logical_diagram.PNG)
 - **attribute**
   - An attribute is a descript­ive property of an entity.
+  - ![entity](img/logical_diagram.PNG)
 - **reflexive relationship**
-  - A reflexive relationship relates an entity to itself.
+  - A reflexive relationship **relates an entity to itself**.
+  - ![reflexive relationship](img/reflexive_relationship.PNG)
 - **entity-relationship diagram / ER diagram**
-  - An entity-relationship diagram, commonly called an ER diagram, is a schematic picture of entities, relationships, and attributes.
+  - An entity-relationship diagram, commonly called an ER diagram, is a schematic picture of **entities, relationships, and attributes**.
+  - Entities are drawn as rectangles.
+  - ![entity](img/er_diagram.PNG)
 - **glossary / data dictionary / repository**
   - A glossary, also known as a data dictionary or repository, documents additional detail in text format.
 - **entity type**
-  - An entity type is a set of things. Ex: All employees in a company.
+  - An entity type is a **set of things**. Ex: All employees in a company.
 - **relationship type**
-  - A relationship type is a set of related things. Ex: Employee-Manages-Department is a set of (employee, department) pairs, where the employee manages the department.
+  - A relationship type is a **set of related things**. Ex: Employee-Manages-Department is a set of (employee, department) pairs, where the employee manages the department.
 - **attribute type**
-  - An attribute type is a set of values. Ex: All employee salaries.
+  - An attribute type is a **set of values**. Ex: All employee salaries.
 - **entity instance**
-  - An entity instance is an individual thing. Ex: The employee Sam Snead.
+  - An entity instance is an **individual thing**. Ex: The employee Sam Snead.
 - **relationship instance**
-  - A relationship instance is a statement about entity instances. Ex: "Maria Rodriguez manages Sales." .
+  - A relationship instance is a **statement about entity instances**. Ex: "Maria Rodriguez manages Sales." .
 - **attribute instance**
-  - An attribute instance is an individual value. Ex: The salary $35,000.
-- **Analysis**
-  - Analysis develops an entity-relationship model, capturing data requirements while ignoring implementation details.
+  - An attribute instance is an **individual value**. Ex: The salary $35,000.
+- **Analysis for Database Design**
+  - Analysis develops an entity-relationship model, capturing **data requirements** while **ignoring implementation details**.
+  - Analysis steps
+
+| Step | Name                                             |
+| :--- | :----------------------------------------------- |
+| 1    | Discover entities, relationships, and attributes |
+| 2    | Determine cardinality                            |
+| 3    | Distinguish strong and weak entities             |
+| 4    | Create supertype and subtype entities            |
+
 - **Logical design**
-  - Logical design converts the entity-relationship model into tables, columns, and keys for a particular database system.
+  - Logical design **converts the entity-relationship model into tables, columns, and keys** for a particular database system.
+  - Logical design steps
+
+| Step | Name                    |
+| :--- | :---------------------- |
+| 5    | Implement entities      |
+| 6    | Implement relationships |
+| 7    | Implement attributes    |
+| 8    | Apply normal form       |
+
 - **Physical design**
-  - Physical design adds indexes and specifies how tables are organized on storage media.
+  - Physical design **adds indexes** and specifies how tables are organized on **storage media**.
 
 ## 4.3 Cardinality
 
 - **cardinality**
-  - In entity-relationship modeling, cardinality refers to maxima and minima of relationships and attributes.
+  - In entity-relationship modeling, cardinality refers to **maxima and minima of relationships** and attributes.
+    - one-to-one.
+    - one-to-many.
+    - many-to-many.
+  - ![relationship symbols](img/entity_relationships_symbols.PNG)
+  - ![relationship symbols](img/entity_relationships.jpg)
 - **Relationship maximum**
-  - Relationship maximum is the greatest number of instances of one entity that can relate to a single instance of another entity.
+  - Relationship maximum is the **greatest number of instances** of one entity that can relate to a single instance of another entity.
+  - one-to-many.
+  - ![relationship symbols](img/entity_relationships.jpg)
 - **singular / plural**
   - A related entity is singular when the maximum is one and plural when the maximum is many.
+  - one-to-many
 - **Relationship minimum**
-  - Relationship minimum is the least number of instances of one entity that can relate to a single instance of another entity.
+  - Relationship minimum is the **least number of instances** of one entity that can relate to a single instance of another entity.
+  - A relationship has two minima, one for each of the related entities.
+  - one-to-one
+  - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
 - **optional / required**
-  - A related entity is optional when the minimum is zero and required when the minimum is one.
+  - A related entity is **optional when the minimum is zero** and **required when the minimum is one**.
+  - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
 - **Attribute maximum**
-  - Attribute maximum is the greatest number of attribute values that can describe each entity instance. Attribute maximum is usually specified as one (singular) or many (plural).
+  - Attribute maximum is the greatest number of attribute values that can describe each entity instance.
+  - Attribute maximum is usually specified as one (singular) or many (plural).
+  - In ER diagrams, attribute maximum and minimum follow the attribute name. The minimum appears in parentheses.
+  - ![attribute min max](img/attribute_minimum_maximum.PNG)
 - **Attribute minimum**
   - Attribute minimum is the least number of attribute values that can describe each entity instance. Attribute minimum is usually specified as zero (optional) or one (required).
+  - In ER diagrams, attribute maximum and minimum follow the attribute name. The minimum appears in parentheses.
+  - ![attribute min max](img/attribute_minimum_maximum.PNG)
 - **unique attribute**
   - Each value of a unique attribute describes at most one entity instance.
 
@@ -925,8 +1117,12 @@ ORDER BY column_name;
 
 - **subtype entity / supertype entity**
   - A subtype entity is a subset of another entity type, called the supertype entity.
+  - e.g. Managers are a subset of employees, so Manager is a subtype entity of the Employee supertype entity.
+  - On ER diagrams, subtype entities are drawn within the supertype.
+  - ![supertype entity](img/supertype_entity.PNG)
 - **IsA relationship**
-  - A supertype entity identifies its subtype entities. The identifying relationship is called an IsA relationship.
+  - A supertype entity identifies its subtype entities. The identifying relationship is called an **IsA** relationship.
+  - ![supertype entity](img/supertype_entity.PNG)
 - **Similar entities**
   - Similar entities are entities that have many common attributes and relationships.
 - **partition**

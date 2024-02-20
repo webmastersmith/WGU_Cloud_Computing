@@ -7,25 +7,29 @@
   let total = 0;
 
   // variables
-  // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Exam_Objectives.md';
-  // const removeLines = 59; // line before you want to start parsing. 0 is first line.
-
   const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
   const removeLines = 2;
 
-  // const directoryPath = 'D324_Business_of_IT_Project_Management/Project+_PK0-005_Acronyms.md';
-  // const removeLines = 2;
+  const dataArr = fs
+    .readFileSync(directoryPath, 'utf-8')
+    // replace hidden characters added to start of files.
+    .replace(/^[\u200B\u200C\u200D\u200E\u200F\uFEFF]/, '')
+    ?.split(/\r?\n/);
 
-  const dataArr = fs.readFileSync(directoryPath, 'utf-8')?.split(/\r?\n/);
   // Get first line of Markdown as Anki Deck Title
   const deckName = dataArr[0]?.replaceAll('#', '')?.trim()?.replaceAll(' ', '_');
 
-  // SHOWDOWN -markdown => html parser.
-  // https://github.com/showdownjs/showdown/wiki
-  // Download showdown if not already downloaded. Showdown parses markdown into html.
-  if (!fs.existsSync('./showdown.min.js')) {
-    const txt = await (await fetch('https://unpkg.com/showdown/dist/showdown.min.js')).text();
-    fs.writeFileSync('./showdown.min.js', txt);
+  // MARKED
+  // https://marked.js.org/#usage
+  if (!fs.existsSync('./marked.min.js')) {
+    const txt = await (await fetch('https://cdn.jsdelivr.net/npm/marked/marked.min.js')).text();
+    fs.writeFileSync('./marked.min.js', txt);
+  }
+  // MARKED-HIGHLIGHT
+  // https://github.com/markedjs/marked-highlight
+  if (!fs.existsSync('./marked-highlight.js')) {
+    const txt = await (await fetch('https://cdn.jsdelivr.net/npm/marked-highlight/lib/index.umd.js')).text();
+    fs.writeFileSync('./marked-highlight.js', txt);
   }
   // Highlight.js - highlight code blocks.
   // https://github.com/highlightjs/highlight.js#importing-the-library
@@ -41,50 +45,46 @@
   if (!fs.existsSync('./hljs.css')) {
     // change this to whatever theme you want.
     const txt = await (
-      await fetch('https://raw.githubusercontent.com/highlightjs/highlight.js/main/src/styles/xt256.css')
-    ).text();
+      await fetch(
+        'https://raw.githubusercontent.com/highlightjs/highlight.js/main/src/styles/base16/humanoid-dark.css'
+      )
+    )
+      // await fetch('https://raw.githubusercontent.com/highlightjs/highlight.js/main/src/styles/xt256.css')
+      .text();
     fs.writeFileSync('./hljs.css', txt);
   }
-  const showdown = require('./showdown.min');
+
+  // post process MARKED
+  function postprocess(html) {
+    return html.replaceAll('<pre>', '<pre class="hljs">');
+  }
+  const { Marked } = require('./marked.min');
+  const { markedHighlight } = require('./marked-highlight');
   const hljs = require('./highlight.min');
-  // highlight code blocks
-  showdown.extension('highlight-code-blocks', {
-    type: 'output',
-    filter: (html) => {
-      function entitiesToAscii(text) {
-        return text
-          .replace(/&amp;/g, '&')
-          .replace(/&lt;/g, '<')
-          .replace(/&gt;/g, '>')
-          .replace(/&quot;/g, '"')
-          .replace(/&#x27;/g, "'")
-          .replace(/&#x39;/g, "'");
-      }
-      return html.replace(/<pre>.*?<\/pre>/gs, (match) => {
-        // console.log('match', match);
-        // highlight.js returns html entities encoded text. Need to decode it back to Ascii.
-        // const codeBlock = entitiesToAscii(hljs.highlightAuto(match).value);
-        // console.log('codeBlock', codeBlock);
-        // remove weird span tags in the 'code' block
-        // const fix = codeBlock.replace(/<code .*?\/span>>/, '<code class=hljs>');
-        // console.log('fix', fix);
-        // Add custom css to pre tags.
-        const txt = match.replace(/<pre>/, '<pre class="hljs" style="text-align: start; padding: 1rem">');
-        return txt;
-      });
-    },
-  });
-  // github flavored markdown => html.
-  showdown.setFlavor('github');
-  // converter.makeHtml(textBlock) // returns html.
-  const converter = new showdown.Converter({
-    tables: true,
-    ghCodeBlocks: true,
-    tasklist: true,
-    extensions: ['highlight-code-blocks'],
+  const marked = new Marked(
+    markedHighlight({
+      langPrefix: 'hljs language-',
+      highlight(code, lang, info) {
+        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        return hljs.highlight(code, { language }).value;
+      },
+    })
+  );
+  marked.use({
+    hooks: { postprocess },
+    gfm: true,
   });
 
+  function uuidv4() {
+    return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
+      (c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
+    );
+  }
+
   // AnkiConnect Should be installed on Anki deck as an addon and Anki should be running.
+  // https://ankiweb.net/shared/info/2055492159
+  // https://github.com/FooSoft/anki-connect
+  // https://foosoft.net/projects/anki-connect/
   // create Main Deck Name
   await sendToAnki('createDeck', { deck: deckName });
   // Create SubDecks
@@ -103,7 +103,9 @@
           deckName: `${deckName}::${sectionName}`,
           modelName: 'Basic',
           fields: {
-            Front: front,
+            // If card front is same name that already exist, anki will ignore it.
+            // Add random ID to front card question to avoid this problem.
+            Front: `${front}<p style="font-size: 1px; color: #FFF;">${uuidv4()}</p>`,
             Back: back,
           },
           // picture,
@@ -124,7 +126,7 @@
   // Add styling to '.card' class.
   const AnkiCSS =
     '.card {font-family: arial;font-size: 20px;text-align: center;color: black;background-color: white;} img { object-fit: contain;}.cloze {font-weight: bold;color: blue;}.nightMode .cloze{color: lightblue;}';
-  const customCSS = `th {border: 1px solid;padding:4px 6px;background-color: #3399ff;}td {border: 1px solid;padding:4px 6px;}tbody tr:nth-child(odd) {background-color: #D3D3D3;} pre{word-wrap: break-word;white-space: pre-wrap; word-break: break-word;}`;
+  const customCSS = `th {border: 1px solid;padding:4px 6px;background-color: #3399ff;}td {border: 1px solid;padding:4px 6px;}tbody tr:nth-child(odd) {background-color: #D3D3D3;} pre{word-wrap: break-word; white-space: pre-wrap; word-break: break-word; text-align: start; padding: 1rem;}`;
   const hljsCSS = fs.readFileSync('./hljs.css', 'utf-8'); // highlight css
   const css = `${AnkiCSS}${customCSS}${hljsCSS}`;
 
@@ -136,7 +138,7 @@
   // await sendToAnki('updateModelStyling', { model: { name: 'Basic (type in the answer)', css } });
 
   // This function sends object to ANKI-CONNECT addon listening on port 8765.
-  // https://github.com/amikey/anki-connect
+  // https://github.com/FooSoft/anki-connect
   async function sendToAnki(action, params = {}) {
     // will return object with result and error field when error.
     try {
@@ -168,7 +170,7 @@
     // console.log(dataStr);
     // separate page into subSections (blocks)
     const blocks = dataStr.split(/^#{2} /gm).filter((line) => line.length > 0);
-    // console.log(blocks);
+    // console.log(blocks[0], blocks[1]);
     // returns object with {section, cards} // section is name of subDeck. cards are: front, back, images for cards.
     const sections = blocks.map((block) => processBlocks(block));
     // console.log(JSON.stringify(sections, null, 2));
@@ -192,7 +194,9 @@
       .replace(/\(.*?\)/, `(${filename})`)
       .replace(/^- /, '');
   }
-
+  function addNewLine(line) {
+    return `${line}\n`;
+  }
   function createFrontCard(blob) {
     // console.log(blob);
     let rawFront = '';
@@ -204,15 +208,22 @@
       // console.log(str);
       // check if 'str' is an image
       if (re.test(str)) {
-        rawFront += `${fixImagePath(str)}\n`;
+        rawFront += addNewLine(fixImagePath(str));
         frontPictures.push(createImagePath(str));
       } else {
         // Not an image, must be a question.
-        const h = str.length > 40 ? '###' : '##';
-        rawFront += `${h} ${str.replace('-', '').trim()}\n`;
+        // check if line is blank
+        if (str.trim()) {
+          const h = str.length > 40 ? '###' : '##';
+          rawFront += `${h} ${str.replace('-', '').trim()}\n`;
+        }
       }
     });
-    return { front: converter.makeHtml(rawFront), frontPictures };
+    // console.log(rawFront);
+    return {
+      front: marked.parse(rawFront),
+      frontPictures,
+    };
   }
   function createBackCard(blobArr) {
     let rawBack = '';
@@ -221,12 +232,22 @@
     for (const line of blobArr) {
       if (re.test(line)) {
         backPictures.push(createImagePath(line));
-        rawBack += `${fixImagePath(line)}\n`;
+        rawBack += addNewLine(fixImagePath(line));
       } else {
-        rawBack += `${line.replace(/^  /, '')}\n`;
+        // must be regular line.
+        // check for indent
+        if (/\s+\-/.test(line)) {
+          rawBack += addNewLine(line.replace(/^  /, ''));
+        } else {
+          rawBack += addNewLine(line);
+        }
       }
     }
-    return { back: converter.makeHtml(rawBack), backPictures };
+    // console.log(rawBack);
+    return {
+      back: marked.parse(rawBack),
+      backPictures,
+    };
   }
 
   // Turn each '##' block into Question and Answer Cards.
@@ -238,14 +259,17 @@
     let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/|]/g, '')?.trim() ?? 'Section';
     // cards { front: Question, back: [], picture: [] } array.
     // console.log(rest);
-    // split front and back of card.
-    const rawCards = rest
-      .join('\n')
-      .split(/^\- /gm)
-      .map((b) => {
-        const [rawFront, ...rawBack] = b.split('\n');
-        return { rawFront, rawBack };
-      });
+    // split each topic.
+    const rawCardBlobs = rest.join('\n').split(/^\- /gm);
+
+    const rawCards = [];
+    for (const blob of rawCardBlobs) {
+      const [rawFront, ...rawBack] = blob.split('\n');
+      // front card can be blank line
+      if (rawFront) {
+        rawCards.push({ rawFront, rawBack });
+      }
+    }
     // console.log(rawCards);
 
     const cards = rawCards.map(({ rawFront, rawBack }) => {
@@ -256,9 +280,10 @@
       // console.log(back, backPictures);
       return { front, back, picture: frontPictures.concat(backPictures) };
     });
-    // console.log(section, cards.length);
+    // if (section.startsWith('2.10')) console.log(cards);
+    console.log(section, cards.length);
     total += cards.length;
     return { section, cards };
   }
-  // console.log('Total Cards: ', total);
+  console.log('Total Cards: ', total);
 })();
