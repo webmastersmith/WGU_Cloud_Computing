@@ -108,14 +108,14 @@ CREATE TABLE Customers (
   - Tables, keys, and columns are specified in SQL with `CREATE TABLE` statements.
 - **database design: physical design**
   - The physical design phase adds indexes and specifies how tables are organized on **storage media**.
-  - Physical design affects query processing speed but never affects the query result.
+  - Physical design **affects query processing speed** but **never affects the query result**.
 - **data independence**
   - The principle that physical design never affects query results is called data independence.
-  - Physical design affects query processing speed but never affects the query result.
+  - Physical design **affects query processing speed** but **never affects the query result**.
   - When database designers modify indexes or row order, **applications run faster** or slower but **always generate the same results**.
 - **application programming interface / API**
   - simplify the use of SQL with a general-purpose language.
-  - An application programming interface, or API, is **a library of procedures or classes** that links a host programming language to a database.
+  - An application programming interface, or API, is **a library of procedures or classes** that **links** a host **programming language to a database**.
 
 ## 1.5 MySQL
 
@@ -136,7 +136,7 @@ CREATE TABLE Customers (
     - **Data structures** that prescribe how data is organized.
       - data structures form the backbone of efficient and organized information storage.
       - Each database model relies on specific structures to represent entities, attributes, and relationships, ensuring data integrity and facilitating smooth retrieval and manipulation.
-      - e.g. relational model: primary key, foreign key, data types(INT, STRING...), indexes.
+      - e.g. relational model: primary key, foreign key, data types(INT, STRING, ...), indexes.
     - **Operations** that manipulate data structures.
     - **Rules** that govern valid data.
 - **set**
@@ -147,14 +147,14 @@ CREATE TABLE Customers (
   - e.g. (a, b, c) and (c, b, a) are different, since tuples are ordered.
 - **table**
   - A table has a name, a fixed **tuple of columns**, and a varying **set of rows**.
-  - all these are the same: **Table, File, Relation**.
+  - Synonyms: **Table, File, Relation**.
 - **column**
-  - A column has a name and a data type.
-  - all these are the same: **Column, Field, Attribute**
+  - A column has a **name** and a **data type**.
+  - Synonyms: **Column, Field, Attribute**
 - **row**
-  - A row is an unnamed tuple of values. Each value corresponds to a column and belongs to the column's data type.
+  - A row is an **unnamed tuple of values**. Each value corresponds to a column and belongs to the column's data type.
   - since rows are a set, rows have no inherit order.
-  - all these are the same: **Row, Record, Tuple**
+  - Synonyms: **Row, Record, Tuple**
 - **relational data type**
   - A data type is a named **set of values**, from which column values are drawn.
 - **relational algebra**
