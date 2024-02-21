@@ -79,7 +79,7 @@
 - **Structured Query Language / SQL**
   - Structured Query Language, or SQL, is the standard query language of relational database systems.
 - **statement**
-  - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data: .
+  - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data.
 - **INSERT**
   - `INSERT` inserts rows into a table.
 - **SELECT**
