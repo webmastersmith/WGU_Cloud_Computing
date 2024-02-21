@@ -1126,14 +1126,27 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **Similar entities**
   - Similar entities are entities that have many common attributes and relationships.
 - **partition**
-  - A partition of a supertype entity is a group of mutually exclusive subtype entities.
+  - A partition of a supertype entity is a **group of mutually exclusive(belong to only one subtype entity) subtype entities**.
+  - ![partition entity](img/partition_entity.PNG)
 - **partition attribute**
   - Each partition corresponds to an optional partition attribute of the supertype entity.
+  - ![partition entity](img/partition_entity.PNG)
+- **Database Design**
+  - After entities, relationships, attributes, cardinality, and strong and weak entities are determined, the database designer looks for supertype and subtype entities.
+  - once Analysis id done, logical design converts an entity-relationship model to tables, columns, and keys for a specific database system.
+  - Creating supertype and subtype entities is the last of four analysis steps:
+    1. Discover entities, relationships, and attributes
+    2. Determine cardinality
+    3. Distinguish strong and weak entities
+    4. Create supertype and subtype entities
 
 ## 4.6 Alternative modeling conventions
 
 - **crow's foot notation**
   - Variations in cardinality conventions are common. One popular convention, called crow's foot notation, depicts cardinality as a circle (zero), a short line (one), or three short lines (many). The three short lines look like a bird's foot, hence the name "crow's foot notation".
+  - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
+  - ![relationship symbols](img/entity_relationships_symbols.PNG)
+  - ![relationship symbols](img/entity_relationships.jpg)
 - **subject area**
   - Decompose a complex model into a group of related entities, called a subject area.
 - **independent / dependent**
@@ -1144,30 +1157,42 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - IDEF1X stands for Information DEFinition version 1X. IDEF1X became popular, in part, due to early adoption by the United States Department of Defense.
 - **Chen notation**
   - Chen notation appeared in an early ER modeling paper by Peter Chen. Chen notation is not standardized but often appears in literature and tools.
+- **Intangible Entity**
+  - documented in the data model, but not tracked with data in the database.
 
 ## 4.7 Implementing entities
 
+- **Selecting Primary Keys**
+  - stable: value should not change.
+  - simple: easy to type and store.
+  - meaningless: no descriptive information.
 - **strong table**
   - A strong entity becomes a strong table. The primary key must be unique and non-NULL, and should be stable, simple, and meaningless. Single-column primary keys are best, but if no such column exists, a composite primary key may have the required properties.
 - **artificial key**
-  - An artificial key is a single-column primary key created by the database designer when no suitable single-column or composite primary key exists.
+  - An artificial key is a single-column primary **key created by the database designer** when no suitable single-column or composite primary key exists.
 - **subtype table**
   - A subtype entity becomes a subtype table .
 - **weak table**
-  - A weak entity becomes a weak table.
+  - A weak entity becomes a weak table. Primary key is composite
 
 ## 4.10 First, second, and third normal form
 
 - **depends on**
-  - Column A depends on column B means each B value is related to at most one A value.
+  - **Column A depends on column B** means each B value is related to at most one A value.
 - **functional dependence**
-  - Dependence of one column on another is called functional dependence.
+  - **Dependence of one column on another** is called functional dependence.
+  - e.g.
+    - Customer ID: Unique identifier for each customer.
+    - Order ID: Unique identifier for each order.
+    - Customer Name: Name of the customer.
+    - Product: Purchased product details.
+  - Customer Name is dependent on Customer ID. Knowing the Customer ID uniquely determines the Customer Name.
 - **Multivalued dependence / join dependence**
   - Multivalued dependence and join dependence entail dependencies between three or more columns.
 - **Redundancy**
-  - Redundancy is the repetition of related values in a table.
+  - Redundancy is the **repetition of related values** in a table.
 - **Normal forms**
-  - Normal forms are rules for designing tables with less redundancy.
+  - Normal forms are **rules for designing tables with less redundancy**.
 - **first normal form**
   - Every cell of a table contains exactly one value. A table is in first normal form when, in addition, the table has a primary key.
 - **second normal form**
@@ -1184,18 +1209,21 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **third normal form**
   - A table is in third normal form if, whenever a non-key column A depends on column B, then B is unique. Columns A and B may be simple or composite.
 - **Boyce-Codd normal form**
-  - A table is in Boyce-Codd normal form if, whenever column A depends on column B, then B is unique. Columns A and B may be simple or composite.
+  - Boyce-Codd normal form applies to all columns and eliminates redundancy.
+  - In a Boyce-Codd normal form table, if column A depends on column B, then B must be unique.
+  - Boyce-Codd normal form is ideal for **tables with frequent inserts, updates, and deletes**.
+- **Trivial Dependencies**
+  - When the columns of A are a subset of the columns of B, A always depends on B. Ex: FareClass depends on (FlightCode, FareClass). These dependencies are called trivial.
 
 ## 4.12 Applying normal form
 
 - **Normalization**
-  - Normalization eliminates redundancy by decomposing a table into two or more tables in higher normal form.
+  - Normalization eliminates redundancy by decomposing a table into two or more tables.
+  - **redundancy is eliminated** with normalization, the **last step of logical design**.
 - **depends on**
   - Column A depends on column B when each B value is related to at most one A value. A and B may be simple or composite columns.
-- **Boyce-Codd normal form**
-  - In a Boyce-Codd normal form table, if column A depends on column B, then B must be unique.
 - **Denormalization**
-  - Denormalization means intentionally introducing redundancy by merging tables.
+  - Denormalization means **intentionally introducing redundancy** by merging tables, to **eliminate `JOIN` queries**.
 
 ## 5.1 Storage media
 
@@ -1227,13 +1255,20 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 ## 5.2 Table structures
 
 - **table structure**
-  - A table structure is a scheme for organizing rows in blocks on storage media.
+  - A table structure is a scheme for **organizing rows in blocks on storage media**.
+  - Row-oriented storage performs better than column-oriented storage for most transactional databases. Consequently, relational databases commonly use row-oriented storage.
+  - Alternate table structures:
+    - Heap table
+    - Sorted table
+    - Hash table
+    - Table cluster
 - **heap table**
-  - In a heap table, no order is imposed on rows.
+  - In a heap table, **no order is imposed on rows**.
+  - Heap tables **optimize insert operations**. Heap tables are particularly **fast** for bulk load of many rows, since rows are stored in load order.
 - **sorted table / sort column**
-  - In a sorted table, the database designer identifies a sort column that determines physical row order.
+  - In a sorted table, the database designer identifies a **sort** column that determines physical **row order**.
 - **hash table**
-  - In a hash table, rows are assigned to buckets.
+  - In a hash table, **rows are assigned to buckets**.
 - **bucket**
   - A bucket is a block or group of blocks containing rows.
 - **hash key**

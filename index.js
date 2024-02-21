@@ -95,6 +95,7 @@
     const sectionName = section?.replaceAll(' ', '_')?.trim();
     // create subDeck name
     await sendToAnki('createDeck', { deck: `${deckName}::${sectionName}` });
+    const ID = uuidv4();
     // Create cards in subDeck
     for (const { front, back, picture } of cards) {
       // add content to each card
@@ -103,10 +104,10 @@
           deckName: `${deckName}::${sectionName}`,
           modelName: 'Basic',
           fields: {
-            // If card front is same name that already exist, anki will ignore it.
-            // Add random ID to front card question to avoid this problem.
-            Front: `${front}<p style="font-size: 1px; color: #FFF;">${uuidv4()}</p>`,
-            Back: back,
+            // If card front or back has same info that already exist, anki will ignore it.
+            // Add random ID to card to avoid this problem.
+            Front: `${front}<p style="font-size: 1px; color: #FFF;">${ID}</p>`,
+            Back: `${back}<p style="font-size: 1px; color: #FFF;">${ID}</p>`,
           },
           // picture,
         },
@@ -215,7 +216,7 @@
         // check if line is blank
         if (str.trim()) {
           const h = str.length > 40 ? '###' : '##';
-          rawFront += `${h} ${str.replace('-', '').trim()}\n`;
+          rawFront += addNewLine(`${h} ${str.replace('-', '').trim()}`);
         }
       }
     });
@@ -235,8 +236,8 @@
         rawBack += addNewLine(fixImagePath(line));
       } else {
         // must be regular line.
-        // check for indent
-        if (/\s+\-/.test(line)) {
+        // check and remove indent
+        if (/\s+(\-|\d)/.test(line)) {
           rawBack += addNewLine(line.replace(/^  /, ''));
         } else {
           rawBack += addNewLine(line);
