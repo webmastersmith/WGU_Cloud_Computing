@@ -97,6 +97,7 @@ CREATE TABLE Customers (
 - **ER diagrams**
   - Entities, relationships, and attributes are depicted in ER diagrams.
   - ![er diagram](img/er_diagram.PNG)
+  - ![logical diagram](img/logical_diagram.PNG)
 - **database design: logical design**
   - The logical design phase implements database requirements in a specific database system.
   - For relational database systems, logical design converts entities, relationships, and attributes into **tables, keys, and columns**.
