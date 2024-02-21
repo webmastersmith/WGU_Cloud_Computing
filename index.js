@@ -187,6 +187,7 @@
     return { filename, picPath };
   }
   // Change image path from relative to filename. // ![pic description]("pic.jpg")
+  // Anki will look into it's database to find image name.
   // inline with front or back of card.
   function fixImagePath(line) {
     const { filename } = createImagePath(line);
@@ -203,20 +204,20 @@
     let rawFront = '';
     const frontPictures = [];
     // check for images. Front images must have be separated with '%'.
-    blob.split(/\s%\s/).forEach((el) => {
+    blob.split(/\s%\s/).forEach((str) => {
       // remove any escapes.
-      const str = el.replace('%%', '%').trim();
-      // console.log(str);
-      // check if 'str' is an image
-      if (re.test(str)) {
-        rawFront += addNewLine(fixImagePath(str));
-        frontPictures.push(createImagePath(str));
+      const line = str.replace('%%', '%').trim();
+      // console.log(line);
+      // check if 'line' is an image
+      if (re.test(line)) {
+        rawFront += addNewLine(fixImagePath(line));
+        frontPictures.push(createImagePath(line));
       } else {
-        // Not an image, must be a question.
-        // check if line is blank
-        if (str.trim()) {
-          const h = str.length > 40 ? '###' : '##';
-          rawFront += addNewLine(`${h} ${str.replace('-', '').trim()}`);
+        // make sure line is not empty
+        if (line.trim()) {
+          // Not an image, must be a question.
+          const h = line.length > 40 ? '###' : '##';
+          rawFront += addNewLine(`${h} ${line.replace('-', '').trim()}`);
         }
       }
     });
@@ -258,11 +259,10 @@
     const [s, blankLine, ...rest] = block.split(/\r?\n/);
     // remove special characters from section name.
     let section = s?.replace(/[-:;+=\)\(\]\[\{\}!@#$%^&*<>,\\\/|]/g, '')?.trim() ?? 'Section';
-    // cards { front: Question, back: [], picture: [] } array.
-    // console.log(rest);
-    // split each topic.
+    // split into each card(front and back together).
     const rawCardBlobs = rest.join('\n').split(/^\- /gm);
 
+    // create array of cards. {rawFront, rawBack}
     const rawCards = [];
     for (const blob of rawCardBlobs) {
       const [rawFront, ...rawBack] = blob.split('\n');

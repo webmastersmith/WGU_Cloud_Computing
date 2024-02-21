@@ -82,10 +82,29 @@
   - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data.
 - **INSERT**
   - `INSERT` inserts rows into a table.
+
+```sql
+INSERT INTO table_name (column_name1, column_name2, ...)
+                      VALUES (DEFAULT, 'bob', 30, 150);
+```
+
 - **SELECT**
   - `SELECT` retrieves data from a table.
+
+```sql
+SELECT column1, column2, ...
+FROM table_name; -- return all data from those columns.
+```
+
 - **UPDATE**
   - `UPDATE` modifies data in a table.
+
+```sql
+UPDATE table_name
+SET   column_name = 2
+WHERE column_id = 3;
+```
+
 - **DELETE**
   - `DELETE` deletes rows from a table.
 - **CREATE TABLE**
@@ -1258,19 +1277,22 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - A table structure is a scheme for **organizing rows in blocks on storage media**.
   - Row-oriented storage performs better than column-oriented storage for most transactional databases. Consequently, relational databases commonly use row-oriented storage.
   - Alternate table structures:
-    - Heap table
-    - Sorted table
-    - Hash table
-    - Table cluster
+    - **Heap** table
+    - **Sorted** table
+    - **Hash** table
+    - **Table cluster**
 - **heap table**
   - In a heap table, **no order is imposed on rows**.
   - Heap tables **optimize insert operations**. Heap tables are particularly **fast** for bulk load of many rows, since rows are stored in load order.
 - **sorted table / sort column**
   - In a sorted table, the database designer identifies a **sort** column that determines physical **row order**.
+  - optimal for **queries that read data in order of the sort column**.
 - **hash table**
   - In a hash table, **rows are assigned to buckets**.
-- **bucket**
+  - Each bucket is a block, once full, another bucket is linked to, evenly distributing rows across blocks.
+- **hash table bucket**
   - A bucket is a block or group of blocks containing rows.
+  - optimal for inserts and deletes of individual rows.
 - **hash key**
   - The hash key is a column or group of columns, usually the primary key.
 - **hash function**
@@ -1281,36 +1303,52 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - A dynamic hash function automatically allocates more blocks to the table, creates additional buckets, and distributes rows across all buckets. With more buckets, fewer rows are assigned to each bucket and, on average, buckets contain fewer linked blocks.
 - **Table clusters / multi-tables**
   - Table clusters, also called multi-tables, interleave rows of two or more tables in the same storage area.
+  - optimal when joining interleaved tables on the cluster key, since physical row location is the same as output order.
 - **cluster key**
   - Table clusters have a cluster key, a column that is available in all interleaved tables.
 
 ## 5.3 Single-level indexes
 
 - **single-level index**
-  - A single-level index is a file containing column values, along with pointers to rows containing the column value.
+  - A single-level index is a file containing **column values**, along with pointers to rows containing the column value.
+  - Indexes are created by database designers with the `CREATE INDEX` command.
+  - Single-level indexes are normally sorted on the **column value**.
+  - ![single level index](img/single_level_index.PNG)
 - **multi-column index**
   - In a multi-column index, each index entry is a composite of values from all indexed columns. In all other respects, multi-column indexes behave exactly like indexes on a single column.
 - **table scan**
-  - A table scan is a database operation that reads table blocks directly, without accessing an index.
+  - A table scan is a database operation that **reads table blocks directly**, without accessing an index.
+  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates hit ratio. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
+  - ![index scan](img/index_scan.PNG)
 - **index scan**
-  - An index scan is a database operation that reads index blocks sequentially, in order to locate the needed table blocks.
+  - An index scan is a database operation that **reads index blocks sequentially**, in order to locate the needed table blocks.
+  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates hit ratio. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
+  - ![index scan](img/index_scan.PNG)
 - **Hit ratio / filter factor / selectivity**
-  - Hit ratio, also called filter factor or selectivity, is the percentage of table rows selected by a query.
+  - Hit ratio, also called filter factor or selectivity, is the **percentage of table rows selected by a query**.
 - **binary search**
-  - In a binary search, the database repeatedly splits the index in two until it finds the entry containing the search value: .
+  - **Index must be sorted!**
+  - In a binary search, the database **repeatedly splits the index in two** until it finds the entry containing the search value.
+    - The database first compares the search value to an entry in the middle of the index.
+    - If the search value is less than the entry value, the search value is in the first half of the index. If not, the search value is in the second half.
 - **primary index / clustering index**
   - A primary index, also called a clustering index, is an index on a sort column.
 - **secondary index / nonclustering index**
   - A secondary index, also called a nonclustering index, is an index that is not on the sort column.
 - **dense index**
-  - A dense index contains an entry for every table row.
+  - A dense index contains an **entry for every table row**.
 - **sparse index**
-  - A sparse index contains an entry for every table block.
+  - A sparse index contains an **entry for every table block**.
+  - ![sparse index](img/sparse_index.PNG)
 
 ## 5.4 Multi-level indexes
 
 - **multi-level index**
-  - A multi-level index stores column values and row pointers in a hierarchy.
+  - A multi-level index **stores column values and row pointers in a hierarchy**.
+  - Each level above the bottom is a **sparse sorted index to the level below**.
+  - The number of index entries per block is called the **fan-out** of a multi-level index.
+  - multi-level index is the **most commonly used index type**.
+  - ![multi-level index](img/multi-level_index.PNG)
 - **fan-out**
   - The number of index entries per block is called the fan-out of a multi-level index.
 - **branch**
@@ -1324,14 +1362,24 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 
 ## 5.5 Other indexes
 
+- **Other Multi-Level Indexes**
+  - Hash index
+  - Bitmap index
+  - Logical index
+  - Function index
 - **hash index**
   - In a hash index, index entries are assigned to buckets.
+  - As an index grows, some buckets eventually fill up, and additional blocks are allocated and linked to the initial block.
+  - ![hash index](img/hash_index.PNG)
 - **bucket**
   - A bucket is a block or group of blocks containing index entries.
 - **hash function**
   - The bucket containing each index entry is determined by a hash function, which computes a bucket number from the value of the indexed column.
 - **bitmap index**
-  - A bitmap index is a grid of bits: .
+  - A bitmap index is a grid of bits.
+  - Bitmap indexes contain **ones and zeros**.
+  - enable fast reads.
+  - ![bitmap index](img/bitmap_index.PNG)
 - **physical index**
   - A single- or multi-level index normally contains pointers to table blocks and is called a physical index.
 - **logical index**
@@ -1342,7 +1390,20 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 ## 5.6 Tablespaces and partitions
 
 - **tablespace**
-  - A tablespace is a database object that maps one or more tables to a single file.
+  - A tablespace is a database **object** that **maps** one or more **tables** to a **single file**.
+  - not specified in the SQL standard.
+  - Database administrators can **manually create tablespaces** and assign one or multiple tables to each tablespace. Database administrators can improve query performance by **assigning frequently accessed tables** to tablespaces stored on **fast storage media**.
+  - ![tablespace](img/tablespace.PNG)
+
+```sql
+CREATE TABLESPACE TablespaceName
+[ ADD DATAFILE 'FileName' ];
+
+CREATE TABLE TableName
+( ColumnName ColumnDefintion, ... )
+[ TABLESPACE TablespaceName ];
+```
+
 - **fragmented**
   - As files are updated, blocks become scattered, or fragmented, across many tracks.
 - **partition**
@@ -1367,11 +1428,22 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 ## 5.7 Physical design
 
 - **Logical design**
-  - Logical design specifies tables, columns, and keys. The logical design process is described elsewhere in this material.
+  - Logical design specifies **tables, columns, and keys**.
 - **Physical design**
-  - Physical design specifies indexes, table structures, and partitions. Physical design affects query performance but never affects query results.
+  - Physical design specifies **indexes, table structures, and partitions**.
+  - Physical design **affects query performance** but **never affects query results**.
 - **storage engine / storage manager**
-  - A storage engine or storage manager translates instructions generated by a query processor into low-level commands that access data on storage media. Storage engines support different index and table structures, so physical design is dependent on a specific storage engine.
+  - A storage engine or storage manager **translates instructions** generated by a query processor into **low-level commands** that access data on storage media.
+
+```sql
+-- CREATE
+CREATE INDEX IndexName ON TableName (Column1, ..., ColumnN);
+-- DROP
+DROP INDEX IndexName ON TableName;
+-- SHOW
+SHOW INDEX FROM TableName;
+```
+
 - **CREATE INDEX**
   - The CREATE INDEX statement creates an index by specifying the index name and table columns that compose the index.
 - **DROP INDEX**
