@@ -854,7 +854,7 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - ![partition entity](img/partition_entity.PNG)
 - **Database Design**
   - **After entities, relationships, attributes, cardinality, and strong and weak entities are determined**, the database designer looks for supertype and subtype entities.
-  - once Analysis id done, logical design converts an entity-relationship model to tables, columns, and keys for a specific database system.
+  - once Analysis id done, **logical design** converts an entity-relationship model to tables, columns, and keys for a specific database system.
   - Creating supertype and subtype entities is the last of four analysis steps:
     1. Discover entities, relationships, and attributes
     2. Determine cardinality
@@ -868,16 +868,6 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
   - ![relationship symbols](img/entity_relationships_symbols.PNG)
   - ![relationship symbols](img/entity_relationships.jpg)
-- **subject area**
-  - Decompose a complex model into a group of related entities, called a subject area.
-- **independent / dependent**
-  - Refer to strong entities as independent and weak entities as dependent.
-- **Unified Modeling Language / UML**
-  - Unified Modeling Language, or UML, is commonly used for software development. Software data structures are similar to database structures, so UML includes ER conventions.
-- **IDEF1X**
-  - IDEF1X stands for Information DEFinition version 1X. IDEF1X became popular, in part, due to early adoption by the United States Department of Defense.
-- **Chen notation**
-  - Chen notation appeared in an early ER modeling paper by Peter Chen. Chen notation is not standardized but often appears in literature and tools.
 - **Intangible Entity**
   - documented in the data model, but not tracked with data in the database.
 
@@ -885,21 +875,14 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 
 - **Selecting Primary Keys**
   - stable: value should not change.
-  - simple: easy to type and store.
+  - **simple**: easy to type and store.
   - meaningless: no descriptive information.
-- **strong table**
-  - A strong entity becomes a strong table. The primary key must be unique and non-NULL, and should be stable, simple, and meaningless. Single-column primary keys are best, but if no such column exists, a composite primary key may have the required properties.
 - **artificial key**
   - An artificial key is a single-column primary **key created by the database designer** when no suitable single-column or composite primary key exists.
-- **subtype table**
-  - A subtype entity becomes a subtype table .
-- **weak table**
-  - A weak entity becomes a weak table. Primary key is composite
+  - Usually artificial key values are integers, generated automatically by the database as new rows are inserted to the table. **Artificial keys are stable, simple, and meaningless**.
 
 ## 4.10 First, second, and third normal form
 
-- **depends on**
-  - **Column A depends on column B** means each B value is related to at most one A value.
 - **functional dependence**
   - **Dependence of one column on another** is called functional dependence.
   - e.g.
@@ -908,31 +891,13 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
     - Customer Name: Name of the customer.
     - Product: Purchased product details.
   - Customer Name is dependent on Customer ID. Knowing the Customer ID uniquely determines the Customer Name.
-- **Multivalued dependence / join dependence**
-  - Multivalued dependence and join dependence entail dependencies between three or more columns.
 - **Redundancy**
   - Redundancy is the **repetition of related values** in a table.
 - **Normal forms**
   - Normal forms are **rules for designing tables with less redundancy**.
-- **first normal form**
-  - Every cell of a table contains exactly one value. A table is in first normal form when, in addition, the table has a primary key.
-- **second normal form**
-  - A table is in second normal form when all non-key columns depend on the whole primary key.
-- **third normal form**
-  - Informally, a table is in third normal form when all non-key columns depend on the key, the whole key, and nothing but the key. A formal definition appears elsewhere in this material.
 
 ## 4.11 Boyce-Codd normal form
 
-- **candidate key / Minimal**
-  - A candidate key is a simple or composite column that is unique and minimal. Minimal means all columns are necessary for uniqueness.
-- **non-key**
-  - A non-key column is a column that is not contained in a candidate key.
-- **third normal form**
-  - A table is in third normal form if, whenever a non-key column A depends on column B, then B is unique. Columns A and B may be simple or composite.
-- **Boyce-Codd normal form**
-  - Boyce-Codd normal form applies to all columns and eliminates redundancy.
-  - In a Boyce-Codd normal form table, if column A depends on column B, then B must be unique.
-  - Boyce-Codd normal form is ideal for **tables with frequent inserts, updates, and deletes**.
 - **Trivial Dependencies**
   - When the columns of A are a subset of the columns of B, A always depends on B. Ex: FareClass depends on (FlightCode, FareClass). These dependencies are called trivial.
 
@@ -946,78 +911,34 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **Denormalization**
   - Denormalization means **intentionally introducing redundancy** by merging tables, to **eliminate `JOIN` queries**.
 
-## 5.1 Storage media
-
-- **Access time**
-  - Access time is the time required to access the first byte in a read or write operation.
-- **Transfer rate**
-  - Transfer rate is the speed at which data is read or written, following initial access.
-- **Volatile memory**
-  - Volatile memory is memory that is lost when disconnected from power.
-- **Non-volatile memory**
-  - Non-volatile memory is retained without power.
-- **Main memory / random-access memory (RAM)**
-  - Main memory, also called random-access memory (RAM), is the primary memory used when computer programs execute.
-- **Flash memory / solid-state drive (SSD)**
-  - Flash memory, also called solid-state drive (SSD), is less expensive and higher capacity than main memory.
-- **Magnetic disk / hard-disk drive (HDD)**
-  - Magnetic disk, also called hard-disk drive (HDD), is used to store large amounts of data.
-- **sectors**
-  - Magnetic disk groups data in sectors, traditionally 512 bytes per sector but 4 kilobytes with newer disk formats.
-- **pages**
-  - Flash memory groups data in pages, usually between 2 kilobytes and 16 kilobytes per page.
-- **block**
-  - Databases and file systems use a uniform size, called a block, when transferring data between main memory and storage media.
-- **row-oriented storage**
-  - To minimize block transfers, relational databases usually store an entire row within one block, which is called row-oriented storage.
-- **column-oriented / columnar storage**
-  - In column-oriented storage, also called columnar storage, each block stores values for a single column only.
-
 ## 5.2 Table structures
 
 - **table structure**
   - A table structure is a scheme for **organizing rows in blocks on storage media**.
   - Row-oriented storage performs better than column-oriented storage for most transactional databases. Consequently, relational databases commonly use row-oriented storage.
   - Alternate table structures:
-    - **Heap** table
-    - **Sorted** table
-    - **Hash** table
+    - **Heap table**
+    - **Sorted table**
+    - **Hash table**
     - **Table cluster**
 - **heap table**
   - In a heap table, **no order is imposed on rows**.
   - Heap tables **optimize insert operations**. Heap tables are particularly **fast** for bulk load of many rows, since rows are stored in load order.
-- **sorted table / sort column**
-  - In a sorted table, the database designer identifies a **sort** column that determines physical **row order**.
-  - optimal for **queries that read data in order of the sort column**.
 - **hash table**
   - In a hash table, **rows are assigned to buckets**.
   - Each bucket is a block, once full, another bucket is linked to, evenly distributing rows across blocks.
 - **hash table bucket**
   - A bucket is a block or group of blocks containing rows.
   - optimal for inserts and deletes of individual rows.
-- **hash key**
-  - The hash key is a column or group of columns, usually the primary key.
-- **hash function**
-  - The hash function computes the bucket containing the row from the hash key.
 - **modulo function**
   - The modulo function is a simple hash function with four steps.
-- **dynamic hash function**
-  - A dynamic hash function automatically allocates more blocks to the table, creates additional buckets, and distributes rows across all buckets. With more buckets, fewer rows are assigned to each bucket and, on average, buckets contain fewer linked blocks.
-- **Table clusters / multi-tables**
-  - Table clusters, also called multi-tables, interleave rows of two or more tables in the same storage area.
-  - optimal when joining interleaved tables on the cluster key, since physical row location is the same as output order.
-- **cluster key**
-  - Table clusters have a cluster key, a column that is available in all interleaved tables.
+    - Convert the hash key by interpreting the key's bits as an integer value.
+    - Divide the integer by the number of buckets.
+    - Interpret the division remainder as the bucket number.
+    - Convert the bucket number to the physical address of the block containing the row.
 
 ## 5.3 Single-level indexes
 
-- **single-level index**
-  - A single-level index is a file containing **column values**, along with pointers to rows containing the column value.
-  - Indexes are created by database designers with the `CREATE INDEX` command.
-  - Single-level indexes are normally sorted on the **column value**.
-  - ![single level index](img/single_level_index.PNG)
-- **multi-column index**
-  - In a multi-column index, each index entry is a composite of values from all indexed columns. In all other respects, multi-column indexes behave exactly like indexes on a single column.
 - **table scan**
   - A table scan is a database operation that **reads table blocks directly**, without accessing an index.
   - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates hit ratio. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
@@ -1033,10 +954,6 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - In a binary search, the database **repeatedly splits the index in two** until it finds the entry containing the search value.
     - The database first compares the search value to an entry in the middle of the index.
     - If the search value is less than the entry value, the search value is in the first half of the index. If not, the search value is in the second half.
-- **primary index / clustering index**
-  - A primary index, also called a clustering index, is an index on a sort column.
-- **secondary index / nonclustering index**
-  - A secondary index, also called a nonclustering index, is an index that is not on the sort column.
 - **dense index**
   - A dense index contains an **entry for every table row**.
 - **sparse index**
@@ -1053,14 +970,6 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - ![multi-level index](img/multi-level_index.PNG)
 - **fan-out**
   - The number of index entries per block is called the fan-out of a multi-level index.
-- **branch**
-  - Each path from the top-level block to a bottom-level block is called a branch.
-- **balanced / imbalanced**
-  - Multi-level indexes are called balanced when all branches are the same length and imbalanced when branches are different lengths.
-- **B+tree**
-  - B+tree. All indexed values appear in the bottom level. Pointers to table blocks appear only in the bottom level. Since some indexed values also appear in higher levels, values are occasionally repeated in the index.
-- **B-tree**
-  - B-tree. If an indexed value appears in a higher level, the value is not repeated at lower levels. Instead, a pointer to the corresponding table block appears in the higher level along with the value.
 
 ## 5.5 Other indexes
 
@@ -1073,21 +982,11 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - In a hash index, index entries are assigned to buckets.
   - As an index grows, some buckets eventually fill up, and additional blocks are allocated and linked to the initial block.
   - ![hash index](img/hash_index.PNG)
-- **bucket**
-  - A bucket is a block or group of blocks containing index entries.
-- **hash function**
-  - The bucket containing each index entry is determined by a hash function, which computes a bucket number from the value of the indexed column.
 - **bitmap index**
   - A bitmap index is a grid of bits.
   - Bitmap indexes contain **ones and zeros**.
   - enable fast reads.
   - ![bitmap index](img/bitmap_index.PNG)
-- **physical index**
-  - A single- or multi-level index normally contains pointers to table blocks and is called a physical index.
-- **logical index**
-  - A logical index is a single- or multi-level index in which pointers to table blocks are replaced with primary key values.
-- **function index**
-  - In a function index, the database designer specifies a function on the column value. Index entries contain the result of the function applied to column values, rather than the column values.
 
 ## 5.6 Tablespaces and partitions
 
@@ -1106,31 +1005,8 @@ CREATE TABLE TableName
 [ TABLESPACE TablespaceName ];
 ```
 
-- **fragmented**
-  - As files are updated, blocks become scattered, or fragmented, across many tracks.
-- **partition**
-  - A partition is a subset of table data. One table has many partitions that do not overlap and, together, contain all table data.
-- **horizontal partition**
-  - A horizontal partition is a subset of table rows.
-- **vertical partition**
-  - A vertical partition is a subset of table columns.
-- **shard**
-  - Like a partition, a shard is a subset of table data, usually a subset of rows rather than columns. Unlike partitions, which are stored on different storage devices of a single computer, shards are stored on different computers of a distributed database.
-- **partition expression / partition columns**
-  - To partition a table, the database administrator specifies a partition expression based on one or more partition columns. The partition expression may be simple, such as the value of a single partition column, or a complex expression based on several partition columns. Rows are assigned to partitions in one of the following ways: .
-- **range partition**
-  - A range partition associates each partition with a range of partition expression values. The VALUES LESS THAN keywords specify the upper bound of each range. The MAXVALUE keyword represents the highest column value, and VALUES LESS THAN MAXVALUE specifies the highest range. Each partition is explicitly named by the database administrator.
-- **list partition**
-  - A list partition associates each partition with an explicit list of partition expression values using the VALUES IN keywords. Like a range partition, each partition is explicitly named.
-- **hash partition**
-  - A hash partition requires a partition expression with positive integer values. The database administrator specifies the number of partitions, N, and partitions are automatically named p0 through p(N-1). The partition number for each row is computed as: (partition expression value) modulo N.
-- **key partition**
-  - A key partition is similar to a hash partition, except the partition expression is determined automatically by the database.
-
 ## 5.7 Physical design
 
-- **Logical design**
-  - Logical design specifies **tables, columns, and keys**.
 - **Physical design**
   - Physical design specifies **indexes, table structures, and partitions**.
   - Physical design **affects query performance** but **never affects query results**.
@@ -1145,223 +1021,3 @@ DROP INDEX IndexName ON TableName;
 -- SHOW
 SHOW INDEX FROM TableName;
 ```
-
-- **CREATE INDEX**
-  - The CREATE INDEX statement creates an index by specifying the index name and table columns that compose the index.
-- **DROP INDEX**
-  - The DROP INDEX statement deletes a table's index.
-- **SHOW INDEX**
-  - The SHOW INDEX statement displays a table's index.
-- **EXPLAIN**
-  - The EXPLAIN statement generates a result table that describes how a statement is executed by the storage engine.
-- **slow query log**
-  - The MySQL slow query log is a file that records all long-running queries submitted to the database.
-
-## 6.1 MySQL architecture
-
-- **Architecture**
-  - Architecture describes the components of a computer system and the relationships between components.
-- **Tools**
-  - Tools interact directly with database users and administrators, and send queries to the query processor.
-- **query processor**
-  - The query processor manages connections from multiple users and compiles queries into low-level instructions for the storage engine.
-- **storage engine / storage manager**
-  - The storage engine, also called a storage manager, executes instructions, manages indexes, and interacts with the file system.
-- **file system**
-  - The file system accesses data on storage media. The file system contains both system and user data, such as log files, tables, and indexes.
-- **MySQL Server / MySQL Enterprise Edition**
-  - MySQL is available in a free version, called MySQL Server, and a paid version, called MySQL Enterprise Edition.
-- **Monitor**
-  - Monitor collects and displays information on CPU, memory, and index utilization, as well as queries and results. Database administrators use Enterprise Monitor to manage and tune large databases with many users.
-- **Audit**
-  - Audit keeps track of all database changes. For each change, Audit tracks the time of change and who made the change. Audit supports government and business audit requirements for sensitive databases such as financial, medical, and defense.
-- **Utility programs**
-  - Utility programs include approximately 30 tools, grouped in five categories: installation, client, administrative, developer, and miscellaneous tools.
-- **connection**
-  - A connection is a link between tools and the query processor. Each connection specifies a database name, server address, logon name, and password.
-- **execution plan**
-  - An execution plan is a detailed, low-level sequence of steps that specify exactly how to process a query.
-- **query parser**
-  - The query parser checks each query for syntax errors and converts valid queries to an internal representation.
-- **query optimizer**
-  - The query optimizer reads the internal representation, generates alternative execution plans, estimates execution times, and selects the fastest plan. Estimates are based on heuristics and statistics about data, like the number of rows in each table and the number of values in each column. These statistics are maintained in the data dictionary, described below.
-- **cache manager**
-  - For optimal performance, the query processor layer has a cache manager that stores reusable information in main memory.
-- **buffer manager**
-  - To reduce data access time, the buffer manager retains data blocks from the file system for possible reuse.
-- **buffer**
-  - The data blocks are retained in an area of main memory called the buffer.
-- **least recently used / LRU**
-  - The InnoDB buffer manager uses a least recently used or LRU algorithm. The LRU algorithm tracks the time each block was last accessed and, when space is needed, discards 'stale' blocks.
-- **catalog / data dictionary**
-  - A catalog, also known as a data dictionary, is a directory of tables, columns, keys, indexes, and other objects in a relational database.
-
-## 6.2 Cloud databases
-
-- **tiers**
-  - Multiple computers linked by a network are often grouped in layers, called tiers, and arranged in a hierarchy.
-- **single-tier architecture**
-  - Prior to 1990, most software ran in a single-tier architecture, consisting of a personal or corporate computer connected directly to monitors.
-- **multi-tier architecture**
-  - Since 1990, complex corporate and government applications have increasingly been implemented in a multi-tier architecture:
-    - The top tier consists of computers interacting directly with end-users.
-    - The bottom tier consists of servers managing resources like databases and email.
-    - One or more middle tiers execute a variety of functions, such as user authorization, business logic, and communication with other computers.
-- **Web architecture**
-  - Web architecture is a multi-tier architecture consisting of web browsers and web servers communicating over the internet:
-    - Web browsers, on the top tier, manage user interaction.
-    - Web servers, on a middle tier, generate web pages for display on web browsers and transmit user requests to services running on lower tiers.
-    - Application servers run application software, process user requests, and communicate with databases and other services.
-    - Services, such as database and authentication, comprise the bottom tier.
-- **on-premise**
-  - Prior to 2000, most commercial software was on-premise, or installed and run on customer computers.
-- **cloud services**
-  - With cloud services, a vendor such as Amazon, Microsoft, or Google implements computer services on lower tiers of a web architecture. For a fee, cloud services are made available over the internet to customers.
-- **Infrastructure-as-a-service / IaaS**
-  - Infrastructure-as-a-service, or IaaS, provides computer processing, memory, and storage media, as if the customer were renting a computer.
-- **Platform-as-a-service / PaaS**
-  - Platform-as-a-service, or PaaS, provides tools and services, such as databases, application development tools, and messaging services.
-- **Software-as-a-service / SaaS**
-  - Software-as-a-service, or SaaS, provides complete applications, usually through web browsers on customer machines.
-- **virtual machine / VM**
-  - A virtual machine, or VM, is a software layer that emulates a complete, independent computing environment.
-- **cloud database**
-  - A cloud database is a database offered as a PaaS cloud service.
-
-## 6.3 Distributed databases
-
-- **parallel computer**
-  - A parallel computer consists of multiple processors managed by a single operating system instance.
-- **shared memory**
-  - In a shared memory computer, processors share the same memory and storage media.
-- **shared storage**
-  - In a shared storage computer, processors share storage media only.
-- **shared nothing**
-  - In a shared nothing computer, processors share neither memory nor storage media.
-- **local area network**
-  - A local area network consists of cables extending over a small area, typically within one facility. Local area networks usually use the Ethernet communication protocol.
-- **wide area network**
-  - A wide area network spans multiple facilities in different geographic locations, separated by many miles. Wide area networks may communicate via cables, satellite, or telephone lines, often using internet communication protocols.
-- **node**
-  - A node is one of a group of computers connected by either a local or wide area network.
-- **cluster**
-  - A cluster is a group of nodes connected by a local area network, managed by separate operating system instances, and coordinated by specialized cluster management software.
-- **parallel database**
-  - A parallel database runs on a parallel computer or cluster.
-- **distributed database**
-  - A distributed database runs on multiple computers connected by a wide area network.
-- **distributed transaction**
-  - A distributed transaction updates data on multiple nodes of a distributed database. In a distributed transaction, either all nodes or no nodes must be successfully updated.
-- **two-phase commit**
-  - Databases commonly implement distributed transactions with a technique called two-phase commit. The two-phase commit has four steps:
-    1. In phase 1, a central transaction coordinator notifies all participating nodes of the required updates.
-    2. Participating nodes receive the notification, store the update in a local log, and send a confirmation message to the transaction coordinator. Participating nodes do not yet commit the update to the database.
-    3. Phase 2 begins when the transaction coordinator receives confirmation from all participating nodes. The transaction coordinator now instructs all nodes to commit.
-    4. Participating nodes receive the commit message, commit the update to the database, and notify the transaction coordinator of success.
-- **local transaction**
-  - A local transaction updates data on a single node of a distributed database.
-- **synchronous**
-  - Updates in a distributed transaction are synchronous, since the updates occur at the same time from the perspective of the database user.
-- **asynchronous**
-  - Updates in separate local transactions are asynchronous.
-- **eventually consistent**
-  - Databases that use local rather than distributed transactions are called eventually consistent.
-- **consistent**
-  - A consistent database conforms to all rules at all times.
-- **available**
-  - In an available database, 'live' nodes must respond to queries at all times.
-- **network partition**
-  - A network partition forms when a network error prevents nodes from communicating.
-- **partition-tolerant**
-  - A partition-tolerant database continues to function when a network partition occurs.
-- **CAP theorem**
-  - The CAP theorem states that a distributed database cannot simultaneously be Consistent, Available, and Partition-tolerant. A distributed database can guarantee any two, but not all three, of these properties.
-
-## 6.4 Replicated databases
-
-- **replica**
-  - A replica is a copy of an entire database, a table, or a subset of table data.
-- **replicated database**
-  - A replicated database maintains two or more replicas on separate storage devices.
-- **storage arrays**
-  - Some storage devices, called storage arrays, manage replicas internally, without database intervention.
-- **primary/secondary**
-  - The primary/secondary technique designates one node as primary. All updates are first applied to the primary node in local transactions. Secondary nodes are updated after the primary node commits, with independent local transactions.
-- **group replication**
-  - The group replication technique applies updates to any node in a group. Prior to committing, a node broadcasts transaction information to other nodes, which look for conflicts with concurrent transactions. If any node detects a conflict, an algorithm determines which transaction commits and which rolls back.
-- **central catalog**
-  - In a central catalog, the entire catalog resides on a single node.
-- **replicated catalog**
-  - In a replicated catalog, a copy of the catalog resides on each node.
-
-## 6.5 Data warehouses
-
-- **operational data**
-  - Organizations use operational data to conduct daily business functions.
-- **analytic data**
-  - Organizations use analytic data to understand, manage, and plan the business.
-- **reporting data / decision support data**
-  - Analytic data is sometimes called reporting data or decision support data.
-- **data warehouse**
-  - A data warehouse is a separate database optimized for analytics rather than operations.
-- **data mart**
-  - A data mart is a data warehouse designed for a specific business area, such as sales, human resources, or product development.
-- **extract-transform-load / ETL**
-  - The five-step process is commonly referred to as the extract-transform-load, or ETL, process.
-- **ETL tools**
-  - Since the ETL process is time-consuming and difficult to automate, many organizations use special software products, called ETL tools, to minimize programming.
-
-## 6.6 Data warehouse design
-
-- **dimensional design / star schema**
-  - A dimensional design, also called a star schema, consists of fact and dimension tables: .
-- **fact table**
-  - A fact table contains numeric data used to measure business performance, such as sales revenue or number of employees. Each row in a fact table consists of numeric fact columns and foreign keys that reference dimension tables.
-- **dimension table**
-  - A dimension table contains textual data that describes the fact data, such as product line, organizational unit, and geographical region.
-- **dimension hierarchy**
-  - A dimension hierarchy is a sequence of columns in which each column has a one-many relationship to the next column.
-- **date dimension**
-  - Each row of the date dimension table corresponds to a day. If an organization tracks data for 100 years, the date dimension contains 36,500 rows (100 years × 365 days per year).
-- **time dimension**
-  - Each row of the time dimension table corresponds to a minute of the day. The time dimension contains 1,440 rows (24 hours × 60 minutes per hour).
-- **type 2 design for slowly changing dimensions**
-  - Adding start and end foreign keys to the fact table is called type 2 design for slowly changing dimensions.
-
-## 6.8 Other database architectures
-
-- **in-memory database**
-  - An in-memory database is a database that stores data in main memory, instead of or in addition to storage media.
-- **embedded database / in-process database**
-  - An embedded database, sometimes called an in-process database, is a database that is packaged with a programming language. An embedded database and application program execute together in a single software process.
-- **SQLite**
-  - SQLite is the dominant embedded relational database.
-- **SQL Server Compact**
-  - SQL Server Compact is an embedded database from Microsoft. The last major release of SQL Server Compact was in 2011, and Microsoft will discontinue support after 2021.
-- **libmysqld**
-  - The MySQL software library libmysqld configures MySQL as an embedded database but was discontinued as of MySQL release 8.0.
-- **federated database**
-  - A federated database is a collection of two or more participating databases underneath a coordinating software layer. The participating databases are autonomous and heterogeneous: .
-- **autonomous database**
-  - An autonomous database operates independently of other participating databases. An autonomous database is administered and can be queried as if the database were not part of a federated database.
-- **Heterogeneous databases**
-  - Heterogeneous databases either run under different database systems or have incompatible schema.
-- **middleware**
-  - The coordinating software layer is called middleware, since the software lies between application programs and database software.
-- **global catalog**
-  - A global catalog is a directory of participating database objects, such as tables, columns, and indexes.
-- **database wrapper**
-  - A database wrapper converts the decomposed queries to the appropriate syntax for each participating database.
-- **SQL/Management of External Data / SQL/MED**
-  - Some products support SQL/Management of External Data, or SQL/MED, an extension of the SQL standard for federated databases.
-- **nickname**
-  - A nickname is a federated database name for a participating database object, such as tables and columns.
-- **user mapping**
-  - A user mapping associates a federated database user with a participating database user.
-- **data lake**
-  - A data lake is an analytic database of raw, unprocessed data copied from multiple data sources. Data lakes share some characteristics of data warehouses and some characteristics of federated databases: .
-
-## 8.1 MySQL Workbench: Import and export
-
-- **backtick**
-  - The backtick (`) delimits literals that represent identifiers, which allows spaces and reserved words to be used as identifiers.

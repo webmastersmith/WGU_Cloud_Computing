@@ -7,7 +7,9 @@
   let total = 0;
 
   // variables
-  const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
+  // const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
+  // const removeLines = 2;
+  const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Foundations_Study_Guide.md';
   const removeLines = 2;
 
   const dataArr = fs
