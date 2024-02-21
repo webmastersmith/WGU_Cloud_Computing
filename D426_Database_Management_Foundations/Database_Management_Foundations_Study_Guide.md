@@ -1,85 +1,47 @@
-# D426 Database Management Foundations Terms
+# D426 Database Management Foundations Terms Study Guide
 
 ## 1.1 Database basics
 
-- **Data**
-  - Data is numeric, textual, visual, or audio information that describes real-world systems.
-- **analog**
-  - Historically, data was mostly analog, encoded as continuous variations on various physical media.
-- **digital**
-  - Today, data is mostly digital, encoded as zeros and ones on electronic and magnetic media.
-- **database**
-  - A database is a collection of data in a structured format. In principle, databases can be stored on paper or even clay tablets. In practice, however, modern databases are invariably stored on computers.
-- **database system / database management system / DBMS**
-  - A database system, also known as a database management system or DBMS, is software that reads and writes data in a database. Database systems ensure data is secure, internally consistent, and available at all times. These functions are challenging for large databases with many users, so database systems are complex.
-- **query language**
-  - A query language is a specialized programming language, designed specifically for database systems.
 - **database application**
-  - A database application is software that helps business users interact with database systems.
+  - A database application is software that **helps** business **users interact with database systems**.
 - **database administrator**
-  - A database administrator is responsible for securing the database system against unauthorized users. A database administrator enforces procedures for user access and database system availability.
-- **database designer**
-  - A database designer determines the format of each data element and the overall database structure. Database designers must balance several priorities, including storage, response time, and support for rules that govern the data. Since these priorities often conflict, database design is technically challenging.
-- **database programmer**
-  - A database programmer develops computer programs that utilize a database.
-- **database user**
-  - A database user is a consumer of data in a database. Database users request, update, or use stored data to generate reports or information. Database users usually access the database via applications but can also submit queries directly to the database system.
+  - A database administrator is responsible for **securing the database system against unauthorized users**. A database administrator enforces procedures for user access and database system availability.
 
 ## 1.2 Database systems
 
 - **Authorization**
-  - . Many database users should have limited access to specific tables, columns, or rows of a database. Database systems authorize individual users to access specific data.
+  - . Many database users should have **limited access** to specific tables, columns, or rows of a database. Database systems authorize individual users to access specific data.
 - **Rules**
-  - Database systems ensure data is consistent with structural and business rules.
-- **transaction**
-  - A transaction is a group of queries that must be either completed or rejected as a whole. Execution of some, but not all, queries results in inconsistent or incorrect data.
-- **architecture**
-  - The architecture of a database system describes the internal components and the relationships between components.
+  - Database systems ensure **data** is **consistent** with **structural** and **business rules**.
 - **query processor**
-  - The query processor interprets queries, creates a plan to modify the database or retrieve data, and returns query results to the application.
+  - The query processor **interprets queries, creates a plan** to modify the database or retrieve data, and returns query results to the application.
 - **query optimization**
-  - The query processor performs query optimization to ensure the most efficient instructions are executed on the data.
+  - The query processor performs query optimization to ensure the most **efficient instructions are executed** on the data.
 - **storage manager**
-  - The storage manager translates the query processor instructions into low-level file-system commands that modify or retrieve data.
+  - The storage manager **translates the query processor instructions** into **low-level** file-system **commands** that modify or retrieve data.
 - **indexes**
-  - The storage manager uses indexes to quickly locate data.
+  - The **storage manager uses indexes to quickly locate data**.
 - **transaction manager**
-  - The transaction manager ensures transactions are properly executed.
+  - The transaction manager **ensures transactions are properly executed**.
 - **Metadata**
-  - Metadata is data about the database, such as column names and the number of rows in each table.
-- **log**
-  - The log is a file containing a complete record of all inserts, updates, and deletes processed by the database.
-- **catalog / data dictionary**
-  - The catalog, also known as a data dictionary, is a directory of tables, columns, indexes, and other database objects.
+  - Metadata is **data about the database**, such as **column names** and the **number of rows** in each table.
 - **relational database**
-  - A relational database stores data in tables, columns, and rows, similar to a spreadsheet.
-  - Relational systems are ideal for databases that require an accurate record of every transaction, such as banking, airline reservation systems, and student records.
+  - A relational database **stores data in tables, columns, and rows**, similar to a spreadsheet.
   - All relational database systems support the SQL query language.
+- **relational databases are good for what?**
+  - Relational systems are ideal for databases that require an **accurate record of every transaction, such as banking, airline reservation systems, and student records.**
 - **SQL**
-  - SQL stands for Structured Query Language and includes statements that read and write data, create and delete tables, and administer the database system.
+  - SQL stands for Structured Query **Language** and includes statements that **read** and **write** data, **create** and **delete** tables, and **administer the database system**.
   - All relational database systems support the SQL query language.
 - **big data**
   - The growth of the internet in the 1990s generated massive volumes of online data, called big data, often with poorly structured or missing information.
-  - MongoDB: big data, open source, noSQL
+  - **MongoDB: big data, open source, noSQL**.
 - **NoSQL**
-  - The newer non-relational systems are called NoSQL, for 'not only SQL', and are optimized for big data.
-  - MongoDB: big data, open source, noSQL
-- **Open source**
-  - Open source software is software that anyone can inspect, copy, and modify with no licensing fee.
+  - The newer non-relational systems are called NoSQL, for 'not only SQL', and are **optimized for big data**.
   - MongoDB: big data, open source, noSQL
 
 ## 1.3 Query languages
 
-- **query**
-  - A query is a command for a database that typically inserts new data, retrieves data, updates data, or deletes data from a database.
-- **query_language**
-  - A query language is a computer programming language for writing database queries.
-- **CRUD**
-  - The four common queries are sometimes referred to as CRUD operations, an acronym for Create, Read, Update, and Delete data.
-- **Structured Query Language / SQL**
-  - Structured Query Language, or SQL, is the standard query language of relational database systems.
-- **statement**
-  - An SQL statement is a database command, such as a query that inserts, selects, updates, or deletes data.
 - **INSERT**
   - `INSERT` inserts rows into a table.
 
@@ -114,7 +76,7 @@ DELETE FROM table_name WHERE column_name = 'value'; -- delete row
 ```
 
 - **CREATE TABLE**
-  - The SQL `CREATE TABLE` statement creates a new table by specifying the table and column names.
+  - The SQL `CREATE TABLE` statement **creates a new table** by specifying the table and column names.
 
 ```sql
 CREATE TABLE Customers (
@@ -127,20 +89,15 @@ CREATE TABLE Customers (
 );
 ```
 
-- **data type**
-  - Each column is assigned a data type that indicates the format of column values. Data types can be numeric, textual, or complex.
-
 ## 1.4 Database design and programming
 
-- **database design**
-  - A database design is a specification of database objects such as tables, columns, data types, and indexes. Database design also refers to the process used to develop the specification.
-- **analysis**
+- **database design: analysis**
   - The analysis phase specifies database requirements without regard to a specific database system.
   - Requirements are represented as **entities, relationships, and attributes**.
 - **ER diagrams**
   - Entities, relationships, and attributes are depicted in ER diagrams.
   - ![er diagram](img/er_diagram.PNG)
-- **logical design**
+- **database design: logical design**
   - The logical design phase implements database requirements in a specific database system.
   - For relational database systems, logical design converts entities, relationships, and attributes into **tables, keys, and columns**.
   - The logical design, as specified in SQL and depicted in a table diagram, is called a database **schema**.
@@ -148,12 +105,7 @@ CREATE TABLE Customers (
 - **key**
   - A key is a column used to identify individual rows of a table.
   - Tables, keys, and columns are specified in SQL with `CREATE TABLE` statements.
-- **table diagram**
-  - The logical design is depicted in a table diagram.
-  - ![logical diagram](img/logical_diagram.PNG)
-- **schema**
-  - The logical design, as specified in SQL and depicted in a table diagram, is called a database schema.
-- **physical design**
+- **database design: physical design**
   - The physical design phase adds indexes and specifies how tables are organized on **storage media**.
   - Physical design affects query processing speed but never affects the query result.
 - **data independence**
@@ -166,22 +118,15 @@ CREATE TABLE Customers (
 
 ## 1.5 MySQL
 
-- **MySQL**
-  - MySQL is a leading relational database system sponsored by Oracle.
-- **MySQL Community / MySQL Server**
-  - MySQL Community, commonly called MySQL Server, is a free edition.
-- **MySQL Enterprise**
-  - MySQL Enterprise is a paid edition for managing commercial databases. MySQL Enterprise includes MySQL Server and additional administrative applications.
-- **root account**
-  - The root account, the administrative account that has full control of MySQL.
 - **MySQL Command-Line Client**
-  - The MySQL Command-Line Client is a text interface **included in the MySQL Server download**. The Command-Line Client allows developers to connect to the database server, perform administrative functions, and execute SQL statements.
+  - The MySQL Command-Line Client is a text interface **included in the MySQL Server download**.
+  - The Command-Line Client allows developers to connect to the database server, perform administrative functions, and execute SQL statements.
   - ![mysql](img/mysql.PNG)
-  - The animation above shows the user typing SQL commands that use the 'world' database, a database that is usually installed with MySQL.
+  - MYSQL Community sometimes includes the 'world' database, a database to practice with.
+- **root account**
+  - The root account, the **administrative account that has full control** of MySQL.
 - **error code**
   - MySQL Server returns an error code and description when an **SQL statement is syntactically incorrect** or the **database cannot execute the statement**.
-- **MySQL Workbench**
-  - MySQL Workbench is installed with MySQL Server and allows developers to execute SQL commands using an editor.
 
 ## 2.01 Relational model
 
@@ -193,10 +138,6 @@ CREATE TABLE Customers (
       - e.g. relational model: primary key, foreign key, data types(INT, STRING...), indexes.
     - **Operations** that manipulate data structures.
     - **Rules** that govern valid data.
-- **relational model**
-  - The relational model is a database model based on a **tabular data structure**. The model was published in 1970 by E. F. Codd of IBM and released in commercial products around 1980. The data structure, operations, and rules are standardized in **SQL**, the **universal query language of relational databases**.
-- **big data**
-  - The rise of the internet in the 1990s generated big data, characterized by unprecedented data volumes and rapidly changing data structures.
 - **set**
   - A set is an **unordered** collection of elements enclosed in braces.
   - e.g. {a, b, c} and {c, b, a} are the same, since sets are **not** ordered.
@@ -214,40 +155,32 @@ CREATE TABLE Customers (
   - since rows are a set, rows have no inherit order.
   - all these are the same: **Row, Record, Tuple**
 - **relational data type**
-  - A data type is a named set of values, from which column values are drawn.
+  - A data type is a named **set of values**, from which column values are drawn.
 - **relational algebra**
   - These operations are collectively called relational algebra and are the theoretical foundation of the SQL language.
 - **Relational rules**
   - Rules are logical constraints that ensure data is valid.
   - Relational rules are part of the relational model and govern data in every relational database.
+- **Relational Operations: SELECT, JOIN, UNION, AGGREGATE**
+  - `SELECT` selects a subset of rows of a table.
+  - `JOIN` combines two tables by comparing related columns.
+  - `UNION` selects all rows of two tables.
+  - `AGGREGATE` computes functions over multiple table rows, such as sum and count.
 - **Business rules**
   - Rules are logical constraints that ensure data is valid.
   - Business rules are based on business policy and specific to a particular database.
   - e.g. All rows of the 'Employee' table must have a valid entry in the 'DepartCode' column.
-- **constraints**
-  - Relational rules are implemented as SQL constraints and enforced by the database system.
 
 ## 2.02 Structured Query Language
 
 - **Structured Query Language / SQL**
-  - Structured Query Language (SQL) is a high-level computer language for storing, manipulating, and retrieving data.
-  - SQL is the standard language for relational databases, and is commonly supported in non-relational databases.
+  - Structured Query Language (SQL) is a **high-level computer language for storing, manipulating, and retrieving data**.
+  - SQL is the standard language for **relational databases**, and is commonly supported in non-relational databases.
 - **SQL Statement Literals: Strings, Numbers, Binary**
   - Explicit values that are string, numeric, or binary.
     - Strings must be surrounded by single quotes or double quotes. e.g. `'string' or "string"`.
     - Numeric. `123`
     - Binary values are represented with x'0' where the 0 is any hex value. e.g. `x'ofa2'`.
-- **SQL Statement Keywords**
-  - Words with special meaning.
-  - e.g. `SELECT, FROM, WHERE`.
-- **SQL Statement Identifiers**
-  - Objects from the database like tables, columns...
-  - e.g. `City, Name, Population`.
-- **statement**
-  - An SQL statement is a complete command composed of one or more clauses.
-  - e.g. `SELECT * FROM table WHERE column > 1000`
-- **clause**
-  - A clause groups SQL keywords like `SELECT`, `FROM`, and `WHERE` with table names like City, column names like Name, and conditions like Population > 100000.
 - **Data Definition Language**
   - Data Definition Language (DDL) defines the structure of the database.
   - `CREATE, ALTER, DROP`
@@ -264,29 +197,10 @@ CREATE TABLE Customers (
   - Data Transaction Language (DTL) manages database transactions.
   - `SAVEPOINT, ROLLBACK, COMMIT`
 
-## 2.03 Managing databases
-
-- **database system instance**
-  - A database system instance is a single executing copy of a database system. Personal computers usually run just one instance of a database system. Shared computers, such as computers used for cloud services, usually run multiple instances of a database system.
-- **CREATE DATABASE database_name**
-  - `CREATE DATABASE database_name` creates a new database.
-- **DROP DATABASE database_name**
-  - `DROP DATABASE database_name` deletes a database, including all tables in the database.
-- **USE database_name**
-  - `USE database_name` selects a default database for use in subsequent SQL statements.
-- **SHOW DATABASES**
-  - `SHOW DATABASES` lists all databases in the database system instance.
-- **SHOW TABLES**
-  - `SHOW TABLES` lists all tables in the default database.
-- **SHOW COLUMNS FROM table_name**
-  - `SHOW COLUMNS` FROM table_name lists all columns in the table_name table of the default database.
-- **SHOW CREATE TABLE table_name**
-  - `SHOW CREATE TABLE table_name` shows the CREATE TABLE statement for the table_name table of the default database.
-
 ## 2.04 Tables
 
 - **table**
-  - A table has a name, a fixed sequence of columns(**tuple**), and a varying **set** of rows.
+  - A table has a name, a fixed sequence of **columns(tuple)**, and a varying **set of rows**.
 - **table rules**
   - Exactly one value per cell. A cell may not contain multiple values. Unknown data is represented with a special `NULL` value.
   - No duplicate column names. Duplicate column names are allowed in different tables, but not in the same table.
@@ -306,6 +220,17 @@ CREATE TABLE Customers (
 - **CREATE TABLE**
   - DDL
   - The `CREATE TABLE` statement creates a new table by specifying the table name, column names, and column data types.
+
+```sql
+CREATE TABLE Employee (
+   ID        INT NOT NULL UNSIGNED,
+   Name      VARCHAR(60),
+   Salary    DECIMAL(7,2),-- max 7 digits total, Two behind decimal.
+   startDate DATE,
+   PRIMARY KEY (ID)
+);
+```
+
 - **DROP TABLE**
   - DDL
   - The `DROP TABLE` statement deletes a table, along with all the table's rows, from a database.
@@ -314,58 +239,38 @@ CREATE TABLE Customers (
   - DDL
   - The `ALTER TABLE` statement adds, deletes, or modifies columns on an existing table.
 
-| ALTER TABLE clause | Description       | Syntax                                                                      |
-| :----------------- | :---------------- | :-------------------------------------------------------------------------- |
-| ADD                | Adds a column     | `ALTER TABLE TableName ADD ColumnName DataType;`                            |
-| CHANGE             | Modifies a column | `ALTER TABLE TableName CHANGE CurrentColumnName NewColumnName NewDataType;` |
-| DROP               | Deletes a column  | `ALTER TABLE TableName DROP ColumnName;`                                    |
+```sql
+-- Change Datatype
+ALTER TABLE TableName
+  ADD ColumnName DataType;
+-- Change Name
+ALTER TABLE TableName
+  CHANGE CurrentColumnName NewColumnName NewDataType;
+-- Drop Column
+ALTER TABLE TableName
+  DROP ColumnName;
+```
 
 ## 2.05 Data types
 
 - **data type**
   - A data type is a named set of values from which column values are drawn.
-  - `INT` or `INTEGER` — positive and negative integer values.
+  - `INT` — positive and negative integer values.
   - `VARCHAR(N)` — values with 0 to N characters.
   - `CHAR(N)` - fixed string value, if string is less than stated, space padding will be added.
   - `DATE` — date values
   - `DECIMAL(N, D)` — numeric values with total N digits, of which D digits follow the decimal point
-
-| Category      | Data type | Value               |
-| :------------ | :-------- | :------------------ |
-| Integer       | INT       | -9281344            |
-| Decimal       | FLOAT     | 3.1415              |
-| Character     | VARCHAR   | Chicago             |
-| Date and time | DATETIME  | 12/25/2020 10:35:00 |
-| Binary        | BLOB      | 1001011101 . . .    |
-| Spatial       | POINT     | (2.5, 33.44)        |
-
 - **Integer**
   - Integer data types represent positive and negative integers.
-- **Decimal**
-  - Decimal data types represent numbers with fractional values.
-- **Character**
-  - Character data types represent textual characters.
-- **Date and time**
-  - Date and time data types represent date, time, or both. Some date and time data types include a time zone or specify a time interval.
-- **Binary**
-  - Binary data types store data exactly as the data appears in memory or computer files, bit for bit.
-- **Spatial**
-  - Spatial data types store geometric information, such as lines, polygons, and map coordinates.
-- **Document**
-  - Document data types contain textual data in a structured format such as XML or JSON.
-- **signed**
-  - A signed number may be negative.
-- **unsigned**
-  - An unsigned number cannot be negative.
+  - `INT` — positive and negative integer values.
 
-| Category | Data type      | Storage | Notes                                                               |
-| :------- | :------------- | :------ | :------------------------------------------------------------------ |
-| Integer  | TINYINT        | 1 byte  | Signed -128 to 127. Unsigned 0 to 255                               |
-| Integer  | SMALLINT       | 2 bytes | Signed -32,768 to 32,767. Unsigned 0 to 65,535                      |
-| Integer  | MEDIUMINT      | 3 bytes | Signed -8,388,608 to 8,388,607. Unsigned 0 to 16,777,215            |
-| Integer  | INTEGER or INT | 4 bytes | Signed -2,147,483,648 to 2,147,483,647. Unsigned 0 to 4,294,967,295 |
-| Integer  | BIGINT         | 8 bytes | Signed -263 to 263 -1. Unsigned 0 to 264 -1                         |
-| Decimal  | DECIMAL(M,D)   | Varies  | M = total digits, D = after decimal                                 |
+| Data type      | Storage |
+| :------------- | :------ |
+| TINYINT        | 1 byte  |
+| SMALLINT       | 2 bytes |
+| MEDIUMINT      | 3 bytes |
+| INTEGER or INT | 4 bytes |
+| BIGINT         | 8 bytes |
 
 ## 2.06 Selecting rows
 
@@ -387,53 +292,23 @@ CREATE TABLE Customers (
 | =          | Compares two values for equality                                       | 1 = 2   | FALSE |
 | !=         | Compares two values for inequality                                     | 1 != 2  | TRUE  |
 
-- **unary**
-  - A unary operator has one operand.
-  - `- (unary). Reverses the sign of one numeric value: -(-2) = 2`
-- **binary**
-  - A binary operator has two operands.
-  - `- (binary). Subtracts one numeric value from another: 11 - 5 = 6`
-- **expression**
-  - An expression is a string of operators, operands, and parentheses that evaluates to a single value. Operands may be column names or fixed values. The value of an expression may be any data type.
-  - e.g. `Salary > 34000 AND Department = 'Marketing'`
-- **operator precedence**
-  - Operators in an expression are evaluated in the order of operator precedence, shown in the table below. Operators of the same precedence are evaluated from left to right. Regardless of operator precedence, expressions enclosed in parentheses are evaluated before any operators outside the parentheses are applied. PEDMAS.
-- **SELECT / FROM**
-  - The `SELECT` statement selects rows from a table. The statement has a `SELECT` clause and a FROM clause. The FROM clause specifies the table from which rows are selected. The `SELECT` clause specifies one or more expressions, separated by commas, that determine what values are returned for each row.
-- **result table**
-  - The `SELECT` statement returns a set of rows, called the result table.
-- **LIMIT**
-  - MySQL has a `LIMIT` clause that limits the number of rows returned by a `SELECT` statement.
-- **condition**
-  - A condition is an expression that evaluates to a logical value.
-- **WHERE**
-  - A `SELECT` statement has an optional `WHERE` clause that specifies a condition for selecting rows. A row is selected when the condition is TRUE for the row values. A row is omitted when the condition is either `FALSE` or `NULL`.
-
 ## 2.07 Null values
 
 - **NULL**
   - `NULL` is a special value that represents either **unknown** or **inapplicable data**.
-- **NOT NULL**
-  - The `NOT NULL` constraint prevents a column from having a `NULL` value. Statements that insert `NULL`, or update a value to `NULL`, are automatically rejected. `NOT NULL` follows the column name and data type in a `CREATE TABLE` statement.
-- **IS NULL / IS NOT NULL**
-  - Instead, the `IS NULL` and `IS NOT NULL` operators must be used to select `NULL` values. Value `IS NULL` returns `TRUE` when the value is `NULL`. Value `IS NOT NULL` returns `TRUE` when the value is not `NULL`.
-- **truth tables**
-  - The value of logical expressions containing `NULL` operands is defined in truth tables.
 
 ## 2.08 Inserting, updating, and deleting rows
 
-- **MySQL INSERT**
+- **INSERT**
   - The `INSERT` statement adds rows to a table.
   - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
-- **INSERT INTO**
-  - The `INSERT INTO` clause names the table and columns where data is to be added. The keyword `INTO` is optional.
-  - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
-- **VALUES**
-  - The `VALUES` clause specifies the column values to be added.
-  - `INSERT [INTO] TableName (Column1, Column2, ...) VALUES (Value1, Value2, ...);`
-- **DEFAULT**
-  - The optional `DEFAULT` keyword and default value follow the column name and data type in a `CREATE TABLE` statement. The column is assigned the default value, rather than NULL, when omitted from an INSERT statement.
-- **MySQL UPDATE**
+
+```sql
+INSERT INTO table_name (column_name1, column_name2, ...)
+                      VALUES (DEFAULT, 'bob', 30, 150);
+```
+
+- **UPDATE**
   - The `UPDATE` statement modifies existing rows in a table.
   - The `UPDATE` statement uses the `SET` clause to specify the new column values.
   - An optional `WHERE` clause specifies which rows are updated. Omitting the `WHERE` clause results in all rows being updated.
@@ -445,17 +320,21 @@ SET Name = 'Tom Snead',
 WHERE ID = 5384;
 ```
 
-- **SET**
-  - The `UPDATE` statement uses the SET clause to specify the new column values.
 - **DELETE**
   - The `DELETE` statement deletes existing rows in a table.
-  - `DELETE FROM TableName WHERE condition;` -- delete rows that returns true.
-  - `DELETE FROM TableName;` -- delete all rows.
-- **FROM**
-  - The `FROM` keyword is followed by the table name whose rows are to be deleted.
+
+```sql
+DELETE FROM TableName; -- delete all rows.
+DELETE FROM TableName WHERE condition; -- delete rows that returns true.
+```
+
 - **TRUNCATE**
   - The `TRUNCATE` statement **deletes all rows** from a table.
-  - `TRUNCATE TABLE TableName;` -- delete all table rows.
+
+```sql
+TRUNCATE TABLE TableName; -- delete all table rows.
+```
+
 - **MERGE**
   - selects data from one table, called the **source**, and inserts the data to another table, called the **target**.
   - MySQL does not support the `MERGE` statement.
@@ -493,12 +372,14 @@ CREATE TABLE Family (
 );
 ```
 
-- **Minimal**
-  - Minimal. All primary key columns are necessary for uniqueness. When any column is removed, the resulting simple or composite column is no longer unique.
-- **PRIMARY KEY**
-  - The PRIMARY KEY constraint in a CREATE TABLE statement names the table's primary key. The PRIMARY KEY constraint ensures that a column or group of columns is always unique and non-null.
-- **auto-increment column**
+- **auto-increment**
   - An auto-increment column is a numeric column that is assigned an **automatically incrementing value** when a new row is inserted.
+  - **AUTO_INCREMENT**
+    - The AUTO_INCREMENT keyword defines an auto-increment column. AUTO_INCREMENT follows the column's data type in a CREATE TABLE statement.
+    - Database users occasionally make the following errors when inserting primary keys:
+      - Inserting values for auto-increment primary keys.
+      - Omitting values for primary keys that are not auto-increment columns.
+      - MySQL allows insertion of a specific value to an auto-increment column. However, overriding auto-increment for a primary key is usually a mistake.
 
 ```sql
 CREATE TABLE Employee (
@@ -510,20 +391,11 @@ CREATE TABLE Employee (
 );
 ```
 
-- **AUTO_INCREMENT**
-  - The AUTO_INCREMENT keyword defines an auto-increment column. AUTO_INCREMENT follows the column's data type in a CREATE TABLE statement.
-  - Database users occasionally make the following errors when inserting primary keys:
-    - Inserting values for auto-increment primary keys.
-    - Omitting values for primary keys that are not auto-increment columns.
-    - MySQL allows insertion of a specific value to an auto-increment column. However, overriding auto-increment for a primary key is usually a mistake.
-
 ## 2.10 Foreign keys
 
 - **foreign key**
   - A foreign key is a column, or group of columns, that refer to a primary key.
   - ![foreign key](img/foreign_key.PNG)
-- **Referential integrity**
-  - Referential integrity requires foreign key values must either be NULL or match some value of the referenced primary key.
 - **FOREIGN KEY / REFERENCES**
   - A foreign key constraint is added to a `CREATE TABLE` statement with the `FOREIGN KEY` and `REFERENCES` keywords.
   - When a **foreign key constraint** is specified, the **database rejects insert, update, and delete** statements that **violate referential integrity**.
@@ -543,7 +415,7 @@ CREATE TABLE Department (
 - **fully NULL**
   - A fully NULL foreign key is a simple or composite foreign key in which **all columns** are `NULL`.
 - **Referential integrity**
-  - Referential integrity is a relational rule that requires foreign key values are either fully `NULL` or match some primary key value.
+  - Referential integrity is a relational rule that requires foreign key values are either fully `NULL` or **match primary key value**.
 - **RESTRICT**
   - `RESTRICT` rejects an insert, update, or delete that violates referential integrity.
   - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
@@ -551,39 +423,13 @@ CREATE TABLE Department (
 
 ```sql
 CREATE TABLE TableName(
-    ID varchar(20),
-    Enrollment INT,
-    PRIMARY KEY(ID),
-    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE `RESTRICT`
-    );
-```
-
-- **SET NULL**
-  - `SET NULL` sets invalid foreign keys to NULL.
-  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
-  - `CASCADE` applies to **primary key** update and delete only.
-
-```sql
-CREATE TABLE TableName(
-    ID varchar(20),
-    Enrollment INT,
-    PRIMARY KEY(ID),
-    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE SET NULL
-    );
-```
-
-- **SET DEFAULT**
-  - `SET DEFAULT` sets invalid foreign keys to the foreign key default value.
-  - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
-  - `CASCADE` applies to **primary key** update and delete only.
-
-```sql
-CREATE TABLE TableName(
-    ID varchar(20),
-    Enrollment INT DEFAULT 0,
-    PRIMARY KEY(ID),
-    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name) ON DELETE SET DEFAULT
-    );
+  ID varchar(20),
+  Enrollment INT,
+  PRIMARY KEY(ID),
+  FOREIGN KEY(Enrollment) REFERENCES table_name(column_name)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+);
 ```
 
 - **CASCADE**
@@ -594,17 +440,14 @@ CREATE TABLE TableName(
 
 ```sql
 CREATE TABLE TableName(
-    ID varchar(20),
-    Enrollment INT,
-    PRIMARY KEY(ID),
-    FOREIGN KEY(Enrollment) REFERENCES table_name(column_name)
-      ON DELETE CASCADE
-      ON UPDATE CASCADE
-    );
+  ID varchar(20),
+  Enrollment INT,
+  PRIMARY KEY(ID),
+  FOREIGN KEY(Enrollment) REFERENCES table_name(column_name)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
 ```
-
-- **ON UPDATE / ON DELETE**
-  - Actions are specified in the optional `ON UPDATE` and `ON DELETE` clauses of the `FOREIGN KEY` constraint. `ON UPDATE` and `ON DELETE` are followed by either `RESTRICT`, `SET` `NULL`, `SET DEFAULT`, or `CASCADE`.
 
 ## 2.12 Constraints
 
@@ -615,29 +458,14 @@ CREATE TABLE TableName(
   - `DEFAULT`
   - `PRIMARY KEY`
   - `FOREIGN KEY`
-- **column constraint**
-  - A column constraint appears after the column name and data type in a `CREATE TABLE` statement. Column constraints govern values in a single column.
 
 ```sql
 CREATE TABLE Employee (
-   ID             INT,
-   Name           VARCHAR(20) NOT NULL, -- NOT NULL, Column Constraint
-   DepartmentCode INT DEFAULT 999,
-   PRIMARY KEY (ID), -- Column or Table Constraint
-   FOREIGN KEY (DepartmentCode) REFERENCES Department (Code) -- Table Constraint
-);
-```
-
-- **table constraint**
-  - A table constraint appears in a separate clause of a `CREATE TABLE` statement and governs values in one or more columns.
-
-```sql
-CREATE TABLE Employee (
-   ID             INT,
-   Name           VARCHAR(20) NOT NULL, -- NOT NULL, Column Constraint
-   DepartmentCode INT DEFAULT 999,
-   PRIMARY KEY (ID), -- Column or Table Constraint
-   FOREIGN KEY (DepartmentCode) REFERENCES Department (Code) -- Table Constraint
+  ID             INT,
+  Name           VARCHAR(20) NOT NULL, -- NOT NULL, Column Constraint
+  DepartmentCode INT DEFAULT 999,
+  PRIMARY KEY (ID), -- Column or Table Constraint
+  FOREIGN KEY (DepartmentCode) REFERENCES Department (Code) -- Table Constraint
 );
 ```
 
@@ -646,12 +474,12 @@ CREATE TABLE Employee (
 
 ```sql
 CREATE TABLE Employee (
-   ID         SMALLINT UNSIGNED,
-   Name       VARCHAR(60),
-   Extension  CHAR(4),
-   Username   VARCHAR(50) UNIQUE,
-   UNIQUE (Name, Extension),
-   PRIMARY KEY (ID)
+  ID         SMALLINT UNSIGNED,
+  Name       VARCHAR(60),
+  Extension  CHAR(4),
+  Username   VARCHAR(50) UNIQUE,
+  UNIQUE (Name, Extension),
+  PRIMARY KEY (ID)
 );
 ```
 
@@ -660,17 +488,17 @@ CREATE TABLE Employee (
 
 ```sql
 CREATE TABLE Employee (
-   ID        SMALLINT UNSIGNED,
-   Name      VARCHAR(60),
-   BirthDate DATE,
-   HireDate  DATE CHECK (HireDate >= '2000-01-01' AND HireDate <= '2019-12-31'),
-   Size      VARCHAR(6) CHECK (Size IN ('small', 'medium', 'large')),
-   CHECK (BirthDate < HireDate),
-   PRIMARY KEY (ID)
+  ID        SMALLINT UNSIGNED,
+  Name      VARCHAR(60),
+  BirthDate DATE,
+  HireDate  DATE CHECK (HireDate >= '2000-01-01' AND HireDate <= '2019-12-31'),
+  Size      VARCHAR(6) CHECK (Size IN ('small', 'medium', 'large')),
+  CHECK (BirthDate < HireDate),
+  PRIMARY KEY (ID)
 );
 ```
 
-- **CONSTRAINT**
+- **SQL CONSTRAINT**
   - Table constraints may be **named** using the optional `CONSTRAINT` keyword, followed by the constraint name and declaration
   - **Adding and dropping constraints**
     - Constraints are added and dropped with the `ALTER TABLE` TableName followed by an `ADD`, `DROP`, or `CHANGE` clause.
@@ -692,15 +520,6 @@ WHERE EmployeePK = 1;
 
 ## 3.1 Special operators and clauses
 
-- **IN**
-  - The `IN` operator is used in a `WHERE` clause to determine if a value matches one of several values.
-
-```sql
-SELECT *
-FROM CountryLanguage
-WHERE Language IN ('Dutch', 'Kongo', 'Albanian');
-```
-
 - **BETWEEN**
   - The `BETWEEN` operator provides an alternative way to determine if a value is between two other values. The operator is written value `BETWEEN` minValue `AND` maxValue and is equivalent to:
   - `value >= minValue AND value <= maxValue`.
@@ -708,7 +527,7 @@ WHERE Language IN ('Dutch', 'Kongo', 'Albanian');
 ```sql
 SELECT Name
 FROM Employee
-WHERE HireDate BETWEEN '2000-01-01' AND '2020-01-01';
+WHERE HireDate BETWEEN '2000-01-01' AND '2020-01-01'; -- inclusive both.
 ```
 
 - **LIKE**
@@ -722,24 +541,14 @@ FROM CountryLanguage
 WHERE CountryCode LIKE 'A_W';
 ```
 
-- **BINARY**
-  - The `LIKE` operator performs case-insensitive pattern matching by default or case-sensitive pattern matching if followed by the `BINARY` keyword.
-- **DISTINCT**
-  - The `DISTINCT` clause is used with a `SELECT` statement to return only unique or 'distinct' values.
-
-```sql
-SELECT DISTINCT Language
-FROM CountryLanguage
-WHERE IsOfficial = 'F';
-```
-
 - **ORDER BY**
-  - The `ORDER BY` clause orders selected rows by one or more columns in ascending (alphabetic or increasing) order.
+  - The `ORDER BY` clause orders selected rows by one or more columns in ascending (alphabetic or increasing) order. Low -> High. e.g. A -> a.
+  - DESC reverses order High -> Low.
 
 ```sql
 SELECT *
 FROM CountryLanguage
-ORDER BY Language DESC;
+ORDER BY Language DESC; -- high to low order
 ```
 
 - **DESC**
@@ -800,14 +609,15 @@ ORDER BY column_name;
 
 - **join / left table / right table**
   - A join is a `SELECT` statement that **combines data from two tables**, known as the left table and right table, into a single result.
+  - The tables are combined by comparing columns from the left and right tables, usually with the `=` operator.
 - **AS**
   - To simplify queries or result tables, a column name can be replaced with an **alias**. The alias follows the column name, separated by an optional `AS` keyword.
   - e.g. `SELECT some_long_column_name AS short_name`
-- **join clause**
+- **INNER JOIN clause**
   - A join clause determines how a join query handles unmatched rows. Two common join clauses are:
-- **INNER JOIN**
-  - `INNER JOIN` selects **only matching** left and right table rows.
-  - `INNER` is optional
+  - **INNER JOIN**
+    - `INNER JOIN` selects **only matching** left and right table rows.
+    - `INNER` is optional.
 
 ```sql
 SELECT
@@ -830,10 +640,8 @@ FULL JOIN table2 t2
   ON t1.ID = t2.ID; -- all rows from both tables will be joined.
 ```
 
-- **ON**
-  - The `ON` clause specifies the join columns.
 - **LEFT JOIN**
-  - `LEFT JOIN` selects **all left table rows**, but only matching right table rows.
+  - `LEFT JOIN` selects **all left table rows**, but only matching left table rows.
 
 ```sql
 SELECT
@@ -857,8 +665,6 @@ RIGHT JOIN table2 t2
   ON t1.ID = t2.ID; -- all rows from t2 will be joined with matching rows from t1.
 ```
 
-- **outer join**
-  - An outer join is **any join that selects unmatched rows**, including left, right, and full joins.
 - **UNION**
   - The `UNION` keyword **combines the two results into one table**.
 
@@ -866,7 +672,7 @@ RIGHT JOIN table2 t2
 SELECT d.name, e.name
 FROM Department d, Employee e
 WHERE d.ID = e.ID
-UNION -- both results will be one table.
+UNION -- both results will be joined to create a single table.
 SELECT name, NULL
 FROM Department
 WHERE column_name NOT IN (SELECT ID FROM Employee)
@@ -898,8 +704,8 @@ JOIN tab1e1 B -- same table
 
 - **cross-join**
   - A cross-join combines two tables **without comparing columns**.
-- **CROSS JOIN**
-  - A cross-join uses a `CROSS JOIN` clause **without** an `ON` clause.
+  - **CROSS JOIN**
+    - A cross-join uses a `CROSS JOIN` clause **without** an `ON` clause.
 
 ```sql
 SELECT *
@@ -922,78 +728,14 @@ WHERE Percentage IN
     WHERE column_name = 'ABW');
 ```
 
-- **correlated**
-  - A subquery is correlated when the subquery's `WHERE` clause references a column from the outer query.
-
-```sql
-SELECT Name, CountryCode, Population
-FROM City C
-WHERE Population >
-    (SELECT AVG(Population)
-    FROM City
-    WHERE CountryCode = C.CountryCode); -- C.CountryCode references the first query.
-```
-
 - **alias**
   - An alias is a temporary name assigned to a column or table.
 - **AS**
   - An alias is a temporary name assigned to a column or table.
   - The `AS` keyword follows a column or table name to **create an alias**.
-- **EXISTS**
-  - **Correlated subqueries** commonly use the `EXISTS` operator.
-  - returns `TRUE` if a subquery selects at least one row and `FALSE` if **no rows** are selected.
-- **NOT EXISTS**
-  - The `NOT EXISTS` operator returns `TRUE` if a subquery selects **no rows** and `FALSE` if at least one row is selected.
-- **flattening**
-  - Replacing a subquery with an equivalent join is called flattening a query.
-  - joins are usually faster.
-
-```sql
-SELECT *
-FROM table1
-WHERE column_ID IN
-   (SELECT column_ID
-   FROM table2
-   WHERE column_name != 'Business')
--- replace with
-SELECT *
-FROM table1 t1
-JOIN table2 t2
-  ON t1.ID = t2.ID
-WHERE column_name != 'Business'
-
-```
 
 ## 3.8 View tables
 
-- **view table / view query**
-  - A view table is a table name associated with a `SELECT` statement, called the view query.
-
-```sql
-CREATE VIEW ManagerView -- name of new view table
-AS SELECT DepartmentName, EmployeeName AS ManagerName -- column names
-   FROM Department, Employee
-   WHERE ManagerID = EmployeeID;
-```
-
-- **CREATE VIEW**
-  - The CREATE VIEW statement creates a view table and specifies the view name, query, and, optionally, column names. If column names are not specified, column names are the same as in the view query result table.
-
-```sql
-CREATE VIEW ManagerView -- name of new view table
-AS SELECT DepartmentName, EmployeeName AS ManagerName -- column names
-   FROM Department, Employee
-   WHERE ManagerID = EmployeeID;
-
--- to use it
-SELECT ManagerName
-FROM ManagerView
-WHERE DepartmentName = 'Sales';
-```
-
-- **base table**
-  - A table specified in the view query's FROM clause is called a base table.
-  - not normally stored after using.
 - **materialized view**
   - A materialized view is a view for which **view table data is stored** at all times.
   - Whenever a view table changes, the corresponding view tables can also change, so materialized views must be refreshed.
@@ -1007,41 +749,6 @@ AS SELECT *
     WHERE DepartmentCode = 51
 WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 ```
-
-## 3.9 Relational algebra
-
-- **relational algebra**
-  - In his original paper on the relational model, E. F. Codd introduced formal operations for manipulating tables. Codd's operations, called relational algebra, have since been refined and are the theoretical foundation of SQL.
-- **select operation**
-  - The select operation selects table rows based on a logical expression. is equivalent to `SELECT * FROM Table WHERE expression`.
-- **project operation**
-  - The project operation selects table columns. The project operation is equivalent to `SELECT Column1, Column2, ... FROM Table`.
-- **product operation**
-  - The product operation combines two tables into one result. The result includes all columns and all combinations of rows from both tables. The product operation is written as and is equivalent to `SELECT * FROM Table1 CROSS JOIN Table2`.
-- **join**
-  - The join operation, denoted with a "bowtie" symbol, is identical to a product followed by a select: `SELECT * FROM Table1 INNER JOIN Table2 ON expression`.
-- **theta join**
-  - Because of theta notation, the join operation is sometimes called a theta join.
-- **Compatible tables**
-  - Compatible tables have the same number of columns with the same data types. Column names may be different.
-- **set operations**
-  - Union, intersect, and difference operate on compatible tables and, collectively, are called set operations.
-- **union**
-  - The union operation combines all rows of two compatible tables into a single table. Duplicate rows are excluded from the result table. The union operation is equivalent to `SELECT _ FROM Table1 UNION SELECT _ FROM Table2`.
-- **Intersect**
-  - Intersect operates on two compatible tables and returns only rows that appear in both tables. The intersect operation is equivalent to `SELECT _ FROM Table1 INTERSECT SELECT _ FROM Table2`.
-- **difference**
-  - The difference operation removes from a table all rows that appear in a second compatible table. The difference operation is equivalent to `SELECT _ FROM Table1 MINUS SELECT _ FROM Table2`.
-- **rename operation**
-  - The rename operation specifies new table and column names. The rename operation is written as
-- **aggregate operation**
-  - The aggregate operation applies aggregate functions like SUM(), AVG(), MIN(), and MAX(). The aggregate operation is equivalent to `SELECT GroupColumn, Function(Column) FROM Table GROUP BY GroupColumn`.
-- **equivalent**
-  - Relational algebra expressions are equivalent if the expressions operate on the same tables and generate the same result.
-- **query optimizer / query execution plan**
-  - A query optimizer converts an SQL query into a sequence of low-level database actions, called the query execution plan. The query execution plan specifies precisely how to process an SQL statement.
-- **cost**
-  - The cost of an operation is a numeric estimate of processing time. The cost estimate usually combines both storage media access and computation time in a single measure.
 
 ## 4.1 Entities, relationships, and attributes
 
@@ -1064,8 +771,6 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - An entity-relationship diagram, commonly called an ER diagram, is a schematic picture of **entities, relationships, and attributes**.
   - Entities are drawn as rectangles.
   - ![entity](img/er_diagram.PNG)
-- **glossary / data dictionary / repository**
-  - A glossary, also known as a data dictionary or repository, documents additional detail in text format.
 - **entity type**
   - An entity type is a **set of things**. Ex: All employees in a company.
 - **relationship type**
@@ -1103,6 +808,11 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **Physical design**
   - Physical design **adds indexes** and specifies how tables are organized on **storage media**.
 
+## 4.2 Discovery
+
+- **Synonyms and descriptions**
+  - Often, entity, relationship, and attribute names have **synonyms**.
+
 ## 4.3 Cardinality
 
 - **cardinality**
@@ -1116,39 +826,18 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - Relationship maximum is the **greatest number of instances** of one entity that can relate to a single instance of another entity.
   - one-to-many.
   - ![relationship symbols](img/entity_relationships.jpg)
-- **singular / plural**
-  - A related entity is singular when the maximum is one and plural when the maximum is many.
-  - one-to-many
 - **Relationship minimum**
   - Relationship minimum is the **least number of instances** of one entity that can relate to a single instance of another entity.
   - A relationship has two minima, one for each of the related entities.
   - one-to-one
   - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
-- **optional / required**
-  - A related entity is **optional when the minimum is zero** and **required when the minimum is one**.
-  - ![entity relationship optional required](img/entity_relationship_optional_required.PNG)
-- **Attribute maximum**
+- **Attribute maximum and Attribute minimum**
   - Attribute maximum is the greatest number of attribute values that can describe each entity instance.
   - Attribute maximum is usually specified as one (singular) or many (plural).
-  - In ER diagrams, attribute maximum and minimum follow the attribute name. The minimum appears in parentheses.
-  - ![attribute min max](img/attribute_minimum_maximum.PNG)
-- **Attribute minimum**
   - Attribute minimum is the least number of attribute values that can describe each entity instance. Attribute minimum is usually specified as zero (optional) or one (required).
-  - In ER diagrams, attribute maximum and minimum follow the attribute name. The minimum appears in parentheses.
+  - In ER diagrams, attribute maximum and minimum follow the attribute name. The **minimum appears in parentheses**.
   - ![attribute min max](img/attribute_minimum_maximum.PNG)
-- **unique attribute**
-  - Each value of a unique attribute describes at most one entity instance.
-
-## 4.4 Strong and weak entities
-
-- **identifying attribute**
-  - An identifying attribute is unique, singular, and required.
-- **identify**
-  - Identifying attribute values correspond one-to-one to, or identify, entity instances.
-- **strong entity**
-  - A strong entity has one or more identifying attributes.
-- **weak entity / identifying relationship / identifying entity**
-  - A weak entity does not have an identifying attribute. Instead, a weak entity usually has a relationship, called an identifying relationship, to another entity, called an identifying entity. Cardinality of the identifying entity is 1(1).
+  - ![attribute min max](img/attribute_minimum_maximum.PNG)
 
 ## 4.5 Supertype and subtype entities
 
@@ -1160,16 +849,11 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **IsA relationship**
   - A supertype entity identifies its subtype entities. The identifying relationship is called an **IsA** relationship.
   - ![supertype entity](img/supertype_entity.PNG)
-- **Similar entities**
-  - Similar entities are entities that have many common attributes and relationships.
 - **partition**
   - A partition of a supertype entity is a **group of mutually exclusive(belong to only one subtype entity) subtype entities**.
   - ![partition entity](img/partition_entity.PNG)
-- **partition attribute**
-  - Each partition corresponds to an optional partition attribute of the supertype entity.
-  - ![partition entity](img/partition_entity.PNG)
 - **Database Design**
-  - After entities, relationships, attributes, cardinality, and strong and weak entities are determined, the database designer looks for supertype and subtype entities.
+  - **After entities, relationships, attributes, cardinality, and strong and weak entities are determined**, the database designer looks for supertype and subtype entities.
   - once Analysis id done, logical design converts an entity-relationship model to tables, columns, and keys for a specific database system.
   - Creating supertype and subtype entities is the last of four analysis steps:
     1. Discover entities, relationships, and attributes
