@@ -94,6 +94,7 @@ CREATE TABLE Customers (
 - **database design: analysis**
   - The analysis phase specifies database requirements without regard to a specific database system.
   - Requirements are represented as **entities, relationships, and attributes**.
+  - Sometimes called: **Conceptual Design**
 - **ER diagrams**
   - Entities, relationships, and attributes are depicted in ER diagrams.
   - ![er diagram](img/er_diagram.PNG)
@@ -131,14 +132,14 @@ CREATE TABLE Customers (
 
 ## 2.01 Relational model
 
-- **database model**
+- **relational database**
   - A database model is a conceptual framework for database systems, with three parts:
-    - **Data structures** that prescribe how data is organized.
+    - **Data structures**: that prescribe **how data is organized**.
       - data structures form the backbone of efficient and organized information storage.
       - Each database model relies on specific structures to represent entities, attributes, and relationships, ensuring data integrity and facilitating smooth retrieval and manipulation.
       - e.g. relational model: primary key, foreign key, data types(INT, STRING, ...), indexes.
-    - **Operations** that manipulate data structures.
-    - **Rules** that govern valid data.
+    - **Operations**: that **manipulate data structures**.
+    - **Rules**: logical constraints that ensure the **data is valid**.
 - **set**
   - A set is an **unordered** collection of elements enclosed in braces.
   - e.g. {a, b, c} and {c, b, a} are the same, since sets are **not** ordered.
@@ -241,10 +242,10 @@ CREATE TABLE Employee (
   - The `ALTER TABLE` statement adds, deletes, or modifies columns on an existing table.
 
 ```sql
--- Add Column
+-- Add Column and data type.
 ALTER TABLE TableName
   ADD ColumnName DataType;
--- Change Column Name
+-- Change Column Name and data type.
 ALTER TABLE TableName
   CHANGE CurrentColumnName NewColumnName NewDataType;
 -- Drop Column
@@ -280,6 +281,7 @@ ALTER TABLE TableName
     - **Arithmetic operators** compute numeric values from numeric operands.
     - **Comparison operators** compute logical values TRUE or FALSE. Operands may be numeric, character, and other data types.
     - **Logical operators** compute logical values from logical operands.
+  - ![operator and operand](img/operand_vs_operator-h_half_column_mobile.png)
 
 | Operator   | Description                                                            | Example | Value |
 | :--------- | :--------------------------------------------------------------------- | :------ | :---- |
@@ -292,6 +294,23 @@ ALTER TABLE TableName
 | ^          | Raises one numeric value to the power of another                       | 5^2     | 25    |
 | =          | Compares two values for equality                                       | 1 = 2   | FALSE |
 | !=         | Compares two values for inequality                                     | 1 != 2  | TRUE  |
+
+- **Operator precedence**
+  - higher more precedence. PEDMAS.f
+  - **`OR`** has the least precedence.
+
+| Operator/Element | Description                                        |
+| :--------------- | :------------------------------------------------- |
+| ()               | parens                                             |
+| ^                | exponentiation                                     |
+| `* / %`          | multiplication, division, modulo                   |
+| + -              | addition, subtraction                              |
+| BETWEEN IN LIKE  | range containment, set membership, string matching |
+| < > = <= >= <>   | comparison operators                               |
+| IS ISNULL        | IS TRUE, IS FALSE, IS NULL, IS DISTINCT FROM, etc. |
+| NOT              | logical negation                                   |
+| AND              | logical conjunction                                |
+| **OR**           | logical disjunction                                |
 
 ## 2.07 Null values
 
@@ -580,7 +599,7 @@ ORDER BY Language DESC;
 ## 3.3 Aggregate functions
 
 - **aggregate function**
-  - An aggregate function processes values from a set of rows and returns a summary value.
+  - An aggregate function processes values from a **set of rows** and returns a **summary value**.
 - **COUNT()**
   - `COUNT()` counts the number of rows in the set.
 - **MIN()**
@@ -740,14 +759,14 @@ WHERE Percentage IN
   - A materialized view is a view for which **view table data is stored** at all times.
   - Whenever a view table changes, the corresponding view tables can also change, so materialized views must be refreshed.
 - **WITH CHECK OPTION**
-  - When `WITH CHECK OPTION` is specified, the database rejects inserts and updates that do not satisfy the view query `WHERE` clause, the database generates an error message that explains the violation.
+  - When `WITH CHECK OPTION` is specified, the database **rejects inserts and updates** that do not satisfy the view query `WHERE` clause, the database generates an error message that explains the violation.
 
 ```sql
 CREATE VIEW SalesEmployee (ID, Name, Department)
 AS SELECT *
-    FROM Employee
-    WHERE DepartmentCode = 51
-WITH CHECK OPTION; -- any row not matching WHERE will throw error.
+FROM Employee
+WHERE DepartmentCode = 51
+WITH CHECK OPTION; -- any insert or update  not matching WHERE will throw error.
 ```
 
 ## 4.1 Entities, relationships, and attributes
@@ -784,15 +803,16 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 - **attribute instance**
   - An attribute instance is an **individual value**. Ex: The salary $35,000.
 - **Analysis for Database Design**
+  - This is called: **Conceptual Design**
   - Analysis develops an entity-relationship model, capturing **data requirements** while **ignoring implementation details**.
   - Analysis steps
 
-| Step | Name                                             |
-| :--- | :----------------------------------------------- |
-| 1    | Discover entities, relationships, and attributes |
-| 2    | Determine cardinality                            |
-| 3    | Distinguish strong and weak entities             |
-| 4    | Create supertype and subtype entities            |
+| Step | Name                                               |
+| :--- | :------------------------------------------------- |
+| 1    | Discover entities, relationships, and attributes   |
+| 2    | Determine cardinality                              |
+| 3    | Distinguish strong and weak entities               |
+| 4    | Identify and Create supertype and subtype entities |
 
 - **Logical design**
   - Logical design **converts the entity-relationship model into tables, columns, and keys** for a particular database system.
@@ -885,7 +905,7 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 
 - **functional dependence**
   - **Dependence of one column on another** is called functional dependence.
-  - e.g.
+  - e.g. the data is linked.
     - Customer ID: Unique identifier for each customer.
     - Order ID: Unique identifier for each order.
     - Customer Name: Name of the customer.
@@ -895,9 +915,42 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
   - Redundancy is the **repetition of related values** in a table.
 - **Normal forms**
   - Normal forms are **rules for designing tables with less redundancy**.
+  - eliminates redundancy by **decomposing a table into two or more tables**.
+  - [Learn Database Normalization - 1NF, 2NF, 3NF, 4NF, 5NF](https://www.youtube.com/watch?v=GFQaEYEc8_8&t=7s)
+- **first normal form**
+  1. Every **cell** of a table contains **exactly one value**. A table is in first normal form when
+  2. the table has a unique **primary key**.
+  3. **no duplicate rows**. Has Primary key that is unique, so every row is unique.
+- **second normal form**
+  - A table is in second normal form when **all non-key columns depend on the whole primary key**.
+  - a non-key column cannot depend on **part** of a **composite** primary key. **A table with a simple primary key is automatically in second normal form**.
+- **third normal form**
+  - Informally, a table is in third normal form when **all non-key columns depend on the key, the whole key, and nothing but the key**.
 
 ## 4.11 Boyce-Codd normal form
 
+- **candidate key**
+  - all column values are unique and a 'candidate' for primary key.
+  - A candidate key is a simple or composite **column** that is **unique** and **minimal**.
+  - A table can have multiple candidate keys.
+  - **Minimal**
+    - Minimal means **all columns are necessary for uniqueness**.
+    - The **smallest set of attributes** for unique identification(candidate key), promoting efficiency.
+    - Primary key usually is **unique** and **minimal**.
+    - e.g. choosing only one column with unique values for primary key, instead of a composite column.
+- **non-key**
+  - A non-key column is a **column** that is **not a possible candidate key**.
+- **third normal form**
+  - A table is in third normal form when **all non-key columns depend on the key, the whole key, and nothing but the key**.
+  - A table is in third normal form if, whenever a non-key column A depends on column B, then B is unique.
+- **Boyce-Codd normal form**
+  - [Learn Boyce-Codd Normal Form (BCNF)](https://www.youtube.com/watch?v=VWnKUKH4tLg)
+  - Improved version of 'third normal form'.
+  - While 'third normal form' applies to all **'non-key' columns**(which will allow occasional redundancy), Boyce-Codd normal form applies to **ALL** columns(which eliminates this redundancy).
+  - Boyce-Codd normal form **eliminates all redundancy arising from functional dependence**.
+  - **all dependencies(functional dependency) are on unique columns**.
+  - In a Boyce-Codd normal form table, if column A depends on column B, then B must be unique.
+  - Boyce-Codd normal form is ideal for **tables with frequent inserts, updates, and deletes**.
 - **Trivial Dependencies**
   - When the columns of A are a subset of the columns of B, A always depends on B. Ex: FareClass depends on (FlightCode, FareClass). These dependencies are called trivial.
 

@@ -85,7 +85,7 @@
 
 ```sql
 INSERT INTO table_name (column_name1, column_name2, ...)
-                      VALUES (DEFAULT, 'bob', 30, 150);
+                VALUES (DEFAULT, 'bob', 30, 150);
 ```
 
 - **SELECT**
