@@ -92,7 +92,7 @@ CREATE TABLE Customers (
 ## 1.4 Database design and programming
 
 - **database design: analysis**
-  - The analysis phase specifies database requirements without regard to a specific database system.
+  - The analysis phase specifies database requirements **without regard to a specific database system**.
   - Requirements are represented as **entities, relationships, and attributes**.
   - Sometimes called: **Conceptual Design**
 - **ER diagrams**
@@ -260,7 +260,9 @@ ALTER TABLE TableName
   - `INT` — positive and negative integer values.
   - `VARCHAR(N)` — values with 0 to N characters.
   - `CHAR(N)` - fixed string value, if string is less than stated, space padding will be added.
-  - `DATE` — date values
+  - `DATE` — date values YYYY-MM-DD
+  - `TIME` - hh:mm:ss
+  - `DATETIME` - YYYY-MM-DD HH:MI:SS
   - `DECIMAL(N, D)` — numeric values with total N digits, of which D digits follow the decimal point
 - **Integer**
   - Integer data types represent positive and negative integers.
@@ -296,7 +298,7 @@ ALTER TABLE TableName
 | !=         | Compares two values for inequality                                     | 1 != 2  | TRUE  |
 
 - **Operator precedence**
-  - higher more precedence. PEDMAS.f
+  - higher more precedence. PEDMAS.
   - **`OR`** has the least precedence.
 
 | Operator/Element | Description                                        |
@@ -434,7 +436,7 @@ CREATE TABLE Department (
 - **fully NULL**
   - A fully NULL foreign key is a simple or composite foreign key in which **all columns** are `NULL`.
 - **Referential integrity**
-  - Referential integrity is a relational rule that requires foreign key values are either fully `NULL` or **match primary key value**.
+  - Referential integrity is a relational rule that requires foreign key values are either `NULL` or **match primary key value**.
 - **RESTRICT**
   - `RESTRICT` rejects an insert, update, or delete that violates referential integrity.
   - `RESTRICT`, `SET NULL`, and `SET DEFAULT` apply to **primary key** update and delete, and **foreign key** insert and update.
@@ -541,7 +543,7 @@ WHERE EmployeePK = 1;
 
 - **BETWEEN**
   - The `BETWEEN` operator provides an alternative way to determine if a value is between two other values. The operator is written value `BETWEEN` minValue `AND` maxValue and is equivalent to:
-  - `value >= minValue AND value <= maxValue`.
+  - `value >= minValue AND value <= maxValue`. // These are both inclusive. Includes both minValue and maxValue.
 
 ```sql
 SELECT Name
@@ -592,6 +594,10 @@ ORDER BY Language DESC;
 - **TRIM()**
   - removes leading and trailing whitespace.
   - `SELECT TRIM('   hello   '); -- returns 'hello'`
+- **LTRIM()**
+  - Removes leading spaces from a string.
+- **RTRIM()**
+  - Removes trailing spaces from a string.
 - **HOUR(), MINUTE(), SECOND()**
   - returns hour or minute or second from timestamp.
   - `SELECT HOUR('22:11:45'); -- returns 22`
@@ -766,7 +772,7 @@ CREATE VIEW SalesEmployee (ID, Name, Department)
 AS SELECT *
 FROM Employee
 WHERE DepartmentCode = 51
-WITH CHECK OPTION; -- any insert or update  not matching WHERE will throw error.
+WITH CHECK OPTION; -- any insert or update not matching WHERE will throw error.
 ```
 
 ## 4.1 Entities, relationships, and attributes
@@ -827,6 +833,13 @@ WITH CHECK OPTION; -- any insert or update  not matching WHERE will throw error.
 
 - **Physical design**
   - Physical design **adds indexes** and specifies how tables are organized on **storage media**.
+- **Strong Entity**
+  - entity with own primary key.
+  - can exist independent of other entities.
+- **Weak Entity**
+  - entity with composite key.
+  - must depend on strong entities to exist.
+  - e.g. Orders (dependent on Customers), phone numbers (dependent on Customers).
 
 ## 4.2 Discovery
 
