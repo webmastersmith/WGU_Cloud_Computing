@@ -160,7 +160,7 @@ CREATE TABLE Customers (
 - **relational algebra**
   - These operations are collectively called relational algebra and are the theoretical foundation of the SQL language.
 - **Relational rules**
-  - Rules are logical constraints that ensure data is valid.
+  - Rules are **logical constraints** that ensure data is valid.
   - Relational rules are part of the relational model and govern data in every relational database.
 - **Relational Operations: SELECT, JOIN, UNION, AGGREGATE**
   - `SELECT` selects a subset of rows of a table.
@@ -201,7 +201,7 @@ CREATE TABLE Customers (
 ## 2.04 Tables
 
 - **table**
-  - A table has a name, a fixed sequence of **columns(tuple)**, and a varying **set of rows**.
+  - A table has a name, a **fixed sequence of columns(tuple)**, and a varying **set of rows**.
 - **table rules**
   - Exactly one value per cell. A cell may not contain multiple values. Unknown data is represented with a special `NULL` value.
   - No duplicate column names. Duplicate column names are allowed in different tables, but not in the same table.
@@ -217,7 +217,7 @@ CREATE TABLE Customers (
 - **empty table**
   - A table without rows is called an empty table.
 - **data independence**
-  - Rule 4 is called data independence.
+  - Data independence allows database administrators to **improve query performance** by changing the organization of data on **storage devices**, **without affecting query results**.
 - **CREATE TABLE**
   - DDL
   - The `CREATE TABLE` statement creates a new table by specifying the table name, column names, and column data types.
@@ -241,10 +241,10 @@ CREATE TABLE Employee (
   - The `ALTER TABLE` statement adds, deletes, or modifies columns on an existing table.
 
 ```sql
--- Change Datatype
+-- Add Column
 ALTER TABLE TableName
   ADD ColumnName DataType;
--- Change Name
+-- Change Column Name
 ALTER TABLE TableName
   CHANGE CurrentColumnName NewColumnName NewDataType;
 -- Drop Column
@@ -315,9 +315,8 @@ INSERT INTO table_name (column_name1, column_name2, ...)
   - An optional `WHERE` clause specifies which rows are updated. Omitting the `WHERE` clause results in all rows being updated.
 
 ```sql
-UPDATE Employee
-SET Name = 'Tom Snead',
-    BirthDate = '2000-03-15'
+UPDATE table_name
+SET column_name = 'Tom Snead',
 WHERE ID = 5384;
 ```
 
@@ -353,7 +352,7 @@ TRUNCATE TABLE TableName; -- delete all table rows.
 
 ```sql
 CREATE TABLE Employee (
-   ID        SMALLINT UNSIGNED,
+   ID        SMALLINT NOT NULL UNIQUE UNSIGNED,
    Name      VARCHAR(60),
    Salary    DECIMAL(7,2),
    PRIMARY KEY (ID)
@@ -365,8 +364,8 @@ CREATE TABLE Employee (
 
 ```sql
 CREATE TABLE Family (
-   ID           SMALLINT UNSIGNED,
-   Number       SMALLINT UNSIGNED,
+   ID           SMALLINT NOT NULL UNIQUE UNSIGNED,
+   Number       SMALLINT NOT NULL UNIQUE UNSIGNED,
    Relationship VARCHAR(20),
    Name         VARCHAR(60),
    PRIMARY KEY(ID, Number)
@@ -384,7 +383,7 @@ CREATE TABLE Family (
 
 ```sql
 CREATE TABLE Employee (
-   ID        SMALLINT UNSIGNED AUTO_INCREMENT,
+   ID        SMALLINT NOT NULL UNSIGNED AUTO_INCREMENT,
    Name      VARCHAR(60),
    BirthDate DATE,
    Salary    DECIMAL(7,2),
@@ -403,11 +402,11 @@ CREATE TABLE Employee (
 
 ```sql
 CREATE TABLE Department (
-   Code      TINYINT UNSIGNED,
+   Code      TINYINT NOT NULL UNIQUE UNSIGNED,
    Name      VARCHAR(20),
    ManagerID SMALLINT UNSIGNED,
    PRIMARY KEY (Code),
-   FOREIGN KEY (ManagerID) REFERENCES Employee(ID)
+   FOREIGN KEY (ManagerID) REFERENCES EmployeeTable(ID)
 );
 ```
 
@@ -844,7 +843,7 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 
 - **subtype entity / supertype entity**
   - A subtype entity is a subset of another entity type, called the supertype entity.
-  - e.g. Managers are a subset of employees, so Manager is a subtype entity of the Employee supertype entity.
+  - e.g. GasVehicle is a subset of Vehicle, so GasVehicle is a subtype entity of the Vehicle supertype entity.
   - On ER diagrams, subtype entities are drawn within the supertype.
   - ![supertype entity](img/supertype_entity.PNG)
 - **IsA relationship**
@@ -942,19 +941,29 @@ WITH CHECK OPTION; -- any row not matching WHERE will throw error.
 
 - **table scan**
   - A table scan is a database operation that **reads table blocks directly**, without accessing an index.
-  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates hit ratio. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
+  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates **hit ratio**. If **hit ratio** is high, the database performs a table scan. If **hit ratio** is low, the query needs only a few table blocks, performs index scan.
   - ![index scan](img/index_scan.PNG)
 - **index scan**
   - An index scan is a database operation that **reads index blocks sequentially**, in order to locate the needed table blocks.
-  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates hit ratio. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
   - ![index scan](img/index_scan.PNG)
 - **Hit ratio / filter factor / selectivity**
   - Hit ratio, also called filter factor or selectivity, is the **percentage of table rows selected by a query**.
+  - When a `SELECT` query is executed, the database examines the `WHERE` clause and estimates **hit ratio**. If hit ratio is high, the database performs a table scan. If hit ratio is low, the query needs only a few table blocks, performs index scan.
 - **binary search**
   - **Index must be sorted!**
   - In a binary search, the database **repeatedly splits the index in two** until it finds the entry containing the search value.
     - The database first compares the search value to an entry in the middle of the index.
     - If the search value is less than the entry value, the search value is in the first half of the index. If not, the search value is in the second half.
+
+```sql
+-- CREATE
+CREATE INDEX IndexName ON TableName (Column1, ..., ColumnN);
+-- DROP
+DROP INDEX IndexName ON TableName;
+-- SHOW
+SHOW INDEX FROM TableName;
+```
+
 - **dense index**
   - A dense index contains an **entry for every table row**.
 - **sparse index**
@@ -1013,12 +1022,3 @@ CREATE TABLE TableName
   - Physical design **affects query performance** but **never affects query results**.
 - **storage engine / storage manager**
   - A storage engine or storage manager **translates instructions** generated by a query processor into **low-level commands** that access data on storage media.
-
-```sql
--- CREATE
-CREATE INDEX IndexName ON TableName (Column1, ..., ColumnN);
--- DROP
-DROP INDEX IndexName ON TableName;
--- SHOW
-SHOW INDEX FROM TableName;
-```
