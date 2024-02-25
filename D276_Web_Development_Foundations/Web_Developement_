@@ -14,3 +14,30 @@
 - <https://www.reddit.com/r/WGU/comments/186ahdl/d276_web_development_foundations_passed/>
   - Stick with the zyBooks material.
   - take advantage of all essential reading/video materials (literally denoted as ESSENTIAL VIDEO or ESSENTIAL READING), including the **LinkedIn Learning** videos and the **Pluralsight** videos.
+
+## CSS Selectors
+
+- **Rule**
+  - selector and declaration combined.
+  - ![css selector](img/css_selector.png)
+- **Selector**
+  - the 'tag' name.
+  - ![css selector](img/css_selector.png)
+- **Declaration**
+  - everything inside the brackets.
+  - ![css selector](img/css_selector.png)
+- **Property and Value**
+  - css attributes inside the brackets.
+  - ![css selector](img/css_selector.png)
+- **External CSS**
+  - link to css file.
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="mystyle.css" />
+  </head>
+  <body></body>
+</html>
+```
