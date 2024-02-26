@@ -193,3 +193,97 @@ a:active {
   - describe data elements.
   - enhance structure and navigation of data.
   - Allows easy interchange of data with other applications.
+- **block elements**
+  - starts on a new line, always takes up the full width.
+  - starts a new container.
+  - div, p, table, header, ul, li, main, nav, footer...
+- **Inline elements**
+  - a, br, button, img, span...
+- **empty tags -no closing tag**
+  - hr, br, input, img, link, meta, source, area, embed
+- **Link -relative vs absolute, external hyperlink, internal hyperlink, link rot**
+  - relative: location after domain.
+  - absolute: https://domain/path.
+  - hyperlink: same as absolute outside domain.
+  - internal hyperlink: `<a href="#someId">someId</a>` targets page id.
+  - link rot: resource changes over time and link doesn't.
+- **caption**
+  - allow screen readers to understand purpose of table.
+
+```html
+<table>
+  <caption>
+    Front-end web developer course 2021
+  </caption>
+  <thead>
+    <tr>
+      <th scope="col">Person</th>
+      <th scope="col">Most interest in</th>
+      <th scope="col">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">Chris</th>
+      <td>HTML tables</td>
+      <td>22</td>
+    </tr>
+    <tr>
+      <th scope="row">Karen</th>
+      <td>Web performance</td>
+      <td>36</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row" colspan="2">Average age</th>
+      <td>33</td>
+    </tr>
+  </tfoot>
+</table>
+```
+
+- **colspan, rowspan**
+  - number of columns a cell should span.
+
+```html
+<table style="width:100%">
+  <tr>
+    <th colspan="2">Name</th>
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>43</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>57</td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <td>Jill</td>
+  </tr>
+  <tr>
+    <th rowspan="2">Phone</th>
+    <td>555-1234</td>
+  </tr>
+  <tr>
+    <td>555-8745</td>
+  </tr>
+</table>
+```
+
+- **HTML Entities**
+  - `<` &lt;
+  - ` ` &nbsp;
+- **Web Development Project Cycle**
+- **Wireframe**
+- **Stakeholder input**
+- **sitemap**
+- **website maintenance task**
