@@ -24,6 +24,9 @@
   - the 'tag' name.
   - ![css selector](img/css_selector.png)
 - **Declaration**
+  - property and value.
+  - ![css selector](img/css_selector.png)
+- **Declaration block**
   - everything inside the brackets.
   - ![css selector](img/css_selector.png)
 - **Property and Value**
@@ -142,7 +145,9 @@
   - `blue;` named
   - `#FFF` hexadecimal, RGB, 00-FF. Higher more color intensity.
   - **216 `Web Safe Colors`** safe hex values from old days, where computers could only display 256 possible colors.
-- **Links**
+- **CSS link, fragment, URL**
+  - fragments: `<a href="#some-id">` link that points to id on webpage.
+  - url: hostname, path, query string, fragment, scheme.
 
 ```css
 a:link, /* normal unvisited link */
@@ -287,3 +292,14 @@ a:active {
 - **Stakeholder input**
 - **sitemap**
 - **website maintenance task**
+
+## Disabilities
+
+- **ADA**
+  - American Disabilities Act: **prohibits discrimination** and guarantees that people with disabilities have the same opportunities
+- **WAI**
+  - The W3C Web Accessibility Initiative
+  - develops standards and support materials to help you understand and implement accessibility.
+- **WCAG**
+  - Web Content Accessibility Guidelines
+  - create **single shared standard** for web content accessibility.
