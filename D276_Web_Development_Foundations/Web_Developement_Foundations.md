@@ -148,6 +148,7 @@
 - **CSS link, fragment, URL**
   - fragments: `<a href="#some-id">` link that points to id on webpage.
   - url: hostname, path, query string, fragment, scheme.
+  - `<a href="url" target="_blank"` open in new tab or window.
 
 ```css
 a:link, /* normal unvisited link */
@@ -212,8 +213,9 @@ a:active {
   - hyperlink: same as absolute outside domain.
   - internal hyperlink: `<a href="#someId">someId</a>` targets page id.
   - link rot: resource changes over time and link doesn't.
-- **caption**
+- **caption, thead, tbody, tfoot**
   - allow screen readers to understand purpose of table.
+  - thead, tbody, tfoot: allowing the body of the table to scroll up and down, so you don’t lose your table headers when looking for information.
 
 ```html
 <table>
@@ -292,6 +294,49 @@ a:active {
 - **Stakeholder input**
 - **sitemap**
 - **website maintenance task**
+- **form**
+  - <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form>
+  - input={text, radio, checkbox, submit, button}
+  - action: name and location of CGI script or URL that runs/listens for the form submission.
+  - method: get, post, dialog.
+    - get: append form data as URL query. `?name=value&name2=value2`. Visible to all.
+    - post: form data inside body of http.
+    - dialog: when in dialog box, closes it.
+
+```html
+<form action="/action_page.php" method="post">
+  <label for="fname">First name:</label><br />
+  <input type="text" id="fname" name="fname" value="John" /><br />
+  <label for="lname">Last name:</label><br />
+  <input type="text" id="lname" name="lname" value="Doe" /><br /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+<!-- OPTION -->
+<label for="cars">Choose a car:</label>
+<select id="cars" name="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="fiat">Fiat</option>
+  <option value="audi">Audi</option>
+</select>
+
+<!-- MaxLength -->
+<form action="/action_page.php">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" maxlength="10" /><br /><br />
+  <input type="submit" value="Submit" />
+</form>
+
+<!-- Single Option Select -->
+<label for="cars">Choose a car:</label>
+<select name="cars" id="cars">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="mercedes">Mercedes</option>
+  <option value="audi">Audi</option>
+</select>
+```
 
 ## Disabilities
 
