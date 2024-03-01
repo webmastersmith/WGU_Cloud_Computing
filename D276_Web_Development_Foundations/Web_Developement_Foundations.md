@@ -33,15 +33,25 @@
   - css attributes inside the brackets.
   - ![css selector](img/css_selector.png)
 - **External CSS**
-  - link to css file.
+  - link to css file. `<link rel="stylesheet" href="mystyle.css">`
 
 ```html
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- external style sheet -->
     <link rel="stylesheet" href="mystyle.css" />
+    <!-- Internal (Embedded) style sheet -->
+    <style>
+      h1 {
+        color: red;
+      }
+    </style>
   </head>
-  <body></body>
+  <body>
+    <!-- Inline style sheet  -->
+    <h1 style="color:blue;text-align:center;">This is a heading</h1>
+  </body>
 </html>
 ```
 
@@ -50,16 +60,69 @@
 - **specificity**
   - the 'weight' something has. What rule wins when two rules conflict.
   1. `!important` highest
-  2. `<p style="color:blue; padding: 1rem;">HI</p>` inline
+  2. `<p style="color:blue; padding: 1rem;">HI</p>` inline. 2nd highest
+  3. lowest CSS in document.
+- **Combinators**
+
+| symbol       | about                |
+| ------------ | -------------------- |
+| `h1, h2, h3` | all                  |
+| `ul li`      | any descendant child |
+| `ul > li`    | direct child         |
+| `img + p`    | adjacent sibling     |
+| `img ~ p`    | general sibling      |
+
+```css
+/* type selector */
+div {
+}
+/* type 'td' with any descendant child an img */
+td img {
+}
+/* target all h1, h2, h3 elements */
+h1,
+h2,
+h3 {
+}
+/* link element with 'title' attribute */
+a[title] {
+}
+/* input checkbox that's checked */
+input[type='checkbox']:checked {
+}
+/* Links that start with "https://" and end in ".org" */
+a[href^="https://"][href$=".org"]
+
+/* class */
+.hidden {
+}
+/* id */
+#hidden {
+}
+```
 
 ```html
-<!DOCTYPE html>
-<html>
-  <body>
-    <h1 style="color:blue;text-align:center;">This is a heading</h1>
-    <p style="color:red;">This is a paragraph.</p>
-  </body>
-</html>
+<div class="one two three">hello</div>
+<div id="four">hello</div>
+```
+
+- **pseudo-selectors**
+  - <https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors/Pseudo-classes_and_pseudo-elements>
+  - **pseudo-class**: selects elements that **are in a specific state**.
+    - e.g. they are the first element of their type, or they are being hovered over by the mouse pointer.
+  - **pseudo-elements**: they act as if you had **added a whole new HTML element** into the markup, rather than applying a class to existing elements.
+
+```css
+/* pseudo-class */
+article p:first-child {
+}
+/* pseudo-element */
+article p::first-line {
+}
+article p::before {
+}
+article p::after {
+}
 ```
 
 - **Comments**
@@ -133,6 +196,9 @@
 </map>
 <img usemap="#infographic" src="/media/examples/mdn-info2.png" alt="MDN infographic" />
 
+<!-- Audio -->
+<!-- If you don't add 'controls' user cannot pause audio. -->
+<!-- Most common codecs: AAC, MP3 -->
 <audio controls autoplay>
   <source src="horse.ogg" type="audio/ogg" />
   <source src="horse.mp3" type="audio/mpeg" />
@@ -166,8 +232,123 @@ a:active {
   - absolute: relative to first positioned ancestor or window.
   - fixed: relative to viewport and stays even if page scrolled.
   - sticky: positioned based on users scroll position.
+- **display**
+  - inline-block: top and bottom(margin, padding), width, height respected. does not start newline after element.
 - **canvas**
   - draw graphics on the fly via JS.
+- **css variables**
+
+```css
+/* same as html -global */
+:root {
+  --main-bg-color: brown;
+}
+
+h1 {
+  color: var(--main-bg-color);
+}
+```
+
+- **absolute length**
+  - they are not relative to anything else, and are generally considered to always be the same size.
+
+| Unit | Name                | Equivalent to            |
+| :--- | :------------------ | :----------------------- |
+| cm   | Centimeters         | 1cm = 37.8px = 25.2/64in |
+| mm   | Millimeters         | 1mm = 1/10th of 1cm      |
+| Q    | Quarter-millimeters | 1Q = 1/40th of 1cm       |
+| in   | Inches              | 1in = 2.54cm = 96px      |
+| pc   | Picas               | 1pc = 1/6th of 1in       |
+| pt   | Points              | 1pt = 1/72nd of 1in      |
+| px   | Pixels              | 1px = 1/96th of 1in      |
+
+- **relative length**
+  - relative to something else, perhaps the size of the parent element's font, or the size of the viewport.
+
+| Unit     | Relative to                                                         |
+| :------- | :------------------------------------------------------------------ |
+| em       | Font size of the parent                                             |
+| ex       | x-height of the element's font.                                     |
+| ch       | The advance measure (width) of the glyph "0" of the element's font. |
+| rem      | Font size of the root element.                                      |
+| lh       | Line height of the element.                                         |
+| rlh      | Line height of the root element.                                    |
+| vw       | 1% of the viewport's width.                                         |
+| vh       | 1% of the viewport's height.                                        |
+| vmin     | 1% of the viewport's smaller dimension.                             |
+| vmax     | 1% of the viewport's larger dimension.                              |
+| vb       | 1% of the size of the direction of the root element's block axis.   |
+| vi       | 1% of the size of the direction of the root element's inline axis.  |
+| svw, svh | 1% of the small viewport's width and height, respectively.          |
+| lvw, lvh | 1% of the large viewport's width and height, respectively.          |
+| dvw, dvh | 1% of the dynamic viewport's width and height, respectively.        |
+
+- **transitions, animations**
+  - Transitions execute when property changes, animations execute at a particular time.
+
+```css
+/* Transition */
+.target {
+  /* transition: <property> <duration> <timing-function> <delay>; */
+  font-size: 14px;
+  transition: font-size 4s 1s;
+}
+.target:hover {
+  font-size: 36px;
+}
+/* X positive value move right */
+/* Y positive value move down */
+.child1:hover {
+  /* X */
+  translate: 20px;
+}
+.child2:hover {
+  /* X, Y */
+  translate: 20px 20px;
+}
+.child3:hover {
+  /* X, Y, Z */
+  translate: 5px 5px 30px;
+}
+
+/* Animation */
+div {
+  animation /* duration | easing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+}
+/* or */
+div {
+  animation-name
+  animation-duration
+  animation-delay
+  animation-iteration-count
+  animation-direction: /* normal | reverse | alternate | alternate-reverse */;
+  animation-timing-function /* ease | linear | ease-in | ease-out | ease-in-out | cubic-bezier(n,n,n,n) */
+  animation-fill-mode /* none | forwards | backwards | both */
+  /*
+  none = no animation applied before or after executing.
+  forwards = retain styles from last keyframe.
+  backwards = retain styles from first keyframe.
+  both = start with first keyframe, keep last keyframe.
+  */
+}
+```
+
+- **media queries**
+  - A media query is composed of an optional media type and any number of media feature expressions.
+  - media type: target special devices such as printers or screen readers.
+  - media feature: characteristics of a given user agent, output device, or environment.
+
+```css
+/* media type all|screen|print */
+@media screen, print {
+}
+/* media feature */
+@media (min-width: 320px) {
+}
+/* Both */
+@media screen and (orientation: portrait) and (max-width: 320px) {
+}
+```
 
 ## HTML
 
@@ -297,11 +478,14 @@ a:active {
 - **form**
   - <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form>
   - input={text, radio, checkbox, submit, button}
+    - minlength: limit characters. `minlength="3"`
+    - maxlength: limit characters. `maxlength="25"`
   - action: name and location of CGI script or URL that runs/listens for the form submission.
   - method: get, post, dialog.
     - get: append form data as URL query. `?name=value&name2=value2`. Visible to all.
     - post: form data inside body of http.
     - dialog: when in dialog box, closes it.
+  - option: may or may not have a 'value' attribute.
 
 ```html
 <form action="/action_page.php" method="post">
@@ -312,7 +496,7 @@ a:active {
   <input type="submit" value="Submit" />
 </form>
 
-<!-- OPTION -->
+<!-- OPTION -Single Option Select -->
 <label for="cars">Choose a car:</label>
 <select id="cars" name="cars">
   <option value="volvo">Volvo</option>
@@ -328,23 +512,50 @@ a:active {
   <input type="submit" value="Submit" />
 </form>
 
-<!-- Single Option Select -->
-<label for="cars">Choose a car:</label>
-<select name="cars" id="cars">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
+<!-- Fieldset -->
+<form>
+  <fieldset>
+    <legend>Choose your favorite monster</legend>
+    <input type="radio" id="kraken" name="monster" value="K" />
+    <label for="kraken">Kraken</label><br />
+    <input type="radio" id="sasquatch" name="monster" value="S" />
+    <label for="sasquatch">Sasquatch</label><br />
+    <input type="radio" id="mothman" name="monster" value="M" />
+    <label for="mothman">Mothman</label>
+  </fieldset>
+</form>
+```
+
+## XML
+
+- stores data in plaintext.
+- Tags are case sensitive.
+- default character encoding is `utf-8`.
+- top XML tag is called `XML prolog`.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<note>
+  <to>Tove</to>
+  <from>Jani</from>
+  <heading>Reminder</heading>
+  <body>Don't forget me this weekend!</body>
+</note>
 ```
 
 ## Disabilities
 
 - **ADA**
-  - American Disabilities Act: **prohibits discrimination** and guarantees that people with disabilities have the same opportunities
+  - American Disabilities Act: **prohibits discrimination** and guarantees that people with disabilities have the same opportunities.
 - **WAI**
-  - The W3C Web Accessibility Initiative
-  - develops standards and support materials to help you understand and implement accessibility.
+  - The W3C Web Accessibility Initiative.
+  - develops standards and **support materials to help you understand** and implement accessibility.
 - **WCAG**
-  - Web Content Accessibility Guidelines
-  - create **single shared standard** for web content accessibility.
+  - Web Content Accessibility Guidelines.
+  - **develop single shared standard** for web content accessibility.
+- **errors**
+  - most common errors: `syntax and logic errors`.
+- **debugging rules**
+  - identify it
+  - find it
+  - fix it
