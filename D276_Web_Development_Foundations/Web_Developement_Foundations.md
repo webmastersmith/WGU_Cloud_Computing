@@ -485,7 +485,11 @@ div {
     - get: append form data as URL query. `?name=value&name2=value2`. Visible to all.
     - post: form data inside body of http.
     - dialog: when in dialog box, closes it.
-  - option: may or may not have a 'value' attribute.
+  - option: may or may not have a 'value' attribute. only can choose one option.
+  - fieldset: groups radio buttons under one legend.
+    - flexbox not work with fieldset. must use float. or eliminate fieldset and legend and use css to align radio buttons.
+  - ![fieldset](img/fieldset.PNG)
+- checkbox: allow multiple selections. `label` envelopes `input[type="checkbox"]`
 
 ```html
 <form action="/action_page.php" method="post">
@@ -524,6 +528,21 @@ div {
     <label for="mothman">Mothman</label>
   </fieldset>
 </form>
+
+<!-- TextArea -->
+<div class="form-row">
+  <label for="abstract">Abstract</label>
+  <textarea id="abstract" name="abstract"></textarea>
+  <div class="instructions">Describe your talk in 500 words or less</div>
+</div>
+
+<!-- Checkbox -->
+<div class="form-row">
+  <label class="checkbox-label" for="available">
+    <input id="available" name="available" type="checkbox" value="is-available" />
+    <span>I’m actually available the date of the talk</span>
+  </label>
+</div>
 ```
 
 ## XML
