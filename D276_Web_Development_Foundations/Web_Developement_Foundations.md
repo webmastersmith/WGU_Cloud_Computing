@@ -119,10 +119,12 @@ a[href^="https://"][href$=".org"]
 /* pseudo-class */
 article p:first-child {
 }
-p:hover {
+article p:hover {
 }
 /* pseudo-element */
 article p::first-line {
+}
+article p::first-letter {
 }
 article p::before {
 }
@@ -536,6 +538,8 @@ div {
 
 <!-- OPTION -Single Option Select -->
 <label for="cars">Choose a car:</label>
+<!-- OPTION -Multiple Option Select -->
+<label for="cars" multiple>Choose a car:</label>
 <select id="cars" name="cars">
   <option value="volvo">Volvo</option>
   <option value="saab">Saab</option>
@@ -571,6 +575,7 @@ div {
 </div>
 
 <!-- Checkbox -->
+<!-- allows multiple answers. label wraps input,span. -->
 <div class="form-row">
   <label class="checkbox-label" for="available">
     <input id="available" name="available" type="checkbox" value="is-available" />
@@ -618,6 +623,6 @@ div {
 - **errors**
   - most common errors: `syntax and logic errors`.
 - **debugging rules**
-  - identify it
   - find it
+  - identify it
   - fix it
