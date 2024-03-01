@@ -56,12 +56,13 @@
 ```
 
 - **cascade**
+  - styles of parent 'cascade' to children.
   - when two rules match, the one that comes last will win.
 - **specificity**
   - the 'weight' something has. What rule wins when two rules conflict.
   1. `!important` highest
   2. `<p style="color:blue; padding: 1rem;">HI</p>` inline. 2nd highest
-  3. lowest CSS in document.
+  3. last matching rule in stylesheet.
 - **Combinators**
 
 | symbol       | about                |
@@ -102,7 +103,9 @@ a[href^="https://"][href$=".org"]
 ```
 
 ```html
+<!-- class attribute -->
 <div class="one two three">hello</div>
+<!-- id attribute -->
 <div id="four">hello</div>
 ```
 
@@ -115,6 +118,8 @@ a[href^="https://"][href$=".org"]
 ```css
 /* pseudo-class */
 article p:first-child {
+}
+p:hover {
 }
 /* pseudo-element */
 article p::first-line {
@@ -227,9 +232,9 @@ a:active {
 
 - **Position: containing block, static, relative, absolute, fixed, sticky**
   - containing block: block level element with position other than static.
-  - static: default. flow with webpage
+  - static: default. flow with webpage.
   - relative: relative to itself without effecting other elements.
-  - absolute: relative to first positioned ancestor or window.
+  - absolute: relative to first positioned(not static) ancestor or window.
   - fixed: relative to viewport and stays even if page scrolled.
   - sticky: positioned based on users scroll position.
 - **display**
@@ -296,19 +301,23 @@ h1 {
 .target:hover {
   font-size: 36px;
 }
-/* X positive value move right */
-/* Y positive value move down */
+/* Transition: translate */
+.childs {
+  transition: all 100ms ease-in-out;
+}
 .child1:hover {
-  /* X */
-  translate: 20px;
+  /* X positive value move right */
+  /* Y positive value move down */
+  /* X, Y, Z*/
+  transform: translate(20px, 10px, 30px);
 }
 .child2:hover {
-  /* X, Y */
-  translate: 20px 20px;
-}
+  /* W, H */
+  transform: scale(0.5, 2); /* width / 2, height * 2*/
+  }
 .child3:hover {
-  /* X, Y, Z */
-  translate: 5px 5px 30px;
+  /* Clockwise rotation */
+  transform: rotate(45deg);
 }
 
 /* Animation */
@@ -333,25 +342,51 @@ div {
 }
 ```
 
+- **adaptive website**
+  - adapts to the width of the browser at specific widths.
+  - e.g. A container is 400 pixels wide when the browser is wider than 500 pixels, but the container shrinks to 200 pixels when the browser is less than 500 pixels wide.
+- **Responsive Web Design**
+  - A responsive website will instead smoothly adjust the width of the container to fit the browser width.
+  1. Elements are laid out on fluid, proportion-based grids that use **relative units** like percentages instead of absolute units like pixels.
+  2. Images are sized with **relative units** to adapt to various screen sizes.
+  3. **CSS media queries** apply different CSS styles depending on the **browser's width**.
+- **Graceful degradation**
+  - Design the **desktop website first** and modify the design to fit smaller screens.
+- **Progressive enhancement**
+  - A **"mobile first"** design methodology that begins with designing the website for the smallest device and then adapts the design for larger screens.
+- **at-rule**
+  - is a CSS statement that starts with the `@` character and instructs the **CSS engine how to behave**.
+- **breakpoint**
+  - screen width that **activates a media query**.
 - **media queries**
   - A media query is composed of an optional media type and any number of media feature expressions.
   - media type: target special devices such as printers or screen readers.
   - media feature: characteristics of a given user agent, output device, or environment.
 
 ```css
+/* Media Attribute on a link */
+/* when media condition true, will download */
+<link rel="stylesheet"
+  media="print and (min-width: 400px)" 
+  href="styles.css"
+/>
 /* media type all|screen|print */
 @media screen, print {
 }
+@media only screen and (min-width: 320px) {
+}
 /* media feature */
+/* aspect-ratio, width, height, orientation, resolution */
 @media (min-width: 320px) {
 }
-/* Both */
 @media screen and (orientation: portrait) and (max-width: 320px) {
 }
 ```
 
 ## HTML
 
+- **Wireframe**
+  - blueprint for a web page.
 - **HTML**
   - `header, nav, menu, footer` have semantic meaning.
   - defines page structure. HTML 5.2 latest.
@@ -468,10 +503,9 @@ div {
 ```
 
 - **HTML Entities**
-  - `<` &lt;
-  - ` ` &nbsp;
+  - `<` `&lt;`
+  - ` ` `&nbsp;`
 - **Web Development Project Cycle**
-- **Wireframe**
 - **Stakeholder input**
 - **sitemap**
 - **website maintenance task**
@@ -544,6 +578,15 @@ div {
   </label>
 </div>
 ```
+
+## Bootstrap
+
+- **bootstrap**
+  - framework for HTML, CSS, and JavaScript to help a developer **create responsive websites**.
+  - standardized: icons, buttons...
+- **typography**
+  - appearance of your website to have a unified look and feel.
+  - fonts, icons, and layouts consistently throughout the entirety of the website.
 
 ## XML
 
