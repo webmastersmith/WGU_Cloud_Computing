@@ -316,6 +316,8 @@ h1 {
 .child2:hover {
   /* W, H */
   transform: scale(0.5, 2); /* width / 2, height * 2*/
+  /* scale can be written as stand alone */
+  scale(0.5, 2);
   }
 .child3:hover {
   /* Clockwise rotation */
@@ -328,7 +330,7 @@ div {
 }
 /* or */
 div {
-  animation-name
+  animation-name: my-anni
   animation-duration
   animation-delay
   animation-iteration-count
@@ -341,6 +343,11 @@ div {
   backwards = retain styles from first keyframe.
   both = start with first keyframe, keep last keyframe.
   */
+  @keyframes my-anni {
+    0% { left: 0; top: 0; }
+    50% {}
+    100% {}
+  }
 }
 ```
 
@@ -348,7 +355,7 @@ div {
   - adapts to the width of the browser at specific widths.
   - e.g. A container is 400 pixels wide when the browser is wider than 500 pixels, but the container shrinks to 200 pixels when the browser is less than 500 pixels wide.
 - **Responsive Web Design**
-  - A responsive website will instead smoothly adjust the width of the container to fit the browser width.
+  - A responsive website will instead smoothly adjust the **width of the container** to fit the browser width.
   1. Elements are laid out on fluid, proportion-based grids that use **relative units** like percentages instead of absolute units like pixels.
   2. Images are sized with **relative units** to adapt to various screen sizes.
   3. **CSS media queries** apply different CSS styles depending on the **browser's width**.
@@ -413,10 +420,6 @@ div {
 
 - **iframe**
   - inline frame used to embed another document inside html document.
-- **XML**
-  - describe data elements.
-  - enhance structure and navigation of data.
-  - Allows easy interchange of data with other applications.
 - **block elements**
   - starts on a new line, always takes up the full width.
   - starts a new container.
@@ -429,6 +432,8 @@ div {
   - relative: location after domain.
   - absolute: https://domain/path.
   - hyperlink: same as absolute outside domain.
+  - external: outside domain.
+    - `<a href="http://example.com/media/index.html">my-link</a>`
   - internal hyperlink: `<a href="#someId">someId</a>` targets page id.
   - link rot: resource changes over time and link doesn't.
 - **caption, thead, tbody, tfoot**
@@ -472,6 +477,7 @@ div {
   - number of columns a cell should span.
 
 ```html
+<!-- Colspan -->
 <table style="width:100%">
   <tr>
     <th colspan="2">Name</th>
@@ -489,6 +495,7 @@ div {
   </tr>
 </table>
 
+<!-- Rowspan -->
 <table>
   <tr>
     <th>Name</th>
@@ -592,13 +599,18 @@ div {
 - **typography**
   - appearance of your website to have a unified look and feel.
   - fonts, icons, and layouts consistently throughout the entirety of the website.
+- **Icons**
+  - standardized icons. `<i class="bi bi-arrow-down-right-circle"></i>`
 
 ## XML
 
 - stores data in plaintext.
-- Tags are case sensitive.
+- Tags are **case sensitive** and **crashes on error**.
 - default character encoding is `utf-8`.
 - top XML tag is called `XML prolog`.
+- describe data elements.
+- enhance structure and navigation of data.
+- Allows easy interchange of data with other applications.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
