@@ -7,6 +7,8 @@
 - <https://www.linkedin.com/learning/oracle-12c-database-administration/welcome?u=2045532>
 - <https://www.reddit.com/r/WGU/comments/11m6rf5/data_systems_administration_d330_pass/>
 - In the "Exam Essentials" section of the book, there are 20 questions for each chapter and at the end of the book there are answers to the questions.
+- <https://www.reddit.com/r/WGU/comments/158vszg/d330_data_systems_administration_pass/>
+  -
 - **D192/D330 Test Items help.docx**
   - **50% Database Management Tools**:
     - Explain the differences betwen pfile and spfile.
@@ -56,11 +58,12 @@
     - How can you prevent overwriting of undo data?
     - What is the Dynamic view and/or join for locked sessions?
 - **WGU Chatter**
+  - <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=667f1502-63b8-4662-a097-b044000cbef6>
   - <https://www.reddit.com/r/WGU/comments/158vszg/d330_data_systems_administration_pass/>
   1. Watch these LinkedIn courses to get a basic grasp:
      1. <https://www.linkedin.com/learning/oracle-12c-database-administration>
      2. <https://www.linkedin.com/learning/oracle-database-12c-backup-and-recovery>
-  2. Read the textbook **chapters 8,-10,12-15,17**. Highlight stuff as necessary.
+  2. Read the textbook **chapters 8-10,12-15,17**. Highlight stuff as necessary.
   3. Watch Dr. William Sewell's webinar that summarizes important stuff:
      1. <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=667f1502-63b8-4662-a097-b044000cbef6>
   4. Take the pre-assessment. You will have many incorrect answers.
