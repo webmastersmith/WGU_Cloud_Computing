@@ -57,7 +57,6 @@
     - How can you prevent overwriting of undo data?
     - What is the Dynamic view and/or join for locked sessions?
 - **WGU Chatter**
-  - <https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=667f1502-63b8-4662-a097-b044000cbef6>
   - <https://www.reddit.com/r/WGU/comments/158vszg/d330_data_systems_administration_pass/>
   1. Watch these LinkedIn courses to get a basic grasp:
      1. <https://www.linkedin.com/learning/oracle-12c-database-administration>
@@ -70,3 +69,27 @@
   6. Take pre-assessment again (should get 95% correct). I say this because there are some questions worded similarly to the pre-assessment on the OA, so making sure you score a 100% here will definitely help.
   7. Schedule the exam immediately, or if necessary, schedule after an hour or so and skim through the textbook for review in the meanwhile.
   8. I passed, but god forbid if you fail - contact the instructor. There is also a "d330 test help.docx" that you can use to brush up on specific questions, but having a solid foundation is really necessary.
+
+## Setting up Oracle 12c Database with Docker
+
+- <https://medium.com/@g.s.r/setup-oracle-database-12c-image-on-docker-step-by-step-15a4c344acf2>
+- <https://hub.docker.com/search?q=oracle>
+
+Competency 4070.2.1: Performs Database Administration
+Competency 4070.2.2: Manages Data Access
+Competency 4070.2.3: Performs Backup and Restore
+Competency 4070.2.4: Upgrades Databases
+
+## Chapter 8: Introducing Oracle Database 12c Components and Architecture
+
+- **List the architectural components of Oracle Database.**
+  - data itself is composed of related logical units of information.
+  - (DBMS) facilitates the storage, modification, and retrieval of this data.
+  - relational database management system (RDBMS) is that the data consists of a set of relational objects.
+  - Parent Table: table in a relational database **must have a primary key**.
+  - Child Table: table where the foreign key column exists.
+  - Constraint: parent-child relationship between tables.
+- **Explain the memory structures.**
+- **Describe the background processes.**
+- **Explain the relationship between logical and physical storage structures.**
+- **Use database management tools.**
