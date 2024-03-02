@@ -8,8 +8,7 @@
 - <https://www.reddit.com/r/WGU/comments/11m6rf5/data_systems_administration_d330_pass/>
 - In the "Exam Essentials" section of the book, there are 20 questions for each chapter and at the end of the book there are answers to the questions.
 - <https://www.reddit.com/r/WGU/comments/158vszg/d330_data_systems_administration_pass/>
-  -
-- **D192/D330 Test Items help.docx**
+- **D330 help.docx**
   - **50% Database Management Tools**:
     - Explain the differences betwen pfile and spfile.
     - What is the Prefix for dynamic performance views?
