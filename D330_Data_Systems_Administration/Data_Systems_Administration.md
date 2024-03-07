@@ -72,8 +72,24 @@
 
 ## Setting up Oracle 12c Database with Docker
 
-- <https://medium.com/@g.s.r/setup-oracle-database-12c-image-on-docker-step-by-step-15a4c344acf2>
-- <https://hub.docker.com/search?q=oracle>
+1. create docker file and run:
+   1. oracle 12c is no longer on docker hub. To get original, download directly from oracle.
+      1. <https://enabling-cloud.github.io/docker-learning/RunningOracleDockerImage.html>
+   2. or just use this one
+      1. <https://github.com/MaksymBilenko/docker-oracle-12c>
+      2. <https://hub.docker.com/r/truevoly/oracle-12c>
+      3. `docker run -d -p 8080:8080 -p 1521:1521 truevoly/oracle-12c`
+2. install Oracle SQL Developer for vscode:
+   1. this creates a GUI to database.
+   2. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
+   3. To connect to database on WSL:
+      1. add connection name
+      2. username: system
+      3. password: oracle
+      4. hostname: localhost
+      5. port: 1521
+      6. type: SID
+      7. SID: xe
 
 Competency 4070.2.1: Performs Database Administration
 Competency 4070.2.2: Manages Data Access
