@@ -114,3 +114,53 @@ Competency 4070.2.4: Upgrades Databases
 - **Describe the background processes.**
 - **Explain the relationship between logical and physical storage structures.**
 - **Use database management tools.**
+
+## Database
+
+- **Physical file**
+  - file structures collectively called the **database**.
+  - physical files that store data.
+  - need to be redundant and highly available.
+  - NAS or SAN supported.
+
+## Oracle Instance
+
+- **Oracle Instance**
+  - Logical Memory and background processes created every time you start.
+  - stores in memory the database schema(metadata) about tables.
+  - runs background processes that cache queries and transactional processing(read/write).
+  - each database must have one instance, and can have multiple instances.
+  - ![SGA](img/SGA.PNG)
+- **SGA System Global Area**
+  - contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
+  - shared memory structures used to cache data.
+  - ![SGA](img/SGA.PNG)
+- **Shared Pool**
+  - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
+  - cache non-user data. Library cache, data dict cache, others
+  - library cache: metadata about each sequel statement.
+    - hard parse: first time statement is executed.
+    - soft parse: after statement is executed in library cache.
+  - database dictionary cache: metadata about database and users.
+    - referential integrity, table definitions and structure(schema), indexes.
+  - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
+- **Buffer Cache**
+  - frequently accessed database data(rows, tables) to improve efficiency.
+  - stored as **oracle blocks**. Each block contains one or more rows of data.
+  - Keep Pool: administrator can pin certain data into memory. Never 'ages' out of the cache.
+  - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
+- **Redo Log Buffer**
+  - when changes are made to database, they need to get updated in Buffer Cache and Shared pool.
+  - written periodically to file for backup.
+  - ![SGA](img/SGA.PNG)
+
+## Server Processes
+
+- **Server Processes**
+  - read physical file(database), loads into memory(oracle instance buffer cache).
+  - listens for request from client(user session) and interacts with oracle instance.
+  - verifies syntax of client statements(SELECT statements).
+- **Oracle dedicated server process model**
+  - each user has dedicated **PGA**(program global area, private memory) memory cache.
+  - data that should not persist after user session ends, is stored in PGA.
+  - not efficient for thousands of users. Uses middleware servers that stream the connections to the PGA.
