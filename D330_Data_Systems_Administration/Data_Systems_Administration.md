@@ -79,11 +79,16 @@
       1. <https://github.com/MaksymBilenko/docker-oracle-12c>
       2. <https://hub.docker.com/r/truevoly/oracle-12c>
       3. `docker run -d -p 8080:8080 -p 1521:1521 truevoly/oracle-12c`
+         1. it takes about 3 minutes to finish.
+         2. `docker ps` // show container name.
+         3. `docker logs CONTAINER_NAME` // should say 100% complete.
+         4. `docker stop CONTAINER_NAME` // stop oracle database.
 2. install Oracle SQL Developer for vscode:
    1. this creates a GUI to database.
    2. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
-   3. To connect to database on WSL:
-      1. add connection name
+   3. or you can also download the exe installable.
+   4. Once installed, find database icon in side panel. To connect:
+      1. create connection name: `any_name`
       2. username: system
       3. password: oracle
       4. hostname: localhost
