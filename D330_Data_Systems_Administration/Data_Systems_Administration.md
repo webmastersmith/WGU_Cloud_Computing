@@ -75,7 +75,7 @@
 1. create docker file and run:
    1. oracle 12c is no longer on docker hub. To get original, download directly from oracle.
       1. <https://enabling-cloud.github.io/docker-learning/RunningOracleDockerImage.html>
-   2. or just use this one
+   2. or just use this one:
       1. <https://github.com/MaksymBilenko/docker-oracle-12c>
       2. <https://hub.docker.com/r/truevoly/oracle-12c>
       3. `docker run -d -p 8080:8080 -p 1521:1521 truevoly/oracle-12c`
@@ -89,12 +89,12 @@
    3. or you can also download the exe installable.
    4. Once installed, find database icon in side panel. To connect:
       1. create connection name: `any_name`
-      2. username: system
-      3. password: oracle
-      4. hostname: localhost
-      5. port: 1521
-      6. type: SID
-      7. SID: xe
+      2. username: `system`
+      3. password: `oracle`
+      4. hostname: `localhost`
+      5. port: `1521`
+      6. type: `SID`
+      7. SID: `xe`
 
 Competency 4070.2.1: Performs Database Administration
 Competency 4070.2.2: Manages Data Access
@@ -118,22 +118,46 @@ Competency 4070.2.4: Upgrades Databases
 
 ## Database
 
-- **Data/Physical file**
+- **Tablespace**
+  - This is **created first**. Tablespace is a group of **data files**.
+  - logical storage structure at the highest level of database.
+  - ![tablespace creation](img/tablespace_creation.PNG)
+  - ![database](img/database.PNG)
+- **Data File**
   - file structures collectively called the **database**. each 'database' will contain multiple data files.
   - physical files that store data, rows, tables, metadata, indexes are stored in data files.
   - need to be redundant and highly available.
   - NAS or SAN supported.
   - ![datafile](img/datafile.PNG)
+  - ![database](img/database.PNG)
 - **Data Blocks, Extents, Segments**
   - all of these are inside data files.
-  - data blocks: 8kb in size. Contains one or more rows. Query, database reads blocks and returns relevant info.
-  - extents: collection of multiple continuos data blocks. It's more efficient to allocate relative data in large chunks.
-  - segment: multiple extents. A table will be one segment space, no matter the size.
-    - ![segment](img/segment.PNG)
-  - ![tablespace](img/tablespace.PNG)
-- **Tablespace**
-  - logical storage structure at the highest level of database.
-  - one or more data files.
+  - data blocks: 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
+  - extents: collection of multiple **continuos data blocks**. It's more **efficient** to allocate relative data in large chunks.
+  - segment: multiple extents. A **table** will be one segment space, no matter the size.
+    - when you create a table, you create an 'oracle segment'.
+  - ![segment](img/segment.PNG)
+  - ![database](img/database.PNG)
+- **SYSTEM tablespace**
+  - oracle system use only.
+  - all metadata about database is stored here.
+- **UNDO tablespace**
+  - oracle system use only.
+  - stores previous versions of rows.
+  - rollback view.
+- **TEMP tablespace**
+  - temporary segments, anything that doesn't need persistent storage.
+  - PGA overflow.
+- **Redo Log File Database**
+  - database for redolog files(**transaction logs** are stored, **UPDATE**). Allow you to rebuild database on failure.
+  - cyclic write(fills one file, writes to other, then goes back to first file and writes).
+  - multiplexing, write to multiple logs for redundancy.
+  - extension is `.log`, but they are not log files. Delete them and database cannot start.
+  - ![database files](img/database_files.PNG)
+  - ![redo log files](img/redolog_files.PNG)
+- **Control File Database**
+  - data about the physical structure of database.
+  - ![database files](img/database_files.PNG)
 
 ## Oracle Instance
 
@@ -163,9 +187,12 @@ Competency 4070.2.4: Upgrades Databases
   - Keep Pool: administrator can pin certain data into memory. Never 'ages' out of the cache.
   - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
 - **Redo Log Buffer**
-  - when changes are made to database(UPDATE), they need to get updated in Buffer Cache and Shared pool.
-  - written periodically to file for backup.
-  - ![SGA](img/SGA.PNG)
+  - database **transaction logs** are stored. Allow you to rebuild database on failure.
+  - when changes are made to database(**UPDATE**), they need to get updated in Buffer Cache and Shared pool.
+  - written periodically to file for backup. If lost, oracle database cannot start.
+  - multiplexing, write to multiple logs for redundancy.
+  - extension is `.log`, but they are not log files. Delete them and lose database.
+  - ![redo log files](img/redolog_files.PNG)
 
 ## Oracle Instance Background Processes
 
@@ -178,7 +205,7 @@ Competency 4070.2.4: Upgrades Databases
   - writes periodically, and when buffer cache is full.
   - **dirty blocks**: in memory(buffer cache) blocks needing to be written to disk.
 - **Log Writer**
-  - LGWR. Writes RedoLog Buffer to disk.
+  - LGWR. Writes **RedoLog Buffer** to disk.
   - When user issues a `COMMIT;` statement, RedoLog Buffer will be written to disk.
   - or every three seconds.
 - **Checkpoint**
