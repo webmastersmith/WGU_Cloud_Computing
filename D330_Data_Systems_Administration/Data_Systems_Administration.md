@@ -137,6 +137,7 @@ Competency 4070.2.4: Upgrades Databases
   - ![SGA](img/SGA.PNG)
 - **Shared Pool**
   - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
+  - ![SGA Sizing](img/SGA_sizing.PNG)
   - cache non-user data. Library cache, data dict cache, others
   - library cache: metadata about each sequel statement.
     - hard parse: first time statement is executed.
@@ -145,14 +146,29 @@ Competency 4070.2.4: Upgrades Databases
     - referential integrity, table definitions and structure(schema), indexes.
   - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
 - **Buffer Cache**
-  - frequently accessed database data(rows, tables) to improve efficiency.
+  - largest part of SGA memory. Stores frequently accessed database data(rows, tables) to improve efficiency.
   - stored as **oracle blocks**. Each block contains one or more rows of data.
   - Keep Pool: administrator can pin certain data into memory. Never 'ages' out of the cache.
   - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
 - **Redo Log Buffer**
-  - when changes are made to database, they need to get updated in Buffer Cache and Shared pool.
+  - when changes are made to database(UPDATE), they need to get updated in Buffer Cache and Shared pool.
   - written periodically to file for backup.
   - ![SGA](img/SGA.PNG)
+
+## Oracle Instance Background Processes
+
+- **background processes**
+  - functions running in background to ensure data integrity.
+  - maintenance task.
+  - ![oracle instance background processes](img/oracle_instance_background_processes.PNG)
+- **Database Writer**
+  - when you UPDATE a table, changes are first stored in the buffer cache, then in memory changes are written to disk by the DBWn.
+  - writes periodically, and when buffer cache is full.
+  - **dirty blocks**: in memory(buffer cache) blocks needing to be written to disk.
+- **Log Writer**
+  - LGWR. Writes RedoLog Buffer to disk.
+  - When user issues a `COMMIT;` statement, RedoLog Buffer will be written to disk.
+  - or every three seconds.
 
 ## Server Processes
 
@@ -160,7 +176,19 @@ Competency 4070.2.4: Upgrades Databases
   - read physical file(database), loads into memory(oracle instance buffer cache).
   - listens for request from client(user session) and interacts with oracle instance.
   - verifies syntax of client statements(SELECT statements).
+  - ![connection pooling](img/connection_pooling.PNG)
 - **Oracle dedicated server process model**
   - each user has dedicated **PGA**(program global area, private memory) memory cache.
   - data that should not persist after user session ends, is stored in PGA.
   - not efficient for thousands of users. Uses middleware servers that stream the connections to the PGA.
+  - ![connection pooling](img/connection_pooling.PNG)
+- **Connection Pooling**
+  - additional servers that handle multiple clients PGA.
+  - ![connection pooling](img/connection_pooling.PNG)
+- **PGA Program Global Area**
+  - dedicated memory allocation available to each user.
+  - `PGA_AGGREGATE_TARGET=20G` // control PGA size for all user.
+  - ![SGA Sizing](img/SGA_sizing.PNG)
+- **Memory Sizing**
+  - value of total memory, allows oracle to self assign needed memory.
+  - ![generic memory](img/Generic_sizing.PNG)
