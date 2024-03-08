@@ -110,6 +110,7 @@ Competency 4070.2.4: Upgrades Databases
   - Parent Table: table in a relational database **must have a primary key**.
   - Child Table: table where the foreign key column exists.
   - Constraint: parent-child relationship between tables.
+  - ![oracle overview](img/oracle_overview.PNG)
 - **Explain the memory structures.**
 - **Describe the background processes.**
 - **Explain the relationship between logical and physical storage structures.**
@@ -122,6 +123,9 @@ Competency 4070.2.4: Upgrades Databases
   - physical files that store data.
   - need to be redundant and highly available.
   - NAS or SAN supported.
+- **Tablespace**
+  - logical storage structure at the highest level of database.
+  - one or more data files.
 
 ## Oracle Instance
 
@@ -169,6 +173,30 @@ Competency 4070.2.4: Upgrades Databases
   - LGWR. Writes RedoLog Buffer to disk.
   - When user issues a `COMMIT;` statement, RedoLog Buffer will be written to disk.
   - or every three seconds.
+- **Checkpoint**
+  - CKPT. when data in memory and on disk are the same, a checkpoint is created.
+  - this ensures data consistency. faster recovery process.
+  - CKPT generates a unique SCN(sequential change number). writes this to control and data files.
+  - ![ckpt scn](img/ckpt_scn.PNG)
+- **System Monitor**
+  - SMON. performs recovery during startup instance, if required.
+  - clean old memory processes no longer in use.
+- **Process Monitor**
+  - PMON. when user session fails, cleans up PGA and Buffer Cache resources.
+- **Recover Process**
+  - RECO. when an action modifies data on two different databases, both must succeed.
+  - cleans up failed transactions when UPDATE fails.
+- **Listener Registration**
+  - LREG. registers oracle instance with oracle listener.
+  - oracle listener: listens for user session connections, starts the process to serve connection.
+    - gateway from client to database
+    - spawns a new 'Server Process' for user.
+    - ![listener](img/listener.PNG)
+- **Archiver Process**
+  - ARCn. copy redo log file to storage after 'log switch' has occurred.
+  - allows recent transactions to be reapplied after database restore from backup.
+  - multiple ARC instances can be used for redundancy to store files in multiple locations.
+  - ![arc](img/arc.PNG)
 
 ## Server Processes
 
