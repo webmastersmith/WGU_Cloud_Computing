@@ -118,11 +118,19 @@ Competency 4070.2.4: Upgrades Databases
 
 ## Database
 
-- **Physical file**
-  - file structures collectively called the **database**.
-  - physical files that store data.
+- **Data/Physical file**
+  - file structures collectively called the **database**. each 'database' will contain multiple data files.
+  - physical files that store data, rows, tables, metadata, indexes are stored in data files.
   - need to be redundant and highly available.
   - NAS or SAN supported.
+  - ![datafile](img/datafile.PNG)
+- **Data Blocks, Extents, Segments**
+  - all of these are inside data files.
+  - data blocks: 8kb in size. Contains one or more rows. Query, database reads blocks and returns relevant info.
+  - extents: collection of multiple continuos data blocks. It's more efficient to allocate relative data in large chunks.
+  - segment: multiple extents. A table will be one segment space, no matter the size.
+    - ![segment](img/segment.PNG)
+  - ![tablespace](img/tablespace.PNG)
 - **Tablespace**
   - logical storage structure at the highest level of database.
   - one or more data files.
