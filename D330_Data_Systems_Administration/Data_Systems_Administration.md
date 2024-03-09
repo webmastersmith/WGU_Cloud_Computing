@@ -157,6 +157,28 @@ Competency 4070.2.4: Upgrades Databases
   - ![redo log files](img/redolog_files.PNG)
 - **Control File Database**
   - data about the physical structure of database.
+  - when start, loads control file, to find path of other files(data files, redo log files...).
+  - multiplexing for redundancy.
+  - ![database files](img/database_files.PNG)
+- **Backup Files**
+  - backup data files, control files, redo log files, archived redo log files, SP file.
+  - e.g. backup taken at 2pm. It takes two hours. The backup is only good for everything until 2pm.
+    - archived redo log files: hold the transactions after 2pm till current.
+  - ![backup](img/backup.PNG)
+- **Database Parameter File**
+  - SP file. Server Parameter file. Binary file that stores the oracle instance configuration parameters.
+  - all your custom parameters are stored here. e.g. `PGA_MAX_SIZE=25G`
+  - binary file must be changed with 'oracle commands'. Cannot be done directly.
+  - can be rebuilt if lost, but easier to add to backup.
+  - ![database files](img/database_files.PNG)
+- **Password File**
+  - stores password for users with admin privileges(SYSDBA).
+  - stored outside the database. Admin has complete control of database.
+  - non-administrator users passwords are stored inside the database.
+  - ![database files](img/database_files.PNG)
+- **Alert Log File**
+  - list of alerts, errors, events that occurred during database operation.
+  - used when troubleshooting problems.
   - ![database files](img/database_files.PNG)
 
 ## Oracle Instance
@@ -255,3 +277,16 @@ Competency 4070.2.4: Upgrades Databases
 - **Memory Sizing**
   - value of total memory, allows oracle to self assign needed memory.
   - ![generic memory](img/Generic_sizing.PNG)
+
+## Startup, Shutdown
+
+- **Startup**
+  - ![startup](img/startup.PNG)
+  - ![startup command line](img/startup_cmd.PNG)
+- **Shutdown**
+  - shutdown abort. pulls the plug. dirty. terminates immediately.
+  - ![shutdown abort](img/shutdown_abort.PNG)
+  - shutdown immediate. typical shutdown, uncommitted transactions are rolled back.
+  - shutdown transactional. oracle waits for transactions to finish processing. No new connections are allowed.
+  - shutdown normal. wait for all sessions to disconnect.
+  - ![shutdown command line](img/shutdown_cmd.PNG)
