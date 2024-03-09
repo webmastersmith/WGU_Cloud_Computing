@@ -181,6 +181,11 @@ Competency 4070.2.4: Upgrades Databases
   - used when troubleshooting problems.
   - ![database files](img/database_files.PNG)
 
+## Definitions
+
+- **Schema**
+  - A user is a defined database entity that has a set of abilities to perform activities based on their granted rights.
+
 ## Oracle Instance
 
 - **Oracle Instance**
