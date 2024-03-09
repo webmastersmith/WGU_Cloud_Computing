@@ -104,20 +104,35 @@ Competency 4070.2.4: Upgrades Databases
 ## Chapter 8: Introducing Oracle Database 12c Components and Architecture
 
 - **List the architectural components of Oracle Database.**
-  - data itself is composed of related logical units of information.
-  - (DBMS) facilitates the storage, modification, and retrieval of this data.
-  - relational database management system (RDBMS) is that the data consists of a set of relational objects.
-  - Parent Table: table in a relational database **must have a primary key**.
-  - Child Table: table where the foreign key column exists.
-  - Constraint: parent-child relationship between tables.
-  - ![oracle overview](img/oracle_overview.PNG)
 - **Explain the memory structures.**
 - **Describe the background processes.**
 - **Explain the relationship between logical and physical storage structures.**
 - **Use database management tools.**
 
+## Oracle Overview
+
+- **Oracle Server**
+  - data itself is composed of related logical units of information.
+  - (DBMS) facilitates the storage, modification, and retrieval of this data.
+  - relational database management system (RDBMS) is that the data consists of a set of relational objects.
+  - ![oracle overview](img/oracle_overview.PNG)
+  - all three main processes create the **Oracle Server**.
+    1. Memory Structure: This and 'process structure' create an 'instance'.
+    2. Process Structure: background processes.
+    3. Storage Structure: the physical data. aka Database.
+  - ![oracle overview](img/oracle_overview.PNG)
+
 ## Database
 
+- **Database Overview**
+  - tablespace is highest level of abstraction and must be created before any tables can exist.
+  - each tablespace is stored in one or more data files(the physical storage of database).
+  - tablespace has multiple segments.
+  - segments are sql tables.
+  - tables are filled with rows, stored in data blocks.
+  - Oracle creates 'extents'(multiple consecutive data blocks) for efficiency.
+  - ![segment](img/segment.PNG)
+  - ![database](img/database.PNG)
 - **Tablespace**
   - This is **created first**. Tablespace is a group of **data files**.
   - logical storage structure at the highest level of database.
@@ -144,7 +159,7 @@ Competency 4070.2.4: Upgrades Databases
 - **UNDO tablespace**
   - oracle system use only.
   - stores previous versions of rows.
-  - rollback view.
+  - `ROLLBACK;` command.
 - **TEMP tablespace**
   - temporary segments, anything that doesn't need persistent storage.
   - PGA overflow.
@@ -183,22 +198,44 @@ Competency 4070.2.4: Upgrades Databases
 
 ## Definitions
 
+- **Child Table**: table where the foreign key column exists.
+- **Constraint**: parent-child relationship between tables.
+- **Parent Table**: table in a relational database **must have a primary key**.
 - **Schema**
-  - A user is a defined database entity that has a set of abilities to perform activities based on their granted rights.
+  - A user is a defined **database entity** that has a set of abilities to **perform activities** based on their granted rights.
+  - A schema, which is associated with a user entity, is more appropriately defined as a collection of **database objects**.
+    - e.g. database objects are tables, indexes, and views.
+    - DBA might create a schema called SALES and create objects owned by that schema. Then, they can grant access to other database users who need the ability to access the SALES schema.
+    - objects associated with an application and is not tied to any specific user.
 
 ## Oracle Instance
 
+- **Oracle Instance Overview**
+  - each DB will have at least one instance.
+  - an instance is a combination of memory structures and background processes.
+  - when user connects
+  - ![oracle overview](img/oracle_overview.PNG)
+  - ![connection pooling](img/connection_pooling.PNG)
 - **Oracle Instance**
   - Logical Memory and background processes created every time you start.
   - stores in memory the database schema(metadata) about tables.
   - runs background processes that cache queries and transactional processing(read/write).
   - each database must have one instance, and can have multiple instances.
   - ![SGA](img/SGA.PNG)
+- **PGA Program Global Area**
+  - each user has dedicated **PGA**(program global area, private memory) memory cache.
+  - SQL work area like SORT or building hash tables.
+  - data that should not persist after user session ends, is stored in PGA.
+  - Total PGA size is configured automatically or manually. `PGA_AGGREGATE_TARGET=25G` // total size.
+  - not efficient for thousands of users. Uses middleware servers that stream the connections to the PGA.
+  - ![oracle overview](img/oracle_overview.PNG)
 - **SGA System Global Area**
-  - contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
-  - shared memory structures used to cache data.
+  - main memory structure. Contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
+  - shared memory structures used to cache data(waiting to be written to disk).
   - ![SGA](img/SGA.PNG)
+  - ![SGA](img/SGA_overview.PNG)
 - **Shared Pool**
+  - mandatory memory area. Caches most recent SQL statements issued by database users. Constantly tracks and updates the most popular commands.
   - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
   - ![SGA Sizing](img/SGA_sizing.PNG)
   - cache non-user data. Library cache, data dict cache, others
@@ -208,7 +245,7 @@ Competency 4070.2.4: Upgrades Databases
   - database dictionary cache: metadata about database and users.
     - referential integrity, table definitions and structure(schema), indexes.
   - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
-- **Buffer Cache**
+- **Database Buffer Cache**
   - largest part of SGA memory. Stores frequently accessed database data(rows, tables) to improve efficiency.
   - stored as **oracle blocks**. Each block contains one or more rows of data.
   - Keep Pool: administrator can pin certain data into memory. Never 'ages' out of the cache.
@@ -216,6 +253,7 @@ Competency 4070.2.4: Upgrades Databases
 - **Redo Log Buffer**
   - database **transaction logs** are stored. Allow you to rebuild database on failure.
   - when changes are made to database(**UPDATE**), they need to get updated in Buffer Cache and Shared pool.
+  - allows recent transactions to be reapplied after database restore from backup.
   - written periodically to file for backup. If lost, oracle database cannot start.
   - multiplexing, write to multiple logs for redundancy.
   - extension is `.log`, but they are not log files. Delete them and lose database.
@@ -255,14 +293,17 @@ Competency 4070.2.4: Upgrades Databases
     - spawns a new 'Server Process' for user.
     - ![listener](img/listener.PNG)
 - **Archiver Process**
-  - ARCn. copy redo log file to storage after 'log switch' has occurred.
-  - allows recent transactions to be reapplied after database restore from backup.
+  - ARCn. Redo Log Arciver. Copy redo log file to storage after 'log switch' has occurred.
   - multiple ARC instances can be used for redundancy to store files in multiple locations.
   - ![arc](img/arc.PNG)
 
-## Server Processes
+## Server Processes (SP)
 
-- **Server Processes**
+- **Server Processes Overview**
+  - When a 'user' starts an application, Oracle starts a 'user process' to support the connection. Oracle calls this a 'connection'.
+  - Oracle then creates a 'server process'. The 'server process' allows the user to perform task and interact with the database.
+  - A PGA(single user memory) is created.
+  - ![user connection](img/user_connection.PNG)
   - read physical file(database), loads into memory(oracle instance buffer cache).
   - listens for request from client(user session) and interacts with oracle instance.
   - verifies syntax of client statements(SELECT statements).
