@@ -79,10 +79,10 @@
       1. <https://github.com/MaksymBilenko/docker-oracle-12c>
       2. <https://hub.docker.com/r/truevoly/oracle-12c>
       3. `docker run -d -p 8080:8080 -p 1521:1521 truevoly/oracle-12c`
-         1. it takes about 3 minutes to finish.
+         1. it takes about 3 minutes to finish loading.
          2. `docker ps` // show container name.
          3. `docker logs CONTAINER_NAME` // should say 100% complete.
-         4. `docker stop CONTAINER_NAME` // stop oracle database.
+         4. `docker stop CONTAINER_NAME` // stop docker database.
 2. install Oracle SQL Developer for vscode:
    1. this creates a GUI to database.
    2. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
@@ -95,6 +95,8 @@
       5. port: `1521`
       6. type: `SID`
       7. SID: `xe`
+3. to stop database after using
+   1. `SQL > SHUTDOWN;`
 
 Competency 4070.2.1: Performs Database Administration
 Competency 4070.2.2: Manages Data Access
@@ -133,6 +135,16 @@ Competency 4070.2.4: Upgrades Databases
   - Oracle creates 'extents'(multiple consecutive data blocks) for efficiency.
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
+- **Storage Structure**
+  - There are three main files that store data to disk:
+    - control files, data files, and redo log files.
+  - additional files, but not part of database:
+    - password file, the parameter file, and any archived redo log files.
+- **Backup Files**
+  - backup data files, control files, redo log files, archived redo log files, SP file.
+  - e.g. backup taken at 2pm. It takes two hours. The backup is only good for everything until 2pm.
+    - archived redo log files: hold the transactions after 2pm till current.
+  - ![backup](img/backup.PNG)
 - **Tablespace**
   - This is **created first**. Tablespace is a group of **data files**.
   - logical storage structure at the highest level of database.
@@ -153,6 +165,11 @@ Competency 4070.2.4: Upgrades Databases
     - when you create a table, you create an 'oracle segment'.
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
+- **Control File Database**
+  - location of physical files, database name, block size, character set, recovery information.
+  - when start, loads control file, to find path of other files(data files, redo log files...).
+  - multiplexing for redundancy. required to open database.
+  - ![database files](img/database_files.PNG)
 - **SYSTEM tablespace**
   - oracle system use only.
   - all metadata about database is stored here.
@@ -170,16 +187,6 @@ Competency 4070.2.4: Upgrades Databases
   - extension is `.log`, but they are not log files. Delete them and database cannot start.
   - ![database files](img/database_files.PNG)
   - ![redo log files](img/redolog_files.PNG)
-- **Control File Database**
-  - data about the physical structure of database.
-  - when start, loads control file, to find path of other files(data files, redo log files...).
-  - multiplexing for redundancy.
-  - ![database files](img/database_files.PNG)
-- **Backup Files**
-  - backup data files, control files, redo log files, archived redo log files, SP file.
-  - e.g. backup taken at 2pm. It takes two hours. The backup is only good for everything until 2pm.
-    - archived redo log files: hold the transactions after 2pm till current.
-  - ![backup](img/backup.PNG)
 - **Database Parameter File**
   - SP file. Server Parameter file. Binary file that stores the oracle instance configuration parameters.
   - all your custom parameters are stored here. e.g. `PGA_MAX_SIZE=25G`
@@ -232,66 +239,92 @@ Competency 4070.2.4: Upgrades Databases
 - **SGA System Global Area**
   - main memory structure. Contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
   - shared memory structures used to cache data(waiting to be written to disk).
+  - every user shares the same SGA.
   - ![SGA](img/SGA.PNG)
   - ![SGA](img/SGA_overview.PNG)
 - **Shared Pool**
-  - mandatory memory area. Caches most recent SQL statements issued by database users. Constantly tracks and updates the most popular commands.
+  - mandatory memory area in SGA. Caches most recent **SQL statements** issued by database users. Constantly tracks and updates the most popular commands.
+  - least recently used algorithm(**LRU algorithm**) to manage the contents of the shared pool and database buffer cache.
   - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
+  - `SELECT * FROM v$sgainfo;` // view SGA specs.
   - ![SGA Sizing](img/SGA_sizing.PNG)
-  - cache non-user data. Library cache, data dict cache, others
-  - library cache: metadata about each sequel statement.
+  - cache non-user data. Library cache, data dict cache.
+  - **library cache**: metadata about each sequel statement.
     - hard parse: first time statement is executed.
     - soft parse: after statement is executed in library cache.
-  - database dictionary cache: metadata about database and users.
+  - **database dictionary cache**: metadata about database and users.
     - referential integrity, table definitions and structure(schema), indexes.
   - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
 - **Database Buffer Cache**
-  - largest part of SGA memory. Stores frequently accessed database data(rows, tables) to improve efficiency.
+  - mandatory memory area in SGA. largest part of SGA memory. Stores frequently accessed database data(**rows, tables**) to improve efficiency.
   - stored as **oracle blocks**. Each block contains one or more rows of data.
-  - Keep Pool: administrator can pin certain data into memory. Never 'ages' out of the cache.
+  - least recently used algorithm(**LRU algorithm**) to manage the contents of the shared pool and database buffer cache.
+  - Three types of buffers:
+    - dirty: waiting to be written to disk.
+    - free: memory that can be used.
+    - pinned: blocks waiting to be written or explicitly retained for future use.
+  - buffer cache is broken down into three areas:
+    - default: must have. all data by default cached here. LRU algorithm.
+    - keep: send heavily used tables here to stay longer in memory.
+    - recycle: send least used tables here to prevent 'ageing' out good data from default cache.
+  - `ALTER TABLE` statement sends table query to preferred cache(keep, recycle).
+  - `DB_KEEP_CACHE_SIZE` and `DB_RECYCLE_CACHE_SIZE`
   - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
 - **Redo Log Buffer**
-  - database **transaction logs** are stored. Allow you to rebuild database on failure.
+  - mandatory memory area in SGA. **Transaction logs** records are stored here.
+  - changes are known as redo entries or change vectors and are used to redo the changes in case of a failure.
   - when changes are made to database(**UPDATE**), they need to get updated in Buffer Cache and Shared pool.
   - allows recent transactions to be reapplied after database restore from backup.
   - written periodically to file for backup. If lost, oracle database cannot start.
   - multiplexing, write to multiple logs for redundancy.
+  - `LOG_BUFFER` // total size of redo log cache.
   - extension is `.log`, but they are not log files. Delete them and lose database.
   - ![redo log files](img/redolog_files.PNG)
+- **Optional SGA Memory Area: Java Pool, Large Pool, Streams Pool, Result Cache**
+  - Java Pool: most recent java objects.
+  - Large Pool: cache for large operations: RMAN backup, Shared Server components.
+  - Streams Pool: for advanced queueing.
+  - Result Cache: most common query results.
 
 ## Oracle Instance Background Processes
 
 - **background processes**
   - functions running in background to ensure data integrity.
   - maintenance task.
+  - `ps -ef |grep C12DB1` // view all background processes.
   - ![oracle instance background processes](img/oracle_instance_background_processes.PNG)
 - **Database Writer**
-  - when you UPDATE a table, changes are first stored in the buffer cache, then in memory changes are written to disk by the DBWn.
-  - writes periodically, and when buffer cache is full.
-  - **dirty blocks**: in memory(buffer cache) blocks needing to be written to disk.
+  - DBWn. write the contents of the **dirty buffers to the data files**.
+  - transactions like when you `UPDATE` a table are first stored in the **SGA buffer cache**, then written to disk by the DBWn.
+  - writes periodically, when buffer cache is full, when redo log switch, when checkpoint event or shutdown(besides shutdown abort).
+- **Checkpoint**
+  - CKPT. when **all dirty buffers** are **written to data files**, a checkpoint is created.
+  - CKPT generates a unique **SCN(sequential change number)**.
+  - writes this to the head of the **control file**
+  - because **all data files** headers must be updated and can be extensive, the DBWn writes the checkpoint when it writes dirty buffers to data files.
+  - this ensures data consistency. faster recovery process.
+  - occur automatically when a redo log file is full(log switch).
+  - ![ckpt scn](img/ckpt_scn.PNG)
 - **Log Writer**
-  - LGWR. Writes **RedoLog Buffer** to disk.
+  - LGWR. Writes **RedoLog Buffer cache** to redo log files on disk.
   - When user issues a `COMMIT;` statement, RedoLog Buffer will be written to disk.
   - or every three seconds.
-- **Checkpoint**
-  - CKPT. when data in memory and on disk are the same, a checkpoint is created.
-  - this ensures data consistency. faster recovery process.
-  - CKPT generates a unique SCN(sequential change number). writes this to control and data files.
-  - ![ckpt scn](img/ckpt_scn.PNG)
 - **System Monitor**
-  - SMON. performs recovery during startup instance, if required.
-  - clean old memory processes no longer in use.
+  - SMON. performs **crash recovery** during **startup** instance, if required, from redo logs.
+  - clean old memory processes no longer in use and manages space used for sorting.
 - **Process Monitor**
   - PMON. when user session fails, cleans up PGA and Buffer Cache resources.
 - **Recover Process**
-  - RECO. when an action modifies data on two different databases, both must succeed.
-  - cleans up failed transactions when UPDATE fails.
+  - RECO. Recovers failed transactions that are distributed across multiple databases.
+  - cleans up failed transactions when `UPDATE` fails.
 - **Listener Registration**
   - LREG. registers oracle instance with oracle listener.
   - oracle listener: listens for user session connections, starts the process to serve connection.
     - gateway from client to database
     - spawns a new 'Server Process' for user.
     - ![listener](img/listener.PNG)
+- **Virtual Keeper of Time**
+  - VKTM. time keeper to all client, server relationships.
 - **Archiver Process**
   - ARCn. Redo Log Arciver. Copy redo log file to storage after 'log switch' has occurred.
   - multiple ARC instances can be used for redundancy to store files in multiple locations.
