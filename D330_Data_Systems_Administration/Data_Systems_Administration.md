@@ -119,23 +119,31 @@ Competency 4070.2.4: Upgrades Databases
   - relational database management system (RDBMS) is that the data consists of a set of relational objects.
   - ![oracle overview](img/oracle_overview.PNG)
   - all three main processes create the **Oracle Server**.
-    1. Memory Structure: This and 'process structure' create an 'instance'.
-    2. Process Structure: background processes.
-    3. Storage Structure: the physical data. aka Database.
+    1. **Memory** Structure: This and 'process structure' create an 'instance'.
+    2. **Process** Structure: background processes reading, writing transactions and queries.
+    3. **Storage** Structure: the physical data. aka Database.
   - ![oracle overview](img/oracle_overview.PNG)
+- **Transaction Overview**
+  1. Oracle reads the blocks from data file to buffer cache and updates the blocks.
+  2. The server process writes the change vectors to the redo log buffer.
+  3. The user commits the change.
+  4. LGWR flushes the redo log buffer to redo log files.
+  5. A checkpoint occurs.
+  6. Changed blocks from the buffer cache are written to data files.
 
 ## Database and Storage
 
-- **Database Overview**
+- **Database Logical Structure Overview**
   - tablespace is highest level of abstraction and must be created before any tables can exist.
-  - each tablespace is stored in one or more data files(the physical storage of a database).
+    - each tablespace is stored in one or more data files(the physical storage of a database).
+    - a data file can belong to only one tablespace, but a tablespace can have multiple data files.
   - tablespace has multiple segments.
   - segments are sql tables.
   - tables are filled with rows, stored in data blocks.
   - Oracle creates 'extents'(multiple consecutive data blocks) for efficiency.
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
-- **Storage Structure**
+- **Physical Storage Structure**
   - There are three main files that store data to disk:
     - control files, data files, and redo log files.
   - additional files, but not part of database:
@@ -147,9 +155,11 @@ Competency 4070.2.4: Upgrades Databases
   - ![backup](img/backup.PNG)
 - **Tablespace**
   - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
-  - Tablespace is **created first**. Tablespace are stored in **data files**.
+  - Tablespace is **created first** and are written to data files.
+    - A data file can belong to only one tablespace, but a tablespace can have multiple data files.
   - logical storage structure at the highest level of database.
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
+  - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
   - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;` // view tablespaces.
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
@@ -173,9 +183,11 @@ Competency 4070.2.4: Upgrades Databases
 - **Data Blocks, Extents, Segments**
   - all of these are inside data files.
   - data blocks: 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
-  - extents: collection of multiple **continuos data blocks**. It's more **efficient** to allocate relative data in large chunks.
+  - extents: collection of multiple **contiguous chunks**. It's more **efficient** to allocate relative data in large chunks. Cannot span multiple data files.
   - segment: multiple extents. A **table** will be one segment space, no matter the size.
     - when you create a table, you create an 'oracle segment'.
+    - table, index, materialized view, or a clustered table is created.
+    - a segment can span multiple data files.
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
 - **Control File Database**
@@ -185,12 +197,16 @@ Competency 4070.2.4: Upgrades Databases
   - `SELECT type FROM v$controlfile_record_section;` // show all control file information.
   - ![database files](img/database_files.PNG)
 - **Redo Log Files**
-  - **all transaction logs** are stored, **UPDATE**. Allow you to rebuild database on failure.
+  - **all transaction(DML) logs** are stored(INSET, UPDATE, DELETE). Allow you to rebuild database on failure.
   - confirmation of `COMMIT;` is given once transaction is written in redo log.
   - a separate database is used for storing redo log files.
   - cyclic write(fills one file, writes to other, then goes back to first file and writes).
-  - multiplexing, write same transaction data to different locations for redundancy.
+  - multiplexing, write same transaction data to different locations for redundancy. Called: **redo log groups**.
+    - Each multiplexed file within the group is called a **redo log group member**.
+    - Each database must have a minimum of two redo log groups.
+  - once redo log is full, contents are copied to archive log database, then the redo log file is marked for `INACTIVE` for overwriting.
   - extension is `.log`, but they are not log files. Delete them and database cannot start.
+  - `SELECT group#, member FROM v$logfile ORDER BY group#;` // view redo log files status
   - ![database files](img/database_files.PNG)
   - ![redo log files](img/redolog_files.PNG)
 - **Parameter File**
@@ -255,6 +271,7 @@ Competency 4070.2.4: Upgrades Databases
 - **Shared Pool**
   - mandatory memory area in SGA. Caches most recent **SQL statements** issued by database users. Constantly tracks and updates the most popular commands.
   - least recently used algorithm(**LRU algorithm**) to manage the contents of the shared pool and database buffer cache.
+  - data dictionary: metadata: tables, columns, users, data files.
   - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
   - `SELECT * FROM v$sgainfo;` // view SGA specs.
   - ![SGA Sizing](img/SGA_sizing.PNG)
@@ -281,13 +298,13 @@ Competency 4070.2.4: Upgrades Databases
   - `DB_KEEP_CACHE_SIZE` and `DB_RECYCLE_CACHE_SIZE`
   - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
 - **Redo Log Buffer**
-  - mandatory memory area in SGA. **Transaction logs** records are stored here.
+  - mandatory memory area in SGA. **Transaction logs** records are stored here. Once database started, cannot be configured.
   - changes are known as redo entries or change vectors and are used to redo the changes in case of a failure.
   - when changes are made to database(**UPDATE**), they need to get updated in Buffer Cache and Shared pool.
   - allows recent transactions to be reapplied after database restore from backup.
   - written periodically to file for backup. If lost, oracle database cannot start.
   - multiplexing, write to multiple logs for redundancy.
-  - `LOG_BUFFER` // total size of redo log cache.
+  - `LOG_BUFFER=25G` // total size of redo log cache.
   - extension is `.log`, but they are not log files. Delete them and lose database.
   - ![redo log files](img/redolog_files.PNG)
 - **Optional SGA Memory Area: Java Pool, Large Pool, Streams Pool, Result Cache**
@@ -310,7 +327,7 @@ Competency 4070.2.4: Upgrades Databases
 - **Checkpoint**
   - CKPT. when **all dirty buffers** are **written to data files**, a checkpoint is created.
   - CKPT generates a unique **SCN(sequential change number)**.
-  - writes this to the head of the **control file**
+  - writes this to the head of the **control file**.
   - because **all data files** headers must be updated and can be extensive, the DBWn writes the checkpoint when it writes dirty buffers to data files.
   - this ensures data consistency. faster recovery process.
   - occur automatically when a redo log file is full(log switch).
@@ -336,7 +353,7 @@ Competency 4070.2.4: Upgrades Databases
 - **Virtual Keeper of Time**
   - VKTM. time keeper to all client, server relationships.
 - **Archiver Process**
-  - ARCn. Redo Log Arciver. Copy redo log file to storage after 'log switch' has occurred.
+  - ARCn. Redo Log Archiver. Copy redo log file to storage after 'log switch' has occurred.
   - multiple ARC instances can be used for redundancy to store files in multiple locations.
   - ![arc](img/arc.PNG)
 
@@ -375,7 +392,7 @@ Competency 4070.2.4: Upgrades Databases
 - **Shutdown**
   - shutdown abort. pulls the plug. dirty. terminates immediately.
   - ![shutdown abort](img/shutdown_abort.PNG)
-  - shutdown immediate. typical shutdown, uncommitted transactions are rolled back.
-  - shutdown transactional. oracle waits for transactions to finish processing. No new connections are allowed.
-  - shutdown normal. wait for all sessions to disconnect.
+  - `shutdown immediate;`. typical shutdown, uncommitted transactions are rolled back.
+  - `shutdown transactional;`. oracle waits for transactions to finish processing. No new connections are allowed.
+  - `shutdown;`. wait for all sessions to disconnect.
   - ![shutdown command line](img/shutdown_cmd.PNG)
