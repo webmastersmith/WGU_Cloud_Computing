@@ -124,11 +124,11 @@ Competency 4070.2.4: Upgrades Databases
     3. Storage Structure: the physical data. aka Database.
   - ![oracle overview](img/oracle_overview.PNG)
 
-## Database
+## Database and Storage
 
 - **Database Overview**
   - tablespace is highest level of abstraction and must be created before any tables can exist.
-  - each tablespace is stored in one or more data files(the physical storage of database).
+  - each tablespace is stored in one or more data files(the physical storage of a database).
   - tablespace has multiple segments.
   - segments are sql tables.
   - tables are filled with rows, stored in data blocks.
@@ -146,13 +146,26 @@ Competency 4070.2.4: Upgrades Databases
     - archived redo log files: hold the transactions after 2pm till current.
   - ![backup](img/backup.PNG)
 - **Tablespace**
-  - This is **created first**. Tablespace is a group of **data files**.
+  - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
+  - Tablespace is **created first**. Tablespace are stored in **data files**.
   - logical storage structure at the highest level of database.
+  - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
+  - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;` // view tablespaces.
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
+- **SYSTEM tablespace**
+  - oracle system use only.
+  - all metadata about database, data dictionary, and PL/SQL code is stored here.
+- **UNDO tablespace**
+  - oracle system use only.
+  - stores previous versions of rows.
+  - `ROLLBACK;` command.
+- **TEMP tablespace**
+  - temporary segments, anything that doesn't need persistent storage.
+  - PGA overflow, large sort operations.
 - **Data File**
+  - **physical files that store data, rows, tables, metadata, indexes** are stored in data files.
   - file structures collectively called the **database**. each 'database' will contain multiple data files.
-  - physical files that store data, rows, tables, metadata, indexes are stored in data files.
   - need to be redundant and highly available.
   - NAS or SAN supported.
   - ![datafile](img/datafile.PNG)
@@ -166,38 +179,35 @@ Competency 4070.2.4: Upgrades Databases
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
 - **Control File Database**
-  - location of physical files, database name, block size, character set, recovery information.
+  - **location of physical files**, database name, block size, character set, recovery information, checkpoint...
   - when start, loads control file, to find path of other files(data files, redo log files...).
   - multiplexing for redundancy. required to open database.
+  - `SELECT type FROM v$controlfile_record_section;` // show all control file information.
   - ![database files](img/database_files.PNG)
-- **SYSTEM tablespace**
-  - oracle system use only.
-  - all metadata about database is stored here.
-- **UNDO tablespace**
-  - oracle system use only.
-  - stores previous versions of rows.
-  - `ROLLBACK;` command.
-- **TEMP tablespace**
-  - temporary segments, anything that doesn't need persistent storage.
-  - PGA overflow.
-- **Redo Log File Database**
-  - database for redolog files(**transaction logs** are stored, **UPDATE**). Allow you to rebuild database on failure.
+- **Redo Log Files**
+  - **all transaction logs** are stored, **UPDATE**. Allow you to rebuild database on failure.
+  - confirmation of `COMMIT;` is given once transaction is written in redo log.
+  - a separate database is used for storing redo log files.
   - cyclic write(fills one file, writes to other, then goes back to first file and writes).
-  - multiplexing, write to multiple logs for redundancy.
+  - multiplexing, write same transaction data to different locations for redundancy.
   - extension is `.log`, but they are not log files. Delete them and database cannot start.
   - ![database files](img/database_files.PNG)
   - ![redo log files](img/redolog_files.PNG)
-- **Database Parameter File**
-  - SP file. Server Parameter file. Binary file that stores the oracle instance configuration parameters.
+- **Parameter File**
+  - Server Parameter(SP) file. Binary file that stores the oracle instance configuration parameters.
   - all your custom parameters are stored here. e.g. `PGA_MAX_SIZE=25G`
   - binary file must be changed with 'oracle commands'. Cannot be done directly.
-  - can be rebuilt if lost, but easier to add to backup.
+  - can be rebuilt if lost, but easier just to add to backup plan.
   - ![database files](img/database_files.PNG)
 - **Password File**
-  - stores password for users with admin privileges(SYSDBA).
+  - stores password for users with admin privileges(SYSDBA and SYSOPER).
   - stored outside the database. Admin has complete control of database.
   - non-administrator users passwords are stored inside the database.
   - ![database files](img/database_files.PNG)
+- **Oracle Net File**
+  - database listener configuration and client-to-database connectivity details.
+- **Flashback Log**
+  - if 'flashback' is enabled, files are written to the 'fast recovery area'.
 - **Alert Log File**
   - list of alerts, errors, events that occurred during database operation.
   - used when troubleshooting problems.
