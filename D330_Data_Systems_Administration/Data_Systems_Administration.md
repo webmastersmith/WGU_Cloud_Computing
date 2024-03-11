@@ -98,6 +98,10 @@
       7. SID: `xe`
 3. to stop database after using
    1. `SQL > SHUTDOWN;`
+4. Connect To Docker Container
+   1. `docker exec -it CONTAINER_NAME bash` # connect to running Oracle container.
+      1. `lsnrctl` # connect directly to Oracle listener.
+      2. `status` # shows listener.
 
 ## Oracle Overview
 
