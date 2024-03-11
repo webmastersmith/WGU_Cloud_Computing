@@ -83,11 +83,12 @@
          2. `docker ps` // show container name.
          3. `docker logs CONTAINER_NAME` // should say 100% complete.
          4. `docker stop CONTAINER_NAME` // stop docker database.
-2. install Oracle SQL Developer for vscode:
-   1. this creates a GUI to database.
-   2. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
-   3. or you can also download the exe installable.
-   4. Once installed, find database icon in side panel. To connect:
+         5. `docker start CONTAINER_NAME` // after stopping you can restart database.
+2. install Oracle SQL Developer for vscode(VSCode extension gives you access to command line only):
+   1. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
+   2. or download the DBCA GUI from Oracle.
+      1. <https://www.oracle.com/database/technologies/oracle-database-software-downloads.html>
+   3. Once installed, find database icon in side panel. To connect:
       1. create connection name: `any_name`
       2. username: `system`
       3. password: `oracle`
@@ -97,19 +98,6 @@
       7. SID: `xe`
 3. to stop database after using
    1. `SQL > SHUTDOWN;`
-
-Competency 4070.2.1: Performs Database Administration
-Competency 4070.2.2: Manages Data Access
-Competency 4070.2.3: Performs Backup and Restore
-Competency 4070.2.4: Upgrades Databases
-
-## Chapter 8: Introducing Oracle Database 12c Components and Architecture
-
-- **List the architectural components of Oracle Database.**
-- **Explain the memory structures.**
-- **Describe the background processes.**
-- **Explain the relationship between logical and physical storage structures.**
-- **Use database management tools.**
 
 ## Oracle Overview
 
@@ -240,6 +228,8 @@ Competency 4070.2.4: Upgrades Databases
     - e.g. database objects are tables, indexes, and views.
     - DBA might create a schema called SALES and create objects owned by that schema. Then, they can grant access to other database users who need the ability to access the SALES schema.
     - objects associated with an application and is not tied to any specific user.
+- **System Identification Name (SID)**
+  - Oracle SID. Database Identifier name.
 
 ## Oracle Instance
 
@@ -387,6 +377,7 @@ Competency 4070.2.4: Upgrades Databases
 ## Startup, Shutdown
 
 - **Startup**
+  - `STARTUP`
   - ![startup](img/startup.PNG)
   - ![startup command line](img/startup_cmd.PNG)
 - **Shutdown**
