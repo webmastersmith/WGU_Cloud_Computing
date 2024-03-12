@@ -82,12 +82,14 @@
          1. it takes about 3 minutes to finish loading.
          2. `docker ps` // show container name.
          3. `docker logs CONTAINER_NAME` // should say 100% complete.
+            1. `docker logs $(docker container ls | grep tcp | awk '{print $NF}')` // if only one container running.
          4. `docker stop CONTAINER_NAME` // stop docker database.
          5. `docker start CONTAINER_NAME` // after stopping you can restart database.
 2. install Oracle SQL Developer for vscode(VSCode extension gives you access to command line only):
    1. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
-   2. or download the DBCA GUI from Oracle.
+   2. or download the DBCA GUI and sqldeveloper GUI from Oracle.
       1. <https://www.oracle.com/database/technologies/oracle-database-software-downloads.html>
+      2. <https://www.oracle.com/database/sqldeveloper/technologies/download/>
    3. Once installed, find database icon in side panel. To connect:
       1. create connection name: `any_name`
       2. username: `system`
@@ -96,12 +98,18 @@
       5. port: `1521`
       6. type: `SID`
       7. SID: `xe`
-3. to stop database after using
-   1. `SQL > SHUTDOWN;`
-4. Connect To Docker Container
+3. Connect To Docker Container -optional
    1. `docker exec -it CONTAINER_NAME bash` # connect to running Oracle container.
-      1. `lsnrctl` # connect directly to Oracle listener.
-      2. `status` # shows listener.
+   2. or
+   3. `docker exec -it $(docker container ls | grep tcp | awk '{print $NF}') bash` # if only one container running.
+   4. `sqlplus system/oracle@//localhost:1521/xe` # connect directly to Oracle database command line.
+   5. stop docker container:
+      1. `docker stop $(docker container ls | grep tcp | awk '{print $NF}')` // stop docker database.
+4. Open Oracle Application Express GUI
+   1. `http://localhost:8080/apex`
+   2. workspace: `INTERNAL`
+   3. user: `ADMIN`
+   4. password: `0Racle$` // when asked to change password: `0Racle$$$`
 
 ## Oracle Overview
 
