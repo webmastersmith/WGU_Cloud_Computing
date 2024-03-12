@@ -82,9 +82,10 @@
          1. it takes about 3 minutes to finish loading.
          2. `docker ps` // show container name.
          3. `docker logs CONTAINER_NAME` // should say 100% complete.
-            1. `docker logs $(docker container ls | grep tcp | awk '{print $NF}')` // if only one container running.
+            1. `docker logs $(docker container ls | sed -n '2p' | awk '{print $NF}')` // if only one container running.
          4. `docker stop CONTAINER_NAME` // stop docker database.
          5. `docker start CONTAINER_NAME` // after stopping you can restart database.
+            1. `docker start $(docker container ls -a | sed -n '2p' | awk '{print $NF}')` // first container listed.
 2. install Oracle SQL Developer for vscode(VSCode extension gives you access to command line only):
    1. <https://marketplace.visualstudio.com/items?itemName=Oracle.sql-developer>
    2. or download the DBCA GUI and sqldeveloper GUI from Oracle.
@@ -100,16 +101,20 @@
       7. SID: `xe`
 3. Connect To Docker Container -optional
    1. `docker exec -it CONTAINER_NAME bash` # connect to running Oracle container.
-   2. or
-   3. `docker exec -it $(docker container ls | grep tcp | awk '{print $NF}') bash` # if only one container running.
-   4. `sqlplus system/oracle@//localhost:1521/xe` # connect directly to Oracle database command line.
-   5. stop docker container:
-      1. `docker stop $(docker container ls | grep tcp | awk '{print $NF}')` // stop docker database.
+      1. `docker exec -it $(docker container ls | sed -n '2p' | awk '{print $NF}') bash` # if only one container running.
+   2. `sqlplus system/oracle@//localhost:1521/xe` # connect directly to Oracle database command line.
+   3. stop docker container:
+      1. `docker stop $(docker container ls | sed -n '2p' | awk '{print $NF}')` // stop docker database.
 4. Open Oracle Application Express GUI
    1. `http://localhost:8080/apex`
    2. workspace: `INTERNAL`
    3. user: `ADMIN`
    4. password: `0Racle$` // when asked to change password: `0Racle$$$`
+5. Start, Stop Database
+   1. must have proper privilege: SYSDBA and SYSOPER. When docker container starts, it will automatically start the database.
+   2. `docker exec -it $(docker container ls | sed -n '2p' | awk '{print $NF}') bash` # if docker container running.
+   3. `sqlplus sys/oracle as sysdba` // once connected to docker terminal, run this to connect to database.
+   4. `STARTUP` or `SHUTDOWN`.
 
 ## Oracle Overview
 
@@ -137,6 +142,7 @@
   - tablespace is highest level of abstraction and must be created before any tables can exist.
     - each tablespace is stored in one or more data files(the physical storage of a database).
     - a data file can belong to only one tablespace, but a tablespace can have multiple data files.
+    - ![tablespace with data files](img/database_tablespace.PNG)
   - tablespace has multiple segments.
   - segments are sql tables.
   - tables are filled with rows, stored in data blocks.
@@ -155,8 +161,11 @@
   - ![backup](img/backup.PNG)
 - **Tablespace**
   - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
-  - Tablespace is **created first** and are written to data files.
-    - A data file can belong to only one tablespace, but a tablespace can have multiple data files.
+  - Tablespace is **created first**. Related data files will be stored inside the tablespace.
+  - Tablespace size it the total size of all related data files.
+  - Naming: start with alphabet. <=30 chars. `[a-z0-9#_$]`.
+  - A data file can belong to only one tablespace, but a tablespace can have multiple data files.
+  - ![tablespace with data files](img/database_tablespace.PNG)
   - logical storage structure at the highest level of database.
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
   - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
@@ -182,12 +191,14 @@
   - ![database](img/database.PNG)
 - **Data Blocks, Extents, Segments**
   - all of these are inside data files.
-  - data blocks: 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
-  - extents: collection of multiple **contiguous chunks**. It's more **efficient** to allocate relative data in large chunks. Cannot span multiple data files.
-  - segment: multiple extents. A **table** will be one segment space, no matter the size.
+  - **data blocks**: typically 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
+  - **extents**: collection of multiple **contiguous chunks**. It's more **efficient** to allocate relative data in large chunks. Cannot span multiple data files.
+  - **segment**: schema objects(tables, indexes). Created from multiple extents.
+    - A **table** will be one segment space, no matter the size.
     - when you create a table, you create an 'oracle segment'.
     - table, index, materialized view, or a clustered table is created.
     - a segment can span multiple data files.
+  - `CREATE TABLESPACE HR_DATA DATAFILE '/u02/oradata/12CR11/hr_data01.dbf' SIZE 20M;`
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
 - **Control File Database**
@@ -227,19 +238,31 @@
 - **Alert Log File**
   - list of alerts, errors, events that occurred during database operation.
   - used when troubleshooting problems.
+  - `SELECT name, value FROM v$diag_info;` // log file locations
   - ![database files](img/database_files.PNG)
 
 ## Definitions
 
-- **Child Table**: table where the foreign key column exists.
-- **Constraint**: parent-child relationship between tables.
-- **Parent Table**: table in a relational database **must have a primary key**.
+- **Child Table**
+  - table where the foreign key column exists.
+- **Constraint**
+  - parent-child relationship between tables.
+- **Oracle Managed Files (OMF)**
+  - creation of data and temp files managed by oracle.
+  - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
+  - `CREATE TABLESPACE hr_data;`
+- **Parent Table**
+  - table in a relational database **must have a primary key**.
+- **PFile**
+  - plain text file.
 - **Schema**
   - A user is a defined **database entity** that has a set of abilities to **perform activities** based on their granted rights.
   - A schema, which is associated with a user entity, is more appropriately defined as a collection of **database objects**.
     - e.g. database objects are tables, indexes, and views.
     - DBA might create a schema called SALES and create objects owned by that schema. Then, they can grant access to other database users who need the ability to access the SALES schema.
     - objects associated with an application and is not tied to any specific user.
+- **SPFile**
+  - binary file. Can only be edited through oracle commands.
 - **System Identification Name (SID)**
   - Oracle SID. Database Identifier name.
 
@@ -388,14 +411,35 @@
 
 ## Startup, Shutdown
 
+- **stages of instance startup and the startup options**
+  1. log in. Must have proper privilege: SYSDBA and SYSOPER.
+  2. NOMOUNT. memory allocated and background processes started.
+  3. MOUNT. control file is read(name of database, all data file names, and redo log files).
+  4. OPEN. database started and available to users.
 - **Startup**
-  - `STARTUP`
+  - three phases: NOMOUNT, MOUNT, OPEN.
+    1. NOMOUNT:
+       1. background processes are started and shared memory is allocated. The instance is not associated with any database.
+       2. used to create a database or to create a database control file.
+       3. If fails, most often cause is parameter file missing.
+    2. MOUNT:
+       1. control file is read(name of database, all data file names, and redo log files).
+       2. rename data files, enable/disable archive logging, rename redo logs, recover database.
+    3. OPEN: normal startup mode. Database started and available to users.
+  - `STARTUP` // normal startup.
+  - `STARTUP NOMOUNT` // start without mounting database. If fails, most often cause is parameter file missing.
+  - `STARTUP MOUNT` //
   - ![startup](img/startup.PNG)
   - ![startup command line](img/startup_cmd.PNG)
+- **Special Startup Modes**
+  - FORCE: when database loses power and leaves database in state that cannot start.
+    - performs a `SHUTDOWN ABORT`, then starts the database.
+  - RESTRICT: normal startup. onl users with RESTRICTED option.
 - **Shutdown**
-  - shutdown abort. pulls the plug. dirty. terminates immediately.
-  - ![shutdown abort](img/shutdown_abort.PNG)
-  - `shutdown immediate;`. typical shutdown, uncommitted transactions are rolled back.
-  - `shutdown transactional;`. oracle waits for transactions to finish processing. No new connections are allowed.
-  - `shutdown;`. wait for all sessions to disconnect.
+  - `sqlplus sys/oracle as sysdba` // connect to docker terminal, run this to connect to database.
+  - `SHUTDOWN;`. no new connections. wait for all transactions to complete and all users disconnected.
+  - `SHUTDOWN TRANSACTIONAL;`. no new connections. no new transactions. waits for transactions to finish processing.
+  - `SHUTDOWN IMMEDIATE;`. no new connections. uncommitted transactions are rolled back. all connections terminated.
+  - `SHUTDOWN ABORT`. pulls the plug. dirty. terminates immediately. will require instance recovery when restarted.
   - ![shutdown command line](img/shutdown_cmd.PNG)
+  - ![shutdown abort](img/shutdown_abort.PNG)
