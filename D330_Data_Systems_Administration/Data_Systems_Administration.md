@@ -160,7 +160,6 @@
     - archived redo log files: hold the transactions after 2pm till current.
   - ![backup](img/backup.PNG)
 - **Tablespace**
-
   - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
   - Tablespace is **created first**. Related data files will be stored inside the tablespace.
   - Tablespace size it the total size of all related data files.
@@ -171,22 +170,21 @@
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
   - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
   - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
-
-  ```sql
-  -- Create tablespace file.
-  CREATE TABLESPACE APPL_DATA
-  DATAFILE '/disk2/oradata/DB01/appl_data01.dbf'
-  SIZE 500M
-  AUTOEXTEND ON NEXT 100M MAXSIZE 2000M; -- extend 100M if extent needs more space to fit.
-
-  -- Create Tablespce
-  SELECT tablespace_name, file_name
-  FROM dba_data_files
-  ORDER BY tablespace_name;
-  ```
-
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
+
+```sql
+-- Create tablespace file.
+CREATE TABLESPACE APPL_DATA
+DATAFILE '/disk2/oradata/DB01/appl_data01.dbf'
+SIZE 500M
+AUTOEXTEND ON NEXT 100M MAXSIZE 2000M; -- extend 100M if extent needs more space to fit.
+
+-- Create Tablespce
+SELECT tablespace_name, file_name
+FROM dba_data_files
+ORDER BY tablespace_name;
+```
 
 - **SYSTEM tablespace**
   - oracle system use only.

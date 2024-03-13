@@ -9,8 +9,8 @@
   // variables
   // const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
   // const removeLines = 2;
-  const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Foundations_Study_Guide.md';
-  const removeLines = 2;
+  const directoryPath = 'D330_Data_Systems_Administration/Data_Systems_Administration.md';
+  const removeLines = 118;
 
   const dataArr = fs
     .readFileSync(directoryPath, 'utf-8')
