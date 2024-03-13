@@ -169,6 +169,7 @@
   - logical storage structure at the highest level of database.
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
   - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
+  - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
   - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;` // view tablespaces.
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
@@ -178,6 +179,8 @@
 - **UNDO tablespace**
   - oracle system use only.
   - stores previous versions of rows.
+  - `CREATE UNDO TABLESPACE undo DATAFILE '/ORADATA/PROD/UNDO01.DBF' SIZE 2G;`
+  - `DROP TABLESPACE undo INCLUDING CONTENTS;`
   - `ROLLBACK;` command.
 - **TEMP tablespace**
   - temporary segments, anything that doesn't need persistent storage.
