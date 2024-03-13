@@ -160,6 +160,7 @@
     - archived redo log files: hold the transactions after 2pm till current.
   - ![backup](img/backup.PNG)
 - **Tablespace**
+
   - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
   - Tablespace is **created first**. Related data files will be stored inside the tablespace.
   - Tablespace size it the total size of all related data files.
@@ -170,9 +171,23 @@
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
   - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
   - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
-  - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;` // view tablespaces.
+
+  ```sql
+  -- Create tablespace file.
+  CREATE TABLESPACE APPL_DATA
+  DATAFILE '/disk2/oradata/DB01/appl_data01.dbf'
+  SIZE 500M
+  AUTOEXTEND ON NEXT 100M MAXSIZE 2000M; -- extend 100M if extent needs more space to fit.
+
+  -- Create Tablespce
+  SELECT tablespace_name, file_name
+  FROM dba_data_files
+  ORDER BY tablespace_name;
+  ```
+
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
+
 - **SYSTEM tablespace**
   - oracle system use only.
   - all metadata about database, data dictionary, and PL/SQL code is stored here.
@@ -192,6 +207,10 @@
   - NAS or SAN supported.
   - ![datafile](img/datafile.PNG)
   - ![database](img/database.PNG)
+- **Oracle Managed Files (OMF)**
+  - Telling where you want files created, then letting oracle managed file naming.
+  - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
+  - `CREATE TABLESPACE hr_data;`
 - **Data Blocks, Extents, Segments**
   - all of these are inside data files.
   - **data blocks**: typically 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
@@ -250,10 +269,6 @@
   - table where the foreign key column exists.
 - **Constraint**
   - parent-child relationship between tables.
-- **Oracle Managed Files (OMF)**
-  - creation of data and temp files managed by oracle.
-  - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
-  - `CREATE TABLESPACE hr_data;`
 - **Parent Table**
   - table in a relational database **must have a primary key**.
 - **PFile**
