@@ -136,6 +136,21 @@
   5. A checkpoint occurs.
   6. Changed blocks from the buffer cache are written to data files.
 
+## Database Connection
+
+- **sqlplus system/admin@dev**
+  - sqlplus: cmdlet to talk to Oracle database.
+  - system: username.
+  - admin: password.
+  - @: connecting if more than one database or remote database.
+  - dev: name of data base.
+- **Connection Hierarchy**
+  - `v$`: virtual views. Owned by user **sys** or **system**.
+    - `SELECT name FROM v$database` // tells you the database your connected to.
+  - `DBA_`: must be DBA to use.
+  - `USER_`: all objects user has created.
+  - `ALL_`: show all objects user has access to.
+
 ## Database and Storage
 
 - **Database Logical Structure Overview**
@@ -154,38 +169,58 @@
     - control files, data files, and redo log files.
   - additional files, but not part of database:
     - password file, the parameter file, and any archived redo log files.
+- **ADR**
+  - Automatic Diagnostic Repository. advanced fault diagnostic infrastructure.
+- **Alert Log File**
+  - list of alerts, errors, events that occurred during database operation.
+  - used when troubleshooting problems.
+  - chronological summary about database events: startup/shutdown, create/alter, errors...
+  - `SELECT name, value FROM v$diag_info;` // view log file locations
+  - `DIAGNOSTIC_DEST` // change alert log path with this parameter. Default is `ORACLE_HOME/rdbms/log`
+  - ![database files](img/database_files.PNG)
 - **Backup Files**
   - backup data files, control files, redo log files, archived redo log files, SP file.
   - e.g. backup taken at 2pm. It takes two hours. The backup is only good for everything until 2pm.
     - archived redo log files: hold the transactions after 2pm till current.
+  - **Physical**
+    - hot: `ALTER TABLE begin backup` // while backing up, allows queries, prevents changes.
+    - cold: shutdown database and backup.
+    - standby: backups up live everything except currently used archive log.
+  - **Logical**
+    - table, schema... `import/export`.
+    - e.g. `EXP table` then `DROP table`, fix table or index size, `IMP table`
+    - imp/exp: import/export.
+    - impdp/expdp: import/export data pump. newer version.
   - ![backup](img/backup.PNG)
-- **Tablespace**
-  - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
-  - logical storage units used to group data depending on their type or category.
-  - Tablespace is **created first**. Related data files will be stored inside the tablespace.
-  - Tablespace size it the total size of all related data files.
-  - Naming: start with alphabet. <=30 chars. `[a-z0-9#_$]`.
-  - A data file can belong to only one tablespace, but a tablespace can have multiple data files.
-  - ![tablespace with data files](img/database_tablespace.PNG)
-  - logical storage structure at the highest level of database.
-  - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
-  - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
-  - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
-  - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;`
-  - ![tablespace creation](img/tablespace_creation.PNG)
+- **Compression**
+  - basic compression:
+  - OLTP compression: block level compression.
+- **Control File**
+  - map of database. **Location of physical files**, database name, block size, character set, recovery information, checkpoint...
+  - when start, loads control file, to find path of other files(data files, redo log files...).
+  - multiplexing for redundancy. required to open database.
+  - `SELECT type FROM v$controlfile_record_section;` // show all control file information.
+  - ![database files](img/database_files.PNG)
+- **Data Blocks, Extents, Segments**
+  - all of these are inside data files.
+  - **data blocks**: typically 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
+  - **extents**: collection of multiple **contiguous chunks**. It's more **efficient** to allocate relative data in large chunks. Cannot span multiple data files.
+  - **segment**: schema objects(tables, indexes). Created from multiple extents.
+    - A **table** will be one segment space, no matter the size.
+    - when you create a table, you create an 'oracle segment'.
+    - table, index, materialized view, or a clustered table is created.
+    - a segment can span multiple data files.
+  - `CREATE TABLESPACE HR_DATA DATAFILE '/u02/oradata/12CR11/hr_data01.dbf' SIZE 20M;`
+  - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
-- **SYSTEM tablespace**
-  - oracle system use only.
-  - all metadata about database, data dictionary, and PL/SQL code is stored here.
-- **UNDO tablespace**
-  - oracle system use only.
-  - stores previous versions of rows.
-  - `CREATE UNDO TABLESPACE undo DATAFILE '/ORADATA/PROD/UNDO01.DBF' SIZE 2G;`
-  - `DROP TABLESPACE undo INCLUDING CONTENTS;`
-  - `ROLLBACK;` command.
-- **TEMP tablespace**
-  - temporary segments, anything that doesn't need persistent storage.
-  - PGA overflow, large sort operations.
+- **Data Block Format**
+  - data block has an internal structure known as the block format to **track the data stored in the block** as well as the **free space** still **available** in the block.
+- **Data Dictionary**
+  - hierarchy for data dictionary:
+    - `v$`: virtual views. Owned by user **SYS**.
+    - `DBA_`: must be DBA to use.
+    - `USER_`: all objects user has created.
+    - `ALL_`: show all objects user has access to.
 - **Data File**
   - **physical files that store data, rows, tables, metadata, indexes** are stored in data files.
   - file structures collectively called the **database**. each 'database' will contain multiple data files.
@@ -207,38 +242,25 @@ FROM dba_data_files
 ORDER BY tablespace_name;
 ```
 
+- **Flashback Log**
+  - if 'flashback' is enabled, files are written to the 'fast recovery area'.
 - **Oracle Managed Files (OMF)**
   - Telling where you want files created, then letting oracle managed file naming.
   - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
   - `CREATE TABLESPACE hr_data;`
-- **Data Blocks, Extents, Segments**
-  - all of these are inside data files.
-  - **data blocks**: typically 8kb in size. Contains one or more **rows**. Query, database reads blocks and returns relevant info.
-  - **extents**: collection of multiple **contiguous chunks**. It's more **efficient** to allocate relative data in large chunks. Cannot span multiple data files.
-  - **segment**: schema objects(tables, indexes). Created from multiple extents.
-    - A **table** will be one segment space, no matter the size.
-    - when you create a table, you create an 'oracle segment'.
-    - table, index, materialized view, or a clustered table is created.
-    - a segment can span multiple data files.
-  - `CREATE TABLESPACE HR_DATA DATAFILE '/u02/oradata/12CR11/hr_data01.dbf' SIZE 20M;`
-  - ![segment](img/segment.PNG)
-  - ![database](img/database.PNG)
-- **Data Block Format**
-  - data block has an internal structure known as the block format to **track the data stored in the block** as well as the **free space** still **available** in the block.
-- **Data Dictionary**
-  - hierarchy for data dictionary:
-    - `v$`: virtual views. Owned by user **SYS**.
-    - `DBA_`: must be DBA to use.
-    - `USER_`: all objects user has created.
-    - `ALL_`: show all objects user has access to.
-- **Compression**
-  - basic compression:
-  - OLTP compression: block level compression.
-- **Control File Database**
-  - **location of physical files**, database name, block size, character set, recovery information, checkpoint...
-  - when start, loads control file, to find path of other files(data files, redo log files...).
-  - multiplexing for redundancy. required to open database.
-  - `SELECT type FROM v$controlfile_record_section;` // show all control file information.
+- **Oracle Net File**
+  - database listener configuration and client-to-database connectivity details.
+- **Parameter File**
+  - config of all parameters, can only be change when database is off, no dynamically changes.
+  - when first install Oracle you get `init.ora` filled with default parameters. You create an SP file from this file. This allows you to change dynamic parameters.
+  - all your custom parameters are stored here. e.g. `PGA_MAX_SIZE=25G`
+  - binary file must be changed with 'oracle commands'. Cannot be done directly.
+  - can be rebuilt if lost, but easier just to add to backup plan.
+  - ![database files](img/database_files.PNG)
+- **Password File**
+  - stores password for users with admin privileges(SYSDBA and SYSOPER).
+  - stored outside the database. Admin has complete control of database.
+  - non-administrator users passwords are stored inside the database.
   - ![database files](img/database_files.PNG)
 - **Redo Log Files**
   - **all transaction(DML) logs** are stored(INSET, UPDATE, DELETE). Allow you to rebuild database on failure.
@@ -253,30 +275,42 @@ ORDER BY tablespace_name;
   - `SELECT group#, member FROM v$logfile ORDER BY group#;` // view redo log files status
   - ![database files](img/database_files.PNG)
   - ![redo log files](img/redolog_files.PNG)
-- **Parameter File**
-  - Server Parameter(SP) file. Binary file that stores the oracle instance configuration parameters.
-  - all your custom parameters are stored here. e.g. `PGA_MAX_SIZE=25G`
-  - binary file must be changed with 'oracle commands'. Cannot be done directly.
-  - can be rebuilt if lost, but easier just to add to backup plan.
-  - ![database files](img/database_files.PNG)
-- **Password File**
-  - stores password for users with admin privileges(SYSDBA and SYSOPER).
-  - stored outside the database. Admin has complete control of database.
-  - non-administrator users passwords are stored inside the database.
-  - ![database files](img/database_files.PNG)
-- **Oracle Net File**
-  - database listener configuration and client-to-database connectivity details.
-- **Flashback Log**
-  - if 'flashback' is enabled, files are written to the 'fast recovery area'.
-- **Alert Log File**
-  - list of alerts, errors, events that occurred during database operation.
-  - used when troubleshooting problems.
-  - chronological summary about database events: startup/shutdown, create/alter, errors...
-  - `SELECT name, value FROM v$diag_info;` // view log file locations
-  - `DIAGNOSTIC_DEST` // change alert log path with this parameter. Default is `ORACLE_HOME/rdbms/log`
-  - ![database files](img/database_files.PNG)
-- **ADR**
-  - Automatic Diagnostic Repository. advanced fault diagnostic infrastructure.
+- **SPFile**
+  - Server Parameter(SP) file. Binary file created from parameter file(configuration parameters).
+  - allows changing some parameters dynamically(SGA_TARGET...).
+- **SQLnet Files**
+  - listener.ora
+  - sql.ora
+  - tnsnames.ora
+- **SYSTEM tablespace**
+  - oracle system use only.
+  - all metadata about database, data dictionary, and PL/SQL code is stored here.
+- **Tablespace**
+  - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
+  - logical storage units used to group data depending on their type or category.
+  - Tablespace is **created first**. Related data files will be stored inside the tablespace.
+  - Tablespace size it the total size of all related data files.
+  - Naming: start with alphabet. <=30 chars. `[a-z0-9#_$]`.
+  - A data file can belong to only one tablespace, but a tablespace can have multiple data files.
+  - ![tablespace with data files](img/database_tablespace.PNG)
+  - logical storage structure at the highest level of database.
+  - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
+  - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
+  - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
+  - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;`
+  - ![tablespace creation](img/tablespace_creation.PNG)
+  - ![database](img/database.PNG)
+- **TEMP tablespace**
+  - temporary segments, anything that doesn't need persistent storage.
+  - PGA overflow, large sort operations.
+- **Trace File**
+  - logs when an event happens(run out of space, error).
+- **UNDO tablespace**
+  - oracle system use only.
+  - stores previous versions of rows.
+  - `CREATE UNDO TABLESPACE undo DATAFILE '/ORADATA/PROD/UNDO01.DBF' SIZE 2G;`
+  - `DROP TABLESPACE undo INCLUDING CONTENTS;`
+  - `ROLLBACK;` command.
 
 ```sql
   sql> adrci -- command line interface of ADR.
@@ -332,33 +366,6 @@ ORDER BY tablespace_name;
   - runs background processes that cache queries and transactional processing(read/write).
   - each database must have one instance, and can have multiple instances.
   - ![SGA](img/SGA.PNG)
-- **PGA Program Global Area**
-  - each user has dedicated **PGA**(program global area, private memory) memory cache.
-  - SQL work area like SORT or building hash tables.
-  - data that should not persist after user session ends, is stored in PGA.
-  - Total PGA size is configured automatically or manually. `PGA_AGGREGATE_TARGET=25G` // total size.
-  - not efficient for thousands of users. Uses middleware servers that stream the connections to the PGA.
-  - ![oracle overview](img/oracle_overview.PNG)
-- **SGA System Global Area**
-  - main memory structure. Contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
-  - shared memory structures used to cache data(waiting to be written to disk).
-  - every user shares the same SGA.
-  - ![SGA](img/SGA.PNG)
-  - ![SGA](img/SGA_overview.PNG)
-- **Shared Pool**
-  - mandatory memory area in SGA. Caches most recent **SQL statements** issued by database users. Constantly tracks and updates the most popular commands.
-  - least recently used algorithm(**LRU algorithm**) to manage the contents of the shared pool and database buffer cache.
-  - data dictionary: metadata: tables, columns, users, data files.
-  - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
-  - `SELECT * FROM v$sgainfo;` // view SGA specs.
-  - ![SGA Sizing](img/SGA_sizing.PNG)
-  - cache non-user data. Library cache, data dict cache.
-  - **library cache**: metadata about each sequel statement.
-    - hard parse: first time statement is executed.
-    - soft parse: after statement is executed in library cache.
-  - **database dictionary cache**: metadata about database and users.
-    - referential integrity, table definitions and structure(schema), indexes.
-  - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
 - **Database Buffer Cache**
   - mandatory memory area in SGA. largest part of SGA memory. Stores frequently accessed database data(**rows, tables**) to improve efficiency.
   - stored as **oracle blocks**. Each block contains one or more rows of data.
@@ -374,6 +381,13 @@ ORDER BY tablespace_name;
   - `ALTER TABLE` statement sends table query to preferred cache(keep, recycle).
   - `DB_KEEP_CACHE_SIZE` and `DB_RECYCLE_CACHE_SIZE`
   - ![SGA Buffer Cache](img/SGA_buffer_cache.PNG)
+- **PGA Program Global Area**
+  - each user has dedicated **PGA**(program global area, private memory) memory cache.
+  - SQL work area like SORT or building hash tables.
+  - data that should not persist after user session ends, is stored in PGA.
+  - Total PGA size is configured automatically or manually. `PGA_AGGREGATE_TARGET=25G` // total size.
+  - not efficient for thousands of users. Uses middleware servers that stream the connections to the PGA.
+  - ![oracle overview](img/oracle_overview.PNG)
 - **Redo Log Buffer**
   - mandatory memory area in SGA. **Transaction logs** records are stored here. Once database started, cannot be configured.
   - changes are known as redo entries or change vectors and are used to redo the changes in case of a failure.
@@ -384,11 +398,31 @@ ORDER BY tablespace_name;
   - `LOG_BUFFER=25G` // total size of redo log cache.
   - extension is `.log`, but they are not log files. Delete them and lose database.
   - ![redo log files](img/redolog_files.PNG)
-- **Optional SGA Memory Area: Java Pool, Large Pool, Streams Pool, Result Cache**
+- **SGA System Global Area**
+  - main memory structure. Contains: buffer cache, shared pool, redolog buffer, large pool, java pool, streams pool.
+  - shared memory structures used to cache data(waiting to be written to disk).
+  - every user shares the same SGA.
+  - ![SGA](img/SGA.PNG)
+  - ![SGA](img/SGA_overview.PNG)
+- **SGA Optional Memory Area: Java Pool, Large Pool, Streams Pool, Result Cache**
   - Java Pool: most recent java objects.
   - Large Pool: cache for large operations: RMAN backup, Shared Server components.
   - Streams Pool: for advanced queueing.
   - Result Cache: most common query results.
+- **Shared Pool**
+  - mandatory memory area in SGA. Caches most recent **SQL statements** issued by database users. Constantly tracks and updates the most popular commands.
+  - least recently used algorithm(**LRU algorithm**) to manage the contents of the shared pool and database buffer cache.
+  - data dictionary: metadata: tables, columns, users, data files.
+  - `SGA_TARGET` and `SGA_MAX_SIZE` are memory parameters we can control.
+  - `SELECT * FROM v$sgainfo;` // view SGA specs.
+  - ![SGA Sizing](img/SGA_sizing.PNG)
+  - cache non-user data. Library cache, data dict cache.
+  - **library cache**: metadata about each sequel statement.
+    - hard parse: first time statement is executed.
+    - soft parse: after statement is executed in library cache.
+  - **database dictionary cache**: metadata about database and users.
+    - referential integrity, table definitions and structure(schema), indexes.
+  - ![SGA Shared Pool](img/SGA_shared_pool.PNG)
 
 ## Oracle Instance Background Processes
 
@@ -401,14 +435,18 @@ ORDER BY tablespace_name;
   - Archiver Process. Redo Log Archiver. Copy redo log file to storage after 'log switch' has occurred.
   - multiple ARC instances can be used for redundancy to store files in multiple locations.
   - switch logs, activates archiver process.
+  - **Archive Log**
+    - setting this will write archive of REDO logs.
+    - golden gate uses archive logs.
+    - ``
   - ![arc](img/arc.PNG)
   - ![background process](img/background_process.png)
 - **CKPT**
-  - Checkpoint. when **all dirty buffers** are **written to data files**, a checkpoint is created.
+  - Checkpoint. Data recovery. Ensures data consistency. faster recovery process.
+  - when **all dirty buffers** are **written to data files**, a checkpoint is created.
   - CKPT generates a unique **SCN(sequential change number)**.
-  - writes this to the head of the **control file**.
-  - because **all data files** headers must be updated and can be extensive, the DBWn writes the checkpoint when it writes dirty buffers to data files.
-  - this ensures data consistency. faster recovery process.
+  - ONLY writes this to the head of the **control file**.
+  - WAKEs up the DBWn to write the Checkpoint SCN to **data file** headers.
   - occur automatically when a redo log file is full(log switch).
   - ![ckpt scn](img/ckpt_scn.PNG)
 - **DBWn**
@@ -426,6 +464,8 @@ ORDER BY tablespace_name;
   - oracle listener: listens for user session connections, starts the process to serve connection.
     - gateway from client to database
     - spawns a new 'Server Process' for user.
+  - **Listener.ora**: configuration file that controls all the listeners.
+  - `lsnrctl [stop|start|status]` // view listener status.
     - ![listener](img/listener.PNG)
 - **PMON**
   - Process Monitor. instance recovery. when user session fails, cleans up PGA and Buffer Cache resources.
@@ -467,10 +507,6 @@ ORDER BY tablespace_name;
 - **Memory Sizing**
   - value of total memory, allows oracle to self assign needed memory.
   - ![generic memory](img/Generic_sizing.PNG)
-- **Listener.ora**
-  - the oracle listener that allows communication between client and database.
-  - listener.ora: configuration file that controls all the listeners.
-  -
 
 ## Startup, Shutdown
 
@@ -482,11 +518,11 @@ ORDER BY tablespace_name;
 - **Startup**
   - three phases: NOMOUNT, MOUNT, OPEN.
     1. NOMOUNT:
-       1. background processes are started and shared memory is allocated. The instance is not associated with any database.
+       1. pfile read. background processes are started and shared memory is allocated. The instance is not associated with any database.
        2. used to create a database or to create a database control file.
        3. If fails, most often cause is parameter file missing.
     2. MOUNT:
-       1. control file is read(name of database, all data file names, and redo log files).
+       1. control file is read(name of database, all data file names, and redo log files) and can be edited.
        2. rename data files, enable/disable archive logging, rename redo logs, recover database.
     3. OPEN: normal startup mode. Database started and available to users.
   - `STARTUP` // normal startup.
