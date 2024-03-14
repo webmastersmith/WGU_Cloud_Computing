@@ -271,8 +271,17 @@ ORDER BY tablespace_name;
 - **Alert Log File**
   - list of alerts, errors, events that occurred during database operation.
   - used when troubleshooting problems.
-  - `SELECT name, value FROM v$diag_info;` // log file locations
+  - chronological summary about database events: startup/shutdown, create/alter, errors...
+  - `SELECT name, value FROM v$diag_info;` // view log file locations
+  - `DIAGNOSTIC_DEST` // change alert log path with this parameter. Default is `ORACLE_HOME/rdbms/log`
   - ![database files](img/database_files.PNG)
+- **ADR**
+  - Automatic Diagnostic Repository. advanced fault diagnostic infrastructure.
+
+```sql
+  sql> adrci -- command line interface of ADR.
+  adrci> show alert -- view alert log contents.
+```
 
 ## Definitions
 
@@ -298,7 +307,9 @@ ORDER BY tablespace_name;
 ## Network
 
 - **Network Overview**
-  - d
+  - Oracle net: glue that bonds oracle network together.
+  - Manages flow of information on the network. Established connection, transports request/response from client to database.
+  - allows multiple communication protocols: TCP/IP, multiple operating systems, and api Java drivers.
 - **Single-Tier Architecture**
   - mainframe-type applications.
   - ![single tier](img/single_tier.PNG)
@@ -386,42 +397,49 @@ ORDER BY tablespace_name;
   - maintenance task.
   - `ps -ef |grep C12DB1` // view all background processes.
   - ![oracle instance background processes](img/oracle_instance_background_processes.PNG)
-- **Database Writer**
-  - DBWn. write the contents of the **dirty buffers to the data files**.
-  - transactions like when you `UPDATE` a table are first stored in the **SGA buffer cache**, then written to disk by the DBWn.
-  - writes periodically, when buffer cache is full, when redo log switch, when checkpoint event or shutdown(besides shutdown abort).
-- **Checkpoint**
-  - CKPT. when **all dirty buffers** are **written to data files**, a checkpoint is created.
+- **ARCn**
+  - Archiver Process. Redo Log Archiver. Copy redo log file to storage after 'log switch' has occurred.
+  - multiple ARC instances can be used for redundancy to store files in multiple locations.
+  - switch logs, activates archiver process.
+  - ![arc](img/arc.PNG)
+  - ![background process](img/background_process.png)
+- **CKPT**
+  - Checkpoint. when **all dirty buffers** are **written to data files**, a checkpoint is created.
   - CKPT generates a unique **SCN(sequential change number)**.
   - writes this to the head of the **control file**.
   - because **all data files** headers must be updated and can be extensive, the DBWn writes the checkpoint when it writes dirty buffers to data files.
   - this ensures data consistency. faster recovery process.
   - occur automatically when a redo log file is full(log switch).
   - ![ckpt scn](img/ckpt_scn.PNG)
-- **Log Writer**
-  - LGWR. Writes **RedoLog Buffer cache** to redo log files on disk.
+- **DBWn**
+  - Database Writer. when `COMMIT` write the contents of the **dirty buffers to the data files**.
+  - transactions like when you `UPDATE` a table are first stored in the **SGA buffer cache**, then written to disk by the DBWn.
+  - writes periodically, when buffer cache is full, when redo log switch, when checkpoint event or shutdown(besides shutdown abort).
+  - ![background process](img/background_process.png)
+- **LGWR**
+  - Log Writer. Writes **RedoLog Buffer cache** to redo log files on disk.
   - When user issues a `COMMIT;` statement, RedoLog Buffer will be written to disk.
-  - or every three seconds.
-- **System Monitor**
-  - SMON. performs **crash recovery** during **startup** instance, if required, from redo logs.
-  - clean old memory processes no longer in use and manages space used for sorting.
-- **Process Monitor**
-  - PMON. when user session fails, cleans up PGA and Buffer Cache resources.
-- **Recover Process**
-  - RECO. Recovers failed transactions that are distributed across multiple databases.
-  - cleans up failed transactions when `UPDATE` fails.
-- **Listener Registration**
-  - LREG. registers oracle instance with oracle listener.
+  - or 1/3 full.
+  - ![background process](img/background_process.png)
+- **LREG**
+  - Listener Registration. registers oracle instance with oracle listener.
   - oracle listener: listens for user session connections, starts the process to serve connection.
     - gateway from client to database
     - spawns a new 'Server Process' for user.
     - ![listener](img/listener.PNG)
-- **Virtual Keeper of Time**
-  - VKTM. time keeper to all client, server relationships.
-- **Archiver Process**
-  - ARCn. Redo Log Archiver. Copy redo log file to storage after 'log switch' has occurred.
-  - multiple ARC instances can be used for redundancy to store files in multiple locations.
-  - ![arc](img/arc.PNG)
+- **PMON**
+  - Process Monitor. instance recovery. when user session fails, cleans up PGA and Buffer Cache resources.
+  - ![background process](img/background_process.png)
+- **RECO**
+  - Recover Process. transaction recovery. Recovers failed transactions that are distributed across multiple databases.
+  - cleans up failed transactions when `UPDATE` fails.
+  - ![background process](img/background_process.png)
+- **SMON**
+  - System Monitor. instance recovery. performs **crash recovery** during **startup** instance, if required, from redo logs.
+  - clean old memory processes no longer in use and manages space used for sorting.
+  - ![background process](img/background_process.png)
+- **VKTM**
+  - Virtual Keeper of Time. time keeper to all client, server relationships.
 
 ## Server Processes (SP)
 
@@ -449,6 +467,10 @@ ORDER BY tablespace_name;
 - **Memory Sizing**
   - value of total memory, allows oracle to self assign needed memory.
   - ![generic memory](img/Generic_sizing.PNG)
+- **Listener.ora**
+  - the oracle listener that allows communication between client and database.
+  - listener.ora: configuration file that controls all the listeners.
+  -
 
 ## Startup, Shutdown
 
