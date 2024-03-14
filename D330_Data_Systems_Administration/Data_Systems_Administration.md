@@ -161,6 +161,7 @@
   - ![backup](img/backup.PNG)
 - **Tablespace**
   - A tablespace is a logical storage area within the database. Tablespaces **group logically related segments**.
+  - logical storage units used to group data depending on their type or category.
   - Tablespace is **created first**. Related data files will be stored inside the tablespace.
   - Tablespace size it the total size of all related data files.
   - Naming: start with alphabet. <=30 chars. `[a-z0-9#_$]`.
@@ -170,22 +171,9 @@
   - e.g. Tablespace `AR_TAB`(accounts receivable tables) is created. All tables related to 'accounts receivable' will be stored under this tablespace.
   - `SYSTEM`, `SYSAUX`, and `TEMP` are mandatory table spaces.
   - `SYSTEM` tablespace is used for the data dictionary only, `SYSAUX` should only be used for oracle created tablespaces.
+  - `SELECT tablespace_name, file_name FROM dba_data_files ORDER BY tablespace_name;`
   - ![tablespace creation](img/tablespace_creation.PNG)
   - ![database](img/database.PNG)
-
-```sql
--- Create tablespace file.
-CREATE TABLESPACE APPL_DATA
-DATAFILE '/disk2/oradata/DB01/appl_data01.dbf'
-SIZE 500M
-AUTOEXTEND ON NEXT 100M MAXSIZE 2000M; -- extend 100M if extent needs more space to fit.
-
--- Create Tablespce
-SELECT tablespace_name, file_name
-FROM dba_data_files
-ORDER BY tablespace_name;
-```
-
 - **SYSTEM tablespace**
   - oracle system use only.
   - all metadata about database, data dictionary, and PL/SQL code is stored here.
@@ -205,6 +193,20 @@ ORDER BY tablespace_name;
   - NAS or SAN supported.
   - ![datafile](img/datafile.PNG)
   - ![database](img/database.PNG)
+
+```sql
+-- Create tablespace data file.
+CREATE TABLESPACE APPL_DATA
+DATAFILE '/disk2/oradata/DB01/appl_data01.dbf'
+SIZE 500M
+AUTOEXTEND ON NEXT 100M MAXSIZE 2000M; -- extend 100M if extent needs more space to fit.
+
+-- View Tablespce
+SELECT tablespace_name, file_name
+FROM dba_data_files
+ORDER BY tablespace_name;
+```
+
 - **Oracle Managed Files (OMF)**
   - Telling where you want files created, then letting oracle managed file naming.
   - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
@@ -221,6 +223,17 @@ ORDER BY tablespace_name;
   - `CREATE TABLESPACE HR_DATA DATAFILE '/u02/oradata/12CR11/hr_data01.dbf' SIZE 20M;`
   - ![segment](img/segment.PNG)
   - ![database](img/database.PNG)
+- **Data Block Format**
+  - data block has an internal structure known as the block format to **track the data stored in the block** as well as the **free space** still **available** in the block.
+- **Data Dictionary**
+  - hierarchy for data dictionary:
+    - `v$`: virtual views. Owned by user **SYS**.
+    - `DBA_`: must be DBA to use.
+    - `USER_`: all objects user has created.
+    - `ALL_`: show all objects user has access to.
+- **Compression**
+  - basic compression:
+  - OLTP compression: block level compression.
 - **Control File Database**
   - **location of physical files**, database name, block size, character set, recovery information, checkpoint...
   - when start, loads control file, to find path of other files(data files, redo log files...).
@@ -281,6 +294,18 @@ ORDER BY tablespace_name;
   - binary file. Can only be edited through oracle commands.
 - **System Identification Name (SID)**
   - Oracle SID. Database Identifier name.
+
+## Network
+
+- **Network Overview**
+  - d
+- **Single-Tier Architecture**
+  - mainframe-type applications.
+  - ![single tier](img/single_tier.PNG)
+- **Two-Tier Architecture**
+  - personal computer and is commonly referred to as client/server computing.
+  - Transmission Control Protocol/Internet Protocol (TCP/IP) is the standard, but any type of communication protocol can be used as long as both computers understand it.
+  - ![two tier](img/two_tier.PNG)
 
 ## Oracle Instance
 
