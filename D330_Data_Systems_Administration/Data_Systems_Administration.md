@@ -278,10 +278,15 @@ ORDER BY tablespace_name;
 - **SPFile**
   - Server Parameter(SP) file. Binary file created from parameter file(configuration parameters).
   - allows changing some parameters dynamically(SGA_TARGET...).
+- **Three Network Files**
+  - sqlnet.ora, listener.ora, tnsnames.ora.
 - **SQLnet Files**
-  - listener.ora
-  - sql.ora
-  - tnsnames.ora
+  - sqlnet.ora: configuration file for network level.
+- **listener.ora**
+  - configuration file for Oracle LISTENER service. Service runs on database server.
+- **tnsnames.ora file**
+  - manage connections to database. Stores easy to remember names for complex connection details.
+  - `SERVER=DEDICATED`
 - **SYSTEM tablespace**
   - oracle system use only.
   - all metadata about database, data dictionary, and PL/SQL code is stored here.
@@ -326,7 +331,7 @@ ORDER BY tablespace_name;
 - **Parent Table**
   - table in a relational database **must have a primary key**.
 - **PFile**
-  - plain text file.
+  - plain text file. can only be edited when database off.
 - **Schema**
   - A user is a defined **database entity** that has a set of abilities to **perform activities** based on their granted rights.
   - A schema, which is associated with a user entity, is more appropriately defined as a collection of **database objects**.
@@ -460,7 +465,7 @@ ORDER BY tablespace_name;
   - or 1/3 full.
   - ![background process](img/background_process.png)
 - **LREG**
-  - Listener Registration. registers oracle instance with oracle listener.
+  - Listener Registration. Server background process that is registered as 'LISTENER'. registers oracle instance with oracle listener.
   - oracle listener: listens for user session connections, starts the process to serve connection.
     - gateway from client to database
     - spawns a new 'Server Process' for user.
@@ -507,6 +512,12 @@ ORDER BY tablespace_name;
 - **Memory Sizing**
   - value of total memory, allows oracle to self assign needed memory.
   - ![generic memory](img/Generic_sizing.PNG)
+- **$ORACLE_HOME**
+  - directory into where Oracle software will be installed.
+  - `/u01/app/oracle/product/12.1.0/dbhome_1`
+- **$ORACLE_BASE**
+  - top level directory.
+  - `/u01/app/oracle`
 
 ## Startup, Shutdown
 
