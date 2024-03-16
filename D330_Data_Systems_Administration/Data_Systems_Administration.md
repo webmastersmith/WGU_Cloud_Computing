@@ -144,7 +144,7 @@
   - admin: password.
   - @: connecting if more than one database or remote database.
   - dev: name of data base.
-- **Connection Hierarchy**
+- **Permission Hierarchy**
   - `v$`: virtual views. Owned by user **sys** or **system**.
     - `SELECT name FROM v$database` // tells you the database your connected to.
   - `DBA_`: must be DBA to use.
@@ -185,7 +185,7 @@
   - **Physical**
     - hot: `ALTER TABLE begin backup` // while backing up, allows queries, prevents changes.
     - cold: shutdown database and backup.
-    - standby: backups up live everything except currently used archive log.
+    - standby: backups up live everything except in-use redo log.
   - **Logical**
     - table, schema... `import/export`.
     - e.g. `EXP table` then `DROP table`, fix table or index size, `IMP table`
@@ -243,13 +243,12 @@ ORDER BY tablespace_name;
 ```
 
 - **Flashback Log**
+  - flashback is a feature to rollback changes in an easy manner.
   - if 'flashback' is enabled, files are written to the 'fast recovery area'.
 - **Oracle Managed Files (OMF)**
   - Telling where you want files created, then letting oracle managed file naming.
   - `ALTER SYSTEM SET db_create_file_dest = '/u02/oradata/' SCOPE=BOTH;`
   - `CREATE TABLESPACE hr_data;`
-- **Oracle Net File**
-  - database listener configuration and client-to-database connectivity details.
 - **Parameter File**
   - config of all parameters, can only be change when database is off, no dynamically changes.
   - when first install Oracle you get `init.ora` filled with default parameters. You create an SP file from this file. This allows you to change dynamic parameters.
@@ -278,15 +277,6 @@ ORDER BY tablespace_name;
 - **SPFile**
   - Server Parameter(SP) file. Binary file created from parameter file(configuration parameters).
   - allows changing some parameters dynamically(SGA_TARGET...).
-- **Three Network Files**
-  - sqlnet.ora, listener.ora, tnsnames.ora.
-- **SQLnet Files**
-  - sqlnet.ora: configuration file for network level.
-- **listener.ora**
-  - configuration file for Oracle LISTENER service. Service runs on database server.
-- **tnsnames.ora file**
-  - manage connections to database. Stores easy to remember names for complex connection details.
-  - `SERVER=DEDICATED`
 - **SYSTEM tablespace**
   - oracle system use only.
   - all metadata about database, data dictionary, and PL/SQL code is stored here.
@@ -356,6 +346,33 @@ ORDER BY tablespace_name;
   - personal computer and is commonly referred to as client/server computing.
   - Transmission Control Protocol/Internet Protocol (TCP/IP) is the standard, but any type of communication protocol can be used as long as both computers understand it.
   - ![two tier](img/two_tier.PNG)
+- **Oracle Net**
+  - The database server will have an Oracle service running on it called 'LISTENER'.
+  - The LREG background process dynamically registers with the 'LISTENER', called 'Service Registration'.
+    - LREG registers following info:
+      - name of database services.
+      - name of database instances.
+      - service handlers available for the instance.
+  - creates and manages connections from computer to database server.
+  - database listener configuration and client-to-database connectivity details.
+  - `SQL> show parameter listener` // view loaded listeners.
+- **Oracle Net Config Files**
+  - sqlnet.ora, listener.ora, tnsnames.ora.
+- **SQLnet Files**
+  - sqlnet.ora: configuration file for network level.
+  - `$ORACLE_HOME/network/admin/`
+- **listener.ora**
+  - configuration file for Oracle LISTENER service. Service runs on database server.
+  - `$ORACLE_HOME/network/admin/`
+- **tnsnames.ora file**
+  - manage connections to database. Stores easy to remember names for complex connection details.
+  - `SERVER=[DEDICATED|SHARED]` // parameter in tnsnames.ora config. Tells 'LISTENER' what kind of service it's talking to: directly to database server or dispatcher server(other machine that handles multiple network sessions for one shared process).
+  - `$ORACLE_HOME/network/admin/`
+  - Create Link
+    - `create public database link LINK_NAME LINK_DETAILS...`
+    - `SELECT * FROM HR.DEPARTMENTS@LINK_NAME`
+  - tnsping helps with connetion issues.
+    - `tnsping [192.168...:1521 | LINK_ALIAS | Connector descriptor]`
 
 ## Oracle Instance
 

@@ -32,3 +32,60 @@
   - Stored Java procedures can be created in Oracle to define business processes.
 - **Database link**
   - Database links are used to communicate between databases to share data.
+- 10 % Which net service naming method requires the client to use a fixed port number? % Local,External,Host,Directory
+  - The correct answer is: **Host**
+  - Here's why:
+    - Local Naming: This method uses a local file (tnsnames.ora) on the client to store connection information, including the port number. The client can potentially specify a different port number if needed.
+    - External Naming: Similar to Local Naming, external naming relies on an external directory service to store connection details. This service might include the port number, but the client wouldn't necessarily be restricted to a fixed port.
+    - Host Naming: This method uses the hostname of the database server to establish a connection. Traditionally, it relies on a well-known default port number (usually 1521 for Oracle) for the specific service. The client cannot specify a different port in this scenario.
+    - Directory Naming: Similar to External Naming, directory naming utilizes a directory service to locate connection details. This service likely includes the port number, but the client might not be limited to a fixed port configuration.
+  - Therefore, Host Naming is the only method that enforces a fixed port number on the client side.
+- 12 % Which information from a remote database is included in the configuration of a database link? % User name,Data files,Tables,Views
+  - The information from a remote database included in the configuration of a database link is **User name**.
+  - Database links are configured on the local database and specify how to connect to the remote database. The user name is a crucial piece of information required to establish a secure connection and grant access to the remote database.
+  - Here's why the other options are not included:
+  - Data files: The location of data files is specific to the remote database and not relevant to how the local database connects to it.
+  - Tables & Views: Database links provide a way to access tables and views on the remote database, but their definitions and structures are not stored in the local database link configuration.
+- 13 % Which object can be added to an existing bigfile tablespace? % datafiletemp table,table data,tablespacedictionary table,undo data
+  - The correct answer is: **table data**
+  - Bigfile tablespaces are designed to store large objects (LOBs) efficiently. Here's why the other options are not suitable for bigfile tablespaces:
+  - datafiletemp table: Temporary tables are typically used for short-lived data and are not ideal candidates for bigfile tablespaces.
+  - tablespacedictionary table: Dictionary-managed tablespaces are a different type of tablespace and not compatible with bigfile tablespaces.
+  - undo data: Undo data is used for rollback purposes and has its own dedicated tablespaces, separate from user data.
+  - Bigfile tablespaces excel at storing large data objects like:
+    - LOBs (Binary Large OBjects) - Can hold multimedia data (images, audio, video) or large text documents.
+    - NESTED TABLES - Nested tables allow storing hierarchical data within a single table.
+    - VARRAYs - Variable-size arrays can hold collections of elements within a table.
+  - By adding table data containing these large objects to a bigfile tablespace, you can leverage its features like:
+    - Larger file size limits: Bigfile tablespaces support much larger file sizes compared to traditional tablespaces, accommodating massive data objects.
+    - Improved performance: Bigfile tablespaces can optimize storage and retrieval of large objects, enhancing query performance.
+- 17 % Which package should an administrator use to configure local extent management for tablespaces? % DBMS_SPACE_ADMIN,DBMS_AUDIT_MGMT,DBMS_TRANSFORM,DBMS_METADATA
+  - The correct answer is: **DBMS_SPACE_ADMIN**
+  - The DBMS_SPACE_ADMIN package provides procedures for managing locally managed tablespaces in Oracle. This includes configuring local extent management, such as:
+  - Creating locally managed tablespaces with the AUTOALLOCATE or UNIFORM extent management clauses.
+  - Adding datafiles to a locally managed tablespace.
+  - Dropping datafiles from a locally managed tablespace.
+  - Migrating a tablespace between local and dictionary extent management.
+- The other options listed are not relevant for configuring local extent management:
+  - DBMS_AUDIT_MGMT: This package is used for managing auditing settings in the database.
+  - DBMS_TRANSFORM: This package is used for data transformation tasks.
+  - DBMS_METADATA: This package provides access to metadata information about the database schema, but it's not used for managing tablespace extent allocation.
+- 18 % What should an administrator use to identify tables that are fragmented? % Segment Advisor,Automatic Database Diagnostic Monitor,DBMS_SPACE,DBMS_REPAIR
+  - The most suitable option for identifying fragmented tables in Oracle is: **Segment Advisor**.
+  - Here's why:
+  - Segment Advisor: This built-in Oracle utility analyzes tables and indexes to identify potential fragmentation issues. It provides recommendations for reorganizing fragmented objects to improve performance.
+  - Automatic Database Diagnostic Monitor (ADDM): While ADDM can monitor overall database health and identify performance bottlenecks, it doesn't specifically target table fragmentation.
+  - DBMS_SPACE: This package offers functionalities related to managing tablespace storage, but it doesn't directly assess table fragmentation.
+  - DBMS_REPAIR: This package focuses on repairing damaged database objects and doesn't provide specific insights into fragmentation.
+  - Segment Advisor offers valuable features for analyzing fragmentation:
+    - Identifying Fragmentation Types: It can detect different types of fragmentation, including chained and scattered extents, which can hinder query performance.
+    - Estimating Reorganization Benefit: The advisor can estimate the potential performance gains achievable by reorganizing fragmented tables.
+    - Recommendation Generation: It suggests appropriate reorganization methods, such as rebuild or truncate/reinsert, to optimize table layout.
+  - While other tools have their roles in database management, Segment Advisor stands out as the primary choice for pinpointing fragmented tables in Oracle.
+- 19 % Which parameter determines how long information should be kept before it is overwritten in an undo tablespace? % UNDO_RETENTION,DBA_FLASHBACK_RETENTION_TARGET,SORT_AREA_RETAINED_SIZE,UNDO_MANAGEMENT
+  - The correct answer is: **UNDO_RETENTION**
+  - The UNDO_RETENTION parameter in Oracle dictates how long the database attempts to retain undo information for transactions before it gets overwritten in the undo tablespace. It essentially sets a minimum threshold for undo data retention.
+  - Here's why the other options are not relevant:
+  - DBA_FLASHBACK_RETENTION_TARGET: This is a data dictionary view that shows the current retention target for flashback operations. It reflects the combined effects of various factors, including UNDO_RETENTION and automatic undo management settings.
+  - SORT_AREA_RETAINED_SIZE: This parameter manages the memory allocated for sorting operations within the database. It has no bearing on undo data retention.
+  - UNDO_MANAGEMENT: This parameter specifies whether undo management is automatic or manual. While it influences undo behavior, it doesn't directly control the retention period.
