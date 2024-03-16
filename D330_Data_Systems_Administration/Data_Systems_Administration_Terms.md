@@ -89,3 +89,38 @@
   - DBA_FLASHBACK_RETENTION_TARGET: This is a data dictionary view that shows the current retention target for flashback operations. It reflects the combined effects of various factors, including UNDO_RETENTION and automatic undo management settings.
   - SORT_AREA_RETAINED_SIZE: This parameter manages the memory allocated for sorting operations within the database. It has no bearing on undo data retention.
   - UNDO_MANAGEMENT: This parameter specifies whether undo management is automatic or manual. While it influences undo behavior, it doesn't directly control the retention period.
+- 22 % Which condition is automatically resolved by Oracle without human intervention? % Deadlocks,"Snapshot too old" error,Resumable space allocation,Flash recovery area
+  - Out of the given options, only **Deadlocks** are automatically resolved by Oracle without human intervention.
+  - Here's why the other options are not automatically resolved:
+    - "Snapshot too old" error: This error occurs when a flashback operation attempts to access data from a point in time that is beyond the retention period defined by the database. Human intervention is required to address this by potentially adjusting retention settings or using alternative recovery methods.
+    - Resumable space allocation: This is a feature that allows Oracle to automatically resume space allocation for objects after encountering certain errors. However, it might not always be successful, and human intervention might be needed to troubleshoot the underlying cause of the allocation failure.
+    - Flash recovery area (FRA): The FRA is a designated storage area for backups and archived redo logs. While it plays a crucial role in recovery, it doesn't automatically resolve issues. A human administrator would need to utilize the FRA for recovery purposes.
+  - Deadlocks, on the other hand, are a specific scenario where two or more transactions are waiting for resources held by each other, creating a stalemate. Oracle can detect deadlocks and automatically terminate one of the involved transactions to resolve the situation and allow the others to proceed.
+- 23 % Which feature allows a failed transaction to be suspended until the problem that caused the failure is resolved? % Resumable space allocation,Segment shrinking,Instance recovery,Oracle managed files
+  - Out of the listed options, **Resumable space allocation** is the closest feature that allows a partially failed transaction to be suspended until the issue is resolved.
+  - Here's why the other options are not ideal fits:
+    - Segment shrinking: This feature deals with reclaiming unused space within a segment after data deletion. It doesn't directly address suspending failed transactions.
+    - Instance recovery: This refers to recovering an entire Oracle instance from an outage or failure, not specific transactions.
+    - Oracle managed files: This feature automates the management of datafiles, but it doesn't have functionalities to suspend failed transactions.
+  - It's important to note that resumable space allocation doesn't guarantee complete suspension of a failed transaction. It might allow resuming the space allocation process if interrupted due to storage-related issues, but it wouldn't necessarily handle other causes of transaction failure.
+  - In Oracle, transactions are ACID compliant, meaning they should be Atomic (all or nothing), Consistent, Isolated, and Durable. Once a transaction fails due to any reason, it usually rolls back entirely, and Oracle doesn't have a built-in mechanism to suspend them midway.
+- 24 % Which view has space information? % DBA_OBJECTS,V$TABLESPACE,V$SQLTEXT,DBA_DATA_FILES
+  - The correct view in Oracle that contains information about database space is: **V$TABLESPACE**
+  - Here's why:
+    - V$TABLESPACE: This system view provides comprehensive details regarding tablespaces in the database, including:
+      - Tablespace name
+      - Total space allocated to the tablespace
+      - Used space within the tablespace
+      - Free space available in the tablespace
+      - Whether the tablespace is online or offline
+      - The type of tablespace (e.g., permanent, temporary)
+    - DBA_OBJECTS: This view contains information about database objects like tables, views, and indexes. While it might show the tablespace an object resides in, it doesn't offer dedicated space usage statistics.
+    - V$SQLTEXT: This view stores the parsed SQL text of statements currently executing in the database. It's not related to space information.
+    - DBA_DATA_FILES: This view specifically shows details about datafiles associated with the database. While datafiles contribute to the overall space picture, V$TABLESPACE provides a more holistic view of tablespace space usage.
+- 25 % An administrator attempts to roll back a transaction from the previous day. The rollback attempt fails. Which action will prevent the failure from recurring? % Enabling the retention guarantee,Setting the session to be resumable,Flushing the log buffer,Restarting the database
+  - Answer: **Enabling the retention guarantee**
+    - Enabling the retention guarantee ensures that Oracle retains undo information for a minimum specified time period. This guarantee applies to transactions across sessions and would likely cover undo data from the previous day, allowing the rollback to proceed successfully.
+  - Here's why the other options are less likely to solve the issue:
+    - Setting the session to be resumable: Resumable sessions are useful for suspending long-running transactions that might encounter errors. However, this wouldn't impact the ability to rollback a transaction from a previous day.
+    - Flushing the log buffer: Flushing the log buffer primarily ensures that recently committed data is written to disk. It doesn't influence the availability of undo information needed for a rollback from a previous day.
+    - Restarting the database: While restarting the database might resolve temporary glitches, it's unlikely to address a scenario where undo information from a previous day is unavailable for rollback.
