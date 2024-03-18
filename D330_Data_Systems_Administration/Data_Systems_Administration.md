@@ -565,7 +565,7 @@ ORDER BY tablespace_name;
 - **Shutdown**
   - `sqlplus sys/oracle as sysdba` // connect to docker terminal, run this to connect to database.
   - `SHUTDOWN;`. no new connections. wait for all transactions to complete and all users disconnected.
-  - `SHUTDOWN TRANSACTIONAL;`. no new connections. no new transactions. waits for transactions to finish processing.
+  - `SHUTDOWN TRANSACTIONAL;`. no new connections. no new transactions. waits for transactions to finish processing, then closes all connections.
   - `SHUTDOWN IMMEDIATE;`. no new connections. uncommitted transactions are rolled back. all connections terminated.
   - `SHUTDOWN ABORT`. pulls the plug. dirty. terminates immediately. will require instance recovery when restarted.
   - ![shutdown command line](img/shutdown_cmd.PNG)
