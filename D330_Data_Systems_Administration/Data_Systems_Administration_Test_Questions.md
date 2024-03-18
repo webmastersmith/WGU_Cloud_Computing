@@ -13,7 +13,6 @@
     - **DB_DOMAIN**: This parameter defines the database domain used for naming conventions. Modifying it necessitates a restart to ensure consistent naming across the database.
     - **UNDO_MANAGEMENT**: This parameter controls the management of undo data within the database. Changing it typically requires a restart for the new management strategy to take effect.
 - 2 % Which view displays database parameters and values modified using the `SCOPE=SPFILE` clause? % `V$SPPARAMETER`,`V$NLS_PARAMETER`,`V$HS_PARAMETER`,`V$PARAMETER`
-
   - The correct answer is: **`V$SPPARAMETER`**.
     - The `V$SPPARAMETER` view in Oracle Database displays the database parameters and their values that have been modified or set using the `SCOPE=SPFILE` clause.
     - The `SCOPE=SPFILE` clause is used to modify database parameters in the server parameter file (SPFILE) rather than in the instance-level parameter cache. Changes made with this clause persist across database instance restarts and are maintained in the SPFILE.
@@ -23,7 +22,76 @@
     - **`V$NLS_PARAMETER`**: This view displays the current values of the National Language Support (NLS) parameters for the instance.
     - **`V$HS_PARAMETER`**: There is no such view in Oracle Database. The closest match is V$HS_AGENT, which provides information about the Oracle Heterogeneous Services agents.
     - **`V$PARAMETER`**: This view displays the current values of all initialized parameters for the running instance, including those set from the SPFILE and those modified in the instance-level parameter cache.
-
+- 3 % Which command performs a clean shutdown without waiting for clients to disconnect? % `SHUTDOWN ABORT`,`SHUTDOWN NORMAL`,`SHUTDOWN TRANSACTIONAL`,`SHUTDOWN IMMEDIATE`
+  - The command that performs a clean shutdown without waiting for clients to disconnect is: **`SHUTDOWN IMMEDIATE`**
+    - Using the SHUTDOWN IMMEDIATE command will shut down the database cleanly without waiting for ongoing transactions to complete or for clients to disconnect. This command rolls back active transactions and closes the database instance promptly.
+  - Why the other options are incorrect:
+    - **`SHUTDOWN ABORT`**: This command is used to perform an immediate shutdown of the database instance. It does not wait for any transactions to complete or for clients to disconnect. It does not perform a clean shutdown. SHUTDOWN ABORT does not roll back active transactions, potentially leading to instance recovery during the next startup.
+    - **`SHUTDOWN NORMAL`**: This command is used to perform a normal shutdown of the database instance. It waits for all client connections to disconnect and for active transactions to complete before shutting down. Therefore, it does not meet the requirement of performing a shutdown without waiting for clients to disconnect.
+    - **`SHUTDOWN TRANSACTIONAL`**: This option allows existing user sessions to complete their current transactions but prevents any new connections from being established. Once all current transactions finish, the connections are closed and the database shuts down.
+- 4 % Which area is a member of the System Global Area (SGA)? % Java pool,Log writer,Database writer,Process monitor
+  - Out of the listed areas, the one that is a member of the System Global Area (SGA) in Oracle Database is: **Java pool**
+    - The Java pool is a designated memory area within the SGA specifically allocated for caching frequently accessed Java classes and libraries used by the Java Virtual Machine (JVM) within the database.
+    - By caching these Java elements in the SGA, the database can improve the performance of Java-based functionality within Oracle Database.
+    - ![SGA](img/SGA.PNG)
+  - Here's why the other options are not directly part of the SGA:
+    - **Log writer**: The log writer process is a background process responsible for writing redo information to the online redo log files. While it interacts with the SGA to access buffer caches for efficiency, it's not itself a constituent part of the SGA.
+    - **Database writer (DBWR)**: Similar to the log writer, the DBWR process manages writing data from the buffer cache to datafiles. It interacts with the SGA but isn't a core component residing within it.
+    - **Process monitor**: The process monitor is a conceptual entity that tracks the status of various database processes. It doesn't have a physical memory allocation and wouldn't be considered part of the SGA.
+- 5 % Which types of events are recorded in an alert log? % Package creation,User creation,Role creation,Tablespace creation
+  - The provided answer: **Tablespace creation**
+    - While tablespace creation is a more significant database operation, it wouldn't be automatically logged by default in the alert log.
+    - The events recorded in an Oracle alert log are primarily related to errors, warnings, and important status information about the database instance and its components.
+    - The alert log does not typically record events related to database object creation or modification, such as package creation, user creation, role creation, or tablespace creation. These types of events are recorded in other logs, such as the audit trail or the database redo logs, depending on the auditing and logging configurations.
+    - Types of Events in the Alert Log:
+      - Startup and Shutdown Events: Information about database instance startup, shutdown, and abnormal terminations is typically logged.
+      - Errors and Exceptions: Various errors encountered during database operations, like disk I/O failures, parsing errors, or resource exhaustion, are recorded.
+      - Resource Usage: Significant changes in resource consumption like CPU usage, memory allocation, or redo log file usage might be logged.
+      - Background Process Events: Startups, failures, or other notable events related to background database processes like DBWR or log writer are often logged.
+      - Maintenance and Recovery Operations: Information about database maintenance activities like archive log switching or recovery operations might be included.
+  - Why the other options are incorrect:
+    - **Package creation**: Schema object creation like packages wouldn't be routinely logged in the alert log. These actions are considered regular database operations and wouldn't necessarily signify critical events.
+    - **User creation**: Similar to package creation, user creation is a standard database operation and wouldn't be automatically logged in the alert log.
+    - **Role creation**: Role creation also falls under schema object management and wouldn't be a typical alert log entry.
+- 6 % Which initialization parameter sets the location of the alert log? % AUDIT_FILE_DEST,LOG_ARCHIVE_DEST,DIAGNOSTIC_DEST,CORE_DUMP_DEST
+  - Out of the listed initialization parameters, the one that sets the location of the alert log in Oracle Database is: **DIAGNOSTIC_DEST**
+    - The DIAGNOSTIC_DEST parameter is a crucial parameter in Oracle Database that specifies the base directory for various diagnostic data files, including the alert log.
+    - `DIAGNOSTIC_DEST` allows you change alert log path with this parameter. Default is `ORACLE_HOME/rdbms/log`
+    - e.g. `DIAGNOSTIC_DEST=/u01/app/oracle/diag`
+  - Here's why the other options wouldn't be used for the alert log location:
+    - **AUDIT_FILE_DEST**: This parameter specifies the destination directory for audit trail files generated by Oracle Database Auditing. While auditing can capture some events related to the alert log, it doesn't define the alert log location itself.
+    - **LOG_ARCHIVE_DEST**: This parameter determines the location where archived online redo log files are stored. The alert log is a separate file that tracks database events, not archived redo information.
+    - **CORE_DUMP_DEST**: This parameter defines the directory where core dump files are written in case of unexpected database process crashes. It wouldn't be used for the alert log location.
+- 7 % Where is the `listener.ora` file located by default? % `$ORACLE_HOME/RDBMS`,`$ORACLE_HOME/NETWORK/ADMIN`,`$ORACLE_HOME/DATABASE/ADMIN`,`$ORACLE_HOME/DBS/ADMIN`
+  - The `listener.ora` file, by default, is located in the: **`$ORACLE_HOME/NETWORK/ADMIN`** directory.
+    - The `listener.ora` file serves as the configuration file for the Oracle Listener service.
+    - It defines various parameters like listener name, port on which it listens for connections, and service descriptions for databases the listener can route connections to.
+    - By placing `listener.ora` in $ORACLE_HOME/NETWORK/ADMIN, it ensures the file is accessible to the listener service for proper configuration.
+  - Here's why the other options wouldn't be the default location for `listener.ora`:
+    - **`$ORACLE_HOME/RDBMS`**: This directory typically contains core database files like control files and datafiles. It wouldn't house the `listener.ora` file, which is specific to network configuration.
+    - **`$ORACLE_HOME/DATABASE/ADMIN`**: While some database administration files might reside here, `listener.ora` is more focused on network listener configuration and wouldn't be placed in this directory by default.
+    - **`$ORACLE_HOME/DBS/ADMIN`**: This directory structure might be used in older Oracle versions, but the standard location for `listener.ora` in modern versions is `$ORACLE_HOME/NETWORK/ADMIN`.
+- 8 % Which type of connection uses the Oracle Listener to communicate? % Client with database server,Browser with application server,Two application servers,Client with backup tool
+  - Out of the listed connection types, the one that uses the Oracle Listener to communicate is: **Client with database server**
+    - The Oracle Listener acts as an intermediary between client applications and database servers.
+    - It listens on a specific port (usually 1521) for incoming connection requests from client applications.
+    - Based on the configuration in `listener.ora`, the listener directs the connection request to the appropriate database server using the service name specified in the connection string.
+  - Here's why the other options wouldn't involve the Oracle Listener:
+    - **Browser with application server**: This communication typically occurs within a web application framework and wouldn't necessarily involve the Oracle Listener. The application server might connect directly to the database server using its own configuration.
+    - **Two application servers**: Application servers might communicate with each other using various protocols or APIs depending on the specific architecture. The Oracle Listener wouldn't be directly involved in this communication.
+    - **Client with backup tool**: Backup tools designed for Oracle databases might leverage dedicated libraries or protocols to connect to the database server. The Oracle Listener wouldn't be a mandatory component for such connections.
+- 9 % What does the `SERVER=DEDICATED` element in a `tnsnames.ora` file associate with each client connection? % A committed server process,A shared server process,A pooled server process,A dispatched server process
+  - The correct answer is: **A committed server process**.
+    - `SERVER=[DEDICATED|SHARED]`: parameter in `tnsnames.ora` config. Tells the 'LISTENER' what kind of service it's talking to: directly to database server or dispatcher server(other machine that handles multiple network sessions for one shared process).
+    - In a `tnsnames.ora` file, the `SERVER=DEDICATED` element associates each client connection with a dedicated server process.
+    - When a client connects to an Oracle database using a network service name that has the `SERVER=DEDICATED` element defined, the Oracle database creates a dedicated server process specifically for that client connection. This dedicated server process is responsible for handling all communication and processing requests for that particular client.
+    - The dedicated server process is a separate process that runs on the server and is solely dedicated to serving the requests of a single client connection. It remains associated with the client until the connection is terminated or the server process is terminated.
+    - The `SERVER=DEDICATED` element is typically used in environments where each client connection requires dedicated resources or when the client applications are not designed to work with the shared server architecture. However, it can result in higher resource consumption on the server, as a separate server process is created for each client connection.
+    - In contrast, the `SERVER=SHARED` element is used to enable the shared server architecture, where server processes are shared among multiple client connections, resulting in better resource utilization and scalability, especially in environments with a large number of concurrent connections.
+  - The other options are incorrect:
+    - **A shared server process**: This option is incorrect. A shared server process is associated with the SERVER=SHARED element in the `tnsnames.ora` file, which is used for sharing server processes among multiple client connections.
+    - **A pooled server process**: This option is incorrect. Oracle does not have a concept of "pooled server processes." The closest concept is the shared server architecture, where server processes are shared among multiple client connections.
+    - **A dispatched server process**: This option is incorrect. There is no such term as a "dispatched server process" in Oracle. Server processes can be dedicated or shared, but they are not dispatched.
 - 10 % Which net service naming method requires the client to use a fixed port number? % Local,External,Host,Directory
   - The correct answer is: **Host**
   - Here's why:
@@ -32,6 +100,15 @@
     - **Host Naming**: This method uses the hostname of the database server to establish a connection. Traditionally, it relies on a well-known default port number (usually 1521 for Oracle) for the specific service. The client cannot specify a different port in this scenario.
     - **Directory Naming**: Similar to External Naming, directory naming utilizes a directory service to locate connection details. This service likely includes the port number, but the client might not be limited to a fixed port configuration.
   - Therefore, Host Naming is the only method that enforces a fixed port number on the client side.
+- 11 % A database link named `wgu2021` has been created to link to a remote object in the `test` database. The object is named employee and is owned by `Scott`. % Which reference resolves to the remote object? % `scott.employee@wgu2021`,`scott.employee`,`employee`,`scott.employee@test`
+  - Out of the listed options, the reference that resolves to the remote object in the test database is: **`scott.employee@wgu2021`**
+    - Database links act as bridges between your local database and a remote database.
+    - To access a remote object like scott.employee in the test database, you need to include the database link name (wgu2021) in the reference.
+    - The syntax scott.employee@wgu2021 specifies the schema owner (scott), object name (employee), and the database link (wgu2021) that points to the remote database where the object resides.
+  - Here's why the other options wouldn't work:
+    - **`scott.employee`**: This reference would only work if the employee object existed locally within the current database schema. Since it's a remote object, additional information is needed to specify the database link.
+    - **`employee`**: Similar to option B, this would only refer to a local employee object if it existed. It wouldn't access the remote object through the database link.
+    - **`scott.employee@test`**: While this reference includes the schema owner (scott) and the object name (employee), it lacks the crucial element specifying the database link (wgu2021).
 - 12 % Which information from a remote database is included in the configuration of a database link? % User name,Data files,Tables,Views
   - The information from a remote database included in the configuration of a database link is **User name**.
   - Database links are configured on the local database and specify how to connect to the remote database. The user name is a crucial piece of information required to establish a secure connection and grant access to the remote database.
@@ -51,6 +128,37 @@
   - By adding table data containing these large objects to a bigfile tablespace, you can leverage its features like:
     - Larger file size limits: Bigfile tablespaces support much larger file sizes compared to traditional tablespaces, accommodating massive data objects.
     - Improved performance: Bigfile tablespaces can optimize storage and retrieval of large objects, enhancing query performance.
+- 14 % What is the purpose of the undo tablespace? % To manage space for sort operations,To facilitate the rollback of transactions,To allocate space for SQL cursors,To maintain the Automatic Workload Repository
+  - In Oracle Database, the undo tablespace serves a critical purpose: **To facilitate the rollback of transactions**
+    - The undo tablespace stores temporary information about database changes made during active transactions.
+    - This information allows the database to undo these changes if a transaction needs to be rolled back (e.g., due to errors or user requests).
+    - By keeping track of these changes in the undo tablespace, the database can efficiently revert to a consistent state before the transaction was committed.
+    - The database automatically manages the undo tablespace and purges older undo information based on a configurable retention period.
+    - This ensures the undo tablespace doesn't grow excessively while maintaining sufficient information for potential rollbacks.
+  - Here's why the other options are not the primary function of the undo tablespace:
+    - **To manage space for sort operations**: Temporary tablespaces are typically used for managing space required during sorting operations. Undo tablespaces don't directly handle temporary data for sorting.
+    - **To allocate space for SQL cursors**: SQL cursors might utilize memory or temporary segments within the System Global Area (SGA) for storage. The undo tablespace focuses on transaction rollback information.
+    - **To maintain the Automatic Workload Repository (AWR)**: The Automatic Workload Repository (AWR) stores performance data in dedicated tablespaces or segments. The undo tablespace doesn't hold AWR information.
+- 15 % Which dictionary view is available in the database to view segment advisor results? % `DBA_ADVISOR_TASKS`,`DBA_ADVISOR_TEMPLATES`,`DBA_ADVISOR_OBJECTS`,`DBA_ADVISOR_USAGE`
+  - Out of the listed dictionary views, the one that displays Oracle Segment Advisor results is: **`DBA_ADVISOR_OBJECTS`**
+    - This view holds crucial details about objects analyzed by advisors, including the Segment Advisor. It contains information like object schema, type (table, index), and recommendations generated by the advisor for that specific object.
+    - By querying `DBA_ADVISOR_OBJECTS`, you can retrieve details about segments analyzed by the Segment Advisor.
+    - This information includes:
+      - Schema and object name of the analyzed segment (table or index).
+      - Type of recommendation provided by the advisor (e.g., shrink, rebuild).
+      - Potential space savings estimated by the advisor if the recommendation is applied.
+    - You can join `DBA_ADVISOR_OBJECTS` with other relevant views like DBA_TABLES or DBA_INDEXES to obtain additional details about the analyzed segments.
+  - Here's a breakdown of the views and why they relate to Segment Advisor results:
+    - **`DBA_ADVISOR_TASKS`**: This view provides information about various advisor tasks submitted, including creation time, status, and task name. It wouldn't show specific details about the analyzed segments.
+    - **`DBA_ADVISOR_TEMPLATES`**: This view focuses on advisor templates, which are pre-defined configurations for specific advisor functionalities. It wouldn't contain segment-level results.
+    - **`DBA_ADVISOR_USAGE`**: This view primarily tracks advisor usage statistics, like the number of times specific advisors have been run or the total time spent on advisor tasks. It wouldn't contain segment-specific findings.
+- 16 % A database administrator needs to recover unused space from a tablespace while preventing data loss. % What should the administrator use? % The SHRINK option,The DROP command,The FLASHBACK command,The OFFLINE clause
+  - Out of the listed options, the most suitable method for a database administrator to recover unused space from a tablespace while preventing data loss is: **The SHRINK option**
+    - The `SHRINK` option, often used with the `ALTER TABLE` command, allows a database administrator to reclaim unused space within a tablespace associated with a table.
+  - Here's why the other options wouldn't be ideal for this scenario:
+    - **The DROP command**: Dropping a tablespace entirely would eliminate the data within it, leading to data loss. This wouldn't be appropriate for recovering unused space while preserving data.
+    - **The FLASHBACK command**: While FLASHBACK commands can be used for historical data recovery, they wouldn't directly reclaim unused space within a tablespace.
+    - **The OFFLINE clause**: Taking a tablespace offline makes it unavailable for user access but wouldn't necessarily recover unused space within the tablespace itself.
 - 17 % Which package should an administrator use to configure local extent management for tablespaces? % DBMS_SPACE_ADMIN,DBMS_AUDIT_MGMT,DBMS_TRANSFORM,DBMS_METADATA
   - The correct answer is: **DBMS_SPACE_ADMIN**
   - The DBMS_SPACE_ADMIN package provides procedures for managing locally managed tablespaces in Oracle. This includes configuring local extent management, such as:
@@ -82,6 +190,23 @@
   - **DBA_FLASHBACK_RETENTION_TARGET**: This is a data dictionary view that shows the current retention target for flashback operations. It reflects the combined effects of various factors, including UNDO_RETENTION and automatic undo management settings.
   - **SORT_AREA_RETAINED_SIZE**: This parameter manages the memory allocated for sorting operations within the database. It has no bearing on undo data retention.
   - **UNDO_MANAGEMENT**: This parameter specifies whether undo management is automatic or manual. While it influences undo behavior, it doesn't directly control the retention period.
+- 20 % How is undo tablespace storage allocated? % Segments are assigned dynamically each time a change is made.,Segments are static and are configured by the database administrator.,Each transaction specifies how many segments are required for the transaction.,Each transaction uses segments that are released from prior transactions.
+  - The correct answer is: **Segments are assigned dynamically each time a change is made**.
+    - In Oracle Database, undo tablespace storage is allocated dynamically in segments each time a change is made to data that needs to be undone or rolled back.
+    - When a transaction modifies data (e.g., INSERT, UPDATE, or DELETE), Oracle generates undo records that represent the previous state of the data before the modification. These undo records are stored in the undo tablespace, which is a dedicated tablespace used for storing undo data.
+  - The other options are incorrect:
+    - **Segments are static and are configured by the database administrator**: This option is incorrect. Undo segments are not static or pre-configured by the database administrator. Oracle handles the allocation and management of undo segments dynamically.
+    - **Each transaction specifies how many segments are required for the transaction**: This option is incorrect. Transactions do not specify or request the number of undo segments they require. Oracle automatically assigns undo segments based on the undo data generated by the transaction.
+    - **Each transaction uses segments that are released from prior transactions**: This option is incorrect. Undo segments are not reused across transactions. Each transaction is assigned new undo segments from the available space in the undo tablespace.
+- 21 % Given the following transactions and sessions named Session1 and Session2: % At 8:00, Session1 issues the statement: `UPDATE POLICY SET LOB= '16' WHERE status='bound' AND LOB_CAT='cancel';` % At 8:05, Session1 commits the update transaction. % At 8:05, Session2 issues the statement: `UPDATE POLICY SET LOB= '16' WHERE status='submitted' And LOB_CAT='cancel';` % At 8:15, Session1 issues the statement: `UPDATE POLICY SET LOB= '81' WHERE status='bound' AND LOB_CAT='cancel';` % At 8:30, Session2 issues the statement: `UPDATE POLICY SET LOB= '16' WHERE status='bound' AND LOB_CAT='cancel';` % What happens after Session2 issues the statement at 8:30? % A deadlock occurs, and the database cancels Session2.,The database is updated by the second transaction from Session2.,A deadlock occurs, and the database cancels Session1.,The database is not updated, and both sessions are terminated.
+  - After Session2 issues the statement at 8:30: **A deadlock occurs, and the database cancels Session2.**
+    - Deadlocks occur when two or more sessions are waiting for each other to release resources that they need to proceed. In this case, both Session1 and Session2 are updating the same rows in the POLICY table, which will lead to a deadlock.
+    - When Session1 updates rows based on its condition at 8:00, it likely acquires locks on those specific rows, preventing other sessions from modifying them until the transaction commits.
+    - By 8:30, when Session2 issues its update, those rows are locked by Session1's transaction.
+  - The other options are incorrect:
+    - **The database is updated by the second transaction from Session2.**: no because rows will be locked by Session1.
+    - **A deadlock occurs, and the database cancels Session1.**: no because Session1 has lock on row.
+    - **The database is not updated, and both sessions are terminated.**: no because Session1 already has lock on transaction.
 - 22 % Which condition is automatically resolved by Oracle without human intervention? % Deadlocks,"Snapshot too old" error,Resumable space allocation,Flash recovery area
   - Out of the given options, only **Deadlocks** are automatically resolved by Oracle without human intervention.
   - Here's why the other options are not automatically resolved:
