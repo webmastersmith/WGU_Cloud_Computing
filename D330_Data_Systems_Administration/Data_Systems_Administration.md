@@ -178,7 +178,7 @@
   - `SELECT name, value FROM v$diag_info;` // view log file locations
   - `DIAGNOSTIC_DEST` // change alert log path with this parameter. Default is `ORACLE_HOME/rdbms/log`
   - ![database files](img/database_files.PNG)
-- **Backup Files**
+- **Backup/Restore/Upgrade**
   - backup data files, control files, redo log files, archived redo log files, SP file.
   - e.g. backup taken at 2pm. It takes two hours. The backup is only good for everything until 2pm.
     - archived redo log files: hold the transactions after 2pm till current.
@@ -191,6 +191,27 @@
     - e.g. `EXP table` then `DROP table`, fix table or index size, `IMP table`
     - imp/exp: import/export.
     - impdp/expdp: import/export data pump. newer version.
+  - **Data Guard**: `Rolling` database upgrade. Upgrade primary and standby databases one at a time.
+    - standby database is upgraded while primary remains active. Then the standby becomes the primary.
+  - **Export/Import**: export(copy) data from older database, transform and import into new database.
+    - Oracle's goto tool for migrating any old version Oracle database to newest version.
+    - because it **copies** the data, old database can remain active during upgrade.
+  - **Direct**: bypasses the standard SQL `INSERT` path.
+    - Instead, it formats the data directly into database block structures and writes them efficiently to the datafiles.
+    - This method offers significant performance improvements for large data loads.
+  - **`SQL*Loader`**: utility load external data(flat file, other database, spreadsheets...) into database.
+    - can 'direct' load(bypass `INSERT` statements and write directly to database).
+    - data transformations, parallel loading.
+  - **Recovery Manager(RMAN)**: data migration and backup and recovery from corrupted database.
+    - correct endianness.
+  - **utlu121s.sql**: post-upgrade script included with Oracle Database, specifically designed to provide information about the status of various database components after an upgrade.
+    - shows database version after upgrade.
+  - **Database Upgrade Assistant (DBUA)**: the only **in-place upgrade** of database to newer version.
+    - GUI to help assist with upgrade questions.
+    - can use `-silent` mode with a predefined configuration file to upgrade without user intervention.
+  - **Golden Gate**: to replicate, filter, and transform data from one database to another database.
+    - while database stays active.
+    - can also get data form flat files, spreadsheets..., similar functionality of `SQL*Loader`.
   - ![backup](img/backup.PNG)
 - **Compression**
   - basic compression:
