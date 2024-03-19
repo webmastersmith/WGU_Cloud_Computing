@@ -100,7 +100,7 @@
     - **Host Naming**: This method uses the hostname of the database server to establish a connection. Traditionally, it relies on a well-known default port number (usually 1521 for Oracle) for the specific service. The client cannot specify a different port in this scenario.
     - **Directory Naming**: Similar to External Naming, directory naming utilizes a directory service to locate connection details. This service likely includes the port number, but the client might not be limited to a fixed port configuration.
   - Therefore, Host Naming is the only method that enforces a fixed port number on the client side.
-- 11 % A database link named `wgu2021` has been created to link to a remote object in the `test` database. The object is named employee and is owned by `Scott`. % Which reference resolves to the remote object? % `scott.employee@wgu2021`,`scott.employee`,`employee`,`scott.employee@test`
+- 11 % A database link named `wgu2021` has been created to link to a remote object in the `test` database. The object is named `employee` and is owned by `Scott`. % Which reference resolves to the remote object? % `scott.employee@wgu2021`,`scott.employee`,`employee`,`scott.employee@test`
   - Out of the listed options, the reference that resolves to the remote object in the test database is: **`scott.employee@wgu2021`**
     - Database links act as bridges between your local database and a remote database.
     - To access a remote object like scott.employee in the test database, you need to include the database link name (wgu2021) in the reference.
@@ -111,23 +111,24 @@
     - **`scott.employee@test`**: While this reference includes the schema owner (scott) and the object name (employee), it lacks the crucial element specifying the database link (wgu2021).
 - 12 % Which information from a remote database is included in the configuration of a database link? % User name,Data files,Tables,Views
   - The information from a remote database included in the configuration of a database link is **User name**.
-  - Database links are configured on the local database and specify how to connect to the remote database. The user name is a crucial piece of information required to establish a secure connection and grant access to the remote database.
+    - Database links are configured on the local database and specify how to connect to the remote database. The user name is a crucial piece of information required to establish a secure connection and grant access to the remote database.
   - Here's why the other options are not included:
-  - **Data files**: The location of data files is specific to the remote database and not relevant to how the local database connects to it.
-  - **Tables & Views**: Database links provide a way to access tables and views on the remote database, but their definitions and structures are not stored in the local database link configuration.
+    - **Data files**: The location of data files is specific to the remote database and not relevant to how the local database connects to it.
+    - **Tables & Views**: Database links provide a way to access tables and views on the remote database, but their definitions and structures are not stored in the local database link configuration.
 - 13 % Which object can be added to an existing bigfile tablespace? % datafiletemp table,table data,tablespacedictionary table,undo data
   - The correct answer is: **table data**
-  - Bigfile tablespaces are designed to store large objects (LOBs) efficiently. Here's why the other options are not suitable for bigfile tablespaces:
-  - **datafiletemp table**: Temporary tables are typically used for short-lived data and are not ideal candidates for bigfile tablespaces.
-  - **tablespacedictionary table**: Dictionary-managed tablespaces are a different type of tablespace and not compatible with bigfile tablespaces.
-  - **undo data**: Undo data is used for rollback purposes and has its own dedicated tablespaces, separate from user data.
-  - Bigfile tablespaces excel at storing large data objects like:
-    - LOBs (Binary Large OBjects) - Can hold multimedia data (images, audio, video) or large text documents.
-    - NESTED TABLES - Nested tables allow storing hierarchical data within a single table.
-    - VARRAYs - Variable-size arrays can hold collections of elements within a table.
-  - By adding table data containing these large objects to a bigfile tablespace, you can leverage its features like:
-    - Larger file size limits: Bigfile tablespaces support much larger file sizes compared to traditional tablespaces, accommodating massive data objects.
-    - Improved performance: Bigfile tablespaces can optimize storage and retrieval of large objects, enhancing query performance.
+    - Bigfile tablespaces are designed to store large objects (LOBs) efficiently.
+    - Bigfile tablespaces excel at storing large data objects like:
+      - LOBs (Binary Large OBjects) - Can hold multimedia data (images, audio, video) or large text documents.
+      - NESTED TABLES - Nested tables allow storing hierarchical data within a single table.
+      - VARRAYs - Variable-size arrays can hold collections of elements within a table.
+    - By adding table data containing these large objects to a bigfile tablespace, you can leverage its features like:
+      - Larger file size limits: Bigfile tablespaces support much larger file sizes compared to traditional tablespaces, accommodating massive data objects.
+      - Improved performance: Bigfile tablespaces can optimize storage and retrieval of large objects, enhancing query performance.
+  - Here's why the other options are not suitable for bigfile tablespaces:
+    - **datafiletemp table**: Temporary tables are typically used for short-lived data and are not ideal candidates for bigfile tablespaces.
+    - **tablespacedictionary table**: Dictionary-managed tablespaces are a different type of tablespace and not compatible with bigfile tablespaces.
+    - **undo data**: Undo data is used for rollback purposes and has its own dedicated tablespaces, separate from user data.
 - 14 % What is the purpose of the undo tablespace? % To manage space for sort operations,To facilitate the rollback of transactions,To allocate space for SQL cursors,To maintain the Automatic Workload Repository
   - In Oracle Database, the undo tablespace serves a critical purpose: **To facilitate the rollback of transactions**
     - The undo tablespace stores temporary information about database changes made during active transactions.
@@ -136,8 +137,9 @@
     - The database automatically manages the undo tablespace and purges older undo information based on a configurable retention period.
     - This ensures the undo tablespace doesn't grow excessively while maintaining sufficient information for potential rollbacks.
   - Here's why the other options are not the primary function of the undo tablespace:
-    - **To manage space for sort operations**: Temporary tablespaces are typically used for managing space required during sorting operations. Undo tablespaces don't directly handle temporary data for sorting.
+    - **To manage space for sort operations**: Temporary tablespaces are typically used for managing space required during sorting operations(PGA Program Global Area). Undo tablespaces don't directly handle temporary data for sorting.
     - **To allocate space for SQL cursors**: SQL cursors might utilize memory or temporary segments within the System Global Area (SGA) for storage. The undo tablespace focuses on transaction rollback information.
+      - SQL Cursors: is a pointer to storage area rows, where returned sql statement query is stored. This allows you to reference the cursor(rows) by name in a program.
     - **To maintain the Automatic Workload Repository (AWR)**: The Automatic Workload Repository (AWR) stores performance data in dedicated tablespaces or segments. The undo tablespace doesn't hold AWR information.
 - 15 % Which dictionary view is available in the database to view segment advisor results? % `DBA_ADVISOR_TASKS`,`DBA_ADVISOR_TEMPLATES`,`DBA_ADVISOR_OBJECTS`,`DBA_ADVISOR_USAGE`
   - Out of the listed dictionary views, the one that displays Oracle Segment Advisor results is: **`DBA_ADVISOR_OBJECTS`**
@@ -173,12 +175,12 @@
 - 18 % What should an administrator use to identify tables that are fragmented? % Segment Advisor,Automatic Database Diagnostic Monitor,DBMS_SPACE,DBMS_REPAIR
   - The most suitable option for identifying fragmented tables in Oracle is: **Segment Advisor**.
   - Here's why:
-  - Segment Advisor: This built-in Oracle utility analyzes tables and indexes to identify potential fragmentation issues. It provides recommendations for reorganizing fragmented objects to improve performance.
-  - Segment Advisor offers valuable features for analyzing fragmentation:
-    - Identifying Fragmentation Types: It can detect different types of fragmentation, including chained and scattered extents, which can hinder query performance.
-    - Estimating Reorganization Benefit: The advisor can estimate the potential performance gains achievable by reorganizing fragmented tables.
-    - Recommendation Generation: It suggests appropriate reorganization methods, such as rebuild or truncate/reinsert, to optimize table layout.
-  - While other tools have their roles in database management, Segment Advisor stands out as the primary choice for pinpointing fragmented tables in Oracle.
+    - Segment Advisor: This built-in Oracle utility analyzes tables and indexes to identify potential fragmentation issues. It provides recommendations for reorganizing fragmented objects to improve performance.
+    - Segment Advisor offers valuable features for analyzing fragmentation:
+      - Identifying Fragmentation Types: It can detect different types of fragmentation, including chained and scattered extents, which can hinder query performance.
+      - Estimating Reorganization Benefit: The advisor can estimate the potential performance gains achievable by reorganizing fragmented tables.
+      - Recommendation Generation: It suggests appropriate reorganization methods, such as rebuild or truncate/reinsert, to optimize table layout.
+    - While other tools have their roles in database management, Segment Advisor stands out as the primary choice for pinpointing fragmented tables in Oracle.
   - The other options listed are the best choice because:
     - **Automatic Database Diagnostic Monitor (ADDM)**: While ADDM can monitor overall database health and identify performance bottlenecks, it doesn't specifically target table fragmentation.
     - **DBMS_SPACE**: This package offers functionalities related to managing tablespace storage, but it doesn't directly assess table fragmentation.
@@ -209,19 +211,19 @@
     - **The database is not updated, and both sessions are terminated.**: no because Session1 already has lock on transaction.
 - 22 % Which condition is automatically resolved by Oracle without human intervention? % Deadlocks,"Snapshot too old" error,Resumable space allocation,Flash recovery area
   - Out of the given options, only **Deadlocks** are automatically resolved by Oracle without human intervention.
+    - Deadlocks are a specific scenario where two or more transactions are waiting for resources held by each other, creating a stalemate. Oracle can detect deadlocks and automatically terminate one of the involved transactions to resolve the situation and allow the others to proceed.
   - Here's why the other options are not automatically resolved:
     - **"Snapshot too old" error**: This error occurs when a flashback operation attempts to access data from a point in time that is beyond the retention period defined by the database. Human intervention is required to address this by potentially adjusting retention settings or using alternative recovery methods.
     - **Resumable space allocation**: This is a feature that allows Oracle to automatically resume space allocation for objects after encountering certain errors. However, it might not always be successful, and human intervention might be needed to troubleshoot the underlying cause of the allocation failure.
     - **Flash recovery area (FRA)**: The FRA is a designated storage area for backups and archived redo logs. While it plays a crucial role in recovery, it doesn't automatically resolve issues. A human administrator would need to utilize the FRA for recovery purposes.
-  - Deadlocks, on the other hand, are a specific scenario where two or more transactions are waiting for resources held by each other, creating a stalemate. Oracle can detect deadlocks and automatically terminate one of the involved transactions to resolve the situation and allow the others to proceed.
 - 23 % Which feature allows a failed transaction to be suspended until the problem that caused the failure is resolved? % Resumable space allocation,Segment shrinking,Instance recovery,Oracle managed files
   - Out of the listed options, **Resumable space allocation** is the closest feature that allows a partially failed transaction to be suspended until the issue is resolved.
+    - It's important to note that resumable space allocation doesn't guarantee complete suspension of a failed transaction. It might allow resuming the space allocation process if interrupted due to storage-related issues, but it wouldn't necessarily handle other causes of transaction failure.
+    - In Oracle, transactions are ACID compliant, meaning they should be Atomic (all or nothing), Consistent, Isolated, and Durable. Once a transaction fails due to any reason, it usually rolls back entirely, and Oracle doesn't have a built-in mechanism to suspend them midway.
   - Here's why the other options are not ideal fits:
     - **Segment shrinking**: This feature deals with reclaiming unused space within a segment after data deletion. It doesn't directly address suspending failed transactions.
     - **Instance recovery**: This refers to recovering an entire Oracle instance from an outage or failure, not specific transactions.
     - **Oracle managed files**: This feature automates the management of datafiles, but it doesn't have functionalities to suspend failed transactions.
-  - It's important to note that resumable space allocation doesn't guarantee complete suspension of a failed transaction. It might allow resuming the space allocation process if interrupted due to storage-related issues, but it wouldn't necessarily handle other causes of transaction failure.
-  - In Oracle, transactions are ACID compliant, meaning they should be Atomic (all or nothing), Consistent, Isolated, and Durable. Once a transaction fails due to any reason, it usually rolls back entirely, and Oracle doesn't have a built-in mechanism to suspend them midway.
 - 24 % Which view has space information? % DBA_OBJECTS,V$TABLESPACE,V$SQLTEXT,DBA_DATA_FILES
   - The correct view in Oracle that contains information about database space is: **V$TABLESPACE**
   - Here's why:
@@ -243,24 +245,24 @@
     - **Flushing the log buffer**: Flushing the log buffer primarily ensures that recently committed data is written to disk. It doesn't influence the availability of undo information needed for a rollback from a previous day.
     - **Restarting the database**: While restarting the database might resolve temporary glitches, it's unlikely to address a scenario where undo information from a previous day is unavailable for rollback.
 - 26 % What is the impact of setting the value of the undo retention initialization parameter to 900 in an undo tablespace that uses a fixed size? % Data for committed transactions will be kept for the specified period of time.,Data for committed transactions will be overwritten if an active transaction needs the space.,Up to 900 MB of data will be protected from being overwritten.,Up to 900 transactions will be protected from being overwritten.
+  - The most accurate statement is: **Data for committed transactions will be overwritten if an active transaction needs the space**.
   - In an undo tablespace with a fixed size, setting the UNDO_RETENTION parameter to 900 has limited impact. Here's why:
-  - Fixed Size Tablespace: When using a fixed-size undo tablespace, Oracle prioritizes utilizing the entire allocated space for undo information.
-  - UNDO_RETENTION Suggestion: The UNDO_RETENTION parameter serves as a recommendation in this scenario. Oracle might not strictly adhere to this value and may overwrite undo data even before 900 seconds if space is needed for new transactions.
-  - So, the most accurate statement is: **Data for committed transactions will be overwritten if an active transaction needs the space**.
-  - In essence, the UNDO_RETENTION parameter has a weaker influence on undo retention in fixed-size tablespaces. Oracle's primary goal is to maximize undo space utilization, and it might overwrite older undo data even before the specified retention period if space demands arise.
+    - Fixed Size Tablespace: When using a fixed-size undo tablespace, Oracle prioritizes utilizing the entire allocated space for undo information.
+    - UNDO_RETENTION Suggestion: The UNDO_RETENTION parameter serves as a recommendation in this scenario. Oracle might not strictly adhere to this value and may overwrite undo data even before 900 seconds if space is needed for new transactions.
+    - In essence, the UNDO_RETENTION parameter has a weaker influence on undo retention in fixed-size tablespaces. Oracle's primary goal is to maximize undo space utilization, and it might overwrite older undo data even before the specified retention period if space demands arise.
   - Here's a breakdown of the other options and why they're not quite correct:
     - **Data for committed transactions will be kept for the specified period of time**: This might not always be true in a fixed-size undo tablespace due to space constraints.
     - **Up to 900 MB of data will be protected from being overwritten**: The parameter value (900) doesn't directly translate to a specific amount of data (MB) being protected.
     - **Up to 900 transactions will be protected from being overwritten**: The parameter doesn't guarantee protection for a specific number of transactions. It relates to the time duration for which undo information should be retained.
-- 27 % Which parameter disables conventional path loading when using SQL\*Loader? % PARALLEL,SILENT,DIRECT,RESUMABLE
-  - The correct parameter to disable conventional path loading when using SQL\*Loader is: **DIRECT**
+- 27 % Which parameter disables conventional path loading when using `SQL*Loader`? % `PARALLEL`,`SILENT`,`DIRECT`,`RESUMABLE`
+  - The correct parameter to disable conventional path loading when using `SQL*Loader` is: **`DIRECT`**
   - Here's why:
-    - Conventional Path Loading: This is the default method in SQL\*Loader. It uses SQL INSERT statements to load data into the database tables.
-    - Direct Path Loading: When the DIRECT parameter is specified, SQL\*Loader bypasses the standard SQL INSERT path. Instead, it formats the data directly into database block structures and writes them efficiently to the datafiles. This method offers significant performance improvements for large data loads.
+    - Conventional Path Loading: This is the default method in `SQL*Loader`. It uses SQL `INSERT` statements to load data into the database tables.
+    - Direct Path Loading: When the `DIRECT` parameter is specified, `SQL*Loader` bypasses the standard SQL `INSERT` path. Instead, it formats the data directly into database block structures and writes them efficiently to the datafiles. This method offers significant performance improvements for large data loads.
   - The other options have different purposes:
-    - **PARALLEL**: This parameter enables parallel processing for the load job, potentially speeding it up by utilizing multiple CPU cores. However, it doesn't affect the data loading path (conventional or direct).
-    - **SILENT**: This parameter suppresses informational messages typically displayed during the load process. It doesn't influence the loading method.
-    - **RESUMABLE**: This parameter allows resuming a partially completed load job in case of interruptions. It also doesn't affect the chosen loading path.
+    - **`PARALLEL`**: This parameter enables parallel processing for the load job, potentially speeding it up by utilizing multiple CPU cores. However, it doesn't affect the data loading path (conventional or direct).
+    - **`SILENT`**: This parameter suppresses informational messages typically displayed during the load process. It doesn't influence the loading method.
+    - **`RESUMABLE`**: This parameter allows resuming a partially completed load job in case of interruptions. It also doesn't affect the chosen loading path.
 - 28 % What allows users to capture data from non-Oracle sources into an Oracle database? % `SQL*Loader`,Recovery Manager,Transportable Tablespaces,Import Transformation
   - The correct answer is **`SQL*Loader`**.
   - `SQL*Loader` is a utility provided by Oracle that allows users to load data from external sources, such as flat files, into Oracle databases. It is designed to efficiently load large volumes of data from various input data sources, including non-Oracle databases, spreadsheets, and other file formats.
@@ -342,12 +344,12 @@
     - **`SQL*Plus`**: This is a command-line interface for interacting with the Oracle database. While it can be used to execute SQL statements and scripts related to performance tuning, it's not an automated tool.
 - 34 % When does a DBA run an Automatic Workload Repository (AWR) report to find the root cause of an issue? % When a job is running slow in the database,When the database fails to recover,When the database fails to start up,When a space issue occurs in the database
   - The most likely scenario for a DBA to run an Automatic Workload Repository (AWR) report to find the root cause of an issue is: **When a job is running slow in the database**
-  - AWR Reports and Slow Jobs:
-    - AWR reports are a valuable resource for investigating slow-running jobs or queries in the Oracle database. They provide a comprehensive view of database activity during a specific time window, including details like:
-      - SQL statement execution statistics: This includes metrics like average execution time, parse count, and wait events encountered.
-      - Resource utilization: Shows how CPU, memory, and I/O resources were used during the captured workload.
-      - Session information: Provides details about active sessions and their workloads.
-    - By analyzing these metrics within the AWR report, a DBA can pinpoint bottlenecks or identify inefficient queries contributing to slow job performance. This information can then be used to optimize queries, improve database configuration, or troubleshoot specific issues causing performance degradation.
+    - AWR Reports and Slow Jobs:
+      - AWR reports are a valuable resource for investigating slow-running jobs or queries in the Oracle database. They provide a comprehensive view of database activity during a specific time window, including details like:
+        - SQL statement execution statistics: This includes metrics like average execution time, parse count, and wait events encountered.
+        - Resource utilization: Shows how CPU, memory, and I/O resources were used during the captured workload.
+        - Session information: Provides details about active sessions and their workloads.
+      - By analyzing these metrics within the AWR report, a DBA can pinpoint bottlenecks or identify inefficient queries contributing to slow job performance. This information can then be used to optimize queries, improve database configuration, or troubleshoot specific issues causing performance degradation.
   - Here's why the other options are less likely use cases for AWR reports:
     - **When the database fails to recover**: AWR reports focus on analyzing workload and performance metrics. While they might offer some insights into overall database activity leading up to a failure, they wouldn't be the primary tool for diagnosing a complete recovery failure.
     - **When the database fails to start up**: Similar to recovery failures, AWR reports wouldn't be the first line of defense for troubleshooting a startup issue. Other tools and logs might provide more direct clues for resolving startup problems.
@@ -384,17 +386,17 @@ CREATE USER os_user IDENTIFIED EXTERNALLY;
 
 - 38 % Which dictionary table stores the credentials for a password-authenticated account? % `USER$`,`UET$`,`FET$`,`AUD$`
   - The correct answer is **`USER$`**
-  - The `USER$` dictionary table in the Oracle database stores the credentials, including passwords, for password-authenticated user accounts.
-  - The `USER$` table is a system table that contains one row for each user account in the database. It stores essential information about each user, such as the following:
-    1. Username
-    2. Password (in an encrypted form)
-    3. Account status (open, locked, expired)
-    4. Default tablespace
-    5. Temporary tablespace
-    6. Profile information
-    7. Other user-related attributes
-  - When a user authenticates to the database using a password, the database compares the provided password with the encrypted password stored in the `USER$` table for that user account. If the passwords match, the user is granted access to the database.
-  - It's important to note that the `USER$` table is a system table and should not be directly modified by users or administrators. Any changes to user accounts, including password management, should be performed using the appropriate SQL statements or database utilities provided by Oracle.
+    - The `USER$` dictionary table in the Oracle database stores the credentials, including passwords, for password-authenticated user accounts.
+    - The `USER$` table is a system table that contains one row for each user account in the database. It stores essential information about each user, such as the following:
+      1. Username
+      2. Password (in an encrypted form)
+      3. Account status (open, locked, expired)
+      4. Default tablespace
+      5. Temporary tablespace
+      6. Profile information
+      7. Other user-related attributes
+    - When a user authenticates to the database using a password, the database compares the provided password with the encrypted password stored in the `USER$` table for that user account. If the passwords match, the user is granted access to the database.
+    - It's important to note that the `USER$` table is a system table and should not be directly modified by users or administrators. Any changes to user accounts, including password management, should be performed using the appropriate SQL statements or database utilities provided by Oracle.
   - The other options you provided are related to different dictionary tables in Oracle:
     - **`UET$`** (User Event Trigger Table): This table stores information about user-defined event triggers.
     - **`FET$`** (File Event Trigger Table): This table stores information about event triggers related to file operations.
@@ -439,16 +441,16 @@ CREATE USER os_user IDENTIFIED EXTERNALLY;
     - **ALTER**: This privilege allows modifying the structure of a table, such as adding or removing columns, but it doesn't directly grant permission to update existing data within the table.
     - **DEBUG**: This privilege is typically used for debugging purposes and wouldn't provide general update access to table data.
     - **INSERT**: This privilege allows inserting new rows of data into a table. While it's essential for populating the table with initial data, it doesn't grant permission to modify existing rows.
-- 44 % A user creates a role granting select and update access to table1, and assigns the role to a coworker. The next day the user revokes select access from the role. % Which actions will the coworker still be able to perform on table1? % Modify,Display,Add,Delete
-  - The coworker will still be able to **Modify** data in table1, even after the select access is revoked from the role.
+- 44 % A user creates a role granting `SELECT` and `UPDATE` access to table1, and assigns the role to a coworker. The next day the user revokes `SELECT` access from the role. % Which actions will the coworker still be able to perform on table1? % Modify,Display,Add,Delete
+  - The coworker will still be able to **Modify** data in table1, even after the `SELECT` access is revoked from the role.
   - Here's why:
-    - Roles and Privileges: The user assigned a role that grants both SELECT and UPDATE access to table1. Roles act as a container for privileges, simplifying privilege management.
-    - Revoking SELECT: When the user revokes SELECT access from the role, it only removes the ability to explicitly query and display data from table1 through the role.
-    - UPDATE Permission Remains: Since the role still grants UPDATE access, the coworker will retain the ability to modify existing data within table1.
+    - Roles and Privileges: The user assigned a role that grants both `SELECT` and `UPDATE` access to table1. Roles act as a container for privileges, simplifying privilege management.
+    - Revoking `SELECT`: When the user revokes `SELECT` access from the role, it only removes the ability to explicitly query and display data from table1 through the role.
+    - `UPDATE` Permission Remains: Since the role still grants `UPDATE` access, the coworker will retain the ability to modify existing data within table1.
   - Actions Not Possible:
-    - **Display**: Without SELECT access, the coworker cannot directly query or view data from table1 using the role.
-    - **Add**: Adding new rows (INSERT) typically requires a separate INSERT privilege, which wasn't mentioned in the scenario.
-    - **Delete**: Deleting rows (DELETE) typically requires a separate DELETE privilege, which wasn't mentioned in the scenario.
+    - **Display**: Without `SELECT` access, the coworker cannot directly query or view data from table1 using the role.
+    - **Add**: Adding new rows (`INSERT`) typically requires a separate `INSERT` privilege, which wasn't mentioned in the scenario.
+    - **Delete**: Deleting rows (`DELETE`) typically requires a separate `DELETE` privilege, which wasn't mentioned in the scenario.
 - 45 % A user needs to view the table privileges of other users. % Which role should be granted to the user? % SELECT_CATALOG_ROLE,CONNECT,EXECUTE_CATALOG_ROLE,RESOURCE
   - The most suitable role to grant the user for viewing table privileges of other users in Oracle is: **SELECT_CATALOG_ROLE**
   - Here's why:
@@ -472,11 +474,11 @@ CREATE USER os_user IDENTIFIED EXTERNALLY;
     - **DBSNMP**: This user (if it exists) is likely a custom user or role for specific purposes. Granting privileges to DBSNMP wouldn't automatically grant them to all users.
 - 47 % An administrator wants to limit CPU time for accounts. % Which object should the administrator alter? % Profile,Role,Tablespace,Schema
   - The correct object an administrator should alter to limit CPU time for accounts in Oracle is: **Profile**
-  - Profiles define default resource limits and password security settings for user accounts. They offer a way to centrally manage these settings for multiple users.
-  - One of the key resources controlled by profiles is CPU time. An administrator can use the ALTER PROFILE statement to specify CPU time limitations like:
-    - CPU_PER_SESSION: This parameter limits the total CPU time (in hundredths of seconds) a user session can consume.
-    - IDLE_TIME_LIMIT: This parameter specifies the maximum amount of idle time a session can have before being disconnected. This indirectly impacts CPU usage as inactive sessions don't consume CPU resources.
-  - By creating appropriate profiles and assigning them to users, the administrator can enforce CPU time restrictions within the Oracle database.
+    - Profiles define default resource limits and password security settings for user accounts. They offer a way to centrally manage these settings for multiple users.
+    - One of the key resources controlled by profiles is CPU time. An administrator can use the ALTER PROFILE statement to specify CPU time limitations like:
+      - CPU_PER_SESSION: This parameter limits the total CPU time (in hundredths of seconds) a user session can consume.
+      - IDLE_TIME_LIMIT: This parameter specifies the maximum amount of idle time a session can have before being disconnected. This indirectly impacts CPU usage as inactive sessions don't consume CPU resources.
+    - By creating appropriate profiles and assigning them to users, the administrator can enforce CPU time restrictions within the Oracle database.
   - Here's why the other options are not suitable for limiting CPU time:
     - **Role**: Roles are collections of privileges that can be assigned to users. While a role might include privileges related to resource usage, it's not the primary mechanism for limiting CPU time at the user level.
     - **Tablespace**: Tablespaces are storage areas for database objects like tables and indexes. They don't directly control CPU usage for user accounts.
@@ -526,18 +528,18 @@ CREATE USER new_user IDENTIFIED BY 'initial_password' PASSWORD EXPIRE;
     - **Alert Log File**: The alert log file contains informational messages and errors related to database operations. While valuable for monitoring and troubleshooting, it's not mandatory for starting the instance.
 - 52 % Which format minimizes the space required for a full database backup? % Compressed,Image,Backup set,Binary file
   - The format that minimizes the space required for a full database backup in Oracle is: **Compressed**
-  - Oracle Data Pump: This popular utility allows for full and partial database backups with built-in compression capabilities. Users can choose from various compression algorithms to achieve optimal space savings.
+    - Oracle Data Pump: This popular utility allows for full and partial database backups with built-in compression capabilities. Users can choose from various compression algorithms to achieve optimal space savings.
   - Here's why the other options have a larger storage footprint:
     - **Image Copies**: Image copies are exact replicas of datafiles or other database objects. While convenient for some recovery scenarios, they don't offer any compression and can be quite large.
     - **Backup Set**: A backup set is a logical container that groups related backup pieces (individual files) created during a backup operation. The backup set itself doesn't perform any compression, and the size depends on the uncompressed data within the backup pieces.
     - **Binary File**: Data in Oracle databases is typically stored in binary format for efficiency. However, this format doesn't involve compression, which could significantly reduce the storage requirements.
 - 53 % What can be queried from a database while it is in the NOMOUNT state? % Instance parameters,Control file records,Checkpoint information,Incarnation information
   - The correct answer is **Instance parameters**.
-  - When an Oracle database is in the NOMOUNT state, the only information that can be queried or accessed is the instance parameters.
-  - The NOMOUNT state is the first state of the Oracle instance startup process, and it occurs before the database control files are accessed or the database is mounted. In this state, the instance memory structures are initialized, and the instance parameters are read from the parameter file (traditionally named init.ora or spfile.ora).
-  - Since the control files and data files are not yet accessed in the NOMOUNT state, no database-specific information, such as control file records, checkpoint information, or incarnation information, can be queried or retrieved. The only available information at this stage is the set of instance parameters that govern the behavior of the Oracle instance.
-  - Being able to query instance parameters in the NOMOUNT state is useful for troubleshooting purposes or for verifying the configured parameter values before proceeding with the database startup process. However, to access any database-specific information, the database must be mounted (MOUNT state) or fully opened (OPEN state).
-  - The other options you provided are related to information that can only be accessed when the database is in a higher state, such as MOUNT or OPEN:
+    - When an Oracle database is in the NOMOUNT state, the only information that can be queried or accessed is the instance parameters.
+    - The NOMOUNT state is the first state of the Oracle instance startup process, and it occurs before the database control files are accessed or the database is mounted. In this state, the instance memory structures are initialized, and the instance parameters are read from the parameter file (traditionally named init.ora or spfile.ora).
+    - Since the control files and data files are not yet accessed in the NOMOUNT state, no database-specific information, such as control file records, checkpoint information, or incarnation information, can be queried or retrieved. The only available information at this stage is the set of instance parameters that govern the behavior of the Oracle instance.
+    - Being able to query instance parameters in the NOMOUNT state is useful for troubleshooting purposes or for verifying the configured parameter values before proceeding with the database startup process. However, to access any database-specific information, the database must be mounted (MOUNT state) or fully opened (OPEN state).
+  - The other options provided are related to information that can only be accessed when the database is in a higher state, such as MOUNT or OPEN:
     - **Control file records**: Control file records can only be accessed after the database is mounted, as the control files are read and processed during the MOUNT state.
     - **Checkpoint information**: Checkpoint information is stored in the control files and can only be accessed after the database is mounted and the control files are read.
     - **Incarnation information**: Incarnation information is related to the database's lifetime and is stored in the control files, which are not accessible until the database is mounted.
@@ -545,7 +547,7 @@ CREATE USER new_user IDENTIFIED BY 'initial_password' PASSWORD EXPIRE;
   - The correct answer is: **Data Files**.
     - Data files are not directly recovered, but rebuilt from the 'redo log files' during instance recovery.
   - The other options you provided are incorrect:
-    - **Control file**: Control files are not recovered during instance recovery. Control files store metadata about the database, such as the names and locations of data files, online redo log files, and other control information. If a control file is lost or corrupted, it can be recreated using the CREATE CONTROLFILE statement.
+    - **Control file**: Control files are not recovered during instance recovery. Control files store metadata about the database, such as the names and locations of data files, online redo log files, and other control information. If a control file is lost or corrupted, it can be recreated using the `CREATE CONTROLFILE` statement.
     - **Redo log files**: Redo log files themselves are not recovered during instance recovery. These files are used to reconstruct the data files.
     - **Trace files**: Trace files contain information about database operations for debugging and troubleshooting purposes.
 - 55 % Which parameter affects the mean time to recovery target for a database instance? % LOG_CHECKPOINTS_TO_ALERT,LOG_CHECKPOINT_INTERVAL,LOG_ARCHIVE_TRACE,LOG_FILE_NAME_CONVERT
@@ -558,12 +560,13 @@ CREATE USER new_user IDENTIFIED BY 'initial_password' PASSWORD EXPIRE;
     - **LOG_FILE_NAME_CONVERT**: This parameter defines a conversion rule for redo log filenames. While it can be relevant for managing redo logs, it doesn't influence the checkpointing interval or MTTR target.
 - 56 % Which process duplicates modified blocks from a buffer cache to files on disk? % Apply Server (ASnn),Checkpoint (CKPT),Database Writer (DBWn),Log Writer (LGWR)
   - The process that duplicates modified blocks from the buffer cache to files on disk in Oracle is: **Database Writer (DBWn)**
-  - The database writer process (DBWn) is a background process responsible for writing modified data blocks from the database buffer cache to the corresponding datafiles on disk.
-  - The buffer cache acts as a temporary storage area for frequently accessed data blocks. When a transaction modifies a data block in memory, the changes are reflected in the buffer cache.
-  - DBWn periodically scans the buffer cache and identifies dirty blocks (modified blocks). It then writes these dirty blocks back to their respective datafiles on disk, ensuring the physical data on disk reflects the latest changes.
+    - The database writer process (DBWn) is a background process responsible for writing modified data blocks from the database buffer cache to the corresponding datafiles on disk.
+    - The buffer cache acts as a temporary storage area for frequently accessed data blocks. When a transaction modifies a data block in memory, the changes are reflected in the buffer cache.
+    - DBWn periodically scans the buffer cache and identifies dirty blocks (modified blocks). It then writes these dirty blocks back to their respective datafiles on disk, ensuring the physical data on disk reflects the latest changes.
   - Here's why the other options are not responsible for writing modified blocks to datafiles:
     - **Apply Server (ASnn)**: The Apply Server processes (ASnn) are part of Oracle's Data Guard functionality. They are responsible for applying redo information from standby databases, not writing directly to datafiles on the primary database.
-    - **Checkpoint (CKPT)**: The checkpoint process initiates checkpoints at specific intervals or upon certain events. It doesn't directly write modified blocks to disk. Instead, it coordinates with the database writer (DBWn) to ensure a consistent state of the datafiles.
+    - **Checkpoint (CKPT)**: The checkpoint process initiates checkpoints at specific intervals or upon certain events. CKPT occurs when all dirty buffers(redo cache) are written to data files.
+      - It doesn't directly write modified blocks to disk. Instead, it coordinates with the database writer (DBWn) to ensure a consistent state of the datafiles.
     - **Log Writer (LGWR)**: The log writer process (LGWR) is responsible for writing redo information to online redo log files. Redo logs track changes made to the database, and LGWR ensures this information is flushed to disk regularly. However, it doesn't directly write the modified data blocks themselves to the datafiles.
 - 57 % Which file does the Database Upgrade Assistant (DBUA) obtain its list of databases from? % tnsnames.ora,glogin.sql,host_name.olr,sqlnet.ora
   - The Database Upgrade Assistant (DBUA) is a tool provided by Oracle that assists in upgrading databases from one release to another. When the DBUA is launched, it obtains the list of databases available for upgrade from the **oratab file**.
@@ -606,6 +609,8 @@ CREATE USER new_user IDENTIFIED BY 'initial_password' PASSWORD EXPIRE;
     - RMAN provides commands like `CONVERT` or `DUPLICATE` with the `endian_format` clause to specify the source and target endianness, enabling conversion during the migration process.
   - Importance of Endianness Conversion:
     - If data files are not converted to the appropriate endianness for the target platform, the database might not be able to read or interpret the data correctly, potentially leading to errors and inconsistencies.
+    - Endianness: <https://blogs.oracle.com/solaris/post/endianness>
+      - <https://geraldonit.com/2017/09/04/big-and-little-endian-operating-systems/>
   - Here's why the other options wouldn't address endianness conversion:
     - **Compress by using a compression tool**: Compressing data files can be beneficial for reducing storage requirements during migration, but it doesn't address the issue of endianness. The data within the compressed files would still need conversion.
     - **Include in a transportable tablespace**: Transportable tablespaces are a useful feature for migrating specific tablespaces between compatible Oracle versions. However, they don't inherently handle endianness conversion. The data within the tablespace would still require conversion for the new platform.
