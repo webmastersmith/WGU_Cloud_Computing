@@ -51,3 +51,19 @@ DESCRIBE table_name;
 - <https://www.reddit.com/r/WGU_CompSci/comments/199tofm/d427_data_management_applications_passed_in_2_days/>
   - [zybook 7,8 answer key](https://quizlet.com/849950034/wgu-d427-data-management-applications-zybooks-labs-7-and-8-flash-cards/?i=4ztji0&x=1jqt)
   - KNOW: **Cardinality, DDL, DML, JOINS (OUTER/INNER), FOREIGN KEYS, PRIMARY KEYS, GROUP BY, ORDER BY, INDEXES, VIEWS**: for both the syntax and general multiple choice questions.
+
+```sql
+-- ALTER
+ALTER tb_name
+  [ ADD [CONSTRAINT|COLUMN] | DROP [CONSTRAINT|COLUMN] | CHANGE | MODIFY ] col_name INT NOT NULL;
+
+-- DELETE
+DELETE FROM tb_name
+WHERE col = 4
+  OR col2 = 5
+
+-- INSERT
+INSERT INTO tb_name (col1, col2) VALUES
+  (val1, val2),
+  (val1, val2);
+```
