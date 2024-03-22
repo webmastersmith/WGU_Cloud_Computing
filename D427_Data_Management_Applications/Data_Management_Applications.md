@@ -55,16 +55,74 @@ DESCRIBE table_name;
 
 ```sql
 -- ALTER
-ALTER tb_name
+ALTER TABLE tb_name
   [ ADD [CONSTRAINT|COLUMN] | DROP [CONSTRAINT|COLUMN] | CHANGE | MODIFY ] col_name INT NOT NULL;
+ALTER TABLE tb
+  [CHANGE|MODIFY] col INT PRIMARY KEY;
+
+-- CREATE
+CREATE TABLE tb(
+  ID INT UNSIGNED AUTO_INCREMENT NOT NULL,
+  col2 VARCHAR(255) NOT NULL,
+  PRIMARY KEY(col1)
+);
 
 -- DELETE
 DELETE FROM tb_name
 WHERE col = 4
   OR col2 = 5
 
+-- INDEX
+CREATE INDEX index_name
+  ON table_name (column1, column2, ...);
+-- INDEX DROP
+DROP INDEX index_name
+  ON table_name;
+
 -- INSERT
 INSERT INTO tb_name (col1, col2) VALUES
   (val1, val2),
   (val1, val2);
+
+-- JOIN: INNER JOIN, OUTER: LEFT, RIGHT, FULL: CROSS.
+-- INNER and OUTER are optional key words.
+-- INNER: return conditional true.
+-- OUTER return at least one full table and conditional true from other table.
+-- FULL: return both tables.
+
+-- KEY: PRIMARY, FOREIGN
+ALTER TABLE tb
+  ADD CONSTRAINT PRIMARY KEY () ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
+ALTER TABLE tb
+  ADD CONSTRAINT optional_name FOREIGN KEY () REFERENCES tb(col1, col2)
+    ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
+
+-- SELECT
+SELECT col1, col2...
+FROM tb
+WHERE col = 5;
+-- DISTINCT
+SELECT DISTINCT col -- only unique values will be returned.
+FROM tb;
+-- GROUP BY
+select col, count(*) AS 'Count'
+from tb
+group by col
+  HAVING col = 2019;
+
+-- UPDATE
+UPDATE table_name
+SET
+  column1_name = column_value * 2,
+  column2_name = another_columnS
+WHERE column_id IN (3, 4); -- many at a time.
+WHERE column_id LIKE '%h'; -- ends with h.
+
+-- VIEW
+CREATE VIEW view_name AS
+SELECT col1, col2
+FROM tb
+WHERE col1 = 5;
+-- DROP
+DROP VIEW view_name;
 ```
