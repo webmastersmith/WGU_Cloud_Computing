@@ -41,6 +41,7 @@
 -- all have same results.
 SHOW COLUMNS FROM table_name;
 EXPLAIN table_name;
+SHOW CREATE TABLE table_name; -- view all table contraints.
 
 -- Correct way to query.
 SELECT * FROM table_name
