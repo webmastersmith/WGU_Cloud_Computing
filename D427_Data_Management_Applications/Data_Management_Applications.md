@@ -18,7 +18,7 @@
   - INSERT INTO Table Data
   - ALTER Table Data Adding Columns/Keys
   - Adding Primary Keys and Foreign Keys
-  - COUNT(\*) statement for counting the total number of things
+  - COUNT(`*`) statement for counting the total number of things
   - MIN/MAX statements
   - Adding and removing an index
   - Knowing how to use LEFT/RIGHT Join
@@ -41,7 +41,7 @@
 -- all have same results.
 SHOW COLUMNS FROM table_name;
 EXPLAIN table_name;
-SHOW CREATE TABLE table_name; -- view all table contraints.
+SHOW CREATE TABLE table_name; -- view all table constraints.
 
 -- Correct way to query.
 SELECT * FROM table_name
@@ -56,9 +56,15 @@ DESCRIBE table_name;
 ```sql
 -- ALTER
 ALTER TABLE tb_name
-  [ ADD [CONSTRAINT|COLUMN] | DROP [CONSTRAINT|COLUMN] | CHANGE | MODIFY ] col_name INT NOT NULL;
+  [ADD [CONSTRAINT] | DROP [CONSTRAINT|COLUMN]] col_name INT NOT NULL;
 ALTER TABLE tb
-  [CHANGE|MODIFY] col INT PRIMARY KEY;
+  [CHANGE|MODIFY] col INT NOT NULL;
+-- KEY: PRIMARY, FOREIGN
+ALTER TABLE tb
+  ADD CONSTRAINT PRIMARY KEY (col) ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
+ALTER TABLE tb
+  ADD CONSTRAINT optional_name FOREIGN KEY (col) REFERENCES tb(col1, col2)
+    ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
 
 -- CREATE
 CREATE TABLE tb(
@@ -90,12 +96,6 @@ INSERT INTO tb_name (col1, col2) VALUES
 -- OUTER return at least one full table and conditional true from other table.
 -- FULL: return both tables.
 
--- KEY: PRIMARY, FOREIGN
-ALTER TABLE tb
-  ADD CONSTRAINT PRIMARY KEY () ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
-ALTER TABLE tb
-  ADD CONSTRAINT optional_name FOREIGN KEY () REFERENCES tb(col1, col2)
-    ON [DELETE|UPDATE] [CASCADE|SET NULL|SET DEFAULT|NO ACTION]
 
 -- SELECT
 SELECT col1, col2...
