@@ -1,6 +1,7 @@
 # Bryon Smith 011185815
 
-$dbName = "Microsoft.SqlServer.Management.Smo.Server"
+$dbType = "Microsoft.SqlServer.Management.Smo.Server"
+$dbName = "ClientDB"
 $sqlInstanceName = "SRV19-PRIMARY\SQLEXPRESS"
 
 try {
@@ -10,7 +11,8 @@ try {
     Import-Module -Name SqlServer
 
     # Create SQL database
-    $my_db = New-Object -TypeName $dbName -ArgumentList
+    $dbObject = New-Object -TypeName $dbType -ArgumentList $sqlInstanceName, $dbName
+    $dbObject.Create()
 
     
 }
