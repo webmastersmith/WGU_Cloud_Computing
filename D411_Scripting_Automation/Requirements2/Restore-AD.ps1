@@ -57,9 +57,8 @@ try {
     Exit
   }
   
-  
-
   Write-Host "[AD] Restore Active Directory Task Completed with no errors."
+  
 
 }
 catch {
