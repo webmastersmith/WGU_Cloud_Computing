@@ -58,8 +58,8 @@ try {
   }
   
   Write-Host "[AD] Restore Active Directory Task Completed with no errors."
-  
-
+  # Output results to file.
+  Get-ADUser -Filter * -SearchBase $ADPath -Properties DisplayName, PostalCode, OfficePhone, MobilePhone > .\AdResults.txt
 }
 catch {
   Write-Host "An error occurred:"
