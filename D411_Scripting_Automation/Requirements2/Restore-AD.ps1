@@ -49,7 +49,7 @@ try {
     }
   }
   else {
-    Write-Host "$($OUCanonicalName) already exists. Removing..."
+    Write-Host "$($OUCanonicalName) already exists."
     # Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table
     # Remove the OU 
     Remove-ADOrganizationalUnit -Identity $ADPath -Confirm:$false -Recursive
@@ -58,6 +58,7 @@ try {
   }
   
   Write-Host "[AD] Restore Active Directory Task Completed with no errors."
+  Write-Host "Writing File to ADResults.txt"
   # Output results to file.
   Get-ADUser -Filter * -SearchBase $ADPath -Properties DisplayName, PostalCode, OfficePhone, MobilePhone > .\AdResults.txt
 }
