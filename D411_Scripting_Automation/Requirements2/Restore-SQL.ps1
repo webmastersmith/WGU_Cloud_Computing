@@ -12,23 +12,22 @@ try {
 
   # If database exist, drop it.
   if (Get-SqlDatabase -Name $dbName -ServerInstance $sqlInstanceName -ErrorAction SilentlyContinue) {
-    Write-Host "$($dbName) database exist!"
     # Drop Database.
     $dropQuery = "ALTER DATABASE $($dbName) SET SINGLE_USER WITH ROLLBACK IMMEDIATE; `
                       USE master; `
                       DROP DATABASE $($dbName)"
     Invoke-Sqlcmd -ServerInstance $sqlInstanceName -Database $dbName -Query $dropQuery
-    Write-Host -ForegroundColor Red "$($dbName) has been dropped!"
+    Write-Host -ForegroundColor Red "$($dbName) exist and has been dropped!"
   } else {
     Write-Host "$($dbName) does not exist. Creating..."
   }
   # Create SQL database
   $dbObject = New-Object -TypeName $dbType -ArgumentList $sqlInstanceName, $dbName
   $dbObject.Create()
-  Write-Host -ForegroundColor Cyan "$($dbName) was created."
+  Write-Host -ForegroundColor Cyan "$($dbName) databse was created."
   # Create the table from SQL file
   Invoke-Sqlcmd -ServerInstance $sqlInstanceName -Database $dbName -InputFile $PSScriptRoot\CreateTable_CreateCustomerLeads.sql
-  Write-Host -ForegroundColor DarkYellow "$($tableName) was created."
+  Write-Host -ForegroundColor DarkYellow "$($tableName) table was created."
   # Get Customer_Leads data from csv
   $customer_leads = Import-Csv $PSScriptRoot\NewClientData.csv
   $AllUsers = $customer_leads.count
