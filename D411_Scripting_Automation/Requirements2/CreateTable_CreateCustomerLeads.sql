@@ -1,4 +1,4 @@
-CREATE TABLE CustomerLeads(
+CREATE TABLE Client_A_Contacts(
     First_Name varchar(100),
     Last_Name varchar(100),
     City varchar(50),

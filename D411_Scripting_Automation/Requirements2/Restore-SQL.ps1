@@ -3,7 +3,7 @@
 $dbType = "Microsoft.SqlServer.Management.Smo.Database"
 $dbName = "ClientDB"
 $sqlInstanceName = "SRV19-PRIMARY\SQLEXPRESS"
-$tableName = "CustomerLeads"
+$tableName = "Client_A_Contacts"
 try {
   # Remove old sql module due to function conflicts.
   if (Get-Module -Name sqlps) { Remove-Module sqlps }
@@ -18,14 +18,17 @@ try {
                       USE master; `
                       DROP DATABASE $($dbName)"
     Invoke-Sqlcmd -ServerInstance $sqlInstanceName -Database $dbName -Query $dropQuery
-    Write-Host "$($dbName) has been dropped!"
+    Write-Host -ForegroundColor Red "$($dbName) has been dropped!"
+  } else {
+    Write-Host "$($dbName) does not exist. Creating..."
   }
   # Create SQL database
-  Write-Host "Creating Database $($dbName)"
   $dbObject = New-Object -TypeName $dbType -ArgumentList $sqlInstanceName, $dbName
   $dbObject.Create()
+  Write-Host -ForegroundColor Cyan "$($dbName) was created."
   # Create the table from SQL file
   Invoke-Sqlcmd -ServerInstance $sqlInstanceName -Database $dbName -InputFile $PSScriptRoot\CreateTable_CreateCustomerLeads.sql
+  Write-Host -ForegroundColor DarkYellow "$($tableName) was created."
   # Get Customer_Leads data from csv
   $customer_leads = Import-Csv $PSScriptRoot\NewClientData.csv
   $AllUsers = $customer_leads.count
@@ -50,8 +53,8 @@ try {
     $count++
   }
 
-  Write-Host "$($dbName) database has been built with no errors!"
-  Invoke-Sqlcmd -Database $dbName –ServerInstance $sqlInstanceName -Query "SELECT * FROM dbo.Client_A_Contacts" > .\SqlResults.txt
+  Invoke-Sqlcmd -Database $dbName –ServerInstance $sqlInstanceName -Query "SELECT * FROM dbo.$($tableName)" > .\SqlResults.txt
+  Write-Host -ForegroundColor Green "$($dbName) database has been built with no errors! SqlResults file has been created."
 }
 catch {
   Write-Host "Something went wrong!"
