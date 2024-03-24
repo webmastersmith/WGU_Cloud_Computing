@@ -5,7 +5,8 @@ $ADRoot = (Get-ADDomain).distinguishedName
 # $DNSRoot = (Get-ADDomain).DNSRoot
 $OUCanonicalName = "Finance"
 $OUDisplayName = "Finance"
-$ADPath = "OU=$($OUCanonicalName),$($ADRoot)"
+# OU=Finance,DC=consultingfirm,DC=com
+$ADPath = "OU=$($OUCanonicalName),$($ADRoot)" 
 $financeUsers = Import-Csv -Path "$PSScriptRoot\financePersonnel.csv"
 # Write-Host $financeUsers
 try {
@@ -49,7 +50,8 @@ try {
   }
   else {
     Write-Host "$($OUCanonicalName) already exists. Removing..."
-    Remove-ADOrganizationalUnit -Identity $ADPath -Confirm:$false
+    # Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table
+    Remove-ADOrganizationalUnit -Identity $OUCanonicalName -Confirm:$false
     Write-Host "$($OUCanonicalName) Removed. Please run script again."
     Exit
   }
