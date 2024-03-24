@@ -3,6 +3,7 @@
 $dbType = "Microsoft.SqlServer.Management.Smo.Server"
 $dbName = "ClientDB"
 $sqlInstanceName = "SRV19-PRIMARY\SQLEXPRESS"
+$tableName = "CustomerLeads"
 try {
     # Remove old sql module due to function conflicts.
     if (Get-Module -Name sqlps) { Remove-Module sqlps }
@@ -18,7 +19,7 @@ try {
     $customer_leads = Import-Csv $PSScriptRoot\NewClientData.csv
     $AllUsers = $customer_leads.count
     $count = 1
-    
+    $Insert = "INSERT INTO [$($tableName)] (first_name, last_name, city, county, zip, officePhone, mobilePhone)"
     ForEach ($u in $customer_leads) {
         # Show progress indeicator.
         $progress = "[SQL]: Adding new SQL user $($Name). $($count) of $($AllUsers)"
