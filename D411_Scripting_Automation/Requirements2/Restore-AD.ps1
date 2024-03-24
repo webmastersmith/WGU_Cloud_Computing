@@ -51,7 +51,8 @@ try {
   else {
     Write-Host "$($OUCanonicalName) already exists. Removing..."
     # Get-ADOrganizationalUnit -Filter 'Name -like "*"' | Format-Table
-    Remove-ADOrganizationalUnit -Identity $OUCanonicalName -Confirm:$false
+    # Remove the OU 
+    Remove-ADOrganizationalUnit -Identity $ADPath -Confirm:$false -Recursive
     Write-Host "$($OUCanonicalName) Removed. Please run script again."
     Exit
   }
