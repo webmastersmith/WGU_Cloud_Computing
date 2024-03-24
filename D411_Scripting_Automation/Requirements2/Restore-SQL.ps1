@@ -30,25 +30,27 @@ try {
     $customer_leads = Import-Csv $PSScriptRoot\NewClientData.csv
     $AllUsers = $customer_leads.count
     $count = 1
-    $Insert = "INSERT INTO $($tableName) (first_name, last_name, city, county, zip, officePhone, mobilePhone)"
+    $Insert = "INSERT INTO [$($tableName)] (first_name, last_name, city, county, zip, officePhone, mobilePhone)"
     ForEach ($u in $customer_leads) {
         # Show progress indeicator.
         $progress = "[SQL]: Adding new SQL user $($u.first_name) $($u.last_name). $($count) of $($AllUsers)"
         Write-Progress -Activity "D411 Restore SQL DB" -Status $progress -PercentComplete (($count / $AllUsers) * 100)
         $Values = "VALUES ( `
-                '$($u.first_name)' `
-                '$($u.last_name)' `
-                '$($u.city)' `
-                '$($u.county)' `
-                '$($u.zip)' `
-                '$($u.officePhone)' `
+                '$($u.first_name)', `
+                '$($u.last_name)', `
+                '$($u.city)', `
+                '$($u.county)', `
+                '$($u.zip)', `
+                '$($u.officePhone)', `
                 '$($u.mobilePhone)')"
+        
+        # Add Insert statement to database.
         $query = $Insert + $Values
-        Write-Host $query
         Invoke-Sqlcmd -Database $dbName -ServerInstance $sqlInstanceName -Query $query
         $count++
     }
-    
+
+    Write-Host "$($dbName) database has been built with no errors!"    
 }
 catch {
     Write-Host "Something went wrong!"
