@@ -6,6 +6,8 @@ $ADRoot = (Get-ADDomain).distinguishedName
 $OUCanonicalName = "Finance"
 $OUDisplayName = "Finance"
 $ADPath = "OU=$($OUCanonicalName),$($ADRoot)"
+$financeUsers = Import-Csv -Path "$PSScriptRoot\financePersonnel.csv"
+# Write-Host $financeUsers
 try {
   # check if OU 'finance' exist
   Write-Host -ForegroundColor Blue "[AD]: Starting Active Directory Tasks"
@@ -22,3 +24,17 @@ catch {
   Write-Host $_
 }
 
+ForEach ($fu in $financeUsers) {
+  $First = $fu.First_Name
+  $Last = $fu.Last_Name
+  $Name = "$($First) $($Last)"
+  $SamAcct = $fu.samAccount
+  $Zip = $fu.PostalCode
+  $WorkPhone = $fu.OfficePhone
+  $Mobile = $fu.MobilePhone
+
+  New-ADUser -GivenName $First `
+             -Surname $Last `
+             -Name $Name `
+             
+}
