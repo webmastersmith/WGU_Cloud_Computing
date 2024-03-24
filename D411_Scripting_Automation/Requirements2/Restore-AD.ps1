@@ -1,15 +1,20 @@
 # Bryon Smith 011185815
 
-$folderPath = $PSScriptRoot
-$ADRoot = "DC=consultingfirm,DC=com"
-$ADName = "Finance"
+# $folderPath = $PSScriptRoot
+$ADRoot = (Get-ADDomain).distinguishedName
+# $DNSRoot = (Get-ADDomain).DNSRoot
+$OUCanonicalName = "Finance"
+$OUDisplayName = "Finance"
+$ADPath = "OU=$($OUCanonicalName),$($ADRoot)"
 try {
   # check if OU 'finance' exist
   Write-Host -ForegroundColor Blue "[AD]: Starting Active Directory Tasks"
-  if (Get-ADOrganizationalUnit -Filter "distinguishedName -eq $ADName") {
-    Write-Host "OU Finance already exists."
-  } else {
-    New-ADOrganizationalUnit -Name $ADName -Path $ADRoot -DisplayName $ADName -ProtectedFromAccidentalDeletion $false
+  if (-Not([ADSI]::Exists("LDAP://$($ADPath)"))) {
+    Write-Host "$($OUCanonicalName) Does not exist."
+    # New-ADOrganizationalUnit -Name $OUCanonicalName -Path $ADRoot -DisplayName $OUDisplayName -ProtectedFromAccidentalDeletion $false
+  }
+  else {
+    Write-Host "$($OUCanonicalName) already exists."
   }
 }
 catch {
