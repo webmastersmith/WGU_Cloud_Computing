@@ -35,3 +35,43 @@
 2. Using the template (See attached below) answer the questions about the meeting. Be sure to address all that is being asked in the question. Several questions require you to discuss all the team members’ actions.
 
 3. Proofread your task. Inspect your work for articulation errors and proper APA format. Use the APA Reference to assist (see below) . If additional help is needed with either articulation or APA format, use Grammarly, and/or visit the WGU Writing Center.
+
+- A. Explain the outcomes of the meeting, including the following:
+  - how closely the meeting followed the meeting agenda?
+    - did not follow agenda.
+
+• the conflicts that emerged during the meeting
+
+• how different individuals responded to conflicts that emerged during the meeting
+
+B. Evaluate the effectiveness of communication strategies demonstrated in the meeting, including the following:
+
+• how various communication strategies influenced meeting outcomes
+
+• how some communication strategies hindered decision-making
+
+C. Identify the informal leader of the meeting and analyze their approach to leadership, including the following:
+
+• a leadership skill exhibited by the informal leader
+
+• a justification of why you identified that particular informal leader
+
+• how the informal leader maintains focus on the problem being discussed in the meeting
+
+D. Explain the overall interpersonal dynamics of the team, including how each team member contributed to the meeting’s outcome.
+
+E. Plan a follow-up meeting in response to Kamal’s email to facilitate agreement on prioritizing one of the two teams, including the following:
+
+• a list of team members that should attend the meeting
+
+• questions you will ask in the meeting
+
+• goals and expectations for the meeting
+
+• how you will facilitate the meeting and lead the team to a consensus
+
+1.  Justify each component of the given points from part E of your follow-up meeting plan.
+
+F. Acknowledge sources, using in-text citations and references, for content that is quoted, paraphrased, or summarized.
+
+G. Demonstrate professional communication in the content and presentation of your submission.
