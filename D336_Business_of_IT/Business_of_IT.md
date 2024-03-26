@@ -258,8 +258,9 @@
   - The speed, effectiveness, and efficiency with which an organization operates. Organizational velocity influences time to market, quality, safety, costs, and risks.
 - **organizations and people**
   - One of the four dimensions of service management. It ensures that the way an organization is structured and managed, as well as its roles, responsibilities, and systems of authority and communication, is well defined and supports its overall strategy and operating model.
-- **outcome**
+- **outcome !important**
   - A result for a stakeholder enabled by one or more outputs.
+  - when you meet all your goals, the 'outcome' is what you get.
 - **output**
   - A tangible or intangible deliverable of an activity.
 - **outsourcing**
@@ -336,6 +337,7 @@
   - The practice of ensuring that an organization understands and effectively handles risks.
 - **service**
   - A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.
+  - The customer does not want to worry about how the service gets to them. customer doesn't care how the company manages risk, compliance..., they just want the service.
 - **service action**
   - Any action required to deliver a service output to a user. Service actions may be performed by a service provider resource, by service users, or jointly.
 - **service architecture**
@@ -366,8 +368,12 @@
   - The practice of setting clear business-based targets for service performance so that the delivery of a service can be properly assessed, monitored, and managed against these targets.
 - **service management**
   - A set of specialized organizational capabilities for enabling value for customers in the form of services.
-- **service offering**
+  - Anything that distinguish's the company(culture, products, people).
+- **service offering and Goods, Access to Resources, and Service Actions**
   - A formal description of one or more services, designed to address the needs of a target consumer group. A service offering may include goods, access to resources, and service actions.
+    - **Goods**: transfer ownership to customer.
+    - **Access to resources**: customer allowed to use it.
+    - **Service Actions**: things the service provider does for the customer.
 - **service owner**
   - A role that is accountable for the delivery of a specific service.
 - **service portfolio**
@@ -440,12 +446,27 @@
   - Confirmation that the system, product, service, or other entity meets the agreed specification.
 - **value**
   - The perceived benefits, usefulness, and importance of something.
+  - Utility(what it does) + Warranty(fit for use) + perception(does it do what customer expects) = value.
 - **value stream**
   - A series of steps an organization undertakes to create and deliver products and services to consumers.
 - **value streams and processes**
   - One of the four dimensions of service management. It defines the activities, workflows, controls, and procedures needed to achieve the agreed objectives.
 - **vision**
   - A defined aspiration of what an organization would like to become in the future.
+- **VOIP The 4 Dimensions**
+  - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
+  - ![4 dimensions](img/four_dimensions.PNG)
+    - value streams & processes: map value to creation process.
+    - organization & people: how organize people. structure of company. who makes decisions.
+    - information & technology:
+    - partners and suppliers:
+  - external factors that we cannot influence, but influence the us: PESTLE.
+    - Political: trump as president makes policy.
+    - Economical:
+    - Social: how it effect peoples
+    - Technological: latest tech.
+    - Legal: country gets restricted(embargoed)
+    - Environmental: green is good.
 - **warranty**
   - Assurance that a product or service will meet agreed requirements. Warranty can be summarized as ‘how the service performs’ and can be used to determine whether a service is ‘fit for use’. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or ‘warranty’, if all defined and agreed conditions are met.
 - **warranty requirements**
