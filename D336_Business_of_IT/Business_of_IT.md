@@ -374,6 +374,16 @@
     - **Goods**: transfer ownership to customer.
     - **Access to resources**: customer allowed to use it.
     - **Service Actions**: things the service provider does for the customer.
+- **Service Manangement Key Concepts**
+  - Key concepts of services and service management:
+    a. Service: A means of enabling value co-creation by facilitating outcomes that customers want to achieve, without the customer having to manage specific costs and risks.
+    b. Service management: A set of specialized organizational capabilities for enabling value for customers in the form of services.
+    c. Customer: The role that defines the requirements for a service and takes responsibility for the outcomes of service consumption.
+    d. User: The role that uses services.
+    e. Sponsor: The role that authorizes budget for service consumption. Can also be used to describe an organization or individual that provides financial or other support for an initiative.
+    f. Utility: The functionality offered by a product or service to meet a particular need. Utility can be
+    summarized as ‘what the service does’ and can be used to determine whether a service is ‘fit for purpose’. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both.
+    g. Warranty: Assurance that a product or service will meet agreed requirements. Warranty can be summarized as ‘how the service performs’ and can be used to determine whether a service is 'fit for use'. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or 'warranty', if all defined and agreed conditions are met.
 - **service owner**
   - A role that is accountable for the delivery of a specific service.
 - **service portfolio**
@@ -457,6 +467,7 @@
   - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
   - ![4 dimensions](img/four_dimensions.PNG)
     - value streams & processes: map value to creation process.
+      - activities organization undertakes. Organizing activities. Ensure value to stakeholder.
     - organization & people: how organize people. structure of company. who makes decisions.
     - information & technology:
     - partners and suppliers:
