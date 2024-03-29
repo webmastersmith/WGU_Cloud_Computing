@@ -463,21 +463,6 @@
   - One of the four dimensions of service management. It defines the activities, workflows, controls, and procedures needed to achieve the agreed objectives.
 - **vision**
   - A defined aspiration of what an organization would like to become in the future.
-- **VOIP The 4 Dimensions**
-  - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
-  - ![4 dimensions](img/four_dimensions.PNG)
-    - value streams & processes: map value to creation process.
-      - activities organization undertakes. Organizing activities. Ensure value to stakeholder.
-    - organization & people: how organize people. structure of company. who makes decisions.
-    - information & technology:
-    - partners and suppliers:
-  - external factors that we cannot influence, but influence the us: PESTLE.
-    - Political: trump as president makes policy.
-    - Economical:
-    - Social: how it effect peoples
-    - Technological: latest tech.
-    - Legal: country gets restricted(embargoed)
-    - Environmental: green is good.
 - **warranty**
   - Assurance that a product or service will meet agreed requirements. Warranty can be summarized as ‘how the service performs’ and can be used to determine whether a service is ‘fit for use’. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or ‘warranty’, if all defined and agreed conditions are met.
 - **warranty requirements**
@@ -490,3 +475,57 @@
   - A solution that reduces or eliminates the impact of an incident or problem for which a full resolution is not yet available. Some workarounds reduce the likelihood of incidents.
 - **workforce and talent management practice**
   - The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.
+
+## ITIL Systems
+
+- **Guiding Principles**
+  - 6 questions on ITIL
+  - recommendations that guide organization in any circumstances.
+    1. Focus on Value: all activities should link back to value for customers and stakeholders.
+    2. Start Where you are: do not start from scratch without considering what you already have and leverage it.
+    3. Progress Iteratively with feedback: do not attempt to do everything at once. Organize work into smaller manageable units(agile), then get feedback from customers, stakeholders.
+    4. Collaborate and Promote Visibility: right people(customer, suppliers, employees) in correct roles.
+    5. Think and Work Holistically: How our effort helps the whole. No single service stands alone. Value suffers unless we work in an integrated way. Avoid silo thinking.
+    6. Keep It Simple and Practical: don't over complicate. If something fails to produce value, eliminate it.
+    7. Optimize and Automate: prevents errors, speed up the value process.
+- **Service Value System**
+  - 1 question on ITIL
+  - model representing hwo all the components and activities of an organization work together to create value.
+  - converts opportunity/demand -> your service management -> value
+  - ![service value system](img/svs.PNG)
+- **Service Value Chain**
+  - 2 questions on ITIL
+  - innermost part of the **Service Value System**.
+  - Transforms demand into value.
+  - **Value Stream**: mapping the steps needed to create value for customers, stakeholders, then eliminate waste. LEAN.
+    - To get value stream, you follow the six Service Value Chain steps.
+  - Six main activities: PIE DOD
+    1. Plan: shared understanding of goals.
+    2. Improve: continual improvement(AGILE)
+    3. Engage: good understanding of stakeholder needs.
+    4. Design & Transition: product meets stakeholder expectations.
+    5. Obtain/Build: supplies available when needed and meet specifications.
+    6. Deliver & Support: meet deadline and expectation. SLA confirmed delivery.
+  - ![service value chain](img/svc.PNG)
+  - ![service value system](img/svs.PNG)
+- **VOIP The 4 Dimensions and PESTLE**
+  - 2 questions on ITIL
+  - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
+  - ![4 dimensions](img/four_dimensions.PNG)
+    - value streams & processes: map value to creation process.
+      - activities organization undertakes. Organizing activities. Ensure value to stakeholder.
+    - organization & people: how organize people. structure of company. who makes decisions.
+    - information & technology: information and tools. culture of knowledge management(knowledge in someones head, or properly documented).
+    - partners and suppliers: relationship with external vendors. service integration management.
+  - **external factors** that we cannot influence, but influence the us: **PESTLE**.
+    - Political: trump as president makes policy.
+    - Economical:
+    - Social: how it effect peoples
+    - Technological: latest tech.
+    - Legal: country gets restricted(embargoed)
+    - Environmental: green is good.
+
+## Most Important Practices (19 questions on ITIL)
+
+- **What is a practice**
+  -
