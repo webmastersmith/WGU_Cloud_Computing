@@ -11,6 +11,8 @@
   - cybervista practice test
 - <https://www.reddit.com/r/WGU/comments/1074p4j/passed_business_of_it_applications_d336_itilv4/>
 - [Jason Dion ITIL4 practice exams](https://wgu.udemy.com/course/itil-4-foundation-practice-certification-exams-6-exams-q/#content)
+- [ITIL 4 exam practice questions](https://www.youtube.com/watch?v=SuSC7qHbaqE)
+- [ITIL 4 exam practice questions](https://www.youtube.com/watch?v=-_JNP3NT3b4)
 - <https://www.axelos.com/certifications/itil-service-management/itil-4-foundation>
   - 40 questions
   - Multiple choice
@@ -476,18 +478,38 @@
 - **workforce and talent management practice**
   - The practice of ensuring that an organization has the right people with the appropriate skills and knowledge and in the correct roles to support its business objectives.
 
-## ITIL Systems
+## 4 Dimensions
 
-- **Guiding Principles**
+- **VOIP**
+  - 2 questions on ITIL
+  - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
+  - ![4 dimensions](img/four_dimensions.PNG)
+    1. **value streams & processes**: map creation process to value.
+       1. activities organization undertakes. Organizing activities. Ensure value to stakeholder.
+    2. **organization & people**: how organize people. structure of company. who makes decisions.
+    3. **information & technology**: information and tools. culture of knowledge management(knowledge in someones head, or properly documented).
+    4. **partners and suppliers**: relationship with external vendors. service integration management.
+- **PESTLE**
+  - **external factors** that we cannot influence, but influence the us: **PESTLE**.
+    - Political: trump as president makes policy.
+    - Economical:
+    - Social: how it effect peoples
+    - Technological: latest tech.
+    - Legal: country gets restricted(embargoed)
+    - Environmental: green is good.
+
+## ITIL Systems & Streams
+
+- **7 Guiding Principles**
   - 6 questions on ITIL
   - recommendations that guide organization in any circumstances.
-    1. Focus on Value: all activities should link back to value for customers and stakeholders.
-    2. Start Where you are: do not start from scratch without considering what you already have and leverage it.
-    3. Progress Iteratively with feedback: do not attempt to do everything at once. Organize work into smaller manageable units(agile), then get feedback from customers, stakeholders.
-    4. Collaborate and Promote Visibility: right people(customer, suppliers, employees) in correct roles.
-    5. Think and Work Holistically: How our effort helps the whole. No single service stands alone. Value suffers unless we work in an integrated way. Avoid silo thinking.
-    6. Keep It Simple and Practical: don't over complicate. If something fails to produce value, eliminate it.
-    7. Optimize and Automate: prevents errors, speed up the value process.
+    1. **Focus on Value**: all activities should link back to value for customers and stakeholders.
+    2. **Start Where you are**: do not start from scratch without considering what you already have and leverage it.
+    3. **Progress Iteratively with feedback**: do not attempt to do everything at once. Organize work into smaller manageable units(agile), then get feedback from customers, stakeholders.
+    4. **Collaborate and Promote Visibility**: right people(customer, suppliers, employees) in correct roles.
+    5. **Think and Work Holistically**: How our effort helps the whole. No single service stands alone. Value suffers unless we work in an integrated way. Avoid silo thinking.
+    6. **Keep It Simple and Practical**: don't over complicate. If something fails to produce value, eliminate it.
+    7. **Optimize and Automate**: prevents errors, speed up the value process.
 - **Service Value System**
   - 1 question on ITIL
   - model representing hwo all the components and activities of an organization work together to create value.
@@ -497,9 +519,7 @@
   - 2 questions on ITIL
   - innermost part of the **Service Value System**.
   - Transforms demand into value.
-  - **Value Stream**: mapping the steps needed to create value for customers, stakeholders, then eliminate waste. LEAN.
-    - To get value stream, you follow the six Service Value Chain steps.
-  - Six main activities: PIE DOD
+  - Six main activities: **PIE DOD**
     1. Plan: shared understanding of goals.
     2. Improve: continual improvement(AGILE)
     3. Engage: good understanding of stakeholder needs.
@@ -508,24 +528,76 @@
     6. Deliver & Support: meet deadline and expectation. SLA confirmed delivery.
   - ![service value chain](img/svc.PNG)
   - ![service value system](img/svs.PNG)
-- **VOIP The 4 Dimensions and PESTLE**
-  - 2 questions on ITIL
-  - internal factors the we as service provider can influence. Activities we execute, to ensure value to our stakeholders and customers.
-  - ![4 dimensions](img/four_dimensions.PNG)
-    - value streams & processes: map value to creation process.
-      - activities organization undertakes. Organizing activities. Ensure value to stakeholder.
-    - organization & people: how organize people. structure of company. who makes decisions.
-    - information & technology: information and tools. culture of knowledge management(knowledge in someones head, or properly documented).
-    - partners and suppliers: relationship with external vendors. service integration management.
-  - **external factors** that we cannot influence, but influence the us: **PESTLE**.
-    - Political: trump as president makes policy.
-    - Economical:
-    - Social: how it effect peoples
-    - Technological: latest tech.
-    - Legal: country gets restricted(embargoed)
-    - Environmental: green is good.
+- **Value Stream**
+  - mapping the steps needed to create value for customers, stakeholders, then eliminate waste. LEAN.
+  - To get value stream, you follow the six **Service Value Chain** steps.
 
-## Most Important Practices (19 questions on ITIL)
+## Best Practices (19 questions on ITIL)
 
 - **What is a practice**
-  -
+  - organizational resources to perform work or accomplish objective.
+- **!Continual Improvement**
+  - think AGILE. What is the vision of company(goals and objectives to achieve)?
+  - SVC, SVS, Practices all have continuous improvement as part of it.
+  - reprioritize when new ideas are added.
+  - everyone is responsible for continual improvement.
+  - all 4 dimensions need to be considered during improvement initiative.
+  - 6 Steps of Continual Improvement Model. Rinse and repeat for continual improvement:
+    1. what is our vision? business vision, goals.
+    2. where are we now? perform baseline assessments.
+    3. where do we want to be? define measurable targets.
+    4. how do we get there? define improvement plan.
+    5. take action? execute improvement plan.
+    6. are we there? evaluate metrics, KPI's.
+- **!Change Enablement**
+  - change workflow performing proper risk assessment to maximize success and minimize failure.
+  - Types:
+    - Standard: low risk, low cost change.
+    - Normal: goes through normal change workflow.
+    - Emergency: needs rapid action. May need separate change authority.
+- **!Incident Management**
+  - minimize negative impact of incidents by restoring normal operation ASAP.
+  - incident: unplanned interruption. Log, prioritize, manage through lifecycle. SLA defines what 'normal' is.
+    - same categorization as 'Problem' tickets.
+  - major accidents: separate procedure from normal incidents.
+- **!Problem Management**
+  - reduce likelihood of recurring incidents by identifying root cause and eliminating.
+  - **problem**: unknown cause of **one or more incidents**.
+  - **known error**: problem known, no solution.
+  - **workaround**: alternate solution to reduce impact.
+  - phases: **problem identify -> problem control -> error control(change enablement)**.
+- **!Service Desk**
+  - single point of contact between business and client.
+  - capture demand for incidents and service request.
+  - channels: email, phone, chat, text message, forums.
+  - skills: **incident analysis, communication, emotional intelligence, customer service**.
+- **!Service Level Management**
+  - set clear business targets for service performance, so delivery of service can be measured.
+  - SLA: business and client agreement for service.
+  - OLA: (organization level agreement). internal business units(teams) agreements between themselves.
+  - UC: (under-pending contracts). business and external supplier.
+  - recommendations: **clear language, simply written, defined outcomes**.
+- **!Service Request Management**
+  - support the employees on needs other than incident response.
+  - service request: formal request for something(e.g. need color monitor) not needing incident resolution.
+  - steps to fulfill service request should be **well known**.
+  - **re-use workflows** already in place.
+- **Information Security Management**
+  - protects information. leaking, hacking. confidentiality(private), integrity(only changed by authorized), availability(when we need it), authentication(you are who you say), non-repudiation(person/data cannot be changed without records).
+- **Relationship Management**
+  - establish, nurture stakeholders, customers.
+  - relationships are identified, modified and improved. lifecycle of relationship management.
+- **Supplier Management**
+  - suppliers performance/products are managed to support seamless service
+- **IT Asset Management**
+  - plan/manage full lifecycle IT assets.
+  - goal: maximize value.
+  - asset: **any financial valuable component. contributes to create product or services**.
+- **Monitoring and Event Management**
+  - observe/record/report changes of state.
+  - event: **any change of state that has significance to business**.
+- **Release Management**
+  - new/changed services are available for use.
+  - release: version of service/item made available for use.
+  - release is decoupled from deployments. canary/dark release only available to small group.
+- **Service Configuration Management**
