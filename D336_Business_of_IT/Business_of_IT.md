@@ -601,3 +601,10 @@
   - release: version of service/item made available for use.
   - release is decoupled from deployments. canary/dark release only available to small group.
 - **Service Configuration Management**
+  - ensure accurate information is available(availability) about services, configuration items and their relationships.
+  - CI (configuration item): any component that needs managed to deliver IT service.
+  - CMDB (configuration management database): collection of databases holding CIs.
+  - CMS (configuration management system): GUI for CMDB.
+- **Deployment Management**
+  - move any asset from one environment to the next.
+  - dev -> test -> prod
