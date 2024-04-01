@@ -104,7 +104,7 @@
     3. **Progress Iteratively with feedback**: do not attempt to do everything at once. Organize work into smaller manageable units(agile), then get feedback from customers, stakeholders.
     4. **Collaborate and Promote Visibility**: **inclusion**. everyone on board and including in process.
     5. **Think and Work Holistically**: How our effort helps the whole. No single service stands alone. Value suffers unless we work in an integrated way. Avoid silo thinking.
-    6. **Keep It Simple and Practical**: don't over complicate. If something fails to produce value, eliminate it.
+    6. **Keep It Simple and Practical**: always use minimum number of steps to accomplish objective. fails to provide value, eliminate it.
     7. **Optimize and Automate**: prevents errors, speed up the value process.
 
 ## 3.1 Four Dimensions of Service Management (2 questions on ITIL 4 exam)
@@ -251,7 +251,7 @@
   - 'change authority' authorizes change.
   - used by all but 'plan' and 'engage' from SVC.
   - Types: S-N-E
-    - **Standard**: pre-authorized. low risk, low cost change. e.g. password change.
+    - **Standard**: pre-authorized, pre-defined, pre-agreed. low risk, low cost change. e.g. password change.
     - **Normal**: goes through normal change workflow. authorize -> schedule -> make change.
     - **Emergency**: needs rapid action. May need separate change authority.
 - **!Incident Management**
