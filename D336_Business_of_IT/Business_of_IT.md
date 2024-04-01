@@ -138,7 +138,7 @@
     - opportunity/demand: possibilities to add value for stakeholders.
     - value: outcome of SVS.
     - Guiding Principles: recommendations to guide organizations in an optimized way, converting demand into value.
-    - Governance: the way an organization is directed/controlled.
+    - Governance: system/framework used to control/manage organization.
     - Service Value Chain: interconnected activities organizations perform to deliver value.
     - Practices: set of organizational resources, designed to perform work or accomplish objective.
     - Continual Improvement: recurring activity to ensure performance aligns with stakeholder expectations.
