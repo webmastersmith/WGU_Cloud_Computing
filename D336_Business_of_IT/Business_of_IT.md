@@ -247,7 +247,8 @@
     6. are we **there**? evaluate metrics, KPI's.
   - ![continual improvement model](img/continual_improvement_model.PNG)
 - **!Change Enablement**
-  - performing proper risk assessment to maximize success and minimize failure when changing product/service.
+  - performing proper risk assessment to maximize success and minimize failure when changing product/services.
+  - 'change authority' authorizes change.
   - used by all but 'plan' and 'engage' from SVC.
   - Types: S-N-E
     - **Standard**: pre-authorized. low risk, low cost change. e.g. password change.
@@ -255,7 +256,7 @@
     - **Emergency**: needs rapid action. May need separate change authority.
 - **!Incident Management**
   - **minimize negative impact** of incidents by restoring normal operation ASAP.
-  - **swarming**: allocate other business resources towards problem.
+  - **swarming**: allocate multiple business resources towards problem.
   - engage and deliver and support(SVC) most likely to use.
   - used by all but 'plan' of the service value chain.
   - incident: unplanned interruption. Log, prioritize, manage through lifecycle. SLA defines what 'normal' is.
@@ -270,7 +271,8 @@
   - phases: **problem identify -> problem control -> error control(change enablement)**.
 - **!Service Desk**
   - step 1. call the service desk -> service request management -> service level management.
-  - single point of contact between business and client.
+  - capture demand for incident response and service request.
+  - single point of contact between provider and consumer.
   - used by 'engage' and 'deliver and support' SVC.
   - capture demand for incidents and service request.
   - channels: email, phone, chat, text message, forums.
@@ -278,7 +280,8 @@
   - ![service management](img/service_management.PNG)
 - **!Service Request Management**
   - step 2. call the service desk -> service request management -> service level management.
-  - support the employees on needs other than incident response.
+  - support the user-initiated(stakeholders) needs(other than incident response) according to SLA.
+  - normal part of service delivery. pre-defined, pre-agreed procedures.
   - used by 'engage' and 'deliver and support' SVC.
   - service request: formal request for something(e.g. need color monitor) not needing incident resolution.
   - steps to fulfill service request should be **well known**.
@@ -286,7 +289,7 @@
   - ![service management](img/service_management.PNG)
 - **!Service Level Management**
   - step 3. call the service desk -> service request management -> service level management.
-  - set clear business targets for service performance, so delivery of service can be measured.
+  - set **clear business targets** for service performance, so delivery of service can be measured.
   - used by 'engage' and 'plan' from SVC.
   - SLA: business and client agreement for service. Service Level Management create/monitors SLA.
     - Watermelon Effect: monitoring the wrong SLA metrics, everything looks great, unhappy customers.
