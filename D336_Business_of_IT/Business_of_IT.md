@@ -59,21 +59,23 @@
   - what the customer does with service(output).
 - **Output**
   - deliverable of a service.
+  - organization output is **delivered to customer**. What the customer does with the service(outcome).
 - **Risk**
   - **possible** events that could cause harm or loss.
 - **Utility**
-  - functionality that meets a need.
+  - **functionality** that meets a need.
 - **Warranty**
   - assurance that requirements will be met.
 
 ## 1.3 Key Concepts of Service Relationships (1 question on ITIL 4 exam)
 
 - **Service Offering**
-  - goods, resources, service actions. Providing value for others.
-  - service relationship: a co-operation between a service provider and a service consumer.
-    Created from westerngovernors-ebooks on 2024-03-31 15:12:36.
+  - goods: ownership is transferred to consumer.
+  - resources: ownership is **not** transferred. e.g. rent/lease vehicle.
+  - service actions: actions performed by provider. e.g. roadside assistance.
 - **Service Relationship Management**
-  - joint activities between business and client.
+  - service relationship: a co-operation between a service provider and a service consumer.
+  - joint activities between provider and consumer to ensure continued co-creation.
 - **Service Provision**
   - providing service.
 - **Service Consumption**
@@ -82,7 +84,7 @@
 ## 2.1 Use and Interaction of the Guiding Principles (1 question on ITIL 4 exam)
 
 - **Nature, Use and Interaction of Guiding Principles**
-  - guidelines to help make decisions.
+  - guidelines to help make decisions, especially when you don't know what decision to make.
   - allows you to be consistent, in decision making.
 
 ## 2.2 Seven Guiding Principles (5 questions on ITIL 4 exam)
@@ -113,10 +115,12 @@
     1. **value streams & processes**: map creation process(steps) to service(value).
        1. activities organization undertakes. Organizing activities. Ensure value to stakeholder.
     2. **organization & people**: how organize people. structure of company. who makes decisions.
+       1. roles, responsibilities, systems of authority and communication are well defined and supported.
     3. **information & technology**: information and tools. culture of knowledge management(knowledge in someones head, or properly documented).
     4. **partners and suppliers**: relationship with external vendors. service integration management.
 - **PESTLE**
   - **external factors** that we cannot influence, but can influence the organization: **PESTLE**.
+  - can constrain any of the four dimensions.
     - Political: trump as president makes policy.
     - Economical:
     - Social: how it effect peoples
@@ -127,9 +131,17 @@
 ## 4.1 Service Value System (1 question on ITIL 4 exam)
 
 - **Service Value System**
-  - take opportunity/demand, convert into value.
+  - take **opportunity/demand and convert it into value**.
   - model representing how all the components and activities of an organization work together to create value.
-  - converts opportunity/demand -> your service management -> value
+  - opportunity/demand -> service value system -> value
+  - Service Value System Components:
+    - opportunity/demand: possibilities to add value for stakeholders.
+    - value: outcome of SVS.
+    - Guiding Principles: recommendations to guide organizations in an optimized way, converting demand into value.
+    - Governance: the way an organization is directed/controlled.
+    - Service Value Chain: interconnected activities organizations perform to deliver value.
+    - Practices: set of organizational resources, designed to perform work or accomplish objective.
+    - Continual Improvement: recurring activity to ensure performance aligns with stakeholder expectations.
   - ![service value system](img/svs.PNG)
 
 ## 5.1 How does Service Value Chain Support Value Streams (1 question ITIL 4 exam)
@@ -147,12 +159,21 @@
   - Flexible model for the creation, delivery, and continual improvement of services.
   - Transforms demand into value.
   - Six main activities: **PIE DOD**
-    1. Plan: manager. understanding of business needs. provides service product/portfolio for 'engage'.
-    2. Improve: team. get feedback. continual improvement(AGILE)
-    3. Engage: salesman. good understanding of stakeholder/customer needs.
-    4. Design & Transition: developers. product meets stakeholder expectations.
-    5. Obtain/Build: procurement dept. buy supplies so there available when needed and meet specifications.
-    6. Deliver & Support: helpdesk. meet deadline and expectation. SLA confirmed delivery.
+    1. Plan: manager. shared understanding of business needs.
+       1. all planning done here.
+       2. PLAN(improvements, contracts) -> ENGAGE.
+    2. Improve: team. get feedback. continual improvement of product, services and practices.
+       1. DELIVER & SUPPORT(service performance), ENGAGE(feedback) -> IMPROVE -> DESIGN & TRANSITION.
+    3. Engage: salesman. stakeholder(anyone vested interest. e.g. customer) needs and continual engagement.
+       1. performs all interactions with external services.
+       2. ENGAGE(feedback) -> IMPROVE
+    4. Design & Transition: developers. continually meets stakeholder expectations for quality, cost, time to market.
+       1. all new internal product creation/modification done here.
+       2. PLAN(portfolio, contracts), ENGAGE(feedback) -> DESIGN & TRANSITION -> OBTAIN/BUILD
+    5. Obtain/Build: procurement dept. service components available when and where needed and meet specifications.
+       1. all new resources go through obtain/build.
+    6. Deliver & Support: shipping/help desk. meet deadline and expectation(SLA).
+       1. OBTAIN/BUILD(new service components), IMPROVE(improvements) -> DELIVER & SUPPORT
   - ![service value chain](img/svc.PNG)
   - ![service value system](img/svs.PNG)
 - **Value Stream**
@@ -164,16 +185,16 @@
 - **Information Security Management**
   - protects information. leaking, hacking. confidentiality(private), integrity(only changed by authorized), availability(when we need it), authentication(you are who you say), non-repudiation(person/data cannot be changed without records).
 - **Relationship Management**
-  - establish, nurture stakeholders, customers. anyone who holds a stake.
+  - establish, nurture links between the organization and stakeholders.
   - relationships are identified, modified and improved. lifecycle of relationship management.
 - **Supplier Management**
-  - suppliers performance/products are managed to support seamless service.
+  - organization suppliers performance/products are managed to support seamless service.
 - **IT Asset Management**
   - plan/manage full lifecycle IT assets(printers, laptops...).
-  - goal: maximize value.
+  - goal: maximize value, control cost, manage risk.
   - asset: **any financial valuable component. contributes to create product or services**.
 - **Monitoring and Event Management**
-  - observe/record/report changes of state.
+  - observe/record/report changes of state(event).
   - event: **any change of state that has significance to business**.
 - **Release Management**
   - new/changed services are available for use.
@@ -191,41 +212,42 @@
 ## 6.2 ITIL Terms (2 questions ITIL 4 exam)
 
 - **IT Asset**
-  - Any financially valuable component that can contribute to the delivery of an IT product or service.
+  - Any **financially valuable component** that can contribute to the delivery of an IT product or service.
 - **Event**
-  - Any change of state that has significance for the management of a service or other configuration item.
+  - Any change of state that has **significance** for the management of a service or other configuration item.
 - **Configuration Item**
-  - Any component that needs to be managed in order to deliver an IT service.
+  - Any **component** that needs to be **managed** in order to deliver an IT service.
 - **Change**
-  - The addition, modification, or removal of anything that could have a direct or indirect effect on services.
+  - The **addition, modification, or removal** of anything that could have a direct or indirect effect on services.
 - **Incident**
-  - An unplanned interruption to a service or reduction in the quality of a service.
+  - An **unplanned interruption** to a service or reduction in the quality of a service.
 - **Problem**
-  - A cause, or potential cause, of one or more incidents.
+  - A **cause, or potential cause**, of one or more **incidents**.
 - **Known Error**
-  - A problem that has been analysed but has not been resolved.
+  - A problem that has been analysed but has **not been resolved**.
 
 ## 7.1 ITIL Practices in Detail (17 questions ITIL 4 exam)
 
 - **What is a practice**
-  - organizational resources to perform work or accomplish objective.
+  - organizational resources to **perform work** or accomplish **objective**.
 - **!Continual Improvement**
   - think AGILE. What is the vision of company(goals and objectives to achieve)?
   - **SVC, SVS, Practices** all have continuous improvement as part of it.
-  - reprioritize when new ideas are added.
-  - everyone is responsible for continual improvement.
+  - CIR (Continual Improvement Register): database/spreadsheet/document. manage/track/prioritize improvement ideas.
+    - reprioritize when new ideas are added.
+    - everyone/all levels are responsible for continual improvement.
   - all 4 dimensions need to be considered during improvement initiative.
-  - ![continual improvement model](img/continual_improvement_model.PNG)
-  - mnemonic:
+  - mnemonic: **Vision Now, Where Get Action There**
   - 6 Steps of **Continual Improvement Model**. Rinse and repeat for continual improvement:
-    1. what is our vision? business vision, goals.
-    2. where are we now? perform baseline assessments.
-    3. where do we want to be? define measurable targets.
-    4. how do we get there? define improvement plan.
-    5. take action? execute improvement plan.
-    6. are we there? evaluate metrics, KPI's.
+    1. what is our **vision**? business vision, goals.
+    2. where are we **now**? perform baseline assessments.
+    3. **where** do we want to be? define measurable targets.
+    4. how do we **get** there? define improvement plan.
+    5. take **action**? execute improvement plan.
+    6. are we **there**? evaluate metrics, KPI's.
+  - ![continual improvement model](img/continual_improvement_model.PNG)
 - **!Change Enablement**
-  - change workflow performing proper risk assessment to maximize success and minimize failure.
+  - performing proper risk assessment to maximize success and minimize failure when changing product/service.
   - used by all but 'plan' and 'engage' from SVC.
   - Types: S-N-E
     - **Standard**: pre-authorized. low risk, low cost change. e.g. password change.
