@@ -44,7 +44,7 @@
 - **utility**
   - The **functionality** offered by a **product or service** to meet a particular need. Utility can be summarized as ‘what the service does’ and can be used to determine whether a service is ‘fit for purpose’. To have utility, a service must either support the performance of the consumer or remove constraints from the consumer. Many services do both.
 - **warranty**
-  - Assurance that a product or service will **meet agreed requirements**. Warranty can be summarized as ‘how the service performs’ and can be used to determine whether a service is ‘fit for use’. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. Warranty typically addresses such areas as the availability of the service, its capacity, levels of security, and continuity. A service may be said to provide acceptable assurance, or ‘warranty’, if all defined and agreed conditions are met.
+  - Assurance that a product or service will **meet agreed requirements**. Warranty can be summarized as ‘how the service performs’ and can be used to determine whether a service is ‘fit for use’. Warranty often relates to service levels aligned with the needs of service consumers. This may be based on a formal agreement, or it may be a marketing message or brand image. **Warranty typically addresses** such areas as the **availability** of the service, its **capacity**, levels of **security**, and **continuity**. A service may be said to provide acceptable assurance, or ‘warranty’, if all **defined and agreed conditions are met**.
 
 ## 1.2 Key Concepts of creating value (2 questions on ITIL 4 exam)
 
@@ -62,10 +62,6 @@
   - organization output is **delivered to customer**. What the customer does with the service(outcome).
 - **Risk**
   - **possible** events that could cause harm or loss.
-- **Utility**
-  - **functionality** that meets a need. based on customer **perception**.
-- **Warranty**
-  - assurance that requirements will be met.
 
 ## 1.3 Key Concepts of Service Relationships (1 question on ITIL 4 exam)
 
@@ -74,8 +70,8 @@
   - resources: ownership is **not** transferred. e.g. rent/lease vehicle.
   - service actions: actions performed by provider. e.g. roadside assistance.
 - **Service Relationship Management**
-  - service relationship: a co-operation between a service provider and a service consumer.
-  - joint activities between provider and consumer to ensure continued co-creation.
+  - service relationship: a co-operation between a **service provider** and a **service consumer**.
+  - joint activities between provider and consumer to ensure **continued co-creation**.
 - **Service Provision**
   - providing service.
 - **Service Consumption**
@@ -217,7 +213,7 @@
 - **IT Asset**
   - Any **financially valuable component** that can contribute to the delivery of an IT product or service.
 - **Event**
-  - Any change of state that has **significance** for the management of a service or other configuration item.
+  - Any **change of state** that has **significance** for the management of a service or other configuration item.
 - **Configuration Item**
   - Any **component** that needs to be **managed** in order to deliver an IT service.
 - **Change**
@@ -234,6 +230,7 @@
 - **What is a practice**
   - organizational resources to **perform work** or accomplish **objective**.
 - **!Continual Improvement**
+  - **recurring activity** to ensure performance **aligns with stakeholder expectations**.
   - think AGILE. What is the vision of company(goals and objectives to achieve)?
   - **SVC, SVS, Practices** all have continuous improvement as part of it.
   - CIR (Continual Improvement Register): database/spreadsheet/document. manage/track/prioritize improvement ideas.
@@ -250,8 +247,8 @@
     6. are we **there**? evaluate metrics, KPI's.
   - ![continual improvement model](img/continual_improvement_model.PNG)
 - **!Change Enablement**
-  - performing proper risk assessment to maximize success and minimize failure when changing product/services.
-  - 'change authority' authorizes change.
+  - performing proper **risk assessment to maximize success** and **minimize failure** when changing product/services.
+  - **change authority**: authorizes change.
   - used by all but 'plan' and 'engage' from SVC.
   - Types: S-N-E
     - **Standard**: pre-authorized, pre-defined, pre-agreed. low risk, low cost change. e.g. password change.
@@ -262,7 +259,7 @@
   - **swarming**: allocate multiple business resources towards problem.
   - engage and deliver and support(SVC) most likely to use.
   - used by all but 'plan' of the service value chain.
-  - incident: unplanned interruption. Log, prioritize, manage through lifecycle. SLA defines what 'normal' is.
+  - incident: unplanned interruption. **Log, prioritize, manage** through lifecycle. SLA defines what 'normal' is.
     - same categorization as 'Problem' tickets.
   - major incidents: **separate procedures, shorter timescales, greater urgency from normal incidents**.
 - **!Problem Management**
@@ -277,14 +274,13 @@
   - capture demand for incident response and service request.
   - single point of contact between provider and consumer.
   - used by 'engage' and 'deliver and support' SVC.
-  - capture demand for incidents and service request.
   - channels: email, phone, chat, text message, forums.
   - skills: **incident analysis, communication, emotional intelligence, customer service**.
   - ![service management](img/service_management.PNG)
 - **!Service Request Management**
   - step 2. call the service desk -> service request management -> service level management.
-  - support the user-initiated(stakeholders) needs(other than incident response) according to SLA.
-  - normal part of service delivery. pre-defined, pre-agreed procedures.
+  - support the **user-initiated**(stakeholders) needs(other than incident response) according to **SLA**.
+  - normal part of service delivery. **pre-defined, pre-agreed procedures**.
   - used by 'engage' and 'deliver and support' SVC.
   - service request: formal request for something(e.g. need color monitor) not needing incident resolution.
   - steps to fulfill service request should be **well known**.
@@ -292,7 +288,7 @@
   - ![service management](img/service_management.PNG)
 - **!Service Level Management**
   - step 3. call the service desk -> service request management -> service level management.
-  - set **clear business targets** for service performance, so delivery of service can be measured.
+  - set **clear business targets** for service performance, so delivery of service can be **measured**.
   - used by 'engage' and 'plan' from SVC.
   - SLA: business and client agreement for service. Service Level Management create/monitors SLA.
     - Watermelon Effect: monitoring the wrong SLA metrics, everything looks great, unhappy customers.
