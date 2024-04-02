@@ -110,9 +110,9 @@
 - **LTE-M**
   - LTE chips built for IoT, higher throughput and lower battery life than NB-IoT
 - **5G enables**
-  - eMBB – Enhanced Mobile Broadband with higher data rates
-  - URLLC – ultra-reliable low-latency communication for critical use cases where quality of service and low latency is needed.
-- mMTC – Massive Machine Type Communications to support huge number of devices in future.
+  - **eMBB** – Enhanced Mobile Broadband with higher data rates
+  - **URLLC** – ultra-reliable low-latency communication for critical use cases where quality of service and low latency is needed.
+  - **mMTC** – Massive Machine Type Communications to support huge number of devices in future.
 
 IoT Runtime Environment – IRE, provides additional functionality beyond the container management level that enables remote management of information flows between multiple IoT applications and external endpoints, allows specific applications to be chained together, enabling data to be transforms, contextualized, and communicated to other systems.
 Device management – encompassing the areas of initial device configuration and on-going management.
