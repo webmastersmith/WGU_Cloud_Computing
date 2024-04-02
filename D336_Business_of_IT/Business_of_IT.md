@@ -63,7 +63,7 @@
 - **Risk**
   - **possible** events that could cause harm or loss.
 - **Utility**
-  - **functionality** that meets a need.
+  - **functionality** that meets a need. based on customer **perception**.
 - **Warranty**
   - assurance that requirements will be met.
 
@@ -103,6 +103,7 @@
     2. **Start Where you are**: do not start from scratch without considering what you already have and leverage it.
     3. **Progress Iteratively with feedback**: do not attempt to do everything at once. Organize work into smaller manageable units(agile), then get feedback from customers, stakeholders.
     4. **Collaborate and Promote Visibility**: **inclusion**. everyone on board and including in process.
+       1. **collaboration does not mean consensus, communicate in a way the audience can hear, decisions can only be made on visible data**.
     5. **Think and Work Holistically**: How our effort helps the whole. No single service stands alone. Value suffers unless we work in an integrated way. Avoid silo thinking.
     6. **Keep It Simple and Practical**: always use minimum number of steps to accomplish objective. fails to provide value, eliminate it.
     7. **Optimize and Automate**: prevents errors, speed up the value process.
@@ -261,7 +262,7 @@
   - used by all but 'plan' of the service value chain.
   - incident: unplanned interruption. Log, prioritize, manage through lifecycle. SLA defines what 'normal' is.
     - same categorization as 'Problem' tickets.
-  - major accidents: separate procedure from normal incidents.
+  - major incidents: **separate procedures, shorter timescales, greater urgency from normal incidents**.
 - **!Problem Management**
   - **reduce likelihood** of recurring incidents by identifying and **eliminating root cause**.
   - used by 'improve' and 'deliver and support' from SVC.
