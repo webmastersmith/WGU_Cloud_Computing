@@ -80,6 +80,8 @@
   - providing service.
 - **Service Consumption**
   - consuming service.
+- **Service Request**
+  - request from **user** or users authorized representative that initiates a **service action** which has been agreed upon as a **normal part of service delivery**.
 
 ## 2.1 Use and Interaction of the Guiding Principles (1 question on ITIL 4 exam)
 
