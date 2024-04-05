@@ -57,6 +57,8 @@
 - **long-range low-power wide-area network (LP-WAN)**
   - a wireless wide area network technology that interconnects low-bandwidth, battery-powered devices with low bit rates over long ranges and can be delivered through cellular networks.
   - Sigfox or LoRa are LP-WAN devices.
+- **OT**
+  - Operational Technology
 - **Platform Providers**
   - Provide storage and computing infrastructure as well as analytics services which could include artificial intelligence.
 - **sensors**
