@@ -38,6 +38,8 @@
   - a network of hundreds of thousands of interconnected computers, servers, routers, switches, and fiber-optic cables that allow critical infrastructures to work
 - **digital**
   - technologies that generate, store, and process data as fixed numbers; binary digits or bits in the form of zeroes and ones
+- **DLT**
+  - Distributed Ledger Technology: technology underpinning blockchain. Distributed(every node saves a copy of ledger), lack of central authority. Consensus happens with >50%, is trusted decision.
 - **edge processing**
   - a process of data aggregation, manipulation, bandwidth reduction, and other logic directly on an IoT sensor or device
 - **End Users**
@@ -61,6 +63,8 @@
   - Operational Technology
 - **Platform Providers**
   - Provide storage and computing infrastructure as well as analytics services which could include artificial intelligence.
+- **SC**
+  - smart contract: programable contracts stored in blockchain that manage transactions under specific terms and conditions.
 - **sensors**
   - devices that respond to inputs from the physical environment and use those inputs for decision-making by displaying the inputs, transmitting them for additional processing, or using them in conjunction with artificial intelligence
 - **web**
