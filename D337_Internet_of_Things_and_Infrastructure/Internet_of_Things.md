@@ -25,7 +25,7 @@
 - **Access network**
   - part of network which is concerned with moving data to and from a sensor or edge.
 - **actuator**
-  - a device that converts an electrical signal into a corresponding physical quantity such as movement, force, or sound
+  - a device that converts an electrical signal into a corresponding physical quantity such as movement, force, or sound.
 - **Application Developers**
   - Produce applications that process the available data within a specific context to produce actionable insight for end users.
 - **AQL**
@@ -33,17 +33,17 @@
 - **Customer edge device**
   - receive data from and send commands to IoT devices & provide limited local storage, processing, and networking functions device to a backhaul network.
 - **consumer IoT**
-  - all the users' networks around their personal and home devices
+  - all the users' networks around their personal and home devices.
 - **cybersecurity**
-  - the practice of protecting information systems, networks, data, and programs from digital attacks
+  - the practice of protecting information systems, networks, data, and programs from digital attacks.
 - **cyberspace**
-  - a network of hundreds of thousands of interconnected computers, servers, routers, switches, and fiber-optic cables that allow critical infrastructures to work
+  - a network of hundreds of thousands of interconnected computers, servers, routers, switches, and fiber-optic cables that allow critical infrastructures to work.
 - **digital**
-  - technologies that generate, store, and process data as fixed numbers; binary digits or bits in the form of zeroes and ones
+  - technologies that generate, store, and process data as fixed numbers; binary digits or bits in the form of zeroes and ones.
 - **DLT**
   - Distributed Ledger Technology: technology underpinning blockchain. Distributed(every node saves a copy of ledger), lack of central authority. Consensus happens with >50%, is trusted decision.
 - **edge processing**
-  - a process of data aggregation, manipulation, bandwidth reduction, and other logic directly on an IoT sensor or device
+  - a process of data aggregation, manipulation, bandwidth reduction, and other logic directly on an IoT sensor or device.
 - **EHR**
   - electronic health record: persons PII and health records.
 - **End Users**
@@ -51,17 +51,17 @@
 - **Federated**
   - similar to distributed, but each node has autonomy.
 - **industrial IoT**
-  - machines, computers, and people enabling intelligent industrial operations using advanced data analytics for transformational business outcomes
+  - machines, computers, and people enabling intelligent industrial operations using advanced data analytics for transformational business outcomes.
 - **information systems**
-  - combinations of hardware, software, and networks that are integrated together to collect, process, store, and distribute data
+  - combinations of hardware, software, and networks that are integrated together to collect, process, store, and distribute data.
 - **Information Providers**
   - Owners of sensor deployments that may share information and data for the general good.
 - **internet**
-  - a global network of wired and wireless networks
+  - a global network of wired and wireless networks.
 - **IoT ecosystem**
-  - a set of stakeholders that participate in the deployment of IoT technology and the relationships between them
+  - a set of stakeholders that participate in the deployment of IoT technology and the relationships between them.
 - **Internet of Bodies**
-  - connected devices that monitor the human body, collect physiological, biometric, or behavioral data, and exchange information over a wireless or hybrid network
+  - connected devices that monitor the human body, collect physiological, biometric, or behavioral data, and exchange information over a wireless or hybrid network.
 - **long-range low-power wide-area network (LP-WAN)**
   - a wireless wide area network technology that interconnects low-bandwidth, battery-powered devices with low bit rates over long ranges and can be delivered through cellular networks.
   - Sigfox or LoRa are LP-WAN devices.
