@@ -28,6 +28,8 @@
   - a device that converts an electrical signal into a corresponding physical quantity such as movement, force, or sound
 - **Application Developers**
   - Produce applications that process the available data within a specific context to produce actionable insight for end users.
+- **AQL**
+  - archetype query language: archetype is framework for structuring health data. AQL is a query language based on SQL that connects to openEHR(electronic health records) health database.
 - **Customer edge device**
   - receive data from and send commands to IoT devices & provide limited local storage, processing, and networking functions device to a backhaul network.
 - **consumer IoT**
@@ -42,8 +44,12 @@
   - Distributed Ledger Technology: technology underpinning blockchain. Distributed(every node saves a copy of ledger), lack of central authority. Consensus happens with >50%, is trusted decision.
 - **edge processing**
   - a process of data aggregation, manipulation, bandwidth reduction, and other logic directly on an IoT sensor or device
+- **EHR**
+  - electronic health record: persons PII and health records.
 - **End Users**
   - Use the information and applications that are made available by other stakeholders.
+- **Federated**
+  - similar to distributed, but each node has autonomy.
 - **industrial IoT**
   - machines, computers, and people enabling intelligent industrial operations using advanced data analytics for transformational business outcomes
 - **information systems**
