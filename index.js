@@ -218,7 +218,8 @@
         // make sure line is not empty
         if (line.trim()) {
           // Not an image, must be a question.
-          const h = line.length > 40 ? '###' : '##';
+          // const h = line.length > 40 ? '###' : '##';
+          const h = '###';
           rawFront += addNewLine(`${h} ${line.replace('-', '').trim()}`);
         }
       }
