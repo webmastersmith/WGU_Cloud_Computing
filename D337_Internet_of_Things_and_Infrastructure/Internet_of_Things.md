@@ -19,6 +19,7 @@
 - <https://www.reddit.com/r/WGU/comments/18oz6kz/d337_internet_of_things_iot_and_infrastructure/>
   - <https://quizlet.com/759979605/d337-internet-of-things-iot-and-infrastructure-flash-cards/?x=1jqt>
 - [The Internet of Things: What Everyone Needs to Know](https://ebookcentral.proquest.com/lib/westerngovernors-ebooks/reader.action?docID=6176638&ppg=32)
+- <https://skillsforall.com/course/introduction-iot?courseLang=en-US>
 
 ## Glossary
 
