@@ -1,5 +1,7 @@
 # D337 Internet of Things
 
+- The anki deck can be found [here](https://ankiweb.net/shared/by-author/938689157)
+
 ## Internet of things Questions and Explanations
 
 - Which building block is used to move collected IoT data to the central IoT platform? % A. Edge compute % B. Application % C. Gateway % D. Smart device
@@ -44,7 +46,7 @@
     - **Performs data aggregation and reduces transmission costs**: While customer edge devices might perform some basic data pre-processing, data aggregation and transmission cost reduction are often handled by higher-level nodes with more processing power and potentially network management capabilities.
     - **Performs measurements and provides telemetry**: This is partially true. Customer edge devices often collect measurements and telemetry data from sensors or other devices they are connected to. However, their role extends beyond just data acquisition; they can also perform some local processing and storage before potentially transmitting the data onwards.
     - **Provides powerful storage and processing capabilities**: As mentioned earlier, customer edge devices are resource-constrained. Powerful storage and processing capabilities are typically found in higher-level nodes within the four-node edge computing model, which can handle more complex tasks and data analysis.
-- Which two processor architectures are used by Customer Premises Edge Compute (C-PEC) devices? %   % Choose 2 answers. % A. x86 % B. MIPS % C. ARM % D. Itanium
+- Which two processor architectures are used by Customer Premises Edge Compute (C-PEC) devices? % % Choose 2 answers. % A. x86 % B. MIPS % C. ARM % D. Itanium
   - **Correct Answer**
     - **x86**: x86 and ARM are common processor architectures used in C-PEC devices due to their balance of power consumption and processing capabilities.
     - **ARM**: x86 and ARM are common processor architectures used in C-PEC devices due to their balance of power consumption and processing capabilities.
@@ -100,14 +102,14 @@
     - **Power measurement and control (PMC)**: PMCs may have broader functionalities than just billing, such as controlling power consumption.
     - **Intelligent energy device (IED)**: IEDs are used for grid management, not individual meter reading like smart meters.
     - **Phasor measurement unit (PMU)**: Phasor Measurement Units (PMUs) are specialized devices that provide high-fidelity (very precise) measurements of voltage and current phasors (phasors represent the magnitude and phase angle of a sinusoidal waveform). PMUs are valuable for specific grid analysis tasks but might be overkill for the university's needs, where a more general-purpose power measurement and control device like a PMC would be sufficient.
-- A city plans for an Intelligent Transport System (ITS) that monitors public transport locations, as well as accidents and congestions, to control traffic lights effectively. %   % Which two items should be used to gather information for the system? %   % Choose 2 answers. % A. GPS devices % B. Smart CCTV cameras % C. Smart meters % D. Intraocular devices
+- A city plans for an Intelligent Transport System (ITS) that monitors public transport locations, as well as accidents and congestions, to control traffic lights effectively. % % Which two items should be used to gather information for the system? % % Choose 2 answers. % A. GPS devices % B. Smart CCTV cameras % C. Smart meters % D. Intraocular devices
   - **Correct Answer**
     - **GPS devices**: GPS devices track location data, which can be used to understand traffic flow patterns.
     - **Smart CCTV cameras**: Smart CCTV cameras can provide visual data on traffic flow and identify accidents.
   - **Incorrect Answer**
     - **Smart meters**: Smart meters focus on power usage data, not traffic information.
     - **Intraocular devices**: Intraocular devices are implanted medical devices for vision correction.
-- An electric utility company needs to increase the speed of the collection and improve the accuracy of the information it manually collects from its meters. The meters are located in the back of residential dwellings. %   % Which solution meets both requirements? % A. Move meters to the front of every building % B. Have another person verify the data from the meters % C. Install a sensor on meters that can transmit data to a receiver % D. Change the analog meters to a digital display
+- An electric utility company needs to increase the speed of the collection and improve the accuracy of the information it manually collects from its meters. The meters are located in the back of residential dwellings. % % Which solution meets both requirements? % A. Move meters to the front of every building % B. Have another person verify the data from the meters % C. Install a sensor on meters that can transmit data to a receiver % D. Change the analog meters to a digital display
   - **Correct Answer**
     - **Install a sensor on meters that can transmit data to a receiver**: Installing sensors with data transmission capabilities eliminates the need for manual data collection, improving efficiency, speed, and reducing the risk of errors associated with manual processes.
   - **Incorrect Answer**
@@ -130,7 +132,7 @@
     - **Compressor**: A compressor is a mechanical device used for compressing gases. It has no role in monitoring user activities or emergency response.
 - Which type of IoT detection sensor built into electric bulbs minimizes energy usage? % A. Humidity % B. Light % C. Vibration % D. Motion
   - **Correct Answer**
-    - **Motion**:  Motion detection sensors built into electric bulbs can significantly minimize energy usage. These sensors detect movement within a room and automatically turn on the light when someone enters. Conversely, when no motion is detected for a predetermined period, the sensor can turn the light off. This targeted approach to lighting based on occupancy helps conserve energy compared to bulbs that remain lit continuously.
+    - **Motion**: Motion detection sensors built into electric bulbs can significantly minimize energy usage. These sensors detect movement within a room and automatically turn on the light when someone enters. Conversely, when no motion is detected for a predetermined period, the sensor can turn the light off. This targeted approach to lighting based on occupancy helps conserve energy compared to bulbs that remain lit continuously.
   - **Incorrect Answer**
     - **Humidity**: Humidity levels typically don't directly correlate with the need for light. Humidity sensors might be used in other smart home applications but wouldn't be the most suitable choice for minimizing energy usage with light bulbs.
     - **Light**: Light sensors might be used for automatic dimming based on ambient light levels, but they wouldn't necessarily turn off lights completely when a room is unoccupied.
@@ -144,7 +146,7 @@
     - **Standardization**: While standardization can be helpful for device interoperability within an IoT ecosystem, it's not the primary concern here. The company needs to prioritize protecting PII data.
 - Which task does an information consumer perform within an IoT ecosystem? % A. Collects data from their sensors and shares it based on terms and conditions % B. Builds applications that use data from various sources after obtaining consent % C. Identifies risks by communicating with the data owner for risk management % D. Maintains backups of the data collected from the sensors for disaster recovery
   - **Correct Answer**
-    - **Builds applications that use data from various sources after obtaining consent**:  Information consumers in an IoT ecosystem are the entities that utilize data collected from various sources (sensors, devices, etc.). They typically don't directly collect the data themselves. However, they play a crucial role by building applications or services that leverage this data after obtaining proper consent from the data owner. This could involve anonymized data or data aggregated from multiple sources.
+    - **Builds applications that use data from various sources after obtaining consent**: Information consumers in an IoT ecosystem are the entities that utilize data collected from various sources (sensors, devices, etc.). They typically don't directly collect the data themselves. However, they play a crucial role by building applications or services that leverage this data after obtaining proper consent from the data owner. This could involve anonymized data or data aggregated from multiple sources.
   - **Incorrect Answer**
     - **Collects data from their sensors and shares it based on terms and conditions**: While some information consumers might have their own sensors, the core function is using data collected by others, not necessarily collecting it themselves.
     - **Identifies risks by communicating with the data owner for risk management**: Risk identification and management might be a collaborative effort involving various stakeholders, but it's not the primary function of an information consumer. Their focus is on utilizing the data for specific purposes.
@@ -163,7 +165,7 @@
     - **Batch engine**: This processes batched data, not real-time streams.
     - **Serving back-end**: This serves processed data to applications, not for real-time processing.
     - **Data storage**: This stores data, not for processing.
-- Which two technology areas affect the networking requirements within the customer IoT landscape? %   % Choose 2 answers. % A. Smart roads % B. Smart home % C. Sonography % D. Wearables
+- Which two technology areas affect the networking requirements within the customer IoT landscape? % % Choose 2 answers. % A. Smart roads % B. Smart home % C. Sonography % D. Wearables
   - **Correct Answer**
     - **Smart home**: Smart home devices require specific network protocols and bandwidth to communicate effectively.
     - **Wearables**: Wearables often transmit data wirelessly, impacting network design and resource allocation.
@@ -177,14 +179,14 @@
     - **Unencrypted communications**: While unencrypted communication can be a vulnerability, it's not the primary target for default credential attacks.
     - **Cleartext passwords**: Similar to unencrypted communications, this is not the main vulnerability exploited.
     - **Exposed sensors**: Exposed sensors might be a vulnerability, but it's not the specific target of default credential attacks.
-- Which two stakeholder groups contribute to addressing the challenges of IoT security? %   % Choose 2 answers. % A. Governments % B. Universities % C. Standards development bodies % D. Law enforcement organizations
+- Which two stakeholder groups contribute to addressing the challenges of IoT security? % % Choose 2 answers. % A. Governments % B. Universities % C. Standards development bodies % D. Law enforcement organizations
   - **Correct Answer**
     - **Governments**: Governments play a role in setting regulations and standards for IoT security.
     - **Standards development bodies**: Standards development bodies create guidelines and best practices for secure IoT development.
   - **Incorrect Answer**
-    - **Universities**:  While universities contribute to research on IoT security, they are not a primary stakeholder group.
+    - **Universities**: While universities contribute to research on IoT security, they are not a primary stakeholder group.
     - **Law enforcement organizations**: Law enforcement plays a role in investigating and prosecuting cybercrime, but they are not a primary stakeholder group in developing security solutions.
-- Which two issues can result from global deployment of insecurely configured IoT devices? %   % Choose 2 answers. % A. Devices are compromised to provide fake data % B. Device hardware is attacked until destroyed % C. Devices are compromised to form botnets % D. Device software is built into a sandbox environment
+- Which two issues can result from global deployment of insecurely configured IoT devices? % % Choose 2 answers. % A. Devices are compromised to provide fake data % B. Device hardware is attacked until destroyed % C. Devices are compromised to form botnets % D. Device software is built into a sandbox environment
   - **Correct Answer**
     - **Devices are compromised to provide fake data**: Insecure devices can be manipulated to provide false information.
     - **Devices are compromised to form botnets**: Insecure devices can be easily exploited by attackers to become part of a botnet, a network of compromised devices controlled by a malicious actor. These botnets can be used to launch large-scale cyberattacks, such as Distributed Denial-of-Service (DDoS) attacks, disrupting online services or critical infrastructure.
@@ -242,8 +244,8 @@
     - **Securing software updates**: Securing software updates is a crucial BPG for maintaining overall security, but in this specific case, the primary concern is securing the application itself to protect personal data it handles. However, secure software updates can indirectly contribute to application security by patching vulnerabilities that could be exploited for unauthorized access.
 - A company is developing a smart speaker. The company wants to review industry standards on device boot and operating system security to improve security in its devices. % Which two resources should this company evaluate? % Choose 2 answers. % A. Code of Practice % B. Best Practice Guidelines % C. Human-in-the-loop % D. Internet of Bodies
   - **Correct Answer**
-    - **Code of Practice**: CoPs are established guidelines or sets of rules created by industry associations or government bodies.  They outline best practices for achieving a specific goal, such as secure device boot and operating system security for smart speakers. Following a relevant CoP can provide a strong foundation for the company's security practices.
-    - **Best Practice Guidelines**: Similar to CoPs, BPGs offer recommendations and best practices. However,  they might be created by individual companies or organizations and might not carry the same weight as a formally established CoP.  Nevertheless, BPGs from reputable organizations in the smart speaker industry can provide valuable insights and specific technical recommendations for secure boot and operating system hardening.
+    - **Code of Practice**: CoPs are established guidelines or sets of rules created by industry associations or government bodies. They outline best practices for achieving a specific goal, such as secure device boot and operating system security for smart speakers. Following a relevant CoP can provide a strong foundation for the company's security practices.
+    - **Best Practice Guidelines**: Similar to CoPs, BPGs offer recommendations and best practices. However, they might be created by individual companies or organizations and might not carry the same weight as a formally established CoP. Nevertheless, BPGs from reputable organizations in the smart speaker industry can provide valuable insights and specific technical recommendations for secure boot and operating system hardening.
   - **Incorrect Answer**
     - **Human-in-the-loop**: This refers to systems where a human is involved in decision-making processes alongside automation. While human oversight can be important for security, it's not a resource for reviewing industry standards on device boot and operating system security.
     - **Internet of Bodies**: IoB refers to the interconnection of wearable devices with the internet. While smart speakers might be connected devices, they are not typically considered wearables, and IoB wouldn't be the most focused resource for smart speaker security specifically.
@@ -252,8 +254,8 @@
     - **Change the devices' usernames and passwords**: Default usernames and passwords are well-known to attackers and make devices easy targets. By changing these credentials to strong, unique passwords for each device, the company significantly increases the difficulty for malware to gain unauthorized access and install itself.
   - **Incorrect Answer**
     - **Alter the port the devices use to communicate**: While changing communication ports can add a layer of obscurity, it's not a foolproof method. Malware can often scan for devices on different ports. Additionally, some devices might require specific ports to function correctly.
-    - **Scan for unusual packets being sent to the devices**: Network traffic monitoring is a valuable security practice, but it's more suited for ongoing threat detection.  While it might help identify suspicious activity after the malware infection, it wouldn't necessarily prevent the initial installation that already occurred due to default configurations.
-    - **Install a firewall limiting communication to the devices**: Firewalls can be a useful security measure, but they typically focus on controlling incoming and outgoing traffic based on pre-defined rules.  While they might help prevent some malware from communicating after installation, they wouldn't necessarily stop the initial infection that exploited default configurations.
+    - **Scan for unusual packets being sent to the devices**: Network traffic monitoring is a valuable security practice, but it's more suited for ongoing threat detection. While it might help identify suspicious activity after the malware infection, it wouldn't necessarily prevent the initial installation that already occurred due to default configurations.
+    - **Install a firewall limiting communication to the devices**: Firewalls can be a useful security measure, but they typically focus on controlling incoming and outgoing traffic based on pre-defined rules. While they might help prevent some malware from communicating after installation, they wouldn't necessarily stop the initial infection that exploited default configurations.
 - What does blockchain implement to ensure reliable data are returned when there are multiple sensors measuring the same data? % A. Mega-merger method % B. Agreed consensus mechanism % C. Shared storage quorum % D. Byzantine Paxos algorithm
   - **Correct Answer**
     - **Agreed consensus mechanism**: Blockchain technology utilizes a consensus mechanism to ensure all participating nodes in the network agree on the validity of a transaction (adding a new data block). This consensus mechanism ensures that even if some sensors might report slightly different readings due to factors like calibration or environment, only one version of the data is accepted and added to the blockchain. Common consensus mechanisms include Proof of Work (PoW) and Proof of Stake (PoS). These mechanisms incentivize nodes to verify and agree on the data, promoting data integrity and preventing manipulation.
@@ -277,8 +279,8 @@
     - **Verifying data from sensors by a central authority**: Blockchain is inherently decentralized, meaning there's no central authority verifying data. The consensus mechanism involves distributed verification among multiple nodes within the network.
 - What are two categories of ethical concern when collecting data through IoT? % Choose 2 answers. % A. Accessing and using data % B. Building applications to store data % C. Control and property rights of data % D. Diagnostics of data quality
   - **Correct Answer**
-    - **Accessing and using data**: This category encompasses ethical considerations around how data is accessed from IoT devices. It includes concerns about user consent, authorized access controls, and the purpose for which the data is being used.  There are ethical concerns if data is collected without user knowledge or used for purposes beyond what users consented to.
-    - **Control and property rights of data**: This category focuses on who owns and controls the data collected from IoT devices.  There are questions about transparency regarding data ownership, how long data is stored, and whether users have the right to access or delete their data.
+    - **Accessing and using data**: This category encompasses ethical considerations around how data is accessed from IoT devices. It includes concerns about user consent, authorized access controls, and the purpose for which the data is being used. There are ethical concerns if data is collected without user knowledge or used for purposes beyond what users consented to.
+    - **Control and property rights of data**: This category focuses on who owns and controls the data collected from IoT devices. There are questions about transparency regarding data ownership, how long data is stored, and whether users have the right to access or delete their data.
   - **Incorrect Answer**
     - **Building applications to store data**: While the way data is stored can have security implications, it's not a primary ethical concern in this context. The focus here is on user consent, data usage, and ownership.
     - **Diagnostics of data quality**: Data quality is important, but it's not a core ethical concern. It relates more to the accuracy and reliability of the data itself, not the ethical implications of collecting it.
@@ -296,12 +298,12 @@
     - **Determining who can purchase their demographic information**: While data privacy is a concern, this answer focuses on a specific aspect of data control, not the core ethical issue in this context.
     - **Ensuring personally identifiable information being stored is secure**: Data security is important, but it's not the main ethical concern here. The issue lies in the potential privacy trade-off when users freely share information through social media, even if the platform itself stores data securely.
     - **Making sure information is not saved locally in plain text**: This answer refers to a technical security concern, but it doesn't directly address the ethical tension between freedom of expression and privacy in the context of social media and wearables.
-- A company requires customers to provide personally identifiable information (PII) when registering an IoT device. The company sells the information. A business school has argued that only people should be able to sell their information and not the IoT company. %   % Which principle does this argument support? % A. Integrity must remain a high priority. % B. Confidentiality of all data is mandatory. % C. Privacy is a fundamental human right. % D. Availability is essential for data transfer.
+- A company requires customers to provide personally identifiable information (PII) when registering an IoT device. The company sells the information. A business school has argued that only people should be able to sell their information and not the IoT company. % % Which principle does this argument support? % A. Integrity must remain a high priority. % B. Confidentiality of all data is mandatory. % C. Privacy is a fundamental human right. % D. Availability is essential for data transfer.
   - **Correct Answer**
     - **Privacy is a fundamental human right.**: This answer reflects the core principle behind the business school's argument. The right to privacy is increasingly recognized as a fundamental human right, giving individuals control over their personal information. By selling user data without explicit consent, the company arguably violates this right.
   - **Incorrect Answer**
     - **Integrity must remain a high priority.**: Data integrity is crucial for ensuring data accuracy and trustworthiness. While important, it doesn't directly address the concept of user control over personal information.
-    - **Confidentiality of all data is mandatory.**: Data confidentiality focuses on keeping information confidential and protected from unauthorized access.  While user data should be confidential, the argument goes beyond just confidentiality; it emphasizes the user's right to decide how their information is used or shared.
+    - **Confidentiality of all data is mandatory.**: Data confidentiality focuses on keeping information confidential and protected from unauthorized access. While user data should be confidential, the argument goes beyond just confidentiality; it emphasizes the user's right to decide how their information is used or shared.
     - **Availability is essential for data transfer.**: Data availability ensures data can be accessed and used when needed. It's not relevant to the user's right to control their personal information.
 - A manufacturer of proprietary IoT technology is trying to pressure a company into using its technology. % What is the manufacturer infringing on? % A. Fifth Amendment % B. Deidentification % C. Decisional privacy % D. Safe harbor
   - **Correct Answer**
@@ -311,10 +313,9 @@
     - **Deidentification**: Deidentification refers to removing personally identifiable information (PII) from data. It's not directly connected to the right to make choices without pressure.
     - **Safe harbor**: Safe harbor provisions are legal agreements that offer protections for companies transferring data across borders. It's not applicable to the situation of a manufacturer pressuring a company's technology choice.
 - Which framework identifies factors influencing investments? % A. National Institute of Standards and Technology (NIST) Privacy Framework % B. National Institute of Standards and Technology (NIST) Cybersecurity Framework % C. Software Alliance Framework for Security Software (SAFSS) % D. Regulators, Facilitators, and Collaborators (RFC) Framework
-  - **Correct Answer**
-    - **Regulators, Facilitators, and Collaborators (RFC) Framework**: Regulators: Government regulations can significantly impact investment decisions in certain sectors.
-Facilitators: Entities like banks or investment firms can influence investment opportunities through funding or guidance.
- Collaborators: Partnerships or collaborations between companies can create new investment opportunities.
+  - **Correct Answer** - **Regulators, Facilitators, and Collaborators (RFC) Framework**: Regulators: Government regulations can significantly impact investment decisions in certain sectors.
+    Facilitators: Entities like banks or investment firms can influence investment opportunities through funding or guidance.
+    Collaborators: Partnerships or collaborations between companies can create new investment opportunities.
   - **Incorrect Answer**
     - **National Institute of Standards and Technology (NIST) Privacy Framework**: This framework focuses on identifying and managing privacy risks, not specifically investment factors.
     - **National Institute of Standards and Technology (NIST) Cybersecurity Framework**: Similar to the privacy framework, this one addresses cybersecurity risks and best practices, not investment decisions.
@@ -341,11 +342,10 @@ Facilitators: Entities like banks or investment firms can influence investment o
     - **General Data Protection Regulation (GDPR)**: The GDPR is a regulation in EU law on data protection and privacy in the European Union. It doesn't directly address using IoT infrastructure for malicious activities.
     - **Fair Information Practice Principles (FIPP)**: FIPP are a set of guidelines for data collection and use. While data privacy is important in the context of IoT, FIPPs don't specifically address using IoT infrastructure for malicious purposes.
 - How are IoT devices used by the Chinese government to measure its citizens' social credit score? % A. By identifying the brand of products purchased at the market and online % B. By tracking compliance with prescribed social and economic obligations % C. By calculating the personal time taken off from work activities % D. By verifying the number of family members living in a residence
-  - **Correct Answer**
-    - **By tracking compliance with prescribed social and economic obligations**: China's social credit system utilizes various data points to assess an individual's trustworthiness. IoT devices can be included in this data collection by:
-Monitoring financial transactions to track repayments and responsible borrowing habits.
-Tracking traffic violations or adherence to environmental regulations using cameras and sensors.
-Recording interactions with public services to gauge an individual's cooperation.
+  - **Correct Answer** - **By tracking compliance with prescribed social and economic obligations**: China's social credit system utilizes various data points to assess an individual's trustworthiness. IoT devices can be included in this data collection by:
+    Monitoring financial transactions to track repayments and responsible borrowing habits.
+    Tracking traffic violations or adherence to environmental regulations using cameras and sensors.
+    Recording interactions with public services to gauge an individual's cooperation.
   - **Incorrect Answer**
     - **By identifying the brand of products purchased at the market and online**: While purchase history might be a data point, brand names might not be as relevant to social credit scoring. The focus is more on responsible financial behavior.
     - **By calculating the personal time taken off from work activities**: There's no widespread evidence of IoT devices directly monitoring personal work absence. Social credit scoring likely focuses on meeting financial obligations and civic duties.
@@ -356,7 +356,7 @@ Recording interactions with public services to gauge an individual's cooperation
   - **Incorrect Answer**
     - **Centralized server**: Uploading 6 GB/second to a central server would be too slow for real-time decision-making in a self-driving car.
     - **Peer-to-peer network**: Peer-to-peer networks are not ideal for this scenario due to the lack of centralized coordination and potential security concerns.
-    - **Meshed network**: Meshed networks can provide connectivity in some IoT applications, but they don't necessarily address real-time data analysis requirements.  Edge computing offers a more focused approach for analyzing data generated by the self-driving car.
+    - **Meshed network**: Meshed networks can provide connectivity in some IoT applications, but they don't necessarily address real-time data analysis requirements. Edge computing offers a more focused approach for analyzing data generated by the self-driving car.
 - Which two reductions will occur when autonomous vehicle (AV) usage is widespread? % Choose 2 answers. % A. Car prices % B. Congestion % C. Car ownership % D. Emissions
   - **Correct Answer**
     - **Congestion**: AVs are expected to be programmed to follow traffic rules precisely and communicate with each other, potentially leading to smoother traffic flow and reduced congestion. This could significantly improve travel times in urban areas.
@@ -364,7 +364,7 @@ Recording interactions with public services to gauge an individual's cooperation
   - **Incorrect Answer**
     - **Car prices**: Initially, AV technology might be expensive, potentially leading to higher car prices. However, as the technology matures and economies of scale come into play, prices could eventually come down.
     - **Car ownership**: With AVs, car ownership might not be necessary for everyone. Ride-hailing services utilizing AVs could become more prevalent, allowing people to access transportation without needing to own a vehicle.
-- A hospital plans to send data from intensive care unit (ICU) sensors to a central recording system. The data should be captured in transit for analysis in a database. %   % Which component of the system should be used to capture the data? % A. Data agent % B. Data handling unit % C. Network data aggregator % D. Central data store
+- A hospital plans to send data from intensive care unit (ICU) sensors to a central recording system. The data should be captured in transit for analysis in a database. % % Which component of the system should be used to capture the data? % A. Data agent % B. Data handling unit % C. Network data aggregator % D. Central data store
   - **Correct Answer**
     - **Network data aggregator**: A network data aggregator is designed to collect data from various sources across a network. In this case, it would be positioned strategically to capture the data transmitted from ICU sensors as it travels towards the central recording system. This allows for centralized collection and organization of the sensor data before it reaches the final storage destination (database).
   - **Incorrect Answer**
@@ -385,30 +385,30 @@ Recording interactions with public services to gauge an individual's cooperation
     - **Introduces the need to tamper with ICU sensors**: As explained above, openEHR aims for compatibility, and the network data aggregator should be designed to work with existing sensors.
     - **Provides automatic access of patients' data to researchers**: openEHR doesn't automatically grant access to researchers. Access controls and data privacy regulations would still apply.
     - **Transitions ownership of patients' data to researchers**: openEHR doesn't change data ownership. Ownership likely remains with the hospital, and researchers would need proper authorization to access the data.
-- A company implements an IoT 5G smart grid to improve resiliency within its power grid. The company installs the virtual machine cloud machine (vMCM) function. %   % Why is the vMCM function installed? % A. To monitor devices and cache information about daily consumption % B. To validate device identity to the gateway without mining operations % C. To verify the identity of a device with the OAuth2.0 service % D. To locate devices that provide a specific utility with OpenId Connect
+- A company implements an IoT 5G smart grid to improve resiliency within its power grid. The company installs the virtual machine cloud machine (vMCM) function. % % Why is the vMCM function installed? % A. To monitor devices and cache information about daily consumption % B. To validate device identity to the gateway without mining operations % C. To verify the identity of a device with the OAuth2.0 service % D. To locate devices that provide a specific utility with OpenId Connect
   - **Correct Answer**
     - **To monitor devices and cache information about daily consumption**: A virtual machine cloud machine (vMCM) function in a smart grid often acts as an edge computing resource. In this context, it's likely deployed to:
-	Gather data from various connected devices within the grid (meters, sensors, etc.).
-	Process and store this data locally, potentially including caching daily consumption information. This cached data can be used for quick retrieval and analysis without relying solely on communication with a central server.
+      Gather data from various connected devices within the grid (meters, sensors, etc.).
+      Process and store this data locally, potentially including caching daily consumption information. This cached data can be used for quick retrieval and analysis without relying solely on communication with a central server.
   - **Incorrect Answer**
     - **To validate device identity to the gateway without mining operations**: While device identity validation is crucial in IoT security, vMCM isn't typically used for mining operations (which is more associated with cryptocurrency).
     - **To verify the identity of a device with the OAuth2.0 service**: OAuth2.0 is an authorization framework, and while it might be used for device identity verification in some scenarios, it's not the most likely primary function of vMCM in this context.
-    - **To locate devices that provide a specific utility with OpenId Connect**: OpenID Connect is another identity verification protocol, and while device location might be relevant in a smart grid, it's not the most likely explanation for vMCM's role here.  The focus here seems to be on data monitoring and caching.
-- A utility company is planning to implement an advanced metering infrastructure (AMI) to transform its legacy network into a smart network. %   % What is reduced by making this transformation? % A. Capital expenditure % B. Customer turnover % C. Operational costs % D. Power outages
+    - **To locate devices that provide a specific utility with OpenId Connect**: OpenID Connect is another identity verification protocol, and while device location might be relevant in a smart grid, it's not the most likely explanation for vMCM's role here. The focus here seems to be on data monitoring and caching.
+- A utility company is planning to implement an advanced metering infrastructure (AMI) to transform its legacy network into a smart network. % % What is reduced by making this transformation? % A. Capital expenditure % B. Customer turnover % C. Operational costs % D. Power outages
   - **Correct Answer**
     - **Operational costs**: An AMI system automates meter reading and data collection. This eliminates the need for manual meter reading, reducing labor costs associated with sending meter readers to various locations. Additionally, AMI systems can provide real-time data on energy usage, allowing the utility company to identify and address inefficiencies in the grid, potentially leading to reduced energy waste and lower overall operational costs.
   - **Incorrect Answer**
     - **Capital expenditure**: While AMI implementation requires upfront investment, it can potentially lead to cost savings in the long run due to reduced operational expenses as explained above.
     - **Customer turnover**: There's no direct link between AMI implementation and customer turnover. It might even improve customer satisfaction by enabling features like time-based billing or remote meter monitoring.
     - **Power outages**: While AMI can provide data to help analyze the grid and identify potential weaknesses, it doesn't directly prevent power outages. However, data collected by AMI might be used for improved grid management and outage response times in the long run.
-- A power company integrates 5G in its advanced metering infrastructure as a service (AMIaaS) architecture. The company needs a virtual network function that provides digital ledger functionality. %   % What should this company use? % A. Virtual mobility management entity (vMME) % B. Virtual authentication, authorization, and accounting (vAAA) % C. Virtual machine cloud machine (vMCM) % D. Virtual blockchain processing (vBCP)
+- A power company integrates 5G in its advanced metering infrastructure as a service (AMIaaS) architecture. The company needs a virtual network function that provides digital ledger functionality. % % What should this company use? % A. Virtual mobility management entity (vMME) % B. Virtual authentication, authorization, and accounting (vAAA) % C. Virtual machine cloud machine (vMCM) % D. Virtual blockchain processing (vBCP)
   - **Correct Answer**
     - **Virtual blockchain processing (vBCP)**: In a scenario involving a digital ledger for an AMIaaS architecture, a virtual blockchain processing (vBCP) function is the ideal choice. Blockchain technology is well-suited for secure, transparent, and tamper-proof recording of transactions, which aligns perfectly with the needs of managing energy consumption data in an AMIaaS environment. vBCP facilitates the implementation of blockchain within a virtualized network, making it an efficient solution for the power company.
   - **Incorrect Answer**
     - **Virtual mobility management entity (vMME)**: A virtual mobility management entity (vMME) is primarily concerned with managing mobile device connections within a cellular network. While it might be involved in a 5G network, it doesn't directly address digital ledger functionality.
     - **Virtual authentication, authorization, and accounting (vAAA)**: A virtual authentication, authorization, and accounting (vAAA) function handles user access and permissions within a network. It's not directly related to managing digital ledger transactions.
     - **Virtual machine cloud machine (vMCM)**: A virtual machine cloud machine (vMCM) is a type of virtual computing environment that can be used for various purposes. While it could potentially be used to run blockchain applications, vBCP offers a more specialized solution specifically designed for blockchain processing within virtual networks.
-- A city is evaluating the World Bank's Sustainable Mobility for All (SuM4All) initiative in the development of a road traffic congestion solution. %   % What are two objectives of the SuM4All initiative? %   % Choose 2 answers. % A. Security % B. Safety % C. Efficiency % D. Deployment
+- A city is evaluating the World Bank's Sustainable Mobility for All (SuM4All) initiative in the development of a road traffic congestion solution. % % What are two objectives of the SuM4All initiative? % % Choose 2 answers. % A. Security % B. Safety % C. Efficiency % D. Deployment
   - **Correct Answer**
     - **Safety**: SuM4All aims to improve overall safety within transportation systems, aiming to reduce traffic crashes, injuries, and fatalities across all modes of transport. This can involve promoting safer road infrastructure, encouraging responsible driving behavior, and implementing advanced safety features in vehicles.
     - **Efficiency**: SuM4All emphasizes increasing the efficiency of transport systems. This can encompass reducing traffic congestion, optimizing public transportation networks, and encouraging the use of more efficient modes of transport like cycling or walking.
@@ -417,7 +417,7 @@ Recording interactions with public services to gauge an individual's cooperation
     - **Deployment**: Deployment is not a direct objective. SuM4All provides a framework and resources for countries to implement their own sustainable mobility solutions.
 - Sensors with computer vision intelligence are embedded in a city's access road surfaces and in CCTV systems to enable drivers to find available parking spaces. % Which objective of the World Bank's Sustainable Mobility for All (SuM4All) initiative is being addressed? % A. Efficiency % B. Green mobility % C. Safety % D. Universal access
   - **Correct Answer**
-    - **Efficiency**:  This scenario promotes SuM4All's efficiency objective. By using computer vision to locate available parking spaces, drivers can reduce time spent searching for parking, leading to smoother traffic flow and potentially less congestion. This contributes to a more efficient transportation system within the city.
+    - **Efficiency**: This scenario promotes SuM4All's efficiency objective. By using computer vision to locate available parking spaces, drivers can reduce time spent searching for parking, leading to smoother traffic flow and potentially less congestion. This contributes to a more efficient transportation system within the city.
   - **Incorrect Answer**
     - **Green mobility**: While SuM4All promotes sustainable transportation, this specific scenario doesn't directly target eco-friendly practices like using electric vehicles.
     - **Safety**: The focus here isn't on safety improvements but on locating parking spaces.
