@@ -20,10 +20,11 @@
   - <https://quizlet.com/759979605/d337-internet-of-things-iot-and-infrastructure-flash-cards/?x=1jqt>
 - [The Internet of Things: What Everyone Needs to Know](https://ebookcentral.proquest.com/lib/westerngovernors-ebooks/reader.action?docID=6176638&ppg=32)
 - <https://skillsforall.com/course/introduction-iot?courseLang=en-US>
-- The anki deck can be found [here](https://ankiweb.net/shared/by-author/938689157)
-- **Take the pre-exam first!** I created this with the help of Gemini, to help explain the meaning of IoT terminology.
-- About 25% of questions on the final exam are closely related to these questions.
-- Some of the final exam questions are poorly written, but keep it simple and choose the answer that makes the most sense.
+- My Notes:
+  - My anki deck can be found [here](https://ankiweb.net/shared/by-author/938689157)
+  - **Take the pre-exam first!** I created this with the help of Gemini, to help explain the meaning of IoT terminology.
+  - About 25% of questions on the final exam are closely related to these questions.
+  - Some of the final exam questions are poorly written, but keep it simple and choose the answer that makes the most sense.
 
 ## 01_IoT
 
