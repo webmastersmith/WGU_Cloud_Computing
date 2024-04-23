@@ -72,6 +72,8 @@
   - Cloud based backup services, data replication and geo distribution ensure confidence that your data is safe even if a disaster should occur.
 - **elasticity**
   - is the ability to scale **dynamically**(autoscaling).
+- **FMA**
+  - Failure Mode Analysis: identify possible points of failure.
 - **fault tolerance**
   - handle failure without service interruption. FT offers a more robust approach for critical systems that cannot afford even a single moment of downtime.
 - **Geo-Distribution/Global**
@@ -95,15 +97,17 @@
 - **Reliability**
   - Cloud applications can provide a continuous user experience with practically no downtime.
   - data backup, disaster recovery, redundancy(fault tolerance).
+- **Resiliency**
+  - ability to recover from system failure.
 - **scalability**
   - is the ability to scale, so allocate and deallocate resources at any time.
-- **Security**
+- **Security: Physical, Digital**
   - physical: cameras, gates, locks.
+    - can provide better security than most organizations can otherwise achieve
+    - Broad set of policies, technologies, controls, and expert technical skills.
   - digital:
     - you are responsible for your data.
     - Cloud provider: offers tools to mitigate security threats that you can use.
-      - Broad set of policies, technologies, controls, and expert technical skills.
-      - can provide better security than most organizations can otherwise achieve
 - **serverless computing**
   - application is broken into separate functions that runs when triggered by some action/event.
   - good for automation task.
@@ -140,40 +144,116 @@
   - International organization for standardization.
   - International electrotechnical commission.
   - 27018 covers processing personal information by cloud service providers.
+- **Microsoft Compliance Manager**
+  - risk assessment dashboard showing: data protection, compliance stature, recommendations for improvement.
+  - **compliance score**: track progress with ongoing risk assessment.
+- **Microsoft Privacy Policy**
+  - how microsoft handles PII.
+- **Microsoft Service Trust Portal**
+  - reports you can download about Azure audits.
+- **Microsoft Trust Center**
+  - in-depth information about security, privacy, compliance, policies, features...
 - **MTCS Singapore**
   - MTCS = Multi-Tier Cloud Security (MTCS) Singapore.
   - MTCS 584:2013 asses for IaaS & PaaS & SaaS service classifications.
-- **SOC 1, 2, and 3**
-  - SOC: Service Organization Controls
-  - Cloud services audited at least annually against the SOC report framework by independent third-party auditors.
-  - Audit covers controls for data security, availability, processing integrity, and confidentiality as applicable to in-scope trust principles for each service.
 - **NIST CSF**
   - NIST CSF = National Institute of Standards and Technology (NIST) Cybersecurity Framework (CSF)
     - NIST is agency of United States Department of Commerce.
   - Voluntary framework that defines security guidelines, and best practices to manage cybersecurity-related risks.
   - Azure have undergone independent, third-party Federal Risk and Authorization Management Program (FedRAMP) Moderate and High Baseline audits & is certified
     - Also validated by the Health Information Trust Alliance (HITRUST) a leading security and privacy standards development and accreditation organization
+- **SLA**
+  - service level agreement: formal document that defines performance standards(uptime guarantee).
+- **SLA -Composite**
+  - combining SLAs across different service offerings. You can increase uptime by combining different fallback services(SQL database and Queue). Queue holds transactions if database is busy, improves performance and reliability.
+- **SOC 1, 2, and 3**
+  - SOC: Service Organization Controls
+  - Cloud services audited at least annually against the SOC report framework by independent third-party auditors.
+  - Audit covers controls for data security, availability, processing integrity, and confidentiality as applicable to in-scope trust principles for each service.
 - **UK Government G-Cloud**
   - Cloud computing certification for services used by government entities in UK.
   - Azure has received official accreditation from the UK Government Pan Government Accreditor.
 
-## Azure Services
+## 03_Azure Services
 
-- **Azure Marketplace**
-  - vendors sell their solutions.
-- **Compute Services**
-  - Cover VMs, Containers & Serverless computing.
-- **Cloud Storage**
-  - Disks attached to VMs, fileshares and Databases(relational and NoSQL choices).
-- **Networking**
-  - Let you set up private network connection to your on prem environments
-- **App Hosting**
-  - Lets you run your entire application on a managed platform
 - **AI**
   - Including machine learning and prebuilt cognitive services. Good for data analysis and trends.
-- **IoT**
-  - Allows you to integrate sensors and devices and managed them.
-- **Integration**
+- **App Hosting**
+  - Lets you run your entire application on a managed platform
+- **Azure**
+  - hypervisor virtualization software to allocate compute, memory, storage.
+  - Each server includes a hypervisor to run multiple virtual machines.
+  - A network **switch** provides connectivity to all those servers
+  - **One server** in each rack runs a special software called **fabric controller**:
+    - Each fabric controller is connected to another software called as orchestrator.
+    - **Orchastrator** manages everything in Azure, including responding user requests
+    - Users requests using Azure API, can be reached in many ways including Azure Portal
+    - Orchestrator packages everything it's needed and sends to package & request to fabric controller.
+- **Azure Billing & Support**
+  - custom sub-accounts for each department, team, project...
+  - **free** 24/7 online documentation.
+    - **Azure Quickstart Center**: Guided experience in the portal.
+    - **Azure Service Health**: Insights on issues related to your Azure services.
+    - **Azure Advisor**: Personalized recommendations on how to optimize your cost and performance.
+  - **paid** Azure support plans:
+    - developer: 1 business day.
+    - standard: 1 hour.
+    - professional direct: access to technical experts.
+- **Azure Cloud Storage**
+  - Disks attached to VMs, fileshares and Databases(relational and NoSQL choices).
+- **Azure Compute Services**
+  - **VMs**: host an operating system(image).
+  - **Containers**: virtual environment on top of operating system.
+    - PaaS: fastest and simplest way to run containers.
+    - AKS: Azure Kubernetes Service. orchestration for containers.
+      - Pod: smallest item in Kubernetes. Can be one or more containers.
+  - **Micro-Services**: architecture broken down into small independent pieces. Allows easier scaling. No cross dependencies. Different programming languages. API communication.
+    - Azure Service Fabric: scalable solution for micro-services.
+  - **App Service**: host web apps without managing infrastructure.
+    - **Mobile Apps**: MBaaS(mobile backend as a service).
+  - **Serverless computing**:
+- **Azure: Geography, Regions, Availability Zones, Data Centers, Fault Domain, Availability Sets, Scale Sets, Special Regions**
+  - **Geography**: one or more regions in a geography. defines geopolitical boundaries and country borders.
+    - Americas, Europe, Asia Pacific, Middle East and Africa.
+  - **Regions**: one or more availability zones.
+  - **Availability Zone**: group of datacenters within a region networked w/ low-latency network.
+    - **isolation boundary**: redundancy. independent power, cooling, networking infrastructure.
+  - **Data Center**: physical hardware location.
+  - **Fault Domain**: rack of servers in a datacenter. Each have power, cooling, networking.
+  - **Availability Sets**: logical grouping of two or more VMs. Fault tolerance.
+  - **Scale Sets**: load balanced VMs. high availability for scale.
+  - **Special Regions**: DoD Central, US Gov Virginia... Physical and logical isolated network instances for government agencies and partners.
+    - **China East, China North**: microsoft does not maintain data centers.
+- **Azure Identity Management**
+  - tight control over who gets access to what.
+- **Azure Interactions**
+  - portal(GUI), PowerShell, CLI,
+  - SDKs: REST API. automate task in your language.
+  - Cloud Shell(web based CLI): persistent. Uses your storage(`$HOME`) to save commands.
+  - mobil app: manage, monitor.
+  - Azure Batch: large-scale job scheduling.
+- **Azure Integration**
   - Allows for workflow to orchestrate business processes.
-- **Security**
-  - Integrated into every aspect of Azure.
+- **Azure IoT**
+  - Allows you to integrate sensors and devices and managed them.
+- **Azure Marketplace**
+  - vendors sell their solutions.
+- **Azure Networking**
+  - Let you set up private network connection to your on prem environments.
+- **Azure Purchasing**
+  - website portal Azure.com(monthly invoice).
+  - microsoft representative(monthly invoice).
+  - third party(Microsoft Partner organization) cloud solution provider.
+  - EA: Enterprise Agreement. discount for volume purchase. enterprise only services.
+- **Azure Resource Groups**
+  - logical container for group assigning locks, tags, RBAC permissions...
+  - management groups for different departments.
+- **Azure Resource Locks**
+  - assign read-only to resources.
+- **Azure Resource Manager, RBAC, Tagging**
+  - anything you can create in an Azure subscription.
+  - **RBAC**: Role-based Access Control. assign roles to someone to enable permissions.
+  - **Tagging**: improve search, filter and organization.
+    - Helps group billing data, automation, monitoring.
+- **Azure Security Center**
+  - includes regulatory compliance dashboard or your services.
