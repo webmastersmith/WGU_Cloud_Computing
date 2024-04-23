@@ -291,7 +291,7 @@
 - **Azure Storage: Disk**
   - Azure Disks: persistent VM disk storage. In reality they are 'page-blobs' in blob storage.
 - **Azure Storage: Data Lake**
-  - mimics a data wharehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
+  - mimics a data warehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
   - perform analytics on data usage.
 - **Azure Storage: File**
   - Azure Files: mimics a file server. file sharing global access and manage.
