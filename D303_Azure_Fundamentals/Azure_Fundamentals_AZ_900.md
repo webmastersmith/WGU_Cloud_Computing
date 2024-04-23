@@ -97,6 +97,8 @@
 - **Reliability**
   - Cloud applications can provide a continuous user experience with practically no downtime.
   - data backup, disaster recovery, redundancy(fault tolerance).
+- **Replication**
+  - data is duplicated in more than one place. Protection against natural disasters.
 - **Resiliency**
   - ability to recover from system failure.
 - **scalability**
@@ -189,6 +191,8 @@
     - **Orchastrator** manages everything in Azure, including responding user requests
     - Users requests using Azure API, can be reached in many ways including Azure Portal
     - Orchestrator packages everything it's needed and sends to package & request to fabric controller.
+- **Azure App Service**: host web apps without managing infrastructure.
+  - **Mobile Apps**: MBaaS(mobile backend as a service).
 - **Azure Billing & Support**
   - custom sub-accounts for each department, team, project...
   - **free** 24/7 online documentation.
@@ -202,16 +206,16 @@
 - **Azure Cloud Storage**
   - Disks attached to VMs, fileshares and Databases(relational and NoSQL choices).
 - **Azure Compute Services**
-  - **VMs**: host an operating system(image).
-  - **Containers**: virtual environment on top of operating system.
-    - PaaS: fastest and simplest way to run containers.
-    - AKS: Azure Kubernetes Service. orchestration for containers.
-      - Pod: smallest item in Kubernetes. Can be one or more containers.
-  - **Micro-Services**: architecture broken down into small independent pieces. Allows easier scaling. No cross dependencies. Different programming languages. API communication.
-    - Azure Service Fabric: scalable solution for micro-services.
-  - **App Service**: host web apps without managing infrastructure.
-    - **Mobile Apps**: MBaaS(mobile backend as a service).
-  - **Serverless computing**:
+  - VMs, Containers, Micro-Services, App Services, Serverless Compute.
+- **Azure Containers**
+  - virtual environment on top of operating system.
+  - PaaS: fastest and simplest way to run containers.
+  - AKS: Azure Kubernetes Service. orchestration for containers.
+    - Pod: smallest item in Kubernetes. Can be one or more containers.
+- **Azure Functions**
+  - code execution in any language.
+  - stateless: fresh start every time code runs.
+  - stateful: keeps context(state), knows prior activity.
 - **Azure: Geography, Regions, Availability Zones, Data Centers, Fault Domain, Availability Sets, Scale Sets, Special Regions**
   - **Geography**: one or more regions in a geography. defines geopolitical boundaries and country borders.
     - Americas, Europe, Asia Pacific, Middle East and Africa.
@@ -236,8 +240,14 @@
   - Allows for workflow to orchestrate business processes.
 - **Azure IoT**
   - Allows you to integrate sensors and devices and managed them.
+- **Azure Logic Apps**
+  - similar to Azure Functions, but often no code is written. Logic blocks are connected to automate when an event is triggered. Interacts with other Azure services.
+  - stateful. declarative.
 - **Azure Marketplace**
   - vendors sell their solutions.
+- **Azure Micro-Services**
+  - architecture broken down into small independent pieces. Allows easier scaling. No cross dependencies. Different programming languages. API communication.
+  - Azure Service Fabric: scalable solution for micro-services.
 - **Azure Networking**
   - Let you set up private network connection to your on prem environments.
 - **Azure Purchasing**
@@ -257,3 +267,61 @@
     - Helps group billing data, automation, monitoring.
 - **Azure Security Center**
   - includes regulatory compliance dashboard or your services.
+- **Azure Serverless Compute**
+  - abstracts hosting environment. functions run on their servers.
+  - event-driven scale. good for workloads that respond to incoming events(triggers).
+  - micro-billing: pay only for time code runs.
+- **Azure VMs**
+  - virtual server that needs a host an operating system(image).
+
+## 04_Azure Database and Storage
+
+- **Azure Encryption SSE, Client-Side**
+  - SSE: Storage Service Encryption. encrypt data at rest. automated, encryption when storing data, decrypts to deliver.
+  - Client-Side: provision for client to encrypt/decrypt data on their end.
+- **Azure Storage**
+  - persistent data. uses REST API for access.
+  - automated backup & recovery.
+  - encryption.
+  - multiple data types: image, video, text, blobs.
+  - tiers: frequently -> rarely used.
+- **Azure Storage: Blob Storage**
+  - large files(archives), video, images...
+  - unstructured(any kind of data can be stored).
+- **Azure Storage: Disk**
+  - Azure Disks: persistent VM disk storage. In reality they are 'page-blobs' in blob storage.
+- **Azure Storage: Data Lake**
+  - mimics a data wharehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
+  - perform analytics on data usage.
+- **Azure Storage: File**
+  - Azure Files: mimics a file server. file sharing global access and manage.
+  - SMB(server message block) protocol access. File/printer sharing on the local network.
+  - Ensures data is encrypted at rest and in transit.
+- **Azure Storage: Queue**
+  - queuing message delivery between applications.
+  - sender: add messages to queue. Receiver: get messages in queue.
+  - e.g. database request can be offloaded when busy to queue. If one fails, other is still taking request.
+- **Azure Storage: Semi-Structured Data**
+  - noSQL.
+  - Azure services:
+    - Azure Cosmos DB (MongoDB API, Cassandra API)
+    - Azure Table Storage
+    - Azure Queue Storage
+- **Azure Storage: Structured Data**
+  - relational database data(SQL).
+  - Azure Services:
+    - Azure SQL DB
+    - Azure Cosmos DB (SQL API)
+- **Azure Storage: Table**
+  - noSQL data. schema-less design.
+- **Azure Storage Tiers**
+  - **Hot**: frequent access. low-latency.
+  - **Cold**: infrequent access(30 days or more)
+  - **Archive**: rarely access(180 days or more) high-latency.
+- **Azure Storage: Unstructured Data**
+  - image, video, text file...
+  - Azure services:
+    - Azure Blob Storage
+    - Azure File Storage
+    - Azure Data Lake Storage
+    - Azure Disk Storage
