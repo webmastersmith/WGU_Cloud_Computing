@@ -216,18 +216,6 @@
   - code execution in any language.
   - stateless: fresh start every time code runs.
   - stateful: keeps context(state), knows prior activity.
-- **Azure: Geography, Regions, Availability Zones, Data Centers, Fault Domain, Availability Sets, Scale Sets, Special Regions**
-  - **Geography**: one or more regions in a geography. defines geopolitical boundaries and country borders.
-    - Americas, Europe, Asia Pacific, Middle East and Africa.
-  - **Regions**: one or more availability zones.
-  - **Availability Zone**: group of datacenters within a region networked w/ low-latency network.
-    - **isolation boundary**: redundancy. independent power, cooling, networking infrastructure.
-  - **Data Center**: physical hardware location.
-  - **Fault Domain**: rack of servers in a datacenter. Each have power, cooling, networking.
-  - **Availability Sets**: logical grouping of two or more VMs. Fault tolerance.
-  - **Scale Sets**: load balanced VMs. high availability for scale.
-  - **Special Regions**: DoD Central, US Gov Virginia... Physical and logical isolated network instances for government agencies and partners.
-    - **China East, China North**: microsoft does not maintain data centers.
 - **Azure Identity Management**
   - tight control over who gets access to what.
 - **Azure Interactions**
@@ -296,12 +284,16 @@
 - **Azure Storage: Data Lake**
   - mimics a data warehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
   - perform analytics on data usage.
-- **Azure Storage: File**
+- **Azure Storage: File Storage**
   - Azure Files: mimics a file server. file sharing global access and manage.
   - SMB(server message block) protocol access. File/printer sharing on the local network.
   - Ensures data is encrypted at rest and in transit.
+- **Azure Storage: HDInsight**
+  - advanced analytics for big data from open source vendors.
+  - Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka.
+  - ETL: extract, transform, load.
 - **Azure Storage: Migration Service**
-  - migrate existing SQL server to azure.
+  - migrate existing SQL DB to azure(Microsoft Data Migration Assistant).
   - minimal downtime.
 - **Azure Storage: Queue**
   - queuing message delivery between applications.
@@ -325,6 +317,10 @@
 - **Azure Storage: SQL Optional DB**
   - Fully managed(they keep it running) and scalable: **MySQL, PostgresSQL, MariaDB**.
   - **VM**: Your own database on a virtual machine in your private network(VPN).
+- **Azure Storage: Synapse Analytics**
+  - formerly SQL Data Warehouse.
+  - enterprise cloud data warehouse.
+  - MPP: massive parallel processing. Run complex queries quickly across petabytes of data.
 - **Azure Storage: Table**
   - noSQL data. schema-less design.
 - **Azure Storage Tiers**
@@ -338,3 +334,56 @@
     - Azure File Storage
     - Azure Data Lake Storage
     - Azure Disk Storage
+
+## Azure Network
+
+- **Azure Network: Availability Sets**
+  - logical grouping of two or more VMs. Fault tolerance.
+- **Azure Network: Availability Zones**
+  - group of datacenters within a region networked w/ low-latency network.
+    - **isolation boundary**: redundancy. independent power, cooling, networking infrastructure.
+- **Azure Network: Data Centers**
+  - physical hardware location.
+- **Azure Network: ExpressRoute**
+  - Connect to Azure over high-bandwidth dedicated secure connections.
+- **Azure Network: Fault Domain**
+  - rack of servers in a datacenter. Each have power, cooling, networking.
+- **Azure Network: Loosely Coupled Architecture**
+  - Different services/components send/receive data have little to no working knowledge about the other components.
+- **Azure Network: Geography**
+  - one or more regions in a geography. defines geopolitical boundaries and country borders.
+    - Americas, Europe, Asia Pacific, Middle East and Africa.
+- **Azure Network: N-tier**
+  - divides applications into two or more logical tiers.
+  - Methodology:
+    - higher tier can access lower, but lower never access higher.
+    - e.g. frontend(logic, UI), backend, database.
+- **Azure Network: Network Watcher**
+  - monitor and diagnose network issues.
+- **Azure Network: NSG(Nework Security Group)**
+  - Cloud Virtual Firewall. Controls traffic through network.
+  - allow or deny inbound traffic.
+- **Azure Network: Regions**
+  - one or more availability zones.
+- **Azure Network: Scale Sets**
+  - load balanced VMs. high availability for scale.
+- **Azure Network: Special Regions**
+  - DoD Central, US Gov Virginia... Physical and logical isolated network instances for government agencies and partners.
+    - **China East, China North**: microsoft does not maintain the data centers.
+- **Azure Network: Subnet**
+  - logical segment of virtual network. Allows isolation.
+- **Azure Network: VPN**
+  - logically isolated network. secure communication with other VPN
+  - **scoped to single region**.
+  - VPN, NIC(network interface) are free.
+  - IP address(public, reserved), Gateways(VPN, Application) are charged for.
+- **Azure Network: Virtual WAN**
+  - wide area network: brings many networking, security, and routing functionalities together to provide a single operational interface.
+  - unified connections of multiple remote sites.
+  - DDOS protection. Firewall.
+- **Azure Network: VPN Gateway**
+  - [VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/design). Also called: virtual network gateway.
+  - VPN tunnel: send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet.
+  - Must be deployed in a **subnet** called **gateway subnet**.
+  - e.g. keep data tier on prem, web(public facing) on Azure cloud.
+  - requires a **VPN device** located on-premises that has a public IP address assigned to it.
