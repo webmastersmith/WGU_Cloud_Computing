@@ -288,6 +288,9 @@
 - **Azure Storage: Blob Storage**
   - large files(archives), video, images...
   - unstructured(any kind of data can be stored).
+- **Azure Storage: Cosmos DB**
+  - global distribution(multiple regions).
+  - support for schema-less(json, no-sql).
 - **Azure Storage: Disk**
   - Azure Disks: persistent VM disk storage. In reality they are 'page-blobs' in blob storage.
 - **Azure Storage: Data Lake**
@@ -297,6 +300,9 @@
   - Azure Files: mimics a file server. file sharing global access and manage.
   - SMB(server message block) protocol access. File/printer sharing on the local network.
   - Ensures data is encrypted at rest and in transit.
+- **Azure Storage: Migration Service**
+  - migrate existing SQL server to azure.
+  - minimal downtime.
 - **Azure Storage: Queue**
   - queuing message delivery between applications.
   - sender: add messages to queue. Receiver: get messages in queue.
@@ -312,6 +318,13 @@
   - Azure Services:
     - Azure SQL DB
     - Azure Cosmos DB (SQL API)
+- **Azure Storage: SQL**
+  - Relational DaaS(database as a service).
+  - Based on Microsoft SQL Server.
+  - High performance, reliable, fully managed, secure.
+- **Azure Storage: SQL Optional DB**
+  - Fully managed(they keep it running) and scalable: **MySQL, PostgresSQL, MariaDB**.
+  - **VM**: Your own database on a virtual machine in your private network(VPN).
 - **Azure Storage: Table**
   - noSQL data. schema-less design.
 - **Azure Storage Tiers**
