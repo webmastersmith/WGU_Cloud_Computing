@@ -335,7 +335,7 @@
     - Azure Data Lake Storage
     - Azure Disk Storage
 
-## Azure Network
+## 05_Azure Network
 
 - **Azure Network: Availability Sets**
   - logical grouping of two or more VMs. Fault tolerance.
@@ -387,3 +387,14 @@
   - Must be deployed in a **subnet** called **gateway subnet**.
   - e.g. keep data tier on prem, web(public facing) on Azure cloud.
   - requires a **VPN device** located on-premises that has a public IP address assigned to it.
+
+## 06_Azure Load Balancing
+
+- **Azure Load Balancing**
+  - distribute traffic evenly among each system in a pool.
+  - user entry point.
+- **Azure Load Balancing:**
+- **Azure Load Balancing:**
+- **Azure Load Balancing:**
+- **Azure Load Balancing:**
+- **Azure Load Balancing:**
