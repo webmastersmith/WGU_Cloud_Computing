@@ -453,7 +453,7 @@
   - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
   - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
 
-## O7_Azure_Security: Encryption, Defender For Identity, IAM
+## O7_Azure_Security: Encryption, Defender For Identity, IAM, SDL
 
 - **Encryption**
   - process of making data unreadable and readable. Secret key is used to encrypt/decrypt.
@@ -542,3 +542,12 @@
   - who gets blamed when something goes wrong.
   - physical security: microsoft
   - digital security: you. microsoft provides the tools(DDOS, IAM, encryption...).
+- **SDL**
+  - Microsoft Security Development Lifecycle. best practices used internally at Microsoft, for secure development.
+  - Training: everyone is responsible for securing environment.
+  - Requirements: security, internal standards and legal requirements, needs are updated continuously.
+    - define security requirements.
+    - encryption requirements.
+- **SDL Threat Modeling**
+  - hypothetical scenarios to help secure system data.
+  - 5 steps: define, diagram, identify, mitigate, validate.
