@@ -178,11 +178,16 @@
 
 ## 03_Azure Services
 
-- **AI**
+- **Azure AI**
   - Including machine learning and prebuilt cognitive services. Good for data analysis and trends.
-- **App Hosting**
+- **Azure AI: Cognitive Services**
+  - vision, speech, knowledge mapping, bing search, NLP(natural language processing).
+- **Azure AI: Machine Learning Studio**
+  - drag-n-drop visual workspace for machine learning solutions.
+  - build, test, deploy machine learning models.
+- **Azure App Hosting**
   - Lets you run your entire application on a managed platform
-- **Azure**
+- **Azure Infrastructure**
   - hypervisor virtualization software to allocate compute, memory, storage.
   - Each server includes a hypervisor to run multiple virtual machines.
   - A network **switch** provides connectivity to all those servers
@@ -214,6 +219,12 @@
   - PaaS: fastest and simplest way to run containers.
   - AKS: Azure Kubernetes Service. orchestration for containers.
     - Pod: smallest item in Kubernetes. Can be one or more containers.
+- **Azure DevOps**
+  - CI/CD: continuous integration/continuous deployment. Streamlining development with operations(IT department, hosting...).
+  - provides collaboration tools: pipelines, Git repos, Kanban boards, automated load testing.
+- **Azure DevTest Labs**
+  - labs created from predefined windows & linux environments.
+  - used for testing before deployment.
 - **Azure DNS**
   - domain name server. map user-friendly names(e.g. google.com) to IP address.
   - bring your own DNS server.
@@ -233,6 +244,13 @@
   - Allows for workflow to orchestrate business processes.
 - **Azure IoT**
   - Allows you to integrate sensors and devices and managed them.
+- **Azure IoT Central**
+  - SaaS service to manage IoT devices.
+- **Azure IoT Edge**
+  - push IoT analysis models directly onto IoT devices.
+- **Azure IoT Hub**
+  - entry point to IoT network. Takes data(coordinates, sensor readings...) in and out.
+  - allows management of all IoT devices.
 - **Azure Logic Apps**
   - similar to Azure Functions, but often no code is written. Logic blocks are connected to automate when an event is triggered. Interacts with other Azure services.
   - stateful. declarative.
@@ -266,8 +284,16 @@
   - micro-billing: pay only for time code runs.
 - **Azure VMs**
   - virtual server that needs a host an operating system(image).
+- **Azure Web: Notification Hubs**
+  - send push notifications.
+- **Azure Web: API Management**
+  - secure APIs at scale.
+- **Azure Web: Cogitive Search**
+  - fully managed search as a service.
+- **Azure Web: SignalR Service**
+  - build web communication into web application.
 
-## 04_Azure Database and Storage
+## 04_Azure Database and Big Data Storage
 
 - **Azure Encryption SSE, Client-Side**
   - SSE: Storage Service Encryption. encrypt data at rest. automated, encryption when storing data, decrypts to deliver.
@@ -278,6 +304,11 @@
   - encryption.
   - multiple data types: image, video, text, blobs.
   - tiers: frequently -> rarely used.
+- **Azure Storage: Big Data: What Services work with Big Data?**
+  - Azure HDInsight: process big data through Hadoop cluster.
+  - Azure Databricks: analytic service based on Apache Spark.
+  - Data Lake Store: secure storage for massive data built to HDFS standard.
+  - Azure Data Factory: pipeline for data analysis.
 - **Azure Storage: Blob Storage**
   - large files(archives), video, images...
   - unstructured(any kind of data can be stored).
@@ -412,3 +443,74 @@
 - **Azure Load Balancing: Load Balancer vs Traffic Manager**
   - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
   - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
+
+## O7_Azure_Security: Encryption, IAM, Network
+
+- **Encryption**
+  - process of making data unreadable and readable. Secret key is used to encrypt/decrypt.
+- **Encryption: Asymmetric**
+  - slowest. public private key pair. allows for the sharing of secret key over insecure channel.
+- **Encryption: Azure Storage Service**
+  - automatically encrypts data before persisting it to service(Disk, Blob, Files, Queue...).
+- **Encryption: Azure Disk**
+  - windows and linux VM machine encryption.
+- **Encryption: Azure Key Vault**
+  - secure secrets(passwords...), keys, and certificate storage.
+- **Encryption: Rest/Transport**
+  - data at rest and in transit should be encrypted.
+- **Encryption: Symmetric**
+  - fastest. Secret key must be known by both parties.
+- **Encryption: Transparent Data Encryption (TDE)**
+  - database encryption by default.
+- **IAM**
+  - identity and access management. Old way was physical security on-prem, doesn't work with cloud computing. IAM is role based authentication and privileges.
+- **IAM: Azure AD**
+  - Active Directory: manage IAM, MFA(multi factor authentication) and SSO(Single Sign On).
+- **IAM: AAA**
+  - Authentication: you are who you say you are.
+  - Authorization: can access resource.
+  - Accountability: every change written to logs.
+- **IAM: Identity and Principal/Service Principal**
+  - identity: a thing that can be authenticated. e.g. username and password. application w/ secret key.
+  - principal: identity using roles. e.g. running `sudo` to elevate privileges.
+  - service principal: application using roles to perform task.
+- **IAM: RBAC**
+  - role based access control. control over permissions to CRUD(create, read, update, delete).
+  - granted to people and applications.
+- **IAM: RBAC Roles**
+  - owner, user access administrator, contributor, reader.
+  - Global Administrator: full control.
+- **IAM: AD PIM**
+  - Privileged Identity Management: control of auditing, assigning and removing roles.
+- **Network: Firewall**
+  - access from WAN is secured through perimeter firewall.
+- **Network:**
+- **Network:**
+- **Network:**
+- **Security: Application Security**
+  - clean code free from vulnerabilities. Secrets secure. Security in application development life cycle.
+- **Security: Azure Defender**
+  - threat detection, monitoring, port control.
+- **Security: CIA**
+  - confidentiality, integrity, availability. Data is what attackers are after. Keep data encrypted, being changed by non-authorized person and available when needed.
+- **Security: Compute Security**
+  - avoid rogue VMs(abandoned, non-patched, non-secure).
+- **Security: Defense in Depth**
+  - micro segmentation designed to slow attack penetration. each segment is protected.
+- **Security: Incident Response Stages**
+  - detect: notified threat was detected.
+  - assess: look into suspicious activity.
+  - diagnose: identify.
+  - stabilize: containment, mitigation and workaround.
+  - close: record in threat log.
+- **Security: Security Center**
+  - monitoring service for Azure services and on-premises.
+  - advice from Azure Defender.
+  - helps with identifying threats and analyzing attacks.
+  - control for which Apps can run.
+- **Security: Security Policy**
+  - rules that are enforced to enhanced security.
+- **Security: Shared Responsibility Model**
+  - who gets blamed when something goes wrong.
+  - physical security: microsoft
+  - digital security: you. microsoft provides the tools(DDOS, IAM, encryption...).
