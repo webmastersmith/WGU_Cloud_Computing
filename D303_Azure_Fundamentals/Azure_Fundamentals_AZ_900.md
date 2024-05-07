@@ -433,6 +433,8 @@
 
 ## 06_Azure Load Balancing
 
+- **Azure Information Protection (AIP)**
+  - protecting sensitive documents with labels for automatic encryption.
 - **Azure Load Balancing**
   - Load balancing increases **availability and resiliency**.
   - distribute traffic evenly among each system in a pool.
@@ -451,7 +453,7 @@
   - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
   - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
 
-## O7_Azure_Security: Encryption, IAM, Network
+## O7_Azure_Security: Encryption, Defender For Identity, IAM
 
 - **Encryption**
   - process of making data unreadable and readable. Secret key is used to encrypt/decrypt.
@@ -469,6 +471,12 @@
   - fastest. Secret key must be known by both parties.
 - **Encryption: Transparent Data Encryption (TDE)**
   - database encryption by default.
+- **Defender For Identity**
+  - formerly known as Azure ATP(advanced threat protection).
+  - cloud based solution to detect, identify, and investigate threats.
+  - can be integrated with on-premises Microsoft Defender ATP.
+- **Defender For Identity: Sensor**
+  - monitor network traffic directly.
 - **IAM**
   - identity and access management. Old way was physical security on-prem, doesn't work with cloud computing. IAM is role based authentication and privileges.
 - **IAM: Azure AD**
