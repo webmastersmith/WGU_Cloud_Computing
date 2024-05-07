@@ -203,6 +203,8 @@
     - developer: 1 business day.
     - standard: 1 hour.
     - professional direct: access to technical experts.
+- **Azure CDN**
+  - content delivery network. minimize latency by distributing content to multiple nodes(locations).
 - **Azure Cloud Storage**
   - Disks attached to VMs, fileshares and Databases(relational and NoSQL choices).
 - **Azure Compute Services**
@@ -212,6 +214,9 @@
   - PaaS: fastest and simplest way to run containers.
   - AKS: Azure Kubernetes Service. orchestration for containers.
     - Pod: smallest item in Kubernetes. Can be one or more containers.
+- **Azure DNS**
+  - domain name server. map user-friendly names(e.g. google.com) to IP address.
+  - bring your own DNS server.
 - **Azure Functions**
   - code execution in any language.
   - stateless: fresh start every time code runs.
@@ -391,10 +396,19 @@
 ## 06_Azure Load Balancing
 
 - **Azure Load Balancing**
+  - Load balancing increases **availability and resiliency**.
   - distribute traffic evenly among each system in a pool.
-  - user entry point.
-- **Azure Load Balancing:**
-- **Azure Load Balancing:**
-- **Azure Load Balancing:**
-- **Azure Load Balancing:**
-- **Azure Load Balancing:**
+  - user entry point. internal or external traffic routing to VMs.
+  - You define forwarding rules, microsoft does the maintenance.
+- **Azure Load Balancing: Application Gateway**
+  - designed for HTTP traffic. Layer 7 (OSI model).
+  - Cookie affinity, SSL termination, WAF(web application firewall), URL rule-based routes, rewrite HTTP headers.
+- **Azure Load Balancing: Traffic Manager**
+  - DNS based traffic load balancer.
+  - Country routing to specific regions.
+- **Azure Load Balancing: Bandwidth vs Latency**
+  - Bandwidth: amount of data that can fit on the connection(size of pipe).
+  - Latency: time to travel the network.
+- **Azure Load Balancing: Load Balancer vs Traffic Manager**
+  - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
+  - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
