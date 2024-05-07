@@ -32,6 +32,9 @@
 | Describe Azure architecture and services | 35-40% |
 | Describe Azure management and governance | 30-35% |
 
+- <https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification>
+- <https://cm.wgu.edu/t5/Frequently-Asked-Questions/Microsoft-Assessment-Scheduling-and-Score-Reporting/ta-p/2626>
+
 ## 01_Cloud Basics
 
 - **agility**
@@ -384,11 +387,15 @@
   - Connect to Azure over high-bandwidth dedicated secure connections.
 - **Azure Network: Fault Domain**
   - rack of servers in a datacenter. Each have power, cooling, networking.
-- **Azure Network: Loosely Coupled Architecture**
-  - Different services/components send/receive data have little to no working knowledge about the other components.
+- **Azure Network: Firewall**
+  - access from WAN is secured through perimeter firewall.
+  - Firewall as a Service. scalable, highly available.
+  - mainly for non-HTTPS traffic(RDP, SSH, FTP...).
 - **Azure Network: Geography**
   - one or more regions in a geography. defines geopolitical boundaries and country borders.
     - Americas, Europe, Asia Pacific, Middle East and Africa.
+- **Azure Network: Loosely Coupled Architecture**
+  - Different services/components send/receive data have little to no working knowledge about the other components.
 - **Azure Network: N-tier**
   - divides applications into two or more logical tiers.
   - Methodology:
@@ -396,7 +403,7 @@
     - e.g. frontend(logic, UI), backend, database.
 - **Azure Network: Network Watcher**
   - monitor and diagnose network issues.
-- **Azure Network: NSG(Nework Security Group)**
+- **Azure Network: NSG(Network Security Group)**
   - Cloud Virtual Firewall. Controls traffic through network.
   - allow or deny inbound traffic.
 - **Azure Network: Regions**
@@ -432,7 +439,7 @@
   - user entry point. internal or external traffic routing to VMs.
   - You define forwarding rules, microsoft does the maintenance.
 - **Azure Load Balancing: Application Gateway**
-  - designed for HTTP traffic. Layer 7 (OSI model).
+  - load balancer and WAF designed for HTTP traffic. OSI Layer 7 aware.
   - Cookie affinity, SSL termination, WAF(web application firewall), URL rule-based routes, rewrite HTTP headers.
 - **Azure Load Balancing: Traffic Manager**
   - DNS based traffic load balancer.
@@ -482,11 +489,8 @@
   - Global Administrator: full control.
 - **IAM: AD PIM**
   - Privileged Identity Management: control of auditing, assigning and removing roles.
-- **Network: Firewall**
-  - access from WAN is secured through perimeter firewall.
-- **Network:**
-- **Network:**
-- **Network:**
+- **Security: Azure ExpressRoute**
+  - dedicated private connection between your network and Azure. extend on-premises to microsoft cloud.
 - **Security: Application Security**
   - clean code free from vulnerabilities. Secrets secure. Security in application development life cycle.
 - **Security: Azure Defender**
@@ -497,6 +501,22 @@
   - avoid rogue VMs(abandoned, non-patched, non-secure).
 - **Security: Defense in Depth**
   - micro segmentation designed to slow attack penetration. each segment is protected.
+- **Security: DDOS**
+  - distributed denial of service attack. every Azure region has DDOS prevention services.
+  - **Basic**:
+    - Automatically enabled as part of the Azure platform.
+    - Always-on traffic monitoring and real-time mitigation of common network-level
+    - Used by Microsoft's online services use.
+  - **Standard**:
+    - Tuned specifically to Microsoft Azure Virtual Network resources
+    - Requires no application changes.
+    - Dedicated traffic monitoring and machine learning algorithms.
+    - Policies are applied to public IP addresses associated with resources deployed in virtual networks
+      - e.g. Azure Load Balancer and Application Gateway.
+    - Mitigates:
+      - **Volumetric attacks**: The attackers goal is to flood the network layer with a substantial amount of seemingly legitimate traffic.
+      - **Protocol attacks**: Render a target inaccessible, by exploiting a weakness in the layer 3 and layer 4 protocol stack.
+      - **Resource (application) layer attacks**: Target web application packets to disrupt the transmission of data between hosts.
 - **Security: Incident Response Stages**
   - detect: notified threat was detected.
   - assess: look into suspicious activity.
