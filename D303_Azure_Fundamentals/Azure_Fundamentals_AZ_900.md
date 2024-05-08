@@ -1,4 +1,4 @@
-# Azure Fundamentals AZ-900
+# Azure Fundamentals AZ-900 Exam Objectives
 
 ## Tips
 
@@ -12,6 +12,7 @@
     - [complete course youtube](https://www.youtube.com/watch?v=pY0LnKiDwRA&list=PLlVtbbG169nED0_vMEniWBQjSoxTsBYS3)
   - [az-900 adam marczak](https://www.youtube.com/playlist?list=PLGjZwEtPN7j-Q59JYso3L4_yoCjj2syrM)
   - [free code camp](https://www.youtube.com/watch?v=NKEFWyqJ5XA)
+  - [youtube inside cloud security video](https://www.youtube.com/watch?v=8n-kWJetQRk)
 - **Practice Exams**
   - [practice exams](https://certification.kananinirav.com/az-900-microsoft-azure-fundamentals/practice-exam/exams.html)
 - **Microsoft**
@@ -35,7 +36,72 @@
 - <https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification>
 - <https://cm.wgu.edu/t5/Frequently-Asked-Questions/Microsoft-Assessment-Scheduling-and-Score-Reporting/ta-p/2626>
 
-## 01_Cloud Basics
+## 1.1 Describe cloud concepts (25–30%): Describe cloud computing
+
+- **Define cloud computing**
+  - on-demand network access to a shared pool that can be rapidly provisioned with minimal management effort.
+  - Microsoft: delivery of computing services over the internet. IoT, AI, ML,
+- **Describe the shared responsibility model**
+  - customer responsibility vs CSP(Cloud Service Provider).
+  - Cloud infrastructure is more secure because company can shift focus on security and not on maintaining hardware.
+  - [shared responsibility model](img/shared-responsibility-model.png)
+- **Define cloud models, including public, private, and hybrid. Identify appropriate use cases for each cloud model**
+  - **cloud models**: cost-effective, global, secure, scalable, elastic(dynamic scaling), always current(do not have to worry about infrastructure, software patches, upgrades or other IT management task.)
+  - **Public**: shared hardware between clients. scalability, agility, PAYG(pay-as-you-go), no maintenance, low skill(to get started).
+  - **Private**: your responsible for entire stack. legacy support, control, compliance.
+  - **Hybrid**: blend on-prem and Cloud. flexibility.
+  - **Community**: infrastructure shared between multiple organizations with common needs.
+  - [microsoft cloud model](img/microsoft_cloud_model.PNG)
+- **Describe Economies of Scale**
+  - cloud provider purchase large quantities of hardware at discount and pass on savings.
+- **CapEx to OpEx**
+  - CapEx is hard assets(IT equipment). Spending upfront.
+  - OpEx is operating expenses(monthly subscription). PAYG.
+  - Cloud **increases** OpEx and **reduces** CapEx.
+- **Describe the consumption-based model**
+  - pay for what you use. Typically per unit of time or capacity:
+    - per unit of time -VMs.
+    - per-GB -storage.
+    - per-execution -Azure Functions.
+- **Compare cloud pricing models: Fixed, Serverless, Logic App, Functions, Event Grid**
+  - **Fixed Price Model**
+    - provision resources and pay for them whether you use them or not.
+    - predictable cost.
+  - **Serverless Architecture**
+    - CSP dynamically manages provisioning of servers. **stateless and ephemeral**.
+    - PAYG per use.
+  - **Serverless Architecture: Logic App, Functions, Event Grid**
+    - Logic App: schedule, automate, and orchestrate workflows. drag-n-drop connector gallery to setup.
+    - Functions: **event driven** compute-on-demand. runs code **triggered by events**. Advantage: does not have to 'poll' remote systems. pay-per-use.
+    - Event Grid: manage events. **push** events to destination. Event Sources are 'pushed' to Event handlers. pub/sub model. app or service is 'reacting' to event. pay-per-use.
+
+## 1.2 Describe the benefits of using cloud services
+
+- **Describe the benefits of high availability, uptime, scalability in the cloud, Elasticity, Agility**
+  - high availability: **consistent access** to **infrastructure, applications or services**. Expressed as 9's. 99999, downtime usually less than 5 minutes per year.
+  - uptime: amount of time system is running.
+    - e.g. server running all week, but web app only available for half the week. uptime was 100%, availability 50%.
+  - scalability: ability to handle growth. **manually** scale/reduce.
+  - elasticity: **automatically** scale/reduce based on app demand. scale quickly to spikes in demand.
+  - agility: speed of allocate/deallocate resources. react quickly. Cloud is agile.
+- **Disaster Recovery, Fault Tolerance, Reliability, Resiliency, Predictability**
+  - **disaster recovery**:
+    - design principle which allows a system to **recovers from natural or human induced disasters**.
+    - Cloud based backup services, data replication and geo distribution ensure confidence that your data is safe even if a disaster should occur.
+  - **fault tolerance**: handle **component** failure without service interruption. Robust(redundant hardware) for critical systems.
+  - **reliability**: ability to recover from system failure.
+  - **resiliency**: return application to fully function state after failure.
+  - **predictability**: cloud solutions with predictable cost and performance. **cost, performance know in advance!**
+- **Describe the benefits of reliability and predictability in the cloud**
+- **Describe the benefits of security and governance in the cloud**
+- **Describe the benefits of manageability in the cloud**
+
+## 1.3 Describe cloud service types
+
+- **Describe infrastructure as a service (IaaS)**
+- **Describe platform as a service (PaaS)**
+- **Describe software as a service (SaaS)**
+- **Identify appropriate use cases for each cloud service (IaaS, PaaS, SaaS)**
 
 - **agility**
   - is the ability to react fast (scale quickly)
@@ -43,10 +109,22 @@
   - **economies of scale**: cloud provider purchase large quantities of hardware at discount and pass on savings.
   - **CapEx to OpEx**: CapEx is hard assets(IT equipment). OpEx is operating expenses(monthly subscription).
   - **scalability & elasticity**:
+    - scalability: manual scale/reduce.
+    - elasticity: automatically scale/reduce.
+    - **Scale Up/Vertical**: add more resources (add more memory, HDD...).
+    - **Scale Out/Horizontal**: add more VMs.
   - **high availability & fault tolerance**:
+    - high availability: downtime usually less than 5 minutes per year.
+- **Cloud: Public, Private, Hybrid, Community**
+  - Public: shared hardware between clients. Typical Cloud solutions.
+  - Private: hardware is used by single individual only.
+  - Hybrid: hosting on private, and public Cloud.
+  - Community: infrastructure shared between multiple organizations with common needs.
+  - [microsoft cloud model](img/microsoft_cloud_model.PNG)
 - **Cloud Service Models: IaaS, Paas, SaaS**
 
   - ![cloud service models](./img/shared-responsibility.png)
+  - ![microsoft cloud service models](./img/microsoft_service.PNG)
   - **IaaS**
     - (Infrastructure as a Service). bare bones server with virtualization OS (AWS).
   - **PaaS**
@@ -75,9 +153,6 @@
     - purchase upfront, must maintain.
   - OpEx: service cost(pay as you go. VMs, Cloud).
     - pay as you go. autoscale.
-- **disaster recovery**
-  - is the process and design principle which allows a system to recovers from natural or human induced disasters.
-  - Cloud based backup services, data replication and geo distribution ensure confidence that your data is safe even if a disaster should occur.
 - **Economies of Scale**
   - larger scale = lower cost. leveraged by large business.
 - **elasticity**
@@ -111,8 +186,6 @@
   - data is duplicated in more than one place. Protection against natural disasters.
 - **Resiliency**
   - ability to recover from system failure.
-- **scalability**
-  - is the ability to scale, so allocate and deallocate resources at any time.
 - **Security: Physical, Digital**
   - physical: cameras, gates, locks.
     - can provide better security than most organizations can otherwise achieve
@@ -576,11 +649,18 @@
 
 ## 08_Monitoring, Health, Cost, Best Practices
 
-- **Azure Alerts**
+- **Azure Best Practices: Infrastructure**
+  - VM reserved instances: 1-3 years at discounted rate.
+  - right size VMs.
+  - deallocate VMs in off hours.
+  - prioritize linux(cheaper) OS over windows.
+  - hybrid: use existing infrastructure licenses(windows server) on Azure VMs.
+  - DB: needs lower vCPU and higher memory, storage, I/O bandwidth. Use VMs with lower vCPU.
+- **Azure Monitoring: Alerts**
   - created rule based notifications about critical conditions.
-- **Azure AutoScale**
+- **Azure Monitoring: AutoScale**
   - ensure adequate amount of resources are available.
-- **Azure Monitor**
+- **Azure Monitoring: Monitor**
   - telemetry collecting, analyzing, acting on, from cloud and on-prem environments.
   - understand app performance and consuming resources.
   - writes logs, displays metrics on containers, VMs, resource modifying.
@@ -592,3 +672,10 @@
   - determine cost for each billing period.
   - billing each month.
   - You typically pay for compute hours, storage, data transfer(bandwidth), security services(secret keys, certificates, Azure services).
+- **Azure Cost: Billing Zone, Pricing Calculator**
+  - billing zone: grouping of regions.
+  - calculator: estimate cost
+- **Azure Cost: Azure Advisor, Cost Management, TCO Calculator**
+  - Advisor: recommendations on best practices(security, performance, operational cost).
+  - Cost Manager: get insights into projected cost.
+  - TCO Calc: compare on-prem vs. cloud cost.
