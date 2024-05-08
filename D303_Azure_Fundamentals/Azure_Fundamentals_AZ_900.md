@@ -433,8 +433,6 @@
 
 ## 06_Azure Load Balancing
 
-- **Azure Information Protection (AIP)**
-  - protecting sensitive documents with labels for automatic encryption.
 - **Azure Load Balancing**
   - Load balancing increases **availability and resiliency**.
   - distribute traffic evenly among each system in a pool.
@@ -453,8 +451,11 @@
   - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
   - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
 
-## O7_Azure_Security: Encryption, Defender For Identity, IAM, SDL
+## O7_Azure_Security: Blueprints, Encryption, Defender For Identity, IAM, Policy, SDL
 
+- **Blueprints**
+  - declarative way to adhere to security or compliance requirements.
+  - automate role assignments, policy assignments...
 - **Encryption**
   - process of making data unreadable and readable. Secret key is used to encrypt/decrypt.
 - **Encryption: Asymmetric**
@@ -497,6 +498,14 @@
   - Global Administrator: full control.
 - **IAM: AD PIM**
   - Privileged Identity Management: control of auditing, assigning and removing roles.
+- **Policy**
+  - ensure standards are followed in all IT departments.
+  - GUI allows review of compliance across organization.
+  - Create with JSON object.
+- **Policy Scope**
+  - what resource/group is assigned policy.
+- **Security: Azure Information Protection (AIP)**
+  - protecting sensitive documents with labels for automatic encryption.
 - **Security: Azure ExpressRoute**
   - dedicated private connection between your network and Azure. extend on-premises to microsoft cloud.
 - **Security: Application Security**
@@ -548,6 +557,14 @@
   - Requirements: security, internal standards and legal requirements, needs are updated continuously.
     - define security requirements.
     - encryption requirements.
+- **SDL Best Practices**
+  - only use approved tools. use latest versions.
+  - SAST (static analysis security testing): perform secure code review before publishing.
+  - DAST (dynamic analysis security testing): perform prebuilt attack checking.
+  - penetration testing
+  - establish standards for incident response process.
 - **SDL Threat Modeling**
   - hypothetical scenarios to help secure system data.
   - 5 steps: define, diagram, identify, mitigate, validate.
+
+## 08_Monitoring
