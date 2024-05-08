@@ -70,9 +70,16 @@
   - **Docker**: open source container solution.
 - **Current**
   - do not have to worry about infrastructure, software patches, upgrades or other IT management task.
+- **CapEx vs OpEx**
+  - CapEx: infrastructure cost(hardware, servers, switches, firewalls).
+    - purchase upfront, must maintain.
+  - OpEx: service cost(pay as you go. VMs, Cloud).
+    - pay as you go. autoscale.
 - **disaster recovery**
   - is the process and design principle which allows a system to recovers from natural or human induced disasters.
   - Cloud based backup services, data replication and geo distribution ensure confidence that your data is safe even if a disaster should occur.
+- **Economies of Scale**
+  - larger scale = lower cost. leveraged by large business.
 - **elasticity**
   - is the ability to scale **dynamically**(autoscaling).
 - **FMA**
@@ -567,4 +574,21 @@
   - hypothetical scenarios to help secure system data.
   - 5 steps: define, diagram, identify, mitigate, validate.
 
-## 08_Monitoring
+## 08_Monitoring, Health, Cost, Best Practices
+
+- **Azure Alerts**
+  - created rule based notifications about critical conditions.
+- **Azure AutoScale**
+  - ensure adequate amount of resources are available.
+- **Azure Monitor**
+  - telemetry collecting, analyzing, acting on, from cloud and on-prem environments.
+  - understand app performance and consuming resources.
+  - writes logs, displays metrics on containers, VMs, resource modifying.
+- **Azure Service Health**
+  - comprehensive view of your Azure health status.
+  - guides you to prepare for planned maintenance.
+  - consist of: Azure Status, Service Health, Resource Health.
+- **Azure Cost: Usage Meter**
+  - determine cost for each billing period.
+  - billing each month.
+  - You typically pay for compute hours, storage, data transfer(bandwidth), security services(secret keys, certificates, Azure services).
