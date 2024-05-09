@@ -140,6 +140,11 @@
   - build, test, deploy machine learning models.
 - **Azure App Hosting**
   - Lets you run your entire application on a managed platform
+- **Azure App Insights**
+  - part of azure monitor.
+- **Azure Automation**
+  - deliver repeatable and consistent infrastructure. CI/CD for Azure.
+  - author graphical, PowerShell and Python runbooks.
 - **Azure Infrastructure**
   - hypervisor virtualization software to allocate compute, memory, storage.
   - Each server includes a hypervisor to run multiple virtual machines.
@@ -176,6 +181,10 @@
 - **Azure DNS**
   - domain name server. map user-friendly names(e.g. google.com) to IP address.
   - bring your own DNS server.
+- **Azure Event Grid**
+  - push (**single**) event to event listeners in any Azure application. pub/sub pattern.
+- **Azure Event Hub**
+  - capture, analyze, and process **large volumes streaming data**(events). Similar to IoT Hub, but for 'streaming' data.
 - **Azure Functions**
   - code execution in any language.
   - stateless: fresh start every time code runs.
@@ -230,6 +239,8 @@
   - abstracts hosting environment. functions run on their servers.
   - event-driven scale. good for workloads that respond to incoming events(triggers).
   - micro-billing: pay only for time code runs.
+- **Azure Synapse**
+  - enterprise data analytics for insight across data warehouses. big data insight.
 - **Azure VMs**
   - virtual server that needs a host an operating system(image).
 - **Azure Web: Notification Hubs**

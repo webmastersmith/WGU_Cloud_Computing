@@ -74,8 +74,10 @@
   - **Serverless Architecture**
     - CSP dynamically manages provisioning of servers. **stateless and ephemeral**.
     - PAYG per use.
-  - **Serverless Architecture: Logic App, Functions, Event Grid**
-    - Logic App: schedule, automate, and orchestrate workflows. drag-n-drop connector gallery to setup.
+  - **Serverless Architecture: Logic App, Power Automate, Azure Automation, Functions, Event Grid**
+    - Logic App: GUI drfag-n-drop. Automate **DevOps** type workflows. schedule, automate, and orchestrate workflows.
+    - Power Automate: GUI drag-n-drop. Automate task within **Office 365**.
+    - Azure Automation: run books for automated task(powershell and python). Similar to ansible.
     - Functions: **event driven** compute-on-demand. runs code **triggered by events**. Advantage: does not have to 'poll' remote systems. pay-per-use.
     - Event Grid: manage events. **push** events to destination. Event Sources are 'pushed' to Event handlers. pub/sub model. app or service is 'reacting' to event. pay-per-use.
 
@@ -141,18 +143,25 @@
     - Americas, Europe, Asia Pacific, Middle East and Africa.
   - Regions: set datacenters connected w/ low-latency communications.
   - Region Pairs: in same geography for disaster recovery. **300+ miles apart**.
-  - Sovereign Regions: also known as Geography. compliance or legal purpose. physical and logical isolation.
+  - Sovereign Regions: separation for compliance or legal purpose. physical and logical isolation. (china, government)
+  - [high availability](img/04-azure-global-infra.jpg)
+  - [availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe availability zones**
   - group of datacenters within a region networked w/ low-latency network with independent power, network, cooling.
   - redundancy with datacenter failure.
+  - [high availability](img/04-azure-global-infra.jpg)
+  - [availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe Azure datacenters**
   - physical buildings w/ servers. redundant network, power, cooling.
+  - [high availability](img/04-azure-global-infra.jpg)
+  - [availability zones](img/Azure-Availability-zone-infographic.png)
 - **Azure Fault Domain**
   - rack of servers in a datacenter. Each have power, networking.
+  - [high availability](img/04-azure-global-infra.jpg)
+  - [availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe Azure resources and resource groups**
-  - resource group:
-    - group related **resources that share common lifecycle**.
-    - under subscriptions.
+  - resource group: - group related **resources that share common lifecycle**.
+    - logical container for group assigning locks, tags, RBAC permissions... - under subscriptions.
   - resource: entity managed by Azure(VM, VPN, storage...)
 - **Describe subscriptions**
   - logical container to provision resources in Azure.
@@ -168,10 +177,12 @@
   - can have multiple subscriptions.
   - higher than subscriptions in hierarchy. Each directory is given single top-level management group called the **root**.
   - boundary for management and policy.
+  - [management group](img/scope-levels.png)
 - **Describe the hierarchy of resource groups, subscriptions, and management groups**
   - management groups: enforce policy.
   - subscriptions: unit of management for isolation, billing, scale.
   - resource group: resources that share common lifecycle.
+  - [management group](img/scope-levels.png)
 
 ## 2.2 Describe Azure compute and networking services
 
@@ -185,13 +196,16 @@
 - **Describe VM options, including Azure Virtual Machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop**
   - VM scale sets: manage group of **identical, load-balanced VMs**. elastic.
   - VM availability sets: staggered updates(update domains), varied power and network connectivity(fault domains).
-    - availability set splits VMs across up to three fault domains.
+    - update domains: grouping of VMs that will have updates applied at same time.
+    - fault domains: groupings of VMs that share similar hardware, power, network.
+    - availability set splits VMs across (up to three) fault domains.
+    - [high availability](img/04-azure-global-infra.jpg)
 - **Describe resources required for virtual machines**
   - virtual disk, virtual network(VNET), network interface(NIC), network security group, public IP address.
 - **Describe application hosting options, including the Web Apps feature of Azure App Service, containers, and virtual machines**
   - web apps: java, ruby, nodejs, python... running on windows or linux.
   - API apps: REST based API with your choice of language and framework.
-  - web jobs: run a program. cron, bash, powershell, exe, java, php, nodejs... run background task.
+  - WebJobs: run a program. cron, bash, powershell, exe, java, php, nodejs... run background task.
   - mobile apps: backend for IOS, Android.
 - **Describe virtual networking, including the purpose of Azure Virtual Networks, Azure virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute**
   - Virtual network(VNET): logical representation/isolation of your network. One or more subnets.
@@ -241,10 +255,13 @@
   - AuthN: proving you are who you say you are. **Identity**.
   - AuthZ: permission to do something. **Access**.
   - Entra ID: GUI to setup policy, access, roles for Internal and external resources.
-- **Describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless**
+- **Describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless, PIM, Conditional Access, Identity Protection**
   - SSO: single sign-on. sign in once, get access to multiple resources. **Modern Authentication**
-  - MFA: two or more of: something you known, something you have, something you are.
+  - Entra ID MFA: two or more of: something you known, something you have, something you are.
   - Passwordless: Windows Hello, Fido2, OAUTH.
+  - PIM privileged identity management: Entra ID tool to manage, monitor access to resources.
+  - Conditional Access: Entra ID tool that uses signals(phone telemetry, gps) to evaluate risk sign-in.
+  - Identity Protection: part of Entra ID suite. risk detection for sign-ins.
 - **Describe external identities and guest access in Azure**
   - B2B collaboration: external users can use preferred sign-in.
   - B2B direct connect: mutual two-way trust with another Entra ID or organization. close business partners.
@@ -258,7 +275,7 @@
 - **Describe the concept of Zero Trust**
   - trust based on identity, not security perimeter. **NO entity is trusted by default**.
   - [zero trust](img/zero-trust.PNG)
-  - three principles:
+  - three principles of Zero Trust:
     - always authenticate and authorize.
     - least privilege: limit user access.
     - assume breach: segment network access.
@@ -276,9 +293,10 @@
   - mainly for non-HTTPS traffic(RDP, SSH, FTP...).
 - **Azure DDOS**
   - standard tier: enhanced DDOS mitigation. logging, alerting, telemetry.
-- **Describe the purpose of Microsoft Defender for Cloud**
+- **Describe the purpose of Microsoft Defender for Cloud, Azure Defender Endpoint**
   - unified infrastructure security management system. Provides guidance for Cloud, on-prem and other platforms(AWS, Google Cloud...).
   - provides security guidance.
+  - azure defender endpoint: advanced-threat add-on.
 
 ## 3.1 Describe cost management in Azure
 
@@ -307,9 +325,6 @@
 - **Describe the purpose of Microsoft Purview**
   - unified data governance service that helps organizations manage and govern data.
   - automates data discovery from **data scanning and classification**.
-- **Describe the purpose of Azure Blueprints**
-  - create template that is repeatable and must be adhered to when creating resources.
-  - sets of standards, patterns, and requirements for implementing Cloud services, security, and design.
 - **Describe the purpose of Azure Policy, Initiative**
   - Policy: **definition of the conditions** you want to **control/govern**. Guardrails.
   - Initiative: collection of policy definitions.
@@ -332,7 +347,8 @@
   - a bridge that extends the Azure platform to your environments.
   - unified and consistent management platform.
   - deploy agent on your server/database, allows you to use Azure services, monitoring, auditing...
-- **Describe Azure Resource Manager and Azure Resource Manager templates (ARM templates), IaC**
+- **Describe Azure Resource Manager and Azure Resource Manager templates (ARM templates), IaC, Blueprints**
+  - blueprints: **environment setup files** to create template that is repeatable and must be adhered to when creating resources. Connection is kept, so when changed, reflected in infrastructure. For auditing.
   - azure resource manager(ARM): deployment and management portal. CRUD resources.
   - arm template: JSON file defines infrastructure and configuration for project. declarative, idempotent.
   - IaC infrastructure as code: all your network infrastructure described as code. part of CI/CD.
@@ -344,8 +360,9 @@
   - looks at: high availability, performance, cost.
 - **Describe Azure Service Health**
   - notifies you about **Azure service incidents** and **planned maintenance**.
-- **Describe Azure Monitor, including Log Analytics, Azure Monitor alerts, and Application Insights**
-  - azure monitor: collects telemetry from on-prem and Azure resources. Stores telemetry in **Azure Log Analytics**.
+- **Describe Azure Monitor, including Log Analytics, Azure Monitor alerts, and App Insights**
+  - azure monitor: collects telemetry from on-prem and Azure resources. Stores telemetry in **Azure Log Store**.
+  - azure log analytics: run **log queries** against Azure Log Store.
   - azure monitor alerts: rules you create to detect and address issues. Can be created on any Azure Monitor data.
-  - application insights: APM(application performance monitoring). Monitors performance, usage of web apps.
+  - app insights: APM(application performance monitoring). Monitors performance, usage of **web apps**.
     - **proactive** review of app performance. **reactive** review of app execution.
