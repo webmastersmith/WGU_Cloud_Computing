@@ -36,6 +36,10 @@
 - <https://learn.microsoft.com/en-us/credentials/certifications/azure-fundamentals/?practice-assessment-type=certification>
 - <https://cm.wgu.edu/t5/Frequently-Asked-Questions/Microsoft-Assessment-Scheduling-and-Score-Reporting/ta-p/2626>
 
+- **notes were made from**:
+  - [youtube inside cloud security video](https://www.youtube.com/watch?v=8n-kWJetQRk)
+  - [github jasonotu study notes](https://github.com/undergroundwires/Azure-in-bullet-points/tree/master/AZ-900%20Microsoft%20Azure%20Fundamentals)
+
 ## 1.1 Describe cloud concepts (25–30%): Describe cloud computing
 
 - **Define cloud computing**
@@ -84,127 +88,273 @@
   - scalability: ability to handle growth. **manually** scale/reduce.
   - elasticity: **automatically** scale/reduce based on app demand. scale quickly to spikes in demand.
   - agility: speed of allocate/deallocate resources. react quickly. Cloud is agile.
-- **Disaster Recovery, Fault Tolerance, Reliability, Resiliency, Predictability**
+- **Disaster Recovery, Fault Tolerance**
   - **disaster recovery**:
     - design principle which allows a system to **recovers from natural or human induced disasters**.
     - Cloud based backup services, data replication and geo distribution ensure confidence that your data is safe even if a disaster should occur.
   - **fault tolerance**: handle **component** failure without service interruption. Robust(redundant hardware) for critical systems.
+- **Describe the benefits of reliability and predictability in the cloud**
   - **reliability**: ability to recover from system failure.
   - **resiliency**: return application to fully function state after failure.
   - **predictability**: cloud solutions with predictable cost and performance. **cost, performance know in advance!**
-- **Describe the benefits of reliability and predictability in the cloud**
 - **Describe the benefits of security and governance in the cloud**
+  - **Security**:
+    - customer data: access control, encryption.
+    - Standard Tier: DDOS attacks.
+    - IaaS give you more control, but also more responsibility.
+  - **Governance**
+    - rules, policy that guide organizations.
+    - guidance and guardrails that ensure we're as secure, consistent, and efficient as possible.
+    - Azure Deployment templates: help companies meet regulatory requirements.
+    - Cloud Adoption Framework: help you create and implement strategies. Five disciplines of cloud governance.
 - **Describe the benefits of manageability in the cloud**
+  - automatically scaling resources based on demand.
+  - deploy resources based on preconfigured template.
+  - monitor health, automatically replace failing resources
+  - receive alerts.
+  - Manage: CMD, API, Web Portal, Powershell
 
 ## 1.3 Describe cloud service types
 
 - **Describe infrastructure as a service (IaaS)**
-- **Describe platform as a service (PaaS)**
-- **Describe software as a service (SaaS)**
-- **Identify appropriate use cases for each cloud service (IaaS, PaaS, SaaS)**
-
-- **agility**
-  - is the ability to react fast (scale quickly)
-- **Cloud Benefits**
-  - **economies of scale**: cloud provider purchase large quantities of hardware at discount and pass on savings.
-  - **CapEx to OpEx**: CapEx is hard assets(IT equipment). OpEx is operating expenses(monthly subscription).
-  - **scalability & elasticity**:
-    - scalability: manual scale/reduce.
-    - elasticity: automatically scale/reduce.
-    - **Scale Up/Vertical**: add more resources (add more memory, HDD...).
-    - **Scale Out/Horizontal**: add more VMs.
-  - **high availability & fault tolerance**:
-    - high availability: downtime usually less than 5 minutes per year.
-- **Cloud: Public, Private, Hybrid, Community**
-  - Public: shared hardware between clients. Typical Cloud solutions.
-  - Private: hardware is used by single individual only.
-  - Hybrid: hosting on private, and public Cloud.
-  - Community: infrastructure shared between multiple organizations with common needs.
-  - [microsoft cloud model](img/microsoft_cloud_model.PNG)
-- **Cloud Service Models: IaaS, Paas, SaaS**
-
+  - CSP provides VM, your responsible for the rest.
+  - testing and deployment VMs, running applications in cloud, extending datacenter to cloud, disaster recovery.
   - ![cloud service models](./img/shared-responsibility.png)
   - ![microsoft cloud service models](./img/microsoft_service.PNG)
-  - **IaaS**
-    - (Infrastructure as a Service). bare bones server with virtualization OS (AWS).
-  - **PaaS**
-    - (Platform as a Service). When you need to build software to meet your needs (They provide database, middleware..., look for more than Iaas).
-  - **SaaS**
-    - (Software as a Service). Complete solution, you just bring the data (office 365).
+- **Describe platform as a service (PaaS)**
+  - CSP provides OS, your responsible for the rest.
+  - development framework: reduces development effort and increase solution(code) quality.
+  - PaaS tools allow analysis of data. business intelligence.
+  - ![cloud service models](./img/shared-responsibility.png)
+  - ![microsoft cloud service models](./img/microsoft_service.PNG)
+- **Describe software as a service (SaaS)**
+  - CSP provides app, customer configures features.
+  - customer is responsible for access management and data recovery.
+  - email, business productivity app... enables companies to securely and reliably outsource variety of functions, so they can focus on revenue generation.
+  - ![cloud service models](./img/shared-responsibility.png)
+  - ![microsoft cloud service models](./img/microsoft_service.PNG)
 
-  | Platform | Cloud Provider Includes                                     |
-  | -------- | ----------------------------------------------------------- |
-  | IaaS     | physical hardware + hardware management software            |
-  | PaaS     | IaaS + OS + app development environment(java, python, node) |
-  | SaaS     | PaaS + complete app. You bring your data                    |
+## 2.1 Describe the core architectural components of Azure
 
-- **Consumption Based/Pay-As-You-Go Model**
-  - only pay for what you use.
-  - no upfront infrastructure costs.
-  - enables better pricing prediction.
-- **Containers**
-  - Isolated environment similar to VM, but does not require guest OS. Can run on different guest systems.
-  - highly portable. agile start/stop. application and dependencies are packaged in container.
-  - **Docker**: open source container solution.
-- **Current**
-  - do not have to worry about infrastructure, software patches, upgrades or other IT management task.
-- **CapEx vs OpEx**
-  - CapEx: infrastructure cost(hardware, servers, switches, firewalls).
-    - purchase upfront, must maintain.
-  - OpEx: service cost(pay as you go. VMs, Cloud).
-    - pay as you go. autoscale.
-- **Economies of Scale**
-  - larger scale = lower cost. leveraged by large business.
-- **elasticity**
-  - is the ability to scale **dynamically**(autoscaling).
+- **Describe Azure Geography, regions, region pairs, and sovereign regions**
+  - Geography: groups of regions in each continent.
+    - Americas, Europe, Asia Pacific, Middle East and Africa.
+  - Regions: set datacenters connected w/ low-latency communications.
+  - Region Pairs: in same geography for disaster recovery. **300+ miles apart**.
+  - Sovereign Regions: also known as Geography. compliance or legal purpose. physical and logical isolation.
+- **Describe availability zones**
+  - group of datacenters within a region networked w/ low-latency network with independent power, network, cooling.
+  - redundancy with datacenter failure.
+- **Describe Azure datacenters**
+  - physical buildings w/ servers. redundant network, power, cooling.
+- **Azure Fault Domain**
+  - rack of servers in a datacenter. Each have power, networking.
+- **Describe Azure resources and resource groups**
+  - resource group:
+    - group related **resources that share common lifecycle**.
+    - under subscriptions.
+  - resource: entity managed by Azure(VM, VPN, storage...)
+- **Describe subscriptions**
+  - logical container to provision resources in Azure.
+  - under management groups.
+  - **unit of management, billing, and scale**
+    - management boundary for **assigning policies, governance, isolation**.
+- **Why create multiple subscriptions**
+  - when subscription limits are reached
+  - different payment methods
+  - isolate resources between departments, projects...
+- **Describe management groups**
+  - used to enforce policy.
+  - can have multiple subscriptions.
+  - higher than subscriptions in hierarchy. Each directory is given single top-level management group called the **root**.
+  - boundary for management and policy.
+- **Describe the hierarchy of resource groups, subscriptions, and management groups**
+  - management groups: enforce policy.
+  - subscriptions: unit of management for isolation, billing, scale.
+  - resource group: resources that share common lifecycle.
+
+## 2.2 Describe Azure compute and networking services
+
+- **Compare compute types, including container instances, virtual machines (VMs), and functions**
+  - Azure VMs: on-demand server virtualization without need for hardware purchase.
+    - virtual disk
+  - Azure Kubernetes Service (AKS): docker containers with orchestration. pay for agent nodes, not master.
+  - Azure Container Apps:
+  - Azure Container Instance (ACI): docker containers on demand in serverless environment. good for isolated containers, without orchestration.
+  - Azure Virtual Desktop: virtual windows desktop.
+- **Describe VM options, including Azure Virtual Machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop**
+  - VM scale sets: manage group of **identical load-balanced VMs**. elastic.
+  - VM availability sets: staggered updates(update domains), varied power and network connectivity(fault domains).
+    - availability set splits VMs across up to three fault domains.
+- **Describe resources required for virtual machines**
+  - virtual disk, virtual network(VNET), network interface(NIC), network security group, public IP address.
+- **Describe application hosting options, including the Web Apps feature of Azure App Service, containers, and virtual machines**
+  - web apps: java, ruby, nodejs, python... running on windows or linux.
+  - API apps: REST based API with your choice of language and framework.
+  - web jobs: run a program. cron, bash, powershell, exe, java, php, nodejs... run background task.
+  - mobile apps: backend for IOS, Android.
+- **Describe virtual networking, including the purpose of Azure Virtual Networks, Azure virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute**
+  - Virtual network(VNET): logical representation/isolation of your network. One or more subnets.
+    - VMs in different VNETs **cannot** communicate by default.
+  - Virtual Subnet: logical isolation/rules of ip space.
+  - VMs in different subnet **can** communicate by default.
+  - VPN Gateway: hybrid cloud. on-prem to Azure VNET encrypted traffic. over internet. site-to-site VPN.
+    - [VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/design)
+  - VNET Peering: seamless connection of two or more VNETs. function as single VNET.
+  - ExpressRoute: create hybrid cloud. on-prem with Azure VNET **with help of connectivity provider**. traffic does not traverse internet. higher security.
+  - Azure DNS: name resolution external/internal VNET.
+- **Define public and private endpoints**
+  - service endpoint: open internet access to **all** instances from VNET.
+  - private endpoint: open internet access to **specific** instance.
+
+## 2.3 Describe Azure storage services
+
+- **Compare Azure storage services: blob, disk, file, table, queue**
+  - blob: **unstructured** data. large files(archives), video, images... unstructured(any kind of data can be stored).
+  - disk: **block-level** storage for persistent VM data. They are 'page-blobs' in blob storage.
+  - file: mimics a SMB or NFS **file server**. file sharing access and management. Ensures data is **encrypted** at rest and in transit.
+  - table: **structured NoSQL** data.
+  - queue: **messages** accessible from anywhere through HTTPS calls.
+- **Describe storage tiers**
+  - hot: online tier, frequent access.
+  - cool: online tier, infrequent access. 30 day storage.
+  - cold: **online** tier, rarely accessed. 90 day storage.
+  - archive: **offline** tier, rarely accessed. 180 day storage.
+- \*_Describe redundancy options_
+  - backup copies in local, zone, region.
+- **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS\***
+  - LRS: locally redundant storage. three copies of data within same **datacenter**.
+  - ZRS: zone redundant storage. copies data across three **availability zones**.
+  - GRS: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
+  - GZRS: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
+- **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
+  - AzCopy: cmd line utility copy blobs or files.
+  - Azure Storage Explorer: GUI to manage blob/file.
+  - Azure File Sync: centralize files. Automated bi-directional sync from Cloud with on-prem. Installs on Windows Server.
+- **Describe migration options, including Azure Migrate and Azure Data Box**
+  - Azure Migrate: hub of services and tools designed to help with data migration.
+  - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'.
+
+## 2.4 Describe Azure identity, access, and security
+
+- **Describe directory services in Azure, including Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra and Azure Active Directory Domain Services (Azure AD DS)**
+  - AuthN: proving you are who you say you are. **Identity**.
+  - AuthZ: permission to do something. **Access**.
+  - Entra ID: GUI to setup policy, access, roles for Internal and external resources.
+- **Describe authentication methods in Azure, including single sign-on (SSO), multifactor authentication, and passwordless**
+  - SSO: single sign-on. sign in once, get access to multiple resources. **Modern Authentication**
+  - MFA: two or more of: something you known, something you have, something you are.
+  - Passwordless: Windows Hello, Fido2, OAUTH.
+- **Describe external identities and guest access in Azure**
+  - B2B collaboration: external users can use preferred sign-in.
+  - B2B direct connect: mutual two-way trust with another Entra ID or organization. close business partners.
+  - B2C Business-to-Consumer:
+  - Entra ID multi-tenant organization: multiple tenants collaboration.
+- **Describe Conditional Access in Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra**
+  - used by Entra ID to bring signals(telemetry from users devices, location) together, to make decisions, and enforce policy on sign-in.
+  - [microsoft conditional access](img/conditional_sign-in.PNG)
+- **Describe Azure role-based access control (RBAC)**
+  - role based access control. control who can do what with which resource.
+- **Describe the concept of Zero Trust**
+  - trust based on identity, not security perimeter. **NO entity is trusted by default**.
+  - [zero trust](img/zero-trust.PNG)
+  - three principles:
+    - always authenticate and authorize.
+    - least privilege: limit user access.
+    - assume breach: segment network access.
+- **Describe the purpose of the defense in depth model**
+  - layered security, not relying one only one method to completely protect network.
+  - identity: strong authentication, least privilege.
+  - devices/apps: monitored for health and compliance.
+  - data: labeled, encrypted at rest and transit.
+  - infrastructure: version, configuration, access should be **managed**. Telemetry used to detect activity.
+  - networks: segmented. real-time threat protection, end-to-end encryption, monitoring, and analytics.
+- **Network Security Group**
+  - rules to allow/deny traffic. inbound/outbound traffic. mimics firewall. applied to subnet or network adapter.
+- **Azure Firewall**
+  - fully stateful FaaS(firewall as a service), high availability, scalability.
+  - mainly for non-HTTPS traffic(RDP, SSH, FTP...).
+- **Azure DDOS**
+  - standard tier: enhanced DDOS mitigation. logging, alerting, telemetry.
+- **Describe the purpose of Microsoft Defender for Cloud**
+
+## 04_Azure Database and Big Data Storage
+
+- **Azure Storage: Cosmos DB**
+  - global distribution(multiple regions).
+  - support for schema-less(json, no-sql).
+- **Azure Storage: Data Lake**
+  - mimics a data warehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
+  - perform analytics on data usage.
+- **Azure Encryption SSE, Client-Side**
+  - SSE: Storage Service Encryption. encrypt data at rest. automated, encryption when storing data, decrypts to deliver.
+  - Client-Side: provision for client to encrypt/decrypt data on their end.
+- **Azure Storage**
+  - persistent data. uses REST API for access.
+  - automated backup & recovery.
+  - encryption.
+  - multiple data types: image, video, text, blobs.
+  - tiers: frequently -> rarely used.
+- **Azure Storage: Big Data: What Services work with Big Data?**
+  - Azure HDInsight: process big data through Hadoop cluster.
+  - Azure Databricks: analytic service based on Apache Spark.
+  - Data Lake Store: secure storage for massive data built to HDFS standard.
+  - Azure Data Factory: pipeline for data analysis.
+- **Azure Storage: HDInsight**
+  - advanced analytics for big data from open source vendors.
+  - Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka.
+  - ETL: extract, transform, load.
+- **Azure Storage: Migration Service**
+  - migrate existing SQL DB to azure(Microsoft Data Migration Assistant).
+  - minimal downtime.
+- **Azure Storage: Queue**
+  - queuing message delivery between applications.
+  - sender: add messages to queue. Receiver: get messages in queue.
+  - e.g. database request can be offloaded when busy to queue. If one fails, other is still taking request.
+- **Azure Storage: Semi-Structured Data**
+  - noSQL.
+  - Azure services:
+    - Azure Cosmos DB (MongoDB API, Cassandra API)
+    - Azure Table Storage
+    - Azure Queue Storage
+- **Azure Storage: Structured Data**
+  - relational database data(SQL).
+  - Azure Services:
+    - Azure SQL DB
+    - Azure Cosmos DB (SQL API)
+- **Azure Storage: SQL**
+  - Relational DaaS(database as a service).
+  - Based on Microsoft SQL Server.
+  - High performance, reliable, fully managed, secure.
+- **Azure Storage: SQL Optional DB**
+  - Fully managed(they keep it running) and scalable: **MySQL, PostgresSQL, MariaDB**.
+  - **VM**: Your own database on a virtual machine in your private network(VPN).
+- **Azure Storage: Synapse Analytics**
+  - formerly SQL Data Warehouse.
+  - enterprise cloud data warehouse.
+  - MPP: massive parallel processing. Run complex queries quickly across petabytes of data.
+- **Azure Storage: Table**
+  - noSQL data. schema-less design.
+- **Azure Storage Tiers**
+  - **Hot**: frequent access. low-latency.
+  - **Cold**: infrequent access(30 days or more)
+  - **Archive**: rarely access(180 days or more) high-latency.
+- **Azure Storage: Unstructured Data**
+  - image, video, text file...
+  - Azure services:
+    - Azure Blob Storage
+    - Azure File Storage
+    - Azure Data Lake Storage
+    - Azure Disk Storage
+
+## 05_Azure Network
+
+- **Azure Network: Loosely Coupled Architecture**
+  - Different services/components send/receive data have little to no working knowledge about the other components.
+- **Azure Network: Network Watcher**
+  - monitor and diagnose network issues.
 - **FMA**
   - Failure Mode Analysis: identify possible points of failure.
-- **fault tolerance**
-  - handle failure without service interruption. FT offers a more robust approach for critical systems that cannot afford even a single moment of downtime.
-- **Geo-Distribution/Global**
-  - Applications and Data can be deployed to regional datacentres globally to customers in all regions can get the best performance.
-  - edge computing.
-- **high availability**
-  - systems designed to quickly recover and ensure services are up and running with minimal interruption. It is a simple calculation of system uptime versus whole lifetime of the system.
-- **Horizontally Scaling**
-  - computing capacity can be increased by adding instances of a resource such as adding VMs.
-  - Opposite is **scaling in**.
-- **lift and shift**
-  - gradually move local infrastructure to cloud.
-- **on-demand**
-  - use compute like you own it, then return it when done.
-- **Public, Private, Hybrid Cloud**
-  - **Public**: services available over the public internet (AWS, Azure, Google Cloud).
-  - **Private**: private access to resources (GovCloud).
-  - **Hybrid**: public cloud and private cloud, including on-premises data centers or "edge" locations.
-    - **Hybrid Cloud**: public/private cloud.
-    - **Hybrid Environment**: mix of infrastructure. On site and cloud. Public or private.
-- **Reliability**
-  - Cloud applications can provide a continuous user experience with practically no downtime.
-  - data backup, disaster recovery, redundancy(fault tolerance).
-- **Replication**
-  - data is duplicated in more than one place. Protection against natural disasters.
-- **Resiliency**
-  - ability to recover from system failure.
-- **Security: Physical, Digital**
-  - physical: cameras, gates, locks.
-    - can provide better security than most organizations can otherwise achieve
-    - Broad set of policies, technologies, controls, and expert technical skills.
-  - digital:
-    - you are responsible for your data.
-    - Cloud provider: offers tools to mitigate security threats that you can use.
-- **serverless computing**
-  - application is broken into separate functions that runs when triggered by some action/event.
-  - good for automation task.
-  - eliminating the need for managing infrastructure. highly scalable, event-driven(easy, quick to acquire more compute, memory, storage...).
-  - The serverless name comes from the fact that the tasks associated with infrastructure provisioning and management are invisible to the developer.
-  - enables developers to increase their focus on the business logic and deliver more value to the core of the business.
-- **Vertically Scaling**
-  - computing capacity can be increased by adding RAM or CPUs to a virtual machine (VM).
-  - Opposite is **scaling down**.
-- **VM**
-  - virtual machine: runs directly on top of hypervisor.
-  - requires operating system and hardware(memory, cpu, storage...).
 
 ## 02_Cloud Compliance
 
@@ -294,14 +444,9 @@
 - **Azure CDN**
   - content delivery network. minimize latency by distributing content to multiple nodes(locations).
 - **Azure Cloud Storage**
-  - Disks attached to VMs, fileshares and Databases(relational and NoSQL choices).
+  - Disks attached to VMs, file shares and Databases(relational and NoSQL choices).
 - **Azure Compute Services**
   - VMs, Containers, Micro-Services, App Services, Serverless Compute.
-- **Azure Containers**
-  - virtual environment on top of operating system.
-  - PaaS: fastest and simplest way to run containers.
-  - AKS: Azure Kubernetes Service. orchestration for containers.
-    - Pod: smallest item in Kubernetes. Can be one or more containers.
 - **Azure DevOps**
   - CI/CD: continuous integration/continuous deployment. Streamlining development with operations(IT department, hosting...).
   - provides collaboration tools: pipelines, Git repos, Kanban boards, automated load testing.
@@ -371,145 +516,10 @@
   - send push notifications.
 - **Azure Web: API Management**
   - secure APIs at scale.
-- **Azure Web: Cogitive Search**
+- **Azure Web: Cognitive Search**
   - fully managed search as a service.
 - **Azure Web: SignalR Service**
   - build web communication into web application.
-
-## 04_Azure Database and Big Data Storage
-
-- **Azure Encryption SSE, Client-Side**
-  - SSE: Storage Service Encryption. encrypt data at rest. automated, encryption when storing data, decrypts to deliver.
-  - Client-Side: provision for client to encrypt/decrypt data on their end.
-- **Azure Storage**
-  - persistent data. uses REST API for access.
-  - automated backup & recovery.
-  - encryption.
-  - multiple data types: image, video, text, blobs.
-  - tiers: frequently -> rarely used.
-- **Azure Storage: Big Data: What Services work with Big Data?**
-  - Azure HDInsight: process big data through Hadoop cluster.
-  - Azure Databricks: analytic service based on Apache Spark.
-  - Data Lake Store: secure storage for massive data built to HDFS standard.
-  - Azure Data Factory: pipeline for data analysis.
-- **Azure Storage: Blob Storage**
-  - large files(archives), video, images...
-  - unstructured(any kind of data can be stored).
-- **Azure Storage: Cosmos DB**
-  - global distribution(multiple regions).
-  - support for schema-less(json, no-sql).
-- **Azure Storage: Disk**
-  - Azure Disks: persistent VM disk storage. In reality they are 'page-blobs' in blob storage.
-- **Azure Storage: Data Lake**
-  - mimics a data warehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
-  - perform analytics on data usage.
-- **Azure Storage: File Storage**
-  - Azure Files: mimics a file server. file sharing global access and manage.
-  - SMB(server message block) protocol access. File/printer sharing on the local network.
-  - Ensures data is encrypted at rest and in transit.
-- **Azure Storage: HDInsight**
-  - advanced analytics for big data from open source vendors.
-  - Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka.
-  - ETL: extract, transform, load.
-- **Azure Storage: Migration Service**
-  - migrate existing SQL DB to azure(Microsoft Data Migration Assistant).
-  - minimal downtime.
-- **Azure Storage: Queue**
-  - queuing message delivery between applications.
-  - sender: add messages to queue. Receiver: get messages in queue.
-  - e.g. database request can be offloaded when busy to queue. If one fails, other is still taking request.
-- **Azure Storage: Semi-Structured Data**
-  - noSQL.
-  - Azure services:
-    - Azure Cosmos DB (MongoDB API, Cassandra API)
-    - Azure Table Storage
-    - Azure Queue Storage
-- **Azure Storage: Structured Data**
-  - relational database data(SQL).
-  - Azure Services:
-    - Azure SQL DB
-    - Azure Cosmos DB (SQL API)
-- **Azure Storage: SQL**
-  - Relational DaaS(database as a service).
-  - Based on Microsoft SQL Server.
-  - High performance, reliable, fully managed, secure.
-- **Azure Storage: SQL Optional DB**
-  - Fully managed(they keep it running) and scalable: **MySQL, PostgresSQL, MariaDB**.
-  - **VM**: Your own database on a virtual machine in your private network(VPN).
-- **Azure Storage: Synapse Analytics**
-  - formerly SQL Data Warehouse.
-  - enterprise cloud data warehouse.
-  - MPP: massive parallel processing. Run complex queries quickly across petabytes of data.
-- **Azure Storage: Table**
-  - noSQL data. schema-less design.
-- **Azure Storage Tiers**
-  - **Hot**: frequent access. low-latency.
-  - **Cold**: infrequent access(30 days or more)
-  - **Archive**: rarely access(180 days or more) high-latency.
-- **Azure Storage: Unstructured Data**
-  - image, video, text file...
-  - Azure services:
-    - Azure Blob Storage
-    - Azure File Storage
-    - Azure Data Lake Storage
-    - Azure Disk Storage
-
-## 05_Azure Network
-
-- **Azure Network: Availability Sets**
-  - logical grouping of two or more VMs. Fault tolerance.
-- **Azure Network: Availability Zones**
-  - group of datacenters within a region networked w/ low-latency network.
-    - **isolation boundary**: redundancy. independent power, cooling, networking infrastructure.
-- **Azure Network: Data Centers**
-  - physical hardware location.
-- **Azure Network: ExpressRoute**
-  - Connect to Azure over high-bandwidth dedicated secure connections.
-- **Azure Network: Fault Domain**
-  - rack of servers in a datacenter. Each have power, cooling, networking.
-- **Azure Network: Firewall**
-  - access from WAN is secured through perimeter firewall.
-  - Firewall as a Service. scalable, highly available.
-  - mainly for non-HTTPS traffic(RDP, SSH, FTP...).
-- **Azure Network: Geography**
-  - one or more regions in a geography. defines geopolitical boundaries and country borders.
-    - Americas, Europe, Asia Pacific, Middle East and Africa.
-- **Azure Network: Loosely Coupled Architecture**
-  - Different services/components send/receive data have little to no working knowledge about the other components.
-- **Azure Network: N-tier**
-  - divides applications into two or more logical tiers.
-  - Methodology:
-    - higher tier can access lower, but lower never access higher.
-    - e.g. frontend(logic, UI), backend, database.
-- **Azure Network: Network Watcher**
-  - monitor and diagnose network issues.
-- **Azure Network: NSG(Network Security Group)**
-  - Cloud Virtual Firewall. Controls traffic through network.
-  - allow or deny inbound traffic.
-- **Azure Network: Regions**
-  - one or more availability zones.
-- **Azure Network: Scale Sets**
-  - load balanced VMs. high availability for scale.
-- **Azure Network: Special Regions**
-  - DoD Central, US Gov Virginia... Physical and logical isolated network instances for government agencies and partners.
-    - **China East, China North**: microsoft does not maintain the data centers.
-- **Azure Network: Subnet**
-  - logical segment of virtual network. Allows isolation.
-- **Azure Network: VPN**
-  - logically isolated network. secure communication with other VPN
-  - **scoped to single region**.
-  - VPN, NIC(network interface) are free.
-  - IP address(public, reserved), Gateways(VPN, Application) are charged for.
-- **Azure Network: Virtual WAN**
-  - wide area network: brings many networking, security, and routing functionalities together to provide a single operational interface.
-  - unified connections of multiple remote sites.
-  - DDOS protection. Firewall.
-- **Azure Network: VPN Gateway**
-  - [VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/design). Also called: virtual network gateway.
-  - VPN tunnel: send encrypted traffic between an Azure virtual network and on-premises locations over the public Internet.
-  - Must be deployed in a **subnet** called **gateway subnet**.
-  - e.g. keep data tier on prem, web(public facing) on Azure cloud.
-  - requires a **VPN device** located on-premises that has a public IP address assigned to it.
 
 ## 06_Azure Load Balancing
 
