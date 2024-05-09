@@ -1,0 +1,411 @@
+## 04_Azure Database and Big Data Storage
+
+- **Azure Storage: Cosmos DB**
+  - global distribution(multiple regions).
+  - support for schema-less(json, no-sql).
+- **Azure Storage: Data Lake**
+  - mimics a data warehouse. Allows for high performance storage(Big Data file systems) with any kind of data(structured, unstructured).
+  - perform analytics on data usage.
+- **Azure Encryption SSE, Client-Side**
+  - SSE: Storage Service Encryption. encrypt data at rest. automated, encryption when storing data, decrypts to deliver.
+  - Client-Side: provision for client to encrypt/decrypt data on their end.
+- **Azure Storage**
+  - persistent data. uses REST API for access.
+  - automated backup & recovery.
+  - encryption.
+  - multiple data types: image, video, text, blobs.
+  - tiers: frequently -> rarely used.
+- **Azure Storage: Big Data: What Services work with Big Data?**
+  - Azure HDInsight: process big data through Hadoop cluster.
+  - Azure Databricks: analytic service based on Apache Spark.
+  - Data Lake Store: secure storage for massive data built to HDFS standard.
+  - Azure Data Factory: pipeline for data analysis.
+- **Azure Storage: HDInsight**
+  - advanced analytics for big data from open source vendors.
+  - Apache Hadoop, Apache Spark, Apache HBase, Apache Kafka.
+  - ETL: extract, transform, load.
+- **Azure Storage: Migration Service**
+  - migrate existing SQL DB to azure(Microsoft Data Migration Assistant).
+  - minimal downtime.
+- **Azure Storage: Queue**
+  - queuing message delivery between applications.
+  - sender: add messages to queue. Receiver: get messages in queue.
+  - e.g. database request can be offloaded when busy to queue. If one fails, other is still taking request.
+- **Azure Storage: Semi-Structured Data**
+  - noSQL.
+  - Azure services:
+    - Azure Cosmos DB (MongoDB API, Cassandra API)
+    - Azure Table Storage
+    - Azure Queue Storage
+- **Azure Storage: Structured Data**
+  - relational database data(SQL).
+  - Azure Services:
+    - Azure SQL DB
+    - Azure Cosmos DB (SQL API)
+- **Azure Storage: SQL**
+  - Relational DaaS(database as a service).
+  - Based on Microsoft SQL Server.
+  - High performance, reliable, fully managed, secure.
+- **Azure Storage: SQL Optional DB**
+  - Fully managed(they keep it running) and scalable: **MySQL, PostgresSQL, MariaDB**.
+  - **VM**: Your own database on a virtual machine in your private network(VPN).
+- **Azure Storage: Synapse Analytics**
+  - formerly SQL Data Warehouse.
+  - enterprise cloud data warehouse.
+  - MPP: massive parallel processing. Run complex queries quickly across petabytes of data.
+- **Azure Storage: Table**
+  - noSQL data. schema-less design.
+- **Azure Storage Tiers**
+  - **Hot**: frequent access. low-latency.
+  - **Cold**: infrequent access(30 days or more)
+  - **Archive**: rarely access(180 days or more) high-latency.
+- **Azure Storage: Unstructured Data**
+  - image, video, text file...
+  - Azure services:
+    - Azure Blob Storage
+    - Azure File Storage
+    - Azure Data Lake Storage
+    - Azure Disk Storage
+
+## 05_Azure Network
+
+- **Azure Network: Loosely Coupled Architecture**
+  - Different services/components send/receive data have little to no working knowledge about the other components.
+- **Azure Network: Network Watcher**
+  - monitor and diagnose network issues.
+- **FMA**
+  - Failure Mode Analysis: identify possible points of failure.
+
+## 02_Cloud Compliance
+
+- **CJIS**
+  - criminal justice information services: owned by FBI. Must adhere to CJIS security policy to access.
+- **CSA STAR**
+  - cloud security alliance: independent third party assessment of cloud security posture.
+  - ensures:
+    - ISO/IEC 27001 compliant.
+    - CCM: cloud controls matrix compliant.
+- **EU Model Clause**
+  - EU contractual clause that allows personal data to moved outside of EU.
+- **GDPR**
+  - general data protection regulation: european residents data privacy laws.
+- **HIPAA**
+  - health insurance portability and accountability act: us federal law regulates PHI.
+  - PHI: protected health information. Someones PII(personally identifiable information) that links to health records. Includes name, address, social security number, drivers license, email, phone...
+- **HIPAA BAA**
+  - health insurance portability and accountability act business associate agreement: allows businesses to handle PHI while adhering to security and privacy of HIPAA.
+  - Azure offers BAA as contract addendum to help with compliance.
+- **ISO/IEC 27018**
+  - International organization for standardization.
+  - International electrotechnical commission.
+  - 27018 covers processing personal information by cloud service providers.
+- **Microsoft Compliance Manager**
+  - risk assessment dashboard showing: data protection, compliance stature, recommendations for improvement.
+  - **compliance score**: track progress with ongoing risk assessment.
+- **Microsoft Privacy Policy**
+  - how microsoft handles PII.
+- **Microsoft Service Trust Portal**
+  - reports you can download about Azure audits.
+- **Microsoft Trust Center**
+  - in-depth information about security, privacy, compliance, policies, features...
+- **MTCS Singapore**
+  - MTCS = Multi-Tier Cloud Security (MTCS) Singapore.
+  - MTCS 584:2013 asses for IaaS & PaaS & SaaS service classifications.
+- **NIST CSF**
+  - NIST CSF = National Institute of Standards and Technology (NIST) Cybersecurity Framework (CSF)
+    - NIST is agency of United States Department of Commerce.
+  - Voluntary framework that defines security guidelines, and best practices to manage cybersecurity-related risks.
+  - Azure have undergone independent, third-party Federal Risk and Authorization Management Program (FedRAMP) Moderate and High Baseline audits & is certified
+    - Also validated by the Health Information Trust Alliance (HITRUST) a leading security and privacy standards development and accreditation organization
+- **SLA**
+  - service level agreement: formal document that defines performance standards(uptime guarantee).
+- **SLA -Composite**
+  - combining SLAs across different service offerings. You can increase uptime by combining different fallback services(SQL database and Queue). Queue holds transactions if database is busy, improves performance and reliability.
+- **SOC 1, 2, and 3**
+  - SOC: Service Organization Controls
+  - Cloud services audited at least annually against the SOC report framework by independent third-party auditors.
+  - Audit covers controls for data security, availability, processing integrity, and confidentiality as applicable to in-scope trust principles for each service.
+- **UK Government G-Cloud**
+  - Cloud computing certification for services used by government entities in UK.
+  - Azure has received official accreditation from the UK Government Pan Government Accreditor.
+
+## 03_Azure Services
+
+- **Azure AI**
+  - Including machine learning and prebuilt cognitive services. Good for data analysis and trends.
+- **Azure AI: Cognitive Services**
+  - vision, speech, knowledge mapping, bing search, NLP(natural language processing).
+- **Azure AI: Machine Learning Studio**
+  - drag-n-drop visual workspace for machine learning solutions.
+  - build, test, deploy machine learning models.
+- **Azure App Hosting**
+  - Lets you run your entire application on a managed platform
+- **Azure Infrastructure**
+  - hypervisor virtualization software to allocate compute, memory, storage.
+  - Each server includes a hypervisor to run multiple virtual machines.
+  - A network **switch** provides connectivity to all those servers
+  - **One server** in each rack runs a special software called **fabric controller**:
+    - Each fabric controller is connected to another software called as orchestrator.
+    - **Orchastrator** manages everything in Azure, including responding user requests
+    - Users requests using Azure API, can be reached in many ways including Azure Portal
+    - Orchestrator packages everything it's needed and sends to package & request to fabric controller.
+- **Azure App Service**: host web apps without managing infrastructure.
+  - **Mobile Apps**: MBaaS(mobile backend as a service).
+- **Azure Billing & Support**
+  - custom sub-accounts for each department, team, project...
+  - **free** 24/7 online documentation.
+    - **Azure Quickstart Center**: Guided experience in the portal.
+    - **Azure Service Health**: Insights on issues related to your Azure services.
+    - **Azure Advisor**: Personalized recommendations on how to optimize your cost and performance.
+  - **paid** Azure support plans:
+    - developer: 1 business day.
+    - standard: 1 hour.
+    - professional direct: access to technical experts.
+- **Azure CDN**
+  - content delivery network. minimize latency by distributing content to multiple nodes(locations).
+- **Azure Cloud Storage**
+  - Disks attached to VMs, file shares and Databases(relational and NoSQL choices).
+- **Azure Compute Services**
+  - VMs, Containers, Micro-Services, App Services, Serverless Compute.
+- **Azure DevOps**
+  - CI/CD: continuous integration/continuous deployment. Streamlining development with operations(IT department, hosting...).
+  - provides collaboration tools: pipelines, Git repos, Kanban boards, automated load testing.
+- **Azure DevTest Labs**
+  - labs created from predefined windows & linux environments.
+  - used for testing before deployment.
+- **Azure DNS**
+  - domain name server. map user-friendly names(e.g. google.com) to IP address.
+  - bring your own DNS server.
+- **Azure Functions**
+  - code execution in any language.
+  - stateless: fresh start every time code runs.
+  - stateful: keeps context(state), knows prior activity.
+- **Azure Identity Management**
+  - tight control over who gets access to what.
+- **Azure Interactions**
+  - portal(GUI), PowerShell, CLI,
+  - SDKs: REST API. automate task in your language.
+  - Cloud Shell(web based CLI): persistent. Uses your storage(`$HOME`) to save commands.
+  - mobil app: manage, monitor.
+  - Azure Batch: large-scale job scheduling.
+- **Azure Integration**
+  - Allows for workflow to orchestrate business processes.
+- **Azure IoT**
+  - Allows you to integrate sensors and devices and managed them.
+- **Azure IoT Central**
+  - SaaS service to manage IoT devices.
+- **Azure IoT Edge**
+  - push IoT analysis models directly onto IoT devices.
+- **Azure IoT Hub**
+  - entry point to IoT network. Takes data(coordinates, sensor readings...) in and out.
+  - allows management of all IoT devices.
+- **Azure Logic Apps**
+  - similar to Azure Functions, but often no code is written. Logic blocks are connected to automate when an event is triggered. Interacts with other Azure services.
+  - stateful. declarative.
+- **Azure Marketplace**
+  - vendors sell their solutions.
+- **Azure Micro-Services**
+  - architecture broken down into small independent pieces. Allows easier scaling. No cross dependencies. Different programming languages. API communication.
+  - Azure Service Fabric: scalable solution for micro-services.
+- **Azure Networking**
+  - Let you set up private network connection to your on prem environments.
+- **Azure Purchasing**
+  - website portal Azure.com(monthly invoice).
+  - microsoft representative(monthly invoice).
+  - third party(Microsoft Partner organization) cloud solution provider.
+  - EA: Enterprise Agreement. discount for volume purchase. enterprise only services.
+- **Azure Resource Groups**
+  - logical container for group assigning locks, tags, RBAC permissions...
+  - management groups for different departments.
+- **Azure Resource Locks**
+  - assign read-only to resources.
+- **Azure Resource Manager, RBAC, Tagging**
+  - anything you can create in an Azure subscription.
+  - **RBAC**: Role-based Access Control. assign roles to someone to enable permissions.
+  - **Tagging**: improve search, filter and organization.
+    - Helps group billing data, automation, monitoring.
+- **Azure Security Center**
+  - includes regulatory compliance dashboard or your services.
+- **Azure Serverless Compute**
+  - abstracts hosting environment. functions run on their servers.
+  - event-driven scale. good for workloads that respond to incoming events(triggers).
+  - micro-billing: pay only for time code runs.
+- **Azure VMs**
+  - virtual server that needs a host an operating system(image).
+- **Azure Web: Notification Hubs**
+  - send push notifications.
+- **Azure Web: API Management**
+  - secure APIs at scale.
+- **Azure Web: Cognitive Search**
+  - fully managed search as a service.
+- **Azure Web: SignalR Service**
+  - build web communication into web application.
+
+## 06_Azure Load Balancing
+
+- **Azure Load Balancing**
+  - Load balancing increases **availability and resiliency**.
+  - distribute traffic evenly among each system in a pool.
+  - user entry point. internal or external traffic routing to VMs.
+  - You define forwarding rules, microsoft does the maintenance.
+- **Azure Load Balancing: Application Gateway**
+  - load balancer and WAF designed for HTTP traffic. OSI Layer 7 aware.
+  - Cookie affinity, SSL termination, WAF(web application firewall), URL rule-based routes, rewrite HTTP headers.
+- **Azure Load Balancing: Traffic Manager**
+  - DNS based traffic load balancer.
+  - Country routing to specific regions.
+- **Azure Load Balancing: Bandwidth vs Latency**
+  - Bandwidth: amount of data that can fit on the connection(size of pipe).
+  - Latency: time to travel the network.
+- **Azure Load Balancing: Load Balancer vs Traffic Manager**
+  - Load Balancer: distribute traffic same region. Detects unresponsive VMs.
+  - Traffic Manager: distribute traffic to preferred endpoint across regions. Detects unresponsive endpoints.
+
+## O7_Azure_Security: Blueprints, Encryption, Defender For Identity, IAM, Policy, SDL
+
+- **Blueprints**
+  - declarative way to adhere to security or compliance requirements.
+  - automate role assignments, policy assignments...
+- **Encryption**
+  - process of making data unreadable and readable. Secret key is used to encrypt/decrypt.
+- **Encryption: Asymmetric**
+  - slowest. public private key pair. allows for the sharing of secret key over insecure channel.
+- **Encryption: Azure Storage Service**
+  - automatically encrypts data before persisting it to service(Disk, Blob, Files, Queue...).
+- **Encryption: Azure Disk**
+  - windows and linux VM machine encryption.
+- **Encryption: Azure Key Vault**
+  - secure secrets(passwords...), keys, and certificate storage.
+- **Encryption: Rest/Transport**
+  - data at rest and in transit should be encrypted.
+- **Encryption: Symmetric**
+  - fastest. Secret key must be known by both parties.
+- **Encryption: Transparent Data Encryption (TDE)**
+  - database encryption by default.
+- **Defender For Identity**
+  - formerly known as Azure ATP(advanced threat protection).
+  - cloud based solution to detect, identify, and investigate threats.
+  - can be integrated with on-premises Microsoft Defender ATP.
+- **Defender For Identity: Sensor**
+  - monitor network traffic directly.
+- **IAM**
+  - identity and access management. Old way was physical security on-prem, doesn't work with cloud computing. IAM is role based authentication and privileges.
+- **IAM: Azure AD**
+  - Active Directory: manage IAM, MFA(multi factor authentication) and SSO(Single Sign On).
+- **IAM: AAA**
+  - Authentication: you are who you say you are.
+  - Authorization: can access resource.
+  - Accountability: every change written to logs.
+- **IAM: Identity and Principal/Service Principal**
+  - identity: a thing that can be authenticated. e.g. username and password. application w/ secret key.
+  - principal: identity using roles. e.g. running `sudo` to elevate privileges.
+  - service principal: application using roles to perform task.
+- **IAM: RBAC**
+  - role based access control. control over permissions to CRUD(create, read, update, delete).
+  - granted to people and applications.
+- **IAM: RBAC Roles**
+  - owner, user access administrator, contributor, reader.
+  - Global Administrator: full control.
+- **IAM: AD PIM**
+  - Privileged Identity Management: control of auditing, assigning and removing roles.
+- **Policy**
+  - ensure standards are followed in all IT departments.
+  - GUI allows review of compliance across organization.
+  - Create with JSON object.
+- **Policy Scope**
+  - what resource/group is assigned policy.
+- **Security: Azure Information Protection (AIP)**
+  - protecting sensitive documents with labels for automatic encryption.
+- **Security: Azure ExpressRoute**
+  - dedicated private connection between your network and Azure. extend on-premises to microsoft cloud.
+- **Security: Application Security**
+  - clean code free from vulnerabilities. Secrets secure. Security in application development life cycle.
+- **Security: Azure Defender**
+  - threat detection, monitoring, port control.
+- **Security: CIA**
+  - confidentiality, integrity, availability. Data is what attackers are after. Keep data encrypted, being changed by non-authorized person and available when needed.
+- **Security: Compute Security**
+  - avoid rogue VMs(abandoned, non-patched, non-secure).
+- **Security: Defense in Depth**
+  - micro segmentation designed to slow attack penetration. each segment is protected.
+- **Security: DDOS**
+  - distributed denial of service attack. every Azure region has DDOS prevention services.
+  - **Basic**:
+    - Automatically enabled as part of the Azure platform.
+    - Always-on traffic monitoring and real-time mitigation of common network-level
+    - Used by Microsoft's online services use.
+  - **Standard**:
+    - Tuned specifically to Microsoft Azure Virtual Network resources
+    - Requires no application changes.
+    - Dedicated traffic monitoring and machine learning algorithms.
+    - Policies are applied to public IP addresses associated with resources deployed in virtual networks
+      - e.g. Azure Load Balancer and Application Gateway.
+    - Mitigates:
+      - **Volumetric attacks**: The attackers goal is to flood the network layer with a substantial amount of seemingly legitimate traffic.
+      - **Protocol attacks**: Render a target inaccessible, by exploiting a weakness in the layer 3 and layer 4 protocol stack.
+      - **Resource (application) layer attacks**: Target web application packets to disrupt the transmission of data between hosts.
+- **Security: Incident Response Stages**
+  - detect: notified threat was detected.
+  - assess: look into suspicious activity.
+  - diagnose: identify.
+  - stabilize: containment, mitigation and workaround.
+  - close: record in threat log.
+- **Security: Security Center**
+  - monitoring service for Azure services and on-premises.
+  - advice from Azure Defender.
+  - helps with identifying threats and analyzing attacks.
+  - control for which Apps can run.
+- **Security: Security Policy**
+  - rules that are enforced to enhanced security.
+- **Security: Shared Responsibility Model**
+  - who gets blamed when something goes wrong.
+  - physical security: microsoft
+  - digital security: you. microsoft provides the tools(DDOS, IAM, encryption...).
+- **SDL**
+  - Microsoft Security Development Lifecycle. best practices used internally at Microsoft, for secure development.
+  - Training: everyone is responsible for securing environment.
+  - Requirements: security, internal standards and legal requirements, needs are updated continuously.
+    - define security requirements.
+    - encryption requirements.
+- **SDL Best Practices**
+  - only use approved tools. use latest versions.
+  - SAST (static analysis security testing): perform secure code review before publishing.
+  - DAST (dynamic analysis security testing): perform prebuilt attack checking.
+  - penetration testing
+  - establish standards for incident response process.
+- **SDL Threat Modeling**
+  - hypothetical scenarios to help secure system data.
+  - 5 steps: define, diagram, identify, mitigate, validate.
+
+## 08_Monitoring, Health, Cost, Best Practices
+
+- **Azure Best Practices: Infrastructure**
+  - VM reserved instances: 1-3 years at discounted rate.
+  - right size VMs.
+  - deallocate VMs in off hours.
+  - prioritize linux(cheaper) OS over windows.
+  - hybrid: use existing infrastructure licenses(windows server) on Azure VMs.
+  - DB: needs lower vCPU and higher memory, storage, I/O bandwidth. Use VMs with lower vCPU.
+- **Azure Monitoring: Alerts**
+  - created rule based notifications about critical conditions.
+- **Azure Monitoring: AutoScale**
+  - ensure adequate amount of resources are available.
+- **Azure Monitoring: Monitor**
+  - telemetry collecting, analyzing, acting on, from cloud and on-prem environments.
+  - understand app performance and consuming resources.
+  - writes logs, displays metrics on containers, VMs, resource modifying.
+- **Azure Service Health**
+  - comprehensive view of your Azure health status.
+  - guides you to prepare for planned maintenance.
+  - consist of: Azure Status, Service Health, Resource Health.
+- **Azure Cost: Usage Meter**
+  - determine cost for each billing period.
+  - billing each month.
+  - You typically pay for compute hours, storage, data transfer(bandwidth), security services(secret keys, certificates, Azure services).
+- **Azure Cost: Billing Zone, Pricing Calculator**
+  - billing zone: grouping of regions.
+  - calculator: estimate cost
+- **Azure Cost: Azure Advisor, Cost Management, TCO Calculator**
+  - Advisor: recommendations on best practices(security, performance, operational cost).
+  - Cost Manager: get insights into projected cost.
+  - TCO Calc: compare on-prem vs. cloud cost.

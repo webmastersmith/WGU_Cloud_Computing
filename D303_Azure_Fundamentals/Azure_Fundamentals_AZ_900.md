@@ -123,7 +123,7 @@
   - ![microsoft cloud service models](./img/microsoft_service.PNG)
 - **Describe platform as a service (PaaS)**
   - CSP provides OS, your responsible for the rest.
-  - development framework: reduces development effort and increase solution(code) quality.
+  - development framework: reduces development effort and increase solution(code) quality. Databases.
   - PaaS tools allow analysis of data. business intelligence.
   - ![cloud service models](./img/shared-responsibility.png)
   - ![microsoft cloud service models](./img/microsoft_service.PNG)
@@ -183,7 +183,7 @@
   - Azure Container Instance (ACI): docker containers on demand in serverless environment. good for isolated containers, without orchestration.
   - Azure Virtual Desktop: virtual windows desktop.
 - **Describe VM options, including Azure Virtual Machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop**
-  - VM scale sets: manage group of **identical load-balanced VMs**. elastic.
+  - VM scale sets: manage group of **identical, load-balanced VMs**. elastic.
   - VM availability sets: staggered updates(update domains), varied power and network connectivity(fault domains).
     - availability set splits VMs across up to three fault domains.
 - **Describe resources required for virtual machines**
