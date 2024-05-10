@@ -125,7 +125,8 @@
   - ![microsoft cloud service models](./img/microsoft_service.PNG)
 - **Describe platform as a service (PaaS)**
   - CSP provides OS, your responsible for the rest.
-  - development framework: reduces development effort and increase solution(code) quality. Databases.
+  - development framework: reduces development effort and increase solution(code) quality.
+    - Databases, web apps, backup services.
   - PaaS tools allow analysis of data. business intelligence.
   - ![cloud service models](./img/shared-responsibility.png)
   - ![microsoft cloud service models](./img/microsoft_service.PNG)
@@ -162,6 +163,8 @@
 - **Describe Azure resources and resource groups**
   - resource group: - group related **resources that share common lifecycle**.
     - logical container for group assigning locks, tags, RBAC permissions... - under subscriptions.
+    - **nested resource group not allowed**.
+    - can contain resources from **multiple different regions**.
   - resource: entity managed by Azure(VM, VPN, storage...)
 - **Describe subscriptions**
   - logical container to provision resources in Azure.
