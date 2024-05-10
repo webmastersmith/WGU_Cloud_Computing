@@ -314,7 +314,7 @@
 ## 3.1 Describe cost management in Azure
 
 - **Describe factors that can affect costs in Azure**
-  - resource types()
+  - resource types(CPU, Storage, Memory...)
   - services
   - locations
   - ingress/egress traffic.
@@ -343,7 +343,7 @@
   - Initiative: collection of policy definitions.
 - **Describe the purpose of resource locks**
   - prevent accidental deletion/modifying of critical resources.
-  - lock overrides permissions.
+  - lock overrides permissions. Employee with delete/modify permissions will be denied.
 - **Describe the purpose of the Service Trust Portal**
   - publishing **audit reports** and other **compliance-related information** associated with Microsoft's cloud services
 
@@ -352,7 +352,7 @@
 - **Describe the Azure portal**
   - web-based, unified console(GUI). Manage subscriptions.
 - **Describe Azure Cloud Shell, including Azure CLI and Azure PowerShell, Mobil App**
-  - cloud shell: browser accessible shell, to manage resources. Bash or PoserShell.
+  - cloud shell: browser accessible shell, to manage resources. Bash or PowerShell.
   - CLI: commands used to create and manage Azure resources.
   - powershell: manage through powershell.
   - mobil app: manage, track health and status, troubleshoot.
@@ -360,7 +360,7 @@
   - a bridge that extends the Azure platform to your environments.
   - unified and consistent management platform.
   - deploy agent on your server/database, allows you to use Azure services, monitoring, auditing...
-- **Describe Azure Resource Manager and Azure Resource Manager templates (ARM templates), IaC, Blueprints**
+- **Describe Azure Resource Manager(ARM) and ARM templates, IaC, Blueprints**
   - blueprints: **environment setup files** to create template that is repeatable and must be adhered to when creating resources. Connection is kept, so when changed, reflected in infrastructure. For auditing.
   - azure resource manager(ARM): deployment and management portal. CRUD resources.
   - arm template: JSON file defines infrastructure and configuration for project. declarative, idempotent.
