@@ -417,6 +417,9 @@
   - billing zone: grouping of regions.
   - calculator: estimate cost
 - **Azure Cost: Azure Advisor, Cost Management, TCO Calculator**
+
   - Advisor: recommendations on best practices(security, performance, operational cost).
   - Cost Manager: get insights into projected cost.
   - TCO Calc: compare on-prem vs. cloud cost.
+
+- support: https://azure.microsoft.com/en-us/support/plans

@@ -40,7 +40,7 @@
   - [youtube inside cloud security video](https://www.youtube.com/watch?v=8n-kWJetQRk)
   - [github jasonotu study notes](https://github.com/undergroundwires/Azure-in-bullet-points/tree/master/AZ-900%20Microsoft%20Azure%20Fundamentals)
 
-## 1.1 Describe cloud concepts (25–30%): Describe cloud computing
+## 1.1 Describe cloud computing
 
 - **Define cloud computing**
   - on-demand network access to a shared pool that can be rapidly provisioned with minimal management effort.
@@ -234,7 +234,7 @@
   - cool: online tier, infrequent access. 30 day storage.
   - cold: **online** tier, rarely accessed. 90 day storage.
   - archive: **offline** tier, rarely accessed. 180 day storage.
-- \*_Describe redundancy options_
+- **Describe redundancy options**
   - backup copies in local, zone, region.
 - **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS\***
   - LRS: locally redundant storage. three copies of data within same **datacenter**.
