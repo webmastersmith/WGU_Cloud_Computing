@@ -335,7 +335,7 @@
   - unified data governance service that helps organizations manage and govern data.
   - automates data discovery from **data scanning and classification**.
 - **Describe the purpose of Azure Policy, Initiative**
-  - Policy: **definition of the conditions** you want to **control/govern**. Guardrails.
+  - Policy: **definition of the conditions** you want to **control/govern**. Guardrails. Can only be assigned to 'Scope', not resources.
   - Initiative: collection of policy definitions.
 - **Describe the purpose of resource locks**
   - prevent accidental deletion/modifying of critical resources.
