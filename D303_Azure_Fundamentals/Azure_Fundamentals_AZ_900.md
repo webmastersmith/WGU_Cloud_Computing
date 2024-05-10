@@ -37,8 +37,7 @@
 - <https://cm.wgu.edu/t5/Frequently-Asked-Questions/Microsoft-Assessment-Scheduling-and-Score-Reporting/ta-p/2626>
 
 - **notes were made from**:
-  - [youtube inside cloud security video](https://www.youtube.com/watch?v=8n-kWJetQRk)
-  - [github jasonotu study notes](https://github.com/undergroundwires/Azure-in-bullet-points/tree/master/AZ-900%20Microsoft%20Azure%20Fundamentals)
+  - [Youtube: Inside cloud security video cram course](https://www.youtube.com/watch?v=8n-kWJetQRk)
 
 ## 1.1 Describe cloud computing
 
