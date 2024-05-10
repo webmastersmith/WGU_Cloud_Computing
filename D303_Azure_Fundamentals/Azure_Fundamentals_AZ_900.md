@@ -207,16 +207,20 @@
   - API apps: REST based API with your choice of language and framework.
   - WebJobs: run a program. cron, bash, powershell, exe, java, php, nodejs... run background task.
   - mobile apps: backend for IOS, Android.
-- **Describe virtual networking, including the purpose of Azure Virtual Networks, Azure virtual subnets, peering, Azure DNS, Azure VPN Gateway, and Azure ExpressRoute**
-  - Virtual network(VNET): logical representation/isolation of your network. One or more subnets.
+- **Describe virtual networking, including the purpose of Azure Virtual Networks, Azure virtual subnets, peering, VPN Peering, Site-to-Site, Point-to-Site, Azure DNS, Azure VPN Gateway, Azure Local Network Gateway, and Azure ExpressRoute**
+  - **Virtual network(VNET)**: logical representation/isolation of your network. One or more subnets.
     - VMs in different VNETs **cannot** communicate by default.
-  - Virtual Subnet: logical isolation/rules of ip space.
+  - **Virtual Subnet**: logical isolation/rules of ip space.
   - VMs in different subnet **can** communicate by default.
-  - VPN Gateway: hybrid cloud. on-prem to Azure VNET encrypted traffic. over internet. site-to-site VPN.
+  - **Point-to-Site**: VPN tunnel from individual computer. no public IP address. Connects to 'VPN Gateway' on the Azure side.
+  - **Site-to-Site**: VPN tunnel. On-prem VPN device assigned public IP address. Connects to 'VPN Gateway' on the Azure side.
+  - **VNET-to-VNET**: VNET Peering.
+  - **VPN Gateway**: hybrid cloud. on-prem to Azure VNET encrypted traffic. over internet. site-to-site VPN.
     - [VPN Gateway](https://learn.microsoft.com/en-us/azure/vpn-gateway/design)
-  - VNET Peering: seamless connection of two or more VNETs. function as single VNET.
-  - ExpressRoute: create hybrid cloud. on-prem with Azure VNET **with help of connectivity provider**. traffic does not traverse internet. higher security.
-  - Azure DNS: name resolution external/internal VNET.
+  - **VNET Peering**: seamless connection of two or more VNETs. function as single VNET.
+  - **ExpressRoute**: create hybrid cloud. on-prem with Azure VNET **with help of connectivity provider**. traffic does not traverse internet. higher security.
+  - **Azure DNS**: name resolution external/internal VNET.
+  - **Azure Local Network Gateway**: the on-prem VPN device to connect to Azure VPN.
 - **Define public and private endpoints**
   - service endpoint: open internet access to **all** instances from VNET.
   - private endpoint: open internet access to **specific** instance.
@@ -260,8 +264,8 @@
   - Entra ID MFA: two or more of: something you known, something you have, something you are.
   - Passwordless: Windows Hello, Fido2, OAUTH.
   - PIM privileged identity management: Entra ID tool to manage, monitor access to resources.
-  - Conditional Access: Entra ID tool that uses signals(phone telemetry, gps) to evaluate risk sign-in.
   - Identity Protection: part of Entra ID suite. risk detection for sign-ins.
+  - Conditional Access: Entra ID tool part of 'Identity Protection' that uses signals(phone telemetry, gps) to evaluate risk sign-in.
 - **Describe external identities and guest access in Azure**
   - B2B collaboration: external users can use preferred sign-in.
   - B2B direct connect: mutual two-way trust with another Entra ID or organization. close business partners.
@@ -293,6 +297,8 @@
   - mainly for non-HTTPS traffic(RDP, SSH, FTP...).
 - **Azure DDOS**
   - standard tier: enhanced DDOS mitigation. logging, alerting, telemetry.
+- **Azure Information Protection**
+  - apply labels to documents to protect content. Allows discovery of unprotected documents/emails...
 - **Describe the purpose of Microsoft Defender for Cloud, Azure Defender Endpoint**
   - unified infrastructure security management system. Provides guidance for Cloud, on-prem and other platforms(AWS, Google Cloud...).
   - provides security guidance.
