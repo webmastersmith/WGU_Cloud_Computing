@@ -48,14 +48,14 @@
 - **Describe the shared responsibility model**
   - customer responsibility vs CSP(Cloud Service Provider).
   - Cloud infrastructure is more secure because company can shift focus on security and not on maintaining hardware.
-  - [shared responsibility model](img/shared-responsibility-model.png)
+  - ![shared responsibility model](img/shared-responsibility-model.png)
 - **Define cloud models, including public, private, and hybrid. Identify appropriate use cases for each cloud model**
   - **cloud models**: cost-effective, global, secure, scalable, elastic(dynamic scaling), always current(do not have to worry about infrastructure, software patches, upgrades or other IT management task.)
   - **Public**: shared hardware between clients. scalability, agility, PAYG(pay-as-you-go), no maintenance, low skill(to get started).
   - **Private**: your responsible for entire stack. legacy support, control, compliance.
   - **Hybrid**: blend on-prem and Cloud. flexibility.
   - **Community**: infrastructure shared between multiple organizations with common needs.
-  - [microsoft cloud model](img/microsoft_cloud_model.PNG)
+  - ![microsoft cloud model](img/microsoft_cloud_model.PNG)
 - **Describe Economies of Scale**
   - cloud provider purchase large quantities of hardware at discount and pass on savings.
 - **CapEx to OpEx**
@@ -72,10 +72,10 @@
     - provision resources and pay for them whether you use them or not.
     - predictable cost.
   - **Serverless Architecture**
-    - CSP dynamically manages provisioning of servers. **stateless and ephemeral**.
+    - Cloud Service Provider dynamically manages provisioning of servers. **stateless and ephemeral**.
     - PAYG per use.
   - **Serverless Architecture: Logic App, Power Automate, Azure Automation, Functions, Event Grid**
-    - Logic App: GUI drfag-n-drop. Automate **DevOps** type workflows. schedule, automate, and orchestrate workflows.
+    - Logic App: GUI drag-n-drop. Automate **DevOps** type workflows. schedule, automate, and orchestrate workflows.
     - Power Automate: GUI drag-n-drop. Automate task within **Office 365**.
     - Azure Automation: run books for automated task(powershell and python). Similar to ansible.
     - Functions: **event driven** compute-on-demand. runs code **triggered by events**. Advantage: does not have to 'poll' remote systems. pay-per-use.
@@ -144,22 +144,23 @@
     - Americas, Europe, Asia Pacific, Middle East and Africa.
   - Regions: set datacenters connected w/ low-latency communications.
   - Region Pairs: in same geography for disaster recovery. **300+ miles apart**.
-  - Sovereign Regions: separation for compliance or legal purpose. physical and logical isolation. (china, government)
-  - [high availability](img/04-azure-global-infra.jpg)
-  - [availability zones](img/Azure-Availability-zone-infographic.png)
+  - Sovereign Regions: separation for compliance or legal purpose. physical and logical isolation.
+    - (US government and US government contractors).
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe availability zones**
   - group of datacenters within a region networked w/ low-latency network with independent power, network, cooling.
   - redundancy with datacenter failure.
-  - [high availability](img/04-azure-global-infra.jpg)
-  - [availability zones](img/Azure-Availability-zone-infographic.png)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe Azure datacenters**
   - physical buildings w/ servers. redundant network, power, cooling.
-  - [high availability](img/04-azure-global-infra.jpg)
-  - [availability zones](img/Azure-Availability-zone-infographic.png)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Azure Fault Domain**
   - rack of servers in a datacenter. Each have power, networking.
-  - [high availability](img/04-azure-global-infra.jpg)
-  - [availability zones](img/Azure-Availability-zone-infographic.png)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe Azure resources and resource groups**
   - resource group: - group related **resources that share common lifecycle**.
     - logical container for group assigning locks, tags, RBAC permissions... - under subscriptions.
@@ -180,12 +181,12 @@
   - can have multiple subscriptions.
   - higher than subscriptions in hierarchy. Each directory is given single top-level management group called the **root**.
   - boundary for management and policy.
-  - [management group](img/scope-levels.png)
+  - ![management group](img/scope-levels.png)
 - **Describe the hierarchy of resource groups, subscriptions, and management groups**
   - management groups: enforce policy.
   - subscriptions: unit of management for isolation, billing, scale.
   - resource group: resources that share common lifecycle.
-  - [management group](img/scope-levels.png)
+  - ![management group](img/scope-levels.png)
 
 ## 2.2 Describe Azure compute and networking services
 
@@ -193,7 +194,7 @@
   - Azure VMs: on-demand server virtualization without need for hardware purchase.
     - virtual disk
   - Azure Kubernetes Service (AKS): docker containers with orchestration. pay for agent nodes, not master.
-  - Azure Container Apps:
+  - Azure Container Apps: **fully managed** Kubernetes-based application platform that helps you deploy apps from code or containers without orchestrating complex infrastructure.
   - Azure Container Instance (ACI): docker containers on demand in serverless environment. good for isolated containers, without orchestration.
   - Azure Virtual Desktop: virtual windows desktop.
 - **Describe VM options, including Azure Virtual Machines, Azure Virtual Machine Scale Sets, availability sets, and Azure Virtual Desktop**
@@ -202,11 +203,11 @@
     - update domains: grouping of VMs that will have updates applied at same time.
     - fault domains: groupings of VMs that share similar hardware, power, network.
     - availability set splits VMs across (up to three) fault domains.
-    - [high availability](img/04-azure-global-infra.jpg)
+    - ![high availability](img/04-azure-global-infra.jpg)
 - **Describe resources required for virtual machines**
   - virtual disk, virtual network(VNET), network interface(NIC), network security group, public IP address.
 - **Describe application hosting options, including the Web Apps feature of Azure App Service, containers, and virtual machines**
-  - web apps: java, ruby, nodejs, python... running on windows or linux.
+  - web apps: PaaS. fully managed (VM + OS). elastic. you pick programming language(java, ruby, nodejs, python...). run on windows or linux.
   - API apps: REST based API with your choice of language and framework.
   - WebJobs: run a program. cron, bash, powershell, exe, java, php, nodejs... run background task.
   - mobile apps: backend for IOS, Android.
@@ -243,15 +244,17 @@
   - archive: **offline** tier, rarely accessed. 180 day storage.
 - **Describe redundancy options**
   - backup copies in local, zone, region.
-- **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS\***
+- **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS,**
   - LRS: locally redundant storage. three copies of data within same **datacenter**.
   - ZRS: zone redundant storage. copies data across three **availability zones**.
   - GRS: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
   - GZRS: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
+  - RA-GRS: because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
+  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - AzCopy: cmd line utility copy blobs or files.
   - Azure Storage Explorer: GUI to manage blob/file.
-  - Azure File Sync: centralize files. Automated bi-directional sync from Cloud with on-prem. Installs on Windows Server.
+  - Azure File Sync: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
   - Azure Migrate: hub of services and tools designed to help with data migration.
   - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'.
@@ -268,20 +271,21 @@
   - Passwordless: Windows Hello, Fido2, OAUTH.
   - PIM privileged identity management: Entra ID tool to manage, monitor access to resources.
   - Identity Protection: part of Entra ID suite. risk detection for sign-ins.
-  - Conditional Access: Entra ID tool part of 'Identity Protection' that uses signals(phone telemetry, gps) to evaluate risk sign-in.
+  - Conditional Access: Entra ID tool part of 'Identity Protection' that uses **signals**(phone telemetry, gps) to evaluate risk sign-in.
 - **Describe external identities and guest access in Azure**
+  - Entra ID External ID is for sharing company resources with external workforce, while still maintaining control of data. B2B (business-to-business).
   - B2B collaboration: external users can use preferred sign-in.
   - B2B direct connect: mutual two-way trust with another Entra ID or organization. close business partners.
-  - B2C Business-to-Consumer:
+  - B2C Business-to-Consumer: allow customer to sign-in to your resources without having to create a custom account. Federation.
   - Entra ID multi-tenant organization: multiple tenants collaboration.
 - **Describe Conditional Access in Microsoft Azure Active Directory (Azure AD), part of Microsoft Entra**
   - used by Entra ID to bring signals(telemetry from users devices, location) together, to make decisions, and enforce policy on sign-in.
-  - [microsoft conditional access](img/conditional_sign-in.PNG)
+  - ![microsoft conditional access](img/conditional_sign-in.PNG)
 - **Describe Azure role-based access control (RBAC)**
   - role based access control. control who can do what with which resource.
 - **Describe the concept of Zero Trust**
   - trust based on identity, not security perimeter. **NO entity is trusted by default**.
-  - [zero trust](img/zero-trust.PNG)
+  - ![zero trust](img/zero-trust.PNG)
   - three principles of Zero Trust:
     - always authenticate and authorize.
     - least privilege: limit user access.
