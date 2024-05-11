@@ -676,6 +676,9 @@ sudo apt-get update -y # you must update again!
 sudo apt-get install python3-pip -y
 sudo apt install python3.10-venv # venv package for linux.
 
+# add alias to .bashrc
+echo "alias python=python3" >> ~/.bashrc
+
 # if need to add repo.
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:deadsnakes/ppa
@@ -709,7 +712,8 @@ deactivate # shell command or just close shell.
 
 # Install Package
 # https://pip.pypa.io/en/stable/cli/pip_install/
-py -m pip install SomePackage            # latest version
+pip install package_name --no-cache-dir # do not cache package.
+py -m pip install SomePackage anotherPackage            # latest version
 py -m install "SomePackage==2.4" # specific version
 py -m install "SomePackage~=2.4" # compatible with
 py -m pip install 'SomePackage>=1.0.4'   # minimum version
@@ -742,4 +746,11 @@ py -m pip freeze > requirements-dev.txt # will begin with '-r requirements.txt'
 # Prod
 py -m pip freeze > requirements-prod.txt # will begin with '-r requirements.txt'
 
+
+# CACHE
+pip cache remove PackageName # remove single package.
+pip cache purge # remove all packages.
+# manually
+sudo rm -r ~/.cache/pip
+sudo rm -rf /root/.cache/pip
 ```
