@@ -669,6 +669,19 @@ date(2023, 12, 31) + relativedelta(months=-6) # 2023-06-30
   - pip is the package manager.
 
 ```python
+# Install -Debian 12
+sudo apt-get update -y
+sudo apt install python3 -y
+sudo apt-get update -y # you must update again!
+sudo apt-get install python3-pip -y
+sudo apt install python3.10-venv # venv package for linux.
+
+# if need to add repo.
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python3
+
 # PIP
 # https://www.tutorialsteacher.com/python/pip-in-python
 # https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
@@ -676,6 +689,7 @@ date(2023, 12, 31) + relativedelta(months=-6) # 2023-06-30
 # Unix/MAC: python3
 py -m pip install --upgrade pip # windows. for unix/mac replace 'py' with 'python3'
 py -m pip --version # windows version
+python3 --verison # Unix/MAC
 # Package Info
 py -m pip list # list all packages
 py -m pip show numpy # package info
@@ -699,6 +713,7 @@ py -m pip install SomePackage            # latest version
 py -m install "SomePackage==2.4" # specific version
 py -m install "SomePackage~=2.4" # compatible with
 py -m pip install 'SomePackage>=1.0.4'   # minimum version
+pip install git+https://github.com/myshell-ai/MeloTTS.git # get package from github.
 # Upgrade package
 py -m pip list --outdated # list what can be upgraded.
 py -m pip install --upgrade SomePackage # to upgrade. py -m pip install -U PackageName
