@@ -1,4 +1,4 @@
-# D338 Cloud Platform Solutions Azure 104
+# D338 Cloud Platform Solutions Azure Administrator AZ-104
 
 ## Tips
 
