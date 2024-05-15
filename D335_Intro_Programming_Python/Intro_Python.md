@@ -14,9 +14,7 @@
 - `print(help(math))` # show methods and descriptions of 'math' library or python function.
 - `print(dir(int))` # only shows method names.
 
-## Data Structures
-
-- operators, division, modulo, multiplication, int, float
+## operators, division, modulo, multiplication, int, float
 
 ```python
 # int
@@ -43,21 +41,22 @@ str = 'STRING1' + 'string2' # STRING1string2 -concate
 str = 'STR1' * 3 # 'STR1STR1STR1'
 ```
 
-- Equality Operators, Relational Operators, Logical Operators, Membership Operators, Boolean
-  - **Strings** compared by ASCII value. Capitals are less than lowercase. `'F' < 'f'` # True
-  - **Floating-point** types should not be compared using the **equality** operators.
-    - `5 <= 5.0` # True, 5 will be converted to float.
-  - **int and string** can be compared with equality operators.
-    - string and int comparison will result in TypeError. `3 < 'hi'` # TypeError
-  - **List/Tuples**
-    - Lists and tuples are compared via an ordered comparison of every element in the sequence.
-    - Every element between the sequences must compare as equal for an equality operator to evaluate to True.
-  - **Dictionaries**
-    - Dictionaries are compared only with `==` and `!=`.
-    - To be equal, two dictionaries must have the same set of keys and the same corresponding value for each key.
-  - **Membership** string, list, set, tuple, and dictionary(key only) can be searched with `in`.
-  - **Identity** `is` compares the memory address of two objects.
-    - return True only if the operands reference the same object.
+## Equality Operators, Relational Operators, Logical Operators, Membership Operators, Boolean
+
+- **Strings** compared by ASCII value. Capitals are less than lowercase. `'F' < 'f'` # True
+- **Floating-point** types should not be compared using the **equality** operators.
+  - `5 <= 5.0` # True, 5 will be converted to float.
+- **int and string** can be compared with equality operators.
+  - string and int comparison will result in TypeError. `3 < 'hi'` # TypeError
+- **List/Tuples**
+  - Lists and tuples are compared via an ordered comparison of every element in the sequence.
+  - Every element between the sequences must compare as equal for an equality operator to evaluate to True.
+- **Dictionaries**
+  - Dictionaries are compared only with `==` and `!=`.
+  - To be equal, two dictionaries must have the same set of keys and the same corresponding value for each key.
+- **Membership** string, list, set, tuple, and dictionary(key only) can be searched with `in`.
+- **Identity** `is` compares the memory address of two objects.
+  - return True only if the operands reference the same object.
 
 | Operator of Operations | Description                                    |
 | :--------------------- | :--------------------------------------------- |
@@ -118,8 +117,9 @@ int(2.0) # 2
 float(2) # 2.0
 ```
 
-- print, string, format, multiline strings, range
-  - multiline string is three backticks, or enclosed in parens.
+## print, string, format, multiline strings, range
+
+- multiline string is three backticks, or enclosed in parens.
 
 ```python
 # PRINT
@@ -190,17 +190,18 @@ range(1, 101) # 1-100
 range(1, 101, 2) # 1,3,5,7,9..99
 ```
 
-- if, elif, else, Loops, While, Pass, Functions, None
-  - **Functions**: with no return are called 'void function'. returns **None**.
-    - A function is also an object in Python, having a type, identity, and value.
-    - all variables are function scoped.
-    - **Namespace**: maps names to objects. Namespace is actually just a normal Python dictionary whose keys are the names and whose values are the objects and pointers to the memory location.
-    - **Scope**: where a name is visible.
-      - **Built-in** scope – Contains all of the built-in names of Python, such as int(), str(), list(), range(), etc.
-      - **Global** scope – Contains all globally defined names outside of any functions.
-      - **Local** scope – Usually refers to scope within the currently executing function, but is the same as global scope if no function is executing.
-    - **Scope Resolution**: The process of searching for a name in the available namespaces is called scope resolution.
-      - Local scope's namespace is the first checked, followed by the global scope, and finally the built-in scope. If the name cannot be found in any namespace, the interpreter generates a **NameError**.
+## if, elif, else, Loops, While, Pass, Functions, None
+
+- **Functions**: with no return are called 'void function'. returns **None**.
+  - A function is also an object in Python, having a type, identity, and value.
+  - all variables are function scoped.
+  - **Namespace**: maps names to objects. Namespace is actually just a normal Python dictionary whose keys are the names and whose values are the objects and pointers to the memory location.
+  - **Scope**: where a name is visible.
+    - **Built-in** scope – Contains all of the built-in names of Python, such as int(), str(), list(), range(), etc.
+    - **Global** scope – Contains all globally defined names outside of any functions.
+    - **Local** scope – Usually refers to scope within the currently executing function, but is the same as global scope if no function is executing.
+  - **Scope Resolution**: The process of searching for a name in the available namespaces is called scope resolution.
+    - Local scope's namespace is the first checked, followed by the global scope, and finally the built-in scope. If the name cannot be found in any namespace, the interpreter generates a **NameError**.
 
 ```python
 # Control Flow -Branches
@@ -306,7 +307,7 @@ def change_global_var():
 print(print('I\'m None')) # I'm None, None
 ```
 
-- variables, list, list comprehension, sort, set
+## variables, list, list comprehension, sort, set
 
 ```python
 # VARIABLES
@@ -445,7 +446,7 @@ def Convert(a):
 res_dct = {a[i]: a[i + 1] for i in range(0, len(a), 2)}
 ```
 
-- classes
+## classes
 
 ```python
 # Classes
@@ -478,13 +479,14 @@ class Cat(Dog):
     super().myAppend(item) # calls on the parent class.
 ```
 
-- Import, Module, Package, Errors
-  - module is simply a file with functions that ends in '.py'.
-    - dependency: any code that is imported.
-  - package is multiple modules in directory.
-    - directory must include a file called `__init__.py`.
-  - built-in modules: pre-installed with python. ex.. sys, time, math...
-    - sys.path: list of directories to look for files.
+## Import, Module, Package, Errors
+
+- module is simply a file with functions that ends in '.py'.
+  - dependency: any code that is imported.
+- package is multiple modules in directory.
+  - directory must include a file called `__init__.py`.
+- built-in modules: pre-installed with python. ex.. sys, time, math...
+  - sys.path: list of directories to look for files.
 
 ```python
 # IMPORT
@@ -565,10 +567,10 @@ def raiseError():
 raiseError() # 'WeirdError'
 ```
 
-- cmd line args, threads, process
+## cmd line args, threads, process
 
-  - process: each process has own memory.
-  - threads: ways to share memory with two running programs in same process.
+- process: each process has own memory.
+- threads: ways to share memory with two running programs in same process.
 
 ```python
 # CMD LINE ARGS
@@ -580,7 +582,7 @@ sys.arg[1] arg1
 sys.arg[2] arg2
 ```
 
-- files
+## write, read, files
 
 ```python
 # READ
@@ -685,6 +687,14 @@ sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get install python3
 
+# Options
+  # https://pip.pypa.io/en/stable/cli/pip/
+  # - m: module
+  # -U: upgrade to latest version.
+  # -qq: how quiet. -qqq more quiet.
+  # -vv: how verbose. -vvv more verbose.
+  # -e: refresh when updated. In development, when module is changed, changes will be reflected immediately.
+
 # PIP
 # https://www.tutorialsteacher.com/python/pip-in-python
 # https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
@@ -712,7 +722,7 @@ deactivate # shell command or just close shell.
 
 # Install Package
 # https://pip.pypa.io/en/stable/cli/pip_install/
-pip install package_name --no-cache-dir # do not cache package.
+pip install -U package_name --no-cache-dir # do not cache package. Update to latest version.
 py -m pip install SomePackage anotherPackage            # latest version
 py -m install "SomePackage==2.4" # specific version
 py -m install "SomePackage~=2.4" # compatible with
