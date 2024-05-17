@@ -5,8 +5,10 @@
 - <https://www.reddit.com/r/WGU/comments/18i1uv8/wgu_d338_its_super_easy/>
 - <https://www.reddit.com/r/AzureCertification/comments/1colul0/passed_az104_my_experience_with_this_exam/>
 - <https://www.linkedin.com/pulse/passing-az-104-exam-everything-you-need-know-neeraj-kumar/>
+- <https://www.reddit.com/r/AzureCertification/comments/1crlfs5/passed_az104/>
 - Videos
   - <https://www.youtube.com/playlist?list=PLlVtbbG169nGlGPWs9xaLKT1KfwqREHbs>
+    - Storage, Entra, and networking areas had tricky questions.
 
 ```txt
 Search for each topic on Microsoft documentation and Microsoft learn to help study each area of the AZ-104 exam. Use search like this ms docs + “Study topic.”
