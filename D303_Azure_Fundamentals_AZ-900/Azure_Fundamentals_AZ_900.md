@@ -141,7 +141,7 @@
 - **Describe Azure Geography, regions, region pairs, and sovereign regions**
   - Geography: groups of regions in each continent.
     - Americas, Europe, Asia Pacific, Middle East and Africa.
-  - Regions: set datacenters connected w/ low-latency communications.
+  - Regions: two or more datacenters connected w/ low-latency communications. For redundancy.
   - Region Pairs: in same geography for disaster recovery. **300+ miles apart**.
   - Sovereign Regions: separation for compliance or legal purpose. physical and logical isolation.
     - (US government and US government contractors).
@@ -157,12 +157,12 @@
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Azure Fault Domain**
-  - rack of servers in a datacenter. Each have power, networking.
+  - rack of servers in a datacenter. Each having their own power, and networking.
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe Azure resources and resource groups**
   - resource group: - group related **resources that share common lifecycle**.
-    - logical container for group assigning locks, tags, RBAC permissions... - under subscriptions.
+    - logical container for group assigning locks, tags, RBAC(role-based access control) permissions... - under subscriptions.
     - **nested resource group not allowed**.
     - can contain resources from **multiple different regions**.
   - resource: entity managed by Azure(VM, VPN, storage...)
@@ -248,7 +248,7 @@
   - ZRS: zone redundant storage. copies data across three **availability zones**.
   - GRS: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
   - GZRS: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
-  - RA-GRS: because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
+  - RA-GRS: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
   - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - AzCopy: cmd line utility copy blobs or files.
@@ -256,7 +256,7 @@
   - Azure File Sync: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
   - Azure Migrate: hub of services and tools designed to help with data migration.
-  - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'.
+  - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
 
 ## 2.4 Describe Azure identity, access, and security
 
@@ -273,7 +273,7 @@
   - Conditional Access: Entra ID tool part of 'Identity Protection' that uses **signals**(phone telemetry, gps) to evaluate risk sign-in.
 - **Describe external identities and guest access in Azure**
   - Entra ID External ID is for sharing company resources with external workforce, while still maintaining control of data. B2B (business-to-business).
-  - B2B collaboration: external users can use preferred sign-in.
+  - B2B collaboration: allow external users to use their preferred sign-in.
   - B2B direct connect: mutual two-way trust with another Entra ID or organization. close business partners.
   - B2C Business-to-Consumer: allow customer to sign-in to your resources without having to create a custom account. Federation.
   - Entra ID multi-tenant organization: multiple tenants collaboration.
@@ -294,7 +294,7 @@
   - identity: strong authentication, least privilege.
   - devices/apps: monitored for health and compliance.
   - data: labeled, encrypted at rest and transit.
-  - infrastructure: version, configuration, access should be **managed**. Telemetry used to detect activity.
+  - infrastructure: version, configuration, access should be **managed**. Telemetry used to detect suspicious activity.
   - networks: segmented. real-time threat protection, end-to-end encryption, monitoring, and analytics.
 - **Network Security Group**
   - rules to allow/deny traffic. inbound/outbound traffic. mimics firewall. applied to subnet or network adapter.
