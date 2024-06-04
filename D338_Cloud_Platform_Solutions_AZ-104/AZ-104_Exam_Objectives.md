@@ -1,3 +1,5 @@
+# AZ-104 Exam Objectives
+
 <!-- Manage Azure identities and governance (20–25%) -->
 
 ## Manage Microsoft Entra users and groups
