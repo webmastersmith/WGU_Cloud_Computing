@@ -63,7 +63,7 @@
     - no multiple region storage.
     - no multiple sessions.
 
-## Azure Resource Manager
+## Azure Resource Manager & Entra ID
 
 - **Azure Resource Manager**
   - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
@@ -75,21 +75,58 @@
 - **declarative syntax**
   - declarative programming. **what you want, not how to do it**.
   - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
-- **Entra ID vs Active Directory**
-  - **Entra ID**
-    - microsoft's identity provider that speaks cloud. OAuth2, OIDC(open id connect), SAML.
-    - focuses on identity(authorization, ) over internet(https).
-  - **AD(active directory)**
-    - controls permissions. kerberos, NTLM, LDAP for identity.
-- **Entra ID three groups**
-  - **Cloud**:
-  - **Hybrid**:
-  - **Guest**:
 - **Entra Connect Cloud Sync and Sync**
   - **Entra Connect Cloud Sync**
     - engine runs in cloud.
   - **Entra Connect Sync**
     - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
+- **Entra Domain Services: Entra Connect**
+  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
+    - site-to-site VPN. on-prem -> cloud. = expensive.
+    - replica AD DS on VM in the cloud. = expensive.
+    - **Entra Connect** solves this problem:
+      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
+      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
+      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
+- **Entra ID & Active Directory**
+  - **Entra ID**
+    - Microsoft Entra ID is a cloud-based identity and access management service(PaaS). Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
+    - SAML, WS-Federation, and OpenID Connect for authentication, and uses OAuth for authorization.
+    - focused on providing **identity management** services to **web-based apps**, unlike **AD DS**, which is more focused on **on-premises apps**.
+    - Entra ID users have access to a set of features that **aren’t natively available in AD DS**, such as support for **multi-factor authentication, identity protection, and self-service password reset**.
+      - primarily an **identity solution** for internet based(**https**) communications.
+      - multi-tenant directory service.
+      - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+      - Entra is **managed** by **REST API** over https.
+      - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
+  - **AD(active directory)**
+    - Active Directory Domain Services (AD DS or traditionally called just "Active Directory").
+    - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
+    - authentication: **kerberos** for identity.
+    - true X.500 based structure. Uses DNS for locating resources on network.
+    - OUs(organizational units) and GPOs(group policy objects) for management.
+    - You can query and manage AD DS by using Lightweight Directory Access Protocol (LDAP) calls.
+    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
+- **Entra ID P2 over P1**
+  - P2 has
+    - Entra ID protection: enhanced security/monitoring user accounts.
+    - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
+- **Entra Schema**
+  - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
+    - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+  - **no OU(AD organizational unit)** class. Policy scope and delegation organization is done by '**group membership**'.
+- **Entra tenant**
+  - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
+  - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
+  - A tenant represents an organization. It's a dedicated instance of Microsoft Entra ID that an organization or app developer receives at the beginning of a relationship with Microsoft(yourname.onmicrosoft.com).
+  - An organization can have multiple Microsoft Entra instances(tenant). This allows separation.
+  - An Azure subscription can have only one Microsoft Entra tenant.
+  - e.g. your piece in the cloud with your name like **yourname.onmicrosoft.com** that you lease from microsoft.
+    - An organization can have multiple Microsoft Entra tenants.
+    - An organization can have multiple Azure subscriptions(each subscription must be associated with one, and only one, Microsoft Entra tenant).
+    - A subscription can have multiple licenses.
+    - Licenses can be assigned to individual user accounts.
+    - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
 - **resource**
   - manageable item through Azure. VMs, web app, database...
 - **resource group**
@@ -127,3 +164,27 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - resource type is in the format: `{resource-provider}/{resource-type}`. For example, the key vault type is `Microsoft.KeyVault/vaults`.
 - **template**
   - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
+
+## Configure user and group accounts (Entra ID)
+
+- **user account**
+  - anyone who wants to access an Azure resource, must have an Azure user account.
+  - **Entra IDd cloud identity user accounts can be added through**:
+    - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
+- **Entra ID three types of user accounts**
+  - **Cloud**: **cloud identity** accounts.
+    - Cloud identities have profile information such as job title and office location.
+  - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
+  - **Guest**: outside of Azure. e.g. external vendor or contractor need access to your Azure resources.
+- **create/delete user**
+  - only global admins can create/delete users.
+- **group accounts**
+  - two types of group accounts:
+    - **Security groups**: manage users and computer/app access through security policy.
+      - set permissions for all group members at same time.
+      - managed only by **Microsoft Entra Administrator**.
+    - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
+      - allow access to normal users and guest accounts.
+- **administrative units**
+  - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
+  - ![administrative units](./img/administrative_units.PNG)

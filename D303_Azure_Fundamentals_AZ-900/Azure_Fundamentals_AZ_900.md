@@ -144,7 +144,7 @@
   - Regions: two or more datacenters connected w/ low-latency communications. For redundancy.
   - Region Pairs: in same geography for disaster recovery. **300+ miles apart**.
   - Sovereign Regions: separation for compliance or legal purpose. physical and logical isolation.
-    - (US government and US government contractors).
+    - e.g. (US government and US government contractors).
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Describe availability zones**

@@ -9,8 +9,8 @@
   // variables
   // const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
   // const removeLines = 2;
-  const directoryPath = 'D303_Azure_Fundamentals/Azure_Fundamentals_AZ_900.md';
-  const removeLines = 42;
+  const directoryPath = 'D338_Cloud_Platform_Solutions_AZ-104/Azure_Administrator_AZ-104.md';
+  const removeLines = 52;
 
   const dataArr = fs
     .readFileSync(directoryPath, 'utf-8')
