@@ -235,18 +235,18 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 ## Azure Policy
 
 - **Management Groups**
-  - level of scope and control(manage access, policy and compliance) across subscriptions.
-  - use management groups to target policies and spending budgets across subscriptions.
+  - level of scope and control(manage access, policy and compliance) across **subscriptions**.
+  - use management groups to target policies and spending budgets across **subscriptions**.
   - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
-  - meet compliance rules with management groups.
+  - enforce compliance rules with management groups.
   - ![management group](img/management_group.PNG)
 - **Policy and Policy Definition**
   - **Policy**
     - create, assign, and manage policies to control or audit your resources.
-    - stay compliant with corporate standards/requirements.
+    - enforce rules and ensure compliance with corporate standards and service level agreements.
     - **enforcement and compliance, scaling, and remediation**.
   - **Policy Definition**
-    - express condition to evaluate and actions to perform when condition is met.
+    - JSON format. Express condition to evaluate and actions to perform when condition is met.
     - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
   - individual resources, resource groups, subscriptions can be exempted from policy.
     - e.g. cannot deploy VM if it has an exposed public IP address.
@@ -254,3 +254,34 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - A **group of related policies** joined logically to accomplish a common goal is called an **Azure initiative**.
   - help you track one or more policy definition compliance state.
   - scope can be limited to certain groups.
+  - e.g. similar to lego blocks, logically combine multiple policies and apply them as one.
+- **Policy Compliance**
+  - see what percentage of your infrastructure is compliant with policy.
+  - determine the compliance state of your resources and evaluate whether they're compliant.
+
+## Azure RBAC (Role Based Access Control)
+
+- **RBAC**
+  - Azure RBAC and Microsoft Entra roles are different.
+  - manage who can access their resources, and what actions are allowed.
+  - control access to data and resources by specifying roles and access privileges for employees and business partners.
+  - create role definitions and role assignments.
+- **Security Principal**
+  - object that represents something(**Requestor**) requesting access to resource.
+  - Requestors can be internal or external users, groups of users, applications and services, resources, and so on.
+- **Role Definition**
+  - JSON list of allowed permissions. least privilege.
+  - **Owner** built-in role has the **highest level of access privilege** in Azure.
+  - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
+  - e.g. **reader, contributor, owner, user access administrator**.
+  - **JSON**
+    - **Actions**: permissions identify what actions are allowed.
+    - **NotActions**: permissions specify what actions aren't allowed.
+    - **DataActions**: permissions indicate how data can be changed or used.
+    - **AssignableScopes**: permissions list the scopes where a role definition can be assigned
+    - ![role definition](img/role_definition.PNG)
+- **scope**
+  - how many resources access is granted.
+  - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
+- **Role Assignment**
+  - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
