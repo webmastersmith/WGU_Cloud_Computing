@@ -189,7 +189,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
   - ![administrative units](img/administrative_units.PNG)
 
-## Azure Subscriptions
+## Azure Subscriptions and Cost Management
 
 - **Subscriptions**
   - manage cost for organizations. help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
@@ -207,3 +207,5 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
   - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
   - **Student**: monetary credit that can be used within the first 12 months.
+- **Cost Management**
+  - you pay only for what you use.
