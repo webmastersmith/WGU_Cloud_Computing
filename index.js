@@ -97,6 +97,7 @@
     const sectionName = section?.replaceAll(' ', '_')?.trim();
     // create subDeck name
     await sendToAnki('createDeck', { deck: `${deckName}::${sectionName}` });
+    // create unique ID for every card to ensure it gets inserted into database.
     const ID = uuidv4();
     // Create cards in subDeck
     for (const { front, back, picture } of cards) {
@@ -106,7 +107,7 @@
           deckName: `${deckName}::${sectionName}`,
           modelName: 'Basic',
           fields: {
-            // If card front or back has same info that already exist, anki will ignore it.
+            // If card front text or back text already exist in database, anki will drop card.
             // Add random ID to card to avoid this problem.
             Front: `${front}<p style="font-size: 1px; color: #FFF;">${ID}</p>`,
             Back: `${back}<p style="font-size: 1px; color: #FFF;">${ID}</p>`,
@@ -152,7 +153,7 @@
         },
         body: JSON.stringify({ action, version: 1, params }),
       });
-      if (!res.ok) throw 'Fetch failed to get response. Is Anki Connect listening?';
+      if (!res.ok) throw 'Fetch failed to get response. Is Anki Running and Anki-Connect installed?';
       const json = await res.json();
       if (res.error) throw res.error;
       return json;
@@ -167,7 +168,7 @@
   // START Functions
   // separate page into sections.
   async function parsePage(dataArr) {
-    // remove tips. The ternary is so the first line (title) is always removed.
+    // Must always remove 1st line. Check if removeLines is less than 1.
     // Otherwise it will be confused with block of data.
     const dataStr = dataArr.slice(removeLines > 0 ? removeLines : 1).join('\n');
     // console.log(dataStr);

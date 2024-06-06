@@ -187,4 +187,23 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
       - allow access to normal users and guest accounts.
 - **administrative units**
   - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
-  - ![administrative units](./img/administrative_units.PNG)
+  - ![administrative units](img/administrative_units.PNG)
+
+## Azure Subscriptions
+
+- **Subscriptions**
+  - manage cost for organizations. help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
+  - Azure Subscription is a logical unit of Azure services that's linked to an Azure account.
+    - An **Azure account** is a Microsoft Entra tenant.
+  - **Rules**
+    - all Azure cloud services will belong to a subscription. billing is done per subscription.
+    - Azure account can have multiple subscriptions.
+    - a subscription can be linked to multiple Azure accounts.
+  - ![subscription](img/subscription.PNG)
+- **regions**
+  - one or more data centers networked together.
+- **subscription types**
+  - **Free**: 30 day free.
+  - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
+  - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
+  - **Student**: monetary credit that can be used within the first 12 months.
