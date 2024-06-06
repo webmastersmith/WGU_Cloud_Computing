@@ -202,10 +202,55 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - ![subscription](img/subscription.PNG)
 - **regions**
   - one or more data centers networked together.
+  - preserve data residency(keep data inside the region).
+  - offer compliance and resiliency depending on customer needs.
 - **subscription types**
   - **Free**: 30 day free.
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
   - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
   - **Student**: monetary credit that can be used within the first 12 months.
 - **Cost Management**
-  - you pay only for what you use.
+  - you pay only for what you use. Shows the usage-based costs consumed by Azure services and third-party Marketplace offerings.
+  - Predictive analytics are available.
+  - Azure management groups, budgets, and recommendations to show how your expenses are organized and how to reduce cost.
+  - Cost data can be exported.
+- **Cost Budgets, Recommendations, analysis**
+  - Budget: set limits to prevent overspending.
+  - Recommendations: learn how to optimize and improve efficiency of idle or underutilized resources.
+  - Analysis: explore where the money is going and spending trends.
+  - export: data can be set to automatically export csv daily.
+- **Resource Tagging**
+  - tags allow sorting, searching, managing and analysis.
+  - name:value
+  - max 50 labels per resource/resource group.
+  - tags are not inherited from resource group.
+- **Cost Savings**
+  - **Reservations**: pay ahead. 1-3 years. VM, Database,
+  - **Azure Hybrid**: use your **_Software Assurance_** on-prem licenses(Windows Server, SQL Server...).
+  - **Azure Credits**: Visual Studio Subscribers get monthly credits for development.
+  - **Azure Regions**: compare region pricing.
+  - **Budgets**: manage cost, prevent overspending.
+  - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
+
+## Azure Policy
+
+- **Management Groups**
+  - level of scope and control(manage access, policy and compliance) across subscriptions.
+  - use management groups to target policies and spending budgets across subscriptions.
+  - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
+  - meet compliance rules with management groups.
+  - ![management group](img/management_group.PNG)
+- **Policy and Policy Definition**
+  - **Policy**
+    - create, assign, and manage policies to control or audit your resources.
+    - stay compliant with corporate standards/requirements.
+    - **enforcement and compliance, scaling, and remediation**.
+  - **Policy Definition**
+    - express condition to evaluate and actions to perform when condition is met.
+    - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
+  - individual resources, resource groups, subscriptions can be exempted from policy.
+    - e.g. cannot deploy VM if it has an exposed public IP address.
+- **Initiative Definition**
+  - A **group of related policies** joined logically to accomplish a common goal is called an **Azure initiative**.
+  - help you track one or more policy definition compliance state.
+  - scope can be limited to certain groups.
