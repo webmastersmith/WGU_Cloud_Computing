@@ -169,16 +169,16 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **user account**
   - anyone who wants to access an Azure resource, must have an Azure user account.
-  - **Entra IDd cloud identity user accounts can be added through**:
+  - **Entra ID cloud identity user accounts can be added through**:
     - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
 - **Entra ID three types of user accounts**
   - **Cloud**: **cloud identity** accounts.
     - Cloud identities have profile information such as job title and office location.
   - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
   - **Guest**: outside of Azure. e.g. external vendor or contractor need access to your Azure resources.
-- **create/delete user**
+- **who can create/delete users**
   - only global admins can create/delete users.
-- **group accounts**
+- **Security/Microsoft 365 group accounts**
   - two types of group accounts:
     - **Security groups**: manage users and computer/app access through security policy.
       - set permissions for all group members at same time.
@@ -232,7 +232,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Budgets**: manage cost, prevent overspending.
   - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
 
-## Azure Policy
+## Azure Policy and Management Groups
 
 - **Management Groups**
   - level of scope and control(manage access, policy and compliance) across **subscriptions**.
@@ -268,7 +268,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - create role definitions and role assignments.
 - **Security Principal**
   - object that represents something(**Requestor**) requesting access to resource.
-  - Requestors can be internal or external users, groups of users, applications and services, resources, and so on.
+  - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
 - **Role Definition**
   - JSON list of allowed permissions. least privilege.
   - **Owner** built-in role has the **highest level of access privilege** in Azure.
@@ -280,8 +280,17 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - **DataActions**: permissions indicate how data can be changed or used.
     - **AssignableScopes**: permissions list the scopes where a role definition can be assigned
     - ![role definition](img/role_definition.PNG)
+    - ![role definition2](img/role_definition2.PNG)
 - **scope**
   - how many resources access is granted.
   - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
 - **Role Assignment**
   - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
+  - purpose of a role assignment is to control access.
+- **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
+  - **Classic Subscription Administrator**: Azure first role policy.
+    - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
+  - **Azure RBAC**: added fine grain control and custom roles.
+  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources. Scope is defined at **_tenant_** level.
+    - controls access at a higher level than RBAC.
+  - ![rbac entra roles](img/rbac_entra_roles.PNG)
