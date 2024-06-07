@@ -63,7 +63,7 @@
     - no multiple region storage.
     - no multiple sessions.
 
-## Azure Resource Manager & Entra ID
+## Azure Resource Manager
 
 - **Azure Resource Manager**
   - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
@@ -75,60 +75,9 @@
 - **declarative syntax**
   - declarative programming. **what you want, not how to do it**.
   - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
-- **Entra Connect Cloud Sync and Sync**
-  - **Entra Connect Cloud Sync**
-    - engine runs in cloud.
-  - **Entra Connect Sync**
-    - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
-- **Entra Domain Services: Entra Connect**
-  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
-    - site-to-site VPN. on-prem -> cloud. = expensive.
-    - replica AD DS on VM in the cloud. = expensive.
-    - **Entra Connect** solves this problem:
-      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
-      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
-      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
-- **Entra ID vs Active Directory**
-  - **Entra ID**
-    - Microsoft Entra ID is a cloud-based identity and access management service(PaaS). Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
-    - SAML, WS-Federation, and OpenID Connect for authentication, and uses OAuth for authorization.
-    - focused on providing **identity management** services to **web-based apps**, unlike **AD DS**, which is more focused on **on-premises apps**.
-    - Entra ID users have access to a set of features that **aren’t natively available in AD DS**, such as support for **multi-factor authentication, identity protection, and self-service password reset**.
-      - primarily an **identity solution** for internet based(**https**) communications.
-      - multi-tenant directory service.
-      - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
-      - Entra is **managed** by **REST API** over https.
-      - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
-  - **AD(active directory)**
-    - Active Directory Domain Services (AD DS or traditionally called just "Active Directory").
-    - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
-    - authentication: **kerberos** for identity.
-    - true X.500 based structure. Uses DNS for locating resources on network.
-    - OUs(organizational units) and GPOs(group policy objects) for management.
-    - You can query and manage AD DS by using Lightweight Directory Access Protocol (LDAP) calls.
-    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
-- **Entra ID P2 over P1**
-  - P2 has
-    - Entra ID protection: enhanced security/monitoring user accounts.
-    - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
-- **Entra Schema**
-  - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
-    - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
-  - **no OU(AD organizational unit)** class. Policy scope and delegation organization is done by '**group membership**'.
-- **Entra tenant**
-  - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
-  - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
-  - A tenant represents an organization. It's a dedicated instance of Microsoft Entra ID that an organization or app developer receives at the beginning of a relationship with Microsoft(yourname.onmicrosoft.com).
-  - An organization can have multiple Microsoft Entra instances(tenant). This allows separation.
-  - An Azure subscription can have only one Microsoft Entra tenant.
-  - e.g. your piece in the cloud with your name like **yourname.onmicrosoft.com** that you lease from microsoft.
-    - An organization can have multiple Microsoft Entra tenants.
-    - An organization can have multiple Azure subscriptions(each subscription must be associated with one, and only one, Microsoft Entra tenant).
-    - A subscription can have multiple licenses.
-    - Licenses can be assigned to individual user accounts.
-    - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
 - **resource**
   - manageable item through Azure. VMs, web app, database...
+  - can only **belong** to **one resource group**.
 - **resource group**
   - container that holds related resources(logical collection).
   - **Rules**
@@ -193,8 +142,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **Subscriptions**
   - manage cost for organizations. help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
-  - Azure Subscription is a logical unit of Azure services that's linked to an Azure account.
-    - An **Azure account** is a Microsoft Entra tenant.
+  - Azure Subscription is a logical unit of Azure services that's linked to an Azure account(Microsoft Entra **tenant**).
   - **Rules**
     - all Azure cloud services will belong to a subscription. billing is done per subscription.
     - Azure account can have multiple subscriptions.
@@ -263,9 +211,11 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **RBAC**
   - Azure RBAC and Microsoft Entra roles are different.
-  - manage who can access their resources, and what actions are allowed.
-  - control access to data and resources by specifying roles and access privileges for employees and business partners.
-  - create role definitions and role assignments.
+  - **RBAC**: applies policy to infrastructure(VM, DataBase, Storage...).
+    - manage who can access their resources, and what actions are allowed.
+    - control access to data and resources by specifying roles and access privileges for employees and business partners.
+    - create role definitions and role assignments.
+  - **Entra Role**: applies policy to identities(users, groups, domains).
 - **Security Principal**
   - object that represents something(**Requestor**) requesting access to resource.
   - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
@@ -287,6 +237,13 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **Role Assignment**
   - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
   - purpose of a role assignment is to control access.
+  - Role Assignment parts:
+    - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
+    - **Role Definition**: **what**. JSON list of allowed permissions(built in: Owner, Contributor, Reader...).
+    - **Scope**: **where**. how many resources granted access.
+      - management group -> subscription -> resource group -> resource. Permissions in sub levels are inherited.
+    - ![RBAC scope](img/rbac_scope.PNG)
+    - ![Role definition](img/role_definition2.PNG)
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
   - **Classic Subscription Administrator**: Azure first role policy.
     - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
@@ -294,6 +251,10 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
     - controls access at a higher level than RBAC.
   - ![rbac entra roles](img/rbac_entra_roles.PNG)
+- **Entra and RBAC solve what Identity and Access concern of the Cloud**
+  - when employees leave, lose access to resources in cloud.
+  - being able to centrally control network communication, while allowing employee autonomy(create/manage VMs).
+  - Entra and RBAC work together to address these concerns.
 - **Entra User**
   - when a user is added, they are granted default permissions.
     - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
@@ -329,3 +290,55 @@ Remove-MgUser
     - **federation**: Entra B2B is easier than using on-prem AD FS(federation service). To use AD FS you have to add an internet facing proxy for them to log into.
       - Good for keeping all auth local, but if your network goes down, no one can connect.
     - ![federation](img/federation.PNG)
+- **Entra Connect Cloud Sync and Sync**
+  - **Entra Connect Cloud Sync**
+    - engine runs in cloud.
+  - **Entra Connect Sync**
+    - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
+- **Entra Domain Services: Entra Connect**
+  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
+    - site-to-site VPN. on-prem -> cloud. = expensive.
+    - replica AD DS on VM in the cloud. = expensive.
+    - **Entra Connect** solves this problem:
+      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
+      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
+      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
+- **Entra ID vs Active Directory**
+  - **Entra ID**
+    - Microsoft Entra ID is a cloud-based identity and access management service(PaaS). Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
+    - SAML, WS-Federation, and OpenID Connect for authentication, and uses OAuth for authorization.
+    - focused on providing **identity management** services to **web-based apps**, unlike **AD DS**, which is more focused on **on-premises apps**.
+    - Entra ID users have access to a set of features that **aren’t natively available in AD DS**, such as support for **multi-factor authentication, identity protection, and self-service password reset**.
+      - primarily an **identity solution** for internet based(**https**) communications.
+      - multi-tenant directory service.
+      - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+      - Entra is **managed** by **REST API** over https.
+      - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
+  - **AD(active directory)**
+    - Active Directory Domain Services (AD DS or traditionally called just "Active Directory").
+    - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
+    - authentication: **kerberos** for identity.
+    - true X.500 based structure. Uses DNS for locating resources on network.
+    - OUs(organizational units) and GPOs(group policy objects) for management.
+    - You can query and manage AD DS by using Lightweight Directory Access Protocol (LDAP) calls.
+    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
+- **Entra ID P2 over P1**
+  - P2 has
+    - Entra ID protection: enhanced security/monitoring user accounts.
+    - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
+- **Entra Schema**
+  - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
+    - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+  - **no OU(AD organizational unit)** class. Policy scope and delegation organization is done by '**group membership**'.
+- **Entra tenant**
+  - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
+  - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
+  - A tenant represents an organization. It's a dedicated instance of Microsoft Entra ID that an organization or app developer receives at the beginning of a relationship with Microsoft(yourname.onmicrosoft.com).
+  - An organization can have multiple Microsoft Entra instances(tenant). This allows separation.
+  - An Azure subscription can have only one Microsoft Entra tenant.
+  - e.g. your piece in the cloud with your name like **yourname.onmicrosoft.com** that you lease from microsoft.
+    - An organization can have multiple Microsoft Entra tenants.
+    - An organization can have multiple Azure subscriptions(each subscription must be associated with one, and only one, Microsoft Entra tenant).
+    - A subscription can have multiple licenses.
+    - Licenses can be assigned to individual user accounts.
+    - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
