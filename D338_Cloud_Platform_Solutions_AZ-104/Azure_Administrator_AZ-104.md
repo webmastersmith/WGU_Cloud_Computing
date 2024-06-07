@@ -88,7 +88,7 @@
       - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
       - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
       - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
-- **Entra ID & Active Directory**
+- **Entra ID vs Active Directory**
   - **Entra ID**
     - Microsoft Entra ID is a cloud-based identity and access management service(PaaS). Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
     - SAML, WS-Federation, and OpenID Connect for authentication, and uses OAuth for authorization.
@@ -259,7 +259,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - see what percentage of your infrastructure is compliant with policy.
   - determine the compliance state of your resources and evaluate whether they're compliant.
 
-## Azure RBAC (Role Based Access Control)
+## Azure RBAC (Role Based Access Control) and Entra Roles
 
 - **RBAC**
   - Azure RBAC and Microsoft Entra roles are different.
@@ -290,7 +290,42 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
   - **Classic Subscription Administrator**: Azure first role policy.
     - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
-  - **Azure RBAC**: added fine grain control and custom roles.
-  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources. Scope is defined at **_tenant_** level.
+  - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
+  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
     - controls access at a higher level than RBAC.
   - ![rbac entra roles](img/rbac_entra_roles.PNG)
+- **Entra User**
+  - when a user is added, they are granted default permissions.
+    - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
+- **Entra Administrator Role**
+  - create/delete/assign users.
+  - you can restore deleted users within 30 days of deletion.
+
+```powershell
+# create a new user
+New-MgUser
+# remove user
+Remove-MgUser
+```
+
+- **Entra Member Role**
+  - manage their profile. considered internal to organization.
+  - by default can invite guest.
+- **Entra Guest Role**
+  - invite someone to collaborate with organization, most restricted permissions.
+- **Entra Groups**
+  - apply roles to all members of group.
+  - **Direct assignment**: you manually give them role assignment.
+  - **Group assignment**: you assign group role.
+  - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
+- **Entra B2B**
+  - external team collaboration. add external collaborators as **guest users**.
+  - By default, users(members) and administrators in Microsoft Entra ID can invite guest users.
+  - connect multiple **internal tenants** for collaboration.
+    - e.g. tenant A needs access to resource in tenant B.
+  - **Why B2B**
+    - instead of having to manage each external collaborator, you can set roles and they have to manage themselves.
+    - you don't take the responsibility of managing, authenticating the credentials and identities of external users.
+    - **federation**: Entra B2B is easier than using on-prem AD FS(federation service). To use AD FS you have to add an internet facing proxy for them to log into.
+      - Good for keeping all auth local, but if your network goes down, no one can connect.
+    - ![federation](img/federation.PNG)
