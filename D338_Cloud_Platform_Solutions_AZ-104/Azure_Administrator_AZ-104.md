@@ -342,3 +342,55 @@ Remove-MgUser
     - A subscription can have multiple licenses.
     - Licenses can be assigned to individual user accounts.
     - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
+- **Entra SSPW (self service password reset)**
+  - user can reset their password.
+  - user is considered 'registered' when they setup the required amount of password resets.
+  - a strong two-method authentication policy is always applied to accounts with an administrator role.
+    - security-question method is not available for administrator roles.
+  - **Best Practices**
+    - Enable two or more of the authentication reset request methods.
+    - Use the mobile app notification or code as the primary method, but also enable the email or office phone methods to support users without mobile devices.
+    - The mobile phone method isn't a recommended method, because it's possible to send fraudulent SMS messages.
+    - The security-question option is the least recommended method, because the answers to the security questions might be known to other people. Only use the security-question method in combination with at least one other method.
+- **Entra Domain Names**
+  - microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
+  - add your domain name. e.g. `example.com`
+
+## Azure Storage
+
+- **Azure Storage**
+  - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
+  - All storage is encrypted at rest with SSE(storage service encryption).
+- **Azure storage services: blob, disk, file, table, queue**
+  - **blob**: **unstructured**, _nonrelational_ data. large files(archives), video, images... unstructured(any kind of data can be stored).
+  - **disk**: **block-level** storage for persistent VM data. They are 'page-blobs' in blob storage.
+  - **file**: mimics a SMB or NFS **file server**. file sharing access and management. Ensures data is **encrypted** at rest and in transit.
+  - **table**: **structured NoSQL** _nonrelational_ data. e.g. key:value like mongodb.
+  - **queue**: **messages** accessible from anywhere through HTTPS calls.
+- **Describe storage backup tiers**
+  - **hot**: online tier, frequent access.
+  - **cool**: online tier, infrequent access. 30 day storage.
+  - **cold**: **online** tier, rarely accessed. 90 day storage.
+  - **archive**: **offline** tier, rarely accessed. 180 day storage.
+- **Describe redundancy options**
+  - backup copies in local, zone, region.
+- **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS,**
+  - **LRS**: locally redundant storage. three copies of data within same **datacenter**.
+  - **ZRS**: zone redundant storage. copies data across three **availability zones** within a region.
+  - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
+  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
+  - **GZRS**: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
+  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+  - ![storage reliability](img/storage_reliability.PNG)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
+- **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
+  - AzCopy: cmd line utility copy blobs or files.
+  - Azure Storage Explorer: GUI to manage blob/file.
+  - Azure File Sync: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
+- **Describe migration options, including Azure Migrate and Azure Data Box**
+  - Azure Migrate: hub of services and tools designed to help with data migration.
+  - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
+- **Storeage Endpoint URL**
+  - each object in storage is prefixed with `YOURNAME.SERVICE.core.windows.net`
+  - ![storage endpoint](img/storage_endpoint.PNG)
