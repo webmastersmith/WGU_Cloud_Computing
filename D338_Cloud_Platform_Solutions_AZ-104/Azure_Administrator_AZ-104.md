@@ -362,7 +362,7 @@ Remove-MgUser
   - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
   - All storage is encrypted at rest with SSE(storage service encryption).
 - **Azure storage services: blob, disk, file, table, queue**
-  - **blob**: **unstructured**, _nonrelational_ data. large files(archives), video, images... unstructured(any kind of data can be stored).
+  - **blob (Binary Large Object)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
   - **disk**: **block-level** storage for persistent VM data. They are 'page-blobs' in blob storage.
   - **file**: mimics a SMB or NFS **file server**. file sharing access and management. Ensures data is **encrypted** at rest and in transit.
   - **table**: **structured NoSQL** _nonrelational_ data. e.g. key:value like mongodb.
@@ -392,5 +392,13 @@ Remove-MgUser
   - Azure Migrate: hub of services and tools designed to help with data migration.
   - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
 - **Storeage Endpoint URL**
-  - each object in storage is prefixed with `YOURNAME.SERVICE.core.windows.net`
+  - each object in storage is prefixed with `YOURNAME.SERVICE.core.windows.net/myStorageName/myblob`
+  - names must be **globally** unique.
+  - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
   - ![storage endpoint](img/storage_endpoint.PNG)
+- **Private Link**
+  - data shared between services along microsoft backbone instead public internet.
+  - ![private link](img/private_link.PNG)
+- **Blob Storage**
+  - good for serving images(to browser), streaming video, distributed access, archive/recovery.
+  - ![blob storage](img/blob_storage.PNG)
