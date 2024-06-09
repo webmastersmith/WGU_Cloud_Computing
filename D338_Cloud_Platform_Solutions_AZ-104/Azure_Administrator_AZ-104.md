@@ -368,13 +368,14 @@ Remove-MgUser
   - **table**: **structured NoSQL** _nonrelational_ data. e.g. key:value like mongodb.
   - **queue**: **messages** accessible from anywhere through HTTPS calls.
 - **Describe storage backup tiers**
-  - **hot**: online tier, frequent access.
-  - **cool**: online tier, infrequent access. 30 day storage.
-  - **cold**: **online** tier, rarely accessed. 90 day storage.
-  - **archive**: **offline** tier, rarely accessed. 180 day storage.
+  - **hot**: online tier(immediate access), frequent access.
+  - **cool**: online tier(immediate access), infrequent access. 30 day storage.
+  - **cold**: online tier(immediate access), rarely accessed. 90 day storage.
+  - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
+  - ![storage access tiers](img/storage_access_tier.PNG)
 - **Describe redundancy options**
   - backup copies in local, zone, region.
-- **Describe storage account options and storage types: LRS, ZRS, GRS, GZRS,**
+- **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
   - **LRS**: locally redundant storage. three copies of data within same **datacenter**.
   - **ZRS**: zone redundant storage. copies data across three **availability zones** within a region.
   - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
@@ -401,4 +402,9 @@ Remove-MgUser
   - ![private link](img/private_link.PNG)
 - **Blob Storage**
   - good for serving images(to browser), streaming video, distributed access, archive/recovery.
+  - all blob storage must be in a container.
   - ![blob storage](img/blob_storage.PNG)
+- **Storage Access Levels**
+  - **Private**: default. visible only to owner.
+  - **Blob**: public read access only.
+  - **Container**: public read and list(get inventory of entire container).
