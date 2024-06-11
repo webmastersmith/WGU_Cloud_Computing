@@ -373,6 +373,34 @@ Remove-MgUser
   - **cold**: online tier(immediate access), rarely accessed. 90 day storage.
   - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
   - ![storage access tiers](img/storage_access_tier.PNG)
+- **Blob Storage**
+  - good for serving images(to browser), streaming video, distributed access, archive/recovery.
+  - all blob storage must be in a container.
+  - ![blob storage](img/blob_storage.PNG)
+- **Blob Storage Lifecycle Management**
+  - set rules to automatically move blob object into a cheaper tier(cool, cold, archive) when not accessed in a certain time period.
+  - rules to delete blobs at end of lifecycle.
+  - **Cost**:
+    - data cost to store **decreases** as tier gets cooler.
+    - data cost to access **increases** as tier gets cooler.
+    - pay for transaction(all tiers).
+    - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
+    - Hot -> cool: incurs a **write** charge for all data.
+    - Cool -> Hot: incurs **read** charge for all data.
+    - Hot, Cool, Cold transfer happens immediately. Archive takes time.
+  - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
+- **Blob Object Replication**
+  - blobs copied asynchronously.
+  - complete blob object is copied(metadata, version history, blob contents).
+  - blob versioning must be enabled on both source and destination, to perform replication.
+  - snapshots **are not** replicated.
+  - replication can only be between Hot, Cool, or Cold.
+  - ![blob storage replication](img/blob_storage_replication.PNG)
+- **Blob Uploads**
+  - blob any data type any size.
+  - **block blob**: default. block data storage. e.g. video, large text files, images, binary...
+  - **page blob**: 8TB max size. optimized read/write operations. e.g. VM disk.
+  - **append blob**: optimized for append data. e.g. logging.
 - **Describe redundancy options**
   - backup copies in local, zone, region.
 - **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
@@ -386,13 +414,14 @@ Remove-MgUser
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
-  - AzCopy: cmd line utility copy blobs or files.
-  - Azure Storage Explorer: GUI to manage blob/file.
-  - Azure File Sync: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
+  - **AzCopy**: cmd line utility copy blobs or files.
+  - **Azure Storage Explorer**: GUI to manage blob/file.
+  - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
-  - Azure Migrate: hub of services and tools designed to help with data migration.
-  - Azure Data Box: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
-- **Storeage Endpoint URL**
+  - **Azure Migrate**: hub of services and tools designed to help with data migration.
+  - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
+  - **Azure Import/Export**: same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
+- **Storage Endpoint URL**
   - each object in storage is prefixed with `YOURNAME.SERVICE.core.windows.net/myStorageName/myblob`
   - names must be **globally** unique.
   - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
@@ -400,10 +429,6 @@ Remove-MgUser
 - **Private Link**
   - data shared between services along microsoft backbone instead public internet.
   - ![private link](img/private_link.PNG)
-- **Blob Storage**
-  - good for serving images(to browser), streaming video, distributed access, archive/recovery.
-  - all blob storage must be in a container.
-  - ![blob storage](img/blob_storage.PNG)
 - **Storage Access Levels**
   - **Private**: default. visible only to owner.
   - **Blob**: public read access only.
