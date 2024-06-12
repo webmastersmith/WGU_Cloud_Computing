@@ -379,9 +379,10 @@ Remove-MgUser
   - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
   - ![storage access tiers](img/storage_access_tier.PNG)
 - **Blob Storage**
-  - good for serving images(to browser), streaming video, distributed access, archive/recovery.
+  - good for serving images(to browser), **streaming** video, distributed access, archive/recovery, disk(page blob).
   - all blob storage must be in a container.
   - ![blob storage](img/blob_storage.PNG)
+  - ![blob vs file share](img/file_share_vs_blob.PNG)
 - **Blob Storage Lifecycle Management**
   - set rules to automatically move blob object into a cheaper tier(cool, cold, archive) when not accessed in a certain time period.
   - rules to delete blobs at end of lifecycle.
@@ -409,7 +410,7 @@ Remove-MgUser
 - **Describe redundancy options**
   - backup copies in local, zone, region.
 - **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
-  - **LRS**: locally redundant storage. three copies of data within same **datacenter**.
+  - **LRS**: locally redundant storage. three copies of data within same **datacenter**. hardware failure only.
   - **ZRS**: zone redundant storage. copies data across three **availability zones** within a region.
   - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
@@ -431,9 +432,39 @@ Remove-MgUser
   - names must be **globally** unique.
   - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
   - ![storage endpoint](img/storage_endpoint.PNG)
-- **File Share and File Sync**
-  - **File Share**: managed file shares in the cloud that are accessible via industry standard protocols.
-  - **File Sync**: cache files and synchronize between Azure and on-prem Windows Server or cloud VM.
+- **File Share**
+  - **File Share**: managed file shares in the cloud that are accessible via industry standard protocols(**SMB, NFS**).
+    - stores data as **true directory objects**, so can be **mounted like SMB(tcp port 445) or NFS**.
+    - multiple (VMs, on-prem computers(windows, macOS, linux), roles, services...) can access(mount) an Azure file share simultaneously, from anywhere in the world(REST interface).
+    - embraces **lift and shift**(take the workload as-is and run it on cloud-native resources).
+    - good for: configuration files, logs, metrics, crash dumps...
+    - **Premium vs Standard**:
+      - **standard**: HDD. format: SMB, REST
+      - **premium**: SSD. format: SMB, NFS, REST.
+  - ![blob vs file share](img/file_share_vs_blob.PNG)
+- **File Share Snapshots**
+  - **point-in-time read only copy of file share**.
+  - only data that has changed(from last snapshot) is recorded. Only most recent share is needed to restore the share.
+  - single files can be restored from snapshot.
+  - all snapshots must be deleted before share can be deleted.
+  - snapshot can act like a versioning system, previous files can be recovered.
+- **File Share Soft Delete**
+  - recover deleted files and file shares. Once marked for deletion, you can set retention period: **1-365 days**.
+  - soft delete **does not work on NFS shares**.
+  - Advantages: ransomware protection, comply with data retention policy, restore to known good state, recovery from accidental data loss.
+- **Azure Storage Explorer**
+  - access multiple accounts and subscriptions, and manage all your Storage content on **windows, macOS, linux**.
+  - requires both management (Azure Resource Manager) and Active Directory permissions to allow full access to your resources.
+  - ![Azure storage explorer](img/storage_explorer.PNG)
+- **File Sync and Cloud Tiering**
+  - **cache files and synchronize between Azure and on-prem Windows Server or cloud VM**.
+  - any number of caches in any location.
+  - supports all windows server protocols: SMB, NFS, FTPS.
+  - file sync backs up on-prem files with Azure File Share.
+  - **Cloud Tiering**
+    - only allow frequently accessed files to be cached locally(free up local cache).
+    - when file is **tiered**, file is replaced with pointer(URL to Azure File Share) instead of it being cached locally.
+    - tiered file is marked with an `O` and greyed out to show file is only in Azure.
 
 ## Storage Security
 
@@ -471,3 +502,12 @@ Remove-MgUser
 - **Private Link**
   - data shared between services along microsoft backbone instead public internet.
   - ![private link](img/private_link.PNG)
+
+## Storage Policy
+
+- **Storage Account**
+  - container that allows you to manage as a group all Azure storage services(queue, blob, file share, table) together.
+  - policy applied to container, apply to all storage services.
+  - Database(SQL, Cosmos...) cannot be inside storage account.
+  - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
+  - ![storage account](img/storage_account.PNG)
