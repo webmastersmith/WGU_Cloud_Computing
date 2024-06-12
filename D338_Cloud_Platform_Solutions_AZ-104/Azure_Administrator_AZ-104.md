@@ -2,14 +2,19 @@
 
 ## Tips
 
+- **Azure for Students Starter**: access to free tier items only. cannot access non-free services.
+- **Azure for Students**: $100 credit + free tier services. access to non-free services.
+  - [Student portal pricing](https://www.microsoftazuresponsorships.com/Balance) // must be signed in.
 - **First Impressions**: the OA is focused on network infrastructure terminology and function. The AZ-104 certification test leans more toward building infrastructure with CLI & powershell,. While both are essential, it makes learning an already difficult test, more difficult.
-- <https://www.reddit.com/r/WGU/comments/18i1uv8/wgu_d338_its_super_easy/>
-- <https://www.reddit.com/r/AzureCertification/comments/1colul0/passed_az104_my_experience_with_this_exam/>
-- <https://www.linkedin.com/pulse/passing-az-104-exam-everything-you-need-know-neeraj-kumar/>
-- <https://www.reddit.com/r/AzureCertification/comments/1crlfs5/passed_az104/>
-  - Storage, Entra, and networking areas had tricky questions.
-- <https://www.reddit.com/r/AzureCertification/comments/1ctkwt0/passed_az_104/>
-- Search for each topic on Microsoft documentation and Microsoft learn to help study each area of the AZ-104 exam. Use search like this ms **docs + "Study topic"**.
+- **Tutorials, Advice**
+  - <https://www.reddit.com/r/WGU/comments/18i1uv8/wgu_d338_its_super_easy/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1colul0/passed_az104_my_experience_with_this_exam/>
+  - <https://www.linkedin.com/pulse/passing-az-104-exam-everything-you-need-know-neeraj-kumar/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1crlfs5/passed_az104/>
+    - Storage, Entra, and networking areas had tricky questions.
+  - <https://www.reddit.com/r/AzureCertification/comments/1ctkwt0/passed_az_104/>
+  - Search for each topic on Microsoft documentation and Microsoft learn to help study each area of the AZ-104 exam. Use search like this ms **docs + "Study topic"**.
+  - <https://www.thomasmaurer.ch/2020/03/az-104-study-guide-azure-administrator/>
 - **Videos**
   - <https://www.youtube.com/playlist?list=PLlVtbbG169nGlGPWs9xaLKT1KfwqREHbs>
   - <https://wgu.udemy.com/course/az-104-microsoft-azure-administrator-lab-exam-prep/>
@@ -426,10 +431,43 @@ Remove-MgUser
   - names must be **globally** unique.
   - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
   - ![storage endpoint](img/storage_endpoint.PNG)
-- **Private Link**
-  - data shared between services along microsoft backbone instead public internet.
-  - ![private link](img/private_link.PNG)
+- **File Share and File Sync**
+  - **File Share**: managed file shares in the cloud that are accessible via industry standard protocols.
+  - **File Sync**: cache files and synchronize between Azure and on-prem Windows Server or cloud VM.
+
+## Storage Security
+
 - **Storage Access Levels**
   - **Private**: default. visible only to owner.
   - **Blob**: public read access only.
   - **Container**: public read and list(get inventory of entire container).
+- **Storage Security**
+  - **disk encryption**: Azure Disk Encryption. all data written encrypted by default(Azure storage encryption, 256 bit AES). decrypted automatically. transparent to users. cannot be disabled.
+  - **data in transit**: Azure Client-Side Encryption, HTTPS, SMB 3.0.
+  - **shared access signatures(SAS)**: data object permissions(set time period) given access by SAS.
+  - **shared key**: key produces encrypted signature. passed in Authorization header.
+  - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
+  - **authorization**: RBAC. you have access rights to resource.
+- ***
+- **Shared Access Signature**
+  - uniform resource identifier(URI): grants restricted access rights(set time period) to Azure Storage resources.
+    - `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
+  - purpose: give client who normally does not have access, a URI for a specified time period, to prevent account keys exposure.
+  - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
+  - **account-level**: one or more services.
+  - **service-level**: only one service.
+- **Shared Keys**
+  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
+    - stored in **Azure key vault** or URI.
+- **Storage Security Best Practices**
+  - **data**: encrypted at rest and in transit.
+  - **WAF firewall**: Web Application Firewall. Layer 7 aware. Route and filter traffic(SQL injection, XSS...). block IP address. **Application Gateway** or **Front Door**.
+  - **private link**: wrap data resource in VPN and share data between services along Azure backbone instead of public internet. shields DB from outside world.
+  - **restrict access to VM's**: disable RDP(remote desktop protocol) and SSH. Keep VM on private network, connect through **Azure Bastion**.
+  - **Secret Keys**: Azure Key Vault. To connect services to Azure Key Vault, use **Managed Service Identities**.
+  - **Production**: use separate subscription for production environment. Development policies and Production policies can be controlled.
+  - **Resources**: RBAC to allow users permissions on resources.
+  - **Azure Security Center**: Azure service that informs you of your security state and what can be improved.
+- **Private Link**
+  - data shared between services along microsoft backbone instead public internet.
+  - ![private link](img/private_link.PNG)
