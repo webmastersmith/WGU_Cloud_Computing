@@ -482,7 +482,7 @@ Remove-MgUser
 - ***
 - **Shared Access Signature**
   - uniform resource identifier(URI): grants restricted access rights(set time period) to Azure Storage resources.
-    - `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
+    - e.g. `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
   - purpose: give client who normally does not have access, a URI for a specified time period, to prevent account keys exposure.
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
   - **account-level**: one or more services.
@@ -506,8 +506,24 @@ Remove-MgUser
 ## Storage Policy
 
 - **Storage Account**
-  - container that allows you to manage as a group all Azure storage services(queue, blob, file share, table) together.
-  - policy applied to container, apply to all storage services.
+  - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
+  - policy applied to container, apply to all storage services in container.
   - Database(SQL, Cosmos...) cannot be inside storage account.
   - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
+  - New Storage Account:
+    - Name: globally unique. letter and number only.
+    - Account Kind: **Standard StorageV2**
+    - Deployment Model: **Resource Manager**
   - ![storage account](img/storage_account.PNG)
+- **Storage Account Security**
+  - **Public Access**: when **_AllowBlobPublicAccess_** is set to true and container public access is set.
+  - **Entra ID**: enables access to authorized person.
+  - **Shared Key**: passed in the authorization header.
+  - **Shared Access Signature (SAS)**: URI with read or read/write permissions that expire.
+  - **Best Practices**
+    - set permissions to minimum and time to minimum.
+    - use HTTPS. **User Delegation** to create SAS, because key does not have to be embedded in the URL.
+- **Stored Access Policy**
+  - can be applied to a container and every service in container.
+  - Set rules: start time, expiry time, permissions.
+  - reference policy when you create SAS.
