@@ -528,7 +528,7 @@ Remove-MgUser
   - Set rules: start time, expiry time, permissions.
   - reference policy when you create SAS.
 
-## Azure Region and VMs
+## Azure Region, VMs, App Service
 
 - **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
   - **Geography**: groups of regions in each continent.
@@ -547,7 +547,7 @@ Remove-MgUser
     - VMs in **different fault domains** that perform identical functionalities.
     - VMs should have the same software installed.
   - **Fault Domain**
-    - VMs that share the same server, network, and power in a datacenter.
+    - VMs that share the same hardware, network, and power in a datacenter.
   - **Update Domain**
     - VMs that will receive Azure hardware updates at same time.
   - ![high availability](img/04-azure-global-infra.jpg)
@@ -576,8 +576,19 @@ Remove-MgUser
   - unexpected downtime: physical machine fails.
   - planned maintenance: hardware update/upgrade.
 - **VM Scaling and Scale Sets**
-  - **Vertical Scaling**: scale up/down. add more resources(compute, ram, HDD...).
-  - **Horizontal Scaling**: scale out(increase)/in. add more VMs.
+  - **Vertical Scaling**: **scale up/down**. add more resources(compute, ram, HDD...).
+  - **Horizontal Scaling**: **scale out(increase)/in**. add more VMs.
   - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
     - automatically increases/decrease VM instances based on demand.
     - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
+- **App Service Plans**
+  - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
+  - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
+  - **Free or Shared Tier**
+    - can't scale. charged CPU minutes used.
+  - **Basic, Standard, Premium, or Isolated Tier**
+    - VMs in your App Service are yours to use as you want.
+  - **Setup**
+    - **Region**: location of datacenter. e.g. 'East US'.
+    - **Number of VM instances**: how many VM instances allocated to plan.
+    - **Size of VM instances**: compute. Small, Medium, Large.
