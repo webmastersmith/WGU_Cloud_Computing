@@ -527,3 +527,57 @@ Remove-MgUser
   - can be applied to a container and every service in container.
   - Set rules: start time, expiry time, permissions.
   - reference policy when you create SAS.
+
+## Azure Region and VMs
+
+- **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
+  - **Geography**: groups of regions in each continent.
+    - Americas, Europe, Asia Pacific, Middle East and Africa.
+  - **Regions**: two or more datacenters connected w/ low-latency communications. For redundancy.
+  - **Region Pairs**: two regions in same geography **300+ miles apart** linked for disaster recovery.
+  - **Sovereign Regions**: separation for compliance or legal purpose. physical and logical isolation.
+    - e.g. (US government and US government contractors).
+  - **Availability Zones**
+    - group of datacenters within a region networked w/ low-latency network, each with redundant power, network, cooling.
+    - redundancy with datacenter failure.
+  - **Azure Datacenters**
+    - physical buildings w/ servers. redundant network, power, cooling.
+  - **Availability Set**
+    - Group of identical VMs spread across physical servers, compute racks, storage units, network switches, to prevent single point of failure.
+    - VMs in **different fault domains** that perform identical functionalities.
+    - VMs should have the same software installed.
+  - **Fault Domain**
+    - VMs that share the same server, network, and power in a datacenter.
+  - **Update Domain**
+    - VMs that will receive Azure hardware updates at same time.
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability set](img/AvailabilitySet.webp)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
+- **VMs**
+  - IaaS. instant compute. scalable.
+  - compute is per hour charge(per minute).
+  - username: azureuser. ssh key.
+  - **Setup**
+    - choose network(topology must be designed first) and create name(windows 15 char, linux 64 char) for VM.
+    - select compute cpu size, ram and size hdd/ssd.
+    - select OS.
+    - region changes pricing.
+- **VM Storage**
+  - managed by Azure. You choose disk size.
+  - storage is scalable. charged separately from compute.
+  - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
+    - temporary disk is not persistent.
+  - **Permanent Storage**: data disk. SSD/HDD. page blobs.
+  - **Premium Storage**: SSD. optimized for I/O-intensive workloads(80,000 IOPS). throughput 2,000 MB/s.
+- **VM Bastion**
+  - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
+- **VM Maintenance Planning**
+  - unplanned hardware failure: predicted failure of physical machine.
+  - unexpected downtime: physical machine fails.
+  - planned maintenance: hardware update/upgrade.
+- **VM Scaling and Scale Sets**
+  - **Vertical Scaling**: scale up/down. add more resources(compute, ram, HDD...).
+  - **Horizontal Scaling**: scale out(increase)/in. add more VMs.
+  - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
+    - automatically increases/decrease VM instances based on demand.
+    - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
