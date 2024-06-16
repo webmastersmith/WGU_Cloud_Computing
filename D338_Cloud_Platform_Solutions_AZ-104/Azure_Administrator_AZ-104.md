@@ -15,6 +15,8 @@
   - <https://www.reddit.com/r/AzureCertification/comments/1ctkwt0/passed_az_104/>
   - Search for each topic on Microsoft documentation and Microsoft learn to help study each area of the AZ-104 exam. Use search like this ms **docs + "Study topic"**.
   - <https://www.thomasmaurer.ch/2020/03/az-104-study-guide-azure-administrator/>
+  - <https://www.reddit.com/r/AZURE/comments/164oe1q/passed_az104_yesterday_the_open_book_feature_is/>
+  - <https://portal.tutorialsdojo.com/courses/az-104-microsoft-azure-administrator-practice-exams/>
 - **Videos**
   - <https://www.youtube.com/playlist?list=PLlVtbbG169nGlGPWs9xaLKT1KfwqREHbs>
   - <https://wgu.udemy.com/course/az-104-microsoft-azure-administrator-lab-exam-prep/>
@@ -54,6 +56,7 @@
     - Deploy and manage Azure compute resources (20-25%)
     - Configure and manage virtual networking (25-30%)
     - Monitor and back up Azure resources (10-15%)
+    - 120 minutes. 40-60 questions. passing is 700 out of 1000 points (70%). $165.
 
 ## Azure Cloud Shell
 
@@ -420,7 +423,7 @@ Remove-MgUser
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
-  - **AzCopy**: cmd line utility copy blobs or files.
+  - **AzCopy**: cmd line utility copy **blobs** or **files**.
   - **Azure Storage Explorer**: GUI to manage blob/file.
   - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
@@ -592,3 +595,11 @@ Remove-MgUser
     - **Region**: location of datacenter. e.g. 'East US'.
     - **Number of VM instances**: how many VM instances allocated to plan.
     - **Size of VM instances**: compute. Small, Medium, Large.
+- **Continuous Integration and Deployment CI/CD**
+  - **automated deployment**: automate the testing and deployment of code changes.
+  - **Azure DevOps**: Azure devops pipeline. code changes, testing, deploy.
+- **CI/CD Deployment Slots**
+  - with App Service, instead of deploying to production node, you deploy to another node with it's own hostname.
+  - available in the **Standard, Premium, and Isolated** App Service pricing tiers.
+  - similar to **_blue/green_** deployment strategy. Rollback if swap is not as expected.
+  - ![deployment slot](img/deployment_slot.PNG)
