@@ -531,7 +531,7 @@ Remove-MgUser
   - Set rules: start time, expiry time, permissions.
   - reference policy when you create SAS.
 
-## Azure Region, VMs, App Service
+## Azure Region, VMs
 
 - **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
   - **Geography**: groups of regions in each continent.
@@ -559,7 +559,6 @@ Remove-MgUser
 - **VMs**
   - IaaS. instant compute. scalable.
   - compute is per hour charge(per minute).
-  - username: azureuser. ssh key.
   - **Setup**
     - choose network(topology must be designed first) and create name(windows 15 char, linux 64 char) for VM.
     - select compute cpu size, ram and size hdd/ssd.
@@ -584,8 +583,13 @@ Remove-MgUser
   - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
     - automatically increases/decrease VM instances based on demand.
     - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
+
+## App Services
+
 - **App Service Plans**
+  - PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
   - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
+  - configuration settings include runtime stack(node, python, dotnet...), operating system, region and App Service plan(standard, premium, isolated...).
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
   - **Free or Shared Tier**
     - can't scale. charged CPU minutes used.
@@ -597,9 +601,51 @@ Remove-MgUser
     - **Size of VM instances**: compute. Small, Medium, Large.
 - **Continuous Integration and Deployment CI/CD**
   - **automated deployment**: automate the testing and deployment of code changes.
-  - **Azure DevOps**: Azure devops pipeline. code changes, testing, deploy.
+  - **Azure DevOps**: Azure devops pipeline. code changes -> testing -> deploy.
 - **CI/CD Deployment Slots**
-  - with App Service, instead of deploying to production node, you deploy to another node with it's own hostname.
+  - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
+  - manage different app stages(development, testing, staging, and production).
   - available in the **Standard, Premium, and Isolated** App Service pricing tiers.
-  - similar to **_blue/green_** deployment strategy. Rollback if swap is not as expected.
+  - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
+  - new deployment slots can be empty or cloned.
   - ![deployment slot](img/deployment_slot.PNG)
+- **App Service Authentication and Authorization**
+  - Security Module: authenticate users, manage tokens, sessions, and inject identity into request headers.
+  - built-in authentication and authorization support.
+  - configured by using App settings, when enabled, every HTTP request will pass through the security module before it's handled by your App.
+  - automatic logging of authentication and authorization traces.
+  - **Settings**
+    - **Allow Anonymous Request**: defer authorization of unauthenticated traffic to your App.
+    - **Allow only authenticated request**: **_all_** anonymous traffic is sent to login provider page.
+- **Domain Names**
+  - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
+  - purchase domain from Azure portal, you don't have to configure anything.
+  - `A` record: points to IP address.
+  - `Cname`: maps domain to another domain name.
+- **Backup and Restore App**
+  - App snapshots can be created on a schedule or manually backup.
+  - **Standard** or **Premium** tier App Service plan.
+  - full or partial backups.
+- **Application Insights**
+  - continuously monitor the performance and usability of your apps.
+  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
+  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
+  - ![application insights](img/application_insights.PNG)
+
+## Azure Containers
+
+- **Azure Container Apps**
+  - serverless platform that allows you to maintain less infrastructure to run/manage containerized apps.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+- **Containers**
+  - isolated containers(like docker) instances.
+  - **persistent storage**: Azure Disk, or Azure files(SMB) for multiple nodes to share.
+  - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
+  - **flexibility and speed**: OS is shared and use less resources. sharing, testing, deployment easier.
+- **Azure Container Instance (ACI)**
+  - preferred way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
+  - ![container instance](img/container-instance.PNG)
+- **Container Group**
+  - collection of containers that get scheduled on the same host machine. The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
+  - same as 'pod' in Kubernetes(multiple containers per pod).
+  - deploy through ARM(Azure Resource Manager) or YAML files.
