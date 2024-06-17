@@ -564,13 +564,18 @@ Remove-MgUser
     - select compute cpu size, ram and size hdd/ssd.
     - select OS.
     - region changes pricing.
+  - ![vm compute](img/vm_compute.PNG)
+  - ![vm setup](img/vm_setup.PNG)
 - **VM Storage**
   - managed by Azure. You choose disk size.
   - storage is scalable. charged separately from compute.
   - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
     - temporary disk is not persistent.
-  - **Permanent Storage**: data disk. SSD/HDD. page blobs.
-  - **Premium Storage**: SSD. optimized for I/O-intensive workloads(80,000 IOPS). throughput 2,000 MB/s.
+  - **VHDs**: disk mapped to VM. page blobs.
+  - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
+  - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
+  - **unmanaged data disk**: manual scale to disk needs.
+  - **managed data disk**: Azure scales disk to VM needs.
 - **VM Bastion**
   - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
 - **VM Maintenance Planning**
@@ -634,18 +639,79 @@ Remove-MgUser
 
 ## Azure Containers
 
-- **Azure Container Apps**
-  - serverless platform that allows you to maintain less infrastructure to run/manage containerized apps.
-  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
 - **Containers**
   - isolated containers(like docker) instances.
-  - **persistent storage**: Azure Disk, or Azure files(SMB) for multiple nodes to share.
+  - **persistent storage**: **Azure Disk**, or **Azure files**(SMB) for multiple nodes to share.
   - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
-  - **flexibility and speed**: OS is shared and use less resources. sharing, testing, deployment easier.
+  - **flexibility and speed**: **OS is shared(only run needed services)** and use less resources. sharing, testing, deployment easier.
 - **Azure Container Instance (ACI)**
   - preferred way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
+  - **billed only for containers in use**.
   - ![container instance](img/container-instance.PNG)
 - **Container Group**
   - collection of containers that get scheduled on the same host machine. The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
   - same as 'pod' in Kubernetes(multiple containers per pod).
   - deploy through ARM(Azure Resource Manager) or YAML files.
+- **Azure Container Apps**
+  - serverless platform that **simplifies deployment**. maintain less infrastructure to run/manage containerized apps.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+
+## Azure Powershell and CLI
+
+- **CLI**
+  - <https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest>
+
+```sh
+# Show list of all available images
+az vm image list --output table
+az vm image list --sku Wordpress --output table --all # wordpress images
+az vm image list --publisher Microsoft --output table --all # microsoft images
+# available datacenter locations
+az vm image list --location eastus --output table
+# VM sizes
+az vm list-sizes --location eastus --output table
+# Resize VM
+az vm list-vm-resize-options --resource-group "[sandbox resource group name]" --name SampleVM --output table
+az vm resize --resource-group "[sandbox resource group name]" --name SampleVM --size Standard_D2s_v3
+# Query
+az vm show --resource-group "group name" --name SampleVM --query "networkProfile.networkInterfaces[].id"
+# VMs
+# Create
+az vm create --resource-group "[sandbox resource group name]" --location westus --name SampleVM --image Ubuntu2204 --admin-username azureuser --generate-ssh-keys --verbose
+# When creating multiple VMs, Adding '--no-wait' will cause 'azure VM create' to return immediately without waiting for VM creation.
+# View all VMs -return all virtual machines defined in this subscription.
+az vm list --output table
+# Show VM specs
+az vm show --resource-group "[sandbox resource group name]" --name SampleVM
+# VM IP address
+az vm list-ip-addresses -n SampleVM -o table
+
+# Network
+az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
+```
+
+## Azure Networks and Network Security Group
+
+- **vNet**
+  - VPN network. provide logical isolation and protection.
+  - If **no security group** is applied, then **all** traffic is **allowed** by Azure.
+  - Azure blocks SMTP (Email port 25) outbound.
+  - link virtual networks with an on-premises IT infrastructure to create hybrid or cross-premises solution.
+  - **Subnets**
+    - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
+    - subnet must be specified by using CIDR notation.
+    - each subnet, the **first four addresses** and the **last address** are **reserved**.
+    - all VPN network subnet traffic can communicate by default.
+- **Network Security Group (NSGs)**
+  - enforce and control network traffic rules at the networking level.
+  - software firewall by filtering inbound and outbound traffic on the VNet.
+  - The last rule is always a **Deny All** rule.
+- **Site-to-site VPNs**
+  - use IPSEC to provide a secure connection between your **corporate VPN Gateway** and **Azure**.
+- **Load Balancer**
+- **Application Gateway**
+- **VPN Gateway**
+  - special on-prem server from Azure that connects directly to Azure using IPSEC communications.
+- **Traffic Manager Profile**
+- **Virtual Network Gateway**
+- **Virtual WAN**
