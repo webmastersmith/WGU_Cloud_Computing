@@ -690,28 +690,66 @@ az vm list-ip-addresses -n SampleVM -o table
 az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
 ```
 
-## Azure Networks and Network Security Group
+## Azure Networks and Network Security Groups
 
 - **vNet**
-  - VPN network. provide logical isolation and protection.
+  - VPN network. provide logical isolation and protection. IP range once chosen, cannot be changed.
   - If **no security group** is applied, then **all** traffic is **allowed** by Azure.
   - Azure blocks SMTP (Email port 25) outbound.
   - link virtual networks with an on-premises IT infrastructure to create hybrid or cross-premises solution.
-  - **Subnets**
-    - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
-    - subnet must be specified by using CIDR notation.
-    - each subnet, the **first four addresses** and the **last address** are **reserved**.
-    - all VPN network subnet traffic can communicate by default.
+- **Subnets and Screened Subnets (DMZ)**
+  - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
+  - subnet must be specified by using **CIDR** notation.
+  - each subnet, the **first four addresses** and the **last address** are **reserved**.
+  - all VPN network subnet traffic can communicate by default.
+  - segmenting networks allows custom firewall rules for each subnet.
+  - **maximum one security group per subnet**.
+  - **Screened Subnet (DMZ)**
+    - security group applied to a subnet acts as buffer between resource and internet.
+    - restrict traffic flow.
+- **Azure IP addresses**
+  - **private IP**: communicate on-prem with cloud through VPN Gateway or ExpressRoute.
+  - **public IP**: communicate with resources over the public internet.
+  - **static IP**: does not change. best for DNS records, TLS certs, Firewall rules based on IP range.
+  - **dynamic IP**: changes as needed. typically change when VM/service is stopped and restarted.
+- **Network Interface Card (NIC)**
+  - vNIC. layer 2.
+  - can have network security group applied.
 - **Network Security Group (NSGs)**
   - enforce and control network traffic rules at the networking level.
-  - software firewall by filtering inbound and outbound traffic on the VNet.
+  - software firewall by filtering **inbound and outbound traffic**(subnet or network interface(NIC)) with **allow/deny rules**.
   - The last rule is always a **Deny All** rule.
-- **Site-to-site VPNs**
-  - use IPSEC to provide a secure connection between your **corporate VPN Gateway** and **Azure**.
+  - can be applied to subnets and NIC.
+  - **Rules**
+    - default: **deny** all **inbound(except loadBalancer or VNET subnets)**. **allow** all **outbound**.
+    - without NSG, **all** traffic is allowed.
+    - rules can be overridden by higher 'Priority' value.
+    - because a NIC or subnet can each have a security group:
+      - inbound: the subnet(NSG 1) rules will take precedence if rule Priority tie.
+      - outbound: the NIC(NSG 2) will take precedence if rule Priority tie.
+      - ![nsg rules](img/nsg.PNG)
 - **Load Balancer**
+  - d
 - **Application Gateway**
-- **VPN Gateway**
-  - special on-prem server from Azure that connects directly to Azure using IPSEC communications.
+  - hybrid cloud. on-prem to Azure VNET encrypted traffic. over internet. site-to-site VPN.
+  - **Azure Local Network Gateway**: the on-prem VPN device to connect to Azure VPN.
+- **ExpressRoute**
+  - connect private on-prem connection with Azure VNET. Dedicated line from connectivity provider. traffic does not traverse public internet. higher security.
+- **Peering**
+  - seamless connection of two or more VNETs. function as single VNET.
+- **Point-to-Site (P2S)**
+  - VPN tunnel from individual computer. no public IP address. Connects to 'VPN Gateway' on the Azure side.
+- **Private Link**
+  - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
+- **Service Endpoints**
+  - **service endpoint**: open internet access to **all** instances in subnet.
+  - **private endpoint**: open internet access to **specific** instance(VM).
+- **Site-to-site VPNs (S2S)**
+  - use IPSEC to provide a secure connection between your **corporate VPN Gateway** and **Azure**.
 - **Traffic Manager Profile**
 - **Virtual Network Gateway**
 - **Virtual WAN**
+- **VPN Gateway**
+  - Azure service that allows you to securely encrypt traffic between VPN and on-prem, or point-to-site(P2S) using IPSEC communications.
+  - must have dedicated subnet for VPN Gateway.
+  - ![vpn gateway](img/vpn_gateway.PNG)
