@@ -688,18 +688,40 @@ az vm list-ip-addresses -n SampleVM -o table
 
 # Network
 az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
+# VNET
+az network vnet create --resource-group "[sandbox resource group name]" --name CoreServicesVnet --address-prefixes 10.20.0.0/16 --location westus
+# Subnet
+az network vnet subnet create --resource-group "[sandbox resource group name]" --vnet-name CoreServicesVnet --name GatewaySubnet --address-prefixes 10.20.0.0/27
 ```
 
 ## Azure Networks and Network Security Groups
 
-- **Azure IP addresses**
-  - **private IP**: internal communication only. on-prem communication, use VPN Gateway or ExpressRoute.
-  - **public IP**: communicate with resources over the public internet.
-  - **static IP**: does not change. best for DNS records, TLS certs, Firewall rules based on IP range.
-  - **dynamic IP**: changes as needed. typically change when VM/service is stopped and restarted.
+- **Application Gateway**
+  - layer 7 load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(resources) via **Round-Robin** method.
+  - **Basic**: routing via **URL**(includes hostname and port).
+  - **Multi-site routing**: multiple different web app routing(based on Domain Name) on same Application Gateway.
+  - allows redirects, HTTP header rewrite.
+  - ![application gateway](img/application_gateway.PNG)
+  - ![application gateway](img/application_gateway2.PNG)
+  - **Azure Local Network Gateway**: the on-prem VPN device to connect to Azure VPN.
 - **Application Security Group**
   - grouping VMs based on application(function). e.g. web server and database.
   - layer 3 and 4(IP and port).
+- **ExpressRoute**
+  - connect private on-prem connection with Azure VNET. Dedicated line from connectivity provider. traffic does not traverse public internet. higher security.
+- **Load Balancer**
+  - high availability. scale. **inbound** or **outbound traffic**. **public** or **internal** facing.
+  - internal load balancer must be in same VNET as VMs.
+  - **Types**:
+    - **Basic**: original, superseded by standard.
+    - **Standard**: up to 1,000 pools.
+    - **Gateway**: high performance and high availability.
+  - **To implement a load balancer**:
+    - **Front-end IP configuration**: ip load balancer assigned.
+    - **Back-end pools**: resources (VNET and IP) waiting for traffic.
+    - **Health probes**: checks backend resources health.
+    - **Load-balancing rules**: how to distribute the requests to the back-end. default NAT table (traffic distribution type): **five-tuple hash**(source IP address, source port, destination IP address, destination port, and protocol type).
+      - **Session Persistence**: group same client request or send to any VM listening.
 - **Network Interface Card (NIC)**
   - vNIC. layer 2.
   - can have network security group applied.
@@ -719,41 +741,66 @@ az vm open-port --port 80 --resource-group "[sandbox resource group name]" --nam
       - inbound: the subnet(NSG 1) rules will take precedence.
       - outbound: the NIC(NSG 2) will take precedence.
       - ![nsg rules](img/nsg.PNG)
-- **Load Balancer**
-  - d
-- **Application Gateway**
-  - creates hybrid cloud: on-prem can communicate with Azure VNET over internet with encrypted traffic. same as site-to-site VPN.
-  - **Azure Local Network Gateway**: the on-prem VPN device to connect to Azure VPN.
-- **ExpressRoute**
-  - connect private on-prem connection with Azure VNET. Dedicated line from connectivity provider. traffic does not traverse public internet. higher security.
 - **Peering**
   - seamless connection of two or more VNETs. function as single VNET.
   - managed as separate resources, but communicate as single resource.
-  - Traffic between the virtual networks is kept on the **Microsoft Azure backbone** network. No public internet, gateways, or encryption is required in the communication between the virtual networks.
-  - allow remote communication with VPN Gateway.
-  - **Regional and Global**
+  - Traffic between the virtual networks is kept on the **Microsoft Azure backbone** network. No public IP, gateways, or encryption is required in the communication between the virtual networks.
+  - allow remote communication between peering VNETs with VPN Gateway.
+  - **Transitivity**: must be explicit. Only VNETs that are directly peered can communicate with each other. e.g. A,B,C VNET. Peer A->B and B->C. A->C does not automatically work without explicit peering A->C.
+  - can peer if different Microsoft Tenants, subscriptions... To peer, administrator must have the **_Network Contributor_** role on their virtual network.
+  - **Regional and Global Peering**
     - **Regional**: VNETs in same region.
     - **Global**: VNETS in different regions. Any Azure cloud region, China cloud region, but not Government Region.
     - ![peering global](img/peering_global.PNG)
+  - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
+  - **Extend Peering**
+    - Hub and Spoke: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
+      - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
+    - User-defined routes(UDR): manually define route to VPN Gateway.
+    - Service Chaining: direct traffic from VNET to VPN Gateway. UDR defines peered networks.
+  - **PowerShell and CLI Peering**
+    - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
+    - Azure portal automatically creates both.
 - **Point-to-Site (P2S)**
   - VPN tunnel from individual computer. no public IP address. Connects to 'VPN Gateway' on the Azure side.
 - **Private Link**
   - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
+  - ![private link](img/private_link.PNG)
+  - ![private link](img/private_link2.PNG)
 - **Service Endpoints**
-  - **service endpoint**: open internet access to **all** instances in subnet.
-  - **private endpoint**: open internet access to **specific** instance(VM).
+  - **service endpoint**: allow **all** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - **private endpoint**: **single** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - ![service endpoint](img/service_endpoint.PNG)
 - **Site-to-site VPNs (S2S)**
   - use IPSEC to provide a secure connection between your **corporate VPN Gateway** and **Azure**.
-- **Subnets and Screened Subnets (DMZ)**
+- **Subnets and Screened Subnets (DMZ) and IP Addresses**
   - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
+  - default **all subnets** in VNET **can communicate** with each other.
   - subnet must be specified by using **CIDR** notation.
-  - each subnet, the **first four addresses** and the **last address** are **reserved**.
-  - all VPN network subnet traffic can communicate by default.
+    - each subnet, the **first four addresses** and the **last address** are **reserved**.
+    - smallest supported subnet: **/29** subnet mask(8 IP addresses), largest supported subnet: **/2** subnet mask(1,073,741,824 IP addresses).
   - segmenting networks allows custom firewall rules for each subnet.
   - **maximum one security group per subnet**.
   - **Screened Subnet (DMZ)**
     - security group applied to a subnet acts as buffer between resource and internet.
     - restrict traffic flow.
+  - **Azure IP Addresses Schema**
+    - **private IP**: internal communication only. on-prem communication, use VPN Gateway or ExpressRoute.
+    - **public IP**: communicate with resources over the public internet.
+      - **basic**: (static/dynamic) assigned. inbound traffic.
+      - **standard**: static only. NSG default rules. add routing rules
+    - **static IP**: does not change. best for DNS records, TLS certs, Firewall rules based on IP range.
+    - **dynamic IP**: changes as needed. typically change when VM/service is stopped and restarted.
+    - **Schema**
+      - IP Address range with on-prem can't overlap cloud. e.g. on-prem: 192.168.0.0/16(65,536) and cloud 192.168.10.0/24(256). // on-prem includes the 192.168.10.0 network.
+    - **Public IP Prefix**: Azure **region specific** range of **contiguous** static IP addresses. **prefix size** is the number of IP addresses.
+    - **Private IP Addresses**: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
+      - `.1, .2, .3 and last`, IP addresses aren't visible or configurable. Reserved for Load Balancers, Application Gateway, VM NICs.
+- **System Routes**
+  - Azure uses **_system routes_** to direct traffic between VMs, on-prem and internet.
+  - uses **_route table_**(rules of how to get to destination) to store system routes.
+  - **Route Table**
+    - can have many subnets, each subnet only one route table.
 - **Traffic Manager Profile**
 - **Virtual Network Gateway**
 - **Virtual WAN**
