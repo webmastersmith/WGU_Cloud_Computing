@@ -122,7 +122,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **template**
   - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
 
-## Configure user and group accounts (Entra ID)
+## User Identity and Group Accounts with Entra ID
 
 - **user account**
   - anyone who wants to access an Azure resource, must have an Azure user account.
@@ -542,11 +542,12 @@ Remove-MgUser
     - e.g. (US government and US government contractors).
   - **Availability Zones**
     - group of datacenters within a region networked w/ low-latency network, each with redundant power, network, cooling.
-    - redundancy with datacenter failure.
+    - redundancy with **datacenter failure**.
   - **Azure Datacenters**
     - physical buildings w/ servers. redundant network, power, cooling.
   - **Availability Set**
     - Group of identical VMs spread across physical servers, compute racks, storage units, network switches, to prevent single point of failure.
+    - protection from **hardware failure** within datacenter.
     - VMs in **different fault domains** that perform identical functionalities.
     - VMs should have the same software installed.
   - **Fault Domain**
@@ -703,15 +704,29 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - allows redirects, HTTP header rewrite.
   - ![application gateway](img/application_gateway.PNG)
   - ![application gateway](img/application_gateway2.PNG)
-  - **Azure Local Network Gateway**: the on-prem VPN device to connect to Azure VPN.
 - **Application Security Group**
   - grouping VMs based on application(function). e.g. web server and database.
   - layer 3 and 4(IP and port).
+- **Azure DNS**
+  - acts as the SOA for domain name. manage and host your **registered** domain.
+  - after creating **Azure DNS zone**, go to your DNS registrar, point DNS server to Azure DNS zone.
+    - `nslookup -type=SOA example.com`
+    - **DNS**: Domain Name Server. maps domain name with IP.
+    - **SOA**: start of authority. master record for domain.
+    - **A**: maps domain to IPv4.
+    - **AAAA** map domain to IPv6.
+    - **CNAME**: Canonical Name. alias pointing to domain.
+    - **MX**: mail exchange. email server IP.
+    - **TXT**: text record. associate text strings with domain. e.g. DKIM...
+  - **private DNS zone**: not visible on internet. only available to your local network. assign name to VNET IP.
+  - **Apex Domain**: highest level domain. sometimes called _zone apex_ or _root apex_. `example.com` // `.com` is Top Level Domain (TLD).
+    - designated by `@`
 - **ExpressRoute**
   - connect private on-prem connection with Azure VNET. Dedicated line from connectivity provider. traffic does not traverse public internet. higher security.
 - **Load Balancer**
   - high availability. scale. **inbound** or **outbound traffic**. **public** or **internal** facing.
-  - internal load balancer must be in same VNET as VMs.
+  - **internal** load balancer must be in same VNET as VMs and **do not** have a **public IP**.
+  - can use **availability sets**(hardware failure) and **availability zones**(datacenter failure) to ensure that virtual machines are always available.
   - **Types**:
     - **Basic**: original, superseded by standard.
     - **Standard**: up to 1,000 pools.
@@ -720,7 +735,9 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - **Front-end IP configuration**: ip load balancer assigned.
     - **Back-end pools**: resources (VNET and IP) waiting for traffic.
     - **Health probes**: checks backend resources health.
-    - **Load-balancing rules**: how to distribute the requests to the back-end. default NAT table (traffic distribution type): **five-tuple hash**(source IP address, source port, destination IP address, destination port, and protocol type).
+    - **Load-balancing rules**: how to distribute the requests to the back-end.
+    - **Distribution Mode**: default (NAT table traffic distribution type) **five-tuple hash**(source IP address, source port, destination IP address, destination port, and protocol type(TCP, UDP)).
+    - **Source IP Affinity**: source IP -> destination IP. when using Remote Desktop Gateway(RDP) for windows or media upload, you cannot use five-tuple hash. you must use source IP affinity as your distribution mode.
       - **Session Persistence**: group same client request or send to any VM listening.
 - **Network Interface Card (NIC)**
   - vNIC. layer 2.
@@ -757,16 +774,34 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - Hub and Spoke: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
       - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
     - User-defined routes(UDR): manually define route to VPN Gateway.
-    - Service Chaining: direct traffic from VNET to VPN Gateway. UDR defines peered networks.
+    - **Service Chaining**: with UDR, direct traffic from VNET to VPN Gateway. VNETs must be peered.
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
     - Azure portal automatically creates both.
+- **Network Virtual Appliance (NVA)**
+  - software virtual machine with the same functionality. e.g. **Cisco Firewall** can be used as a gateway to public internet.
+  - from providers in **Azure Marketplace**.
 - **Point-to-Site (P2S)**
   - VPN tunnel from individual computer. no public IP address. Connects to 'VPN Gateway' on the Azure side.
 - **Private Link**
   - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
   - ![private link](img/private_link2.PNG)
+- **Routes**
+  - custom routes direct traffic flow within VNET. all routes are stored in the **_route table_**.
+  - **Service Tags**: can be used as a route address in a user-defined route(UDR).
+  - **Border Gateway Protocol (BGP)**: routing protocol for on-prem to Azure VNET. can create site-to-site connection.
+  - **Specificity**: most direct match wins. e.g. 10.0.0.6 with route 10.0.0.0/16 and 10.0.0.0/24. the 10.0.0.0/24 is more specific and will be chosen.
+    - **Order of specificity**: user-defined, BGP route, system route.
+  - **System Routes**:
+    - Azure uses **_system routes_** to direct traffic between VMs, on-prem and internet. system routes enable communication between any VM and any other VM in VNET.
+    - uses **_route table_**(rules of how to get to destination) to store system routes.
+    - You **can't create or delete system routes**, but you can **override** the system routes by adding custom routes to control traffic flow to the **next hop**.
+    - Every **subnet** has the following **default system routes**:
+      - **Virtual Network**: address prefix. range inside VNET.
+      - **Internet**: default route to internet.
+      - **None**: drops traffic.
+      - ![subnet default route](img/subnet_default_route.PNG)
 - **Service Endpoints**
   - **service endpoint**: allow **all** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
   - **private endpoint**: **single** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
@@ -796,13 +831,13 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - **Public IP Prefix**: Azure **region specific** range of **contiguous** static IP addresses. **prefix size** is the number of IP addresses.
     - **Private IP Addresses**: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
       - `.1, .2, .3 and last`, IP addresses aren't visible or configurable. Reserved for Load Balancers, Application Gateway, VM NICs.
-- **System Routes**
-  - Azure uses **_system routes_** to direct traffic between VMs, on-prem and internet.
-  - uses **_route table_**(rules of how to get to destination) to store system routes.
   - **Route Table**
     - can have many subnets, each subnet only one route table.
 - **Traffic Manager Profile**
 - **Virtual Network Gateway**
+  - encrypt traffic from on-prem(physical device) to Azure VNET over the internet.
+  - **Virtual Network Gateway**: Azure Gateway Service.
+  - **Local Network Gateway**: the on-prem device.
 - **Virtual WAN**
 - **VNET**
   - VPN network. provide logical isolation and protection. IP range once chosen, cannot be changed.
@@ -814,3 +849,46 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - must have dedicated subnet for VPN Gateway.
   - VNET can only have **one** VPN Gateway.
   - ![vpn gateway](img/vpn_gateway.PNG)
+
+## Monitor and Backup
+
+- **Azure Backup**
+  - enterprise-class backup solution to protect all your workloads and manage them from a central place.
+  - complete data recovery, high security storage(encrypted at rest), protection against ransomware or malicious admins(soft delete, min 14 days).
+  - backs up data, machine state, and workloads, running on on-premises machines and VM instances to the Azure cloud.
+  - **Zone or Region**: customer choice. LRS(across fault domain), GRS(across geographies), ZRS(across datacenters, datacenter failure).
+  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**. - single vault or multiple vaults to organize and manage your backup. - **Backup center**: manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
+  - **Backup Types**
+    - **Planned**: known in advance.
+    - **Unplanned**: backup with custom retention.
+    - **On-Demand**: not scheduled.
+  - **Workload integration layer**: VM disk backup.
+  - **Data Plane -Access Tiers**: Azure Backup managed storage.
+    - **Snapshot tier**: fastest to restore. stored with **customer data, and in vault**. You do not have to wait for data to be copied from vault.
+    - **Standard tier**: stored in Microsoft managed vault. isolated copy.
+    - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
+  - **Data Plane -Availability and Security**: cross zone or region backups.
+  - **Management Plane -Recovery Vault**: interface to interact with backup service.
+- **When to Backup**
+  - Azure Backup **doesn’t** support **cross-region backup** for most workloads.
+  - **Types**
+    - **Workload recovery**: VM, Disk, SQL, SAP, HANA, Blobs...
+    - **Compliance**: customer defined retention.
+    - **Operational recovery**: key items to ensure against data loss.
+- **VM and On-Prem Computer Backup**
+  - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
+    - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
+  - **VMs (Windows and Linux)**: Azure Backup installs agent(extension) on VM. Backs up entire VM.
+  - **VM SQL Database**: **Stream Backup**. backup SQL database running on VM.
+    - **VM SQL Backup Types**
+      - **Full**: full recovery of all data.
+      - **Differential**: full backup, then only data that has changed.
+      - **Transaction Log**: SQL transactions log backup.
+- **Azure Backup Service**
+  - VM(linux or windows) backup using agent(extension) software. stores in vault.
+- **Azure Site Recovery**
+  - backup specific apps to another region. natural disaster recovery.
+- **Azure Managed Disk Snapshot**
+  - VM disk backup. read-only full copy of disk. can be used to create template. billed for data backed up, not disk size.
+- **Azure Managed Disk Image**
+  - single image from all VM data disk including the OS disk. can be used to create template.
