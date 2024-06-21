@@ -921,4 +921,26 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
 ## Azure Monitor
 
 - **Azure Monitor**
-  - collects, analyzes, and responds to **telemetry data** from both **on-prem**() and **cloud** environments.
+  - **collects, analyzes**, and **responds** to **telemetry data** from both **on-prem**() and **cloud** environments.
+  - charts to visualize metrics. view health and availability.
+  - query and analyze logs.
+  - alerts and actions: critical conditions notify you.
+  - **Data Stores**
+    - hold metrics and logs. **Azure Monitor Metrics** and **Azure Monitor Logs** are the two base types of data used by the service.
+  - ![azure monitor](img/azure_monitor.PNG)
+- **Analyze**
+  - analytics from your logs.
+- **Insights**
+  - analysis, alerting, and streaming to external systems.
+- **Integrate**
+  - export log query **results**. build workflows to retrieve and copy logs to external location.
+- **Metrics and Logs**
+  - All data collected by Azure Monitor fits into one of two fundamental types, **metrics** and **logs**.
+  - **Metrics**
+    - numerical values that describe some aspect of a system at a particular point in time.
+  - **Logs**
+    - contain different kinds of data organized into **records** with different sets of **properties** for each type. // similar to key:value of an object.
+- **Respond**
+  - log alerts.
+- **Visualize**
+  - viewing and interpreting metrics and logs.
