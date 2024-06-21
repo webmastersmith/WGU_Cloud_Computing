@@ -925,11 +925,16 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - charts to visualize metrics. view health and availability.
   - query and analyze logs.
   - alerts and actions: critical conditions notify you.
+  - **Extend functionality**: adding **Azure Monitor Agent** to compute resources. Collects data on VM internal operations.
   - **Data Stores**
     - hold metrics and logs. **Azure Monitor Metrics** and **Azure Monitor Logs** are the two base types of data used by the service.
   - ![azure monitor](img/azure_monitor.PNG)
+- **Activity Log**
+  - who, what, when, where. subscription level events.
 - **Analyze**
   - analytics from your logs.
+  - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
+  - uses a version of the **Data Explorer** query language. The language is suitable for simple log queries, but also includes advanced functionality like **aggregations**, **joins**, and **smart analytics**.
 - **Insights**
   - analysis, alerting, and streaming to external systems.
 - **Integrate**
@@ -938,9 +943,23 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - All data collected by Azure Monitor fits into one of two fundamental types, **metrics** and **logs**.
   - **Metrics**
     - numerical values that describe some aspect of a system at a particular point in time.
+    - Azure Monitor displays collected metrics on the **Overview** page.
+    - resources performance data and amounts consumed, stored as metric.
   - **Logs**
-    - contain different kinds of data organized into **records** with different sets of **properties** for each type. // similar to key:value of an object.
+    - contain different kinds of data organized into **records** with different sets of **properties** for each type.
+    - begins collecting data as soon as you create your Azure subscription and add resources.
+    - create or modify resources, stored in Azure Monitor activity logs.
+    - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
+    - **Data Collector API**: collect logs from any **REST API**.
+    - **Azure Monitor Analyze**: query language for logs.
 - **Respond**
   - log alerts.
+- **Tiers**
+  - Tiers of monitoring data collect by Azure Monitor:
+  - **Application**: performance and functionality of application code.
+  - **Guest OS**: collects OS logs. VM, on-prem or another cloud.
+  - **Azure Resource**: resource consumption by VMs, Services.
+  - **Azure Subscription**: operation and management of Azure subscription. health of Azure itself.
+  - **Azure Tenant**: tenant level services data. e.g. Entra ID
 - **Visualize**
   - viewing and interpreting metrics and logs.
