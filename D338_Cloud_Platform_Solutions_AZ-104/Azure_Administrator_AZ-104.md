@@ -850,14 +850,17 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - VNET can only have **one** VPN Gateway.
   - ![vpn gateway](img/vpn_gateway.PNG)
 
-## Monitor and Backup
+## Azure Backup
 
 - **Azure Backup**
   - enterprise-class backup solution to protect all your workloads and manage them from a central place.
   - complete data recovery, high security storage(encrypted at rest), protection against ransomware or malicious admins(soft delete, min 14 days).
-  - backs up data, machine state, and workloads, running on on-premises machines and VM instances to the Azure cloud.
+  - **create scheduled backups**: data, machine state, and workloads, running on on-premises machines and VM instances to the Azure cloud.
+  - VM(linux or windows) backup using agent(extension) software. stores in vault.
+  - ![vm backup](img/vm_backup.PNG)
   - **Zone or Region**: customer choice. LRS(across fault domain), GRS(across geographies), ZRS(across datacenters, datacenter failure).
-  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**. - single vault or multiple vaults to organize and manage your backup. - **Backup center**: manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
+  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**.
+  - single vault or multiple vaults to organize and manage your backup.
   - **Backup Types**
     - **Planned**: known in advance.
     - **Unplanned**: backup with custom retention.
@@ -869,26 +872,53 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
   - **Data Plane -Availability and Security**: cross zone or region backups.
   - **Management Plane -Recovery Vault**: interface to interact with backup service.
+- **Backup center**
+  - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
+- **Azure Recovery Services vault**
+  - storage entity in Azure that houses data(VM, SQL...).
+  - cannot be deleted until all soft-deleted items are removed.
+- **Azure Site Recovery**
+  - backup complete footprint(business continuity by replicating workloads) to another region. natural disaster recovery.
+  - Azure VM and on-prem computers can be replicated.
+  - ![site recovery](img/site-recovery.PNG)
+- **VM SQL Database**
+  - when running VM with SQL database, Azure backup does a **Stream Backup**.
+  - **VM SQL Backup Types**
+    - **Full**: full recovery of all data.
+    - **Differential**: full backup, then only data that has changed.
+    - **Transaction Log**: SQL transactions log backup.
+- **Soft Delete**
+  - default 14 day retention after deletion.
+  - no backup jobs can be running.
+  - **UnDelete**
+    - unDelete backup data before you can restore it.
+- **VM and On-Prem Computer Backup**
+  - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
+    - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
+  - **VMs (Windows and Linux)**: Azure Backup installs agent(extension) on VM. Backs up entire VM.
+  - **Azure Managed Disk Snapshot**
+    - VM single disk backup. read-only full copy of single disk. can be used to create template. billed for data backed up, not disk size.
+    - stored as **page blobs**(Azure Disk) in vault.
+    - default retention is **two days** before moving snapshot to Recovery Service Vault.
+    - **recovery point** is available only after both phases(snapshot and transfer to vault) have completed. you can still restore your VM from snapshot before transfer phase.
+    - ![vm backup](img/vm_backup.PNG)
+  - **Azure Managed Disk Image**
+    - single image from **all** VM data disk including the OS disk. can be used to create template.
+    - stores in vault.
+    - ![vm backup](img/vm_backup.PNG)
 - **When to Backup**
   - Azure Backup **doesn’t** support **cross-region backup** for most workloads.
   - **Types**
     - **Workload recovery**: VM, Disk, SQL, SAP, HANA, Blobs...
     - **Compliance**: customer defined retention.
     - **Operational recovery**: key items to ensure against data loss.
-- **VM and On-Prem Computer Backup**
-  - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
-    - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
-  - **VMs (Windows and Linux)**: Azure Backup installs agent(extension) on VM. Backs up entire VM.
-  - **VM SQL Database**: **Stream Backup**. backup SQL database running on VM.
-    - **VM SQL Backup Types**
-      - **Full**: full recovery of all data.
-      - **Differential**: full backup, then only data that has changed.
-      - **Transaction Log**: SQL transactions log backup.
-- **Azure Backup Service**
-  - VM(linux or windows) backup using agent(extension) software. stores in vault.
-- **Azure Site Recovery**
-  - backup specific apps to another region. natural disaster recovery.
-- **Azure Managed Disk Snapshot**
-  - VM disk backup. read-only full copy of disk. can be used to create template. billed for data backed up, not disk size.
-- **Azure Managed Disk Image**
-  - single image from all VM data disk including the OS disk. can be used to create template.
+  - **Steps**
+    - create Recovery Service vault. created within your **subscription**.
+      - choose replication: GRS(default) or LRS.
+    - define your backup policy options. when and how long to retain.
+    - back up your VM. on-prem backup must have agent must be installed on VM.
+
+## Azure Monitor
+
+- **Azure Monitor**
+  - collects, analyzes, and responds to **telemetry data** from both **on-prem**() and **cloud** environments.
