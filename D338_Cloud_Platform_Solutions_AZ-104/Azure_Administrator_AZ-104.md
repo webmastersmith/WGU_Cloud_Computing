@@ -930,11 +930,18 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - hold metrics and logs. **Azure Monitor Metrics** and **Azure Monitor Logs** are the two base types of data used by the service.
   - ![azure monitor](img/azure_monitor.PNG)
 - **Activity Log**
-  - who, what, when, where. subscription level events.
+  - who, what, when, where. subscription level events. any write operation (PUT, POST, DELETE) performed on resources in your subscription.
+  - kept for **90 days**.
+  - What operations happened on resources in my subscription?
+  - Who initiated the operations?
+  - When did the operations occur?
+  - What's the current status of the operations?
+  - What are the values of other properties that can help with my analysis of the resources and operations?
 - **Analyze**
-  - analytics from your logs.
+  - **analytics** from your logs.
   - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
   - uses a version of the **Data Explorer** query language. The language is suitable for simple log queries, but also includes advanced functionality like **aggregations**, **joins**, and **smart analytics**.
+  - supports the **Kusto Query Language (KQL)**.
 - **Insights**
   - analysis, alerting, and streaming to external systems.
 - **Integrate**
