@@ -949,6 +949,7 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - output can be saved and viewed in the Azure Portal or exported to Power BI, Excel, Log Analytics.
     - schedule jobs to run automatically.
     - set thresholds for alerts.
+    - `StormEvent | count` # returns number. each operator is separated with pipe command `|`.
     - ![kusto query language](img/log_analytic_queries.PNG)
 - **Insights**
   - analysis, alerting, and streaming to external systems.
@@ -962,11 +963,17 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - resources performance data and amounts consumed, stored as metric.
   - **Logs**
     - contain different kinds of data organized into **records** with different sets of **properties** for each type.
+    - logs are **stored as tables**.
     - begins collecting data as soon as you create your Azure subscription and add resources.
     - create or modify resources, stored in Azure Monitor activity logs.
     - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
     - **Data Collector API**: collect logs from any **REST API**.
     - **Azure Monitor Analyze**: query language for logs.
+- **Network Watcher**
+  - monitor, diagnose, and manage resources in an Azure virtual network.
+  - **IP Flow Verify**:
+  - **Next Hop**:
+  - **Network Topology**:
 - **Respond**
   - log alerts.
 - **Tiers**
