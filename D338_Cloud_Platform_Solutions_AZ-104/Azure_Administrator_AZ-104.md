@@ -941,7 +941,15 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - **analytics** from your logs.
   - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
   - uses a version of the **Data Explorer** query language. The language is suitable for simple log queries, but also includes advanced functionality like **aggregations**, **joins**, and **smart analytics**.
-  - supports the **Kusto Query Language (KQL)**.
+  - **Log Analytics Workspace**
+    - captured logs and data is stored in a **Log Analytics workspace**. the workspace becomes the basic management environment for Azure Monitor Logs.
+    - each workspace has a unique workspace ID and resource ID.
+    - workspace **name** must be **unique** within your **resource group**.
+  - **Kusto Query Language (KQL)**: query log files.
+    - output can be saved and viewed in the Azure Portal or exported to Power BI, Excel, Log Analytics.
+    - schedule jobs to run automatically.
+    - set thresholds for alerts.
+    - ![kusto query language](img/log_analytic_queries.PNG)
 - **Insights**
   - analysis, alerting, and streaming to external systems.
 - **Integrate**
