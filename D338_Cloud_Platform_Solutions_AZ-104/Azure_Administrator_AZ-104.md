@@ -923,9 +923,12 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
 - **Azure Monitor**
   - **collects, analyzes**, and **responds** to **telemetry data** from both **on-prem**() and **cloud** environments.
   - charts to visualize metrics. view health and availability.
+  - gather monitoring and diagnostic information about the health of your services. You can use this information to visualize and analyze the causes of problems that might occur in your app.
   - query and analyze logs.
   - alerts and actions: critical conditions notify you.
   - **Extend functionality**: adding **Azure Monitor Agent** to compute resources. Collects data on VM internal operations.
+  - **Enable Diagnostics**: Azure SQL database will send full information to Azure Monitor when you **enable diagnostic logging**.
+  - Azure Monitor has two main monitoring features: **Azure Monitor Metrics** and **Azure Monitor Logs**.
   - **Data Stores**
     - hold metrics and logs. **Azure Monitor Metrics** and **Azure Monitor Logs** are the two base types of data used by the service.
   - ![azure monitor](img/azure_monitor.PNG)
@@ -941,9 +944,9 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - you configure alerts on key resources and who will get them.
   - data can be a **_metric_** or **_log_** or both.
   - **Metric**: numeric threshold is reached. ideally suited to monitoring for threshold breaches or spotting trends.
-  - **Activity Logs**: when resource changes state.
+  - **Activity Logs**: when resource changes state(when specific changes occur on a resource within your Azure subscription).
   - **Logs**: based on what is written to log file.
-    - they are stateless(alert even when already alerted on same rule).
+    - they are stateless(alert even when already alerted on same rule if event happens again).
     - monitoring of historical data.
     - e.g. web server returns 404 or 500.
   - **Composition of an Alert**
@@ -970,10 +973,11 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - **Aggregate function**: count the average.
     - **Group Field**: group results and alert only if pattern found.
   - **Alert Events**
-    - contact someone or create IT Service Management(ITSM) support ticket.
-    -
+    - **Specific Operation**: alert event contacts someone or creates an IT Service Management(ITSM) support ticket.
+    - **Service Health Event**: notice of incidents or maintenance. You no longer need to select a resource, because alert is for whole region. you opt in to what alerts you want to receive.
+  - **Action Groups**: what and how alert is sent. can be reused.
   - ![alerts](img/alerts.PNG)
-- **Analyze**
+- **Analyze (Log Analytics)**
   - **analytics** from your logs.
   - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
   - uses a version of the **Data Explorer** query language. The language is suitable for simple log queries, but also includes advanced functionality like **aggregations**, **joins**, and **smart analytics**.
@@ -985,6 +989,7 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - output can be saved and viewed in the Azure Portal or exported to Power BI, Excel, Log Analytics.
     - schedule jobs to run automatically.
     - set thresholds for alerts.
+    - Kusto is case-sensitive.
     - `StormEvent | count` # returns number. each operator is separated with pipe command `|`.
     - ![kusto query language](img/log_analytic_queries.PNG)
 - **Insights**
@@ -994,11 +999,12 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
 - **Metrics and Logs**
   - All data collected by Azure Monitor fits into one of two fundamental types, **metrics** and **logs**.
   - **Metrics**
-    - numerical values that describe some aspect of a system at a particular point in time.
+    - numerical values that describe some aspect of a system at a particular point in time. can capture metrics in near-real time.
+    - Metrics are stored in a **time-series database**.
     - Azure Monitor displays collected metrics on the **Overview** page.
     - resources performance data and amounts consumed, stored as metric.
   - **Logs**
-    - contain different kinds of data organized into **records** with different sets of **properties** for each type.
+    - contain time-stamped data about resources, organized into **records** with different sets of **properties** for each type.
     - logs are **stored as tables**.
     - begins collecting data as soon as you create your Azure subscription and add resources.
     - create or modify resources, stored in Azure Monitor activity logs.
@@ -1032,3 +1038,14 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - **Azure Tenant**: tenant level services data. e.g. Entra ID
 - **Visualize**
   - viewing and interpreting metrics and logs.
+- **VM Monitoring**
+  - to proactively prevent and quickly respond to any access, security, and performance issues, you need to monitor your VMs' traffic, health, performance, and events.
+  - basic metrics are
+  - **Metrics** can measure VM performance, resource utilization, error counts, user responses, or any other aspect of the system that you can quantify numerically.
+    - default kept for 93 days.
+  - **Logs** are records of system events that contain a timestamp and different types of structured or free-form data.
+  - **Extend functionality**: adding **Azure Monitor Agent** to compute resources. Collects data on VM internal operations. on-prem or cloud VMs.
+    - stores log data in a **Log Analytics workspace** for querying and analysis.
+  - **Host Monitoring**
+    - VM host represents compute, storage, and network.
+  - ![vm monitoring](img/VM_monitoring.PNG)
