@@ -937,6 +937,42 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - When did the operations occur?
   - What's the current status of the operations?
   - What are the values of other properties that can help with my analysis of the resources and operations?
+- **Alerts**
+  - you configure alerts on key resources and who will get them.
+  - data can be a **_metric_** or **_log_** or both.
+  - **Metric**: numeric threshold is reached. ideally suited to monitoring for threshold breaches or spotting trends.
+  - **Activity Logs**: when resource changes state.
+  - **Logs**: based on what is written to log file.
+    - they are stateless(alert even when already alerted on same rule).
+    - monitoring of historical data.
+    - e.g. web server returns 404 or 500.
+  - **Composition of an Alert**
+    - **Resource**: the resource being monitored.
+    - **Condition**: numeric(metric) or log file.
+    - **Actions**: how and who gets alerted.
+      - **severity**: 0(critical), 1(error), 2(warning), 3(informational), 4(verbose).
+  - **dimensions**: can monitor multiple target instances at a time. use `*` as wildcard.
+    - **scale**: when new resources are created, they would be included as well.
+  - **Metric Alert Settings**
+    - static or dynamic:
+      - static: static is fixed value to measure against. e.g. 85% cpu usage.
+      - dynamic: dynamic no fixed value. need three values:
+        - metric: number you want to test.
+        - look-back period: how many periods need evaluating.
+        - number of violations: how many times there can be violation before alert.
+    - how often to run. e.g. every two minutes.
+    - data to be assessed. e.g. last 10 minutes.
+  - **Log Alert Settings**
+    - **Query**: query that runs every time alert rule fires.
+    - **Time Period**: time range for query.
+    - **Frequency**: how often should rule should run.
+    - **Threshold**: when alert should notify someone.
+    - **Aggregate function**: count the average.
+    - **Group Field**: group results and alert only if pattern found.
+  - **Alert Events**
+    - contact someone or create IT Service Management(ITSM) support ticket.
+    -
+  - ![alerts](img/alerts.PNG)
 - **Analyze**
   - **analytics** from your logs.
   - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
@@ -971,6 +1007,17 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - **Azure Monitor Analyze**: query language for logs.
 - **Network Watcher**
   - monitor, diagnose, and manage resources in an Azure virtual network.
+  - reports that someone cannot access resources, network watcher helps you quickly identify(pin point root cause) the cause.
+  - **IP flow verification**: check connectivity to internet.
+    - checks security and admin rules for packet routing to an Azure virtual machine. sends different packets to check connectivity.
+    - If test packet is denied, returns NSG rule that blocked packet.
+    - failed test and no issue reported by IP flow, firewall could be issue.
+  - **Next Hop Analysis**: helps verify network configuration. find broken routes.
+    - is traffic delivered to intended destination?
+    - returns next hop: type, ip, route table.
+  - **Network Topology**: visual diagram of resource routes.
+  - must be Owner, Contributor, or Network Contributor to use Network Watcher.
+  - remote monitoring, alert notification, NSG flow and log analysis.
   - **IP Flow Verify**:
   - **Next Hop**:
   - **Network Topology**:
