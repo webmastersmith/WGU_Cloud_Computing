@@ -27,6 +27,8 @@
   - <https://www.brainscape.com/subjects/az-104>
 - **Notes**
   - <https://github.com/mischavandenburg/az-104-azure-administrator> // includes Anki cards.
+  - <https://github.com/oliverbebber/AZ-104-Study-Notes/tree/main>
+  - <https://gist.github.com/robsteriam/5cab2b6d4f759c12cb5a85d7d807050d>
 - **Book**
   - <https://lrps.wgu.edu/provision/277282392> // must be signed in.
 - **Course Chatter**
@@ -392,7 +394,7 @@ Remove-MgUser
   - **Creating New Storage Account**:
     - Name: globally unique. letter and number only.
     - Performance: Standard | Premium(better I/O SSD). // [a-z0-9]{3,24} cannot be changed later.
-    - Account Kind: General-Purpose V2|V1(classic), BlockBlobStorage, FileStorage, and BlobStorage
+    - Account Kind: General-Purpose V2|(classic V1, BlockBlobStorage, FileStorage, and BlobStorage).
     - Replication Option: LRS, ZRS, GRS...
     - Access Tier: Hot, Cool, Cold, Archive // only V2.
   - ![storage account](img/storage_account.PNG)
@@ -438,6 +440,7 @@ Remove-MgUser
   - ![storage endpoint](img/storage_endpoint.PNG)
 - **File Share**
   - **File Share**: managed file shares in the cloud that are accessible via industry standard protocols(**SMB, NFS**).
+    - to access **Azure File Share** through **SAS** URI, you must use the **REST API**.
     - stores data as **true directory objects**, so can be **mounted like SMB(tcp port 445) or NFS**.
     - multiple (VMs, on-prem computers(windows, macOS, linux), roles, services...) can access(mount) an Azure file share simultaneously, from anywhere in the world(REST interface).
     - embraces **lift and shift**(take the workload as-is and run it on cloud-native resources).
@@ -510,6 +513,10 @@ Remove-MgUser
   - each storage account has two keys(switch primary key without down time.).
   - **access keys** allow full access(CRUD) to all services within storage account.
   - store in **Azure key vault** for safety.
+  - **Connection String**
+    - classic way to manage(full access) storage data using Shared Key authorization(Storage Access key).
+    - Use Microsoft Entra ID or SAS URI with Security Policy instead.
+    - **connection string is retrievable by opening the storage account blade in the Azure Portal and clicking Access Keys.**
 - **Azure Key Vault**
   - HSM(hardware security module)s safeguard keys.
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
@@ -567,13 +574,19 @@ Remove-MgUser
   - cooler tiers have **lower** storage, but **higher** access cost.
   - ![storage access tiers](img/storage_access_tier.PNG)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
-  - **AzCopy**: cmd line utility copy **blobs** or **files**.
-  - **Azure Storage Explorer**: GUI to manage blob/file.
+  - **AzCopy**: cmd line utility.
+    - **fault tolerant, large-scale bulk transfer of data**.
+    - **asynchronously** copy **blobs** or **files**.
+    - allows **incremental backup**.
+    - permissions: Azure login, service principal, SAS token, access key, managed identity...
+  - **Azure Storage Explorer**: GUI to manage all/multiple storage(blob, file, queue, tables, database, data lake) accounts.
   - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
   - **Azure Migrate**: hub of services and tools designed to help with data migration.
   - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
-  - **Azure Import/Export**: same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
+  - **Azure Import/Export**:
+    - same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
+    - first step to use tool, download **WAImportExport** program. **V1 for blob storage, V2 for File Shares**.
 - **Backup center**
   - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
 - **Azure Recovery Services vault**
