@@ -157,6 +157,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - Azure account can have multiple subscriptions.
     - a subscription can be linked to multiple Azure accounts.
   - ![subscription](img/subscription.PNG)
+  - ![az scope](img/az-scopes-billing.png)
 - **regions**
   - one or more data centers networked together.
   - preserve data residency(keep data inside the region).
