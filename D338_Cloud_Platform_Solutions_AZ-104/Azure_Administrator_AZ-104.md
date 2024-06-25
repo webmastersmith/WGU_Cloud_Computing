@@ -198,6 +198,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
   - enforce compliance rules with management groups.
   - ![management group](img/management_group.PNG)
+  - ![az scope](img/az-scopes-billing.png)
 - **Policy and Policy Definition**
   - **Policy**
     - create, assign, and manage policies to control or audit your resources.
