@@ -260,6 +260,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
     - controls access at a higher level than RBAC.
   - ![rbac entra roles](img/rbac_entra_roles.PNG)
+  - ![az scope](img/az-scopes-billing.png)
 - **Entra and RBAC solve what Identity and Access concern of the Cloud**
   - when employees leave, lose access to resources in cloud.
   - being able to centrally control network communication, while allowing employee autonomy(create/manage VMs).
