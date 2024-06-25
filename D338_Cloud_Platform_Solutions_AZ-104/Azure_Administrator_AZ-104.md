@@ -487,9 +487,9 @@ Remove-MgUser
 ## Storage Security
 
 - **Storage Access Levels**
-  - **Private**: default. visible only to owner.
-  - **Blob**: public read access only.
-  - **Container**: public read and list(get inventory of entire container).
+  - **Private**: default. private IP address. visible only to owner.
+  - **Blob**: public IP address with read access only.
+  - **Container**: public IP address with read and list(get inventory of entire container).
 - **Storage Security**
   - **disk encryption**: Azure Disk Encryption. all data written encrypted by default(Azure storage encryption, 256 bit AES). decrypted automatically. transparent to users. cannot be disabled.
   - **data in transit**: Azure Client-Side Encryption, HTTPS, SMB 3.0.
