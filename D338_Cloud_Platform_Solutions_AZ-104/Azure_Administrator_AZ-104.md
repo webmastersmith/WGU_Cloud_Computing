@@ -176,10 +176,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - a subscription can be linked to multiple Azure accounts.
   - ![subscription](img/subscription.PNG)
   - ![az scope](img/az-scopes-billing.png)
-- **regions**
-  - one or more data centers networked together.
-  - preserve data residency(keep data inside the region).
-  - offer compliance and resiliency depending on customer needs.
 - **subscription types**
   - **Free Trial**: 30 day free.
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
@@ -553,7 +549,8 @@ Remove-MgUser
 - **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
   - **Geography**: groups of regions in each continent.
     - Americas, Europe, Asia Pacific, Middle East and Africa.
-  - **Regions**: two or more datacenters connected w/ low-latency communications. For redundancy.
+  - **Regions**: one or more datacenters connected w/ low-latency communications. For redundancy.
+    - preserve data residency(keep data inside the region) for compliance and resiliency depending on customer needs.
   - **Region Pairs**: two regions in same geography **300+ miles apart** linked for disaster recovery.
   - **Sovereign Regions**: separation for compliance or legal purpose. physical and logical isolation.
     - e.g. (US government and US government contractors).
