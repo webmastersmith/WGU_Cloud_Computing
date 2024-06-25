@@ -381,9 +381,18 @@ Remove-MgUser
 
 ## Azure Storage
 
-- **Azure Storage**
+- **Azure Storage Account**
   - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
   - All storage is encrypted at rest with SSE(storage service encryption).
+  - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
+  - policy applied to container, apply to all storage services in container.
+  - Database(SQL, Cosmos...) cannot be inside storage account.
+  - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
+  - New Storage Account:
+    - Name: globally unique. letter and number only.
+    - Account Kind: **Standard StorageV2**
+    - Deployment Model: **Resource Manager**
+  - ![storage account](img/storage_account.PNG)
 - **Azure storage services: blob, disk, file, table, queue**
   - **blob (Binary Large OBject)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
   - **disk**: **block-level** storage for persistent VM data. stored as **page-blobs** in blob storage.
@@ -487,17 +496,27 @@ Remove-MgUser
 ## Storage Security
 
 - **Storage Access Levels**
-  - **Private**: default. private IP address. visible only to owner.
-  - **Blob**: public IP address with read access only.
-  - **Container**: public IP address with read and list(get inventory of entire container).
+  - a storage account is organized by containers and blobs. These can have **ACL**s(access control levels).
+  - a storage account can include an **unlimited number of containers**, and a container can store an **unlimited number of blobs**.
+  - **Private**: default. private URI. visible only to owner.
+  - **Blob**: public URI. Blob data within this container can be read via anonymous request, but container data isn't available.
+  - **Container**: public URI. Container and all blob data can be read via anonymous request.
 - **Storage Security**
   - **disk encryption**: Azure Disk Encryption. all data written encrypted by default(Azure storage encryption, 256 bit AES). decrypted automatically. transparent to users. cannot be disabled.
   - **data in transit**: Azure Client-Side Encryption, HTTPS, SMB 3.0.
-  - **shared access signatures(SAS)**: data object permissions(set time period) given access by SAS.
+  - **Public Access**: when **_AllowBlobPublicAccess_** is set to true and container public access is set.
+  - **Shared Access Signature (SAS)**: URI with read or read/write permissions that expire.
   - **shared key**: key produces encrypted signature. passed in Authorization header.
   - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
   - **authorization**: RBAC. you have access rights to resource.
-- ***
+  - **Entra ID**: enables access to authorized person.
+  - **Best Practices**
+    - set permissions to minimum and time to minimum.
+    - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
+- **Stored Access Policy**
+  - can be applied to a container and every service in container.
+  - Set rules: start time, expiry time, permissions.
+  - reference policy when you create SAS.
 - **Shared Access Signature**
   - uniform resource identifier(URI): grants restricted access rights(set time period) to Azure Storage resources.
     - e.g. `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
@@ -520,31 +539,6 @@ Remove-MgUser
 - **Private Link**
   - data shared between services along microsoft backbone instead public internet.
   - ![private link](img/private_link.PNG)
-
-## Storage Policy
-
-- **Storage Account**
-  - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
-  - policy applied to container, apply to all storage services in container.
-  - Database(SQL, Cosmos...) cannot be inside storage account.
-  - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
-  - New Storage Account:
-    - Name: globally unique. letter and number only.
-    - Account Kind: **Standard StorageV2**
-    - Deployment Model: **Resource Manager**
-  - ![storage account](img/storage_account.PNG)
-- **Storage Account Security**
-  - **Public Access**: when **_AllowBlobPublicAccess_** is set to true and container public access is set.
-  - **Entra ID**: enables access to authorized person.
-  - **Shared Key**: passed in the authorization header.
-  - **Shared Access Signature (SAS)**: URI with read or read/write permissions that expire.
-  - **Best Practices**
-    - set permissions to minimum and time to minimum.
-    - use HTTPS. **User Delegation** to create SAS, because key does not have to be embedded in the URL.
-- **Stored Access Policy**
-  - can be applied to a container and every service in container.
-  - Set rules: start time, expiry time, permissions.
-  - reference policy when you create SAS.
 
 ## Azure Backup
 
