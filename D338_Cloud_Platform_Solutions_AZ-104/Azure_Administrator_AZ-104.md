@@ -130,29 +130,35 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **template**
   - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
 
-## User Identity and Group Accounts with Entra ID
+## Azure Management Groups and Policies
 
-- **user account**
-  - anyone who wants to access an Azure resource, must have an Azure user account.
-  - **Entra ID cloud identity user accounts can be added through**:
-    - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
-- **Entra ID three types of user accounts**
-  - **Cloud**: **cloud identity** accounts.
-    - Cloud identities have profile information such as job title and office location.
-  - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
-  - **Guest**: outside of Azure. e.g. external vendor or contractor need access to your Azure resources.
-- **who can create/delete users**
-  - only global admins can create/delete users.
-- **Security/Microsoft 365 group accounts**
-  - two types of group accounts:
-    - **Security groups**: manage users and computer/app access through security policy.
-      - set permissions for all group members at same time.
-      - managed only by **Microsoft Entra Administrator**.
-    - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
-      - allow access to normal users and guest accounts.
-- **administrative units**
-  - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
-  - ![administrative units](img/administrative_units.PNG)
+- **Management Groups**
+  - level of scope and control(manage access, policy and compliance) across **subscriptions**.
+  - use management groups to target policies and spending budgets across **subscriptions**.
+  - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
+  - enforce compliance rules with management groups.
+  - ![management group](img/management_group.PNG)
+  - ![az scope](img/az-scopes-billing.png)
+- **Policy and Policy Definition**
+  - **Policy**
+    - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments.
+    - Policy is a default allow mechanism with an explicit deny system.
+    - create, assign, and manage policies to control or audit your resources.
+    - enforce rules and ensure compliance with corporate standards and service level agreements.
+    - **enforcement and compliance, scaling, and remediation**.
+  - **Policy Definition**
+    - **JSON format**. Express condition to evaluate and actions to perform when condition is met.
+    - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
+  - individual resources, resource groups, subscriptions can be exempted from policy.
+    - e.g. cannot deploy VM if it has an exposed public IP address.
+- **Initiative Definition**
+  - A **group of related policies** joined logically to accomplish a common goal is called an **Azure initiative**.
+  - help you track one or more policy definition compliance state.
+  - scope can be limited to certain groups.
+  - e.g. similar to lego blocks, logically combine multiple policies and apply them as one.
+- **Policy Compliance**
+  - see what percentage of your infrastructure is compliant with policy.
+  - determine the compliance state of your resources and evaluate whether they're compliant.
 
 ## Azure Subscriptions and Cost Management
 
@@ -192,35 +198,29 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Budgets**: manage cost, prevent overspending.
   - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
 
-## Azure Management Groups and Policies
+## User Identity and Group Accounts with Entra ID
 
-- **Management Groups**
-  - level of scope and control(manage access, policy and compliance) across **subscriptions**.
-  - use management groups to target policies and spending budgets across **subscriptions**.
-  - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
-  - enforce compliance rules with management groups.
-  - ![management group](img/management_group.PNG)
-  - ![az scope](img/az-scopes-billing.png)
-- **Policy and Policy Definition**
-  - **Policy**
-    - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments.
-    - Policy is a default allow mechanism with an explicit deny system.
-    - create, assign, and manage policies to control or audit your resources.
-    - enforce rules and ensure compliance with corporate standards and service level agreements.
-    - **enforcement and compliance, scaling, and remediation**.
-  - **Policy Definition**
-    - **JSON format**. Express condition to evaluate and actions to perform when condition is met.
-    - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
-  - individual resources, resource groups, subscriptions can be exempted from policy.
-    - e.g. cannot deploy VM if it has an exposed public IP address.
-- **Initiative Definition**
-  - A **group of related policies** joined logically to accomplish a common goal is called an **Azure initiative**.
-  - help you track one or more policy definition compliance state.
-  - scope can be limited to certain groups.
-  - e.g. similar to lego blocks, logically combine multiple policies and apply them as one.
-- **Policy Compliance**
-  - see what percentage of your infrastructure is compliant with policy.
-  - determine the compliance state of your resources and evaluate whether they're compliant.
+- **user account**
+  - anyone who wants to access an Azure resource, must have an Azure user account.
+  - **Entra ID cloud identity user accounts can be added through**:
+    - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
+- **Entra ID three types of user accounts**
+  - **Cloud**: **cloud identity** accounts.
+    - Cloud identities have profile information such as job title and office location.
+  - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
+  - **Guest**: outside of Azure. e.g. external vendor or contractor need access to your Azure resources.
+- **who can create/delete users**
+  - only global admins can create/delete users.
+- **Security/Microsoft 365 group accounts**
+  - two types of group accounts:
+    - **Security groups**: manage users and computer/app access through security policy.
+      - set permissions for all group members at same time.
+      - managed only by **Microsoft Entra Administrator**.
+    - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
+      - allow access to normal users and guest accounts.
+- **administrative units**
+  - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
+  - ![administrative units](img/administrative_units.PNG)
 
 ## Azure RBAC (Role Based Access Control) and Entra Roles
 
