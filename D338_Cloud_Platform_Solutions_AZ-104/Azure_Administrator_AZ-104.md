@@ -241,27 +241,30 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
 - **Role Definition**
   - JSON list of allowed permissions. least privilege.
-  - **Owner** built-in role has the **highest level of access privilege** in Azure.
-  - e.g. **reader, contributor, owner, user access administrator**.
+  - **Built-In Roles**
+    - **owner** built-in role has the **highest level of access privilege** in Azure.
+    - **user access administrator**: manage(create/delete) user access to resource.
+    - **contributor**: manage(create/modify/delete) resource. Cannot grant access to others.
+    - **reader**: view resource.
   - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
   - **JSON**
     - **Actions**: permissions identify what actions are allowed.
-    - **NotActions**: permissions specify what actions aren't allowed.
+    - **NotActions**: permissions specify what actions **aren't** allowed.
     - **DataActions**: permissions indicate how data can be changed or used.
     - **AssignableScopes**: permissions list the scopes where a role definition can be assigned
     - ![role definition](img/role_definition.PNG)
     - ![role definition2](img/role_definition2.PNG)
+    - ![az scope](img/az-scopes-billing.png)
 - **scope**
-  - how many resources access is granted.
+  - how many resources(assignable scope) security principal is granted access.
   - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
 - **Role Assignment**
   - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
   - purpose of a role assignment is to control access.
   - Role Assignment parts:
     - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
-    - **Role Definition**: **what**. JSON list of allowed permissions(built in: Owner, Contributor, Reader...).
-    - **Scope**: **where**. how many resources granted access.
-      - management group -> subscription -> resource group -> resource. Permissions in sub levels are inherited.
+    - **Role Definition**: **what**. JSON list of **effective permissions**(built in: owner, contributor, reader, user access administrator).
+    - **Scope**: **where**. how many resources security principal is granted access(management group -> subscription -> resource group -> resource). **Permissions in sub-levels are inherited**.
     - ![RBAC scope](img/rbac_scope.PNG)
     - ![Role definition](img/role_definition2.PNG)
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
