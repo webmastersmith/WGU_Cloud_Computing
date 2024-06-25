@@ -77,6 +77,7 @@
 - **resource**
   - a resource in Azure is a **single service instance**(VM, VNET, Storage, any Azure Service...).
   - can only **belong** to **one resource group**.
+  - does **not** have to belong to a resource group(can belong to tenant, management group, subscription...).
 - **Resource Limits**
   - track usage against limits and plan for future needs.
   - limits shown are for you **subscription**.
@@ -84,16 +85,18 @@
   - ![resource limits](img/resource_limits.PNG)
 - **resource group**
   - container that holds related resources(logical collection).
+  - you can **delete** a resource group with the **Azure Portal, Azure PowerShell, the Azure CLI**, or the **REST API**.
   - **Rules**
     - **each resource can only exist in one resource group**.
     - resource groups **cannot** be **nested**.
     - resource group **cannot** be **renamed**.
     - can have many different type(services) and **regions**.
+    - you can move resources to other resource groups. when **moving resources** from one group to another, you **can't add, update, or delete resources** in the resource groups until the move completes(the underlying **service** will continue to function).
+      - the resource group you move resource into must have enough resource quota. e.g. move VM and vCPU quota is at max limit.
     - all resources share the same lifecycle. e.g. you deploy, update, delete them together.
-    - a resource can interact with resources in other resource groups.
+    - a resource **can interact** with resources in other resource groups.
     - **RBAC(role based access control)** can be **assigned** to resource groups.
     - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group.
-    - when **moving resources** from one group to another, you **can't add, update, or delete resources** in the resource groups until the move completes. The 'services' will still be available.
   - ![az scope](img/az-scopes-billing.png)
 
 ```powershell
@@ -101,7 +104,7 @@
 Remove-AzResourceGroup -Name "YourResourceGroupName"
 ```
 
-- **Resource Manager**
+- **Azure Resource Manager (ARM)**
   - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
   - **Benefits**
     - reusable templates allow easy deployment.
@@ -165,6 +168,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **Subscriptions**
   - manage cost for organizations. help you organize access to Azure cloud service resources, and help you control how resource usage is reported, billed, and paid.
   - Azure Subscription is a logical unit of Azure services that's linked to an Azure account(Microsoft Entra **tenant**).
+  - **Classic Subscription Roles**: Account Administrator, Service Administrator, or Co-Administrator. It is recommended to use Azure **RBAC** roles for more granular control.
+    - there can be only **one** account or service administrator per subscription.
   - **Rules**
     - all Azure cloud services will belong to a subscription. billing is done per subscription.
     - Azure account can have multiple subscriptions.
@@ -176,7 +181,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - preserve data residency(keep data inside the region).
   - offer compliance and resiliency depending on customer needs.
 - **subscription types**
-  - **Free**: 30 day free.
+  - **Free Trial**: 30 day free.
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
   - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
   - **Student**: monetary credit that can be used within the first 12 months.
@@ -237,8 +242,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **Role Definition**
   - JSON list of allowed permissions. least privilege.
   - **Owner** built-in role has the **highest level of access privilege** in Azure.
-  - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
   - e.g. **reader, contributor, owner, user access administrator**.
+  - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
   - **JSON**
     - **Actions**: permissions identify what actions are allowed.
     - **NotActions**: permissions specify what actions aren't allowed.
