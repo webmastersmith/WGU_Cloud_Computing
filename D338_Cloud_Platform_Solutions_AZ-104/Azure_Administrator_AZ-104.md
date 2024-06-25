@@ -99,6 +99,7 @@
     - **RBAC(role based access control)** can be **assigned** to resource groups.
     - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group.
     - when **moving resources** from one group to another, you **can't add, update, or delete resources** in the resource groups until the move completes. The 'services' will still be available.
+  - ![az scope](img/az-scopes-billing.png)
 
 ```powershell
 # remove resource group.
@@ -120,6 +121,12 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - service that supplies resources you can deploy and manage through the 'Resource Manager'.
   - e.g. Microsoft.Compute, Microsoft.Storage, Microsoft.KeyVault, Microsoft.Web...
   - resource type is in the format: `{resource-provider}/{resource-type}`. For example, the key vault type is `Microsoft.KeyVault/vaults`.
+- **Resource Tagging**
+  - tags(**done at the resource level**) allow sorting, searching, managing and analysis.
+  - tags do **not** have inheritance(**tags are not inherited from resource group**).
+  - user must have **_write_** access(**Contributor** role or higher).
+  - name:value
+  - max 50 labels per resource/resource group.
 - **template**
   - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
 
@@ -177,11 +184,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - Recommendations: learn how to optimize and improve efficiency of idle or underutilized resources.
   - Analysis: explore where the money is going and spending trends.
   - export: data can be set to automatically export csv daily.
-- **Resource Tagging**
-  - tags allow sorting, searching, managing and analysis.
-  - name:value
-  - max 50 labels per resource/resource group.
-  - tags are not inherited from resource group.
 - **Cost Savings**
   - **Reservations**: pay ahead. 1-3 years. VM, Database,
   - **Azure Hybrid**: use your **_Software Assurance_** on-prem licenses(Windows Server, SQL Server...).
@@ -190,7 +192,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Budgets**: manage cost, prevent overspending.
   - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
 
-## Azure Policy and Management Groups
+## Azure Management Groups and Policies
 
 - **Management Groups**
   - level of scope and control(manage access, policy and compliance) across **subscriptions**.
@@ -201,11 +203,13 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - ![az scope](img/az-scopes-billing.png)
 - **Policy and Policy Definition**
   - **Policy**
+    - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments.
+    - Policy is a default allow mechanism with an explicit deny system.
     - create, assign, and manage policies to control or audit your resources.
     - enforce rules and ensure compliance with corporate standards and service level agreements.
     - **enforcement and compliance, scaling, and remediation**.
   - **Policy Definition**
-    - JSON format. Express condition to evaluate and actions to perform when condition is met.
+    - **JSON format**. Express condition to evaluate and actions to perform when condition is met.
     - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
   - individual resources, resource groups, subscriptions can be exempted from policy.
     - e.g. cannot deploy VM if it has an exposed public IP address.
