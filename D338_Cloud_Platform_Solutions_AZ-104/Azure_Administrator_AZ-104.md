@@ -72,21 +72,16 @@
     - no multiple region storage.
     - no multiple sessions.
 
-## Azure Resource Manager
+## Azure Resources, Resource Groups and Resource Manager
 
-- **Azure Resource Manager**
-  - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
-  - **Benefits**
-    - reusable templates allow easy deployment.
-    - handle resources as a group instead of individually.
-    - tag resources.
-  - ![resource management](img/resource_management.PNG)
-- **declarative syntax**
-  - declarative programming. **what you want, not how to do it**.
-  - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
 - **resource**
   - a resource in Azure is a **single service instance**(VM, VNET, Storage, any Azure Service...).
   - can only **belong** to **one resource group**.
+- **Resource Limits**
+  - track usage against limits and plan for future needs.
+  - limits shown are for you **subscription**.
+  - all resources have 'maximum' limits threshold that you can't increase.
+  - ![resource limits](img/resource_limits.PNG)
 - **resource group**
   - container that holds related resources(logical collection).
   - **Rules**
@@ -106,18 +101,23 @@
 Remove-AzResourceGroup -Name "YourResourceGroupName"
 ```
 
-- **resource limits**
-  - track usage against limits and plan for future needs.
-  - limits shown are for you **subscription**.
-  - all resources have 'maximum' limits threshold that you can't increase.
-  - ![resource limits](img/resource_limits.PNG)
+- **Resource Manager**
+  - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
+  - **Benefits**
+    - reusable templates allow easy deployment.
+    - handle resources as a group instead of individually.
+    - tag resources.
+  - ![resource management](img/resource_management.PNG)
+- **declarative syntax**
+  - declarative programming. **what you want, not how to do it**.
+  - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
 - **Resource Manager locks**
   - prevent accidental deletion of resources, even if you have delete permissions.
   - only the **Owner** and **User Access Administrator** roles can create or delete management locks.
   - child resources inherit **Locks**.
   - **Read-Only Lock**: prevent change.
   - **Delete Lock**: prevent deletion.
-- **resource provider**
+- **Resource Provider**
   - service that supplies resources you can deploy and manage through the 'Resource Manager'.
   - e.g. Microsoft.Compute, Microsoft.Storage, Microsoft.KeyVault, Microsoft.Web...
   - resource type is in the format: `{resource-provider}/{resource-type}`. For example, the key vault type is `Microsoft.KeyVault/vaults`.
