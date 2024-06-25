@@ -181,16 +181,18 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
   - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
   - **Student**: monetary credit that can be used within the first 12 months.
+- **Subscription Cost Management**
+  - **Resource Quotas**: limits on the amount of resources available. e.g. number of cores available for virtual machines is limited to 20 per region.
 - **Cost Management**
   - you pay only for what you use. Shows the usage-based costs consumed by Azure services and third-party Marketplace offerings.
   - Predictive analytics are available.
   - Azure management groups, budgets, and recommendations to show how your expenses are organized and how to reduce cost.
   - Cost data can be exported.
-- **Cost Budgets, Recommendations, analysis**
-  - Budget: set limits to prevent overspending.
-  - Recommendations: learn how to optimize and improve efficiency of idle or underutilized resources.
-  - Analysis: explore where the money is going and spending trends.
-  - export: data can be set to automatically export csv daily.
+- **Cost Budgets, Recommendations, Analysis**
+  - **Budget**: set limits to prevent overspending. must have **_reader_** access to view.
+  - **Recommendations**: learn how to optimize and improve efficiency of idle or underutilized resources.
+  - **Analysis**: explore where the money is going and spending trends.
+  - **export**: data can be set to automatically export csv daily.
 - **Cost Savings**
   - **Reservations**: pay ahead. 1-3 years. VM, Database,
   - **Azure Hybrid**: use your **_Software Assurance_** on-prem licenses(Windows Server, SQL Server...).
@@ -383,9 +385,9 @@ Remove-MgUser
   - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
   - All storage is encrypted at rest with SSE(storage service encryption).
 - **Azure storage services: blob, disk, file, table, queue**
-  - **blob (Binary Large Object)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
-  - **disk**: **block-level** storage for persistent VM data. They are 'page-blobs' in blob storage.
-  - **file**: mimics a SMB or NFS **file server**. file sharing access and management. Ensures data is **encrypted** at rest and in transit.
+  - **blob (Binary Large OBject)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
+  - **disk**: **block-level** storage for persistent VM data. stored as **page-blobs** in blob storage.
+  - **file**: mimics a SMB or NFS **file server**. file sharing access and management. by default, data is **encrypted** at rest and in transit.
   - **table**: **structured NoSQL** _nonrelational_ data. e.g. key:value like mongodb.
   - **queue**: **messages** accessible from anywhere through HTTPS calls.
 - **Describe storage backup tiers**
@@ -543,6 +545,74 @@ Remove-MgUser
   - can be applied to a container and every service in container.
   - Set rules: start time, expiry time, permissions.
   - reference policy when you create SAS.
+
+## Azure Backup
+
+- **Azure Backup**
+  - enterprise-class backup solution to protect all your workloads and manage them from a central place.
+  - complete data recovery, high security storage(encrypted at rest), protection against ransomware or malicious admins(soft delete, min 14 days).
+  - **create scheduled backups**: data, machine state, and workloads, running on on-premises machines and VM instances to the Azure cloud.
+  - VM(linux or windows) backup using agent(extension) software. stores in vault.
+  - ![vm backup](img/vm_backup.PNG)
+  - **Zone or Region**: customer choice. LRS(across fault domain), GRS(across geographies), ZRS(across datacenters, datacenter failure).
+  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**.
+  - single vault or multiple vaults to organize and manage your backup.
+  - **Backup Types**
+    - **Planned**: known in advance.
+    - **Unplanned**: backup with custom retention.
+    - **On-Demand**: not scheduled.
+  - **Workload integration layer**: VM disk backup.
+  - **Data Plane -Access Tiers**: Azure Backup managed storage.
+    - **Snapshot tier**: fastest to restore. stored with **customer data, and in vault**. You do not have to wait for data to be copied from vault.
+    - **Standard tier**: stored in Microsoft managed vault. isolated copy.
+    - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
+  - **Data Plane -Availability and Security**: cross zone or region backups.
+  - **Management Plane -Recovery Vault**: interface to interact with backup service.
+- **Backup center**
+  - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
+- **Azure Recovery Services vault**
+  - storage entity in Azure that houses data(VM, SQL...).
+  - cannot be deleted until all soft-deleted items are removed.
+- **Azure Site Recovery**
+  - backup complete footprint(business continuity by replicating workloads) to another region. natural disaster recovery.
+  - Azure VM and on-prem computers can be replicated.
+  - ![site recovery](img/site-recovery.PNG)
+- **VM SQL Database**
+  - when running VM with SQL database, Azure backup does a **Stream Backup**.
+  - **VM SQL Backup Types**
+    - **Full**: full recovery of all data.
+    - **Differential**: full backup, then only data that has changed.
+    - **Transaction Log**: SQL transactions log backup.
+- **Soft Delete**
+  - default 14 day retention after deletion.
+  - no backup jobs can be running.
+  - **UnDelete**
+    - unDelete backup data before you can restore it.
+- **VM and On-Prem Computer Backup**
+  - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
+    - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
+  - **VMs (Windows and Linux)**: Azure Backup installs agent(extension) on VM. Backs up entire VM.
+  - **Azure Managed Disk Snapshot**
+    - VM single disk backup. read-only full copy of single disk. can be used to create template. billed for data backed up, not disk size.
+    - stored as **page blobs**(Azure Disk) in vault.
+    - default retention is **two days** before moving snapshot to Recovery Service Vault.
+    - **recovery point** is available only after both phases(snapshot and transfer to vault) have completed. you can still restore your VM from snapshot before transfer phase.
+    - ![vm backup](img/vm_backup.PNG)
+  - **Azure Managed Disk Image**
+    - single image from **all** VM data disk including the OS disk. can be used to create template.
+    - stores in vault.
+    - ![vm backup](img/vm_backup.PNG)
+- **When to Backup**
+  - Azure Backup **doesn’t** support **cross-region backup** for most workloads.
+  - **Types**
+    - **Workload recovery**: VM, Disk, SQL, SAP, HANA, Blobs...
+    - **Compliance**: customer defined retention.
+    - **Operational recovery**: key items to ensure against data loss.
+  - **Steps**
+    - create Recovery Service vault. created within your **subscription**.
+      - choose replication: GRS(default) or LRS.
+    - define your backup policy options. when and how long to retain.
+    - back up your VM. on-prem backup must have agent must be installed on VM.
 
 ## Azure Region, VMs
 
@@ -863,74 +933,6 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - must have dedicated subnet for VPN Gateway.
   - VNET can only have **one** VPN Gateway.
   - ![vpn gateway](img/vpn_gateway.PNG)
-
-## Azure Backup
-
-- **Azure Backup**
-  - enterprise-class backup solution to protect all your workloads and manage them from a central place.
-  - complete data recovery, high security storage(encrypted at rest), protection against ransomware or malicious admins(soft delete, min 14 days).
-  - **create scheduled backups**: data, machine state, and workloads, running on on-premises machines and VM instances to the Azure cloud.
-  - VM(linux or windows) backup using agent(extension) software. stores in vault.
-  - ![vm backup](img/vm_backup.PNG)
-  - **Zone or Region**: customer choice. LRS(across fault domain), GRS(across geographies), ZRS(across datacenters, datacenter failure).
-  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**.
-  - single vault or multiple vaults to organize and manage your backup.
-  - **Backup Types**
-    - **Planned**: known in advance.
-    - **Unplanned**: backup with custom retention.
-    - **On-Demand**: not scheduled.
-  - **Workload integration layer**: VM disk backup.
-  - **Data Plane -Access Tiers**: Azure Backup managed storage.
-    - **Snapshot tier**: fastest to restore. stored with **customer data, and in vault**. You do not have to wait for data to be copied from vault.
-    - **Standard tier**: stored in Microsoft managed vault. isolated copy.
-    - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
-  - **Data Plane -Availability and Security**: cross zone or region backups.
-  - **Management Plane -Recovery Vault**: interface to interact with backup service.
-- **Backup center**
-  - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
-- **Azure Recovery Services vault**
-  - storage entity in Azure that houses data(VM, SQL...).
-  - cannot be deleted until all soft-deleted items are removed.
-- **Azure Site Recovery**
-  - backup complete footprint(business continuity by replicating workloads) to another region. natural disaster recovery.
-  - Azure VM and on-prem computers can be replicated.
-  - ![site recovery](img/site-recovery.PNG)
-- **VM SQL Database**
-  - when running VM with SQL database, Azure backup does a **Stream Backup**.
-  - **VM SQL Backup Types**
-    - **Full**: full recovery of all data.
-    - **Differential**: full backup, then only data that has changed.
-    - **Transaction Log**: SQL transactions log backup.
-- **Soft Delete**
-  - default 14 day retention after deletion.
-  - no backup jobs can be running.
-  - **UnDelete**
-    - unDelete backup data before you can restore it.
-- **VM and On-Prem Computer Backup**
-  - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
-    - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
-  - **VMs (Windows and Linux)**: Azure Backup installs agent(extension) on VM. Backs up entire VM.
-  - **Azure Managed Disk Snapshot**
-    - VM single disk backup. read-only full copy of single disk. can be used to create template. billed for data backed up, not disk size.
-    - stored as **page blobs**(Azure Disk) in vault.
-    - default retention is **two days** before moving snapshot to Recovery Service Vault.
-    - **recovery point** is available only after both phases(snapshot and transfer to vault) have completed. you can still restore your VM from snapshot before transfer phase.
-    - ![vm backup](img/vm_backup.PNG)
-  - **Azure Managed Disk Image**
-    - single image from **all** VM data disk including the OS disk. can be used to create template.
-    - stores in vault.
-    - ![vm backup](img/vm_backup.PNG)
-- **When to Backup**
-  - Azure Backup **doesn’t** support **cross-region backup** for most workloads.
-  - **Types**
-    - **Workload recovery**: VM, Disk, SQL, SAP, HANA, Blobs...
-    - **Compliance**: customer defined retention.
-    - **Operational recovery**: key items to ensure against data loss.
-  - **Steps**
-    - create Recovery Service vault. created within your **subscription**.
-      - choose replication: GRS(default) or LRS.
-    - define your backup policy options. when and how long to retain.
-    - back up your VM. on-prem backup must have agent must be installed on VM.
 
 ## Azure Monitor
 
