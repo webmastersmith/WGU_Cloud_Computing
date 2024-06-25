@@ -510,9 +510,6 @@ Remove-MgUser
   - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
   - **authorization**: RBAC. you have access rights to resource.
   - **Entra ID**: enables access to authorized person.
-  - **Best Practices**
-    - set permissions to minimum and time to minimum.
-    - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
 - **Stored Access Policy**
   - can be applied to a container and every service in container.
   - Set rules: start time, expiry time, permissions.
@@ -527,7 +524,12 @@ Remove-MgUser
 - **Shared Keys**
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
     - stored in **Azure key vault** or URI.
+- **Private Link**
+  - data shared between services along microsoft backbone instead public internet.
+  - ![private link](img/private_link.PNG)
 - **Storage Security Best Practices**
+  - set permissions to minimum and time to minimum.
+  - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
   - **data**: encrypted at rest and in transit.
   - **WAF firewall**: Web Application Firewall. Layer 7 aware. Route and filter traffic(SQL injection, XSS...). block IP address. **Application Gateway** or **Front Door**.
   - **private link**: wrap data resource in VPN and share data between services along Azure backbone instead of public internet. shields DB from outside world.
@@ -536,9 +538,6 @@ Remove-MgUser
   - **Production**: use separate subscription for production environment. Development policies and Production policies can be controlled.
   - **Resources**: RBAC to allow users permissions on resources.
   - **Azure Security Center**: Azure service that informs you of your security state and what can be improved.
-- **Private Link**
-  - data shared between services along microsoft backbone instead public internet.
-  - ![private link](img/private_link.PNG)
 
 ## Azure Backup
 
