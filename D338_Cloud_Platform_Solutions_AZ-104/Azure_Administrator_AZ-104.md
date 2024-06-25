@@ -388,10 +388,12 @@ Remove-MgUser
   - policy applied to container, apply to all storage services in container.
   - Database(SQL, Cosmos...) cannot be inside storage account.
   - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
-  - New Storage Account:
+  - **Creating New Storage Account**:
     - Name: globally unique. letter and number only.
-    - Account Kind: **Standard StorageV2**
-    - Deployment Model: **Resource Manager**
+    - Performance: Standard | Premium(better I/O SSD). // [a-z0-9]{3,24} cannot be changed later.
+    - Account Kind: General-Purpose V2|V1(classic), BlockBlobStorage, FileStorage, and BlobStorage
+    - Replication Option: LRS, ZRS, GRS...
+    - Access Tier: Hot, Cool, Cold, Archive // only V2.
   - ![storage account](img/storage_account.PNG)
 - **Azure storage services: blob, disk, file, table, queue**
   - **blob (Binary Large OBject)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
@@ -399,15 +401,14 @@ Remove-MgUser
   - **file**: mimics a SMB or NFS **file server**. file sharing access and management. by default, data is **encrypted** at rest and in transit.
   - **table**: **structured NoSQL** _nonrelational_ data. e.g. key:value like mongodb.
   - **queue**: **messages** accessible from anywhere through HTTPS calls.
-- **Describe storage backup tiers**
-  - **hot**: online tier(immediate access), frequent access.
-  - **cool**: online tier(immediate access), infrequent access. 30 day storage.
-  - **cold**: online tier(immediate access), rarely accessed. 90 day storage.
-  - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
-  - ![storage access tiers](img/storage_access_tier.PNG)
 - **Blob Storage**
   - good for serving images(to browser), **streaming** video, distributed access, archive/recovery, disk(page blob).
-  - all blob storage must be in a container.
+  - **all blob storage must be in a container**.
+  - **Blob Uploads**
+    - blob any data type any size.
+    - **block blob**: default. block data storage. e.g. video, large text files, images, binary...
+    - **page blob**: 8TB max size. optimized read/write operations. e.g. VM disk.
+    - **append blob**: optimized for append data. e.g. logging.
   - ![blob storage](img/blob_storage.PNG)
   - ![blob vs file share](img/file_share_vs_blob.PNG)
 - **Blob Storage Lifecycle Management**
@@ -429,31 +430,6 @@ Remove-MgUser
   - snapshots **are not** replicated.
   - replication can only be between Hot, Cool, or Cold.
   - ![blob storage replication](img/blob_storage_replication.PNG)
-- **Blob Uploads**
-  - blob any data type any size.
-  - **block blob**: default. block data storage. e.g. video, large text files, images, binary...
-  - **page blob**: 8TB max size. optimized read/write operations. e.g. VM disk.
-  - **append blob**: optimized for append data. e.g. logging.
-- **Describe redundancy options**
-  - backup copies in local, zone, region.
-- **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
-  - **LRS**: locally redundant storage. three copies of data within same **datacenter**. hardware failure only.
-  - **ZRS**: zone redundant storage. copies data across three **availability zones** within a region.
-  - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region.
-  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
-  - **GZRS**: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
-  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
-  - ![storage reliability](img/storage_reliability.PNG)
-  - ![high availability](img/04-azure-global-infra.jpg)
-  - ![availability zones](img/Azure-Availability-zone-infographic.png)
-- **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
-  - **AzCopy**: cmd line utility copy **blobs** or **files**.
-  - **Azure Storage Explorer**: GUI to manage blob/file.
-  - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
-- **Describe migration options, including Azure Migrate and Azure Data Box**
-  - **Azure Migrate**: hub of services and tools designed to help with data migration.
-  - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
-  - **Azure Import/Export**: same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
 - **Storage Endpoint URL**
   - each object in storage is prefixed with `YOURNAME.SERVICE.core.windows.net/myStorageName/myblob`
   - names must be **globally** unique.
@@ -495,10 +471,12 @@ Remove-MgUser
 
 ## Storage Security
 
-- **Storage Access Levels**
-  - a storage account is organized by containers and blobs. These can have **ACL**s(access control levels).
+- **Blob Storage Access Levels**
+  - extra access controls only for blob storage.
+  - blob storage is organized by containers and blobs. These can have **ACL**s(access control levels).
   - a storage account can include an **unlimited number of containers**, and a container can store an **unlimited number of blobs**.
-  - **Private**: default. private URI. visible only to owner.
+  - access level can be changed through the Azure portal, Shell, or by using Azure Storage Explorer.
+  - **Private**: default. private URI. only to storage account owner can access blob or container.
   - **Blob**: public URI. Blob data within this container can be read via anonymous request, but container data isn't available.
   - **Container**: public URI. Container and all blob data can be read via anonymous request.
 - **Storage Security**
@@ -514,8 +492,11 @@ Remove-MgUser
   - can be applied to a container and every service in container.
   - Set rules: start time, expiry time, permissions.
   - reference policy when you create SAS.
+- **Private Link**
+  - data shared between services along microsoft backbone instead public internet.
+  - ![private link](img/private_link.PNG)
 - **Shared Access Signature**
-  - uniform resource identifier(URI): grants restricted access rights(set time period) to Azure Storage resources.
+  - uniform resource identifier(URI): grant access to a **specific resource**, for a **specified period of time**, and with a **specified set of permissions** to Azure Storage resources(containers, blobs, queues, tables...).
     - e.g. `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
   - purpose: give client who normally does not have access, a URI for a specified time period, to prevent account keys exposure.
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
@@ -524,9 +505,6 @@ Remove-MgUser
 - **Shared Keys**
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
     - stored in **Azure key vault** or URI.
-- **Private Link**
-  - data shared between services along microsoft backbone instead public internet.
-  - ![private link](img/private_link.PNG)
 - **Storage Security Best Practices**
   - set permissions to minimum and time to minimum.
   - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
@@ -561,6 +539,32 @@ Remove-MgUser
     - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
   - **Data Plane -Availability and Security**: cross zone or region backups.
   - **Management Plane -Recovery Vault**: interface to interact with backup service.
+- **Describe redundancy options**
+  - backup copies in local, zone, region.
+- **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
+  - **LRS**: locally redundant storage. three copies of data within **same datacenter**. protection from hardware failure(fault domain).
+  - **ZRS**: zone redundant storage. copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
+  - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region. copies data across regions. protection from disaster.
+  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
+  - **GZRS**: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
+  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+  - ![storage reliability](img/storage_reliability.PNG)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
+- **Backup Tiers**
+  - **hot**: online tier(immediate access), frequent access.
+  - **cool**: online tier(immediate access), infrequent access. 30 day storage.
+  - **cold**: online tier(immediate access), rarely accessed. 90 day storage.
+  - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
+  - ![storage access tiers](img/storage_access_tier.PNG)
+- **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
+  - **AzCopy**: cmd line utility copy **blobs** or **files**.
+  - **Azure Storage Explorer**: GUI to manage blob/file.
+  - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
+- **Describe migration options, including Azure Migrate and Azure Data Box**
+  - **Azure Migrate**: hub of services and tools designed to help with data migration.
+  - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
+  - **Azure Import/Export**: same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
 - **Backup center**
   - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
 - **Azure Recovery Services vault**
