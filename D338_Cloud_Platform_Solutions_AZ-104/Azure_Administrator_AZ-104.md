@@ -382,6 +382,7 @@ Remove-MgUser
 ## Azure Storage
 
 - **Azure Storage Account**
+  - <https://tutorialsdojo.com/azure-storage-overview/>
   - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
   - All storage is encrypted at rest with SSE(storage service encryption).
   - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
@@ -476,7 +477,7 @@ Remove-MgUser
   - blob storage is organized by containers and blobs. These can have **ACL**s(access control levels).
   - a storage account can include an **unlimited number of containers**, and a container can store an **unlimited number of blobs**.
   - access level can be changed through the Azure portal, Shell, or by using Azure Storage Explorer.
-  - **Private**: default. private URI. only to storage account owner can access blob or container.
+  - **Private**: default. private URI. only storage account owner can access blob or container.
   - **Blob**: public URI. Blob data within this container can be read via anonymous request, but container data isn't available.
   - **Container**: public URI. Container and all blob data can be read via anonymous request.
 - **Storage Security**
@@ -488,10 +489,6 @@ Remove-MgUser
   - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
   - **authorization**: RBAC. you have access rights to resource.
   - **Entra ID**: enables access to authorized person.
-- **Stored Access Policy**
-  - can be applied to a container and every service in container.
-  - Set rules: start time, expiry time, permissions.
-  - reference policy when you create SAS.
 - **Private Link**
   - data shared between services along microsoft backbone instead public internet.
   - ![private link](img/private_link.PNG)
@@ -502,9 +499,20 @@ Remove-MgUser
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
   - **account-level**: one or more services.
   - **service-level**: only one service.
-- **Shared Keys**
+- **Stored Access Policy**
+  - to revoke SAS, you have to delete the secret key or resource, creating a need to decouple permissions from the token itself.
+  - Stored Access Policy creates start/end times, access permissions independently from SAS token. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly.
+    - can be applied to a container and every service in container.
+    - Set rules: start time, expiry time, permissions.
+    - reference policy when you create SAS.
+    - revoke SAS token by deleting/renaming or modifying expiry time of policy.
+- **Storage Account Access Keys**
+  - each storage account has two keys(switch primary key without down time.).
+  - **access keys** allow full access(CRUD) to all services within storage account.
+  - store in **Azure key vault** for safety.
+- **Azure Key Vault**
+  - HSM(hardware security module)s safeguard keys.
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
-    - stored in **Azure key vault** or URI.
 - **Storage Security Best Practices**
   - set permissions to minimum and time to minimum.
   - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
@@ -542,11 +550,11 @@ Remove-MgUser
 - **Describe redundancy options**
   - backup copies in local, zone, region.
 - **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
-  - **LRS**: locally redundant storage. three copies of data within **same datacenter**. protection from hardware failure(fault domain).
-  - **ZRS**: zone redundant storage. copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
-  - **GRS**: geo-redundant storage. synchronous LRS, then asynchronous LRS to secondary region. copies data across regions. protection from disaster.
+  - **LRS**: locally redundant storage. three **synchronous** copies of data within **same datacenter**. protection from hardware failure(fault domain).
+  - **ZRS**: zone redundant storage. **synchronous** copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
+  - **GRS**: geo-redundant storage. LRS, then **asynchronous** LRS to secondary region hundreds of miles away. protection from disaster.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
-  - **GZRS**: geo-zone redundant storage. synchronously ZRS, then asynchronously ZRS to secondary region.
+  - **GZRS**: geo-zone redundant storage. ZRS, then **asynchronously** ZRS to secondary region.
   - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
   - ![storage reliability](img/storage_reliability.PNG)
   - ![high availability](img/04-azure-global-infra.jpg)
@@ -556,6 +564,7 @@ Remove-MgUser
   - **cool**: online tier(immediate access), infrequent access. 30 day storage.
   - **cold**: online tier(immediate access), rarely accessed. 90 day storage.
   - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
+  - cooler tiers have **lower** storage, but **higher** access cost.
   - ![storage access tiers](img/storage_access_tier.PNG)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - **AzCopy**: cmd line utility copy **blobs** or **files**.
