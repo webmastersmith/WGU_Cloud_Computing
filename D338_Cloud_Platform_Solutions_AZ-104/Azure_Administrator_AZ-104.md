@@ -85,7 +85,7 @@
   - declarative programming. **what you want, not how to do it**.
   - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
 - **resource**
-  - manageable item through Azure. VMs, web app, database...
+  - a resource in Azure is a **single service instance**(VM, VNET, Storage, any Azure Service...).
   - can only **belong** to **one resource group**.
 - **resource group**
   - container that holds related resources(logical collection).
