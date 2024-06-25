@@ -5,6 +5,7 @@
 - **Azure for Students Starter**: access to free tier items only. cannot access non-free services.
 - **Azure for Students**: $100 credit + free tier services. access to non-free services.
   - [Student portal pricing](https://www.microsoftazuresponsorships.com/Balance) // must be signed in.
+- **Complete_D338_Notes_UPDATE.docx**: put critical info in **red**. I also separated each line with blue and black lettering to make it **easier to read** and added links to outside resources that helped me.
 - **First Impressions**: the OA is focused on network infrastructure terminology and function. The AZ-104 certification test leans more toward building infrastructure with CLI & powershell,. While both are essential, it makes learning an already difficult test, more difficult.
 - **Tutorials, Advice**
   - <https://www.reddit.com/r/WGU/comments/18i1uv8/wgu_d338_its_super_easy/>
@@ -350,6 +351,7 @@ Remove-MgUser
     - A subscription can have multiple licenses.
     - Licenses can be assigned to individual user accounts.
     - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
+  - ![az scope](img/az-scopes-billing.png)
 - **Entra SSPW (self service password reset)**
   - user can reset their password.
   - user is considered 'registered' when they setup the required amount of password resets.
@@ -1001,11 +1003,13 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - **Metrics**
     - numerical values that describe some aspect of a system at a particular point in time. can capture metrics in near-real time.
     - Metrics are stored in a **time-series database**.
+    - **can store only numeric(metric) data**
     - Azure Monitor displays collected metrics on the **Overview** page.
     - resources performance data and amounts consumed, stored as metric.
   - **Logs**
     - contain time-stamped data about resources, organized into **records** with different sets of **properties** for each type.
     - logs are **stored as tables**.
+    - **can store both metric(numeric) and event log data**.
     - begins collecting data as soon as you create your Azure subscription and add resources.
     - create or modify resources, stored in Azure Monitor activity logs.
     - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
@@ -1027,8 +1031,6 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - **IP Flow Verify**:
   - **Next Hop**:
   - **Network Topology**:
-- **Respond**
-  - log alerts.
 - **Tiers**
   - Tiers of monitoring data collect by Azure Monitor:
   - **Application**: performance and functionality of application code.
@@ -1040,7 +1042,7 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - viewing and interpreting metrics and logs.
 - **VM Monitoring**
   - to proactively prevent and quickly respond to any access, security, and performance issues, you need to monitor your VMs' traffic, health, performance, and events.
-  - basic metrics are
+  - default basic metrics are collected from each VM and shown on the VMs **Overview** page.
   - **Metrics** can measure VM performance, resource utilization, error counts, user responses, or any other aspect of the system that you can quantify numerically.
     - default kept for 93 days.
   - **Logs** are records of system events that contain a timestamp and different types of structured or free-form data.
@@ -1048,4 +1050,11 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - stores log data in a **Log Analytics workspace** for querying and analysis.
   - **Host Monitoring**
     - VM host represents compute, storage, and network.
+  - **VM Alerts**: Recommended alert rules are a predefined set of alert rules based on commonly monitored host metrics.
+  - **Boot Diagnostics**: linux/windows. show boot console log output. stores data in a managed storage account.
+  - **Azure Monitor Agent**: program that collects **OS workloads**, guest OS... After install, you set up a **Data Collection Rule** (DCR).
+    - **DCR**: defines what to collect and where to send data.
+  - **VM Insights**: feature that installs **Azure Monitor Agent** and provides prebuilt **DCR** to help you get started monitoring **metrics**(usage and performance) on one or more VMs.
+  - **VM Event Logs**: create custom DCR. specify data you want to collect and where to send. If sent to **Log Analytics workspace**, data can be analyzed with the **Kusto Query Language**(KQL).
+  - **Data Collection Endpoint**: required with **Insights**. where to send data.
   - ![vm monitoring](img/VM_monitoring.PNG)
