@@ -437,12 +437,16 @@ Remove-MgUser
 - **VM NIC**
   - every VM has one or more vNIC(virtual network interface card).
   - JSON: "VMNicName": "MyVnic"
+  - **Options**: subnet and public IP address, network security group, ports, accelerated networking.
 - **VM Storage**
   - managed by Azure. You choose disk size.
   - storage is scalable. charged separately from compute.
   - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
     - temporary disk is not persistent.
   - **VHDs**: disk mapped to VM. page blobs.
+    - **Snapshot**: full copy of single disk.
+    - **Storage Blob**: select disk image.
+    - **None**: new empty VHD is created.
   - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
   - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
   - **unmanaged data disk**: manual scale to disk needs.
@@ -456,9 +460,14 @@ Remove-MgUser
 - **VM Scaling and Scale Sets**
   - **Vertical Scaling**: **scale up/down**. add more resources(compute, ram, HDD...).
   - **Horizontal Scaling**: **scale out(increase)/in**. add more VMs.
-  - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
+  - **VM Scale Sets (VMSS)**: manage set of **_identical VMs_**. True autoscaling.
     - automatically increases/decrease VM instances based on demand.
     - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
+    - **Zone Redundant Scale Set (ZRSS)**: deployed across availability zones.
+    - **Updates**:
+      - **Automatic**: random order updates.
+      - **Rolling**: batch updates.
+      - **Manual**: you update.
 - **VM ARM Templates**
   - **schema**: JSON.
     - **parameters**: values passed at runtime. pass value from parent to child ARM template.
@@ -474,6 +483,11 @@ Remove-MgUser
 - **VM Script Extensions**
   - Azure VM built-in extension for configuration management after deploy or when provisioning.
   - script must be accessible from URI(Azure Storage Account).
+- **VM Size**
+  - General-Purpose: balanced cpu-to-memory ratio.
+  - Compute Optimized: intensive workloads.
+  - Memory Optimized: high memory-to-cpu ratio.
+  - Storage Optimized: high disk throughput (I/O) for databases.
 
 ## Azure Storage
 
@@ -619,8 +633,9 @@ Remove-MgUser
     - Use Microsoft Entra ID or SAS URI with Security Policy instead.
     - **connection string is retrievable by opening the storage account blade in the Azure Portal and clicking Access Keys.**
 - **Azure Key Vault**
-  - HSM(hardware security module)s safeguard keys.
-  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...).
+  - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
+  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
+  - **Service-Managed Keys in Customer-Controlled Hardware**: your keys, your HSM, outside Microsoft control. **Host Your Own Key (HYOK)**.
 - **Storage Security Best Practices**
   - set permissions to minimum and time to minimum.
   - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
