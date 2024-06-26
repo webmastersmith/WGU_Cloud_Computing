@@ -456,24 +456,6 @@ Remove-MgUser
   - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
   - **unmanaged data disk**: manual scale to disk needs.
   - **managed data disk**: Azure scales disk to VM needs.
-- **VM Containers**
-  - package application and dependencies into an image. uses host OS and kernel. docker.
-  - **Azure Container Instances (ACI)**: create containers serverless.
-  - **Azure Kubernetes Service (AKS)**: container orchestration.
-    - cluster: all nodes managed by AKS.
-    - node: VM(computer) in cluster.
-    - control plane: node that orchestrates pods.
-    - pod: one or more containers working together. single IP address.
-    - **Storage**:
-      - if created together, lifecycle of storage(Disk or Files) is tied to pod lifecycle. **deleting pod deletes storage**.
-        - Azure Disk: single pod can access data.
-        - Azure Files: to **access data across multiple pods**. enables SMB access as well.
-      - persistent volumes: exist within cluster, but outside of pod. not tied to pod lifecycle.
-      - **Autoscaler**: **autoscale nodes and pods**.
-        - Horizontal Pod Autoscaler: add pods.
-        - Cluster Autoscaler: add nodes.
-      - **Kubenet**: manage AKS cluster from cmd line. pods cannot be accessed from network.
-      - **Container Networking Interface (CNI)**: manage AKS cluster from cmd line. advanced api. pods can be accessed from private network.
 - **VM Bastion**
   - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
 - **VM Maintenance Planning**
@@ -511,6 +493,40 @@ Remove-MgUser
   - Compute Optimized: intensive workloads.
   - Memory Optimized: high memory-to-cpu ratio.
   - Storage Optimized: high disk throughput (I/O) for databases.
+
+## Azure Containers
+
+- **VM Containers**
+  - package application and dependencies into an image. uses host OS and kernel. isolated containers(like docker) instances.
+  - **persistent storage**: **Azure Disk**, or **Azure files**(SMB) for multiple nodes to share.
+  - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
+  - **flexibility and speed**: **OS is shared(only run needed services)** and use less resources. sharing, testing, deployment easier.
+- **Azure Container Instance (ACI)**
+  - preferred way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM. **serverless**.
+  - **billed only for containers in use**.
+  - ![container instance](img/container-instance.PNG)
+- **Container Group**
+  - collection of containers that get scheduled on the same host machine. The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
+  - same as 'pod' in Kubernetes(multiple containers per pod).
+  - deploy through ARM(Azure Resource Manager) or YAML files.
+- **Azure Container Apps**
+  - serverless platform that **simplifies deployment**. maintain less infrastructure to run/manage containerized apps.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+- **Azure Kubernetes Service (AKS)**: container orchestration.
+  - cluster: all nodes managed by AKS.
+  - node: VM(computer) in cluster.
+  - control plane: node that orchestrates pods.
+  - pod: one or more containers working together. single IP address.
+  - **Storage**:
+    - if created together, lifecycle of storage(Disk or Files) is tied to pod lifecycle. **deleting pod deletes storage**.
+      - Azure Disk: single pod can access data.
+      - Azure Files: to **access data across multiple pods**. enables SMB access as well.
+    - persistent volumes: exist within cluster, but outside of pod. not tied to pod lifecycle.
+    - **Autoscaler**: **autoscale nodes and pods**.
+      - Horizontal Pod Autoscaler: add pods.
+      - Cluster Autoscaler: add nodes.
+    - **Kubenet**: manage AKS cluster from cmd line. pods cannot be accessed from network.
+    - **Container Networking Interface (CNI)**: manage AKS cluster from cmd line. advanced api. pods can be accessed from private network.
 
 ## Azure Storage
 
@@ -809,25 +825,6 @@ Remove-MgUser
   - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
   - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
   - ![application insights](img/application_insights.PNG)
-
-## Azure Containers
-
-- **Containers**
-  - isolated containers(like docker) instances.
-  - **persistent storage**: **Azure Disk**, or **Azure files**(SMB) for multiple nodes to share.
-  - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
-  - **flexibility and speed**: **OS is shared(only run needed services)** and use less resources. sharing, testing, deployment easier.
-- **Azure Container Instance (ACI)**
-  - preferred way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
-  - **billed only for containers in use**.
-  - ![container instance](img/container-instance.PNG)
-- **Container Group**
-  - collection of containers that get scheduled on the same host machine. The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
-  - same as 'pod' in Kubernetes(multiple containers per pod).
-  - deploy through ARM(Azure Resource Manager) or YAML files.
-- **Azure Container Apps**
-  - serverless platform that **simplifies deployment**. maintain less infrastructure to run/manage containerized apps.
-  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
 
 ## Azure Powershell and CLI
 
