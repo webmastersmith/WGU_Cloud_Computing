@@ -399,19 +399,20 @@ Remove-MgUser
   - **Azure Datacenters**
     - physical buildings w/ servers. redundant network, power, cooling.
   - **Availability Set**
-    - Group of identical VMs spread across physical servers, compute racks, storage units, network switches, to prevent single point of failure.
+    - within same datacenter, group of identical VMs spread across **fault domains**(share: compute racks, storage units, network switches, power) and **update domains**(reboot same time).
     - protection from **hardware failure** within datacenter.
     - VMs in **different fault domains** that perform identical functionalities.
     - VMs should have the same software installed.
   - **Fault Domain**
-    - VMs that share the same hardware, network, and power in a datacenter.
+    - VMs that share the same hardware, network, and power in a datacenter. single point of failure.
+    - across fault domains are **group of servers** that have separate hardware, network, power.
   - **Update Domain**
-    - VMs that will receive Azure hardware updates at same time.
+    - VMs that will receive Azure hardware updates(and will be rebooted) at same time.
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability set](img/AvailabilitySet.webp)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Storage Redundancy**
-  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data within **same datacenter**(across fault domains). protection from hardware failure.
+  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from hardware failure.
   - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from datacenter failure.
   - **GRS**: geo-redundant storage. **primary LRS**, secondary region **asynchronous** LRS hundreds of miles away. protection from disaster.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**.
