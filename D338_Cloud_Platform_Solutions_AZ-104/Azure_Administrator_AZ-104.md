@@ -411,12 +411,12 @@ Remove-MgUser
   - ![availability set](img/AvailabilitySet.webp)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Storage Redundancy**
-  - **LRS**: local redundant storage. three **synchronous** copies of data within **same datacenter**. protection from hardware failure(across fault domains).
-  - **ZRS**: zone redundant storage. **synchronous** copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
+  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data within **same datacenter**(across fault domains). protection from hardware failure.
+  - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from datacenter failure.
   - **GRS**: geo-redundant storage. LRS, then **asynchronous** LRS to secondary region hundreds of miles away. protection from disaster.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
   - **GZRS**: geo-zone redundant storage. ZRS, then **asynchronously** ZRS to secondary region.
-  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+  - [Microsoft Learn: Storage Options](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
   - ![storage reliability](img/storage_reliability.PNG)
   - ![high availability](img/04-azure-global-infra.jpg)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
