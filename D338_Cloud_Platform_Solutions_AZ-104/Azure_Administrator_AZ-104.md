@@ -383,6 +383,97 @@ Remove-MgUser
   - microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
   - add your domain name. e.g. `example.com`
 
+## Azure Region and Storage Redundancy
+
+- **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
+  - **Geography**: groups of regions in each continent.
+    - Americas, Europe, Asia Pacific, Middle East and Africa.
+  - **Regions**: one or more datacenters connected w/ low-latency communications. For redundancy.
+    - preserve data residency(keep data inside the region) for compliance and resiliency depending on customer needs.
+  - **Region Pairs**: two regions in same geography **300+ miles apart** linked for disaster recovery.
+  - **Sovereign Regions**: separation for compliance or legal purpose. physical and logical isolation.
+    - e.g. (US government and US government contractors).
+  - **Availability Zones**
+    - group of datacenters within a region networked w/ low-latency network, each with redundant power, network, cooling.
+    - redundancy with **datacenter failure**.
+  - **Azure Datacenters**
+    - physical buildings w/ servers. redundant network, power, cooling.
+  - **Availability Set**
+    - Group of identical VMs spread across physical servers, compute racks, storage units, network switches, to prevent single point of failure.
+    - protection from **hardware failure** within datacenter.
+    - VMs in **different fault domains** that perform identical functionalities.
+    - VMs should have the same software installed.
+  - **Fault Domain**
+    - VMs that share the same hardware, network, and power in a datacenter.
+  - **Update Domain**
+    - VMs that will receive Azure hardware updates at same time.
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability set](img/AvailabilitySet.webp)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
+- **Storage Redundancy**
+  - **LRS**: local redundant storage. three **synchronous** copies of data within **same datacenter**. protection from hardware failure(across fault domains).
+  - **ZRS**: zone redundant storage. **synchronous** copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
+  - **GRS**: geo-redundant storage. LRS, then **asynchronous** LRS to secondary region hundreds of miles away. protection from disaster.
+  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
+  - **GZRS**: geo-zone redundant storage. ZRS, then **asynchronously** ZRS to secondary region.
+  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
+  - ![storage reliability](img/storage_reliability.PNG)
+  - ![high availability](img/04-azure-global-infra.jpg)
+  - ![availability zones](img/Azure-Availability-zone-infographic.png)
+
+## VMs
+
+- **VMs**
+  - IaaS. instant compute. scalable.
+  - compute is per hour charge(per minute).
+  - **Setup**
+    - choose network(topology must be designed first) and create name(windows 15 char, linux 64 char) for VM.
+    - select compute cpu size, ram and size hdd/ssd.
+    - select OS.
+    - region changes pricing.
+  - ![vm compute](img/vm_compute.PNG)
+  - ![vm setup](img/vm_setup.PNG)
+- **VM NIC**
+  - every VM has one or more vNIC(virtual network interface card).
+  - JSON: "VMNicName": "MyVnic"
+- **VM Storage**
+  - managed by Azure. You choose disk size.
+  - storage is scalable. charged separately from compute.
+  - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
+    - temporary disk is not persistent.
+  - **VHDs**: disk mapped to VM. page blobs.
+  - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
+  - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
+  - **unmanaged data disk**: manual scale to disk needs.
+  - **managed data disk**: Azure scales disk to VM needs.
+- **VM Bastion**
+  - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
+- **VM Maintenance Planning**
+  - unplanned hardware failure: predicted failure of physical machine.
+  - unexpected downtime: physical machine fails.
+  - planned maintenance: hardware update/upgrade.
+- **VM Scaling and Scale Sets**
+  - **Vertical Scaling**: **scale up/down**. add more resources(compute, ram, HDD...).
+  - **Horizontal Scaling**: **scale out(increase)/in**. add more VMs.
+  - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
+    - automatically increases/decrease VM instances based on demand.
+    - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
+- **VM ARM Templates**
+  - **schema**: JSON.
+    - **parameters**: values passed at runtime. pass value from parent to child ARM template.
+    - **variables**: avoid repeating code.
+    - **functions**: avoid repeating code.
+      - **You cannot access variables or any other user-defined functions within your function.**
+    - **resources**: resource group items. **_dependsOn_** determines which resources must be deployed first before a specific resource.
+    - **outputs**: message returned after resource deployed.
+  - **Infrastructure as Code (IaC)**: supports two different deployment modes: complete and incremental.
+    - **Incremental**: leaves existing resources not in ARM template unchanged.
+    - **Complete**: mirror ARM templates(delete anything not in templates).
+      - **Complete Mode can only be enabled with REST API or Shell tools with the "--mode: complete" set**.
+- **VM Script Extensions**
+  - Azure VM built-in extension for configuration management after deploy or when provisioning.
+  - script must be accessible from URI(Azure Storage Account).
+
 ## Azure Storage
 
 - **Azure Storage Account**
@@ -392,13 +483,13 @@ Remove-MgUser
   - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
   - policy applied to container, all storage services within container inherit the policy.
   - Database(SQL, Cosmos...) cannot be inside storage account.
-  - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
+  - LRS(local redundant storage) is the minimum replication(3 copies in same datacenter(across fault domains). hardware failure protection).
   - **Creating New Storage Account**:
-    - Name: globally unique. letter and number only.
-    - Performance: Standard | Premium(better I/O SSD). // [a-z0-9]{3,24} cannot be changed later.
-    - Account Kind: General-Purpose V2|(classic V1, BlockBlobStorage, FileStorage, and BlobStorage).
-    - Replication Option: LRS, ZRS, GRS...
-    - Access Tier: Hot, Cool, Cold, Archive // only V2.
+    - **Name**: globally unique. letter and number only.
+    - **Performance**: Standard | Premium(better I/O, SSD, database). // [a-z0-9]{3,24} cannot be changed later.
+    - **Account Kind**: General-Purpose V2 | (classic V1), BlockBlobStorage, FileStorage, and BlobStorage.
+    - **Replication Option**: LRS, ZRS, GRS...
+    - **Access Tier**: Hot, Cool, Cold, Archive // **only V2**.
   - ![storage account](img/storage_account.PNG)
 - **Azure storage services: blob, disk, file, table, queue**
   - **blob (Binary Large OBject)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
@@ -418,7 +509,7 @@ Remove-MgUser
   - ![blob storage](img/blob_storage.PNG)
   - ![blob vs file share](img/file_share_vs_blob.PNG)
 - **Blob Soft Delete**
-  - V2 storage max retention: **365 days**.
+  - V2 storage: default 14 days, max retention: **365 days**.
 - **Blob Storage Lifecycle Management**
   - set rules to automatically move blob object into a cheaper tier(cool, cold, archive) when not accessed in a certain time period.
   - Each tier represents a trade-off of performance, availability, and cost.
@@ -565,16 +656,6 @@ Remove-MgUser
   - **Management Plane -Recovery Vault**: interface to interact with backup service.
 - **Describe redundancy options**
   - backup copies in local, zone, region.
-- **Describe storage account options and storage types: LRS, ZRS, GRS, RA-GRS, GZRS**
-  - **LRS**: locally redundant storage. three **synchronous** copies of data within **same datacenter**. protection from hardware failure(fault domain).
-  - **ZRS**: zone redundant storage. **synchronous** copies data across three **availability zones**(linked datacenters) within a region. protection from datacenter failure.
-  - **GRS**: geo-redundant storage. LRS, then **asynchronous** LRS to secondary region hundreds of miles away. protection from disaster.
-  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to read from secondary, with primary still working.
-  - **GZRS**: geo-zone redundant storage. ZRS, then **asynchronously** ZRS to secondary region.
-  - [learn storage](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
-  - ![storage reliability](img/storage_reliability.PNG)
-  - ![high availability](img/04-azure-global-infra.jpg)
-  - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Backup Tiers**
   - **hot**: online tier(immediate access), frequent access.
   - **cool**: online tier(immediate access), infrequent access. 30 day storage.
@@ -641,66 +722,6 @@ Remove-MgUser
       - choose replication: GRS(default) or LRS.
     - define your backup policy options. when and how long to retain.
     - back up your VM. on-prem backup must have agent must be installed on VM.
-
-## Azure Region, VMs
-
-- **Describe Azure Geography, regions, region pairs, and sovereign regions, availability zones, availability sets, fault domains, update domains**
-  - **Geography**: groups of regions in each continent.
-    - Americas, Europe, Asia Pacific, Middle East and Africa.
-  - **Regions**: one or more datacenters connected w/ low-latency communications. For redundancy.
-    - preserve data residency(keep data inside the region) for compliance and resiliency depending on customer needs.
-  - **Region Pairs**: two regions in same geography **300+ miles apart** linked for disaster recovery.
-  - **Sovereign Regions**: separation for compliance or legal purpose. physical and logical isolation.
-    - e.g. (US government and US government contractors).
-  - **Availability Zones**
-    - group of datacenters within a region networked w/ low-latency network, each with redundant power, network, cooling.
-    - redundancy with **datacenter failure**.
-  - **Azure Datacenters**
-    - physical buildings w/ servers. redundant network, power, cooling.
-  - **Availability Set**
-    - Group of identical VMs spread across physical servers, compute racks, storage units, network switches, to prevent single point of failure.
-    - protection from **hardware failure** within datacenter.
-    - VMs in **different fault domains** that perform identical functionalities.
-    - VMs should have the same software installed.
-  - **Fault Domain**
-    - VMs that share the same hardware, network, and power in a datacenter.
-  - **Update Domain**
-    - VMs that will receive Azure hardware updates at same time.
-  - ![high availability](img/04-azure-global-infra.jpg)
-  - ![availability set](img/AvailabilitySet.webp)
-  - ![availability zones](img/Azure-Availability-zone-infographic.png)
-- **VMs**
-  - IaaS. instant compute. scalable.
-  - compute is per hour charge(per minute).
-  - **Setup**
-    - choose network(topology must be designed first) and create name(windows 15 char, linux 64 char) for VM.
-    - select compute cpu size, ram and size hdd/ssd.
-    - select OS.
-    - region changes pricing.
-  - ![vm compute](img/vm_compute.PNG)
-  - ![vm setup](img/vm_setup.PNG)
-- **VM Storage**
-  - managed by Azure. You choose disk size.
-  - storage is scalable. charged separately from compute.
-  - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
-    - temporary disk is not persistent.
-  - **VHDs**: disk mapped to VM. page blobs.
-  - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
-  - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
-  - **unmanaged data disk**: manual scale to disk needs.
-  - **managed data disk**: Azure scales disk to VM needs.
-- **VM Bastion**
-  - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
-- **VM Maintenance Planning**
-  - unplanned hardware failure: predicted failure of physical machine.
-  - unexpected downtime: physical machine fails.
-  - planned maintenance: hardware update/upgrade.
-- **VM Scaling and Scale Sets**
-  - **Vertical Scaling**: **scale up/down**. add more resources(compute, ram, HDD...).
-  - **Horizontal Scaling**: **scale out(increase)/in**. add more VMs.
-  - **Scale Sets**: manage set of **_identical VMs_**. True autoscaling.
-    - automatically increases/decrease VM instances based on demand.
-    - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
 
 ## App Services
 
