@@ -18,6 +18,8 @@
   - <https://www.thomasmaurer.ch/2020/03/az-104-study-guide-azure-administrator/>
   - <https://www.reddit.com/r/AZURE/comments/164oe1q/passed_az104_yesterday_the_open_book_feature_is/>
   - <https://portal.tutorialsdojo.com/courses/az-104-microsoft-azure-administrator-practice-exams/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1dnd53n/passed_az104_by_the_skin_of_my_teeth/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1dn8l1s/az104_microsoft_learn/>
 - **Videos**
   - <https://www.youtube.com/playlist?list=PLlVtbbG169nGlGPWs9xaLKT1KfwqREHbs>
   - <https://wgu.udemy.com/course/az-104-microsoft-azure-administrator-lab-exam-prep/>
@@ -305,7 +307,7 @@ Remove-MgUser
   - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
 - **Entra B2B**
   - external team collaboration. add external collaborators as **guest users**.
-  - By default, users(members) and administrators in Microsoft Entra ID can invite guest users.
+  - By default, **users**(members) and **administrators** in Microsoft Entra ID can **invite guest users**.
   - connect multiple **internal tenants** for collaboration.
     - e.g. tenant A needs access to resource in tenant B.
   - **Why B2B**
@@ -439,15 +441,15 @@ Remove-MgUser
   - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
   - ![storage endpoint](img/storage_endpoint.PNG)
 - **File Share**
-  - **File Share**: managed file shares in the cloud that are accessible via industry standard protocols(**SMB, NFS**).
-    - to access **Azure File Share** through **SAS** URI, you must use the **REST API**.
-    - stores data as **true directory objects**, so can be **mounted like SMB(tcp port 445) or NFS**.
-    - multiple (VMs, on-prem computers(windows, macOS, linux), roles, services...) can access(mount) an Azure file share simultaneously, from anywhere in the world(REST interface).
-    - embraces **lift and shift**(take the workload as-is and run it on cloud-native resources).
-    - good for: configuration files, logs, metrics, crash dumps...
-    - **Premium vs Standard**:
-      - **standard**: HDD. format: SMB, REST
-      - **premium**: SSD. format: SMB, NFS, REST.
+  - Microsoft managed files in the cloud that are accessible via industry standard protocols(**SMB, NFS**) through a **REST API**.
+  - classic: to access **Azure File Share** through **SAS** URI, you must use the **REST API**.
+  - stores data as **true directory objects**, so can be **mounted like SMB(tcp port 445) or NFS**.
+  - multiple (VMs, on-prem computers(windows, macOS, linux), roles, services...) can access(mount) an Azure file share simultaneously, from anywhere in the world(REST interface).
+  - embraces **lift and shift**(take the workload as-is and run it on cloud-native resources).
+  - good for: configuration files, logs, metrics, crash dumps...
+  - **Premium vs Standard**:
+    - **standard**: HDD. format: SMB, REST
+    - **premium**: SSD. format: SMB, NFS, REST.
   - ![blob vs file share](img/file_share_vs_blob.PNG)
 - **File Share Snapshots**
   - **point-in-time read only copy of file share**.
