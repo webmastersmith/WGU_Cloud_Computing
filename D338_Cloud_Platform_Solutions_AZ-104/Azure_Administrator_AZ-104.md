@@ -390,7 +390,7 @@ Remove-MgUser
   - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
   - All storage is encrypted at rest with SSE(storage service encryption).
   - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
-  - policy applied to container, apply to all storage services in container.
+  - policy applied to container, all storage services within container inherit the policy.
   - Database(SQL, Cosmos...) cannot be inside storage account.
   - LRS is the minimum replication(3 copies in same datacenter. hardware failure protection).
   - **Creating New Storage Account**:
@@ -409,24 +409,31 @@ Remove-MgUser
 - **Blob Storage**
   - good for serving images(to browser), **streaming** video, distributed access, archive/recovery, disk(page blob).
   - **all blob storage must be in a container**.
-  - **Blob Uploads**
-    - blob any data type any size.
+  - **Blob Types**
+    - blob any data type any size. All three types can share a container.
+    - type cannot be changed after creation. Must re-upload to change type.
     - **block blob**: default. block data storage. e.g. video, large text files, images, binary...
     - **page blob**: 8TB max size. optimized read/write operations. e.g. VM disk.
     - **append blob**: optimized for append data. e.g. logging.
   - ![blob storage](img/blob_storage.PNG)
   - ![blob vs file share](img/file_share_vs_blob.PNG)
+- **Blob Soft Delete**
+  - V2 storage max retention: **365 days**.
 - **Blob Storage Lifecycle Management**
   - set rules to automatically move blob object into a cheaper tier(cool, cold, archive) when not accessed in a certain time period.
-  - rules to delete blobs at end of lifecycle.
+  - Each tier represents a trade-off of performance, availability, and cost.
+  - change blob access tiers **without having to move data** between accounts. All requests to change tier will take place immediately between Hot and Cool tiers.
   - **Cost**:
-    - data cost to store **decreases** as tier gets cooler.
-    - data cost to access **increases** as tier gets cooler.
-    - pay for transaction(all tiers).
+    - manage costs by organizing data based on **how frequently it will be accessed** and **how long it will be retained**.
+    - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
     - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
+    - Hot, Cool, Cold transfer happens immediately. Archive takes time.
+    - Hot: immediate access. highest storage cost, lowest access cost. frequently accessed.
+    - Cool: immediate access. infrequently accessed. retained at least 30 days.
+    - Cold: immediate access. infrequently accessed. retained at least 90 days.
+    - Archive: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days.
     - Hot -> cool: incurs a **write** charge for all data.
     - Cool -> Hot: incurs **read** charge for all data.
-    - Hot, Cool, Cold transfer happens immediately. Archive takes time.
   - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
 - **Blob Object Replication**
   - blobs copied asynchronously.
@@ -441,7 +448,7 @@ Remove-MgUser
   - you can map a custom endpoint: `blob.example.com`. This is done by CNAME(points to Azure) from DNS provider.
   - ![storage endpoint](img/storage_endpoint.PNG)
 - **File Share**
-  - Microsoft managed files in the cloud that are accessible via industry standard protocols(**SMB, NFS**) through a **REST API**.
+  - Microsoft managed files in the cloud that are accessible via industry standard protocols(**SMB(tcp port 445), NFS**) through a **REST API**.
   - classic: to access **Azure File Share** through **SAS** URI, you must use the **REST API**.
   - stores data as **true directory objects**, so can be **mounted like SMB(tcp port 445) or NFS**.
   - multiple (VMs, on-prem computers(windows, macOS, linux), roles, services...) can access(mount) an Azure file share simultaneously, from anywhere in the world(REST interface).
@@ -468,7 +475,7 @@ Remove-MgUser
 - **File Sync and Cloud Tiering**
   - **cache files and synchronize between Azure and on-prem Windows Server or cloud VM**.
   - any number of caches in any location.
-  - supports all windows server protocols: SMB, NFS, FTPS.
+  - **Multi-Site Access**: write on-prem (linux, windows server protocols: SMB, NFS, FTPS) and cloud.
   - file sync backs up on-prem files with Azure File Share.
   - **Cloud Tiering**
     - only allow frequently accessed files to be cached locally(free up local cache).
