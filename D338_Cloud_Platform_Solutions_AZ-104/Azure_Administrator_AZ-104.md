@@ -437,7 +437,12 @@ Remove-MgUser
 - **VM NIC**
   - every VM has one or more vNIC(virtual network interface card).
   - JSON: "VMNicName": "MyVnic"
+  - **Multiple NICs**: first is primary. all others are secondary. default outbound traffic will be on primary.
   - **Options**: subnet and public IP address, network security group, ports, accelerated networking.
+  - **Accelerated Networking**: single root I/O virtualization (SR-IOV). bypass virtual switch. Greater I/O.
+  - **Connecting**
+    - **Windows**: RDP(TCP port 3389) full access. Public IP w/ `mstsc.exe` software.
+    - **Linux**: ssh. private key or password.
 - **VM Storage**
   - managed by Azure. You choose disk size.
   - storage is scalable. charged separately from compute.
@@ -451,6 +456,24 @@ Remove-MgUser
   - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
   - **unmanaged data disk**: manual scale to disk needs.
   - **managed data disk**: Azure scales disk to VM needs.
+- **VM Containers**
+  - package application and dependencies into an image. uses host OS and kernel. docker.
+  - **Azure Container Instances (ACI)**: create containers serverless.
+  - **Azure Kubernetes Service (AKS)**: container orchestration.
+    - cluster: all nodes managed by AKS.
+    - node: VM(computer) in cluster.
+    - control plane: node that orchestrates pods.
+    - pod: one or more containers working together. single IP address.
+    - **Storage**:
+      - if created together, lifecycle of storage(Disk or Files) is tied to pod lifecycle. **deleting pod deletes storage**.
+        - Azure Disk: single pod can access data.
+        - Azure Files: to **access data across multiple pods**. enables SMB access as well.
+      - persistent volumes: exist within cluster, but outside of pod. not tied to pod lifecycle.
+      - **Autoscaler**: **autoscale nodes and pods**.
+        - Horizontal Pod Autoscaler: add pods.
+        - Cluster Autoscaler: add nodes.
+      - **Kubenet**: manage AKS cluster from cmd line. pods cannot be accessed from network.
+      - **Container Networking Interface (CNI)**: manage AKS cluster from cmd line. advanced api. pods can be accessed from private network.
 - **VM Bastion**
   - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
 - **VM Maintenance Planning**
