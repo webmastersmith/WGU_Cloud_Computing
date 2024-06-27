@@ -915,10 +915,11 @@ Remove-MgUser
   - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
   - **Extend Peering**
     - **Hub and Spoke**: central public endpoint to network.
-      - because peering is not **transitive**(does not connect automatically), you can **service chain** virtual devices. A UDR(user defined route) connects VPN to NVA(e.g. Cisco firewall), then other spokes connect directly to NVA.
-      - Traffic can flow through NVA(network virtual appliance e.g. Cisco Firewall) or VPN gateways in the hub virtual network.
-      - **User-defined routes (UDR)**: manually define route to VPN Gateway.
-      - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
+      - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
+      - alternative solution is to **service chain** a NVA to spokes.
+      - public traffic can flow through VPN Gateway -> NVA(network virtual appliance e.g. Cisco Firewall) -> spokes(VNET).
+    - **User-defined routes (UDR)**: manually define route to VPN Gateway.
+    - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
     - ![P2S](img/peering_hub.png)
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
