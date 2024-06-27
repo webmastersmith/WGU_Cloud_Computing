@@ -915,9 +915,10 @@ Remove-MgUser
   - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
   - **Extend Peering**
     - **Hub and Spoke**: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
-      - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
-    - User-defined routes(UDR): manually define route to VPN Gateway.
+    - **User-defined routes (UDR)**: manually define route to VPN Gateway.
     - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
+      - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
+      - ![P2S](img/peering_hub.png)
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
     - Azure portal automatically creates both.
@@ -926,7 +927,6 @@ Remove-MgUser
   - client **authenticates**, the connects with **OpenVPN** or Secure Socket Tunneling Protocol(software on PC) to '**Azure VPN Gateway**' on the Azure side.
   - [Azure P2S VPN](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about)
   - ![P2S](img/p2s.png)
-  - ![P2S](img/peering_hub.png)
 - **Private Link**
   - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
