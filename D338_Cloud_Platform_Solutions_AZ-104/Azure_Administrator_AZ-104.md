@@ -861,7 +861,7 @@ Remove-MgUser
   - **Apex Domain**: highest level domain. sometimes called _zone apex_ or _root apex_. `example.com` // `.com` is Top Level Domain (TLD).
     - designated by `@`
 - **ExpressRoute**
-  - connect private on-prem connection with Azure VNET. Dedicated line from connectivity provider. traffic does not traverse public internet. higher security.
+  - private connection between on-prem and Azure VNET through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
 - **Load Balancer**
   - high availability. scale. **inbound** or **outbound traffic**. **public** or **internal** facing.
   - **internal** load balancer must be in same VNET as VMs and **do not** have a **public IP**.
@@ -879,7 +879,7 @@ Remove-MgUser
     - **Source IP Affinity**: source IP -> destination IP. when using Remote Desktop Gateway(RDP) for windows or media upload, you cannot use five-tuple hash. you must use source IP affinity as your distribution mode.
       - **Session Persistence**: group same client request or send to any VM listening.
 - **Network Interface Card (NIC)**
-  - vNIC. layer 2.
+  - vNIC. layer 2. -see VM NIC.
   - can have network security group applied.
 - **Network Security Group (NSGs)**
   - enforce and control network traffic rules at the networking level.
@@ -914,7 +914,7 @@ Remove-MgUser
     - ![peering global](img/peering_global.PNG)
   - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
   - **Extend Peering**
-    - Hub and Spoke: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
+    - **Hub and Spoke**: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
       - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
     - User-defined routes(UDR): manually define route to VPN Gateway.
     - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
@@ -926,6 +926,7 @@ Remove-MgUser
   - client **authenticates**, the connects with **OpenVPN** or Secure Socket Tunneling Protocol(software on PC) to '**Azure VPN Gateway**' on the Azure side.
   - [Azure P2S VPN](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about)
   - ![P2S](img/p2s.png)
+  - ![P2S](img/peering_hub.png)
 - **Private Link**
   - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
