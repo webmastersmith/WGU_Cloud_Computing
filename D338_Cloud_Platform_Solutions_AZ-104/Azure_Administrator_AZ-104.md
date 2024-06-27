@@ -446,6 +446,7 @@ Remove-MgUser
     - **Windows**: RDP(TCP port 3389) full access. Public IP w/ `mstsc.exe` software.
     - **Linux**: ssh. private key or password.
     - connect to Azure VMs using a public IP address or a Private IP address with RDP, SSH, or even PowerShell. A VPN must be setup to connect using a private IP like a site-to-site, point-to-site, or ExpressRoute.
+  - **Source Network Address Translation (SNAT)**: map the outbound traffic from the private IP address to the public(internet facing) IP address.
 - **VM Storage**
   - managed by Azure. You choose disk size.
   - storage is scalable. charged separately from compute.
@@ -848,15 +849,17 @@ Remove-MgUser
   - layer 3 and 4(IP and port).
 - **Azure DNS**
   - acts as the SOA for domain name. manage and host your **registered** domain.
+  - Azure supports **vanity domains**. e.g. `example.com`. Just point to your Azure IP from 'A' record or 'CNAME'.
   - after creating **Azure DNS zone**, go to your DNS registrar, point DNS server to Azure DNS zone.
     - `nslookup -type=SOA example.com`
     - **DNS**: Domain Name Server. maps domain name with IP.
+    - **DNS Zone**: collection of DNS records for a given domain name.
     - **SOA**: start of authority. master record for domain.
     - **A**: maps domain to IPv4.
     - **AAAA** map domain to IPv6.
     - **CNAME**: Canonical Name. alias pointing to domain.
     - **MX**: mail exchange. email server IP.
-    - **TXT**: text record. associate text strings with domain. e.g. DKIM...
+    - **TXT**: text record. associate text strings with domain. e.g. DKIM, SPF...
   - **private DNS zone**: not visible on internet. only available to your local network. assign name to VNET IP.
   - **Apex Domain**: highest level domain. sometimes called _zone apex_ or _root apex_. `example.com` // `.com` is Top Level Domain (TLD).
     - designated by `@`
@@ -917,8 +920,7 @@ Remove-MgUser
     - **Hub and Spoke**: central public endpoint to network.
       - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
       - alternative solution is to **service chain** a NVA to spokes.
-      - public traffic can flow through VPN Gateway -> NVA(network virtual appliance e.g. Cisco Firewall) -> spokes(VNET).
-    - **User-defined routes (UDR)**: manually define route to VPN Gateway.
+      - public traffic can flow through VPN Gateway -> NVA(network virtual appliance e.g. Cisco Firewall) -> spokes.
     - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
     - ![P2S](img/peering_hub.png)
   - **PowerShell and CLI Peering**
@@ -930,13 +932,13 @@ Remove-MgUser
   - [Azure P2S VPN](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about)
   - ![P2S](img/p2s.png)
 - **Private Link**
-  - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
+  - **all internal traffic** between your VNET and the service **travels** the **Microsoft backbone network**. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
   - ![private link](img/private_link2.PNG)
 - **Routes**
   - custom routes direct traffic flow within VNET. all routes are stored in the **_route table_**.
   - **Service Tags**: can be used as a route address in a user-defined route(UDR).
-  - **Border Gateway Protocol (BGP)**: routing protocol for on-prem to Azure VNET. can create site-to-site connection.
+  - **Border Gateway Protocol (BGP)**: routing protocol for **on-prem to Azure VNET**. can create site-to-site connection.
   - **Specificity**: most direct match wins. e.g. 10.0.0.6 with route 10.0.0.0/16 and 10.0.0.0/24. the 10.0.0.0/24 is more specific and will be chosen.
     - **Order of specificity**: user-defined, BGP route, system route.
   - **System Routes**:
@@ -944,13 +946,15 @@ Remove-MgUser
     - uses **_route table_**(rules of how to get to destination) to store system routes.
     - You **can't create or delete system routes**, but you can **override** the system routes by adding custom routes to control traffic flow to the **next hop**.
     - Every **subnet** has the following **default system routes**:
-      - **Virtual Network**: address prefix. range inside VNET.
+      - **Virtual Network**: address prefix. // e.g. `192.168.0.0/24` the range of IP inside VNET.
       - **Internet**: default route to internet.
       - **None**: drops traffic.
       - ![subnet default route](img/subnet_default_route.PNG)
 - **Service Endpoints and Policies**
-  - **Service Endpoint Policy**: endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
-  - **service endpoint**: allow **all** instances in a **subnet**(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - **Service Endpoint Policy**:
+  - integrate Azure **PaaS services** into your **VNET**. **prevent** the exposure of data and services to the Internet.
+  - endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
+  - **service endpoint**: allow **all** instances in a **subnet**(your VNET) to communicate to another Azure **service** over the Microsoft backbone. no public internet access.
   - **private endpoint**: **single** instances in a **subnet**(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
   - ![service endpoint](img/service_endpoint.PNG)
 - **Site-to-site VPNs (S2S)**
@@ -972,24 +976,28 @@ Remove-MgUser
     - restrict traffic flow.
   - **Azure IP Addresses Schema**
     - **private IP**: internal communication only. on-prem communication, use VPN Gateway or ExpressRoute.
-    - **public IP**: communicate with resources over the public internet.
-      - **basic**: (static/dynamic) assigned. inbound traffic.
-      - **standard**: static only. NSG default rules. add routing rules
-    - **static IP**: does not change. best for DNS records, TLS certs, Firewall rules based on IP range.
+    - **public IP**: communicate with resources over the public internet. when assigned to vNIC, creates a public facing endpoint.
+      - **basic**: (static/dynamic) assigned. inbound traffic. default open to inbound traffic. no availability zone support. no IP prefix support.
+      - **standard**: static only. default closed to inbound traffic(NSG default rules). supports availability zones. supports IP prefix. e.g. `192.168.1.0/24` '/24' is prefix.
+    - **static IP**: does not change. **public or private**. best for DNS records, TLS certs, Firewall rules based on IP range.
     - **dynamic IP**: changes as needed. typically change when VM/service is stopped and restarted.
     - **Schema**
       - IP Address range with on-prem can't overlap cloud. e.g. on-prem: 192.168.0.0/16(65,536) and cloud 192.168.10.0/24(256). // on-prem includes the 192.168.10.0 network.
     - **Public IP Prefix**: Azure **region specific** range of **contiguous** static IP addresses. **prefix size** is the number of IP addresses.
     - **Private IP Addresses**: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
       - `.1, .2, .3 and last`, IP addresses aren't visible or configurable. Reserved for Load Balancers, Application Gateway, VM NICs.
+      - .0 = network address
+      - .1 = Azure Gateway
+      - .2 & .3 = DNS
+      - .255 = Broadcast
   - **Route Table**
-    - can have many subnets, each subnet only one route table.
-- **Traffic Manager Profile**
+    - can have many subnets, each subnet can have only one route table.
+- **User-defined routes (UDR)**
+  - manually define route and next hop. e.g. route traffic to VPN Gateway.
 - **Virtual Network Gateway**
   - encrypt traffic from on-prem(physical device) to Azure VNET over the internet.
   - **Virtual Network Gateway**: Azure Gateway Service.
   - **Local Network Gateway**: the on-prem device.
-- **Virtual WAN**
 - **VNET**
   - VPN network. provide logical isolation and protection. IP range once chosen, cannot be changed.
   - If **no security group** is applied, then **all** traffic is **allowed** by Azure.
@@ -1000,8 +1008,8 @@ Remove-MgUser
     - 172.16.0.0–172.31.255.255 (172.16.0.0/12)
     - 192.168.0.0– 192.168.255.255 (192.168.0.0/16)
 - **VPN Gateway**
-  - Azure service that allows you to securely encrypt traffic between VPN and on-prem(site-to-site), or point-to-site(P2S) using IPSEC encrypted communications.
-  - must have dedicated subnet for VPN Gateway.
+  - Azure service for encrypted communication between on-prem VPN(IPSec: S2S, P2S) and Azure VNET.
+  - VPN Gateway must be in **dedicated subnet**.
   - VNET can only have **one** VPN Gateway.
   - ![vpn gateway](img/vpn_gateway.PNG)
 
