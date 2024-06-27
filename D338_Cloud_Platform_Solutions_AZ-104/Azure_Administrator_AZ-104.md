@@ -20,6 +20,7 @@
   - <https://portal.tutorialsdojo.com/courses/az-104-microsoft-azure-administrator-practice-exams/>
   - <https://www.reddit.com/r/AzureCertification/comments/1dnd53n/passed_az104_by_the_skin_of_my_teeth/>
   - <https://www.reddit.com/r/AzureCertification/comments/1dn8l1s/az104_microsoft_learn/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1dp79km/az104_passed/>
 - **Videos**
   - <https://www.youtube.com/playlist?list=PLlVtbbG169nGlGPWs9xaLKT1KfwqREHbs>
   - <https://wgu.udemy.com/course/az-104-microsoft-azure-administrator-lab-exam-prep/>
@@ -61,7 +62,7 @@
     - Deploy and manage Azure compute resources (20-25%)
     - Configure and manage virtual networking (25-30%)
     - Monitor and back up Azure resources (10-15%)
-    - 120 minutes. 40-60 questions. passing is 700 out of 1000 points (70%). $165.
+    - 120-140 minutes. 40-60 questions. passing is 700 out of 1000 points (70%). $165.
 
 ## Azure Cloud Shell
 
@@ -429,9 +430,10 @@ Remove-MgUser
   - compute is per hour charge(per minute).
   - **Setup**
     - choose network(topology must be designed first) and create name(windows 15 char, linux 64 char) for VM.
-    - select compute cpu size, ram and size hdd/ssd.
+    - select compute cpu size, ram and size hdd/ssd. // **data disk can be added after creation**.
     - select OS.
-    - region changes pricing.
+    - region // changes pricing.
+    - availability set // **cannot be changed after creation**.
   - ![vm compute](img/vm_compute.PNG)
   - ![vm setup](img/vm_setup.PNG)
 - **VM NIC**
@@ -443,6 +445,7 @@ Remove-MgUser
   - **Connecting**
     - **Windows**: RDP(TCP port 3389) full access. Public IP w/ `mstsc.exe` software.
     - **Linux**: ssh. private key or password.
+    - connect to Azure VMs using a public IP address or a Private IP address with RDP, SSH, or even PowerShell. A VPN must be setup to connect using a private IP like a site-to-site, point-to-site, or ExpressRoute.
 - **VM Storage**
   - managed by Azure. You choose disk size.
   - storage is scalable. charged separately from compute.
@@ -494,7 +497,7 @@ Remove-MgUser
   - Memory Optimized: high memory-to-cpu ratio.
   - Storage Optimized: high disk throughput (I/O) for databases.
 
-## Azure Containers
+## Azure Containers and Kubernetes Service
 
 - **VM Containers**
   - package application and dependencies into an image. uses host OS and kernel. isolated containers(like docker) instances.
@@ -502,7 +505,7 @@ Remove-MgUser
   - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
   - **flexibility and speed**: **OS is shared(only run needed services)** and use less resources. sharing, testing, deployment easier.
 - **Azure Container Instance (ACI)**
-  - preferred way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM. **serverless**.
+  - **serverless** way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
   - **billed only for containers in use**.
   - ![container instance](img/container-instance.PNG)
 - **Container Group**
@@ -512,11 +515,12 @@ Remove-MgUser
 - **Azure Container Apps**
   - serverless platform that **simplifies deployment**. maintain less infrastructure to run/manage containerized apps.
   - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
-- **Azure Kubernetes Service (AKS)**: container orchestration.
+- **Azure Kubernetes Service (AKS)**: Azure PaaS service. container orchestration.
   - cluster: all nodes managed by AKS.
   - node: VM(computer) in cluster.
   - control plane: node that orchestrates pods.
   - pod: one or more containers working together. single IP address.
+  - **Ingress controller**: distribute traffic to pods(**workers**) listening for HTTP request.
   - **Storage**:
     - if created together, lifecycle of storage(Disk or Files) is tied to pod lifecycle. **deleting pod deletes storage**.
       - Azure Disk: single pod can access data.
@@ -525,8 +529,8 @@ Remove-MgUser
     - **Autoscaler**: **autoscale nodes and pods**.
       - Horizontal Pod Autoscaler: add pods.
       - Cluster Autoscaler: add nodes.
-    - **Kubenet**: manage AKS cluster from cmd line. pods cannot be accessed from network.
-    - **Container Networking Interface (CNI)**: manage AKS cluster from cmd line. advanced api. pods can be accessed from private network.
+    - **Kubenet**: manage AKS cluster from cmd line. kubenet created cluster, pods cannot be accessed from private network.
+    - **Container Networking Interface (CNI)**: advanced cmd line management of AKS cluster. pods can be accessed from private network.
 
 ## Azure Storage
 
@@ -785,8 +789,12 @@ Remove-MgUser
   - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
   - configuration settings include runtime stack(node, python, dotnet...), operating system, region and App Service plan(standard, premium, isolated...).
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
-  - **Free or Shared Tier**
-    - can't scale. charged CPU minutes used.
+  - **Load Balancer**: optional. round robin deliver HTTP request to **workers**(web servers).
+  - **Scaling**: vertical(more compute) or horizontal(more VMs). Autoscale you provide max and min.
+  - **App Service Plan: Free, Shared or Dedicated Tier**: choose features.
+    - Free: can't scale. charged CPU minutes used.
+    - shared: share resources with others.
+    - dedicated: you have dedicated resources assigned only to you.
   - **Basic, Standard, Premium, or Isolated Tier**
     - VMs in your App Service are yours to use as you want.
   - **Setup**
@@ -811,11 +819,11 @@ Remove-MgUser
   - **Settings**
     - **Allow Anonymous Request**: defer authorization of unauthenticated traffic to your App.
     - **Allow only authenticated request**: **_all_** anonymous traffic is sent to login provider page.
-- **Domain Names**
+- **Domain Names (DNS) Records**
   - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
   - purchase domain from Azure portal, you don't have to configure anything.
-  - `A` record: points to IP address.
-  - `Cname`: maps domain to another domain name.
+  - `A` record: map domain name to IP address of web server.
+  - `Cname`: maps domain name to another domain name.
 - **Backup and Restore App**
   - App snapshots can be created on a schedule or manually backup.
   - **Standard** or **Premium** tier App Service plan.
@@ -826,48 +834,10 @@ Remove-MgUser
   - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
   - ![application insights](img/application_insights.PNG)
 
-## Azure Powershell and CLI
-
-- **CLI**
-  - <https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest>
-
-```sh
-# Show list of all available images
-az vm image list --output table
-az vm image list --sku Wordpress --output table --all # wordpress images
-az vm image list --publisher Microsoft --output table --all # microsoft images
-# available datacenter locations
-az vm image list --location eastus --output table
-# VM sizes
-az vm list-sizes --location eastus --output table
-# Resize VM
-az vm list-vm-resize-options --resource-group "[sandbox resource group name]" --name SampleVM --output table
-az vm resize --resource-group "[sandbox resource group name]" --name SampleVM --size Standard_D2s_v3
-# Query
-az vm show --resource-group "group name" --name SampleVM --query "networkProfile.networkInterfaces[].id"
-# VMs
-# Create
-az vm create --resource-group "[sandbox resource group name]" --location westus --name SampleVM --image Ubuntu2204 --admin-username azureuser --generate-ssh-keys --verbose
-# When creating multiple VMs, Adding '--no-wait' will cause 'azure VM create' to return immediately without waiting for VM creation.
-# View all VMs -return all virtual machines defined in this subscription.
-az vm list --output table
-# Show VM specs
-az vm show --resource-group "[sandbox resource group name]" --name SampleVM
-# VM IP address
-az vm list-ip-addresses -n SampleVM -o table
-
-# Network
-az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
-# VNET
-az network vnet create --resource-group "[sandbox resource group name]" --name CoreServicesVnet --address-prefixes 10.20.0.0/16 --location westus
-# Subnet
-az network vnet subnet create --resource-group "[sandbox resource group name]" --vnet-name CoreServicesVnet --name GatewaySubnet --address-prefixes 10.20.0.0/27
-```
-
 ## Azure Networks and Network Security Groups
 
 - **Application Gateway**
-  - layer 7 load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(resources) via **Round-Robin** method.
+  - layer 7 load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP) via **Round-Robin** method.
   - **Basic**: routing via **URL**(includes hostname and port).
   - **Multi-site routing**: multiple different web app routing(based on Domain Name) on same Application Gateway.
   - allows redirects, HTTP header rewrite.
@@ -927,14 +897,18 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
       - inbound: the subnet(NSG 1) rules will take precedence.
       - outbound: the NIC(NSG 2) will take precedence.
       - ![nsg rules](img/nsg.PNG)
+- **Network Virtual Appliance (NVA)**
+  - software virtual machine with the same functionality. e.g. **Cisco Firewall** can be used as a gateway to public internet.
+  - from providers in **Azure Marketplace**.
 - **Peering**
   - seamless connection of two or more VNETs. function as single VNET.
   - managed as separate resources, but communicate as single resource.
-  - Traffic between the virtual networks is kept on the **Microsoft Azure backbone** network. No public IP, gateways, or encryption is required in the communication between the virtual networks.
+  - **Traffic** between the VNETs are kept on the **Microsoft Azure backbone** network. No public IP, gateways, or encryption is required in the communication between the virtual networks.
+    - **internal network access** is controlled with **NSGs**.
   - allow remote communication between peering VNETs with VPN Gateway.
   - **Transitivity**: must be explicit. Only VNETs that are directly peered can communicate with each other. e.g. A,B,C VNET. Peer A->B and B->C. A->C does not automatically work without explicit peering A->C.
   - can peer if different Microsoft Tenants, subscriptions... To peer, administrator must have the **_Network Contributor_** role on their virtual network.
-  - **Regional and Global Peering**
+  - **Regional and Global Peering**: peering is possible **between different tenants, subscriptions**...
     - **Regional**: VNETs in same region.
     - **Global**: VNETS in different regions. Any Azure cloud region, China cloud region, but not Government Region.
     - ![peering global](img/peering_global.PNG)
@@ -943,15 +917,15 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
     - Hub and Spoke: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
       - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
     - User-defined routes(UDR): manually define route to VPN Gateway.
-    - **Service Chaining**: with UDR, direct traffic from VNET to VPN Gateway. VNETs must be peered.
+    - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
     - Azure portal automatically creates both.
-- **Network Virtual Appliance (NVA)**
-  - software virtual machine with the same functionality. e.g. **Cisco Firewall** can be used as a gateway to public internet.
-  - from providers in **Azure Marketplace**.
 - **Point-to-Site (P2S)**
-  - VPN tunnel from individual computer. no public IP address. Connects to 'VPN Gateway' on the Azure side.
+  - VPN tunnel from individual computer.
+  - client **authenticates**, the connects with **OpenVPN** or Secure Socket Tunneling Protocol(software on PC) to '**Azure VPN Gateway**' on the Azure side.
+  - [Azure P2S VPN](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about)
+  - ![P2S](img/p2s.png)
 - **Private Link**
   - Traffic between your VNET and the service travels the Microsoft backbone network. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
@@ -971,19 +945,24 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
       - **Internet**: default route to internet.
       - **None**: drops traffic.
       - ![subnet default route](img/subnet_default_route.PNG)
-- **Service Endpoints**
-  - **service endpoint**: allow **all** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
-  - **private endpoint**: **single** instances in a subnet(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+- **Service Endpoints and Policies**
+  - **Service Endpoint Policy**: endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
+  - **service endpoint**: allow **all** instances in a **subnet**(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - **private endpoint**: **single** instances in a **subnet**(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
   - ![service endpoint](img/service_endpoint.PNG)
 - **Site-to-site VPNs (S2S)**
-  - use IPSEC to provide a secure connection between your **corporate VPN Gateway** and **Azure**.
+  - use IPSEC to provide a secure connection between your **on-prem VPN Device**(handles IPSec encryption/decryption) and **Azure VPN Gateway**(service provided by Microsoft).
+  - [S2S setup](https://learn.microsoft.com/en-us/azure/vpn-gateway/tutorial-site-to-site-portal)
+  - [on-prem vpn device](https://learn.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
+  - ![s2s](img/s2s.png)
 - **Subnets and Screened Subnets (DMZ) and IP Addresses**
   - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
   - default **all subnets** in VNET **can communicate** with each other.
+  - subnet **name** must be **unique** in VNET.
   - subnet must be specified by using **CIDR** notation.
     - each subnet, the **first four addresses** and the **last address** are **reserved**.
     - smallest supported subnet: **/29** subnet mask(8 IP addresses), largest supported subnet: **/2** subnet mask(1,073,741,824 IP addresses).
-  - segmenting networks allows custom firewall rules for each subnet.
+  - segmenting(subnetting) networks allows custom firewall rules for each subnet.
   - **maximum one security group per subnet**.
   - **Screened Subnet (DMZ)**
     - security group applied to a subnet acts as buffer between resource and internet.
@@ -1013,6 +992,10 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - If **no security group** is applied, then **all** traffic is **allowed** by Azure.
   - Azure blocks SMTP (Email port 25) outbound.
   - link virtual networks with an on-premises IT infrastructure to create hybrid or cross-premises solution.
+  - **IP Range**
+    - 10.0.0.0–10.255.255.255 (10.0.0.0/8)
+    - 172.16.0.0–172.31.255.255 (172.16.0.0/12)
+    - 192.168.0.0– 192.168.255.255 (192.168.0.0/16)
 - **VPN Gateway**
   - Azure service that allows you to securely encrypt traffic between VPN and on-prem(site-to-site), or point-to-site(P2S) using IPSEC encrypted communications.
   - must have dedicated subnet for VPN Gateway.
@@ -1157,3 +1140,41 @@ az network vnet subnet create --resource-group "[sandbox resource group name]" -
   - **VM Event Logs**: create custom DCR. specify data you want to collect and where to send. If sent to **Log Analytics workspace**, data can be analyzed with the **Kusto Query Language**(KQL).
   - **Data Collection Endpoint**: required with **Insights**. where to send data.
   - ![vm monitoring](img/VM_monitoring.PNG)
+
+## Azure Powershell and CLI
+
+- **CLI**
+  - <https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest>
+
+```sh
+# Show list of all available images
+az vm image list --output table
+az vm image list --sku Wordpress --output table --all # wordpress images
+az vm image list --publisher Microsoft --output table --all # microsoft images
+# available datacenter locations
+az vm image list --location eastus --output table
+# VM sizes
+az vm list-sizes --location eastus --output table
+# Resize VM
+az vm list-vm-resize-options --resource-group "[sandbox resource group name]" --name SampleVM --output table
+az vm resize --resource-group "[sandbox resource group name]" --name SampleVM --size Standard_D2s_v3
+# Query
+az vm show --resource-group "group name" --name SampleVM --query "networkProfile.networkInterfaces[].id"
+# VMs
+# Create
+az vm create --resource-group "[sandbox resource group name]" --location westus --name SampleVM --image Ubuntu2204 --admin-username azureuser --generate-ssh-keys --verbose
+# When creating multiple VMs, Adding '--no-wait' will cause 'azure VM create' to return immediately without waiting for VM creation.
+# View all VMs -return all virtual machines defined in this subscription.
+az vm list --output table
+# Show VM specs
+az vm show --resource-group "[sandbox resource group name]" --name SampleVM
+# VM IP address
+az vm list-ip-addresses -n SampleVM -o table
+
+# Network
+az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
+# VNET
+az network vnet create --resource-group "[sandbox resource group name]" --name CoreServicesVnet --address-prefixes 10.20.0.0/16 --location westus
+# Subnet
+az network vnet subnet create --resource-group "[sandbox resource group name]" --vnet-name CoreServicesVnet --name GatewaySubnet --address-prefixes 10.20.0.0/27
+```
