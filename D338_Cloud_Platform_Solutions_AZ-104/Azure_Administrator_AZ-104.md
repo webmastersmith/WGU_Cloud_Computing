@@ -914,11 +914,11 @@ Remove-MgUser
     - ![peering global](img/peering_global.PNG)
   - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
   - **Extend Peering**
-    - **Hub and Spoke**: Traffic can flow through NVAs or VPN gateways in the hub virtual network.
-    - **User-defined routes (UDR)**: manually define route to VPN Gateway.
-    - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
-      - ![hub and spoke peering](img/peering_hub_and_spoke.PNG)
-      - ![P2S](img/peering_hub.png)
+    - **Hub and Spoke**: because hub-and-spoke is not **transitive**(does not connect automatically), you can **service chain** virtual devices that
+      - Traffic can flow through NVA(network virtual appliance e.g. Cisco Firewall) or VPN gateways in the hub virtual network.
+      - **User-defined routes (UDR)**: manually define route to VPN Gateway.
+      - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
+    - ![P2S](img/peering_hub.png)
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
     - Azure portal automatically creates both.
