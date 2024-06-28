@@ -44,6 +44,9 @@
     - The OA however will not, so spending time in a lab going through the how-to's and pouring over script and .csv examples in the book won't get me past the WGU exam but will come handy for the Microsoft Certification. Without a doubt, the Pluralsight videos and practice exams did very little to prepare for the OA.
     - have come to the conclusion that the OA is taken straight from the book and video links nor the AZ-104 practice exams in Pluralsight.
     - flashcards for memorization will help with Ports, Subscription levels, and specific concepts like Cloud vs On-Prem.
+- **Exam Advice**
+  - https://www.reddit.com/r/AzureCertification/comments/1dqlx0d/az104_exam_holly_mother_of_god_what_a_roller/
+    - I got two or tree questions on ARM templates, four or five questions with PowerShell command's, tree or four questions about user roles, a had a good bunch of questions about storage and app's.
 - **Microsoft**
   - 700 of 1000 to pass.
   - Hands-on experience is crucial in preparing for the AZ-104 exam.
@@ -837,6 +840,10 @@ Remove-MgUser
 
 ## Azure Networks and Network Security Groups
 
+- **Azure Bastion**
+  - connect to VNet without needing a public IP. RDP or SSH through web browser.
+  - log into Azure Portal, and open Bastion.
+  - special subnet named **_AzureBastionSubnet_**. Acts as a '**jump server**', providing single hardened access point into network.
 - **Application Gateway**
   - direct web traffic to the appropriate web applications and enforce security.
   - Azure managed, web traffic(layer 7 -HTTP(S)) load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP(VNet)) via **Round-Robin** method.
@@ -880,9 +887,9 @@ Remove-MgUser
     - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
   - public traffic can flow through **Virtual Network Gateway** to a **NVA**(network virtual appliance e.g. Cisco Firewall) then out to the spokes.
   - ![P2S](img/peering_hub.png)
-- **Load Balancer**
-  - managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
-  - **internal** load balancer must be in same VNet as VMs and **do not** have a **public IP**.
+- **Load Balancer (ALB)**
+  - **Azure Load Balancer**: managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
+  - **internal** load balancer must be in same VNet as VMs and **does not** have a **public IP**.
   - can use **availability sets**(hardware failure) and **availability zones**(datacenter failure) to ensure that virtual machines are always available.
   - **Types**:
     - **Basic**: original, superseded by standard.
@@ -917,8 +924,9 @@ Remove-MgUser
       - outbound: the NIC(NSG 2) will take precedence.
       - ![nsg rules](img/nsg.PNG)
 - **Network Virtual Appliance (NVA)**
-  - software virtual machine with the same functionality. e.g. **Cisco Firewall** can be used as a gateway to public internet.
+  - software virtual machine with the same functionality.
   - from providers in **Azure Marketplace**.
+  - e.g. Virtual Network Gateway to **Cisco Firewall** then to VNET.
 - **Peering**
   - seamless connection of two or more VNets. function as single VNet.
   - managed as separate resources, but communicate as single resource.
@@ -926,7 +934,8 @@ Remove-MgUser
     - **internal network access** is controlled with **NSGs**.
   - allow remote communication between peering VNets with VPN Gateway.
   - **Transitivity**: must be explicit. Only VNets that are directly peered can communicate with each other. e.g. A,B,C VNet. Peer A->B and B->C. A->C does not automatically work without explicit peering A->C.
-  - can peer if different Microsoft Tenants, subscriptions... To peer, administrator must have the **_Network Contributor_** role on their virtual network.
+  - can peer VNets with different Microsoft Tenants, subscriptions...
+  - To peer, administrator must have the **_Network Contributor_** role on the VNet.
   - **Regional and Global Peering**: peering is possible **between different tenants, subscriptions**...
     - **Regional**: VNets in same region.
     - **Global**: VNetS in different regions. Any Azure cloud region, China cloud region, but not Government Region.
@@ -1072,11 +1081,11 @@ Remove-MgUser
     - **scale**: when new resources are created, they would be included as well.
   - **Metric Alert Settings**
     - static or dynamic:
-      - static: static is fixed value to measure against. e.g. 85% cpu usage.
-      - dynamic: dynamic no fixed value. need three values:
-        - metric: number you want to test.
-        - look-back period: how many periods need evaluating.
-        - number of violations: how many times there can be violation before alert.
+      - **static**: static is fixed value to measure against. e.g. 85% cpu usage.
+      - **dynamic**: dynamic no fixed value. need three values:
+        - **metric**: number you want to test.
+        - **look-back period**: how many periods need evaluating.
+        - **number of violations**: how many times there can be violation before alert.
     - how often to run. e.g. every two minutes.
     - data to be assessed. e.g. last 10 minutes.
   - **Log Alert Settings**
@@ -1088,6 +1097,7 @@ Remove-MgUser
     - **Group Field**: group results and alert only if pattern found.
   - **Alert Events**
     - **Specific Operation**: alert event contacts someone or creates an IT Service Management(ITSM) support ticket.
+    - **Alert State**: when alert rule is triggered, an alert state is generated and set to **fired** and when condition clears, alert state is set to **resolved**.
     - **Service Health Event**: notice of incidents or maintenance. You no longer need to select a resource, because alert is for whole region. you opt in to what alerts you want to receive.
   - **Action Groups**: what and how alert is sent. can be reused.
   - ![alerts](img/alerts.PNG)
@@ -1112,19 +1122,24 @@ Remove-MgUser
   - export log query **results**. build workflows to retrieve and copy logs to external location.
 - **Metrics and Logs**
   - All data collected by Azure Monitor fits into one of two fundamental types, **metrics** and **logs**.
+  - the collected data can be viewed in **Azure Monitor**.
   - **Metrics**
     - numerical values that describe some aspect of a system at a particular point in time. can capture metrics in near-real time.
+    - have fixed set of **attributes**: time, type, resource, value, and dimension(optional).
     - Metrics are stored in a **time-series database**.
     - **can store only numeric(metric) data**
     - Azure Monitor displays collected metrics on the **Overview** page.
     - resources performance data and amounts consumed, stored as metric.
+    - default **retention** is **93 days**.
   - **Logs**
     - contain time-stamped data about resources, organized into **records** with different sets of **properties** for each type.
     - logs are **stored as tables**.
+    - default **retention** is **30 days**. free tier 7 days.
     - **can store both metric(numeric) and event log data**.
     - begins collecting data as soon as you create your Azure subscription and add resources.
     - create or modify resources, stored in Azure Monitor activity logs.
     - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
+      - **Guest OS**: operating system logs from VM running Azure Monitor Agent.
     - **Data Collector API**: collect logs from any **REST API**.
     - **Azure Monitor Analyze**: query language for logs.
   - ![azure monitor](img/azure_monitor.PNG)
