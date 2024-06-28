@@ -704,13 +704,11 @@ Remove-MgUser
   - VM(linux or windows) backup using agent(extension) software. stores in vault.
   - ![vm backup](img/vm_backup.PNG)
   - **Zone or Region**: customer choice. LRS(across fault domain), GRS(across geographies), ZRS(across datacenters, datacenter failure).
-  - **vaults**: orchestrate and manage backups. - interface to interact with your data and stores the backed-up data in **Recovery Services vaults** and **Backup vaults**.
   - single vault or multiple vaults to organize and manage your backup.
   - **Backup Types**
     - **Planned**: known in advance.
     - **Unplanned**: backup with custom retention.
     - **On-Demand**: not scheduled.
-  - **Workload integration layer**: VM disk backup.
   - **Data Plane -Access Tiers**: Azure Backup managed storage.
     - **Snapshot tier**: fastest to restore. stored with **customer data, and in vault**. You do not have to wait for data to be copied from vault.
     - **Standard tier**: stored in Microsoft managed vault. isolated copy.
@@ -735,6 +733,7 @@ Remove-MgUser
 - **Backup Vault**
   - newer than Azure Recovery Service Vault optimized for large-scale backups.
   - supports newer Azure services like Azure Database for PostgreSQL.
+  - to restore encrypted disk, must all provide access to encryption key.
   - ![backup comparison](img/backup_comparison.PNG)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - **AzCopy**: cmd line utility.
@@ -750,6 +749,9 @@ Remove-MgUser
   - **Azure Import/Export**:
     - same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
     - first step to use tool, download **WAImportExport** program. **V1 for blob storage, V2 for File Shares**.
+- **Microsoft Azure Recovery Services (MARS) Agent**
+  - agent running on windows server or client.
+  - backup on-prem **files, folders, and machine state** to Azure cloud.
 - **Recovery Services vault**
   - cross region secure container for replicated data(VM disk, images, SQL, Files).
   - cannot be deleted until all soft-deleted items are removed.
@@ -764,7 +766,7 @@ Remove-MgUser
   - default 14 day retention after deletion.
   - no backup jobs can be running.
   - **UnDelete**
-    - unDelete backup data before you can restore it.
+    - restore deleted backup. unDelete cannot run until all dependencies are restored.
 - **VM and On-Prem Computer Backup**
   - **Microsoft Azure Recovery Service (MARS)**: file, folders, VM state, **windows on-prem** backup.
     - Microsoft Azure Backup Server (MABS), Azure managed disks snapshots, and Azure Site Recovery.
