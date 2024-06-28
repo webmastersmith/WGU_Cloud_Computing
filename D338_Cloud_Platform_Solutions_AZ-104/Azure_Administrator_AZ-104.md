@@ -719,6 +719,12 @@ Remove-MgUser
   - **Management Plane -Recovery Vault**: interface to interact with backup service.
 - **Backup center**
   - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
+- **Backup Policies**
+  - instructions that tell Azure how to protect your data.
+  - when(daily, weekly, monthly...), how many(retention period), where(LRS, ZRS, GRS), security(soft delete, encryption).
+  - **view policy**: the Azure portal, open the Recovery Services Vault blade, and then click backup policies.
+  - **default policy**: backup once a day and retain 30 days.
+    - VM Backup policy, SQL, Files, Blobs, Database for PostgreSQL.
 - **Backup Tiers**
   - **hot**: online tier(immediate access), frequent access.
   - **cool**: online tier(immediate access), infrequent access. 30 day storage.
@@ -745,7 +751,7 @@ Remove-MgUser
     - same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
     - first step to use tool, download **WAImportExport** program. **V1 for blob storage, V2 for File Shares**.
 - **Recovery Services vault**
-  - cross region secure container for replicated data(VM disk, images, database...).
+  - cross region secure container for replicated data(VM disk, images, SQL, Files).
   - cannot be deleted until all soft-deleted items are removed.
   - ![backup comparison](img/backup_comparison.PNG)
 - **Redundancy Options**
