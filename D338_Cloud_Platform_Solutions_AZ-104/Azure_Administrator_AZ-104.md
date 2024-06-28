@@ -80,7 +80,7 @@
 ## Azure Resources, Resource Groups and Resource Manager
 
 - **resource**
-  - a resource in Azure is a **single service instance**(VM, VNET, Storage, any Azure Service...).
+  - a resource in Azure is a **single service instance**(VM, VNet, Storage, any Azure Service...).
   - can only **belong** to **one resource group**.
   - does **not** have to belong to a resource group(can belong to tenant, management group, subscription...).
 - **Resource Limits**
@@ -838,7 +838,8 @@ Remove-MgUser
 ## Azure Networks and Network Security Groups
 
 - **Application Gateway**
-  - Azure managed, layer 7(HTTP(S)) load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP(VNET)) via **Round-Robin** method.
+  - direct web traffic to the appropriate web applications and enforce security.
+  - Azure managed, web traffic(layer 7 -HTTP(S)) load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP(VNet)) via **Round-Robin** method.
   - **Basic**: routing via **URL**(includes hostname and port).
   - **Multi-site routing**: multiple different web app routing(based on Domain Name) on same Application Gateway.
   - allows redirects, HTTP header rewrite.
@@ -860,16 +861,28 @@ Remove-MgUser
     - **CNAME**: Canonical Name. alias pointing to domain.
     - **MX**: mail exchange. email server IP.
     - **TXT**: text record. associate text strings with domain. e.g. DKIM, SPF...
-  - **private DNS zone**: not visible on internet. only available to your local network. assign name to VNET IP.
+  - **private DNS zone**: not visible on internet. only available to your local network. assign name to VNet IP.
   - **Apex Domain**: highest level domain. sometimes called _zone apex_ or _root apex_. `example.com` // `.com` is Top Level Domain (TLD).
     - designated by `@`
 - **ExpressRoute**
-  - private connection between on-prem and Azure VNET through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
+  - private connection between on-prem and Azure VNet through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
+- **Border Gateway Protocol (BGP)**
+  - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
+  - BGP is the internet standard method of exchanging routing information between networks. Mainly handled in the background by your ISP.
 - **Firewall**
   - managed service. high availability and scalability. logging. SNAT and DNAT support.
+- **Forced Tunneling**
+  - routing outbound VNet traffic via VPN to on-prem device(typically firewall for inspection, packet capture...) then on to the public internet.
+- **Gateway Transit**: allows peered networks to share same **Virtual Network Gateway**.
+- **Hub and Spoke**
+  - central public endpoint to network(hub) connecting to subnets(spokes) or VNets.
+  - simplifies large subnet, or VNet infrastructure, otherwise you would have to manually peer them.
+    - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
+  - public traffic can flow through **Virtual Network Gateway** to a **NVA**(network virtual appliance e.g. Cisco Firewall) then out to the spokes.
+  - ![P2S](img/peering_hub.png)
 - **Load Balancer**
   - managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
-  - **internal** load balancer must be in same VNET as VMs and **do not** have a **public IP**.
+  - **internal** load balancer must be in same VNet as VMs and **do not** have a **public IP**.
   - can use **availability sets**(hardware failure) and **availability zones**(datacenter failure) to ensure that virtual machines are always available.
   - **Types**:
     - **Basic**: original, superseded by standard.
@@ -892,7 +905,7 @@ Remove-MgUser
   - The last rule is always a **Deny All** rule.
   - can be applied to **subnets** and **NIC**.
   - **Rules**
-    - default: **deny** all **inbound(except loadBalancer or VNET subnets)**. **allow** all **outbound**.
+    - default: **deny** all **inbound(except loadBalancer or VNet subnets)**. **allow** all **outbound**.
     - without NSG, **all** traffic is allowed.
     - rules can be overridden by **Priority** value.
       - **priority values**: 100 - 4096. processed from low to high. first rule matches, processing stops. lower numbers are processed first, so have higher priority.
@@ -907,25 +920,17 @@ Remove-MgUser
   - software virtual machine with the same functionality. e.g. **Cisco Firewall** can be used as a gateway to public internet.
   - from providers in **Azure Marketplace**.
 - **Peering**
-  - seamless connection of two or more VNETs. function as single VNET.
+  - seamless connection of two or more VNets. function as single VNet.
   - managed as separate resources, but communicate as single resource.
-  - **Traffic** between the VNETs are kept on the **Microsoft Azure backbone** network. No public IP, gateways, or encryption is required in the communication between the virtual networks.
+  - **Traffic** between the VNets are kept on the **Microsoft Azure backbone** network. No public IP, gateways, or encryption is required in the communication between the virtual networks.
     - **internal network access** is controlled with **NSGs**.
-  - allow remote communication between peering VNETs with VPN Gateway.
-  - **Transitivity**: must be explicit. Only VNETs that are directly peered can communicate with each other. e.g. A,B,C VNET. Peer A->B and B->C. A->C does not automatically work without explicit peering A->C.
+  - allow remote communication between peering VNets with VPN Gateway.
+  - **Transitivity**: must be explicit. Only VNets that are directly peered can communicate with each other. e.g. A,B,C VNet. Peer A->B and B->C. A->C does not automatically work without explicit peering A->C.
   - can peer if different Microsoft Tenants, subscriptions... To peer, administrator must have the **_Network Contributor_** role on their virtual network.
   - **Regional and Global Peering**: peering is possible **between different tenants, subscriptions**...
-    - **Regional**: VNETs in same region.
-    - **Global**: VNETS in different regions. Any Azure cloud region, China cloud region, but not Government Region.
+    - **Regional**: VNets in same region.
+    - **Global**: VNetS in different regions. Any Azure cloud region, China cloud region, but not Government Region.
     - ![peering global](img/peering_global.PNG)
-  - **Gateway Transit**: allows peered networks to share same **VPN Gateway**.
-  - **Extend Peering**
-    - **Hub and Spoke**: central public endpoint to network.
-      - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
-      - alternative solution is to **service chain** a NVA to spokes.
-      - public traffic can flow through VPN Gateway -> NVA(network virtual appliance e.g. Cisco Firewall) -> spokes.
-    - **Service Chaining**: with UDR(user defined route), direct traffic from VNET to VPN Gateway. VNETs must be peered.
-    - ![P2S](img/peering_hub.png)
   - **PowerShell and CLI Peering**
     - creating peering from **PowerShell** or **CLI**, you must create peering from **A->B and B->A**.
     - Azure portal automatically creates both.
@@ -935,30 +940,32 @@ Remove-MgUser
   - [Azure P2S VPN](https://learn.microsoft.com/en-us/azure/vpn-gateway/point-to-site-about)
   - ![P2S](img/p2s.png)
 - **Private Link**
-  - **all internal traffic** between your VNET and the service **travels** the **Microsoft backbone network**. eliminates data exposure to the public internet.
+  - **all internal traffic** between your VNet and the service **travels** the **Microsoft backbone network**. eliminates data exposure to the public internet.
   - ![private link](img/private_link.PNG)
   - ![private link](img/private_link2.PNG)
 - **Routes**
-  - custom routes direct traffic flow within VNET. all routes are stored in the **_route table_**.
+  - custom routes direct traffic flow within VNet. all routes are stored in the **_route table_**.
   - **Service Tags**: can be used as a route address in a user-defined route(UDR).
-  - **Border Gateway Protocol (BGP)**: routing protocol for **on-prem to Azure VNET**. can create site-to-site connection.
   - **Specificity**: most direct match wins. e.g. 10.0.0.6 with route 10.0.0.0/16 and 10.0.0.0/24. the 10.0.0.0/24 is more specific and will be chosen.
     - **Order of specificity**: user-defined, BGP route, system route.
   - **System Routes**:
-    - Azure uses **_system routes_** to direct traffic between VMs, on-prem and internet. system routes enable communication between any VM and any other VM in VNET.
+    - Azure uses **_system routes_** to direct traffic between VMs, on-prem and internet. system routes enable communication between any VM and any other VM in VNet.
     - uses **_route table_**(rules of how to get to destination) to store system routes.
     - You **can't create or delete system routes**, but you can **override** the system routes by adding custom routes to control traffic flow to the **next hop**.
     - Every **subnet** has the following **default system routes**:
-      - **Virtual Network**: address prefix. // e.g. `192.168.0.0/24` the range of IP inside VNET.
+      - **Virtual Network**: address prefix. // e.g. `192.168.0.0/24` the range of IP inside VNet.
       - **Internet**: default route to internet.
       - **None**: drops traffic.
       - ![subnet default route](img/subnet_default_route.PNG)
+- **Service Chaining**
+  - **direct traffic** through a series of **network services**(NVAs) by manually setting up **UDR**(user defined route).
+  - VNets must be peered.
 - **Service Endpoints and Policies**
   - **Service Endpoint Policy**:
-  - integrate Azure **PaaS services** into your **VNET**. **prevent** the exposure of data and services to the Internet.
+  - integrate Azure **PaaS services** into your **VNet**. **prevent** the exposure of data and services to the Internet.
   - endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
-  - **service endpoint**: allow **all** instances in a **subnet**(your VNET) to communicate to another Azure **service** over the Microsoft backbone. no public internet access.
-  - **private endpoint**: **single** instances in a **subnet**(your VNET) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - **service endpoint**: allow **all** instances in a **subnet**(your VNet) to communicate to another Azure **service** over the Microsoft backbone. no public internet access.
+  - **private endpoint**: **single** instances in a **subnet**(your VNet) to communicate to another Azure service over the Microsoft backbone. no public internet access.
   - ![service endpoint](img/service_endpoint.PNG)
 - **Site-to-site VPNs (S2S)**
   - use IPSEC to provide a secure connection between your **on-prem VPN Device**(handles IPSec encryption/decryption) and **Azure VPN Gateway**(service provided by Microsoft).
@@ -967,8 +974,8 @@ Remove-MgUser
   - ![s2s](img/s2s.png)
 - **Subnets and Screened Subnets (DMZ) and IP Addresses**
   - network can be segmented into subnets to help improve security, increase performance, and make it easier to manage.
-  - default **all subnets** in VNET **can communicate** with each other.
-  - subnet **name** must be **unique** in VNET.
+  - default **all subnets** in VNet **can communicate** with each other.
+  - subnet **name** must be **unique** in VNet.
   - subnet must be specified by using **CIDR** notation.
     - each subnet, the **first four addresses** and the **last address** are **reserved**.
     - smallest supported subnet: **/29** subnet mask(8 IP addresses), largest supported subnet: **/2** subnet mask(1,073,741,824 IP addresses).
@@ -989,32 +996,41 @@ Remove-MgUser
     - **Public IP Prefix**: Azure **region specific** range of **contiguous** static IP addresses. **prefix size** is the number of IP addresses.
     - **Private IP Addresses**: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16
       - `.1, .2, .3 and last`, IP addresses aren't visible or configurable. Reserved for Load Balancers, Application Gateway, VM NICs.
-      - .0 = network address
-      - .1 = Azure Gateway
-      - .2 & .3 = DNS
-      - .255 = Broadcast
+      - .0 = network address // identifies start of subnet.
+      - .1 = Azure Gateway // load balancer...
+      - .2 & .3 = DNS // vNICs
+      - .255 = Broadcast // reserved as last address of subnet.
   - **Route Table**
     - can have many subnets, each subnet can have only one route table.
 - **User-defined routes (UDR)**
-  - manually define route and next hop. e.g. route traffic to VPN Gateway.
+  - **manually define route and next hop**. e.g. route traffic to VPN Gateway.
+  - ip forwarding must be enabled for VMs.
 - **Virtual Network Gateway**
-  - encrypt traffic from on-prem(physical device) to Azure VNET over the internet.
-  - **Virtual Network Gateway**: Azure Gateway Service.
-  - **Local Network Gateway**: the on-prem device.
-- **VNET**
+  - establish secure connection(S2S(site-to-site), P2S(point-to-site), ExpressRoute) between Azure VNet and other networks(on-prem).
+  - **Gateway Subnet**: special subnet reserved only for Virtual Network Gateway.
+    - Virtual Network Gateway is deployed as **two VMs** in an **active-active** configuration. This is the **high availability**. With active-active **both gateways have a public IP address** with both listening on VPN endpoint.
+    - **Name**: must be named **_GatewaySubnet_**.
+    - **Size**: min `/29` recommended: `/27`.
+  - When **creating the Virtual Network Gateway**, specify what it will be used for: **ExpressRoute or VPN**.
+  - **ExpressRoute Gateway**: direct connection to **all** Microsoft services. no public internet.
+  - **VPN Gateway**: Azure service for encrypted communication between on-prem VPN(IPSec: S2S, P2S) and Azure VNet.
+    - VPN Gateway must be in **dedicated subnet**.
+    - VNet can only have **one** VPN Gateway.
+  - ![vpn gateway](img/vpn_gateway.PNG)
+- **VNet**
   - VPN network. provide logical isolation and protection. IP range once chosen, cannot be changed.
   - If **no security group** is applied, then **all** traffic is **allowed** by Azure.
   - Azure blocks SMTP (Email port 25) outbound.
   - link virtual networks with an on-premises IT infrastructure to create hybrid or cross-premises solution.
-  - **IP Range**
+  - **Possible Azure Private IP Ranges**
     - 10.0.0.0–10.255.255.255 (10.0.0.0/8)
     - 172.16.0.0–172.31.255.255 (172.16.0.0/12)
     - 192.168.0.0– 192.168.255.255 (192.168.0.0/16)
-- **VPN Gateway**
-  - Azure service for encrypted communication between on-prem VPN(IPSec: S2S, P2S) and Azure VNET.
-  - VPN Gateway must be in **dedicated subnet**.
-  - VNET can only have **one** VPN Gateway.
-  - ![vpn gateway](img/vpn_gateway.PNG)
+  - **Connecting VNets**
+    - VNets must have non-overlapping IP address space.
+    - VNets are non-**transitive**. A peered to B and B peered to C does not connect A to C.
+    - VNet peering. inside region or across regions.
+    - VNet-to-VNet VPN over public internet.
 
 ## Azure Monitor
 
@@ -1040,7 +1056,7 @@ Remove-MgUser
   - What are the values of other properties that can help with my analysis of the resources and operations?
 - **Alerts**
   - you configure alerts on key resources and who will get them.
-  - data can be a **_metric_** or **_log_** or both.
+  - data can be a **_metric_** or **_log_** or **both**.
   - **Metric**: numeric threshold is reached. ideally suited to monitoring for threshold breaches or spotting trends.
   - **Activity Logs**: when resource changes state(when specific changes occur on a resource within your Azure subscription).
   - **Logs**: based on what is written to log file.
@@ -1111,22 +1127,38 @@ Remove-MgUser
     - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
     - **Data Collector API**: collect logs from any **REST API**.
     - **Azure Monitor Analyze**: query language for logs.
+  - ![azure monitor](img/azure_monitor.PNG)
 - **Network Watcher**
-  - monitor, diagnose, and manage resources in an Azure virtual network.
+  - monitor, diagnose, and manage resources in an **VNet and on-prem**(Azure Monitor Agent installed).
+  - gather data about connectivity, packet loss, latency, and available network paths
   - reports that someone cannot access resources, network watcher helps you quickly identify(pin point root cause) the cause.
+  - must have **Log Analytics Workspace** setup.
+  - classic: **Any subscription containing a virtual network resource will automatically have Network Watcher enabled. Network Watcher can also be deployed in Azure Portal or the CLI**.
   - **IP flow verification**: check connectivity to internet.
-    - checks security and admin rules for packet routing to an Azure virtual machine. sends different packets to check connectivity.
-    - If test packet is denied, returns NSG rule that blocked packet.
+    - sends different packets to check connectivity. reports on NSG rule that **accepted** or **dropped** packet.
     - failed test and no issue reported by IP flow, firewall could be issue.
   - **Next Hop Analysis**: helps verify network configuration. find broken routes.
     - is traffic delivered to intended destination?
-    - returns next hop: type, ip, route table.
+    - returns next hop: type, ip, route table. Possible next hop types:
+      - Internet
+      - VirtualAppliance
+      - VirtualNetworkGateway
+      - VirtualNetwork
+      - VirtualNetworkPeering
+      - VirtualNetworkServiceEndpoint
+      - None (Used for user-defined routes)
   - **Network Topology**: visual diagram of resource routes.
-  - must be Owner, Contributor, or Network Contributor to use Network Watcher.
-  - remote monitoring, alert notification, NSG flow and log analysis.
-  - **IP Flow Verify**:
-  - **Next Hop**:
-  - **Network Topology**:
+    - must be Owner, Contributor, or Network Contributor to use Network Watcher.
+    - remote monitoring, alert notification, NSG flow and log analysis.
+  - **Packet Capture**: VM must have NSG rules allowing access to Azure Storage. capture packets on network for review.
+  - **Network Troubleshooting**
+    - Connection Monitor: **ongoing** monitoring of network.
+    - Connection Troubleshoot: **point-in-time** monitoring of network.
+- **Performance Monitor**
+  - packet loss and latency between endpoints(VNet and on-prem).
+  - VM running **Log Analytics Agent** is required on both ends.
+- **Service Connectivity Monitor**
+  - monitors packet loss and network performance with remote location(database, web server...)
 - **Tiers**
   - Tiers of monitoring data collect by Azure Monitor:
   - **Application**: performance and functionality of application code.
@@ -1187,8 +1219,8 @@ az vm list-ip-addresses -n SampleVM -o table
 
 # Network
 az vm open-port --port 80 --resource-group "[sandbox resource group name]" --name SampleVM # open port 80
-# VNET
-az network vnet create --resource-group "[sandbox resource group name]" --name CoreServicesVnet --address-prefixes 10.20.0.0/16 --location westus
+# VNet
+az network VNet create --resource-group "[sandbox resource group name]" --name CoreServicesVNet --address-prefixes 10.20.0.0/16 --location westus
 # Subnet
-az network vnet subnet create --resource-group "[sandbox resource group name]" --vnet-name CoreServicesVnet --name GatewaySubnet --address-prefixes 10.20.0.0/27
+az network VNet subnet create --resource-group "[sandbox resource group name]" --VNet-name CoreServicesVNet --name GatewaySubnet --address-prefixes 10.20.0.0/27
 ```
