@@ -717,8 +717,8 @@ Remove-MgUser
     - **Archive tier**: **Long-Term Retention (LTR)**. rarely accessed.
   - **Data Plane -Availability and Security**: cross zone or region backups.
   - **Management Plane -Recovery Vault**: interface to interact with backup service.
-- **Describe redundancy options**
-  - backup copies in local, zone, region.
+- **Backup center**
+  - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
 - **Backup Tiers**
   - **hot**: online tier(immediate access), frequent access.
   - **cool**: online tier(immediate access), infrequent access. 30 day storage.
@@ -726,6 +726,10 @@ Remove-MgUser
   - **archive**: **offline** tier(low priority, high latency, several hours to access), rarely accessed. 180 day storage.
   - cooler tiers have **lower** storage, but **higher** access cost.
   - ![storage access tiers](img/storage_access_tier.PNG)
+- **Backup Vault**
+  - newer than Azure Recovery Service Vault optimized for large-scale backups.
+  - supports newer Azure services like Azure Database for PostgreSQL.
+  - ![backup comparison](img/backup_comparison.PNG)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - **AzCopy**: cmd line utility.
     - **fault tolerant, large-scale bulk transfer of data**.
@@ -740,21 +744,16 @@ Remove-MgUser
   - **Azure Import/Export**:
     - same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
     - first step to use tool, download **WAImportExport** program. **V1 for blob storage, V2 for File Shares**.
-- **Backup center**
-  - manage all backup vaults(spanning multiple workload types, vaults, subscriptions, regions, and Azure Lighthouse tenants).
-- **Azure Recovery Services vault**
-  - storage entity in Azure that houses data(VM, SQL...).
+- **Recovery Services vault**
+  - cross region secure container for replicated data(VM disk, images, database...).
   - cannot be deleted until all soft-deleted items are removed.
-- **Azure Site Recovery**
+  - ![backup comparison](img/backup_comparison.PNG)
+- **Redundancy Options**
+  - save your backup copies in local(datacenter), or zone(multiple datacenters), or region(datacenters miles apart).
+- **Site Recovery**
   - backup complete footprint(business continuity by replicating workloads) to another region. natural disaster recovery.
   - Azure VM and on-prem computers can be replicated.
   - ![site recovery](img/site-recovery.PNG)
-- **VM SQL Database**
-  - when running VM with SQL database, Azure backup does a **Stream Backup**.
-  - **VM SQL Backup Types**
-    - **Full**: full recovery of all data.
-    - **Differential**: full backup, then only data that has changed.
-    - **Transaction Log**: SQL transactions log backup.
 - **Soft Delete**
   - default 14 day retention after deletion.
   - no backup jobs can be running.
@@ -774,6 +773,12 @@ Remove-MgUser
     - single image from **all** VM data disk including the OS disk. can be used to create template.
     - stores in vault.
     - ![vm backup](img/vm_backup.PNG)
+- **VM SQL Database**
+  - when running VM with SQL database, Azure backup does a **Stream Backup**.
+  - **VM SQL Backup Types**
+    - **Full**: full recovery of all data.
+    - **Differential**: full backup, then only data that has changed.
+    - **Transaction Log**: SQL transactions log backup.
 - **When to Backup**
   - Azure Backup **doesn’t** support **cross-region backup** for most workloads.
   - **Types**
