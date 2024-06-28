@@ -848,14 +848,17 @@ Remove-MgUser
 - **Application Security Group**
   - grouping VMs based on application(function). e.g. web server and database.
   - layer 3 and 4(IP and port).
-- **Azure DNS**
+- **Border Gateway Protocol (BGP)**
+  - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
+  - BGP is the internet standard method of exchanging routing information between networks. Mainly handled in the background by your ISP.
+- **DNS**
   - acts as the SOA for domain name. manage and host your **registered** domain.
   - Azure supports **vanity domains**. e.g. `example.com`. Just point to your Azure IP from 'A' record or 'CNAME'.
   - after creating **Azure DNS zone**, go to your DNS registrar, point DNS server to Azure DNS zone.
-    - `nslookup -type=SOA example.com`
     - **DNS**: Domain Name Server. maps domain name with IP.
     - **DNS Zone**: collection of DNS records for a given domain name.
     - **SOA**: start of authority. master record for domain.
+      - `nslookup -type=SOA example.com`
     - **A**: maps domain to IPv4.
     - **AAAA** map domain to IPv6.
     - **CNAME**: Canonical Name. alias pointing to domain.
@@ -866,9 +869,6 @@ Remove-MgUser
     - designated by `@`
 - **ExpressRoute**
   - private connection between on-prem and Azure VNet through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
-- **Border Gateway Protocol (BGP)**
-  - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
-  - BGP is the internet standard method of exchanging routing information between networks. Mainly handled in the background by your ISP.
 - **Firewall**
   - managed service. high availability and scalability. logging. SNAT and DNAT support.
 - **Forced Tunneling**
