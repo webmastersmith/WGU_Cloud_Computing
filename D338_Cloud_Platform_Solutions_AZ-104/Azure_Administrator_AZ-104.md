@@ -838,7 +838,7 @@ Remove-MgUser
 ## Azure Networks and Network Security Groups
 
 - **Application Gateway**
-  - layer 7 load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP) via **Round-Robin** method.
+  - Azure managed, layer 7(HTTP(S)) load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP(VNET)) via **Round-Robin** method.
   - **Basic**: routing via **URL**(includes hostname and port).
   - **Multi-site routing**: multiple different web app routing(based on Domain Name) on same Application Gateway.
   - allows redirects, HTTP header rewrite.
@@ -865,17 +865,19 @@ Remove-MgUser
     - designated by `@`
 - **ExpressRoute**
   - private connection between on-prem and Azure VNET through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
+- **Firewall**
+  - managed service. high availability and scalability. logging. SNAT and DNAT support.
 - **Load Balancer**
-  - high availability. scale. **inbound** or **outbound traffic**. **public** or **internal** facing.
+  - managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
   - **internal** load balancer must be in same VNET as VMs and **do not** have a **public IP**.
   - can use **availability sets**(hardware failure) and **availability zones**(datacenter failure) to ensure that virtual machines are always available.
   - **Types**:
     - **Basic**: original, superseded by standard.
-    - **Standard**: up to 1,000 pools.
+    - **Standard**: up to 1,000 pools. HTTPS health check.
     - **Gateway**: high performance and high availability.
   - **To implement a load balancer**:
     - **Front-end IP configuration**: ip load balancer assigned.
-    - **Back-end pools**: resources (VNET and IP) waiting for traffic.
+    - **Back-end pools**: back-end resources listening for request.
     - **Health probes**: checks backend resources health.
     - **Load-balancing rules**: how to distribute the requests to the back-end.
     - **Distribution Mode**: default (NAT table traffic distribution type) **five-tuple hash**(source IP address, source port, destination IP address, destination port, and protocol type(TCP, UDP)).
@@ -896,7 +898,8 @@ Remove-MgUser
       - **priority values**: 100 - 4096. processed from low to high. first rule matches, processing stops. lower numbers are processed first, so have higher priority.
     - default **intra-subnet** traffic(resources inside same subnet) are **allowed**.
     - you must define an **allow rule** for both the **subnet and network interface** in the group to ensure traffic can get through.
-    - because a NIC or subnet can each have a security group:
+    - because a **NIC** or **subnet** can each have a security group, there can be two NSGs in a subnet:
+      - the first NSG to read packet, takes **precedence**.
       - inbound: the subnet(NSG 1) rules will take precedence.
       - outbound: the NIC(NSG 2) will take precedence.
       - ![nsg rules](img/nsg.PNG)
