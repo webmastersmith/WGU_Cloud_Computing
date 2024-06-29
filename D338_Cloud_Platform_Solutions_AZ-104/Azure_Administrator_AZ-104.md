@@ -723,6 +723,10 @@ Remove-MgUser
   - **view policy**: the Azure portal, open the Recovery Services Vault blade, and then click backup policies.
   - **default policy**: backup once a day and retain 30 days.
     - VM Backup policy, SQL, Files, Blobs, Database for PostgreSQL.
+- **Backup Reports**
+  - insights(data visualization) into the health and performance of your backup environment.
+  - view of your backups **across vaults, subscriptions, and regions**.
+  - uses **Log Analytics Workspace**.
 - **Backup Tiers**
   - **hot**: online tier(immediate access), frequent access.
   - **cool**: online tier(immediate access), infrequent access. 30 day storage.
