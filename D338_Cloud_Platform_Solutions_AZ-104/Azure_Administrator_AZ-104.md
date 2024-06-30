@@ -241,7 +241,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - manage who can access their resources, and what actions are allowed.
     - control access to data and resources by specifying roles and access privileges for employees and business partners.
     - create role definitions and role assignments.
-  - **Entra Role**: applies policy to identities(users, groups, domains).
+  - **Entra Role**: applies policy to ==identities==(users, groups, domains).
 - **Security Principal**
   - object that represents something(**Requestor**) requesting access to resource.
   - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
