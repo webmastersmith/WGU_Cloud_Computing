@@ -58,7 +58,10 @@
 
   // post process MARKED
   function postprocess(html) {
-    return html.replaceAll('<pre>', '<pre class="hljs">');
+    // highlight
+    const highlightedHTML = html.replace(/ ==(.*)== /, '<span style="background-color: yellow">$1</span>');
+    // add code highlight class
+    return highlightedHTML.replaceAll('<pre>', '<pre class="hljs">');
   }
   const { Marked } = require('./marked.min');
   const { markedHighlight } = require('./marked-highlight');
