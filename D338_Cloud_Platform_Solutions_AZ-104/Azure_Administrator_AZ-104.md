@@ -425,7 +425,7 @@ Remove-MgUser
 - **Storage Redundancy**
   - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from **hardware failure**. **cheapest option**.
   - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from **datacenter failure**.
-  - **GRS**: geo-redundant storage. **primary LRS**, secondary region **asynchronous** LRS hundreds of miles away. protection from disaster.
+  - **GRS**: geo-redundant storage. **primary LRS**, secondary region **asynchronous** LRS hundreds of miles away. **protection from disaster**.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**. **synchronous LRS** in primary region and **synchronous LRS** in secondary region.
   - **GZRS**: geo-zone-redundant storage. **primary ZRS**, secondary **asynchronously** LRS. protection against regional disasters.
   - **RA-GZRS**: Read-access geo-zone-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**. **synchronous ZRS** in primary region and **synchronous ZRS** in secondary region.
@@ -472,7 +472,7 @@ Remove-MgUser
   - **unmanaged data disk**: manual scale to disk needs.
   - **managed data disk**: Azure scales disk to VM needs.
 - **VM Bastion**
-  - PaaS. secure access to RDP(windows)/SSH(linux) over SSL. VM doesn't need public IP.
+  - PaaS. secure access to RDP(windows)/SSH(linux) over HTTPS/SSL. VM doesn't need public IP.
 - **VM Maintenance Planning**
   - unplanned hardware failure: predicted failure of physical machine.
   - unexpected downtime: physical machine fails.
@@ -634,14 +634,14 @@ Remove-MgUser
   - requires both management (Azure Resource Manager) and Active Directory permissions to allow full access to your resources.
   - ![Azure storage explorer](img/storage_explorer.PNG)
 - **File Sync and Cloud Tiering**
-  - **cache files and synchronize between Azure and on-prem Windows Server or cloud VM**.
+  - **cache Azure File Shares and synchronize between on-prem Windows Server and cloud VM**.
   - any number of caches in any location.
   - **Multi-Site Access**: write on-prem (linux, windows server protocols: SMB, NFS, FTPS) and cloud.
   - file sync backs up on-prem files with Azure File Share.
   - **Cloud Tiering**
     - only allow frequently accessed files to be cached locally(free up local cache).
     - when file is **tiered**, file is replaced with pointer(URL to Azure File Share) instead of it being cached locally.
-    - tiered file is marked with an `O` and greyed out to show file is only in Azure.
+    - tiered file is marked with an `O` and **greyed out** to show file is stored only in Azure.
 
 ## Storage Security
 
@@ -674,7 +674,7 @@ Remove-MgUser
   - **service-level**: only one service.
 - **Stored Access Policy**
   - to revoke SAS, you have to delete the secret key or resource, creating a need to decouple permissions from the token itself.
-  - Stored Access Policy creates start/end times, access permissions independently from SAS token. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly.
+  - Stored Access Policy creates start/end times, access permissions independently from SAS token. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
     - can be applied to a container and every service in container.
     - Set rules: start time, expiry time, permissions.
     - reference policy when you create SAS.
