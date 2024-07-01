@@ -80,8 +80,14 @@
     - no multiple region storage.
     - no multiple sessions.
 
-## Azure Resources, Resource Groups and Resource Manager
+## Azure Blueprints, Resource Manager, Resource Groups, and Resource Manager
 
+- **Blueprints**
+  - combine ARM templates, role assignments, policy assignments, and Azure artifacts into a single reusable definition.
+  - Define and enforce a standard set of resources, configurations, and policies.
+  - Enable repeatable deployments of complex environments.
+  - Simplify governance and compliance management.
+  - best when you need to deploy and manage complex environments with multiple resources and strict governance requirements.
 - **resource**
   - a resource in Azure is a **single service instance**(VM, VNet, Storage, any Azure Service...).
   - can only **belong** to **one resource group**.
@@ -114,6 +120,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **Azure Resource Manager (ARM)**
   - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
+  - best when deploying individual resources or small groups of resources in a consistent and repeatable way.
   - **Benefits**
     - reusable templates allow easy deployment.
     - handle resources as a group instead of individually.
@@ -153,15 +160,15 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **Policy and Policy Definition**
   - **Policy**
     - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments.
-    - Policy is a default allow mechanism with an explicit deny system.
+    - Policy is **default allow**, and you must **explicit deny**.
     - create, assign, and manage policies to control or audit your resources.
-    - enforce rules and ensure compliance with corporate standards and service level agreements.
+    - audit and enforce rules and ensure compliance with corporate standards and service level agreements.
     - **enforcement and compliance, scaling, and remediation**.
   - **Policy Definition**
     - **JSON format**. Express condition to evaluate and actions to perform when condition is met.
     - enforce different rules and effects over your resources, so those resources stay compliant with your IT governance standards.
-  - individual resources, resource groups, subscriptions can be exempted from policy.
     - e.g. cannot deploy VM if it has an exposed public IP address.
+  - individual resources, resource groups, subscriptions can be exempted from policy.
 - **Initiative Definition**
   - A **group of related policies** joined logically to accomplish a common goal is called an **Azure initiative**.
   - help you track one or more policy definition compliance state.
