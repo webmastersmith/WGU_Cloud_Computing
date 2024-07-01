@@ -242,6 +242,14 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - control access to data and resources by specifying roles and access privileges for employees and business partners.
     - create role definitions and role assignments.
   - **Entra Role**: applies policy to identities(users, groups, domains).
+- **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
+  - **Classic Subscription Administrator**: Azure first role policy.
+    - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
+  - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
+  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
+    - controls access at a higher level than RBAC.
+  - ![rbac entra roles](img/rbac_entra_roles.PNG)
+  - ![az scope](img/az-scopes-billing.png)
 - **Role Assignment**
   - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
   - purpose of a role assignment is to control access.
@@ -259,8 +267,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Built-In Roles**
     - **owner** built-in role has the **highest level of access privilege** in Azure.
     - **user access administrator**: manage(create/delete) user access to resource.
-    - **contributor**: manage(create/modify/delete) resource. Cannot grant access to others.
-    - **reader**: view resource.
+    - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
+    - **reader**: view resource. cannot create/modify/delete or grant/remove access.
   - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
   - **JSON**
     - **Actions**: permissions identify what actions are allowed.
@@ -273,14 +281,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **scope**
   - how many resources(assignable scope) security principal is granted access.
   - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
-- **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
-  - **Classic Subscription Administrator**: Azure first role policy.
-    - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
-  - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
-  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
-    - controls access at a higher level than RBAC.
-  - ![rbac entra roles](img/rbac_entra_roles.PNG)
-  - ![az scope](img/az-scopes-billing.png)
 - **Entra and RBAC solve what Identity and Access concern of the Cloud**
   - when employees leave, lose access to resources in cloud.
   - being able to centrally control network communication, while allowing employee autonomy(create/manage VMs).
