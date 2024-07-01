@@ -757,10 +757,12 @@ Remove-MgUser
   - **Azure File Sync**: centralize files. **Automated bi-directional sync** from **Cloud with on-prem**. Installs on Windows Server.
 - **Describe migration options, including Azure Migrate and Azure Data Box**
   - **Azure Migrate**: hub of services and tools designed to help with data migration.
-  - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a 'storage drive' with your data on it, that is shipped to you.
+  - **Azure Data Box**: send terabytes of data into and out of Azure in a quick, inexpensive, and reliable fashion. Shipped 'data box'. Basically it's a SSDs(max 40TB) with your data on it, that is shipped to you.
   - **Azure Import/Export**:
     - same as Azure Data Box, but you supply the hard drives, Microsoft copies your data and ships to you.
-    - first step to use tool, download **WAImportExport** program. **V1 for blob storage, V2 for File Shares**.
+    - first step to use tool, download **WAImportExport(only 64 bit Windows)** program to prepare disk and copy data onto.
+      - Two versions of WAImportExport: **V1 for blob storage, V2 for File Shares**.
+    - **Export Jobs**: Can only export **blobs**. ship Azure up to 10 empty drives.
 - **Microsoft Azure Recovery Services (MARS) Agent**
   - agent running on windows server or client.
   - backup on-prem **files, folders, and machine state** to Azure cloud.
