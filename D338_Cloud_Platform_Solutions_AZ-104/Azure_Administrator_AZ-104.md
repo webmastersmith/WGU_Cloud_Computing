@@ -416,11 +416,12 @@ Remove-MgUser
   - ![availability set](img/AvailabilitySet.webp)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Storage Redundancy**
-  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from hardware failure.
+  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from hardware failure. **cheapest option**.
   - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from datacenter failure.
   - **GRS**: geo-redundant storage. **primary LRS**, secondary region **asynchronous** LRS hundreds of miles away. protection from disaster.
-  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**.
-  - **GZRS**: geo-zone redundant storage. **primary ZRS**, secondary **asynchronously** LRS. protection against regional disasters.
+  - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**. **synchronous LRS** in primary region and **synchronous LRS** in secondary region.
+  - **GZRS**: geo-zone-redundant storage. **primary ZRS**, secondary **asynchronously** LRS. protection against regional disasters.
+  - **RA-GZRS**: Read-access geo-zone-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**. **synchronous ZRS** in primary region and **synchronous ZRS** in secondary region.
   - [Microsoft Learn: Storage Options](https://learn.microsoft.com/en-us/azure/storage/common/storage-redundancy)
   - ![storage reliability](img/storage_reliability.PNG)
   - ![high availability](img/04-azure-global-infra.jpg)
