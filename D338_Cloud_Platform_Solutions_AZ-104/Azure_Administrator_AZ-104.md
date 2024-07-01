@@ -243,8 +243,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - create role definitions and role assignments.
   - **Entra Role**: applies policy to identities(users, groups, domains).
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
-  - **Classic Subscription Administrator**: Azure first role policy.
-    - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
+  - **Classic Subscription Administrator**: before RBAC, Azure first role policy.
+    - **Account Administrator**, **Service Administrator**, and **Co-Administrator**. Access was controlled by assigning admin roles to subscriptions.
   - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
   - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
     - controls access at a higher level than RBAC.
@@ -266,7 +266,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - JSON list of allowed permissions. least privilege.
   - **Built-In Roles**
     - **owner** built-in role has the **highest level of access privilege** in Azure.
-    - **user access administrator**: manage(create/delete) user access to resource.
+    - **user access administrator**: manage(create/delete) user access to resource. assign themselves or others owner.
     - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
     - **reader**: view resource. cannot create/modify/delete or grant/remove access.
   - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
@@ -580,10 +580,10 @@ Remove-MgUser
     - manage costs by organizing data based on **how frequently it will be accessed** and **how long it will be retained**.
     - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
     - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
-    - Hot, Cool, Cold transfer happens immediately. Archive takes time.
+    - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
     - Hot: immediate access. highest storage cost, lowest access cost. frequently accessed.
-    - Cool: immediate access. infrequently accessed. retained at least 30 days.
-    - Cold: immediate access. infrequently accessed. retained at least 90 days.
+    - Cool: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
+    - Cold: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
     - Archive: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days.
     - Hot -> cool: incurs a **write** charge for all data.
     - Cool -> Hot: incurs **read** charge for all data.
