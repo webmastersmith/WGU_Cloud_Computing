@@ -273,7 +273,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - JSON list of allowed permissions. least privilege.
   - **Built-In Roles**
     - **owner** built-in role has the **highest level of access privilege** in Azure.
-    - **user access administrator**: manage(create/delete) user access to resource. assign themselves or others owner.
+    - **user access administrator**: manage(create/delete) user access to resource. can assign themselves or others owner.
     - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
     - **reader**: view resource. cannot create/modify/delete or grant/remove access.
   - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
@@ -423,8 +423,8 @@ Remove-MgUser
   - ![availability set](img/AvailabilitySet.webp)
   - ![availability zones](img/Azure-Availability-zone-infographic.png)
 - **Storage Redundancy**
-  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from hardware failure. **cheapest option**.
-  - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from datacenter failure.
+  - **LRS**: local redundant storage. **synchronous**. creates **three** copies of data in **availability set**(within **same datacenter** across fault and update domains). protection from **hardware failure**. **cheapest option**.
+  - **ZRS**: zone redundant storage. **synchronous**. creates **three** copies data across **availability zones**(linked datacenters) within a region. protection from **datacenter failure**.
   - **GRS**: geo-redundant storage. **primary LRS**, secondary region **asynchronous** LRS hundreds of miles away. protection from disaster.
   - **RA-GRS**: Read-access geo-redundant storage. because secondary storage data cannot be read until primary fails, this method allows you to **read from secondary, with primary still working**. **synchronous LRS** in primary region and **synchronous LRS** in secondary region.
   - **GZRS**: geo-zone-redundant storage. **primary ZRS**, secondary **asynchronously** LRS. protection against regional disasters.
