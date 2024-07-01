@@ -9,8 +9,10 @@
   // variables
   // const directoryPath = 'D426_Database_Management_Foundations/Database_Management_Terms.md';
   // const removeLines = 2;
-  const directoryPath = 'D338_Cloud_Platform_Solutions_AZ-104/Azure_Administrator_AZ-104.md';
-  const removeLines = 52;
+  // const directoryPath = 'D338_Cloud_Platform_Solutions_AZ-104/Azure_Administrator_AZ-104.md';
+  // const removeLines = 52;
+  const directoryPath = 'D338_Cloud_Platform_Solutions_AZ-104/avoid.cheat.md';
+  const removeLines = 2;
 
   const dataArr = fs
     .readFileSync(directoryPath, 'utf-8')
@@ -59,7 +61,7 @@
   // post process MARKED
   function postprocess(html) {
     // highlight
-    const highlightedHTML = html.replace(/ ==(.*)== /, '<span style="background-color: yellow">$1</span>');
+    const highlightedHTML = html.replace(/==(.*)==/g, '<span style="background-color: yellow">$1</span>');
     // add code highlight class
     return highlightedHTML.replaceAll('<pre>', '<pre class="hljs">');
   }

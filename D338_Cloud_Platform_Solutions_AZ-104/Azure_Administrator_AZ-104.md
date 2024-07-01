@@ -242,6 +242,15 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - control access to data and resources by specifying roles and access privileges for employees and business partners.
     - create role definitions and role assignments.
   - **Entra Role**: applies policy to identities(users, groups, domains).
+- **Role Assignment**
+  - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
+  - purpose of a role assignment is to control access.
+  - Role Assignment parts:
+    - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
+    - **Role Definition**: **what**. JSON list of **effective permissions**(built in: owner, contributor, reader, user access administrator).
+    - **Scope**: **where**. how many resources security principal is granted access(management group -> subscription -> resource group -> resource). **Permissions in sub-levels are inherited**.
+    - ![RBAC scope](img/rbac_scope.PNG)
+    - ![Role definition](img/role_definition2.PNG)
 - **Security Principal**
   - object that represents something(**Requestor**) requesting access to resource.
   - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
@@ -264,15 +273,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **scope**
   - how many resources(assignable scope) security principal is granted access.
   - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
-- **Role Assignment**
-  - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
-  - purpose of a role assignment is to control access.
-  - Role Assignment parts:
-    - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
-    - **Role Definition**: **what**. JSON list of **effective permissions**(built in: owner, contributor, reader, user access administrator).
-    - **Scope**: **where**. how many resources security principal is granted access(management group -> subscription -> resource group -> resource). **Permissions in sub-levels are inherited**.
-    - ![RBAC scope](img/rbac_scope.PNG)
-    - ![Role definition](img/role_definition2.PNG)
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
   - **Classic Subscription Administrator**: Azure first role policy.
     - Account Administrator, Service Administrator, and Co-Administrator. Access was controlled by assigning admin roles to subscriptions.
