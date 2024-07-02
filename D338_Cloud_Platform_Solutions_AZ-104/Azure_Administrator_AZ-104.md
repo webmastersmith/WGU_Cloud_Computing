@@ -151,6 +151,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 ## Azure Management Groups and Policies
 
 - **Management Groups**
+  - used to manage access, policies, and compliance across multiple Azure subscriptions. They help in organizing subscriptions into a hierarchy for governance. You **do not deploy individual resources in a management group**.
   - level of scope and control(manage access, policy and compliance) across **subscriptions**.
   - use management groups to target policies and spending budgets across **subscriptions**.
   - all subscriptions within management group inherit policy. e.g. specific region to create VMs.
@@ -159,7 +160,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - ![az scope](img/az-scopes-billing.png)
 - **Policy and Policy Definition**
   - **Policy**
-    - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments.
+    - express how the environment is governed for all users at a specified scope regardless of any RBAC assignments. can **require** or **log** compliance.
+    - **scope**: root management group -> management groups -> subscription -> resource group -> resource.
     - Policy is **default allow**, and you must **explicit deny**.
     - create, assign, and manage policies to control or audit your resources.
     - audit and enforce rules and ensure compliance with corporate standards and service level agreements.
@@ -191,7 +193,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - a subscription can be linked to multiple Azure accounts.
   - ![subscription](img/subscription.PNG)
   - ![az scope](img/az-scopes-billing.png)
-- **subscription types**
+- **Subscription Types**
   - **Free Trial**: 30 day free.
   - **Pay-As-You-Go**: charges you monthly for the services you used in that billing period.
   - **Enterprise Agreement**: buy cloud services and software licenses under one agreement.
@@ -244,11 +246,14 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **RBAC**
   - Azure RBAC and Microsoft Entra roles are different.
-  - **RBAC**: applies policy to infrastructure(VM, DataBase, Storage...).
-    - manage who can access their resources, and what actions are allowed.
-    - control access to data and resources by specifying roles and access privileges for employees and business partners.
-    - create role definitions and role assignments.
-  - **Entra Role**: applies policy to identities(users, groups, domains).
+    - **RBAC**: applies policy to infrastructure(VM, DataBase, Storage...).
+    - **Entra Role**: applies policy to identities(users, groups, domains).
+  - manage who can access their resources, and what actions are allowed.
+  - **default deny, explicit allow**.
+  - control access to data and resources by specifying roles and access privileges for employees and business partners.
+  - create role definitions and role assignments.
+  - **scope**: root management group -> management group -> subscription -> resource group -> resource.
+  - permissions are inherited.
 - **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
   - **Classic Subscription Administrator**: before RBAC, Azure first role policy.
     - **Account Administrator**, **Service Administrator**, and **Co-Administrator**. Access was controlled by assigning admin roles to subscriptions.
@@ -546,6 +551,7 @@ Remove-MgUser
   - node: VM(computer) in cluster.
   - control plane: node that orchestrates pods.
   - pod: one or more containers working together. single IP address.
+    - pod count is controlled by the **HorizontalPodAutoscaler**.
   - **Ingress controller**: distribute traffic to pods(**workers**) listening for HTTP request.
   - **Storage**:
     - if created together, lifecycle of storage(Disk or Files) is tied to pod lifecycle. **deleting pod deletes storage**.
@@ -689,8 +695,9 @@ Remove-MgUser
     - e.g. `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
   - purpose: give client who normally does not have access, a URI for a specified time period, to prevent account keys exposure.
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
-  - **account-level**: one or more storage ervices.
+  - **account-level**: one or more storage services.
   - **service-level**: only one storage service.
+  - you can only **remove access** by deleting storage key, or resource/rename. Use **Stored Access Policy** to decouple permission with key.
 - **Stored Access Policy**
   - to revoke SAS, you have to delete the secret key or resource, this creates a need to decouple permissions from the token itself. **Stored Access Policy** addresses this need.
   - **Stored Access Policy**: creates start/end times, access permissions **independently from SAS token**. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
@@ -703,13 +710,15 @@ Remove-MgUser
   - **access keys** allow full access(CRUD) to all services within storage account.
   - store in **Azure key vault** for safety.
   - **Connection String**
-    - classic way to manage(full access) storage data using Shared Key authorization(Storage Access key).
+    - classic way to manage(full access) storage data. connection string **contains sensitive information**, such as account keys(Shared Key authorization(Storage Access key)).
     - Use Microsoft Entra ID or SAS URI with Security Policy instead.
     - **connection string is retrievable by opening the storage account blade in the Azure Portal and clicking Access Keys.**
 - **Azure Key Vault**
   - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
   - **Service-Managed Keys in Customer-Controlled Hardware**: your keys, your HSM, outside Microsoft control. **Host Your Own Key (HYOK)**.
+- **Storage Firewall**
+  - restrict access to specific **networks or IP addresses**, ensuring that only internal devices within those networks can access the storage account.
 - **Storage Security Best Practices**
   - set permissions to minimum and time to minimum.
   - use HTTPS and **User Delegation** to create SAS, because key does not have to be embedded in the URL.
@@ -837,6 +846,7 @@ Remove-MgUser
 
 - **App Service Plans**
   - PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
+  - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
   - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
   - configuration settings include runtime stack(node, python, dotnet...), operating system, region and App Service plan(standard, premium, isolated...).
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
@@ -906,7 +916,7 @@ Remove-MgUser
   - ![application gateway](img/application_gateway.PNG)
   - ![application gateway](img/application_gateway2.PNG)
 - **Application Security Group**
-  - grouping VMs based on application(function). e.g. web server and database.
+  - used to group virtual machines(application(function). e.g. web server and database.) and define security rules based on these groups, facilitating network security management.
   - layer 3 and 4(IP and port).
 - **Border Gateway Protocol (BGP)**
   - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
@@ -960,7 +970,7 @@ Remove-MgUser
   - vNIC. layer 2. -see VM NIC.
   - can have network security group applied.
 - **Network Security Group (NSGs)**
-  - enforce and control network traffic rules at the networking level.
+  - manage network traffic rules for Azure resources, typically associated with VNets, subnets and NICs. It controls inbound and outbound traffic based on security rules.
   - software firewall by filtering **inbound and outbound traffic**(subnet or network interface(NIC)) with **allow/deny rules**.
   - The last rule is always a **Deny All** rule.
   - can be applied to **subnets** and **NIC**.
@@ -1007,6 +1017,7 @@ Remove-MgUser
   - ![private link](img/private_link2.PNG)
 - **Routes**
   - custom routes direct traffic flow within VNet. all routes are stored in the **_route table_**.
+  - **route tables**: each **subnet** will have it's **own route table**.
   - **Service Tags**: can be used as a route address in a user-defined route(UDR).
   - **Specificity**: most direct match wins. e.g. 10.0.0.6 with route 10.0.0.0/16 and 10.0.0.0/24. the 10.0.0.0/24 is more specific and will be chosen.
     - **Order of specificity**: user-defined, BGP route, system route.
@@ -1196,6 +1207,7 @@ Remove-MgUser
   - ![azure monitor](img/azure_monitor.PNG)
 - **Network Watcher**
   - monitor, diagnose, and manage resources in an **VNet and on-prem**(Azure Monitor Agent installed).
+  - **scope**: one instance per **region**.
   - gather data about connectivity, packet loss, latency, and available network paths
   - reports that someone cannot access resources, network watcher helps you quickly identify(pin point root cause) the cause.
   - must have **Log Analytics Workspace** setup.
@@ -1223,6 +1235,9 @@ Remove-MgUser
 - **Performance Monitor**
   - packet loss and latency between endpoints(VNet and on-prem).
   - VM running **Log Analytics Agent** is required on both ends.
+- **RunBooks**
+  - Runbooks are **PowerShell or Python scripts** that **automate tasks** and processes **within Azure or on-premises** environments.
+  - called from Alert webhooks. execute complex automation workflows in response to specific alerts.
 - **Service Connectivity Monitor**
   - monitors packet loss and network performance with remote location(database, web server...)
 - **Tiers**
@@ -1252,6 +1267,9 @@ Remove-MgUser
   - **VM Event Logs**: create custom DCR. specify data you want to collect and where to send. If sent to **Log Analytics workspace**, data can be analyzed with the **Kusto Query Language**(KQL).
   - **Data Collection Endpoint**: required with **Insights**. where to send data.
   - ![vm monitoring](img/VM_monitoring.PNG)
+- **Webhooks**
+  - purpose: send alert to external system or application.
+  - user-defined HTTP callbacks send **POST** request to **webhook URL**.
 
 ## Azure Powershell and CLI
 
