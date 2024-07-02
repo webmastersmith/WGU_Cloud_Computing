@@ -458,19 +458,25 @@ Remove-MgUser
     - **Linux**: ssh. private key or password.
     - connect to Azure VMs using a public IP address or a Private IP address with RDP, SSH, or even PowerShell. A VPN must be setup to connect using a private IP like a site-to-site, point-to-site, or ExpressRoute.
   - **Source Network Address Translation (SNAT)**: map the outbound traffic from the private IP address to the public(internet facing) IP address.
-- **VM Storage**
+- **VM Storage -Azure Disk**
   - managed by Azure. You choose disk size.
-  - storage is scalable. charged separately from compute.
-  - all VMs have two disk: OS disk(pre-installed operating system) and temporary disk.
-    - temporary disk is not persistent.
-  - **VHDs**: disk mapped to VM. page blobs.
-    - **Snapshot**: full copy of single disk.
-    - **Storage Blob**: select disk image.
-    - **None**: new empty VHD is created.
-  - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
-  - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
+  - you can import your custom image into **Azure Disk**.
+  - storage is scalable. amount of disk you can attach is **determined by VM size**.
+  - compute and storage are charged separately.
   - **unmanaged data disk**: manual scale to disk needs.
   - **managed data disk**: Azure scales disk to VM needs.
+  - all VMs have **two disk**: **OS disk**(pre-installed operating system), **temporary disk** and **optional data disk**.
+    - **Data Disk**: Azure managed VHD attached to VM for storage of application data(database...).
+    - **Server Side Encryption (SSE)**: enabled by default for all managed disks, snapshots, and images.
+    - **temporary disk**: **not managed**, **not persistent** and **not encrypted** unless host is encrypted.
+  - **VHD**: disk mapped to VM. page blobs.
+    - **Storage Blob**: select disk image.
+    - **None**: new empty VHD is created.
+    - **Permanent Storage**: **data disk**. can be SSD or HDD. page blobs.
+    - **Premium Storage**: Premium SSD. optimized for I/O-intensive workloads(80,000 IOPS, mission critical). throughput 2,000 MB/s.
+  - **Backup**
+    - **Snapshot**: read-only full copy of **single** disk.
+    - **Custom Image**: copy of all disk(OS, data disk, temporary) attached to VM.
 - **VM Bastion**
   - PaaS. secure access to RDP(windows)/SSH(linux) over HTTPS/SSL. VM doesn't need public IP.
 - **VM Maintenance Planning**
@@ -484,7 +490,7 @@ Remove-MgUser
     - automatically increases/decrease VM instances based on demand.
     - support **Azure Load Balancer**(layer-4) and **Azure Application Gateway**(layer-7).
     - **Zone Redundant Scale Set (ZRSS)**: deployed across availability zones.
-    - **Updates**:
+    - **Updating Scale Sets**:
       - **Automatic**: random order updates.
       - **Rolling**: batch updates.
       - **Manual**: you update.
@@ -511,22 +517,30 @@ Remove-MgUser
 
 ## Azure Containers and Kubernetes Service
 
-- **VM Containers**
+- **Containers**
   - package application and dependencies into an image. uses host OS and kernel. isolated containers(like docker) instances.
-  - **persistent storage**: **Azure Disk**, or **Azure files**(SMB) for multiple nodes to share.
+  - containers are **stateless**. if fail, state is lost. to maintain state:
+    - **persistent storage**: **Azure Disk**, or **Azure files**(SMB) for multiple nodes to share.
   - **weak security** boundary, but **high fault tolerance**(new node will be created if one fails.)
   - **flexibility and speed**: **OS is shared(only run needed services)** and use less resources. sharing, testing, deployment easier.
 - **Azure Container Instance (ACI)**
   - **serverless** way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
-  - **billed only for containers in use**.
+  - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
+  - **Restart Policy**
+    - **Always**: long running task. e.g. web-servers.
+    - **Never**: one of task. e.g. background jobs.
+    - **OnFailure**: container encounter error try restarting.
   - ![container instance](img/container-instance.PNG)
 - **Container Group**
   - collection of containers that get scheduled on the same host machine. The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
   - same as 'pod' in Kubernetes(multiple containers per pod).
   - deploy through ARM(Azure Resource Manager) or YAML files.
 - **Azure Container Apps**
-  - serverless platform that **simplifies deployment**. maintain less infrastructure to run/manage containerized apps.
+  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
   - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+- **Azure Container Registry (ACR)**
+  - Azure managed, private registry(similar to docker hub) for storing and managing container images.
+  - securely store, version, share images.
 - **Azure Kubernetes Service (AKS)**: Azure PaaS service. container orchestration.
   - cluster: all nodes managed by AKS.
   - node: VM(computer) in cluster.
@@ -558,8 +572,13 @@ Remove-MgUser
     - **Name**: globally unique. letter and number only.
     - **Performance**: Standard | Premium(better I/O, SSD, database). // [a-z0-9]{3,24} cannot be changed later.
     - **Account Kind**: General-Purpose V2 | (classic V1), BlockBlobStorage, FileStorage, and BlobStorage.
+      - General-Purpose V2: Basic storage account type for blobs, files, queues, and tables.
+      - BlockBlobStorage: high-performance block blob and append blob storage. no files, queues, tables.
+      - FileStorage: SMB file shares(Windows, Linux, macOS).
+      - BlobStorage: (legacy) not recommended.
     - **Replication Option**: LRS, ZRS, GRS...
     - **Access Tier**: Hot, Cool, Cold, Archive // **only V2**.
+  - ![storage kind tier](img/storage_kind_tier.PNG)
   - ![storage account](img/storage_account.PNG)
 - **Azure storage services: blob, disk, file, table, queue**
   - **blob (Binary Large OBject)**: **unstructured**, _nonrelational_ data. Any type of binary data, typically large files(archives), video, images...
@@ -670,11 +689,11 @@ Remove-MgUser
     - e.g. `https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B`
   - purpose: give client who normally does not have access, a URI for a specified time period, to prevent account keys exposure.
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
-  - **account-level**: one or more services.
-  - **service-level**: only one service.
+  - **account-level**: one or more storage ervices.
+  - **service-level**: only one storage service.
 - **Stored Access Policy**
-  - to revoke SAS, you have to delete the secret key or resource, creating a need to decouple permissions from the token itself.
-  - Stored Access Policy creates start/end times, access permissions independently from SAS token. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
+  - to revoke SAS, you have to delete the secret key or resource, this creates a need to decouple permissions from the token itself. **Stored Access Policy** addresses this need.
+  - **Stored Access Policy**: creates start/end times, access permissions **independently from SAS token**. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
     - can be applied to a container and every service in container.
     - Set rules: start time, expiry time, permissions.
     - reference policy when you create SAS.
@@ -744,8 +763,8 @@ Remove-MgUser
   - ![storage access tiers](img/storage_access_tier.PNG)
 - **Backup Vault**
   - newer than Azure Recovery Service Vault optimized for large-scale backups.
-  - supports newer Azure services like Azure Database for PostgreSQL.
-  - to restore encrypted disk, must all provide access to encryption key.
+  - supports newer Azure services like Azure **Blobs** and **Database for PostgreSQL**.
+  - to restore encrypted disk, must provide access to encryption key.
   - ![backup comparison](img/backup_comparison.PNG)
 - **Identify options for moving files, including AzCopy, Azure Storage Explorer, and Azure File Sync**
   - **AzCopy**: cmd line utility.
@@ -773,8 +792,9 @@ Remove-MgUser
 - **Redundancy Options**
   - save your backup copies in local(datacenter), or zone(multiple datacenters), or region(datacenters miles apart).
 - **Site Recovery**
-  - backup complete footprint(business continuity by replicating workloads) to another region. natural disaster recovery.
-  - Azure VM and on-prem computers can be replicated.
+  - backup **complete on-prem footprint**(business continuity by replicating workloads) to another region. **ensure business continuity**(natural disaster recovery, power outages, migration...).
+  - replicates **data from your primary site**(Azure VM and on-prem computers replicated) to the secondary location, ensuring that your **data is up-to-date and ready for recovery**.
+  - **failover**(if primary offline, failover to secondary) and **failback**(if primary online, failback to primary).
   - ![site recovery](img/site-recovery.PNG)
 - **Soft Delete**
   - default 14 day retention after deletion.
@@ -835,6 +855,10 @@ Remove-MgUser
 - **Continuous Integration and Deployment CI/CD**
   - **automated deployment**: automate the testing and deployment of code changes.
   - **Azure DevOps**: Azure devops pipeline. code changes -> testing -> deploy.
+- **App Service Environment (ASE)**
+  - **fully isolated and dedicated environment** for securely running App Service apps at high scale.
+  - gated by WAFs. **External/Internal load balanced**.
+  - can create multiple ASEs across regions or single region.
 - **CI/CD Deployment Slots**
   - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
   - manage different app stages(development, testing, staging, and production).
@@ -864,6 +888,8 @@ Remove-MgUser
   - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
   - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
   - ![application insights](img/application_insights.PNG)
+- **WebJobs**
+  - run script in the same instance as web app. no additional charge.
 
 ## Azure Networks and Network Security Groups
 
@@ -909,10 +935,9 @@ Remove-MgUser
   - routing outbound VNet traffic via VPN to on-prem device(typically firewall for inspection, packet capture...) then on to the public internet.
 - **Gateway Transit**: allows peered networks to share same **Virtual Network Gateway**.
 - **Hub and Spoke**
-  - central public endpoint to network(hub) connecting to subnets(spokes) or VNets.
-  - simplifies large subnet, or VNet infrastructure, otherwise you would have to manually peer them.
-    - because peering is not **transitive**(does not connect automatically), deploying multiple peering(spokes) can become unwieldy.
-  - public traffic can flow through **Virtual Network Gateway** to a **NVA**(network virtual appliance e.g. Cisco Firewall) then out to the spokes.
+  - central public entry point(**Virtual Network Gateway**), then out to subnets(spokes) or other peered VNets.
+  - public traffic flows through **Virtual Network Gateway** to a **NVA**(network virtual appliance e.g. Cisco Firewall(custom rules, packet inspection/cloning...)), then out to the spokes.
+  - you can **service-chain** multiple NVAs to perform packet inspection and routing.
   - ![P2S](img/peering_hub.png)
 - **Load Balancer (ALB)**
   - **Azure Load Balancer**: managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
@@ -1144,29 +1169,27 @@ Remove-MgUser
     - `StormEvent | count` # returns number. each operator is separated with pipe command `|`.
     - ![kusto query language](img/log_analytic_queries.PNG)
 - **Insights**
-  - analysis, alerting, and streaming to external systems.
+  - Application Insights is an **Application Performance Management (APM)** service. It is a sub-service of Azure Monitor. analysis, alerting, and streaming to external systems.
 - **Integrate**
   - export log query **results**. build workflows to retrieve and copy logs to external location.
 - **Metrics and Logs**
   - All data collected by Azure Monitor fits into one of two fundamental types, **metrics** and **logs**.
   - the collected data can be viewed in **Azure Monitor**.
   - **Metrics**
-    - numerical values that describe some aspect of a system at a particular point in time. can capture metrics in near-real time.
+    - **numerical values** stored in a **time-series database** that describe some aspect of a system at a particular point in time. can capture metrics in **near-real time**.
     - have fixed set of **attributes**: time, type, resource, value, and dimension(optional).
-    - Metrics are stored in a **time-series database**.
-    - **can store only numeric(metric) data**
     - Azure Monitor displays collected metrics on the **Overview** page.
-    - resources performance data and amounts consumed, stored as metric.
+    - **Metrics Explorer**: sub-service of Azure Monitor. plot charts, visualize correlating trends, and investigate spikes and dips in metrics values.
     - default **retention** is **93 days**.
   - **Logs**
-    - contain time-stamped data about resources, organized into **records** with different sets of **properties** for each type.
-    - logs are **stored as tables**.
+    - contain **time-stamped data** about resources, organized into **records** with different sets of **properties** for each type.
+    - data collection agents collect log data and **store as tables** in a **Log Analytic Workspace** and queried using the **Log Analytics tool: Kusto Query Language**(KQL).
     - default **retention** is **30 days**. free tier 7 days.
     - **can store both metric(numeric) and event log data**.
     - begins collecting data as soon as you create your Azure subscription and add resources.
     - create or modify resources, stored in Azure Monitor activity logs.
     - **Azure Monitor Agent**: allows you to collect internal logs from **Windows/Linux** VMs.
-      - **Guest OS**: operating system logs from VM running Azure Monitor Agent.
+      - **Guest OS**: collect operating system logs from VM running Azure Monitor Agent.
     - **Data Collector API**: collect logs from any **REST API**.
     - **Azure Monitor Analyze**: query language for logs.
   - ![azure monitor](img/azure_monitor.PNG)
