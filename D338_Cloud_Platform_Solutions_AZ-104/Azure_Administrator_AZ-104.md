@@ -912,7 +912,7 @@ Remove-MgUser
   - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
   - BGP is the internet standard method of exchanging routing information between networks. Mainly handled in the background by your ISP.
 - **DNS**
-  - acts as the SOA for domain name. manage and host your **registered** domain.
+  - **hosting service** for DNS domains and acts as the SOA for domain name. manage and host your **registered** domain.
   - Azure supports **vanity domains**. e.g. `example.com`. Just point to your Azure IP from 'A' record or 'CNAME'.
   - after creating **Azure DNS zone**, go to your DNS registrar, point DNS server to Azure DNS zone.
     - **DNS**: Domain Name Server. maps domain name with IP.
@@ -924,13 +924,14 @@ Remove-MgUser
     - **CNAME**: Canonical Name. alias pointing to domain.
     - **MX**: mail exchange. email server IP.
     - **TXT**: text record. associate text strings with domain. e.g. DKIM, SPF...
+    - **Alias**: **Azure** has its own **special record type** called an **Alias** that work with A, AAAA and CNAME records. Azure Alias record **points** directly to an **Azure resource** instead of to an **IP or hostname** (helps avoid dangling domains)
   - **private DNS zone**: not visible on internet. only available to your local network. assign name to VNet IP.
   - **Apex Domain**: highest level domain. sometimes called _zone apex_ or _root apex_. `example.com` // `.com` is Top Level Domain (TLD).
     - designated by `@`
 - **ExpressRoute**
   - private connection between on-prem and Azure VNet through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
 - **Firewall**
-  - managed service. high availability and scalability. logging. SNAT and DNAT support.
+  - managed, stateful, service. high availability and scalability. logging. SNAT and DNAT support.
 - **Forced Tunneling**
   - routing outbound VNet traffic via VPN to on-prem device(typically firewall for inspection, packet capture...) then on to the public internet.
 - **Gateway Transit**: allows peered networks to share same **Virtual Network Gateway**.
