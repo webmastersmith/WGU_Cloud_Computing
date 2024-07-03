@@ -136,15 +136,16 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - limits shown are for you **subscription**.
   - all resources have 'maximum' limits threshold that you can't increase.
   - ![resource limits](img/resource_limits.PNG)
-- **Resource Manager locks**
+- **Resource Group and Resource Locks**
   - prevent accidental deletion of resources, even if you have delete permissions.
   - only the **Owner** and **User Access Administrator** roles can create or delete management locks.
   - child resources inherit **Locks**.
   - **Read-Only Lock**: prevent change.
   - **Delete Lock**: prevent deletion.
+  - This prevents 'control plane' deletion. you can still use the 'data plane'(modify, delete data inside resource).
 - **Resource Tagging**
   - tags(**done at the resource level**) allow sorting, searching, managing and analysis.
-  - tags do **not** have inheritance(**tags are not inherited from resource group**).
+  - tags do **not** have inheritance(**children to do not inherit from a tagged resource group**).
   - user must have **_write_** access(**Contributor** role or higher).
   - name:value
   - max 50 labels per resource/resource group.
@@ -570,7 +571,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 - **Azure Storage Account**
   - <https://tutorialsdojo.com/azure-storage-overview/>
-  - goals: scalable, reliable. Handle high traffic w/ data durability. Quick restore of outage.
+  - high availability, scalability. Handle high traffic w/ data durability. Quick restore of outage.
+  - **scope**: region.
   - All storage is encrypted at rest with SSE(storage service encryption).
   - container that allows you to manage as a group all Azure storage services(**queue, blob, file share, table, Azure Data Lake Storage**) together. similar to a resource group for storage.
   - policy applied to container, all storage services within container inherit the policy.
@@ -616,10 +618,10 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
     - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
     - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
-    - Hot: immediate access. highest storage cost, lowest access cost. frequently accessed.
-    - Cool: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
-    - Cold: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
-    - Archive: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days.
+    - **Hot**: immediate access. highest storage cost, lowest access cost. frequently accessed.
+    - **Cool**: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
+    - **Cold**: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
+    - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty.
     - Hot -> cool: incurs a **write** charge for all data.
     - Cool -> Hot: incurs **read** charge for all data.
   - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
@@ -906,20 +908,25 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 ## Azure Networks and Network Security Groups
 
 - **Azure Bastion**
-  - connect to VNet without needing a public IP. RDP or SSH through web browser.
+  - connect to VNet **without** needing a **public IP**. **Windows RDP or Linux SSH** through web browser.
   - log into Azure Portal, and open Bastion.
   - special subnet named **_AzureBastionSubnet_**. Acts as a '**jump server**', providing single hardened access point into network.
 - **Application Gateway**
   - direct web traffic to the appropriate web applications and enforce security.
-  - Azure managed, web traffic(layer 7 -HTTP(S)) load balancer(for web traffic(HTTP(S))) and firewall(optional). directs traffic to backend pools(web servers, databases w/ private IP(VNet)) via **Round-Robin** method.
+  - Azure managed, **web traffic(layer 7 -HTTP(S))** load balancer(for web traffic(HTTP(S))) and firewall(optional WAF). directs traffic to backend pools(web servers, databases w/ private IP(VNet)) via **Round-Robin** method.
   - **Basic**: routing via **URL**(includes hostname and port).
   - **Multi-site routing**: multiple different web app routing(based on Domain Name) on same Application Gateway.
   - allows redirects, HTTP header rewrite.
   - ![application gateway](img/application_gateway.PNG)
   - ![application gateway](img/application_gateway2.PNG)
 - **Application Security Group**
-  - used to group virtual machines(application(function). e.g. web server and database.) and define security rules based on these groups, facilitating network security management.
+  - used to **group virtual machines**(application(function). e.g. web server and database.) and define security rules based on these groups, facilitating network security management.
   - layer 3 and 4(IP and port).
+- **Azure Front Door**
+  - multiple access points around the world, handles all the HTTPS stuff, then content is provided from your VNet through Microsoft backbone.
+  - can turn on caching, combining CDN features.
+- **Azure Traffic Manager**
+  - global. DNS for routing to closest VNet Gateway.
 - **Border Gateway Protocol (BGP)**
   - automatically exchange routing information **Azure Gateway(VPN Gateway) and on-prem** for **S2S**(site-to-site) connections otherwise you would have to manually create a UDR(user defined route).
   - BGP is the internet standard method of exchanging routing information between networks. Mainly handled in the background by your ISP.
@@ -942,6 +949,9 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - designated by `@`
 - **ExpressRoute**
   - private connection between on-prem and Azure VNet through dedicated line from connectivity provider. **traffic does not traverse public internet**. higher security.
+  - **Private Peering**: connects VNet Gateway to on-prem through private backbone of Microsoft.
+  - **Global Reach**: connect two on-prem locations, over Microsoft backbone.
+  - **Microsoft Peering**: connect over ExpressRoute on-prem to Azure PaaS services.
 - **Firewall**
   - managed, stateful, service. high availability and scalability. logging. SNAT and DNAT support.
 - **Forced Tunneling**
@@ -954,7 +964,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - ![P2S](img/peering_hub.png)
 - **Load Balancer (ALB)**
   - **Azure Load Balancer**: managed layer 4(TCP,UDP), high availability, scalability. **inbound** or **outbound traffic**. **public** or **internal** facing.
-  - **internal** load balancer must be in same VNet as VMs and **does not** have a **public IP**.
+  - **scope**: must be in **same VNet** as backend pools.
+  - **internal** load balancer must be in **same VNet** as VMs and **does not** have a **public IP**.
   - can use **availability sets**(hardware failure) and **availability zones**(datacenter failure) to ensure that virtual machines are always available.
   - **Types**:
     - **Basic**: original, superseded by standard.
@@ -965,7 +976,11 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - **Back-end pools**: back-end resources listening for request.
     - **Health probes**: checks backend resources health.
     - **Load-balancing rules**: how to distribute the requests to the back-end.
-    - **Distribution Mode**: default (NAT table traffic distribution type) **five-tuple hash**(source IP address, source port, destination IP address, destination port, and protocol type(TCP, UDP)).
+    - **Distribution Mode**: load-balancer traffic distribution rules: `5/3/2 tuple`.
+      - **five-tuple hash**: default. src/dest IP, src/dest port, and protocol(TCP, UDP).
+      - **three-tuple-hash**: src/dest IP, protocol(TCP, UDP).
+      - **two-tuple-hash**: src/dest IP.
+      - ![load balancer type](img/load_balancer_type.PNG)
     - **Source IP Affinity**: source IP -> destination IP. when using Remote Desktop Gateway(RDP) for windows or media upload, you cannot use five-tuple hash. you must use source IP affinity as your distribution mode.
       - **Session Persistence**: group same client request or send to any VM listening.
 - **Network Interface Card (NIC)**
@@ -973,12 +988,12 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - can have network security group applied.
 - **Network Security Group (NSGs)**
   - manage network traffic rules for Azure resources, typically associated with VNets, subnets and NICs. It controls inbound and outbound traffic based on security rules.
-  - software firewall by filtering **inbound and outbound traffic**(subnet or network interface(NIC)) with **allow/deny rules**.
+  - software firewall(layer 3, 4 allow/deny rules) that can be applied to **subnets** and **NIC**.
   - The last rule is always a **Deny All** rule.
-  - can be applied to **subnets** and **NIC**.
+  - without NSG, **all** traffic is allowed.
   - **Rules**
+    - **Rule Creation**: priority, name, src/dest ip, port, action.
     - default: **deny** all **inbound(except loadBalancer or VNet subnets)**. **allow** all **outbound**.
-    - without NSG, **all** traffic is allowed.
     - rules can be overridden by **Priority** value.
       - **priority values**: 100 - 4096. processed from low to high. first rule matches, processing stops. lower numbers are processed first, so have higher priority.
     - default **intra-subnet** traffic(resources inside same subnet) are **allowed**.
@@ -1036,8 +1051,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **direct traffic** through a series of **network services**(NVAs) by manually setting up **UDR**(user defined route).
   - VNets must be peered.
 - **Service Endpoints and Policies**
-  - **Service Endpoint Policy**:
-  - integrate Azure **PaaS services** into your **VNet**. **prevent** the exposure of data and services to the Internet.
+  - service endpoints allow subnet or resource to talk to your **Azure Storage Account** over the private Microsoft backbone.
+    - integrate Azure **PaaS services** into your **VNet**. **prevent** the exposure of data and services to the Internet.
   - endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
   - **service endpoint**: allow **all** instances in a **subnet**(your VNet) to communicate to another Azure **service** over the Microsoft backbone. no public internet access.
   - **private endpoint**: **single** instances in a **subnet**(your VNet) to communicate to another Azure service over the Microsoft backbone. no public internet access.
@@ -1073,7 +1088,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
       - `.1, .2, .3 and last`, IP addresses aren't visible or configurable. Reserved for Load Balancers, Application Gateway, VM NICs.
       - .0 = network address // identifies start of subnet.
       - .1 = Azure Gateway // load balancer...
-      - .2 & .3 = DNS // vNICs
+      - .2 & .3 = DNS
       - .255 = Broadcast // reserved as last address of subnet.
   - **Route Table**
     - can have many subnets, each subnet can have only one route table.
