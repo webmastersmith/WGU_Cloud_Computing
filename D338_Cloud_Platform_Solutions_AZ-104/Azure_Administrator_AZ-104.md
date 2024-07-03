@@ -218,10 +218,44 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Budgets**: manage cost, prevent overspending.
   - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
 
-## User Identity and Group Accounts with Entra ID
+## Entra ID User Identity and Group Accounts
 
-- **Entra**
-  - purpose: identity and authentication that speaks cloud(OAUTH2, SAML over HTTPS).
+- **Entra ID vs Active Directory**
+  - **Entra ID**
+    - purpose: cloud-based identity and access management service(PaaS) that provides **authentication**(prove who you are) that speaks cloud(SAML, WS-Federation, OpenID Connect for authentication, and uses OAuth for authorization over HTTPS).
+    - Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
+    - focused on providing **identity management** services to **web-based apps**, unlike **AD DS**, which is more focused on **on-premises apps**.
+    - Entra ID users have access to a set of features that **aren’t natively available in AD DS**, such as support for **multi-factor authentication, identity protection, and self-service password reset**.
+      - primarily an **identity solution** for internet based(**https**) communications.
+      - multi-tenant directory service.
+      - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+      - Entra is **managed** by **REST API** over https.
+      - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
+  - **Active Directory Domain Services** (AD DS or traditionally called just "Active Directory").
+    - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
+    - true X.500 based structure. Uses a DNS for locating resources on network.
+    - AD authentication(kerberos -for identity) and authorization(LDAP -query and manage AD).
+    - OUs(organizational units) and GPOs(group policy objects) for management.
+    - AD has hierarchal structure, Entra does not.
+    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
+- **Entra ID P2 over P1**
+  - P2 has
+    - Entra ID protection: enhanced security/monitoring user accounts.
+    - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
+- **Entra Connect Cloud Sync and Sync**
+  - **Entra Connect Cloud Sync**
+    - engine runs in cloud.
+  - **Entra Connect Sync**
+    - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
+    - on-prem AD becomes **source of truth** when connected to Entra ID.
+- **Entra Domain Services: Entra Connect**
+  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
+    - site-to-site VPN. on-prem -> cloud. = expensive.
+    - replica AD DS on VM in the cloud. = expensive.
+    - **Entra Connect** solves this problem:
+      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
+      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
+      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
 - **user account**
   - anyone who wants to access an Azure resource, must have an Azure user account.
   - **Entra ID cloud identity user accounts can be added through**:
@@ -278,42 +312,6 @@ Remove-MgUser
     - **federation**: Entra B2B is easier than using on-prem AD FS(federation service). To use AD FS you have to add an internet facing proxy for them to log into.
       - Good for keeping all auth local, but if your network goes down, no one can connect.
     - ![federation](img/federation.PNG)
-- **Entra Connect Cloud Sync and Sync**
-  - **Entra Connect Cloud Sync**
-    - engine runs in cloud.
-  - **Entra Connect Sync**
-    - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
-- **Entra Domain Services: Entra Connect**
-  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
-    - site-to-site VPN. on-prem -> cloud. = expensive.
-    - replica AD DS on VM in the cloud. = expensive.
-    - **Entra Connect** solves this problem:
-      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
-      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
-      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
-- **Entra ID vs Active Directory**
-  - **Entra ID**
-    - Microsoft Entra ID is a cloud-based identity and access management service(PaaS). Allows employees can use to access external resources. e.g. Microsoft 365, Azure Portal...
-    - SAML, WS-Federation, and OpenID Connect for authentication, and uses OAuth for authorization.
-    - focused on providing **identity management** services to **web-based apps**, unlike **AD DS**, which is more focused on **on-premises apps**.
-    - Entra ID users have access to a set of features that **aren’t natively available in AD DS**, such as support for **multi-factor authentication, identity protection, and self-service password reset**.
-      - primarily an **identity solution** for internet based(**https**) communications.
-      - multi-tenant directory service.
-      - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
-      - Entra is **managed** by **REST API** over https.
-      - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
-  - **AD(active directory)**
-    - Active Directory Domain Services (AD DS or traditionally called just "Active Directory").
-    - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
-    - authentication: **kerberos** for identity.
-    - true X.500 based structure. Uses DNS for locating resources on network.
-    - OUs(organizational units) and GPOs(group policy objects) for management.
-    - You can query and manage AD DS by using Lightweight Directory Access Protocol (LDAP) calls.
-    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
-- **Entra ID P2 over P1**
-  - P2 has
-    - Entra ID protection: enhanced security/monitoring user accounts.
-    - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
 - **Entra Schema**
   - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
     - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
