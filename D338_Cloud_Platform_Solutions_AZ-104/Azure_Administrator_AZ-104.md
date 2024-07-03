@@ -99,24 +99,6 @@
 - **declarative syntax**
   - declarative programming. **what you want, not how to do it**.
   - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
-- **Resource Manager locks**
-  - prevent accidental deletion of resources, even if you have delete permissions.
-  - only the **Owner** and **User Access Administrator** roles can create or delete management locks.
-  - child resources inherit **Locks**.
-  - **Read-Only Lock**: prevent change.
-  - **Delete Lock**: prevent deletion.
-- **Resource Provider**
-  - service that supplies resources you can deploy and manage through the 'Resource Manager'.
-  - e.g. Microsoft.Compute, Microsoft.Storage, Microsoft.KeyVault, Microsoft.Web...
-  - resource type is in the format: `{resource-provider}/{resource-type}`. For example, the key vault type is `Microsoft.KeyVault/vaults`.
-- **Resource Tagging**
-  - tags(**done at the resource level**) allow sorting, searching, managing and analysis.
-  - tags do **not** have inheritance(**tags are not inherited from resource group**).
-  - user must have **_write_** access(**Contributor** role or higher).
-  - name:value
-  - max 50 labels per resource/resource group.
-- **template**
-  - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
 
 ## Management Group, Resource Group, and Resource
 
@@ -154,6 +136,24 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - limits shown are for you **subscription**.
   - all resources have 'maximum' limits threshold that you can't increase.
   - ![resource limits](img/resource_limits.PNG)
+- **Resource Manager locks**
+  - prevent accidental deletion of resources, even if you have delete permissions.
+  - only the **Owner** and **User Access Administrator** roles can create or delete management locks.
+  - child resources inherit **Locks**.
+  - **Read-Only Lock**: prevent change.
+  - **Delete Lock**: prevent deletion.
+- **Resource Tagging**
+  - tags(**done at the resource level**) allow sorting, searching, managing and analysis.
+  - tags do **not** have inheritance(**tags are not inherited from resource group**).
+  - user must have **_write_** access(**Contributor** role or higher).
+  - name:value
+  - max 50 labels per resource/resource group.
+- **template**
+  - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
+- **Resource Provider**
+  - service that supplies resources you can deploy and manage through the 'Resource Manager'.
+  - e.g. Microsoft.Compute, Microsoft.Storage, Microsoft.KeyVault, Microsoft.Web...
+  - resource type is in the format: `{resource-provider}/{resource-type}`. For example, the key vault type is `Microsoft.KeyVault/vaults`.
 
 ## Azure Management Groups and Policies
 
