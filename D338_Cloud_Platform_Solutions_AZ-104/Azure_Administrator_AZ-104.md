@@ -80,7 +80,7 @@
     - no multiple region storage.
     - no multiple sessions.
 
-## Azure Blueprints, Resource Manager, Resource Groups, and Resource Manager
+## Azure Blueprints and ARM(Azure Resource Manager)
 
 - **Blueprints**
   - combine ARM templates, role assignments, policy assignments, and Azure artifacts into a single reusable definition.
@@ -88,36 +88,6 @@
   - Enable repeatable deployments of complex environments.
   - Simplify governance and compliance management.
   - best when you need to deploy and manage complex environments with multiple resources and strict governance requirements.
-- **resource**
-  - a resource in Azure is a **single service instance**(VM, VNet, Storage, any Azure Service...).
-  - can only **belong** to **one resource group**.
-  - does **not** have to belong to a resource group(can belong to tenant, management group, subscription...).
-- **Resource Limits**
-  - track usage against limits and plan for future needs.
-  - limits shown are for you **subscription**.
-  - all resources have 'maximum' limits threshold that you can't increase.
-  - ![resource limits](img/resource_limits.PNG)
-- **resource group**
-  - container that holds related resources(logical collection).
-  - you can **delete** a resource group with the **Azure Portal, Azure PowerShell, the Azure CLI**, or the **REST API**.
-  - **Rules**
-    - **each resource can only exist in one resource group**.
-    - resource groups **cannot** be **nested**.
-    - resource group **cannot** be **renamed**.
-    - can have many different type(services) and **regions**.
-    - you can move resources to other resource groups. when **moving resources** from one group to another, you **can't add, update, or delete resources** in the resource groups until the move completes(the underlying **service** will continue to function).
-      - the resource group you move resource into must have enough resource quota. e.g. move VM and vCPU quota is at max limit.
-    - all resources share the same lifecycle. e.g. you deploy, update, delete them together.
-    - a resource **can interact** with resources in other resource groups.
-    - **RBAC(role based access control)** can be **assigned** to resource groups.
-    - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group.
-  - ![az scope](img/az-scopes-billing.png)
-
-```powershell
-# remove resource group.
-Remove-AzResourceGroup -Name "YourResourceGroupName"
-```
-
 - **Azure Resource Manager (ARM)**
   - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
   - best when deploying individual resources or small groups of resources in a consistent and repeatable way.
@@ -147,6 +117,43 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - max 50 labels per resource/resource group.
 - **template**
   - JSON(javascript object notation) file that defines one or more resources, to **deploy to a resource group**.
+
+## Management Group, Resource Group, and Resource
+
+- **Management Group**
+  - organize manage and enforce organization compliance with management group policy.
+  - **Root Management Group**: once tenant is created, a root management group is created.
+    - all management groups are under this entity.
+- **Resource Group**
+  - container that holds related resources(logical collection).
+  - you can **delete** a resource group with the **Azure Portal, Azure PowerShell, the Azure CLI**, or the **REST API**.
+  - **Rules**
+    - **each resource can only exist in one resource group**.
+    - resource groups **cannot** be **nested**.
+    - resource group **cannot** be **renamed**.
+    - can have many different type(services) and **regions**.
+    - you can move resources to other resource groups. when **moving resources** from one group to another, you **can't add, update, or delete resources** in the resource groups until the move completes(the underlying **service** will continue to function).
+      - the resource group you move resource into must have enough resource quota. e.g. move VM and vCPU quota is at max limit.
+    - all resources share the same lifecycle. e.g. you deploy, update, delete them together.
+    - a resource **can interact** with resources in other resource groups.
+    - **RBAC(role based access control)** can be **assigned** to resource groups.
+    - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group.
+  - ![az scope](img/az-scopes-billing.png)
+
+```powershell
+# remove resource group.
+Remove-AzResourceGroup -Name "YourResourceGroupName"
+```
+
+- **Resource**
+  - a resource in Azure is a **single service instance**(VM, VNet, Storage, any Azure Service...).
+  - can only **belong** to **one resource group**.
+  - does **not** have to belong to a resource group(can belong to tenant, management group, subscription...).
+- **Resource Limits**
+  - track usage against limits and plan for future needs.
+  - limits shown are for you **subscription**.
+  - all resources have 'maximum' limits threshold that you can't increase.
+  - ![resource limits](img/resource_limits.PNG)
 
 ## Azure Management Groups and Policies
 
@@ -338,7 +345,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **registered**: when device(phone, computer...) is registered, it becomes a **known entity** allowing Entra tenant ability to manage device. e.g. validate that phone has not been 'jail-broken'.
   - **join**: cooperate device, have complete control. show up as **objects** in Entra tenant.
 
-## Azure RBAC (Role Based Access Control) and Entra Roles
+## Azure RBAC (Role Based Access Control)
 
 - **RBAC**
   - Azure RBAC and Microsoft Entra roles are different.
