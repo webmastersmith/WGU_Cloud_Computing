@@ -242,8 +242,11 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - OUs(organizational units) and GPOs(group policy objects) for management.
     - AD has hierarchal structure, Entra does not.
     - AD DS can be deployed on a Windows Server VM, but does not use Microsoft Entra ID.
-- **Entra ID P2 over P1**
-  - P2 has
+    - **administrative units**
+      - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
+      - ![administrative units](img/administrative_units.PNG)
+- **Entra ID Licenses P2 over P1**
+  - P2 has:
     - Entra ID protection: enhanced security/monitoring user accounts.
     - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
 - **Entra Connect**
@@ -258,30 +261,56 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
       - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
         - site-to-site VPN. on-prem -> cloud. = expensive.
         - replica AD DS on VM in the cloud. = expensive.
-- **user account**
-  - anyone who wants to access an Azure resource, must have an Azure user account.
-  - **Entra ID cloud identity user accounts can be added through**:
-    - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
-- **Entra User**
-  - when a user is added, they are granted default permissions.
-    - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
-- **Entra ID three types of user accounts**
-  - **Cloud**: **cloud identity** accounts.
-    - Cloud identities have profile information such as job title and office location.
-  - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
-  - **Guest**: outside of Azure. e.g. external vendor or contractor need access to your Azure resources.
-- **who can create/delete users**
-  - only global admins can create/delete users.
-- **Security/Microsoft 365 group accounts**
-  - two types of group accounts:
-    - **Security groups**: manage users and computer/app access through security policy.
-      - set permissions for all group members at same time.
-      - managed only by **Microsoft Entra Administrator**.
-    - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
-      - allow access to normal users and guest accounts.
-- **administrative units**
-  - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
-  - ![administrative units](img/administrative_units.PNG)
+- **Entra tenant**
+  - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
+  - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
+  - A tenant represents an organization. It's a **dedicated instance** of Microsoft Entra ID that an organization or app developer receives at the beginning of a relationship with Microsoft(yourname.onmicrosoft.com).
+  - e.g. your piece in the cloud with your name like **yourname.onmicrosoft.com** that you lease from microsoft.
+    - An organization can have multiple Microsoft Entra tenants. This allows separation.
+    - An organization can have multiple Azure subscriptions(each subscription must be associated with only one, Microsoft Entra tenant).
+    - A subscription can have multiple licenses.
+    - Licenses can be assigned to individual user accounts.
+    - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
+  - ![az scope](img/az-scopes-billing.png)
+  - **Entra Domain Names**: microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
+    - add your own **vanity domain**. e.g. `example.com`
+- **Entra User Accounts**
+  - **user account**
+    - anyone who wants to access an Azure resource, must have an Azure user account.
+  - **Entra ID User Accounts**
+    - **Cloud**: **cloud identity** accounts.
+      - Cloud identities have profile information such as job title and office location.
+    - **Hybrid**: when user has on-prem AD account (**_directory-synchronized identity_**) synchronized w/ Entra ID via Entra Connect.
+    - **Guest**: external user. outside of Azure. e.g. external identity(vendor, contractor, google, another Entra ID tenant...) who needs access to your Azure resources.
+  - **Entra User**
+    - when a user is added, they are granted default permissions.
+      - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
+  - **who can create/delete users**
+    - only global admins can create/delete users.
+    - **Entra ID cloud identity user accounts can be added through**:
+      - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
+- **Entra SSPW (self service password reset)**
+  - user can reset their password.
+  - user is considered '**registered**' when they setup the required amount of password resets.
+  - a strong two-method authentication policy is always applied to accounts with an administrator role.
+    - security-question method is not available for administrator roles.
+  - **Best Practices**
+    - Enable two or more of the authentication reset request methods.
+    - Use the mobile app notification or code as the primary method, but also enable the email or office phone methods to support users without mobile devices.
+    - The mobile phone method isn't a recommended method, because it's possible to send fraudulent SMS messages.
+    - The security-question option is the least recommended method, because the answers to the security questions might be known to other people. Only use the security-question method in combination with at least one other method.
+- **Entra Groups**
+  - apply roles to all members of group.
+  - **Direct assignment**: you manually give them role assignment.
+  - **Group assignment**: you assign group role.
+  - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
+  - **Security/Microsoft 365 group accounts**
+    - Entra Groups allow you to manage multiple users. the two types of group accounts:
+      - **Security groups**: manage users and computer/app access through security policy.
+        - set permissions for all group members at same time.
+        - managed only by **Microsoft Entra Administrator**.
+      - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
+        - allow access to normal users and guest accounts.
 - **Entra Administrator Role**
   - create/delete/assign users.
   - you can restore deleted users within 30 days of deletion.
@@ -298,11 +327,6 @@ Remove-MgUser
   - by default can invite guest.
 - **Entra Guest Role**
   - invite someone to collaborate with organization, most restricted permissions.
-- **Entra Groups**
-  - apply roles to all members of group.
-  - **Direct assignment**: you manually give them role assignment.
-  - **Group assignment**: you assign group role.
-  - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
 - **Entra B2B**
   - external team collaboration. add external collaborators as **guest users**.
   - By default, **users**(members) and **administrators** in Microsoft Entra ID can **invite guest users**.
@@ -314,32 +338,9 @@ Remove-MgUser
     - **federation**: Entra B2B is easier than using on-prem AD FS(federation service). To use AD FS you have to add an internet facing proxy for them to log into.
       - Good for keeping all auth local, but if your network goes down, no one can connect.
     - ![federation](img/federation.PNG)
-- **Entra tenant**
-  - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
-  - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
-  - A tenant represents an organization. It's a dedicated instance of Microsoft Entra ID that an organization or app developer receives at the beginning of a relationship with Microsoft(yourname.onmicrosoft.com).
-  - An organization can have multiple Microsoft Entra instances(tenant). This allows separation.
-  - An Azure subscription can have only one Microsoft Entra tenant.
-  - e.g. your piece in the cloud with your name like **yourname.onmicrosoft.com** that you lease from microsoft.
-    - An organization can have multiple Microsoft Entra tenants.
-    - An organization can have multiple Azure subscriptions(each subscription must be associated with one, and only one, Microsoft Entra tenant).
-    - A subscription can have multiple licenses.
-    - Licenses can be assigned to individual user accounts.
-    - RBAC(grant permissions to resources in the Azure subscription) and User accounts are stored in your Microsoft Entra tenant(yourname.onmicrosoft.com).
-  - ![az scope](img/az-scopes-billing.png)
-- **Entra SSPW (self service password reset)**
-  - user can reset their password.
-  - user is considered 'registered' when they setup the required amount of password resets.
-  - a strong two-method authentication policy is always applied to accounts with an administrator role.
-    - security-question method is not available for administrator roles.
-  - **Best Practices**
-    - Enable two or more of the authentication reset request methods.
-    - Use the mobile app notification or code as the primary method, but also enable the email or office phone methods to support users without mobile devices.
-    - The mobile phone method isn't a recommended method, because it's possible to send fraudulent SMS messages.
-    - The security-question option is the least recommended method, because the answers to the security questions might be known to other people. Only use the security-question method in combination with at least one other method.
-- **Entra Domain Names**
-  - microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
-  - add your domain name. e.g. `example.com`
+- **Entra Devices**
+  - **registered**: when device(phone, computer...) is registered, it becomes a **known entity** allowing Entra tenant ability to manage device. e.g. validate that phone has not been 'jail-broken'.
+  - **join**: cooperate device, have complete control. show up as **objects** in Entra tenant.
 
 ## Azure RBAC (Role Based Access Control) and Entra Roles
 
