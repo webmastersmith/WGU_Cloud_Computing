@@ -242,25 +242,21 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - OUs(organizational units) and GPOs(group policy objects) for management.
     - AD has hierarchal structure, Entra does not.
     - AD DS can be deployed on a Windows Server VM, but does not use Microsoft Entra ID.
-    - **administrative units**
-      - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
-      - ![administrative units](img/administrative_units.PNG)
 - **Entra ID Licenses P2 over P1**
   - P2 has:
     - Entra ID protection: enhanced security/monitoring user accounts.
     - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
 - **Entra Connect**
-  - If you don't have on-prem AD, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
+  - If you don't have on-prem AD, Entra Connect works by providing you **support to your on-prem infrastructure** through a **site-to-site VPN**.
   - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
-- **Entra Connect Cloud Sync and Sync**
-  - **Entra Connect Cloud Sync**
-    - **source of truth** is **Entra ID in cloud**. agents run on-prem.
-  - **Entra Connect Sync**
-    - **source of truth** is **on-prem AD**. cloud mirrors on-prem.
-    - **Entra Domain Services: Entra Connect**
-      - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
-        - site-to-site VPN. on-prem -> cloud. = expensive.
-        - replica AD DS on VM in the cloud. = expensive.
+- **Entra Connect: Cloud Sync**
+  - **source of truth** is **Entra ID in cloud**. agents run on-prem.
+- **Entra Connect: Sync**
+  - **source of truth** is **on-prem AD**. cloud mirrors on-prem.
+  - provides authentication when you have on-prem AD and apps on cloud VMs.
+  - **money savings**
+    - site-to-site VPN. on-prem -> cloud. = expensive.
+    - replica AD on VM in the cloud. = expensive.
 - **Entra tenant**
   - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
   - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
@@ -311,22 +307,22 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
         - managed only by **Microsoft Entra Administrator**.
       - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
         - allow access to normal users and guest accounts.
-- **Entra Administrator Role**
-  - create/delete/assign users.
-  - you can restore deleted users within 30 days of deletion.
-
-```powershell
-# create a new user
-New-MgUser
-# remove user
-Remove-MgUser
-```
-
-- **Entra Member Role**
-  - manage their profile. considered internal to organization.
-  - by default can invite guest.
-- **Entra Guest Role**
-  - invite someone to collaborate with organization, most restricted permissions.
+- **Entra Roles**
+  - applies policy to identities(users, groups, domains).
+  - **Entra Administrator Role**
+    - **Global Administrator**: all permissions.
+    - **Administrator**
+      - create/delete/assign users.
+    - you can restore deleted users within 30 days of deletion.
+  - **Entra Member Role**
+    - manage their profile. considered internal to organization.
+    - by default can invite guest.
+  - **Entra Guest Role**
+    - invite someone to collaborate with organization, most restricted permissions.
+- **administrative units**
+  - organizing and managing user or device roles. create AU, add users, devices..., assign roles.
+  - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
+  - ![administrative units](img/administrative_units.PNG)
 - **Entra B2B**
   - external team collaboration. add external collaborators as **guest users**.
   - By default, **users**(members) and **administrators** in Microsoft Entra ID can **invite guest users**.
