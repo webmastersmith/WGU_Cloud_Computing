@@ -231,31 +231,33 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
       - provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
       - Entra is **managed** by **REST API** over https.
       - Entra ID includes **federation services**(sign-in once, authenticate to multiple services).
+  - **Entra Schema**
+    - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
+      - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
+    - **no OU(AD organizational unit)** class. Policy scope and delegation organization is done by '**group membership**'.
   - **Active Directory Domain Services** (AD DS or traditionally called just "Active Directory").
     - directory service that provides the methods for storing directory data, such as **user accounts and passwords**, and makes this data available to network users, administrators, and other devices and services. It runs as a service on **Windows Server**, referred to as a **domain controller**.
     - true X.500 based structure. Uses a DNS for locating resources on network.
     - AD authentication(kerberos -for identity) and authorization(LDAP -query and manage AD).
     - OUs(organizational units) and GPOs(group policy objects) for management.
     - AD has hierarchal structure, Entra does not.
-    - AD DS can be deployed on a virtual machine, but does not use Microsoft Entra ID.
+    - AD DS can be deployed on a Windows Server VM, but does not use Microsoft Entra ID.
 - **Entra ID P2 over P1**
   - P2 has
     - Entra ID protection: enhanced security/monitoring user accounts.
     - Entra Privileged Identity Management: additional security levels for admins(permanent and temporary).
+- **Entra Connect**
+  - If you don't have on-prem AD, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
+  - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
 - **Entra Connect Cloud Sync and Sync**
   - **Entra Connect Cloud Sync**
-    - engine runs in cloud.
+    - **source of truth** is **Entra ID in cloud**. agents run on-prem.
   - **Entra Connect Sync**
-    - engine runs on-prem with AD. Flows one-way. Authorization is verified from the on-prem engine.
-    - on-prem AD becomes **source of truth** when connected to Entra ID.
-- **Entra Domain Services: Entra Connect**
-  - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
-    - site-to-site VPN. on-prem -> cloud. = expensive.
-    - replica AD DS on VM in the cloud. = expensive.
-    - **Entra Connect** solves this problem:
-      - Provides AD DS services: GPO w/ kerberos auth to Microsoft Entra tenant. Allows on-prem AD DS to communicate with cloud services.
-      - If you don't have on-prem AD DS, Entra Connect works by providing you support to your on-prem infrastructure through a site-to-site VPN.
-      - freely migrate applications that use LDAP, NTLM, or the Kerberos protocols from your on-premises infrastructure to the cloud.
+    - **source of truth** is **on-prem AD**. cloud mirrors on-prem.
+    - **Entra Domain Services: Entra Connect**
+      - Providing authentication when you have on-prem AD DS and apps on cloud VMs:
+        - site-to-site VPN. on-prem -> cloud. = expensive.
+        - replica AD DS on VM in the cloud. = expensive.
 - **user account**
   - anyone who wants to access an Azure resource, must have an Azure user account.
   - **Entra ID cloud identity user accounts can be added through**:
@@ -312,10 +314,6 @@ Remove-MgUser
     - **federation**: Entra B2B is easier than using on-prem AD FS(federation service). To use AD FS you have to add an internet facing proxy for them to log into.
       - Good for keeping all auth local, but if your network goes down, no one can connect.
     - ![federation](img/federation.PNG)
-- **Entra Schema**
-  - no definition of 'computer' class(AD has 'computer' class definition). Uses 'device' class instead.
-    - lack of support of 'computer' domain, you can't manage GPOs, instead Entra provides **directory services**: stores and handles the authentication and authorization of the **users, devices, and applications**.
-  - **no OU(AD organizational unit)** class. Policy scope and delegation organization is done by '**group membership**'.
 - **Entra tenant**
   - [microsoft definition](https://learn.microsoft.com/en-us/microsoft-365/enterprise/subscriptions-licenses-accounts-and-tenants-for-microsoft-cloud-offerings?view=o365-worldwide#tenants)
   - [tenant](https://learn.microsoft.com/en-us/entra/identity-platform/quickstart-create-new-tenant)
