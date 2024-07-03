@@ -220,10 +220,15 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 
 ## User Identity and Group Accounts with Entra ID
 
+- **Entra**
+  - purpose: identity and authentication that speaks cloud(OAUTH2, SAML over HTTPS).
 - **user account**
   - anyone who wants to access an Azure resource, must have an Azure user account.
   - **Entra ID cloud identity user accounts can be added through**:
     - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
+- **Entra User**
+  - when a user is added, they are granted default permissions.
+    - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
 - **Entra ID three types of user accounts**
   - **Cloud**: **cloud identity** accounts.
     - Cloud identities have profile information such as job title and office location.
@@ -241,65 +246,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
 - **administrative units**
   - **restricts administrative scope**. admins can have greater privileges than others depending on the scope of their responsibilities.
   - ![administrative units](img/administrative_units.PNG)
-
-## Azure RBAC (Role Based Access Control) and Entra Roles
-
-- **RBAC**
-  - Azure RBAC and Microsoft Entra roles are different.
-    - **RBAC**: applies policy to infrastructure(VM, DataBase, Storage...).
-    - **Entra Role**: applies policy to identities(users, groups, domains).
-  - manage who can access their resources, and what actions are allowed.
-  - **default deny, explicit allow**.
-  - control access to data and resources by specifying roles and access privileges for employees and business partners.
-  - create role definitions and role assignments.
-  - **scope**: root management group -> management group -> subscription -> resource group -> resource.
-  - permissions are inherited.
-- **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
-  - **Classic Subscription Administrator**: before RBAC, Azure first role policy.
-    - **Account Administrator**, **Service Administrator**, and **Co-Administrator**. Access was controlled by assigning admin roles to subscriptions.
-  - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
-  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
-    - controls access at a higher level than RBAC.
-  - ![rbac entra roles](img/rbac_entra_roles.PNG)
-  - ![az scope](img/az-scopes-billing.png)
-- **Role Assignment**
-  - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
-  - purpose of a role assignment is to control access.
-  - Role Assignment parts:
-    - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
-    - **Role Definition**: **what**. JSON list of **effective permissions**(built in: owner, contributor, reader, user access administrator).
-    - **Scope**: **where**. how many resources security principal is granted access(management group -> subscription -> resource group -> resource). **Permissions in sub-levels are inherited**.
-    - ![RBAC scope](img/rbac_scope.PNG)
-    - ![Role definition](img/role_definition2.PNG)
-- **Security Principal**
-  - object that represents something(**Requestor**) requesting access to resource.
-  - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
-- **Role Definition**
-  - JSON list of allowed permissions. least privilege.
-  - **Built-In Roles**
-    - **owner** built-in role has the **highest level of access privilege** in Azure.
-    - **user access administrator**: manage(create/delete) user access to resource. can assign themselves or others owner.
-    - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
-    - **reader**: view resource. cannot create/modify/delete or grant/remove access.
-  - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
-  - **JSON**
-    - **Actions**: permissions identify what actions are allowed.
-    - **NotActions**: permissions specify what actions **aren't** allowed.
-    - **DataActions**: permissions indicate how data can be changed or used.
-    - **AssignableScopes**: permissions list the scopes where a role definition can be assigned
-    - ![role definition](img/role_definition.PNG)
-    - ![role definition2](img/role_definition2.PNG)
-    - ![az scope](img/az-scopes-billing.png)
-- **scope**
-  - how many resources(assignable scope) security principal is granted access.
-  - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
-- **Entra and RBAC solve what Identity and Access concern of the Cloud**
-  - when employees leave, lose access to resources in cloud.
-  - being able to centrally control network communication, while allowing employee autonomy(create/manage VMs).
-  - Entra and RBAC work together to address these concerns.
-- **Entra User**
-  - when a user is added, they are granted default permissions.
-    - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
 - **Entra Administrator Role**
   - create/delete/assign users.
   - you can restore deleted users within 30 days of deletion.
@@ -398,6 +344,62 @@ Remove-MgUser
 - **Entra Domain Names**
   - microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
   - add your domain name. e.g. `example.com`
+
+## Azure RBAC (Role Based Access Control) and Entra Roles
+
+- **RBAC**
+  - Azure RBAC and Microsoft Entra roles are different.
+    - **RBAC**: applies policy to infrastructure(VM, DataBase, Storage...).
+    - **Entra Role**: applies policy to identities(users, groups, domains).
+  - manage who can access their resources, and what actions are allowed.
+  - **default deny, explicit allow**.
+  - control access to data and resources by specifying roles and access privileges for employees and business partners.
+  - create role definitions and role assignments.
+  - **scope**: root management group -> management group -> subscription -> resource group -> resource.
+  - permissions are inherited.
+- **Entra and RBAC solve what Identity and Access concern of the Cloud**
+  - when employees leave, lose access to resources in cloud.
+  - being able to centrally control network communication, while allowing employee autonomy(create/manage VMs).
+  - Entra and RBAC work together to address these concerns.
+- **Classic Subscription Administrator Role vs RBAC Role vs Entra Role**
+  - **Classic Subscription Administrator**: before RBAC, Azure first role policy.
+    - **Account Administrator**, **Service Administrator**, and **Co-Administrator**. Access was controlled by assigning admin roles to subscriptions.
+  - **Azure RBAC**: added fine grain control and custom roles on resources(VM, DB, Storage...).
+  - **Entra Administrator Role**: adds ability to manage users, groups, domains in Microsoft Entra resources(apps). Scope is defined at **_tenant_** level.
+    - controls access at a higher level than RBAC.
+  - ![rbac entra roles](img/rbac_entra_roles.PNG)
+  - ![az scope](img/az-scopes-billing.png)
+- **Role Assignment**
+  - **assignment** attaches **role definition** to a **security principal** at a particular **scope**.
+  - purpose of a role assignment is to control access.
+  - Role Assignment parts:
+    - **Security Principal**: **who**. something/someone(VM service, user) requesting access to resource.
+    - **Role Definition**: **what**. JSON list of **effective permissions**(built in: owner, contributor, reader, user access administrator).
+    - **Scope**: **where**. how many resources security principal is granted access(management group -> subscription -> resource group -> resource). **Permissions in sub-levels are inherited**.
+    - ![RBAC scope](img/rbac_scope.PNG)
+    - ![Role definition](img/role_definition2.PNG)
+- **Security Principal**
+  - object that represents something(**Requestor**) requesting access to resource.
+  - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
+- **Role Definition**
+  - JSON list of allowed permissions. least privilege.
+  - **Built-In Roles**
+    - **owner** built-in role has the **highest level of access privilege** in Azure.
+    - **user access administrator**: manage(create/delete) user access to resource. can assign themselves or others owner.
+    - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
+    - **reader**: view resource. cannot create/modify/delete or grant/remove access.
+  - The system **subtracts NotActions** permissions from **Actions** permissions to determine the **_effective permissions_** for a role.
+  - **JSON**
+    - **Actions**: permissions identify what actions are allowed.
+    - **NotActions**: permissions specify what actions **aren't** allowed.
+    - **DataActions**: permissions indicate how data can be changed or used.
+    - **AssignableScopes**: permissions list the scopes where a role definition can be assigned
+    - ![role definition](img/role_definition.PNG)
+    - ![role definition2](img/role_definition2.PNG)
+    - ![az scope](img/az-scopes-billing.png)
+- **scope**
+  - how many resources(assignable scope) security principal is granted access.
+  - **_AssignableScopes_**: permissions for a role can be management groups, subscriptions, resource groups, or resources.
 
 ## Azure Region and Storage Redundancy
 
