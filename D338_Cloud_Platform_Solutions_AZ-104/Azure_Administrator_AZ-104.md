@@ -105,7 +105,7 @@
     - **subscription level deployments**: you must provide a location for the deployment. The **location of the deployment is separate from the location of the resources you deploy**. The deployment location specifies where to store deployment data.
     - **Management group and tenant deployments**: also require a location.
     - **resource group deployments**: the location of the resource group is used to store the **deployment data**, not the actual resource location.
-  - **Modes**
+  - **Mode**
     - **Complete**: **deletes** resources that **exist in the resource group but aren't specified in the template**.
     - **Increment**: leaves **unchanged** resources that **exist in the resource group but aren't specified in the template**.
 
@@ -134,7 +134,7 @@ New-AzDeployment -Location eastus -TemplateFile "fileName.json" -Mode Complete
     - all resources share the same lifecycle. e.g. you deploy, update, delete them together.
     - a resource **can interact** with resources in other resource groups.
     - **RBAC(role based access control)** can be **assigned** to resource groups.
-    - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group.
+    - because a resource group contains metadata about resources, for **compliance reasons(government, sovereign states)**, you must provide a **location** of resource group during creation.
   - ![az scope](img/az-scopes-billing.png)
 
 ```powershell
@@ -241,7 +241,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Budgets**: manage cost, prevent overspending.
   - **Pricing Calculator**: estimate usage: Compute, networking, storage, web, database.
 
-## Entra ID User Identity and Group Accounts
+## Entra ID: User Identity and Group Accounts
 
 - **Entra ID vs Active Directory**
   - **Entra ID**
@@ -321,8 +321,12 @@ New-MgInvitation
 ```
 
 - **Entra Groups**
-  - apply roles to all members of group.
-  - **groups assigned licenses cannot be deleted**.
+  - roles are inherited to all members of group. same access and permissions to resources, such as potentially restricted apps and services.
+  - **Nesting Groups**: **groups assigned licenses cannot be deleted**.
+    - **security group**: can add an existing **security group**.
+    - **synced on-prem AD**: cannot be nested.
+    - **Microsoft 365**: cannot be nested.
+  - **Groups Administrator** or **User Administrator** role to **edit group membership**.
   - **Direct assignment**: you manually give them role assignment.
   - **Group assignment**: you assign group role.
   - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
@@ -374,7 +378,7 @@ New-MgInvitation
   - **registered**: when device(phone, computer...) is registered, it becomes a **known entity** allowing Entra tenant ability to manage device. e.g. validate that phone has not been 'jail-broken'.
   - **join**: cooperate device, have complete control. show up as **objects** in Entra tenant.
 
-## Azure RBAC (Role Based Access Control)
+## Azure Entra RBAC (Role Based Access Control)
 
 - **RBAC**
   - Azure RBAC and Microsoft Entra roles are different.
@@ -412,7 +416,11 @@ New-MgInvitation
   - Requestors can be internal or external users, groups of users, applications and services(**_service principal_**), resources, and so on.
 - **Role Definition**
   - JSON list of allowed permissions. least privilege.
+  - **Custom Roles**
+    - creating a custom role definition and then assigning it using a role assignment.
+    - collection of permissions that you add from a preset list(same list built-in roles use).
   - **Built-In Roles**
+    - cannot be modified or
     - **owner** built-in role has the **highest level of access privilege** in Azure.
     - **user access administrator**: manage(create/delete) user access to resource. can assign themselves or others owner.
     - **contributor**: manage(create/modify/delete) resource. Cannot grant/remove access to others.
