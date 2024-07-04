@@ -89,16 +89,18 @@
   - Simplify governance and compliance management.
   - best when you need to deploy and manage complex environments with multiple resources and strict governance requirements.
 - **Azure Resource Manager (ARM)**
-  - deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
+  - declarative. deploy, manage, monitor, security, auditing, tagging, authentication (vm, database, third-party...) as a group.
   - best when deploying individual resources or small groups of resources in a consistent and repeatable way.
   - **Benefits**
     - reusable templates allow easy deployment.
     - handle resources as a group instead of individually.
     - tag resources.
   - ![resource management](img/resource_management.PNG)
-- **declarative syntax**
-  - declarative programming. **what you want, not how to do it**.
-  - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
+  - **declarative syntax**
+    - declarative programming. **what you want, not how to do it**.
+    - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
+  - **Bicep**
+    - compiles to JSON. allows declarative infrastructure provisioning same as ARM, just human friendly readable.
 
 ## Management Group, Resource Group, and Resource
 
@@ -491,7 +493,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - unplanned hardware failure: predicted failure of physical machine.
   - unexpected downtime: physical machine fails.
   - planned maintenance: hardware update/upgrade.
-- **VM Scaling and Scale Sets**
+- **VM Scaling and Scale Sets (VMSS)**
   - **Vertical Scaling**: **scale up/down**. add more resources(compute, ram, HDD...).
   - **Horizontal Scaling**: **scale out(increase)/in**. add more VMs.
   - **VM Scale Sets (VMSS)**: manage set of **_identical VMs_**. True autoscaling.
@@ -648,6 +650,15 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - **standard**: HDD. format: SMB, REST
     - **premium**: SSD. format: SMB, NFS, REST.
   - ![blob vs file share](img/file_share_vs_blob.PNG)
+- **File Sync and Cloud Tiering**
+  - **cache Azure File Shares and synchronize between on-prem Windows Server and cloud VM**.
+  - any number of caches in any location.
+  - **Multi-Site Access**: write on-prem (linux, windows server protocols: SMB, NFS, FTPS) and cloud.
+  - file sync backs up on-prem files with Azure File Share.
+  - **Cloud Tiering**
+    - only allow frequently accessed files to be cached locally(free up local cache).
+    - when file is **tiered**, file is replaced with pointer(URL to Azure File Share) instead of it being cached locally.
+    - tiered file is marked with an `O` and **greyed out** to show file is stored only in Azure.
 - **File Share Snapshots**
   - **point-in-time read only copy of file share**.
   - only data that has changed(from last snapshot) is recorded. Only most recent share is needed to restore the share.
@@ -662,18 +673,34 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - access multiple accounts and subscriptions, and manage all your Storage content on **windows, macOS, linux**.
   - requires both management (Azure Resource Manager) and Active Directory permissions to allow full access to your resources.
   - ![Azure storage explorer](img/storage_explorer.PNG)
-- **File Sync and Cloud Tiering**
-  - **cache Azure File Shares and synchronize between on-prem Windows Server and cloud VM**.
-  - any number of caches in any location.
-  - **Multi-Site Access**: write on-prem (linux, windows server protocols: SMB, NFS, FTPS) and cloud.
-  - file sync backs up on-prem files with Azure File Share.
-  - **Cloud Tiering**
-    - only allow frequently accessed files to be cached locally(free up local cache).
-    - when file is **tiered**, file is replaced with pointer(URL to Azure File Share) instead of it being cached locally.
-    - tiered file is marked with an `O` and **greyed out** to show file is stored only in Azure.
 
 ## Storage Security
 
+- **Storage Security**
+  - all storage accounts are created with two access keys(two keys allows rotation without interruption).
+  - **disk encryption**: Azure Disk Encryption. all data written encrypted by default(Azure storage encryption, 256 bit AES). decrypted automatically. transparent to users. cannot be disabled.
+  - **data in transit**: Azure Client-Side Encryption, HTTPS, SMB 3.0.
+  - **Public Access**: when **_AllowBlobPublicAccess_** is set to true and container public access is set.
+  - **Shared Access Signature (SAS)**: URI with read or read/write permissions that expire.
+  - **shared key**: key produces encrypted signature. passed in Authorization header.
+  - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
+  - **authorization**: RBAC. assign roles for Data Plane access(storage data).
+  - **Entra ID**: enables access to authorized person.
+- **Storage Account Access Keys**
+  - each storage account has two keys(switch primary key without down time.).
+  - **access keys** allow full access(CRUD) to all services within storage account.
+  - store in **Azure key vault** for safety.
+  - **Connection String**
+    - classic way to manage(full access) storage data. connection string **contains sensitive information**, such as account keys(Shared Key authorization(Storage Access key)).
+    - Use Microsoft Entra ID or SAS URI with Security Policy instead.
+    - **connection string is retrievable by opening the storage account blade in the Azure Portal and clicking Access Keys.**
+- **Stored Access Policy**
+  - to revoke SAS, you have to delete the secret key or resource, this creates a need to decouple permissions from the token itself. **Stored Access Policy** addresses this need.
+  - **Stored Access Policy**: creates start/end times, access permissions **independently from SAS token**. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
+    - can be applied to a container and every service in container.
+    - Set rules: start time, expiry time, permissions.
+    - reference policy when you create SAS.
+    - revoke SAS token by deleting/renaming or modifying expiry time of policy.
 - **Blob Storage Access Levels**
   - extra access controls only for blob storage.
   - blob storage is organized by containers and blobs. These can have **ACL**s(access control levels).
@@ -682,15 +709,8 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **Private**: default. private URI. only storage account owner can access blob or container.
   - **Blob**: public URI. Blob data within this container can be read via anonymous request, but container data isn't available.
   - **Container**: public URI. Container and all blob data can be read via anonymous request.
-- **Storage Security**
-  - **disk encryption**: Azure Disk Encryption. all data written encrypted by default(Azure storage encryption, 256 bit AES). decrypted automatically. transparent to users. cannot be disabled.
-  - **data in transit**: Azure Client-Side Encryption, HTTPS, SMB 3.0.
-  - **Public Access**: when **_AllowBlobPublicAccess_** is set to true and container public access is set.
-  - **Shared Access Signature (SAS)**: URI with read or read/write permissions that expire.
-  - **shared key**: key produces encrypted signature. passed in Authorization header.
-  - **authentication**: Entra ID(user identity) and RBAC(resource permissions). prove your identity
-  - **authorization**: RBAC. you have access rights to resource.
-  - **Entra ID**: enables access to authorized person.
+- **Managed Disk**
+  - page blob is abstracted to Azure managed disk.
 - **Private Link**
   - data shared between services along microsoft backbone instead public internet.
   - ![private link](img/private_link.PNG)
@@ -702,21 +722,6 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **account-level**: one or more storage services.
   - **service-level**: only one storage service.
   - you can only **remove access** by deleting storage key, or resource/rename. Use **Stored Access Policy** to decouple permission with key.
-- **Stored Access Policy**
-  - to revoke SAS, you have to delete the secret key or resource, this creates a need to decouple permissions from the token itself. **Stored Access Policy** addresses this need.
-  - **Stored Access Policy**: creates start/end times, access permissions **independently from SAS token**. the SAS token gets generated with a **reference to this policy** instead of embedding access parameters explicitly in URI.
-    - can be applied to a container and every service in container.
-    - Set rules: start time, expiry time, permissions.
-    - reference policy when you create SAS.
-    - revoke SAS token by deleting/renaming or modifying expiry time of policy.
-- **Storage Account Access Keys**
-  - each storage account has two keys(switch primary key without down time.).
-  - **access keys** allow full access(CRUD) to all services within storage account.
-  - store in **Azure key vault** for safety.
-  - **Connection String**
-    - classic way to manage(full access) storage data. connection string **contains sensitive information**, such as account keys(Shared Key authorization(Storage Access key)).
-    - Use Microsoft Entra ID or SAS URI with Security Policy instead.
-    - **connection string is retrievable by opening the storage account blade in the Azure Portal and clicking Access Keys.**
 - **Azure Key Vault**
   - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
   - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
@@ -1182,7 +1187,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - **Service Health Event**: notice of incidents or maintenance. You no longer need to select a resource, because alert is for whole region. you opt in to what alerts you want to receive.
   - **Action Groups**: what and how alert is sent. can be reused.
   - ![alerts](img/alerts.PNG)
-- **Analyze (Log Analytics)**
+- **Analyze (Log Analytics Workspace)**
   - **analytics** from your logs.
   - create and test queries. Use the query results to directly analyze the data, save your queries, visualize the data, and create alert rules.
   - uses a version of the **Data Explorer** query language. The language is suitable for simple log queries, but also includes advanced functionality like **aggregations**, **joins**, and **smart analytics**.
@@ -1212,6 +1217,10 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - default **retention** is **93 days**.
   - **Logs**
     - contain **time-stamped data** about resources, organized into **records** with different sets of **properties** for each type.
+    - **three places to send logs**:
+      - Azure Storage: cheap, but no query.
+      - Event Hub: notify some other SIEM(Security information and event management) to fetch logs.
+      - Log Analytics Workspace: Kusto Query Language(KQL) analytics.
     - data collection agents collect log data and **store as tables** in a **Log Analytic Workspace** and queried using the **Log Analytics tool: Kusto Query Language**(KQL).
     - default **retention** is **30 days**. free tier 7 days.
     - **can store both metric(numeric) and event log data**.
