@@ -101,6 +101,19 @@
     - Syntax that lets you state "Here is what I intend to create" without having to write the sequence of programming commands to create it. The Resource Manager template is an example of declarative syntax. In the file, you define the properties for the infrastructure to deploy to Azure.
   - **Bicep**
     - compiles to JSON. allows declarative infrastructure provisioning same as ARM, just human friendly readable.
+  - **Deployment**
+    - **subscription level deployments**: you must provide a location for the deployment. The **location of the deployment is separate from the location of the resources you deploy**. The deployment location specifies where to store deployment data.
+    - **Management group and tenant deployments**: also require a location.
+    - **resource group deployments**: the location of the resource group is used to store the **deployment data**, not the actual resource location.
+  - **Modes**
+    - **Complete**: **deletes** resources that **exist in the resource group but aren't specified in the template**.
+    - **Increment**: leaves **unchanged** resources that **exist in the resource group but aren't specified in the template**.
+
+```powershell
+# PowerShell
+# Deploy ARM template
+New-AzDeployment -Location eastus -TemplateFile "fileName.json" -Mode Complete
+```
 
 ## Management Group, Resource Group, and Resource
 
@@ -280,7 +293,7 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - ![az scope](img/az-scopes-billing.png)
   - **Entra Domain Names**: microsoft gives you a sub-domain: `yourName.onmicrosoft.com`
     - add your own **vanity domain**. e.g. `example.com`
-- **Entra User Accounts**
+- **Entra User/Guest Accounts**
   - **user account**
     - anyone who wants to access an Azure resource, must have an Azure user account.
   - **Entra ID User Accounts**
@@ -292,21 +305,24 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
     - when a user is added, they are granted default permissions.
       - Varies by: type of user(admin, member, guest), role assignment, ownership of individual objects.
   - **who can create/delete users**
-    - only global admins can create/delete users.
+    - only global admins can create/delete users. If user has license, they can be deleted and license becomes unassigned.
     - **Entra ID cloud identity user accounts can be added through**:
       - Azure portal, Microsoft 365 Admin Center, Microsoft Intune admin console, and the Azure CLI.
-- **Entra SSPW (self service password reset)**
-  - user can reset their password.
-  - user is considered '**registered**' when they setup the required amount of password resets.
-  - a strong two-method authentication policy is always applied to accounts with an administrator role.
-    - security-question method is not available for administrator roles.
-  - **Best Practices**
-    - Enable two or more of the authentication reset request methods.
-    - Use the mobile app notification or code as the primary method, but also enable the email or office phone methods to support users without mobile devices.
-    - The mobile phone method isn't a recommended method, because it's possible to send fraudulent SMS messages.
-    - The security-question option is the least recommended method, because the answers to the security questions might be known to other people. Only use the security-question method in combination with at least one other method.
+  - **Guest**
+    - The proper way to create guest users is to send them invitations. This allows them to accept the invitation and set up their own authentication credentials.
+
+```powershell
+# Powershell
+# create user -member of organization
+New-MgUser
+# create guest -guest of organization -See Entra B2B.
+New-MgInvitation
+# CSV file for guest creation -Microsoft Graph API for bulk invitation.
+```
+
 - **Entra Groups**
   - apply roles to all members of group.
+  - **groups assigned licenses cannot be deleted**.
   - **Direct assignment**: you manually give them role assignment.
   - **Group assignment**: you assign group role.
   - **Rule-based assignment(Dynamic Assignment)**: rules based on user or device.
@@ -317,6 +333,16 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
         - managed only by **Microsoft Entra Administrator**.
       - **Microsoft 365 groups**: group access to apps. e.g. mailbox, calendar, files, sharepoint...
         - allow access to normal users and guest accounts.
+- **Entra SSPW (self service password reset)**
+  - user can reset their password.
+  - user is considered '**registered**' when they setup the required amount of password resets.
+  - a strong two-method authentication policy is always applied to accounts with an administrator role.
+    - security-question method is not available for administrator roles.
+  - **Best Practices**
+    - Enable two or more of the authentication reset request methods.
+    - Use the mobile app notification or code as the primary method, but also enable the email or office phone methods to support users without mobile devices.
+    - The mobile phone method isn't a recommended method, because it's possible to send fraudulent SMS messages.
+    - The security-question option is the least recommended method, because the answers to the security questions might be known to other people. Only use the security-question method in combination with at least one other method.
 - **Entra Roles**
   - applies policy to identities(users, groups, domains).
   - **Entra Administrator Role**
@@ -1056,11 +1082,10 @@ Remove-AzResourceGroup -Name "YourResourceGroupName"
   - **direct traffic** through a series of **network services**(NVAs) by manually setting up **UDR**(user defined route).
   - VNets must be peered.
 - **Service Endpoints and Policies**
-  - service endpoints allow subnet or resource to talk to your **Azure Storage Account** over the private Microsoft backbone.
-    - integrate Azure **PaaS services** into your **VNet**. **prevent** the exposure of data and services to the Internet.
-  - endpoints are for internal service communication over private network. Endpoint Policies allow control over which resources can communicate.
-  - **service endpoint**: allow **all** instances in a **subnet**(your VNet) to communicate to another Azure **service** over the Microsoft backbone. no public internet access.
-  - **private endpoint**: **single** instances in a **subnet**(your VNet) to communicate to another Azure service over the Microsoft backbone. no public internet access.
+  - <https://learn.microsoft.com/en-us/azure/virtual-network/virtual-network-service-endpoints-overview>
+  - service endpoints allow **subnet** or **resource** to talk to your **Azure (Storage, Database, Vault, App, Event Hub...) Service** over the private Microsoft backbone.
+  - **service endpoint**: allow **all** instances in a **subnet**(your VNet) to communicate to Azure **Storage** over the Microsoft backbone. no public internet access.
+  - **private endpoint**: **single** instances in a **subnet**(your VNet) to communicate to Azure **Storage** over the Microsoft backbone. no public internet access.
   - ![service endpoint](img/service_endpoint.PNG)
 - **Site-to-site VPNs (S2S)**
   - use IPSEC to provide a secure connection between your **on-prem VPN Device**(handles IPSec encryption/decryption) and **Azure VPN Gateway**(service provided by Microsoft).
