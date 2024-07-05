@@ -1075,6 +1075,7 @@ New-MgInvitation
   - custom routes direct traffic flow within VNet. all routes are stored in the **_route table_**.
   - **route tables**: each **subnet** will have it's **own route table**.
   - **Service Tags**: can be used as a route address in a user-defined route(UDR).
+    - e.g. create NSG, blocking in/out traffic. add service tag on destination. add security rule allowing traffic out to tag name. traffic can only reach tagged resource.
   - **Specificity**: most direct match wins. e.g. 10.0.0.6 with route 10.0.0.0/16 and 10.0.0.0/24. the 10.0.0.0/24 is more specific and will be chosen.
     - **Order of specificity**: user-defined, BGP route, system route.
   - **System Routes**:
