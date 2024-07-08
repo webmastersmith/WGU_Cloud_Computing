@@ -26,6 +26,11 @@
 
 ## App Services
 
+- **Application Insights**
+  - continuously monitor the performance and usability of your apps.
+  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
+  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
+  - ![application insights](img/application_insights.PNG)
 - **App Service**
   - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
   - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
@@ -64,8 +69,10 @@
   - configured by using App settings, when enabled, every HTTP request will pass through the security module before it's handled by your App.
   - automatic logging of authentication and authorization traces.
   - **Settings**
-    - **Allow Anonymous Request**: defer authorization of unauthenticated traffic to your App.
-    - **Allow only authenticated request**: **_all_** anonymous traffic is sent to login provider page.
+    - **Allow Anonymous(unauthenticated) Request**: defer authorization of unauthenticated traffic to your App.
+    - **require authenticated**: **_all_** anonymous traffic is sent to login provider page. Even home page.
+  - **Logging**
+    - enable auth traces to be written to log files.
 - **App Service Environment (ASE)**
   - **fully isolated and dedicated environment** for securely running App Service apps at high scale.
   - gated by WAFs. **External/Internal load balanced**.
@@ -75,7 +82,21 @@
   - **Region**: location of datacenter. e.g. 'East US'.
   - **Number of VM instances**: how many VM instances allocated to plan.
   - **Size of VM instances**: compute. (Small, Medium, Large).
-  - **Pricing Tier**: Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2.
+  - **Pricing Tier**: **Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2**.
+- **App Service Network**
+  - default App Service apps are accessible through internet endpoints only.
+  - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
+    - the solution is to handle web app communication: inbound and outbound.
+    -
+  - **front-ends**: handle all http(s) request.
+  - **workers**: handle workload.
+  - control **VNet inbound/outbound** traffic:
+    - **multitenant**: Free - PremiumV3.
+    - **single-tenant**: Isolated.
+- **Backup and Restore App**
+  - App snapshots can be created on a schedule or manually backup.
+  - **Standard** or **Premium** tier App Service plan.
+  - full or partial backups.
 - **Continuous Integration and Deployment CI/CD**
   - **automated deployment**: automate the testing and deployment of code changes.
   - automated deployment. push new features and bug fixes in a fast, repetitive pattern.
@@ -87,7 +108,7 @@
     - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
 - **Deployment Slots**
   - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
-  - **scope**: Standard App Service Plan tier or better.
+  - **scope**: **Standard App Service plan** tier or better.
   - manage different app stages(development, testing, staging, and production).
   - available in the **Standard, Premium, and Isolated** App Service pricing tiers.
   - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
@@ -98,15 +119,6 @@
   - purchase domain from Azure portal, you don't have to configure anything.
   - `A` record: map domain name to IP address of web server.
   - `Cname`: maps domain name to another domain name.
-- **Backup and Restore App**
-  - App snapshots can be created on a schedule or manually backup.
-  - **Standard** or **Premium** tier App Service plan.
-  - full or partial backups.
-- **Application Insights**
-  - continuously monitor the performance and usability of your apps.
-  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
-  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
-  - ![application insights](img/application_insights.PNG)
 - **WebJobs**
   - run script in the same instance as web app. no additional charge.
 
@@ -114,3 +126,20 @@
 # online Azure Cloud Shell
 az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
 ```
+
+## Functions
+
+- **Function as a Service (FaaS)**
+  - event driven **trigger** for functions based on event or emit data.
+  - fully managed and scales to zero.
+  - requires a **storage account to operate**.
+  - **trigger**: starts to function.
+  - **input bindings**: respond to event.
+  - **output bindings**: listening for result of function.
+  - ![FaaS overview](img/faas_overview.PNG)
+- **Function App**
+  - ![FaaS overview](img/faas_overview.PNG)
+- **Serverless**
+  - fully managed cloud services. you bring the code.
+  - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
+  - highly: scalable, elastic, available, durable, secure by default.
