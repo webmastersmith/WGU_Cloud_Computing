@@ -87,12 +87,16 @@
   - default App Service apps are accessible through internet endpoints only.
   - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
     - the solution is to handle web app communication: inbound and outbound.
-    -
+    - `App-assigned Address` // Inbound
+    - `Hybrid Connections` // Outbound
   - **front-ends**: handle all http(s) request.
   - **workers**: handle workload.
   - control **VNet inbound/outbound** traffic:
     - **multitenant**: Free - PremiumV3.
     - **single-tenant**: Isolated.
+- **App Service Variables**
+  - **Portal**: `App Settings/Environment Variables`
+  - **CLI**: `az webapp config appsettings set --settings key1=value1 key2=value2 --name ...`
 - **Backup and Restore App**
   - App snapshots can be created on a schedule or manually backup.
   - **Standard** or **Premium** tier App Service plan.
