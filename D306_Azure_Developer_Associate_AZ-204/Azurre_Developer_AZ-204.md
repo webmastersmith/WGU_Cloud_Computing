@@ -23,3 +23,94 @@
   - [az-204 labs](https://microsoftlearning.github.io/AZ-204-DevelopingSolutionsforMicrosoftAzure/)
 - **Practice Exams**
   - <https://wgu.udemy.com/course/az204-azure-practice/>
+
+## App Services
+
+- **App Service**
+  - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
+  - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
+  - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
+  - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
+  - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
+  - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
+  - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
+  - **Scaling**: vertical(more compute) or horizontal(more VMs). true autoscale you provide max and min.
+- **App Service Plan**
+  - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
+  - **scope**: VM apps created in same region as App Service Plan defines.
+  - **Scaling**
+    - **scale unit**: **changing plan tier** is the only way to **increase scale-out**.
+    - changing scale size by changing plan tier.
+    - **Isolate apps by adding to separate App Service Plan**:
+      - The app is resource-intensive.
+      - You want to scale the app independently from the other apps in the existing plan.
+      - The app needs resource in a different geographical region.
+  - **Shared**: **Free** or **Shared**, two base tiers. charged **per CPU minute**.
+    - allocate CPU quotas to each app that runs on the shared resources
+    - **linux cannot run on shared**.
+    - **resources can't scale out**.
+    - **only for development and testing**.
+  - **Dedicated**: **Basic, Standard, Premium, PremiumV2, PremiumV3**.
+    - only apps in App Service Plan share compute resources.
+    - **higher tiers have more VM instances** available for scale-out.
+  - **Isolated**: **Isolated, IsolatedV2**.
+    - dedicated VMs on dedicated VNet.
+    - network and compute isolation.
+    - maximum scale-out.
+- **App Service Authentication and Authorization**
+  - **App Service** feature that provides out-of-the-box authentication with federated identity providers, allowing you to focus on the rest of your application.
+  - Security Module: authenticate users, manage tokens, sessions, and inject identity into request headers.
+  - built-in authentication and authorization support.
+  - configured by using App settings, when enabled, every HTTP request will pass through the security module before it's handled by your App.
+  - automatic logging of authentication and authorization traces.
+  - **Settings**
+    - **Allow Anonymous Request**: defer authorization of unauthenticated traffic to your App.
+    - **Allow only authenticated request**: **_all_** anonymous traffic is sent to login provider page.
+- **App Service Environment (ASE)**
+  - **fully isolated and dedicated environment** for securely running App Service apps at high scale.
+  - gated by WAFs. **External/Internal load balanced**.
+  - can create multiple ASEs across regions or single region.
+- **App Service Setup**
+  - **OS**: windows, linux
+  - **Region**: location of datacenter. e.g. 'East US'.
+  - **Number of VM instances**: how many VM instances allocated to plan.
+  - **Size of VM instances**: compute. (Small, Medium, Large).
+  - **Pricing Tier**: Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2.
+- **Continuous Integration and Deployment CI/CD**
+  - **automated deployment**: automate the testing and deployment of code changes.
+  - automated deployment. push new features and bug fixes in a fast, repetitive pattern.
+  - **Automated**
+  - **Azure DevOps**: pipeline. code changes -> testing -> deploy. build, test, run in cloud. Push to web app.
+    - **GitHub**: connect to Azure. changes to repo, deployed to web app.
+    - **Bitbucket**: same as GitHub.
+  - **Manual**
+    - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
+- **Deployment Slots**
+  - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
+  - **scope**: Standard App Service Plan tier or better.
+  - manage different app stages(development, testing, staging, and production).
+  - available in the **Standard, Premium, and Isolated** App Service pricing tiers.
+  - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
+  - new deployment slots can be empty or cloned.
+  - ![deployment slot](img/deployment_slot.PNG)
+- **Domain Names (DNS) Records**
+  - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
+  - purchase domain from Azure portal, you don't have to configure anything.
+  - `A` record: map domain name to IP address of web server.
+  - `Cname`: maps domain name to another domain name.
+- **Backup and Restore App**
+  - App snapshots can be created on a schedule or manually backup.
+  - **Standard** or **Premium** tier App Service plan.
+  - full or partial backups.
+- **Application Insights**
+  - continuously monitor the performance and usability of your apps.
+  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
+  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
+  - ![application insights](img/application_insights.PNG)
+- **WebJobs**
+  - run script in the same instance as web app. no additional charge.
+
+```powershell
+# online Azure Cloud Shell
+az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
+```
