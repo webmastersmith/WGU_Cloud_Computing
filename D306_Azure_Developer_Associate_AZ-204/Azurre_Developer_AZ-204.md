@@ -35,8 +35,16 @@
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
   - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
   - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
-- **App Service Autoscaling**
-  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in). true autoscale you provide max and min.
+- **App Service Autoscaling and Automatic Scaling**
+  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in).
+  - **elasticity for your services**, responding to changes in the environment by **adding or removing web servers and balancing the load** between them.
+  - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
+  - true autoscale you provide max and min.
+  - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
+  - **Rules**
+    - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+  - **Automatic Scaling**
+    - new scale-out option. pre-warms resource for smooth transition.
 - **App Service Plan**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
