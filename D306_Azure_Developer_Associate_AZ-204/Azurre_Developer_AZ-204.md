@@ -41,10 +41,20 @@
   - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
   - true autoscale you provide max and min.
   - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
-  - **Rules**
-    - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+  - **scope**: instance limit is set by App Service Plan pricing tier. Autoscaling cannot scale beyond instance limit.
   - **Automatic Scaling**
     - new scale-out option. pre-warms resource for smooth transition.
+  - **AutoScale Rule**
+    - description of when and what action to perform.
+    - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+    - scale based on **metric**: disk queue or HTTP request awaiting processing.
+    - scale according to predefined schedule.
+    - **time grain**: length of time between Service metric updates.
+    - **time aggregation**: grouping of time grain values. Avg, Min, Max, Sum, Last, Count.
+      - **duration**: amount of **time grain** to group for a better picture of resource usage over time.
+    - **Actions**: scale-out/in. define rules in pairs: when to scale-out and when to scale-in.
+      - **cool down**: during this time, will not scale in/out.
+    - **Autoscale condition**: group of autoscale rules. scale-out if **any** rules met. scale-in if **all** rules met.
 - **App Service Plan**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
