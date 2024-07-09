@@ -45,8 +45,9 @@
   - **Automatic Scaling**
     - new scale-out option. pre-warms resource for smooth transition.
   - **AutoScale Rule**
-    - description of when and what action to perform.
-    - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+    - description of **when** and **what** action to perform.
+    - monitor from **_Run history_** tab. **Activity Log** alert can be set for success or failure of autoscaling.
+    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU must be > 80%.
     - scale based on **metric**: disk queue or HTTP request awaiting processing.
     - scale according to predefined schedule.
     - **time grain**: length of time between Service metric updates.
@@ -55,6 +56,13 @@
     - **Actions**: scale-out/in. define rules in pairs: when to scale-out and when to scale-in.
       - **cool down**: during this time, will not scale in/out.
     - **Autoscale condition**: group of autoscale rules. scale-out if **any** rules met. scale-in if **all** rules met.
+    - **Best Practices**
+      - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+      - min/max numbers are **inclusive**, so scale-in/out rules must not use same numbers.
+      - choose best diagnostic metric: Avg, Min, Max, Total.
+      - when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.
+      - **default instance count** should be the min needed if metrics are unavailable.
+      - configure autoscale notifications.
 - **App Service Plan**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
@@ -110,17 +118,6 @@
   - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
   - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
   - ![application insights](img/application_insights.PNG)
-- **Network**
-  - default App Service apps are accessible through internet endpoints only.
-  - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
-    - the solution is to handle web app communication: inbound and outbound.
-    - `App-assigned Address` // Inbound
-    - `Hybrid Connections` // Outbound
-  - **front-ends**: handle all http(s) request.
-  - **workers**: handle workload.
-  - control **VNet inbound/outbound** traffic:
-    - **multitenant**: Free - PremiumV3.
-    - **single-tenant**: Isolated.
 - **Backup and Restore App**
   - App snapshots can be created on a schedule or manually backup.
   - **Standard** or **Premium** tier App Service plan.
@@ -136,9 +133,8 @@
     - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
 - **Deployment Slots**
   - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
-  - **scope**: **Standard App Service plan** tier or better.
+  - **scope**: Standard, Premium, Isolated.
   - manage different app stages(development, testing, staging, and production).
-  - available in the **Standard, Premium, and Isolated** App Service pricing tiers.
   - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
   - new deployment slots can be empty or cloned.
   - ![deployment slot](img/deployment_slot.PNG)
@@ -155,6 +151,17 @@
   - **Streaming**
     - enabled from `Portal/App Service/yourApp/Log stream` or CLI `az webapp log tail --name appName --resource-group groupName`
     - files ending in `.txt, .log, .htm` stored in the `d:/home/logfiles` are streamed by App Service.
+- **Network**
+  - default App Service apps are accessible through internet endpoints only.
+  - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
+    - the solution is to handle web app communication: inbound and outbound.
+    - `App-assigned Address` // Inbound
+    - `Hybrid Connections` // Outbound
+  - **front-ends**: handle all http(s) request.
+  - **workers**: handle workload.
+  - control **VNet inbound/outbound** traffic:
+    - **multitenant**: Free - PremiumV3.
+    - **single-tenant**: Isolated.
 - **Path Mappings**
   - determine how web app handles incoming requests for a specific path or directories.
   - e.g. `www.example.com/images` would map to `media/images`
