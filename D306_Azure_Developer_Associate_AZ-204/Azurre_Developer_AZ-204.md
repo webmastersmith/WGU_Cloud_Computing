@@ -27,11 +27,6 @@
 
 ## App Services
 
-- **Application Insights**
-  - continuously monitor the performance and usability of your apps.
-  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
-  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
-  - ![application insights](img/application_insights.PNG)
 - **App Service**
   - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
   - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
@@ -40,7 +35,8 @@
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
   - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
   - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
-  - **Scaling**: vertical(more compute) or horizontal(more VMs). true autoscale you provide max and min.
+- **App Service Autoscaling**
+  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in). true autoscale you provide max and min.
 - **App Service Plan**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
@@ -84,7 +80,19 @@
   - **Number of VM instances**: how many VM instances allocated to plan.
   - **Size of VM instances**: compute. (Small, Medium, Large).
   - **Pricing Tier**: **Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2**.
-- **App Service Network**
+  - **Configuration**
+    - General settings: configure stack, platform, debugging, and incoming client certificate.
+    - Application settings:
+    - Path mappings: incoming URL redirects.
+- **App Service Variables**
+  - **Portal**: `App Settings/Environment Variables`
+  - **CLI**: `az webapp config appsettings set --settings key1=value1 key2=value2 --name ...`
+- **Application Insights**
+  - continuously monitor the performance and usability of your apps.
+  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
+  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
+  - ![application insights](img/application_insights.PNG)
+- **Network**
   - default App Service apps are accessible through internet endpoints only.
   - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
     - the solution is to handle web app communication: inbound and outbound.
@@ -95,9 +103,6 @@
   - control **VNet inbound/outbound** traffic:
     - **multitenant**: Free - PremiumV3.
     - **single-tenant**: Isolated.
-- **App Service Variables**
-  - **Portal**: `App Settings/Environment Variables`
-  - **CLI**: `az webapp config appsettings set --settings key1=value1 key2=value2 --name ...`
 - **Backup and Restore App**
   - App snapshots can be created on a schedule or manually backup.
   - **Standard** or **Premium** tier App Service plan.
@@ -124,6 +129,23 @@
   - purchase domain from Azure portal, you don't have to configure anything.
   - `A` record: map domain name to IP address of web server.
   - `Cname`: maps domain name to another domain name.
+- **Logging**
+  - enable persistent storage, enable logging.
+  - logs can be stored in **Azure Storage** or **App Service file system**.
+  - **Linux**: only supports **Deployment logging**.
+  - **Level of information**: disabled, error, warning, information, verbose.
+  - **Streaming**
+    - enabled from `Portal/App Service/yourApp/Log stream` or CLI `az webapp log tail --name appName --resource-group groupName`
+    - files ending in `.txt, .log, .htm` stored in the `d:/home/logfiles` are streamed by App Service.
+- **Path Mappings**
+  - determine how web app handles incoming requests for a specific path or directories.
+  - e.g. `www.example.com/images` would map to `media/images`
+- **Security Certificates TLS/SSL**
+  - upload or import public certificates into App Service.
+  - certificate binds to **App Service plan resource group and region**(called **webspace**). makes certificate **accessible to other apps** in same resource group and region combination.
+  - **scope**: all tiers except Free.
+- **Storage**
+  - containerized storage is ephemeral. persistent storage can be added to containerized apps.
 - **WebJobs**
   - run script in the same instance as web app. no additional charge.
 
@@ -148,3 +170,11 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - fully managed cloud services. you bring the code.
   - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
   - highly: scalable, elastic, available, durable, secure by default.
+
+## Azure CLI
+
+```bash
+# Logs
+## Stream Logs
+
+```
