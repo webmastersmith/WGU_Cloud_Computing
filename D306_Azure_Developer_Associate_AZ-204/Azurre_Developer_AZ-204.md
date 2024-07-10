@@ -133,10 +133,12 @@
     - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
 - **Deployment Slots**
   - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
-  - **scope**: Standard, Premium, Isolated.
+  - **scope**: Standard, Premium, Isolated. each progressive tier has higher slot count.
   - manage different app stages(development, testing, staging, and production).
   - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
   - new deployment slots can be empty or cloned.
+  - **swap**:
+  - **swap with preview**: loads slot image, pauses to allow you to preview.
   - ![deployment slot](img/deployment_slot.PNG)
 - **Domain Names (DNS) Records**
   - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
