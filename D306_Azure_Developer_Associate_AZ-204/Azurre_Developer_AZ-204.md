@@ -137,8 +137,16 @@
   - manage different app stages(development, testing, staging, and production).
   - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
   - new deployment slots can be empty or cloned.
-  - **swap**:
-  - **swap with preview**: loads slot image, pauses to allow you to preview.
+  - **swap**: loads and starts image(**warm up**), if **HTTP responds**, considered **warmed up** and **switches routing rules** from **source** to **target** slot.
+    - the HTTP request and URL path can be altered.
+  - **swap with preview**: load and starts slot image, pauses to allow you to preview, before switching routing rules to target slot.
+  - **auto swap**: when code changes, automatically swaps app into production. not on linux or Web App for Containers.
+  - **Swap Routing**
+    - **Traffic Percentage**: you can change percentage of traffic to another slot.
+    - **Manual Routing**
+      - link back to production from beta: `<a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>`
+      - address to go to beta: `<webappname>.azurewebsites.net/?x-ms-routing-name=staging`
+      - default routing is `0%`(light grey color) setting the percentage manually to `0%`(black color), allows you to hide traffic while allowing internal team to reach resource.
   - ![deployment slot](img/deployment_slot.PNG)
 - **Domain Names (DNS) Records**
   - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
@@ -183,16 +191,20 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 
 ## Functions
 
-- **Function as a Service (FaaS)**
-  - event driven **trigger** for functions based on event or emit data.
+- **Azure Function as a Service (FaaS)**
+  - serverless, event driven **triggers(based on event or emit data)** to start functions.
   - fully managed and scales to zero.
   - requires a **storage account to operate**.
-  - **trigger**: starts to function.
-  - **input bindings**: respond to event.
-  - **output bindings**: listening for result of function.
+  - **trigger**: start function.
+  - **orchestration**: collection of functions(steps).
+  - **bindings**: simplify coding for input/output data.
+    - **input bindings**: respond to event.
+    - **output bindings**: listening for result of function.
   - ![FaaS overview](img/faas_overview.PNG)
-- **Function App**
-  - ![FaaS overview](img/faas_overview.PNG)
+- **Azure Function vs Azure Logic Apps**
+  - both are serverless.
+  - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
+  - ![function vs logic app](img/function_vs_logic_app.PNG)
 - **Serverless**
   - fully managed cloud services. you bring the code.
   - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
