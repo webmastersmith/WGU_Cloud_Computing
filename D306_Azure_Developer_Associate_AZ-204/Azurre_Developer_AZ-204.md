@@ -195,20 +195,39 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - serverless, event driven **triggers(based on event or emit data)** to start functions.
   - fully managed and scales to zero.
   - requires a **storage account to operate**.
+  - **Serverless**
+    - fully managed cloud services. you bring the code.
+    - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
+    - highly: scalable, elastic, available, durable, secure by default.
   - **trigger**: start function.
   - **orchestration**: collection of functions(steps).
   - **bindings**: simplify coding for input/output data.
     - **input bindings**: respond to event.
     - **output bindings**: listening for result of function.
   - ![FaaS overview](img/faas_overview.PNG)
-- **Azure Function vs Azure Logic Apps**
-  - both are serverless.
+- **Azure Function vs Logic Apps vs App service WebJobs**
+  - all are serverless.
   - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
   - ![function vs logic app](img/function_vs_logic_app.PNG)
-- **Serverless**
-  - fully managed cloud services. you bring the code.
-  - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
-  - highly: scalable, elastic, available, durable, secure by default.
+  - **WebJobs SDK**: Functions is built on WebJob SDK.
+    - Azure Functions offers more developer productivity than Azure App Service WebJobs does.
+    - offers more options for programming languages, development environments, Azure service integration, and pricing.
+  - ![function vs webjob sdk](img/function_vs_webjob_sdk.PNG)
+- **Function Hosting Plans**
+  - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
+  - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
+  - **Premium Plan**: always ready instances. better Compute.
+    - **best for**:
+      - functions that run continuously.
+      - more control over instances(CPU, memory).
+      - high number of small executions(low GB seconds for each run) or code needs longer run times.
+      - require VNet connectivity. need custom linux image.
+  - **Dedicated Plan**: same as Premium. runs at App Service rates. predictable billing.
+    - **best for**:
+      - manually scale instances.
+      - full compute isolation. secure network access by ASE(App Service Environment).
+      - high memory usage.
+  - ![function hosting plans](img/function_hosting.PNG)
 
 ## Azure CLI
 
