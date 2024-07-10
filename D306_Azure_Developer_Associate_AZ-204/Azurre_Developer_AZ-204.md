@@ -193,14 +193,21 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 
 - **Azure Function as a Service (FaaS)**
   - serverless, event driven **triggers(based on event or emit data)** to start functions.
+  - define input, actions, conditions, and output.
   - fully managed and scales to zero.
   - requires a **storage account to operate**.
+  - **function app**: one or more individual functions that are managed, deployed, and scaled together.
+    - share the same pricing plan, deployment method, and runtime version.
+    - **Functions 2.x all functions** in a function app must be authored in the **same language**.
   - **Serverless**
     - fully managed cloud services. you bring the code.
     - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
     - highly: scalable, elastic, available, durable, secure by default.
-  - **trigger**: start function.
+  - **Project Files**: root of directory.
+    - `host.json`: metadata file configuration options on Azure Functions.
+    - `local.settings.json`: local on-prem specific configurations to override `host.json`.
   - **orchestration**: collection of functions(steps).
+  - **trigger**: start function.
   - **bindings**: simplify coding for input/output data.
     - **input bindings**: respond to event.
     - **output bindings**: listening for result of function.
@@ -216,18 +223,31 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 - **Function Hosting Plans**
   - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
   - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
-  - **Premium Plan**: always ready instances. better Compute.
-    - **best for**:
-      - functions that run continuously.
-      - more control over instances(CPU, memory).
-      - high number of small executions(low GB seconds for each run) or code needs longer run times.
-      - require VNet connectivity. need custom linux image.
-  - **Dedicated Plan**: same as Premium. runs at App Service rates. predictable billing.
-    - **best for**:
-      - manually scale instances.
-      - full compute isolation. secure network access by ASE(App Service Environment).
-      - high memory usage.
+  - **Premium Plan**
+    - always ready instances. better Compute.
+    - functions that run continuously.
+    - more control over instances(CPU, memory).
+    - high number of small executions(low GB seconds for each run) or code needs longer run times.
+    - require VNet connectivity. need custom linux image.
+  - **Dedicated Plan**
+    - same as Premium. runs at App Service rates. predictable billing.
+    - manually scale instances.
+    - full compute isolation. secure network access by ASE(App Service Environment).
+    - high memory usage.
+  - **Container Apps Plan**
+    - functions run in container. Kubernetes style workflow without complexity.
+    - create custom library to support **line-of-business** apps.
+    - migrate on-prem code or legacy apps to cloud microservices running in containers.
   - ![function hosting plans](img/function_hosting.PNG)
+  - **Function Timeout**: max time avaiable in minutes function has to return response.
+  - ![function timeout](img/function_timeout.PNG)
+  - **Functions Scale Instances**: max instances
+  - ![function scale instances](img/functions_scale_instances.PNG)
+
+```bash
+# Create Trigger
+
+```
 
 ## Azure CLI
 
