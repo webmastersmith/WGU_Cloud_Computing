@@ -270,11 +270,6 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
 
-```bash
-# Create Trigger
-
-```
-
 ## Blob Storage
 
 - **Blob Storage**
@@ -284,7 +279,9 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - **Standard**: general-purpose V2. most accounts.
     - General-Purpose V2: Basic storage account type for blobs, files, queues, and tables.
   - **Premium**: block blob, page blob, file share. high performance SSD.
-    - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables. **190.7 TB max size**. **append blob optimized for logging**.
+    - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables.
+      - **190.7 TB max size**. **append blob optimized for logging**.
+      - can only move to different access tiers through manual AzCopy.
     - PageBlob: page blob only. **8TB max size**.
     - FileShare: SMB file shares(Windows, Linux, macOS).
   - **Blob storage offers three types of resources**:
@@ -294,14 +291,77 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
       - `https://mystorageaccount.blob.core.windows.net/mycontainer`
     - **blob**: must be inside container. can have multiple blobs.
       - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
-- **Hot, Cold, Cool, Archive**
+- **Static Website**
+  - serve directly from storage **container** named `$web`. serverless architecture.
+  - **Azure Static Web Apps** for header and Auth(N|Z) support.
+  - all files will have public access.
+  - **domain mapping**: only http. Azure CDN for https.
+- **Storage Lifecycle: Access Tiers**
+  - can be set during or after upload.
+  - **account level**: set storage limits(spread across all tiers). can set access tier to hot, cold, or cool.
+  - **blob level**: can set access tier to archive.
   - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
   - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
   - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
   - **Hot**: immediate access. highest storage cost, lowest access cost. frequently accessed.
   - **Cool**: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
   - **Cold**: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
-  - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty.
+  - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty. **LRS, GRS, RA-GRS only redundancy**.
+    - **rehydration**: can **copy or move** from archive to warmer tier. This does not change last modified time! Lifecycle policy can move blob back to archive!
+    - **priority**: standard rehydration or high(under one hour < 10GB size).
+    - can only rehydrate blob to same **storage account**.
+    - ![access tier rehydrate](img/access_tier_rehydrate.PNG)
   - Hot -> cool: incurs a **write** charge for all data.
   - Cool -> Hot: incurs **read** charge for all data.
   - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
+  - **Manage Lifecycle Rules**
+    - policy to transition/delete data. modify via: Azure Portal, PowerShell, CLI, REST APIs.
+    - **scope**: rules can be applied to containers or blobs.
+
+```json
+# lifecycle management policy. Azure Portal/Data Management/Lifecycle Management -Add rule.
+{
+  "rules": [
+    {
+      "name": "ruleFoo",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "container1/foo" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 }, # 30 days after last modification.
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
+            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          },
+          "snapshot": {
+            "delete": { "daysAfterCreationGreaterThan": 90 } # 90 days after snapshot creation.
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+- **Storage Service Encryption (SSE)**
+  - by default all data is encrypted at rest(256-bit ASE) and in transit(HTTPS, SMB 3.0).
+  - RBAC for security principals(resource group, resource, service, storage account, container, blob, queue).
+  - Microsoft Entra ID for 'key' management.
+  - ![key management](img/key_management.PNG)
+
+## Azure CLI
+
+- [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
+
+```bash
+az login
+# create resource group
+az group create --location <myLocation> --name az204-blob-rg
+# create storage account
+az storage account create --resource-group az204-blob-rg --name <myStorageAcct> --location <myLocation> --sku Standard_LRS
+
+```
