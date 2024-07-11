@@ -382,5 +382,8 @@ az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
 az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
 # if subscription not found error, must register Microsoft.Storage
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table | grep Storage
+# if Microsoft.Storage NotRegistered
 az provider register --namespace Microsoft.Storage
+# clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y
 ```
