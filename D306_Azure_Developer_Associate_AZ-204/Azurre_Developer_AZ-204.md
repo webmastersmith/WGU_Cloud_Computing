@@ -353,15 +353,34 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - Microsoft Entra ID for 'key' management.
   - ![key management](img/key_management.PNG)
 
-## Azure CLI
+## Azure Bash CLI
 
+- [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
 
 ```bash
-az login
-# create resource group
-az group create --location <myLocation> --name az204-blob-rg
-# create storage account
-az storage account create --resource-group az204-blob-rg --name <myStorageAcct> --location <myLocation> --sku Standard_LRS
+# install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# upgrade
+az upgrade
+# Remove
+sudo apt remove azure-cli -y && sudo apt autoremove -y
 
+# login. -https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-login
+az login --use-device-code # WSL2. allows web browser login.
+# logout
+az logout
+
+# set variables -current session only.
+export AZ_USER="firstlastname"
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group"
+export AZ_STORAGE_ACCOUNT_NAME="${AZ_USER}storageaccount" # numbers and lowercase letters only. name must be unique across azure.
+# create resource group
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+# create storage account
+az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
+# if subscription not found error, must register Microsoft.Storage
+az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table | grep Storage
+az provider register --namespace Microsoft.Storage
 ```
