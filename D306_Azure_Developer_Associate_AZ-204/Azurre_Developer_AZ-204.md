@@ -207,11 +207,37 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
     - `host.json`: metadata file configuration options on Azure Functions.
     - `local.settings.json`: local on-prem specific configurations to override `host.json`.
   - **orchestration**: collection of functions(steps).
-  - **trigger**: start function.
-  - **bindings**: simplify coding for input/output data.
-    - **input bindings**: respond to event.
-    - **output bindings**: listening for result of function.
+  - **trigger**: required to call the function.
+  - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+    - **function.json**: file show what **dataType**: binary, stream, string. **direction**: in/out
+    - **input bindings**: other service responds to event. function is called with data as the argument.
+    - **output bindings**: other service is listening. the function return value is passed to listening service.
+    - **identities**: RBAC assigned roles are used to connect the services.
   - ![FaaS overview](img/faas_overview.PNG)
+
+```json
+# function.json
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "type": "queueTrigger",
+      "direction": "in",
+      "name": "myQueueItem",
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ]
+}
+```
+
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
@@ -249,10 +275,33 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 
 ```
 
-## Azure CLI
+## Blob Storage
 
-```bash
-# Logs
-## Stream Logs
-
-```
+- **Blob Storage**
+  - designed to store massive amounts of unstructured data(text, binary). storing, streaming, writing.
+  - Users or client applications can access objects in Blob storage via HTTP/HTTPS, from anywhere in the world.
+  - **scope**: region.
+  - **Standard**: general-purpose V2. most accounts.
+    - General-Purpose V2: Basic storage account type for blobs, files, queues, and tables.
+  - **Premium**: block blob, page blob, file share. high performance SSD.
+    - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables. **190.7 TB max size**. **append blob optimized for logging**.
+    - PageBlob: page blob only. **8TB max size**.
+    - FileShare: SMB file shares(Windows, Linux, macOS).
+  - **Blob storage offers three types of resources**:
+    - **storage account**: can have multiple storage accounts. must be unique.
+      - `http://mystorageaccount.blob.core.windows.net`
+    - **container**: must be inside storage account. can have multiple containers.
+      - `https://mystorageaccount.blob.core.windows.net/mycontainer`
+    - **blob**: must be inside container. can have multiple blobs.
+      - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
+- **Hot, Cold, Cool, Archive**
+  - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
+  - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
+  - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
+  - **Hot**: immediate access. highest storage cost, lowest access cost. frequently accessed.
+  - **Cool**: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
+  - **Cold**: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
+  - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty.
+  - Hot -> cool: incurs a **write** charge for all data.
+  - Cool -> Hot: incurs **read** charge for all data.
+  - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
