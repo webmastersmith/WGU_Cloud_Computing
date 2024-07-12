@@ -25,6 +25,25 @@
 - **Practice Exams**
   - <https://wgu.udemy.com/course/az204-azure-practice/>
 
+## Azure Bash CLI
+
+- [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
+
+```bash
+# install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# upgrade
+az upgrade
+# Remove
+sudo apt remove azure-cli -y && sudo apt autoremove -y
+
+# login. -https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-login
+az login --use-device-code # WSL2. allows web browser login.
+# logout
+az logout
+```
+
 ## App Services
 
 - **App Service**
@@ -455,22 +474,3 @@ az logout
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
-
-## Azure Bash CLI
-
-- [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
-
-```bash
-# install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-# upgrade
-az upgrade
-# Remove
-sudo apt remove azure-cli -y && sudo apt autoremove -y
-
-# login. -https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-login
-az login --use-device-code # WSL2. allows web browser login.
-# logout
-az logout
-```
