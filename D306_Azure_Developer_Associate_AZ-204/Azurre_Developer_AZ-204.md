@@ -272,6 +272,23 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - Microsoft Entra ID for 'key' management.
   - ![key management](img/key_management.PNG)
 
+```bash
+# CREATE STORAGE ACCOUNT -set variables -current session only.
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group${RANDOM:0:3}"
+export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:3}" # numbers and lowercase letters only. name must be unique across azure. RANDOM number between 1 - 999.
+# create resource group
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+# create storage account
+az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
+  # if Microsoft.Storage not registered.
+  # https://docs.microsoft.com/cli/azure/query-azure-cli
+  # az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table | grep Storage
+  az provider register --namespace Microsoft.Storage
+# clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
+
 ## Cosmos DB
 
 - **Cosmos DB**
@@ -295,12 +312,12 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - region-agnostic. guaranteed for all operations regardless of region.
   - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
   - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
-    - all regions confirm successful write before data is considered written. increases latency.
+    - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
     - removes database regions that do not respond to write until they are back online.
   - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
   - **Session**: single client can read-your-writes.
   - **Consistent prefix**: updates made as a batch.
-  - **Eventual**: no ordering guarantee for reads. replicas eventually converge.
+  - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
 - **Cosmos DB API**
   - if you want to migrate existing database into Cosmos DB.
@@ -310,6 +327,53 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - **Apache Cassandra**: column-oriented schema.
   - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
   - **Apache Gremlin**: for graph queries. store data as edges and vertices. data too complex to be modeled with relational database.
+- **Cosmos DB Modes**
+  - you need dedicated resources for database.
+  - **Provisioned Throughput Mode**: provision in increments of 100 RUs per second.
+    - can be increased/decreased at any time.
+    - provision at database or container level.
+  - **Serverless Mode**: billed for RUs used.
+  - **AutoScale Mode**: mission-critical workloads. SLA on high performance and scale.
+  - **Cosmos Change Feed**
+    - track changes made to items in **Cosmos DB container**. persistent ordered record.
+    - **listens**: for changes(inserts, updates, deletes).
+    - **recording**: adds changes to change log, preserving order it happened.
+    - **push model**: you listen for changes. **recommended**.
+    - **pull model**: you query for changes.
+- **Stored Procedure**
+  - **User-Defined Functions**: Javascript functions you can register and call.
+  - **pretriggers**: executed before modifying database. must be registered.
+  - **post-triggers**: executed after modifying database. must be registered. runs as part of the same transaction and if trigger has exception, commit is rolled back and exception returned.
+
+```js
+const helloWorldStoredProc = {
+  id: 'helloWorld',
+  serverScript: function () {
+    const context = getContext();
+    const response = context.getResponse();
+    response.setBody('Hello, World');
+  },
+};
+```
+
+```bash
+## Create Cosmos DB
+# az account list-locations --query "sort_by([].{DisplayName: displayName, AzureName: name}, &DisplayName)" --out table
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_SUBSCRIPTION_NAME="your subscription name"
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_COSMOS_DB_NAME="my-cosmosdb-${RANDOM:0:3}"
+az login --use-device-code # WSL2. allows web browser login.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az cosmosdb create --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --subscription "${AZ_SUBSCRIPTION_NAME}"
+  # if Microsoft.DocumentDB not registered
+  az provider register --namespace Microsoft.DocumentDB
+# Retrieve the primary key
+az cosmosdb keys list --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
+# Clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
+az logout
+```
 
 ## Functions
 
@@ -409,21 +473,4 @@ sudo apt remove azure-cli -y && sudo apt autoremove -y
 az login --use-device-code # WSL2. allows web browser login.
 # logout
 az logout
-
-# CREATE STORAGE ACCOUNT
-# set variables -current session only.
-export AZ_USER="firstlastname"
-export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_RESOURCE_GROUP_NAME="my-resource-group"
-export AZ_STORAGE_ACCOUNT_NAME="${AZ_USER}storageaccount" # numbers and lowercase letters only. name must be unique across azure.
-# create resource group
-az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-# create storage account
-az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
-# if subscription not found error, must register Microsoft.Storage
-az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table | grep Storage
-# if Microsoft.Storage NotRegistered
-az provider register --namespace Microsoft.Storage
-# clean up
-az group delete -n $AZ_RESOURCE_GROUP_NAME -y
 ```
