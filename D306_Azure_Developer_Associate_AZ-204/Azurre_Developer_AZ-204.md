@@ -189,87 +189,6 @@
 az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
 ```
 
-## Functions
-
-- **Azure Function as a Service (FaaS)**
-  - serverless, event driven **triggers(based on event or emit data)** to start functions.
-  - define input, actions, conditions, and output.
-  - fully managed and scales to zero.
-  - requires a **storage account to operate**.
-  - **function app**: one or more individual functions that are managed, deployed, and scaled together.
-    - share the same pricing plan, deployment method, and runtime version.
-    - **Functions 2.x all functions** in a function app must be authored in the **same language**.
-  - **Serverless**
-    - fully managed cloud services. you bring the code.
-    - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
-    - highly: scalable, elastic, available, durable, secure by default.
-  - **Project Files**: root of directory.
-    - `host.json`: metadata file configuration options on Azure Functions.
-    - `local.settings.json`: local on-prem specific configurations to override `host.json`.
-  - **orchestration**: collection of functions(steps).
-  - **trigger**: required to call the function.
-  - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
-    - **function.json**: file show what **dataType**: binary, stream, string. **direction**: in/out
-    - **input bindings**: other service responds to event. function is called with data as the argument.
-    - **output bindings**: other service is listening. the function return value is passed to listening service.
-    - **identities**: RBAC assigned roles are used to connect the services.
-  - ![FaaS overview](img/faas_overview.PNG)
-
-```json
-# function.json
-{
-  "disabled": false,
-  "bindings": [
-    {
-      "type": "queueTrigger",
-      "direction": "in",
-      "name": "myQueueItem",
-      "queueName": "myqueue-items",
-      "connection": "MyStorageConnectionAppSetting"
-    },
-    {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
-      "type": "table",
-      "direction": "out"
-    }
-  ]
-}
-```
-
-- **Azure Function vs Logic Apps vs App service WebJobs**
-  - all are serverless.
-  - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
-  - ![function vs logic app](img/function_vs_logic_app.PNG)
-  - **WebJobs SDK**: Functions is built on WebJob SDK.
-    - Azure Functions offers more developer productivity than Azure App Service WebJobs does.
-    - offers more options for programming languages, development environments, Azure service integration, and pricing.
-  - ![function vs webjob sdk](img/function_vs_webjob_sdk.PNG)
-- **Function Hosting Plans**
-  - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
-  - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
-  - **Premium Plan**
-    - always ready instances. better Compute.
-    - functions that run continuously.
-    - more control over instances(CPU, memory).
-    - high number of small executions(low GB seconds for each run) or code needs longer run times.
-    - require VNet connectivity. need custom linux image.
-  - **Dedicated Plan**
-    - same as Premium. runs at App Service rates. predictable billing.
-    - manually scale instances.
-    - full compute isolation. secure network access by ASE(App Service Environment).
-    - high memory usage.
-  - **Container Apps Plan**
-    - functions run in container. Kubernetes style workflow without complexity.
-    - create custom library to support **line-of-business** apps.
-    - migrate on-prem code or legacy apps to cloud microservices running in containers.
-  - ![function hosting plans](img/function_hosting.PNG)
-  - **Function Timeout**: max time avaiable in minutes function has to return response.
-  - ![function timeout](img/function_timeout.PNG)
-  - **Functions Scale Instances**: max instances
-  - ![function scale instances](img/functions_scale_instances.PNG)
-
 ## Blob Storage
 
 - **Blob Storage**
@@ -353,6 +272,126 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - Microsoft Entra ID for 'key' management.
   - ![key management](img/key_management.PNG)
 
+## Cosmos DB
+
+- **Cosmos DB**
+  - fully managed NoSQL, globally distributed database. read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
+  - low latency, elastic scalability of throughput. place data in region where users are.
+  - add remove **regions** at any time. can have multiple Cosmos databases in account.
+  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
+  - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
+    - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
+  - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
+- **Cosmos DB Containers**
+  - unit of scalability both for provisioned throughput and storage.
+  - A container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
+  - items added are distributed across the partitions(based on partition key).
+  - **Throughput**
+    - **Dedicated**: throughput on container exclusively reserved for container. Backed by SLA.
+    - **Shared**: share throughput with other containers in same database.
+- **Consistency Levels**
+  - distributed database must make tradeoff between read consistency, availability, latency, and throughput.
+  - data may lag replication across regions due to failures(eventual consistency).
+  - region-agnostic. guaranteed for all operations regardless of region.
+  - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
+  - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
+    - all regions confirm successful write before data is considered written. increases latency.
+    - removes database regions that do not respond to write until they are back online.
+  - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
+  - **Session**: single client can read-your-writes.
+  - **Consistent prefix**: updates made as a batch.
+  - **Eventual**: no ordering guarantee for reads. replicas eventually converge.
+  - ![consistency levels](img/consistency_levels.PNG)
+- **Cosmos DB API**
+  - if you want to migrate existing database into Cosmos DB.
+  - **NoSQL**: document format. first to update. best end-to-end experience. Query in SQL syntax.
+  - **MongoDB**: BSON format. compatible with MongoDB.
+  - **PostgreSQL**: PostgreSQL distributed tables for scale.
+  - **Apache Cassandra**: column-oriented schema.
+  - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
+  - **Apache Gremlin**: for graph queries. store data as edges and vertices. data too complex to be modeled with relational database.
+
+## Functions
+
+- **Azure Function as a Service (FaaS)**
+  - serverless, event driven **triggers(based on event or emit data)** to start functions.
+  - define input, actions, conditions, and output.
+  - fully managed and scales to zero.
+  - requires a **storage account to operate**.
+  - **function app**: one or more individual functions that are managed, deployed, and scaled together.
+    - share the same pricing plan, deployment method, and runtime version.
+    - **Functions 2.x all functions** in a function app must be authored in the **same language**.
+  - **Serverless**
+    - fully managed cloud services. you bring the code.
+    - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
+    - highly: scalable, elastic, available, durable, secure by default.
+  - **Project Files**: root of directory.
+    - `host.json`: metadata file configuration options on Azure Functions.
+    - `local.settings.json`: local on-prem specific configurations to override `host.json`.
+  - **orchestration**: collection of functions(steps).
+  - **trigger**: required to call the function.
+  - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+    - **function.json**: file show what **dataType**: binary, stream, string. **direction**: in/out
+    - **input bindings**: other service responds to event. function is called with data as the argument.
+    - **output bindings**: other service is listening. the function return value is passed to listening service.
+    - **identities**: RBAC assigned roles are used to connect the services.
+  - ![FaaS overview](img/faas_overview.PNG)
+
+```json
+# function.json
+{
+  "disabled": false,
+  "bindings": [
+    {
+      "type": "queueTrigger",
+      "direction": "in",
+      "name": "myQueueItem",
+      "queueName": "myqueue-items",
+      "connection": "MyStorageConnectionAppSetting"
+    },
+    {
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting",
+      "name": "tableBinding",
+      "type": "table",
+      "direction": "out"
+    }
+  ]
+}
+```
+
+- **Azure Function vs Logic Apps vs App service WebJobs**
+  - all are serverless.
+  - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
+  - ![function vs logic app](img/function_vs_logic_app.PNG)
+  - **WebJobs SDK**: Functions is built on WebJob SDK.
+    - Azure Functions offers more developer productivity than Azure App Service WebJobs does.
+    - offers more options for programming languages, development environments, Azure service integration, and pricing.
+  - ![function vs webjob sdk](img/function_vs_webjob_sdk.PNG)
+- **Function Hosting Plans**
+  - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
+  - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
+  - **Premium Plan**
+    - always ready instances. better Compute.
+    - functions that run continuously.
+    - more control over instances(CPU, memory).
+    - high number of small executions(low GB seconds for each run) or code needs longer run times.
+    - require VNet connectivity. need custom linux image.
+  - **Dedicated Plan**
+    - same as Premium. runs at App Service rates. predictable billing.
+    - manually scale instances.
+    - full compute isolation. secure network access by ASE(App Service Environment).
+    - high memory usage.
+  - **Container Apps Plan**
+    - functions run in container. Kubernetes style workflow without complexity.
+    - create custom library to support **line-of-business** apps.
+    - migrate on-prem code or legacy apps to cloud microservices running in containers.
+  - ![function hosting plans](img/function_hosting.PNG)
+  - **Function Timeout**: max time avaiable in minutes function has to return response.
+  - ![function timeout](img/function_timeout.PNG)
+  - **Functions Scale Instances**: max instances
+  - ![function scale instances](img/functions_scale_instances.PNG)
+
 ## Azure Bash CLI
 
 - [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
@@ -371,6 +410,7 @@ az login --use-device-code # WSL2. allows web browser login.
 # logout
 az logout
 
+# CREATE STORAGE ACCOUNT
 # set variables -current session only.
 export AZ_USER="firstlastname"
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
