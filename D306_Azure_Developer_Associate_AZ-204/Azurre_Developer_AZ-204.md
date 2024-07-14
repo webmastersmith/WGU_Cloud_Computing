@@ -541,8 +541,12 @@ az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_N
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
-## Azure Container Instances (ACI)
+## Azure Container Apps
 
+- **Azure Container Apps**
+  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
+  - run **microservices** and **containerized applications** on a serverless platform that **runs on top of Azure Kubernetes Service**.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
 - **Azure Container Instance (ACI)**
   - **serverless** way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
   - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
@@ -557,10 +561,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - Windows or Linux container: `--environment-variables 'NumWords'='5' 'MinLength'='8'`
   - **Secure Value Object**: hold sensitive information(passwords, keys...) inside container.
     - values aren't visible in container properties.
-    - you call the **secureValue property**, not the value.
-- **Azure Container Apps**
-  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
-  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+    - you reference the **secureValue property**, not the value.
 - **Azure Container Groups**
   - **collection of containers** that get scheduled on the **same host machine**.
   - The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
@@ -571,13 +572,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - pods are stateless(ephemeral). data is lost on failure.
   - persist state beyond the lifetime of the container, you must **mount a volume from an external store**.
   - Azure File Share, Empty directory, GitHub, Secret.
+    - **Linux**: can only mount File Shares and only as root.
 
 ```bash
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_CONTAINER_NAME="my-container-${RANDOM:0:3}"
 export AZ_IMAGE="mcr.microsoft.com/azuredocs/aci-helloworld"
-export AZ_DNS_NAME_LABEL="my-dns-label-${RANDOM:0:3}"
+export AZ_DNS_NAME_LABEL="my-dns-label-${RANDOM:0:3}" # unique within the Azure region.
 az login --use-device-code # WSL2. allows web browser login.
 # create resource group
 az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
@@ -587,6 +589,13 @@ az container create --resource-group $AZ_RESOURCE_GROUP_NAME \
   --name $AZ_CONTAINER_NAME --image $AZ_IMAGE --ports 80 \
   --dns-name-label $AZ_DNS_NAME_LABEL --location $AZ_LOCATION \
   --restart-policy OnFailure --environment-variables 'NumWords'='5' 'MinLength'='8'
+
+# create container instance w/ storage
+# https://learn.microsoft.com/en-us/training/modules/create-run-container-images-azure-container-instances/6-mount-azure-file-share-azure-container-instances
+# --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
+# --azure-file-volume-account-key $STORAGE_KEY \
+# --azure-file-volume-share-name $ACI_PERS_SHARE_NAME \
+# --azure-file-volume-mount-path /aci/logs/
 
 # create container instance. -yaml example
 az container create --resource-group myResourceGroup --file secure-env.yaml
