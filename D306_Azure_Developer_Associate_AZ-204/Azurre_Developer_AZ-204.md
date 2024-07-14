@@ -552,31 +552,44 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Never**: one of task. e.g. background jobs.
     - **OnFailure**: container encounter error try restarting.
   - ![container instance](img/container-instance.PNG)
-- **Container Group**
+- **ACI Environment Variables**
+  - environment variables are similar to the `--env` command-line argument to **docker run**.
+  - Windows or Linux container: `--environment-variables 'NumWords'='5' 'MinLength'='8'`
+  - **Secure Value Object**: hold sensitive information(passwords, keys...) inside container.
+    - values aren't visible in container properties.
+    - you call the **secureValue property**, not the value.
+- **Azure Container Apps**
+  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+- **Azure Container Groups**
   - **collection of containers** that get scheduled on the **same host machine**.
   - The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
   - similar to a 'pod' in Kubernetes(multiple containers per pod).
   - deploy through **ARM**(Azure Resource Manager, best for multiple resources) or **YAML** files(best for single ).
   - share public IP address and FQDN per container group.
-  - **Storage**: pods are ephemeral. data is lost on failure. persistent storage(external volumes) can be mounted.
-    - Azure File Share, Empty directory, GitHub, Secret.
-- **Azure Container Apps**
-  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
-  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+- **Storage**
+  - pods are stateless(ephemeral). data is lost on failure.
+  - persist state beyond the lifetime of the container, you must **mount a volume from an external store**.
+  - Azure File Share, Empty directory, GitHub, Secret.
 
 ```bash
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
-export AZ_CONTAINER_NAME="my-container-${RANDOM:0:3}" # global naming a-z only
+export AZ_CONTAINER_NAME="my-container-${RANDOM:0:3}"
 export AZ_IMAGE="mcr.microsoft.com/azuredocs/aci-helloworld"
 export AZ_DNS_NAME_LABEL="my-dns-label-${RANDOM:0:3}"
 az login --use-device-code # WSL2. allows web browser login.
-# create holding group
+# create resource group
 az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-# create container instances group
+
+# create container instance
 az container create --resource-group $AZ_RESOURCE_GROUP_NAME \
   --name $AZ_CONTAINER_NAME --image $AZ_IMAGE --ports 80 \
-  --dns-name-label $AZ_DNS_NAME_LABEL --location $AZ_LOCATION
+  --dns-name-label $AZ_DNS_NAME_LABEL --location $AZ_LOCATION \
+  --restart-policy OnFailure --environment-variables 'NumWords'='5' 'MinLength'='8'
+
+# create container instance. -yaml example
+az container create --resource-group myResourceGroup --file secure-env.yaml
 
 # if Microsoft.ContainerInstance not registered.
 # az provider register --namespace Microsoft.ContainerInstance
