@@ -590,7 +590,10 @@ az container create --resource-group $AZ_RESOURCE_GROUP_NAME \
   --dns-name-label $AZ_DNS_NAME_LABEL --location $AZ_LOCATION \
   --restart-policy OnFailure --environment-variables 'NumWords'='5' 'MinLength'='8'
 
-# create container instance w/ storage
+# if Microsoft.ContainerInstance not registered.
+# az provider register --namespace Microsoft.ContainerInstance
+
+# create container instance w/ volume mount.
 # https://learn.microsoft.com/en-us/training/modules/create-run-container-images-azure-container-instances/6-mount-azure-file-share-azure-container-instances
 # --azure-file-volume-account-name $ACI_PERS_STORAGE_ACCOUNT_NAME \
 # --azure-file-volume-account-key $STORAGE_KEY \
@@ -598,10 +601,7 @@ az container create --resource-group $AZ_RESOURCE_GROUP_NAME \
 # --azure-file-volume-mount-path /aci/logs/
 
 # create container instance. -yaml example
-az container create --resource-group myResourceGroup --file secure-env.yaml
-
-# if Microsoft.ContainerInstance not registered.
-# az provider register --namespace Microsoft.ContainerInstance
+# az container create --resource-group $AZ_RESOURCE_GROUP_NAME --file file.yaml
 
 # verify
 az container show --resource-group $AZ_RESOURCE_GROUP_NAME \
