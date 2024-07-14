@@ -13,9 +13,13 @@
   - [Github AndreaKarz](https://github.com/AndreasKarz/AZ-204)
   - [Github Argigeaus](https://github.com/arvigeus/az-204)
   - [Wolfgang](https://programmingwithwolfgang.com/mastering-az-204-exam-comprehensive-guide-azure-certification-preparation)
+  - [Github Ditectrey](https://github.com/Ditectrev/Microsoft-Azure-AZ-204-Developing-Solutions-for-Microsoft-Azure-Practice-Tests-Exams-Question-Answer)
+  - [Shane Bart -pay attention to section on mind mapping](https://www.shanebart.com/az-204-exam-study-guide/)
+  - [Madeleine Von Hausswolff -pay attention to practice with questions section](https://medium.com/webstep/exam-az-204-developing-solutions-for-microsoft-azure-study-tips-254d56941fd8)
 - **Testing Notes**
   - heavy on container and function services.
 - **Microsoft Learn**
+  - [service naming rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
   - [learn microsoft](https://learn.microsoft.com/en-us/credentials/certifications/azure-developer/?practice-assessment-type=certification)
   - [az-204 study guide](https://learn.microsoft.com/en-us/credentials/certifications/resources/study-guides/az-204)
   - [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
@@ -474,3 +478,116 @@ az logout
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
+
+## Azure Container Registry (ACR)
+
+- **ACR**
+  - managed, private Docker registry service for Windows and Linux images.
+  - Kubernetes, DC/OS, Docker Swarm, Azure Kubernetes Service(AKS), App Service, Batch, Service Fabric.
+  - **tiers**
+    - **Basic**: cost-optimized entry point.
+    - **Standard**: Basic + increased storage, throughput.
+    - **Premium**: Standard + increased storage, throughput. geo-replication.
+  - **Storage**: encryption-at-rest, regional(where created), zone redundancy(Premium).
+- **ACR Tasks**
+  - automated image build. build, test, push, deploy.
+  - **automated trigger**: source code update, base image update, or schedule update.
+    - `az task create`. links to GitHub or Azure DevOps Service.
+  - **multi-step task**: `file.yaml` multi-step workflows.
+
+```bash
+# https://learn.microsoft.com/en-us/cli/azure/acr?view=azure-cli-latest#az-acr-build
+export AZ_CONTAINER_REGISTRY_NAME="mycontainerregistry$(openssl rand -base64 20 | tr -dc 'a-z')"
+az acr build -t sample/hello-world:{{.Run.ID}} -r $AZ_CONTAINER_REGISTRY_NAME .
+```
+
+- **Dockerfile**
+  - build image.
+  - <https://docs.docker.com/engine/reference/run/>
+  - <https://docs.docker.com/reference/cli/docker/image/build/>
+
+```dockerfile
+# Use the .NET 6 runtime as a base image
+FROM mcr.microsoft.com/dotnet/runtime:6.0
+# Set the working directory to /app
+WORKDIR /app
+# Copy the contents of the published app to the container's /app directory
+COPY bin/Release/net6.0/publish/ .
+# Expose port 80 to the outside world
+EXPOSE 80
+# Set the command to run when the container starts
+CMD ["dotnet", "MyApp.dll"]
+```
+
+```bash
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_CONTAINER_REGISTRY_NAME="mycontainerregistry$(openssl rand -base64 20 | tr -dc 'a-z')" # global naming a-z only
+export AZ_IMAGE_NAME="sample/hello-world"
+export AZ_IMAGE_VERSION="v1"
+az login --use-device-code # WSL2. allows web browser login.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az acr create --resource-group $AZ_RESOURCE_GROUP_NAME --name $AZ_CONTAINER_REGISTRY_NAME --sku Basic
+  # if Microsoft.ContainerRegistry not registered.
+  az provider register --namespace Microsoft.ContainerRegistry
+echo FROM mcr.microsoft.com/hello-world > Dockerfile
+az acr build --image "${AZ_IMAGE_NAME}:${AZ_IMAGE_VERSION}" --registry $AZ_CONTAINER_REGISTRY_NAME --file Dockerfile .
+# verify
+az acr repository list --name $AZ_CONTAINER_REGISTRY_NAME --output table
+az acr repository show-tags --name $AZ_CONTAINER_REGISTRY_NAME --repository "${AZ_IMAGE_NAME}" --output table
+# run
+az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_NAME}:${AZ_IMAGE_VERSION}" /dev/null
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
+
+## Azure Container Instances (ACI)
+
+- **Azure Container Instance (ACI)**
+  - **serverless** way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
+  - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
+  - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
+  - **Restart Policy**
+    - **Always**: long running task. e.g. web-servers.
+    - **Never**: one of task. e.g. background jobs.
+    - **OnFailure**: container encounter error try restarting.
+  - ![container instance](img/container-instance.PNG)
+- **Container Group**
+  - **collection of containers** that get scheduled on the **same host machine**.
+  - The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
+  - similar to a 'pod' in Kubernetes(multiple containers per pod).
+  - deploy through **ARM**(Azure Resource Manager, best for multiple resources) or **YAML** files(best for single ).
+  - share public IP address and FQDN per container group.
+  - **Storage**: pods are ephemeral. data is lost on failure. persistent storage(external volumes) can be mounted.
+    - Azure File Share, Empty directory, GitHub, Secret.
+- **Azure Container Apps**
+  - serverless platform that **simplifies deployment**. abstracts away complexities of Kubernetes and infrastructure management.
+  - Container Apps provides resources: server configuration, container orchestration, and deployment details, so you don't have to.
+
+```bash
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_CONTAINER_NAME="my-container-${RANDOM:0:3}" # global naming a-z only
+export AZ_IMAGE="mcr.microsoft.com/azuredocs/aci-helloworld"
+export AZ_DNS_NAME_LABEL="my-dns-label-${RANDOM:0:3}"
+az login --use-device-code # WSL2. allows web browser login.
+# create holding group
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+# create container instances group
+az container create --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --name $AZ_CONTAINER_NAME --image $AZ_IMAGE --ports 80 \
+  --dns-name-label $AZ_DNS_NAME_LABEL --location $AZ_LOCATION
+
+# if Microsoft.ContainerInstance not registered.
+# az provider register --namespace Microsoft.ContainerInstance
+
+# verify
+az container show --resource-group $AZ_RESOURCE_GROUP_NAME \
+    --name $AZ_CONTAINER_NAME \
+    --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
+    --out table
+
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+az logout
+```
