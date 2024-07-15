@@ -29,6 +29,66 @@
 - **Practice Exams**
   - <https://wgu.udemy.com/course/az204-azure-practice/>
 
+## Azure Authentication and Authorization
+
+- **Microsoft Identity**
+  - simplify Identity and Access Management.
+  - identities, social accounts, with your own API or Microsoft AP. e.g. Microsoft Graph.
+  - **OAuth 2.0 and OpenID Connect**: authenticate with several identity types.
+    - Microsoft Entra ID and External ID, Azure Active Directory B2C.
+  - **Open-source libraries**: standard-compliant libraries.
+- **Application Object**: registering app with Microsoft Entra ID creates an application object in home tenant.
+  - application object is the **global representation of your application** for use **across all tenants**.
+    - A **one to one** relationship with the **software application**.
+    - A **one to many** relationships with its corresponding **service principal object(s)**.
+  - when registering app, choose whether it is: **Single Tenant**(accessible in your tenant) or **Multi-tenant**(accessible to other tenants).
+  - the object is given an '**identity**' with a **globally unique ID**.
+  - this becomes the **blueprint** of each **service principal** created.
+  - **Application Object Defines**:
+    - how service can issue tokens to access app.
+    - resources app can access.
+    - actions app can take.
+- **scope**
+  - (permission to preform an action) and secrets can be assigned to the object.
+  - permission is granted through URI: `https://graph.microsoft.com/Calendars.Read`.
+  - **Permission Types**
+    - **Delegated permissions**: signed-in user present. user consents to app request.
+    - **App-only access permissions**: apps that run without signed-in user present. only administrator can consent to app-only access permissions.
+  - **Consent Types**
+    - **static user consent**: manual permissions, all up front at sign-in, in app configuration.
+    - **incremental and dynamic user consent**: incremental assign permissions as needed.
+    - **admin consent**: app needs access to certain high-privilege permissions.
+  - after scope is the requested permissions. 👇 Microsoft identity platform checks for a matching record of user consent.
+
+```txt
+GET https://login.microsoftonline.com/common/oauth2/v2.0/authorize?
+client_id=6731de76-14a6-49ae-97bc-6eba6914391e
+&response_type=code
+&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
+&response_mode=query
+&scope=
+💥
+https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20
+https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
+💥
+&state=12345
+```
+
+- **OAuth 2.0**
+  - token given to service principal to act on your behalf, without giving your credentials.
+- **Service Principal Object**
+  - to access resources secured by Microsoft Entra tenant, the service must have valid security principal.
+  - service principal must be **created in each tenant** where the application is used to enable it to establish an **identity** for sign-in and/or **access to resources** being secured by the tenant.
+  - **application object serves as the template** from which common and default properties are derived for use in creating corresponding service principal objects. e.g. Class object and instantiated object.
+  - service principal is the **local representation for use in a specific tenant**.
+  - **Application Service Principal**: traditional application registered in Azure AD.
+    - can be assigned RBAC roles and have credentials(client secrets, certificates).
+    - managed through Azure AD blade.
+  - **Managed Identity**: automatically managed identity for Azure resources.
+    - automatically created to eliminate managing credentials manually.
+    - permissions granted directly to Azure resource.
+  - **Legacy**: older apps created before introduction of modern app registration features. Limited functionality.
+
 ## Azure Bash CLI
 
 - [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
@@ -412,46 +472,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **WebJobs**
   - run script in the same instance as web app. no additional charge.
 
-```powershell
+```bash
 # online Azure Cloud Shell
 az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
 ```
-
-## Azure Authentication and Authorization
-
-- **Microsoft Identity**
-  - simplify Identity and Access Management.
-  - identities, social accounts, with your own API or Microsoft AP. e.g. Microsoft Graph.
-  - **OAuth 2.0 and OpenID Connect**: authenticate with several identity types.
-    - Microsoft Entra ID and External ID, Azure Active Directory B2C.
-  - **Open-source libraries**: standard-compliant libraries.
-- **Application Object**: registering app with Microsoft Entra ID creates an application object in home tenant.
-  - application object is the **global representation of your application** for use **across all tenants**.
-    - A **one to one** relationship with the **software application**.
-    - A **one to many** relationships with its corresponding **service principal object(s)**.
-  - when registering app, choose whether it is: **Single Tenant**(accessible in your tenant) or **Multi-tenant**(accessible to other tenants).
-  - the object is given an '**identity**' with a **globally unique ID**.
-  - **scope**(permission to preform an action) and secrets can be assigned to the object.
-    - permission is granted through URI: `https://graph.microsoft.com/Calendars.Read`.
-  - this becomes the **blueprint** of each **service principal** created.
-  - **Application Object Defines**:
-    - how service can issue tokens to access app.
-    - resources app can access.
-    - actions app can take.
-- **OAuth 2.0**
-  - token given to service principal to act on your behalf, without giving your credentials.
-- **Service Principal Object**
-  - to access resources secured by Microsoft Entra tenant, the service must have valid security principal.
-  - service principal must be **created in each tenant** where the application is used to enable it to establish an **identity** for sign-in and/or **access to resources** being secured by the tenant.
-  - **application object serves as the template** from which common and default properties are derived for use in creating corresponding service principal objects. e.g. Class object and instantiated object.
-  - service principal is the **local representation for use in a specific tenant**.
-  - **Application Service Principal**: traditional application registered in Azure AD.
-    - can be assigned RBAC roles and have credentials(client secrets, certificates).
-    - managed through Azure AD blade.
-  - **Managed Identity**: automatically managed identity for Azure resources.
-    - automatically created to eliminate managing credentials manually.
-    - permissions granted directly to Azure resource.
-  - **Legacy**: older apps created before introduction of modern app registration features. Limited functionality.
 
 ## Blob Storage
 
