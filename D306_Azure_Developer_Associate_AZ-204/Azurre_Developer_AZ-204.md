@@ -29,6 +29,29 @@
 - **Practice Exams**
   - <https://wgu.udemy.com/course/az204-azure-practice/>
 
+## Azure Bash CLI
+
+- [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
+
+```bash
+# install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+# upgrade
+az upgrade
+# Remove
+sudo apt remove azure-cli -y && sudo apt autoremove -y
+
+# login. -https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-login
+az login --use-device-code # allows WSL2 to login through web browser.
+# logout
+az logout
+
+# Query
+# https://learn.microsoft.com/en-us/cli/azure/use-azure-cli-successfully-query?tabs=concepts%2Cbash
+az vm list --r groupName --query "[].{Name:name, OS:osDisk.osType}" --out table # don't forget quotes!
+```
+
 ## Azure Authentication and Authorization
 
 - **Microsoft Identity**
@@ -100,28 +123,62 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
     - automatically created to eliminate managing credentials manually.
     - permissions granted directly to Azure resource.
   - **Legacy**: older apps created before introduction of modern app registration features. Limited functionality.
-
-## Azure Bash CLI
-
-- [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
-- [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
+- **Shared Access Signature (SAS)**
+  - uniform resource identifier(URI): grant access to a **specific resource**, for a **specified period of time**, and with a **specified set of permissions** to **Azure Storage resources**(containers, blobs, queues, tables...).
+    - e.g. `https://medicalrecords.blob.core.windows.net/patient-images/patient-116139-nq8z7f.jpg?sp=r&st=2020-01-20T11:42:32Z&se=2020-01-20T19:42:32Z&spr=https&sv=2019-02-02&sr=b&sig=SrW1HZ5Nb6MbRzTbXCaPm%2BJiSEn15tC91Y4umMPwVZs%3D`
+  - ![sas token](img/SAS.PNG)
+  - purpose: give client who normally does not have access, a URI for a specified time period, to prevent storage key exposure.
+  - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
+  - **account-level**: one or more storage services.
+  - **service-level**: only one storage service.
+  - you can only **remove access** by deleting storage key, or resource/rename. Use **Stored Access Policy** to decouple permission with key.
+  - **User delegation SAS**: secured by Microsoft Entra credentials. Blob only storage.
+  - **Service SAS**: secured with storage account key. Blob, Queue, Table, and Azure Files.
+  - **Account SAS**: secured with storage account key. one or more storage services.
+  - **Common Scenario**
+    - typical clients upload/download their content to storage. their request passes through a **proxy server** which performs authentication. As request grow, scale may be expensive.
+    - SAS solves this. after auth, client is assigned an authentication token that allows them permissions.
+  - **Storage Access Policy**
+    - can take up to 30 seconds to become active.
+    - Table entity range restrictions (`startpk, startrk, endpk, endrk`) cannot be specified in a stored access policy.
+  - **Best Practices**
+    - When your application design requires shared access signatures for access to Blob storage, use **Microsoft Entra ID** to create a **user delegation SAS**(most secure) when possible for superior security.
+    - use SAS in combination with **Stored Access Policy**(can be revoked).
+    - use HTTPS.
+    - expire time to smallest value.
 
 ```bash
-# install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-# upgrade
-az upgrade
-# Remove
-sudo apt remove azure-cli -y && sudo apt autoremove -y
-
-# login. -https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest#az-login
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:5}" # a-z0-9 global unique.
+export AZ_STORAGE_CONTAINER_NAME="my-storage-container${RANDOM:0:3}"
+export AZ_STORAGE_CONTAINER_POLICY="my-storage-policy${RANDOM:0:3}"
 az login --use-device-code # allows WSL2 to login through web browser.
-# logout
-az logout
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+# create Storage Account
+az storage account create --name $AZ_STORAGE_ACCOUNT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
+# list storage key -get 1st key and assign to environment variable.
+export AZ_STORAGE_KEY="$(az storage account keys list --resource-group $AZ_RESOURCE_GROUP_NAME --account-name $AZ_STORAGE_ACCOUNT_NAME --query "[0].value" | tr -d \")"
+# create storage container
+az storage container create -n $AZ_STORAGE_CONTAINER_NAME \
+  --account-name $AZ_STORAGE_ACCOUNT_NAME \
+  --account-key $AZ_STORAGE_KEY
+# create storage access policy -must have storage account already created.
+# expires 5 minutes from start time.
+az storage container policy create --name $AZ_STORAGE_CONTAINER_POLICY \
+  --container-name $AZ_STORAGE_CONTAINER_NAME \
+  --start $(date -u +'%FT%TZ') \
+  --expiry $(date -u +'%FT%TZ' -d '5 mins') \
+  --permissions acdlrw \
+  --account-name $AZ_STORAGE_ACCOUNT_NAME \
+  --account-key $AZ_STORAGE_KEY
+# view storage policy
+az storage container policy list --container-name $AZ_STORAGE_CONTAINER_NAME \
+  --account-name $AZ_STORAGE_ACCOUNT_NAME \
+  --account-key $AZ_STORAGE_KEY
 
-# Query
-# https://learn.microsoft.com/en-us/cli/azure/use-azure-cli-successfully-query?tabs=concepts%2Cbash
-az vm list --r groupName --query "[].{Name:name, OS:osDisk.osType}" --out table # don't forget quotes!
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
 ## Azure Container Apps
@@ -752,3 +809,31 @@ az logout
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
+
+## Microsoft Graph
+
+- **Microsoft Graph**
+  - Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile).
+  - build apps for organizations and consumers that interact with millions of users.
+  - to **access data in Microsoft Graph**, your application needs to acquire an **OAuth 2.0 access token**.
+  - **Microsoft Office 365**: Microsoft Graph is the gateway to data through REST API. `https://graph.microsoft.com`
+  - ![Microsoft Graph](img/graph.PNG)
+  - **Microsoft Graph connectors**: connect to Graph from external source.
+  - **Microsoft Graph Data Connect**: scalable delivery of Microsoft Graph data to Azure data stores.
+  - **Microsoft Graph SDKs**
+    - **Service Library**: low level API.
+    - **Core Library**: extra features(retry handling, secure redirect...)
+  - **Handling Responses**: Graph response handling.
+    - **Pagination**: result can be returned in multiple pages. `@odata.nextLink` to call next page.
+    - **Evolvable enumerations**: only **known members** are returned unless you add `Prefer` to **HTTP request header**.
+  - **Best Practices**
+    - **least privilege**: only necessary access.
+    - **correct permissions**: if user is present, use **_delegated_** permissions. if runs in background, use **_application_** permissions.
+    - **consent**: understand the difference between **static, dynamic, incremental consent**.
+    - **multi-tenant application**: expect customers to have various applications adn consent controls.
+
+```bash
+# CRUD -GET, POST, PATCH(update resource), PUT(replace resource), DELETE. -current version is v1.0
+# https://graph.microsoft.com/{version}/{resource}?{query-parameters}
+curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
+```
