@@ -74,6 +74,18 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```
 
+- **Microsoft Authentication Library (MSAL)**
+  - enables developers to acquire tokens from the Microsoft identity platform in order to authenticate users and access secured web APIs.
+  - **Pros**
+    - uses tokens to validate user and application. tokens are automatically refreshed before expire.
+    - helps with troubleshooting by logging exceptions and telemetry.
+  - **Public Client Application**: apps running on devices, desktop computers or web browser. Not trusted to keep application secrets.
+  - **Confidential Client Application**: app running on servers. difficult to access and ok for keeping secrets
+  - **How is it done?**
+    - **app is instantiated** with an application builder: `PublicClientApplicationBuilder`, `ConfidentialClientApplicationBuilder`.
+    - the app is registered with Microsoft Identity Service.
+    - **Authority**: once registered, you will have a client ID and identity provider URL. known as Authority.
+  - ![masl auth](img/masl_auth.PNG)
 - **OAuth 2.0**
   - token given to service principal to act on your behalf, without giving your credentials.
 - **Service Principal Object**
