@@ -148,6 +148,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
     - expire time to smallest value.
 
 ```bash
+# Create Storage Container Policy
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:5}" # a-z0-9 global unique.
@@ -378,6 +379,52 @@ az acr repository list --name $AZ_CONTAINER_REGISTRY_NAME --output table
 az acr repository show-tags --name $AZ_CONTAINER_REGISTRY_NAME --repository "${AZ_IMAGE_NAME}" --output table
 # run
 az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_NAME}:${AZ_IMAGE_VERSION}" /dev/null
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
+
+## Azure Key Vault
+
+- **Azure Key Vault**
+  - cloud service for securely storing and accessing secrets(API keys, passwords, certificates, or cryptographic keys).
+  - **Tiers**
+    - **Standard**: encrypts with a software key.
+    - **Premium**: includes hardware security module(HSM)-protected keys.
+  - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
+  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
+  - **Service-Managed Keys in Customer-Controlled Hardware**: your keys, your HSM, outside Microsoft control. **Host Your Own Key (HYOK)**.
+  - **Benefits**
+    - highly available, secure(Microsoft Entra ID, RBAC) centralized secret management.
+    - access and use logging or stream to event hub.
+  - **Best Practices**
+    - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
+    - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
+    - **Separate Key Vaults**: dev, test, production best to use separate vaults.
+    - **Check Authorization**: only authorized people should have access to keys.
+    - **Backup and Logging**: create regular backup and log access.
+    - **Soft Delete**: turn on soft delete and purge protection.
+
+```bash
+# Key Vault
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_KEY_VAULT_NAME="mykeyvault${RANDOM:0:3}"
+export AZ_SECRET_NAME="MyExamplePassword"
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az provider register --namespace Microsoft.KeyVault
+# get subscription
+export AZ_SUBSCRIPTION="$(az account subscription list --only-show-errors --query "[0].displayName" | tr -d \")"
+# create key vault
+az keyvault create --name $AZ_KEY_VAULT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --location $AZ_LOCATION
+# assign yourself as administrator
+az role assignment create --role Owner --assignee {assignee-upn}> --scope $AZ_SUBSCRIPTION
+
+# add secret
+az keyvault secret set --vault-name $AZ_KEY_VAULT_NAME --name $AZ_SECRET_NAME --value "my-Example-Password"
+# show secret
+az keyvault secret show --name $AZ_SECRET_NAME --vault-name $AZ_KEY_VAULT_NAME
+
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
