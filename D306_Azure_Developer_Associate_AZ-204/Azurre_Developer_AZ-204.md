@@ -50,6 +50,9 @@ az logout
 # Query
 # https://learn.microsoft.com/en-us/cli/azure/use-azure-cli-successfully-query?tabs=concepts%2Cbash
 az vm list --r groupName --query "[].{Name:name, OS:osDisk.osType}" --out table # don't forget quotes!
+az account subscription list --only-show-errors --query '[0].id' -o tsv
+az ad user list --query '[0].displayName' -o tsv
+
 ```
 
 ## Azure Authentication and Authorization
@@ -159,7 +162,7 @@ az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
 # create Storage Account
 az storage account create --name $AZ_STORAGE_ACCOUNT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
 # list storage key -get 1st key and assign to environment variable.
-export AZ_STORAGE_KEY="$(az storage account keys list --resource-group $AZ_RESOURCE_GROUP_NAME --account-name $AZ_STORAGE_ACCOUNT_NAME --query "[0].value" | tr -d \")"
+export AZ_STORAGE_KEY="$(az storage account keys list --resource-group $AZ_RESOURCE_GROUP_NAME --account-name $AZ_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)"
 # create storage container
 az storage container create -n $AZ_STORAGE_CONTAINER_NAME \
   --account-name $AZ_STORAGE_ACCOUNT_NAME \
@@ -409,19 +412,19 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_KEY_VAULT_NAME="mykeyvault${RANDOM:0:3}"
-export AZ_SECRET_NAME="MyExamplePassword"
+export AZ_SECRET_NAME="MyFirstExamplePassword"
 az login --use-device-code # allows WSL2 to login through web browser.
 az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
 az provider register --namespace Microsoft.KeyVault
-# get subscription
-export AZ_SUBSCRIPTION="$(az account subscription list --only-show-errors --query "[0].displayName" | tr -d \")"
 # create key vault
 az keyvault create --name $AZ_KEY_VAULT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --location $AZ_LOCATION
-# assign yourself as administrator
-az role assignment create --role Owner --assignee {assignee-upn}> --scope $AZ_SUBSCRIPTION
+# assign yourself as "Key Vault Administrator".
+export AZ_SUBSCRIPTION_ID="$(az account subscription list --only-show-errors --query '[0].id' -o tsv)"
+export AZ_USER_PRINCIPAL_NAME="$(az ad user list --query '[0].userPrincipalName' -o tsv)"
+az role assignment create --role "Key Vault Administrator" --assignee "$AZ_USER_PRINCIPAL_NAME" --scope "$AZ_SUBSCRIPTION_ID"
 
 # add secret
-az keyvault secret set --vault-name $AZ_KEY_VAULT_NAME --name $AZ_SECRET_NAME --value "my-Example-Password"
+az keyvault secret set --vault-name $AZ_KEY_VAULT_NAME --name $AZ_SECRET_NAME --value "my-Secret-Password"
 # show secret
 az keyvault secret show --name $AZ_SECRET_NAME --vault-name $AZ_KEY_VAULT_NAME
 
@@ -856,6 +859,23 @@ az logout
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
+
+## Managed Identities
+
+- **Managed Identities**
+  - Azure managed secrets, credentials, certificates, keys. eliminate the need for developers to manage secrets.
+  - managed identities provide an automatically managed identity in Microsoft Entra ID for applications to use.
+  - managed identities are **service principals** of a special type that are locked to Azure resource. **they share the same lifecycle**.
+  - **system-assigned managed identity**: when instance is enabled, Azure creates an identity for the instance in Microsoft Entra tenant. If instance is deleted, Azure deletes Microsoft Entra ID identity.
+    - Workloads contained within a single Azure resource.
+    - Workloads needing independent identities.
+    - For example, an application that runs on a single virtual machine.
+  - **user-assigned managed identity**: standalone identity created in Microsoft Entra tenant. can be assigned to one or more service instances. lifecycle of Entra identity is managed separately from service identity.
+    - Workloads that run on multiple resources and can share a single identity.
+    - Workloads needing preauthorization to a secure resource, as part of a provisioning flow.
+    - Workloads where resources are recycled frequently, but permissions should stay consistent.
+    - For example, a workload where multiple virtual machines need to access the same resource.
+  - ![managed identity](img/managed_identity.PNG)
 
 ## Microsoft Graph
 
