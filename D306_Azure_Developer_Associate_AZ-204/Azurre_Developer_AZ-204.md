@@ -80,6 +80,57 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - **Managed identities**: allows Azure App Configuration to easily access other Microsoft Entra ID-protected resources.
     - same as Key Vault: system-assigned identities or user-assigned identities.
 
+## Azure API Management Service
+
+- **API Management Service**
+  - each API must be subscribed to gain access to operations.
+  - **API Gateway**: accepts request, verifies API key, enforces quotas, logs request.
+  - **Management Plane**: administrative interface where you set up the API program.
+    - define API schema, set policies(quota, transformations).
+    - analytic insights, manage users.
+  - **Developer Portal**: automatically generated website with you API documentation.
+    - interactive console to call APIs.
+    - create/manage account -get assigned API key.
+  - **Products**: how APIs delivered to developers.
+    - **Open**: used without subscription.
+    - **Protected**: must be subscribed to.
+  - **Groups**: manage visibility of products to developers.
+    - **Administrators**: manage API CRUD.
+    - **Developers**: use APIs.
+    - **Guests**: read-only.
+  - **Developers**: user accounts in API Management Service. Created or invited to join by administrator.
+  - **Policies**: executed on API request. typically run a function on the query(rate limit, transform XML to JSON...).
+- **API Gateway (data plane or runtime)**
+  - accepts request, verifies API key, enforces quotas, logs request.
+  - API gateway sits between clients and services proxying API requests, applying policies, and collecting telemetry.
+  - no gateway, request are sent to back-end servers.
+    - complex code(auth, rate limiting, proxy)
+    - direct coupling(gateway proxy allows to modify request)
+    - public endpoint exposes attack surface.
+  - **Managed**: default gateway. all API traffic flows through Azure, regardless where backend is located.
+  - **Self-hosted**: containerized version of default managed gateway for on-prem backends(hybrid or multicloud). manage APIs on-prem and across clouds from single API Management service in Azure.
+- **API Management Policies**
+  - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
+
+```xml
+<!-- Sample Policy Format -->
+<policies>
+  <inbound>
+    <!-- statements to be applied to the request go here -->
+  </inbound>
+  <backend>
+    <!-- statements to be applied before the request is forwarded to
+         the backend service go here -->
+  </backend>
+  <outbound>
+    <!-- statements to be applied to the response go here -->
+  </outbound>
+  <on-error>
+    <!-- statements to be applied if there is an error condition go here -->
+  </on-error>
+</policies>
+```
+
 ## Azure Authentication and Authorization
 
 - **Microsoft Identity**
