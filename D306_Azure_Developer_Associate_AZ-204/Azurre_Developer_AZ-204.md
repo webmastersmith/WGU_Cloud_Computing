@@ -584,12 +584,28 @@ export AZ_EVENT=$(cat <<EOF
 [ {"id": "$RANDOM", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "`date '+%Y-%m-%dT%H:%M:%S%z'`", "data":{ "make": "Contoso", "model": "Northwind"},"dataVersion": "1.0"} ]
 EOF
 )
-# send event tipic
+# send event topic
 curl -X POST -H "aeg-sas-key: $AZ_TOPIC_KEY" -d "$AZ_EVENT" $AZ_TOPIC_ENDPOINT
 
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
+
+## Azure Event Hub
+
+- **Event Hub**
+  - **big data streaming platform** and event ingestion service. It can receive and process millions of events per second.
+    - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
+    - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
+  - fully managed PaaS.
+  - **Event Hub client**: interface to interact with Event Hub client library.
+  - **Event Hub producer**: source of telemetry data, diagnostic info, logs.
+  - **Event Hub consumer**: reads Event Hub information.
+  - **partition**: sequence of events held in Event Hub. partitions are specified at Event Hubs creation and can't be changed.
+  - **consumer group**: view entire Event Hub events.
+  - **Event receivers**: reads the data from event.
+  - **Throughput units or processing units**: prepurchased units of capacity that control throughput.
+  - ![event hub](img/event_hub.PNG)
 
 ## Azure Key Vault
 
