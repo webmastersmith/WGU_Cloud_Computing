@@ -602,10 +602,16 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Event Hub producer**: source of telemetry data, diagnostic info, logs.
   - **Event Hub consumer**: reads Event Hub information.
   - **partition**: sequence of events held in Event Hub. partitions are specified at Event Hubs creation and can't be changed.
+    - Each partition is an independent segment of data and is **consumed independently**.
+    - Over time this **data ages off**, based on the **configurable retention period**.
   - **consumer group**: view entire Event Hub events.
   - **Event receivers**: reads the data from event.
   - **Throughput units or processing units**: prepurchased units of capacity that control throughput.
   - ![event hub](img/event_hub.PNG)
+  - **Event Hub Capture**: enable automated storage(**blob, data lake -any region**) of all streaming data.
+    - real-time and batch-based pipelines on the same stream.
+- **Scale for Event Hub**
+  - partitioned consumers.
 
 ## Azure Key Vault
 
