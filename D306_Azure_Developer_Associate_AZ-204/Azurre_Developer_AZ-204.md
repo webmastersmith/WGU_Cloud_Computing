@@ -499,7 +499,20 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - simplifies event consumption and lowers costs by eliminating the need for constant polling.
   - routes **events** from Azure to non-Azure resources and **registered subscriber endpoints**.
   - serverless event broker.
-  - publishers emit events, but have no expectation on how events are handled. subscribers listen for events and decide how to handle.
+  - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
+  - if events sent are not acknowledged, Event Grid retries, drop event, or dead-letter(send to storage account) event based on Event Grid retry policy.
+  - route or multicast to multiple endpoints.
+  - **Events**: what happened. up to 64KB.
+  - **Topics**: collection of related events. one or more endpoints can subscribe to these topics.
+    - **system topics**: built-in to Azure Services. If you have service, can subscribe to them.
+    - **custom topics**: third-party or custom topics.
+  - **Event Subscription**: which topics you subscribe to.
+  - **Event Handler**: where event is sent.
+  - **Event Schema**
+    - event sources send events in an array with several objects.
+    - **Event Grid event schema**: default event schema. 1MB max size.
+    - **Cloud event schema**: suppoort for 'CloudEvents V1.0'. open source event data description.
+  - ![event schema](img/event_schema.PNG)
   - ![event grid](img/event_grid.PNG)
 
 ## Azure Key Vault
