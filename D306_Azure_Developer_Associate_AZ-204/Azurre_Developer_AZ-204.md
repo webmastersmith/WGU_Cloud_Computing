@@ -517,9 +517,31 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **default**: deliver one event at a time with a payload is an array. **64KB chunk, 1MB max size**.
       - **does not guarantee order**.
     - **retries**: based on Event Grid retry schedule and retry policy.
-    - **dead-letter**: send to storage account.
+      - retry doesn't happen for errors: **400(Bad Request),413(Request Entity Too Large),403(Forbidden),404(Not Found),401(Unauthorized)**. they are dead-lettered or dropped.
+      - **default** retry is **30s**, with exponential backoff for each consecutive retry.
+    - **dead-letter**: exceeded time-to-live or number of tries. send event data to storage account.
     - **drop event**: like event never happened.
-    - ![event grid error](img/event_grid_error.PNG)
+  - ![event grid error](img/event_grid_error.PNG)
+  - **retry policy**:
+    - **Maximum number of attempts**: default 30. range: 1-30.
+    - **Event time-to-live (TTL)**: default 1440min. range: 1-1440min.
+  - **Output batching**: improve HTTP performance throughput.
+    - **default**: turned off.
+    - **Max events per batch**: range 1-5000.
+    - **Preferred batch size in kilobytes**: target ceiling for batch size.
+  - **Event Grid Roles**: built-in RBAC roles.
+    - **Event Source**: to create event, you must have `Microsoft.EventGrid/EventSubscriptions/Write` permissions.
+  - ![event grid roles](img/event_grid_roles.PNG)
+
+```bash
+# create event grid subscription
+az eventgrid event-subscription create \
+  -g gridResourceGroup \
+  --topic-name <topic_name> \
+  --name <event_subscription_name> \
+  --endpoint <endpoint_URL> \
+  --max-delivery-attempts 18
+```
 
 ## Azure Key Vault
 
