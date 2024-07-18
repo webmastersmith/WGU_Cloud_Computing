@@ -50,7 +50,7 @@ az logout
 # Query
 # https://learn.microsoft.com/en-us/cli/azure/use-azure-cli-successfully-query?tabs=concepts%2Cbash
 az vm list --r groupName --query "[].{Name:name, OS:osDisk.osType}" --out table # don't forget quotes!
-az account subscription list --only-show-errors --query '[0].id' -o tsv
+az account show --query 'id' -o tsv
 az ad user list --query '[0].displayName' -o tsv
 az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 ```
@@ -501,7 +501,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - serverless event broker.
   - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
   - route or multicast to multiple endpoints.
-  - **Events**: what happened. up to 64KB.
+  - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
   - **Topics**: collection of related events. one or more endpoints can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
     - **custom topics**: third-party or custom topics.
@@ -513,34 +513,82 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Event Grid event schema**: default event schema. 64KB chunk, 1MB max size.
     - **Cloud event schema**: support for 'CloudEvents V1.0'. open source event data description.
     - ![event schema](img/event_schema.PNG)
-  - **Event Delivery Durability**: if events sent are **not acknowledged or error**, Event Grid:
-    - **default**: deliver one event at a time with a payload is an array. **64KB chunk, 1MB max size**.
-      - **does not guarantee order**.
-    - **retries**: based on Event Grid retry schedule and retry policy.
-      - retry doesn't happen for errors: **400(Bad Request),413(Request Entity Too Large),403(Forbidden),404(Not Found),401(Unauthorized)**. they are dead-lettered or dropped.
-      - **default** retry is **30s**, with exponential backoff for each consecutive retry.
-    - **dead-letter**: exceeded time-to-live or number of tries. send event data to storage account.
-    - **drop event**: like event never happened.
+- **Event Delivery Durability**
+  - if events sent are **not acknowledged or error**, Event Grid:
+  - **default**: deliver one event at a time with a payload is an array. **64KB chunk, 1MB max size**.
+    - **does not guarantee order**.
+  - **retries**: based on Event Grid retry schedule and retry policy.
+    - retry doesn't happen for errors: **400(Bad Request),413(Request Entity Too Large),403(Forbidden),404(Not Found),401(Unauthorized)**. they are dead-lettered or dropped.
+    - **default** retry is **30s**, with exponential backoff for each consecutive retry.
+  - **dead-letter**: exceeded time-to-live or number of tries. send event data to storage account.
+  - **drop event**: like event never happened.
   - ![event grid error](img/event_grid_error.PNG)
-  - **retry policy**:
-    - **Maximum number of attempts**: default 30. range: 1-30.
-    - **Event time-to-live (TTL)**: default 1440min. range: 1-1440min.
-  - **Output batching**: improve HTTP performance throughput.
-    - **default**: turned off.
-    - **Max events per batch**: range 1-5000.
-    - **Preferred batch size in kilobytes**: target ceiling for batch size.
-  - **Event Grid Roles**: built-in RBAC roles.
-    - **Event Source**: to create event, you must have `Microsoft.EventGrid/EventSubscriptions/Write` permissions.
+- **Event Grid Retry Policy**
+  - **Maximum number of attempts**: default 30. range: 1-30.
+  - **Event time-to-live (TTL)**: default 1440min. range: 1-1440min.
+- **Output batching**
+  - improve HTTP performance throughput.
+  - **default**: turned off.
+  - **Max events per batch**: range 1-5000.
+  - **Preferred batch size in kilobytes**: target ceiling for batch size.
+- **Webhooks**
+  - receive event. HTTP POST request is sent, with payload in request body.
+  - **Endpoint Validation**: you must prove ownership of webhook.
+    - stops malicious actors from flooding endpoint.
+    - **Synchronous handshake**: Event Grid sends HTTP `POST` request with `validationCode` property that **must be returned** with response along with HTTP status code `200`.
+    - **Asynchronous handshake**: programmatically respond to validation code.
+    - **Manual handshake**: if synchronous validation fails, a `validationURL` is sent that you can manually do a `GET` request to validate.
+- **Event Grid Filtering**
+  - **default**: all events are sent to endpoint.
+  - you can use Microsoft built-in filtering or custom filtering.
+  - ![event grid filtering](img/event_grid_filtering.PNG)
+  - ![event grid filtering custom](img/event_grid_filtering_custom.PNG)
+- **Event Grid Roles**: built-in RBAC roles.
+  - **Event Source**: to create event, you must have `Microsoft.EventGrid/EventSubscriptions/Write` permissions.
   - ![event grid roles](img/event_grid_roles.PNG)
 
 ```bash
-# create event grid subscription
+# Event Grid
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_TOPIC_NAME="my-topic-name${RANDOM:0:3}"
+export AZ_SITE_NAME="my-site-name${RANDOM:0:3}"
+export AZ_SITE_URL="https://${AZ_SITE_NAME}.azurewebsites.net"
+export AZ_ENDPOINT="${AZ_SITE_URL}/api/updates"
+export AZ_SUBSCRIPTION_NAME="MySubscriptionName${RANDOM:0:3}"
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az provider register --namespace Microsoft.EventGrid
+export AZ_SUBSCRIPTION_ID=$(az account show --query 'id' -o tsv)
+
+# create custom topic
+az eventgrid topic create --name $AZ_TOPIC_NAME \
+  --location $AZ_LOCATION \
+  --resource-group $AZ_RESOURCE_GROUP_NAME
+# create message endpoint
+az deployment group create \
+  --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --template-uri "https://raw.githubusercontent.com/Azure-Samples/azure-event-grid-viewer/main/azuredeploy.json" \
+  --parameters siteName=$AZ_SITE_NAME hostingPlanName=viewerhost
+
+# subscribe to topic
 az eventgrid event-subscription create \
-  -g gridResourceGroup \
-  --topic-name <topic_name> \
-  --name <event_subscription_name> \
-  --endpoint <endpoint_URL> \
-  --max-delivery-attempts 18
+  --source-resource-id "/subscriptions/${AZ_SUBSCRIPTION_ID}/resourceGroups/${AZ_RESOURCE_GROUP_NAME}/providers/Microsoft.EventGrid/topics/${AZ_TOPIC_NAME}" \
+  --name $AZ_SUBSCRIPTION_NAME \
+  --endpoint $AZ_ENDPOINT
+
+# send event to topic
+export AZ_TOPIC_ENDPOINT=$(az eventgrid topic show --name $AZ_TOPIC_NAME -g $AZ_RESOURCE_GROUP_NAME --query "endpoint" -o tsv)
+export AZ_TOPIC_KEY=$(az eventgrid topic key list --name $AZ_TOPIC_NAME -g $AZ_RESOURCE_GROUP_NAME --query "key1" -o tsv)
+export AZ_EVENT=$(cat <<EOF
+[ {"id": "$RANDOM", "eventType": "recordInserted", "subject": "myapp/vehicles/motorcycles", "eventTime": "`date '+%Y-%m-%dT%H:%M:%S%z'`", "data":{ "make": "Contoso", "model": "Northwind"},"dataVersion": "1.0"} ]
+EOF
+)
+# send event tipic
+curl -X POST -H "aeg-sas-key: $AZ_TOPIC_KEY" -d "$AZ_EVENT" $AZ_TOPIC_ENDPOINT
+
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
 ## Azure Key Vault
@@ -576,7 +624,7 @@ az provider register --namespace Microsoft.KeyVault
 # create key vault
 az keyvault create --name $AZ_KEY_VAULT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --location $AZ_LOCATION
 # assign yourself as "Key Vault Administrator".
-export AZ_SUBSCRIPTION_ID="$(az account subscription list --only-show-errors --query '[0].id' -o tsv)"
+export AZ_SUBSCRIPTION_ID=$(az account show --query 'id' -o tsv)
 export AZ_USER_PRINCIPAL_NAME="$(az ad user list --query '[0].userPrincipalName' -o tsv)"
 az role assignment create --role "Key Vault Administrator" --assignee "$AZ_USER_PRINCIPAL_NAME" --scope "$AZ_SUBSCRIPTION_ID"
 
@@ -922,13 +970,13 @@ const helloWorldStoredProc = {
 ## Create Cosmos DB
 # az account list-locations --query "sort_by([].{DisplayName: displayName, AzureName: name}, &DisplayName)" --out table
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_SUBSCRIPTION_NAME="your subscription name" # az account subscription list --query "[].{DisplayName: displayName, ID: id}" --out table
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_COSMOS_DB_NAME="my-cosmosdb-${RANDOM:0:3}"
 az login --use-device-code # allows WSL2 to login through web browser.
 az provider register --namespace Microsoft.DocumentDB
+export AZ_SUBSCRIPTION_NAME=$(az account show --query 'name' -o tsv)
 az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-az cosmosdb create --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --subscription "${AZ_SUBSCRIPTION_NAME}"
+az cosmosdb create --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --subscription "$AZ_SUBSCRIPTION_NAME"
 # Retrieve the primary key
 az cosmosdb keys list --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
 # Clean up
