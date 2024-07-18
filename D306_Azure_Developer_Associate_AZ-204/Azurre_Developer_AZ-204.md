@@ -91,7 +91,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - **Developer Portal**: automatically generated website with you API documentation.
     - interactive console to call APIs.
     - create/manage account -get assigned API key.
-  - **Products**: how APIs delivered to developers.
+  - **Products**: one or more APIs and how APIs delivered to developers.
     - **Open**: used without subscription.
     - **Protected**: must be subscribed to.
   - **Groups**: manage visibility of products to developers.
@@ -103,14 +103,21 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 - **API Gateway (data plane or runtime)**
   - accepts request, verifies API key, enforces quotas, logs request.
   - API gateway sits between clients and services proxying API requests, applying policies, and collecting telemetry.
+  - **TLS**: Gateway handles handshake and verification.
   - no gateway, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
     - direct coupling(gateway proxy allows to modify request)
     - public endpoint exposes attack surface.
   - **Managed**: default gateway. all API traffic flows through Azure, regardless where backend is located.
   - **Self-hosted**: containerized version of default managed gateway for on-prem backends(hybrid or multicloud). manage APIs on-prem and across clouds from single API Management service in Azure.
+- **API Subscriptions Keys**
+  - secure API with subscription keys. valid keys are sent with developer request or it is rejected.
+  - subscription is a named container for subscription keys(two keys -easier to rotate).
+  - `curl --header "Ocp-Apim-Subscription-Key: <key string>" https://<apim gateway>.azure-api.net/api/path`
 - **API Management Policies**
   - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
+  - **policy format**: `inbound, backend, outbound, on-error`.
+  - if error, policy jumps to `on-error` section.
 
 ```xml
 <!-- Sample Policy Format -->
@@ -129,6 +136,30 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
     <!-- statements to be applied if there is an error condition go here -->
   </on-error>
 </policies>
+```
+
+```bash
+# Create API Management Instance
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_API_MANAGEMENT_NAME="my-api-management-name-${RANDOM:0:3}"
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az provider register --namespace Microsoft.ApiManagement
+export AZ_USER_EMAIL="$(az account show --query 'user.name' -o tsv)"
+# create api
+az apim create -n $AZ_API_MANAGEMENT_NAME \
+  --location $AZ_LOCATION \
+  --publisher-email $AZ_USER_EMAIL \
+  --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --publisher-name AZ204-APIM-Exercise \
+  --sku-name Consumption
+
+# follow the rest of the tutorial
+# https://learn.microsoft.com/en-us/training/modules/explore-api-management/8-exercise-import-api
+
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
 ## Azure Authentication and Authorization
@@ -461,6 +492,15 @@ az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_N
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
+
+## Azure Event Grid
+
+- **Event Grid**
+  - simplifies event consumption and lowers costs by eliminating the need for constant polling.
+  - routes **events** from Azure to non-Azure resources and **registered subscriber endpoints**.
+  - serverless event broker.
+  - publishers emit events, but have no expectation on how events are handled. subscribers listen for events and decide how to handle.
+  - ![event grid](img/event_grid.PNG)
 
 ## Azure Key Vault
 
