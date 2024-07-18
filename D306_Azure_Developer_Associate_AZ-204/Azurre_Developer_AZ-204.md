@@ -507,6 +507,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **custom topics**: third-party or custom topics.
   - **Event Subscription**: which topics you subscribe to.
   - **Event Handler**: where event is sent.
+  - ![event grid](img/event_grid.PNG)
   - **Event Schema**
     - event sources send events in an array with several objects.
     - **Event Grid event schema**: default event schema. 64KB chunk, 1MB max size.
@@ -519,7 +520,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **dead-letter**: send to storage account.
     - **drop event**: like event never happened.
     - ![event grid error](img/event_grid_error.PNG)
-  - ![event grid](img/event_grid.PNG)
 
 ## Azure Key Vault
 
