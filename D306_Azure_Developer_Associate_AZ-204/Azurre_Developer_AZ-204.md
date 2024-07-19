@@ -505,6 +505,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Topics**: collection of related events. one or more endpoints can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
     - **custom topics**: third-party or custom topics.
+  - ![event hub scaling](img/event_hub_consumer_group.png)
   - **Event Subscription**: which topics you subscribe to.
   - **Event Handler**: where event is sent.
   - ![event grid](img/event_grid.PNG)
@@ -598,20 +599,43 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
     - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
   - fully managed PaaS.
-  - **Event Hub client**: interface to interact with Event Hub client library.
-  - **Event Hub producer**: source of telemetry data, diagnostic info, logs.
-  - **Event Hub consumer**: reads Event Hub information.
-  - **partition**: sequence of events held in Event Hub. partitions are specified at Event Hubs creation and can't be changed.
+  - **Checkpoint**: each consumer(event processor) **maintains its own checkpoint, tracking progress within the partition**. can resume if failure or restart.
+    - consumer communicates with the Event Hub partition periodically. consumer(event processor) marks or commits the position(Event Hub partition records commit as a checkpoint) of the last successfully processed event within a partition.
+    - If consumer goes offline, the new consumer can pick up where last checkpoint is.
+    - ![event hub checkpoint](img/event_hub_checkpoint.png)
+  - **Event Hub client**: SDK(software or library) that enables applications to publish events to Event Hub.
+    - These events are stored in partitions.
+  - **Event Hub producer(client, Data Sender)**: sender of events.
+    - source of telemetry data, diagnostic info, logs.
+    - Each Event Hubs client(producer/publisher) is assigned a unique token(SAS, JWT).
+    - A client that holds a token can only send to one publisher, and no other publisher.
+  - **Event Publisher**: **Event Hub internal virtual endpoints** listening for producer(client) data.
+    - Each producer(client) will be assigned a token(SAS, JWT) approving them to send data to one and only one **event publisher endpoint**.
+      - Each event publisher endpoint has its own unique identifier and associated security credentials (SAS token or JWT). **Multiple clients with same token, can send data to same event publisher endpoint**.
+  - **Event Hub consumer(event processor, Data Receiver)**: instances of application or services reading events from Event Hubs. Read from specific partition.
+    - the function that processes the events between partition and consumer is called sequentially.
+  - **partitions**: sequence of events held in Event Hub. partitions are specified **at Event Hubs creation** and **can't be changed**.
+    - enable parallel processing of events which increases throughput.
     - Each partition is an independent segment of data and is **consumed independently**.
     - Over time this **data ages off**, based on the **configurable retention period**.
-  - **consumer group**: view entire Event Hub events.
+  - **consumer group**: consumers are grouped to track it's own checkpoints and have groups have access to view entire Event Hub events.
+    - ![event hub scaling](img/event_hub_consumer_group.png)
   - **Event receivers**: reads the data from event.
   - **Throughput units or processing units**: prepurchased units of capacity that control throughput.
   - ![event hub](img/event_hub.PNG)
   - **Event Hub Capture**: enable automated storage(**blob, data lake -any region**) of all streaming data.
     - real-time and batch-based pipelines on the same stream.
 - **Scale for Event Hub**
-  - partitioned consumers.
+  - **partitioned consumers**
+  - ![event hub scaling](img/event_hub_consumer_group.png)
+- **Roles**
+  - advantage of **Microsoft Entra ID** with Event Hubs is that your credentials no longer need to be stored in your code. Instead, you can request an **OAuth 2.0** access token from Microsoft identity platform.
+  - **SAS policies** are defined at the **entity level**(namespace, Event Hub, consumer group), but not at the individual consumer level.
+    - Permissions granted at the **namespace or Event Hub level** automatically apply to all consumer groups within that entity.
+  - **RBAC** gives you fine-grained control to assign permissions to specific users, groups, or service principals at the consumer group level.
+  - Azure **Event Hubs Data Owner**: Use this role to give complete access to Event Hubs resources.
+  - Azure **Event Hubs Data Sender**: Use this role to give send access to Event Hubs resources.
+  - Azure **Event Hubs Data Receiver**: Use this role to give receiving access to Event Hubs resources.
 
 ## Azure Key Vault
 
@@ -1186,3 +1210,12 @@ az logout
 # https://graph.microsoft.com/{version}/{resource}?{query-parameters}
 curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
 ```
+
+## Azure Service Bus and Queue Storage
+
+- **Queues**
+  - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
+- **Service Bus queues**
+  - d
+- **Storage queues**
+  - d
