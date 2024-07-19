@@ -1213,9 +1213,32 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
 
 ## Azure Service Bus and Queue Storage
 
-- **Queues**
+- **Azure Messaging**
   - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
+  - **messages**: contain payload and metadata.
+    - **metadata**: key:value pair description and handling instructions about payload.
+    - **payload**:
 - **Service Bus queues**
-  - d
+  - Azure **messaging infrastructure** that supports **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
+  - fully managed message broker for message queues and pub/sub topics.
+  - decouples application from services that rely on messaging.
+  - **When to use**
+    - **long-polling**: client request messages, if no message immediately available, server holds connection open for set duration waiting for a message to arrive.
+    - guaranteed **FIFO** delivery.
+    - automatic **duplicate** detection.
+    - **parallel** long-running **streams**.
+    - message size often bigger than **64KB** but less than 1MB.
+    - **RBAC** support.
+  - **Queue Receive Modes**
+    - **Receive and Delete**: good when consumer can tolerate missing message in failure event.
+    - **Peek Lock**: good when consumer can't tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
+  - **Tiers**
+    - basic: obsolete. entry level.
+    - standard: variable throughput and latency, max message size **256KB**.
+    - premium: for high scale and performance. mission-critical applications.
 - **Storage queues**
-  - d
+  - Azure **storage infrastructure**. store large numbers of messages, accessible from anywhere using HTTPS.
+  - **When to use**
+    - more than **80 GB storage** of messages in a queue.
+    - needs to **track progress** for processing a message in the queue.
+    - **server side logs** of all transactions with queue.
