@@ -162,6 +162,40 @@ az apim create -n $AZ_API_MANAGEMENT_NAME \
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
+## Azure Application Insights
+
+- **Application Insights**
+  - extension of Auzre Monitor. provides **Application Performance Monitoring(APM)**.
+  - **AMP**: monitor from **development** through **test** and into **production**.
+  - **metrics, telemetry**(describe application activities and health), **trace logging** data(detailed view of application activity).
+  - **Insight Monitoring Parameters**
+    - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
+    - **Dependency rates, response times, and failure rates** - Find out whether external services are slowing you down.
+    - **Exceptions** - Analyze the aggregated statistics, or pick specific instances and drill into the stack trace and related requests. Both server and browser exceptions are reported.
+    - **Page views and load performance** - reported by your users' browsers.
+    - **AJAX calls** from web pages - rates, response times, and failure rates.
+    - **User and session counts**.
+    - **Performance counters**: from your Windows or Linux server machines, such as CPU, memory, and network usage.
+    - **Host diagnostics**: from Docker or Azure.
+    - **Diagnostic trace logs**: from your app - so that you can correlate trace events with requests.
+    - **Custom events and metrics**: that you write yourself in the client or server code, to track business events such as items sold or games won.
+- **Instrumenting**
+  - enabling application telemetry capturing.
+  - install instrumentation in your app and it monitors and directs the telemetry data to an Application Insights resource by using a unique token.
+- **Availability Testing**
+  - monitor availability and responsiveness.
+  - Application Insights sends web request at regular intervals(availability) from points around the world(responsiveness).
+  - **Standard Test**: ping test, SSL/TLS valid. HTTP GET, HEAD, POST.
+  - **Custom TrackAvailability Test**: custom app that tracks availability. **multi request** or **authentication** test scenarios.
+- **Application Map**
+  - spot performance bottlenecks and failure hotspots.
+  - each node represents application component.
+  -
+  - ![application map](img/application_map.PNG)
+- **Log Metrics**
+  - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
+  - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
+
 ## Azure Authentication and Authorization
 
 - **Microsoft Identity**
@@ -291,6 +325,11 @@ az storage container policy list --container-name $AZ_STORAGE_CONTAINER_NAME \
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
+
+## Azure Cache
+
+- **Caching**
+  - improve performance and scalability of **Redis** and **Azure Content Delivery Network**.
 
 ## Azure Container Apps
 
@@ -1215,20 +1254,15 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
 
 - **Azure Messaging**
   - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
-  - **messages**: contain payload and metadata.
-    - **metadata**: key:value pair description and handling instructions about payload.
-    - **payload**:
 - **Service Bus queues**
   - Azure **messaging infrastructure** that supports **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
   - fully managed message broker for message queues and pub/sub topics.
   - decouples application from services that rely on messaging.
-  - **When to use**
-    - **long-polling**: client request messages, if no message immediately available, server holds connection open for set duration waiting for a message to arrive.
-    - guaranteed **FIFO** delivery.
-    - automatic **duplicate** detection.
-    - **parallel** long-running **streams**.
-    - message size often bigger than **64KB** but less than 1MB.
-    - **RBAC** support.
+  - **Payloads and Serialization**: **messages** contain payload and metadata.
+    - **metadata**: key:value pair description and handling instructions about payload.
+    - **payload**: binary. MIME content type is `ContentType:application/json:charset=utf-8`
+      - **broker properties**: routing config.
+      - **user properties**:
   - **Queue Receive Modes**
     - **Receive and Delete**: good when consumer can tolerate missing message in failure event.
     - **Peek Lock**: good when consumer can't tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
@@ -1236,8 +1270,19 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
     - basic: obsolete. entry level.
     - standard: variable throughput and latency, max message size **256KB**.
     - premium: for high scale and performance. mission-critical applications.
-- **Storage queues**
-  - Azure **storage infrastructure**. store large numbers of messages, accessible from anywhere using HTTPS.
+  - **When to use**
+    - **long-polling**: client request messages, if no message immediately available, server holds connection open for set duration waiting for a message to arrive.
+    - guaranteed **FIFO** delivery.
+    - automatic **duplicate** detection.
+    - **parallel** long-running **streams**.
+    - message size often bigger than **64KB** but less than 1MB.
+    - **RBAC** support.
+- **Azure Queue Storage**
+  - Azure **storage infrastructure**. store large numbers of messages(millions, limit is size of storage account), accessible from anywhere using HTTPS.
+  - **config**
+    - **storage account**: Azure Storage account.
+    - **Queue**: name lowercase. Azure Queue service.
+    - **Message**: max **64KB** size. time-to-live: 1 day - never expire.
   - **When to use**
     - more than **80 GB storage** of messages in a queue.
     - needs to **track progress** for processing a message in the queue.
