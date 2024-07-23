@@ -326,10 +326,25 @@ az storage container policy list --container-name $AZ_STORAGE_CONTAINER_NAME \
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
-## Azure Cache
+## Azure Cache and Storage CDNs
 
 - **Caching**
   - improve performance and scalability of **Redis** and **Azure Content Delivery Network**.
+- **Cache for Redis**
+  - Redis is fast because it holds recent transactions in server memory.
+  - ![redis](img/redis.PNG)
+  - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
+  - **location**: region your location of traffic.
+  - **cache type**: size, performance, and features available for cache.
+  - **clustering**: split data among multiple nodes(premium, Enterprise, Enterprise Flash).
+  - **deletion**: 1-millisecond precision to delete from cache.
+  - **Connection to Redis**: host name, port, and an access key for the cache.
+- **Azure Content Deliver Network Caching**
+  - deliver content to users. cache in various nodes across the world.
+  - **Point-of-Presence (POP)**: edge locations caching content close to users.
+    - file remains cached on the edge server in the POP until the time-to-live (TTL) specified by its HTTP headers expires.
+    - default TTL is seven days.
+  - ![CDN POP](img/cdn_pop.PNG)
 
 ## Azure Container Apps
 
