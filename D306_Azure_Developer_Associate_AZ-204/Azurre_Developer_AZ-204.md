@@ -1113,12 +1113,16 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
-  - **Logic App**: serverless workflow integration(**actions**) executed to accomplish a task.
-  - ![function vs logic app](img/function_vs_logic_app.PNG)
-  - **WebJobs SDK**: Functions is built on WebJob SDK.
-    - Azure Functions offers more developer productivity than Azure App Service WebJobs does.
-    - offers more options for programming languages, development environments, Azure service integration, and pricing.
-  - ![function vs webjob sdk](img/function_vs_webjob_sdk.PNG)
+  - **Functions**
+    - event-driven(HTTP request, timer schedule, message in a queue) functions.
+    - code-focused. build microservices, real-time data processing, automation task.
+  - **Logic App**
+    - Logic Apps are designed **visually** using a **drag-and-drop interface** to create workflows that orchestrate actions across different systems and services.
+    - Low code. vast library with pre-built connectors to integrate into Azure and third-party services.
+  - **WebJobs SDK**
+    - background tasks. runs in background of webapp.
+    - code-focused. long-running task, recurring jobs that can run in background.
+  - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 - **Function Hosting Plans**
   - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
   - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
