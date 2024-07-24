@@ -28,6 +28,9 @@
   - [landing zone best practices](https://learn.microsoft.com/en-us/azure/cloud-adoption-framework/ready/landing-zone/design-areas)
 - **Practice Exams**
   - <https://wgu.udemy.com/course/az204-azure-practice/>
+- **AZ-204 Exam Tips**
+  - <https://www.reddit.com/r/AzureCertification/comments/1e7nptl/just_passed_az204/>
+  - There were many questions about **messaging services**, their differences, and a couple of questions about **web app deployment**. There were two test cases: one at the start and one at the end.
 
 ## Azure Bash CLI
 
@@ -345,6 +348,23 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - file remains cached on the edge server in the POP until the time-to-live (TTL) specified by its HTTP headers expires.
     - default TTL is seven days.
   - ![CDN POP](img/cdn_pop.PNG)
+  - **CDN Cache Behavior**
+    - caching rules modify default expiration of content.
+    - **Caching Rules**
+      - **Global caching rules**: set rule on endpoint, which affects all requests to the endpoint.
+      - **Custom caching rules**: custom caching rules on endpoint. match specific paths, file extensions , and override the global caching rule, if set.
+    - **Query String Caching**: handle caching requests with query strings.
+    - **Rules Engine**: one or more(up to four) match conditions and an action.
+  - **Default TTL**
+    - Generalized web delivery optimizations: **seven days**
+    - Large file optimizations: **one day**
+    - Media streaming optimizations: **one year**
+  - **Purge TTL**
+    - version assets to ensure latest asset is delivered.
+    - purge by endpoint.
+    - specify file on all or single endpoint.
+  - **Geo-filtering**
+    - filters based on geographic region. allow/block content.
 
 ## Azure Container Apps
 
