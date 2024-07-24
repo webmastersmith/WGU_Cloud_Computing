@@ -217,10 +217,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
   - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
 - **App Service Autoscaling and Automatic Scaling**
-  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in).
+  - **Scaling**: vertical(larger compute/memory, scale up/down) or horizontal(more VMs, scale out/in).
   - **elasticity for your services**, responding to changes in the environment by **adding or removing web servers and balancing the load** between them.
   - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
-  - true autoscale you provide max and min.
+  - true autoscale. you provide max and min VMs.
   - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
   - **scope**: instance limit is set by App Service Plan pricing tier. Autoscaling cannot scale beyond instance limit.
   - **Automatic Scaling**
@@ -228,7 +228,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **AutoScale Rule**
     - description of **when** and **what** action to perform.
     - monitor from **_Run history_** tab. **Activity Log** alert can be set for success or failure of autoscaling.
-    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU must be > 80%.
+    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU averaged, must be > 80%.
     - scale based on **metric**: disk queue or HTTP request awaiting processing.
     - scale according to predefined schedule.
     - **time grain**: length of time between Service metric updates.
@@ -306,7 +306,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Continuous Integration and Deployment CI/CD**
   - **automated deployment**: automate the testing and deployment of code changes.
   - automated deployment. push new features and bug fixes in a fast, repetitive pattern.
-  - **Automated**
   - **Azure DevOps**: pipeline. code changes -> testing -> deploy. build, test, run in cloud. Push to web app.
     - **GitHub**: connect to Azure. changes to repo, deployed to web app.
     - **Bitbucket**: same as GitHub.
@@ -1070,14 +1069,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Azure Function as a Service (FaaS)**
   - serverless, event driven **triggers(based on event or emit data)** to start functions.
   - define input, actions, conditions, and output.
-  - fully managed and scales to zero.
+  - fully managed and **scales to zero**.
   - requires a **storage account to operate**.
   - **function app**: one or more individual functions that are managed, deployed, and scaled together.
     - share the same pricing plan, deployment method, and runtime version.
     - **Functions 2.x all functions** in a function app must be authored in the **same language**.
   - **Serverless**
-    - fully managed cloud services. you bring the code.
-    - abstracts infrastructure and are billed on execution time. do not pay for idle servers.
+    - fully managed cloud services. **you bring the code**.
+    - abstracts infrastructure and are billed on execution time. **do not pay for idle servers**.
     - highly: scalable, elastic, available, durable, secure by default.
   - **Project Files**: root of directory.
     - `host.json`: metadata file configuration options on Azure Functions.
