@@ -1081,6 +1081,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **orchestration**: collection of functions(steps).
   - **trigger**: required to call the function.
   - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+  - ![function bindings](img/function_bindings.PNG)
     - **function.json**: file show what **dataType**: binary, stream, string. **direction**: in/out
     - **input bindings**: other service responds to event. function is called with data as the argument.
     - **output bindings**: other service is listening. the function return value is passed to listening service.
