@@ -1089,7 +1089,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **identities**: RBAC assigned roles are used to connect the services.
 
 ```json
-# function.json
+# function.json example
 {
   "disabled": false,
   "bindings": [
@@ -1114,7 +1114,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Functions**
-    - event-driven(HTTP request, timer schedule, message in a queue) functions.
+    - event-driven functions. (e.g. HTTP request, timer schedule, message in a queue).
     - code-focused. build microservices, real-time data processing, automation task.
   - **Logic App**
     - Logic Apps are designed **visually** using a **drag-and-drop interface** to create workflows that orchestrate actions across different systems and services.
