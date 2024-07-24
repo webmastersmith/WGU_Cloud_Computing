@@ -114,7 +114,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
   - **Policies**: executed on API request. typically run a function on the query. e.g. rate limit, transform XML to JSON...
   - **TLS**: Gateway handles handshake and verification.
-  - no gateway, request are sent to back-end servers.
+  - **with no gateway**, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
     - direct coupling(gateway proxy allows to modify request)
     - public endpoint exposes attack surface.
@@ -176,7 +176,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 
 - **Application Insights**
   - extension of Auzre Monitor. provides **Application Performance Monitoring(APM)**.
-  - **AMP**: monitor from **development** through **test** and into **production**.
+  - **APM**: monitor from **development** through **test** and into **production**.
   - **metrics, telemetry**(describe application activities and health), **trace logging** data(detailed view of application activity).
   - **Insight Monitoring Parameters**
     - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
