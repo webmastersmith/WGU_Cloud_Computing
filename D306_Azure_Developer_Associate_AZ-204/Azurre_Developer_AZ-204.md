@@ -199,6 +199,170 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
   - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
 
+## Azure App Services
+
+- **App Service**
+  - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
+  - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
+  - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
+  - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
+  - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
+  - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
+  - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
+- **App Service Autoscaling and Automatic Scaling**
+  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in).
+  - **elasticity for your services**, responding to changes in the environment by **adding or removing web servers and balancing the load** between them.
+  - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
+  - true autoscale you provide max and min.
+  - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
+  - **scope**: instance limit is set by App Service Plan pricing tier. Autoscaling cannot scale beyond instance limit.
+  - **Automatic Scaling**
+    - new scale-out option. pre-warms resource for smooth transition.
+  - **AutoScale Rule**
+    - description of **when** and **what** action to perform.
+    - monitor from **_Run history_** tab. **Activity Log** alert can be set for success or failure of autoscaling.
+    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU must be > 80%.
+    - scale based on **metric**: disk queue or HTTP request awaiting processing.
+    - scale according to predefined schedule.
+    - **time grain**: length of time between Service metric updates.
+    - **time aggregation**: grouping of time grain values. Avg, Min, Max, Sum, Last, Count.
+      - **duration**: amount of **time grain** to group for a better picture of resource usage over time.
+    - **Actions**: scale-out/in. define rules in pairs: when to scale-out and when to scale-in.
+      - **cool down**: during this time, will not scale in/out.
+    - **Autoscale condition**: group of autoscale rules. scale-out if **any** rules met. scale-in if **all** rules met.
+    - **Best Practices**
+      - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+      - min/max numbers are **inclusive**, so scale-in/out rules must not use same numbers.
+      - choose best diagnostic metric: Avg, Min, Max, Total.
+      - when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.
+      - **default instance count** should be the min needed if metrics are unavailable.
+      - configure autoscale notifications.
+- **App Service Plan**
+  - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
+  - **scope**: VM apps created in same region as App Service Plan defines.
+  - **Scaling**
+    - **scale unit**: **changing plan tier** is the only way to **increase scale-out**.
+    - changing scale size by changing plan tier.
+    - **Isolate apps by adding to separate App Service Plan**:
+      - The app is resource-intensive.
+      - You want to scale the app independently from the other apps in the existing plan.
+      - The app needs resource in a different geographical region.
+  - **Shared**: **Free** or **Shared**, two base tiers. charged **per CPU minute**.
+    - allocate CPU quotas to each app that runs on the shared resources
+    - **linux cannot run on shared**.
+    - **resources can't scale out**.
+    - **only for development and testing**.
+  - **Dedicated**: **Basic, Standard, Premium, PremiumV2, PremiumV3**.
+    - only apps in App Service Plan share compute resources.
+    - **higher tiers have more VM instances** available for scale-out.
+  - **Isolated**: **Isolated, IsolatedV2**.
+    - dedicated VMs on dedicated VNet.
+    - network and compute isolation.
+    - maximum scale-out.
+- **App Service Authentication and Authorization**
+  - **App Service** feature that provides out-of-the-box authentication with federated identity providers, allowing you to focus on the rest of your application.
+  - Security Module: authenticate users, manage tokens, sessions, and inject identity into request headers.
+  - built-in authentication and authorization support.
+  - configured by using App settings, when enabled, every HTTP request will pass through the security module before it's handled by your App.
+  - automatic logging of authentication and authorization traces.
+  - **Settings**
+    - **Allow Anonymous(unauthenticated) Request**: defer authorization of unauthenticated traffic to your App.
+    - **require authenticated**: **_all_** anonymous traffic is sent to login provider page. Even home page.
+  - **Logging**
+    - enable auth traces to be written to log files.
+- **App Service Environment (ASE)**
+  - **fully isolated and dedicated environment** for securely running App Service apps at high scale.
+  - gated by WAFs. **External/Internal load balanced**.
+  - can create multiple ASEs across regions or single region.
+- **App Service Setup**
+  - **OS**: windows, linux
+  - **Region**: location of datacenter. e.g. 'East US'.
+  - **Number of VM instances**: how many VM instances allocated to plan.
+  - **Size of VM instances**: compute. (Small, Medium, Large).
+  - **Pricing Tier**: **Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2**.
+  - **Configuration**
+    - General settings: configure stack, platform, debugging, and incoming client certificate.
+    - Application settings:
+    - Path mappings: incoming URL redirects.
+- **App Service Variables**
+  - **Portal**: `App Settings/Environment Variables`
+  - **CLI**: `az webapp config appsettings set --settings key1=value1 key2=value2 --name ...`
+- **Application Insights**
+  - continuously monitor the performance and usability of your apps.
+  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
+  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
+  - ![application insights](img/application_insights.PNG)
+- **Backup and Restore App**
+  - App snapshots can be created on a schedule or manually backup.
+  - **Standard** or **Premium** tier App Service plan.
+  - full or partial backups.
+- **Continuous Integration and Deployment CI/CD**
+  - **automated deployment**: automate the testing and deployment of code changes.
+  - automated deployment. push new features and bug fixes in a fast, repetitive pattern.
+  - **Automated**
+  - **Azure DevOps**: pipeline. code changes -> testing -> deploy. build, test, run in cloud. Push to web app.
+    - **GitHub**: connect to Azure. changes to repo, deployed to web app.
+    - **Bitbucket**: same as GitHub.
+  - **Manual**
+    - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
+- **Deployment Slots**
+  - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
+  - **scope**: Standard, Premium, Isolated. each progressive tier has higher slot count.
+  - manage different app stages(development, testing, staging, and production).
+  - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
+  - new deployment slots can be empty or cloned.
+  - **swap**: loads and starts image(**warm up**), if **HTTP responds**, considered **warmed up** and **switches routing rules** from **source** to **target** slot.
+    - the HTTP request and URL path can be altered.
+  - **swap with preview**: load and starts slot image, pauses to allow you to preview, before switching routing rules to target slot.
+  - **auto swap**: when code changes, automatically swaps app into production. not on linux or Web App for Containers.
+  - **Swap Routing**
+    - **Traffic Percentage**: you can change percentage of traffic to another slot.
+    - **Manual Routing**
+      - link back to production from beta: `<a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>`
+      - address to go to beta: `<webappname>.azurewebsites.net/?x-ms-routing-name=staging`
+      - default routing is `0%`(light grey color) setting the percentage manually to `0%`(black color), allows you to hide traffic while allowing internal team to reach resource.
+  - ![deployment slot](img/deployment_slot.PNG)
+- **Domain Names (DNS) Records**
+  - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
+  - purchase domain from Azure portal, you don't have to configure anything.
+  - `A` record: map domain name to IP address of web server.
+  - `Cname`: maps domain name to another domain name.
+- **Logging**
+  - enable persistent storage, enable logging.
+  - logs can be stored in **Azure Storage** or **App Service file system**.
+  - **Linux**: only supports **Deployment logging**.
+  - **Level of information**: disabled, error, warning, information, verbose.
+  - **Streaming**
+    - enabled from `Portal/App Service/yourApp/Log stream` or CLI `az webapp log tail --name appName --resource-group groupName`
+    - files ending in `.txt, .log, .htm` stored in the `d:/home/logfiles` are streamed by App Service.
+- **Network**
+  - default App Service apps are accessible through internet endpoints only.
+  - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
+    - the solution is to handle web app communication: inbound and outbound.
+    - `App-assigned Address` // Inbound
+    - `Hybrid Connections` // Outbound
+  - **front-ends**: handle all http(s) request.
+  - **workers**: handle workload.
+  - control **VNet inbound/outbound** traffic:
+    - **multitenant**: Free - PremiumV3.
+    - **single-tenant**: Isolated.
+- **Path Mappings**
+  - determine how web app handles incoming requests for a specific path or directories.
+  - e.g. `www.example.com/images` would map to `media/images`
+- **Security Certificates TLS/SSL**
+  - upload or import public certificates into App Service.
+  - certificate binds to **App Service plan resource group and region**(called **webspace**). makes certificate **accessible to other apps** in same resource group and region combination.
+  - **scope**: all tiers except Free.
+- **Storage**
+  - containerized storage is ephemeral. persistent storage can be added to containerized apps.
+- **WebJobs**
+  - run script in the same instance as web app. no additional charge.
+
+```bash
+# online Azure Cloud Shell
+az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
+```
+
 ## Azure Authentication and Authorization
 
 - **Microsoft Identity**
@@ -327,6 +491,104 @@ az storage container policy list --container-name $AZ_STORAGE_CONTAINER_NAME \
 
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
+
+## Azure Blob Storage
+
+- **Blob Storage**
+  - designed to store massive amounts of unstructured data(text, binary). storing, streaming, writing.
+  - Users or client applications can access objects in Blob storage via HTTP/HTTPS, from anywhere in the world.
+  - **scope**: region.
+  - **Standard**: general-purpose V2. most accounts.
+    - General-Purpose V2: Basic storage account type for blobs, files, queues, and tables.
+  - **Premium**: block blob, page blob, file share. high performance SSD.
+    - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables.
+      - **190.7 TB max size**. **append blob optimized for logging**.
+      - can only move to different access tiers through manual AzCopy.
+    - PageBlob: page blob only. **8TB max size**.
+    - FileShare: SMB file shares(Windows, Linux, macOS).
+  - **Blob storage offers three types of resources**:
+    - **storage account**: can have multiple storage accounts. must be unique.
+      - `http://mystorageaccount.blob.core.windows.net`
+    - **container**: must be inside storage account. can have multiple containers.
+      - `https://mystorageaccount.blob.core.windows.net/mycontainer`
+    - **blob**: must be inside container. can have multiple blobs.
+      - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
+- **Static Website**
+  - serve directly from storage **container** named `$web`. serverless architecture.
+  - **Azure Static Web Apps** for header and Auth(N|Z) support.
+  - all files will have public access.
+  - **domain mapping**: only http. Azure CDN for https.
+- **Storage Lifecycle: Access Tiers**
+  - can be set during or after upload.
+  - **account level**: set storage limits(spread across all tiers). can set access tier to hot, cold, or cool.
+  - **blob level**: can set access tier to archive.
+  - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
+  - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
+  - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
+  - **Hot**: immediate access. highest storage cost, lowest access cost. frequently accessed.
+  - **Cool**: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
+  - **Cold**: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
+  - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty. **LRS, GRS, RA-GRS only redundancy**.
+    - **rehydration**: can **copy or move** from archive to warmer tier. This does not change last modified time! Lifecycle policy can move blob back to archive!
+    - **priority**: standard rehydration or high(under one hour < 10GB size).
+    - can only rehydrate blob to same **storage account**.
+    - ![access tier rehydrate](img/access_tier_rehydrate.PNG)
+  - Hot -> cool: incurs a **write** charge for all data.
+  - Cool -> Hot: incurs **read** charge for all data.
+  - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
+  - **Manage Lifecycle Rules**
+    - policy to transition/delete data. modify via: Azure Portal, PowerShell, CLI, REST APIs.
+    - **scope**: rules can be applied to containers or blobs.
+
+```json
+# lifecycle management policy. Azure Portal/Data Management/Lifecycle Management -Add rule.
+{
+  "rules": [
+    {
+      "name": "ruleFoo",
+      "enabled": true,
+      "type": "Lifecycle",
+      "definition": {
+        "filters": {
+          "blobTypes": [ "blockBlob" ],
+          "prefixMatch": [ "container1/foo" ]
+        },
+        "actions": {
+          "baseBlob": {
+            "tierToCool": { "daysAfterModificationGreaterThan": 30 }, # 30 days after last modification.
+            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
+            "delete": { "daysAfterModificationGreaterThan": 2555 }
+          },
+          "snapshot": {
+            "delete": { "daysAfterCreationGreaterThan": 90 } # 90 days after snapshot creation.
+          }
+        }
+      }
+    }
+  ]
+}
+```
+
+- **Storage Service Encryption (SSE)**
+  - by default all data is encrypted at rest(256-bit ASE) and in transit(HTTPS, SMB 3.0).
+  - RBAC for security principals(resource group, resource, service, storage account, container, blob, queue).
+  - Microsoft Entra ID for 'key' management.
+  - ![key management](img/key_management.PNG)
+
+```bash
+# CREATE STORAGE ACCOUNT -set variables -current session only.
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group${RANDOM:0:3}"
+export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:3}" # numbers and lowercase letters only. name must be unique across azure. RANDOM number between 1 - 999.
+az login --use-device-code # allows WSL2 to login through web browser.
+az provider register --namespace Microsoft.Storage
+# create resource group
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+# create storage account
+az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
+# clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
 ## Azure Cache and Storage CDNs
@@ -567,6 +829,91 @@ az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_N
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
+## Azure Cosmos DB
+
+- **Cosmos DB**
+  - fully managed NoSQL, globally distributed database. read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
+  - low latency, elastic scalability of throughput. place data in region where users are.
+  - add remove **regions** at any time. can have multiple Cosmos databases in account.
+  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
+  - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
+    - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
+  - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
+- **Cosmos DB Containers**
+  - unit of scalability both for provisioned throughput and storage.
+  - A container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
+  - items added are distributed across the partitions(based on partition key).
+  - **Throughput**
+    - **Dedicated**: throughput on container exclusively reserved for container. Backed by SLA.
+    - **Shared**: share throughput with other containers in same database.
+- **Consistency Levels**
+  - distributed database must make tradeoff between read consistency, availability, latency, and throughput.
+  - data may lag replication across regions due to failures(eventual consistency).
+  - region-agnostic. guaranteed for all operations regardless of region.
+  - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
+  - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
+    - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
+    - removes database regions that do not respond to write until they are back online.
+  - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
+  - **Session**: single client can read-your-writes.
+  - **Consistent prefix**: updates made as a batch.
+  - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
+  - ![consistency levels](img/consistency_levels.PNG)
+- **Cosmos DB API**
+  - if you want to migrate existing database into Cosmos DB.
+  - **NoSQL**: document format. first to update. best end-to-end experience. Query in SQL syntax.
+  - **MongoDB**: BSON format. compatible with MongoDB.
+  - **PostgreSQL**: PostgreSQL distributed tables for scale.
+  - **Apache Cassandra**: column-oriented schema.
+  - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
+  - **Apache Gremlin**: for graph queries. store data as edges and vertices. data too complex to be modeled with relational database.
+- **Cosmos DB Modes**
+  - you need dedicated resources for database.
+  - **Provisioned Throughput Mode**: provision in increments of 100 RUs per second.
+    - can be increased/decreased at any time.
+    - provision at database or container level.
+  - **Serverless Mode**: billed for RUs used.
+  - **AutoScale Mode**: mission-critical workloads. SLA on high performance and scale.
+  - **Cosmos Change Feed**
+    - track changes made to items in **Cosmos DB container**. persistent ordered record.
+    - **listens**: for changes(inserts, updates, deletes).
+    - **recording**: adds changes to change log, preserving order it happened.
+    - **push model**: you listen for changes. **recommended**.
+    - **pull model**: you query for changes.
+- **Stored Procedure**
+  - **User-Defined Functions**: Javascript functions you can register and call.
+  - **pretriggers**: executed before modifying database. must be registered.
+  - **post-triggers**: executed after modifying database. must be registered. runs as part of the same transaction and if trigger has exception, commit is rolled back and exception returned.
+
+```js
+const helloWorldStoredProc = {
+  id: 'helloWorld',
+  serverScript: function () {
+    const context = getContext();
+    const response = context.getResponse();
+    response.setBody('Hello, World');
+  },
+};
+```
+
+```bash
+## Create Cosmos DB
+# az account list-locations --query "sort_by([].{DisplayName: displayName, AzureName: name}, &DisplayName)" --out table
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_COSMOS_DB_NAME="my-cosmosdb-${RANDOM:0:3}"
+az login --use-device-code # allows WSL2 to login through web browser.
+az provider register --namespace Microsoft.DocumentDB
+export AZ_SUBSCRIPTION_NAME=$(az account show --query 'name' -o tsv)
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az cosmosdb create --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --subscription "$AZ_SUBSCRIPTION_NAME"
+# Retrieve the primary key
+az cosmosdb keys list --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
+# Clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
+az logout
+```
+
 ## Azure Event Grid
 
 - **Event Grid**
@@ -711,400 +1058,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - Azure **Event Hubs Data Sender**: Use this role to give send access to Event Hubs resources.
   - Azure **Event Hubs Data Receiver**: Use this role to give receiving access to Event Hubs resources.
 
-## Azure Key Vault
-
-- **Azure Key Vault**
-  - cloud service for securely storing and accessing secrets(API keys, passwords, certificates, or cryptographic keys).
-  - **Tiers**
-    - **Standard**: encrypts with a software key.
-    - **Premium**: includes hardware security module(HSM)-protected keys.
-  - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
-  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
-  - **Service-Managed Keys in Customer-Controlled Hardware**: your keys, your HSM, outside Microsoft control. **Host Your Own Key (HYOK)**.
-  - **Benefits**
-    - highly available, secure(Microsoft Entra ID, RBAC) centralized secret management.
-    - access and use logging or stream to event hub.
-  - **Best Practices**
-    - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
-    - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
-    - **Separate Key Vaults**: dev, test, production best to use separate vaults.
-    - **Check Authorization**: only authorized people should have access to keys.
-    - **Backup and Logging**: create regular backup and log access.
-    - **Soft Delete**: turn on soft delete and purge protection.
-
-```bash
-# Key Vault
-export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
-export AZ_KEY_VAULT_NAME="mykeyvault${RANDOM:0:3}"
-export AZ_SECRET_NAME="MyFirstExamplePassword"
-az login --use-device-code # allows WSL2 to login through web browser.
-az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-az provider register --namespace Microsoft.KeyVault
-# create key vault
-az keyvault create --name $AZ_KEY_VAULT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --location $AZ_LOCATION
-# assign yourself as "Key Vault Administrator".
-export AZ_SUBSCRIPTION_ID=$(az account show --query 'id' -o tsv)
-export AZ_USER_PRINCIPAL_NAME="$(az ad user list --query '[0].userPrincipalName' -o tsv)"
-az role assignment create --role "Key Vault Administrator" --assignee "$AZ_USER_PRINCIPAL_NAME" --scope "$AZ_SUBSCRIPTION_ID"
-
-# add secret
-az keyvault secret set --vault-name $AZ_KEY_VAULT_NAME --name $AZ_SECRET_NAME --value "my-Secret-Password"
-# show secret
-az keyvault secret show --name $AZ_SECRET_NAME --vault-name $AZ_KEY_VAULT_NAME
-
-# clean up
-az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
-```
-
-## App Services
-
-- **App Service**
-  - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
-  - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
-  - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
-  - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
-  - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
-  - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
-  - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
-- **App Service Autoscaling and Automatic Scaling**
-  - **Scaling**: vertical(more compute, up/down) or horizontal(more VMs, out/in).
-  - **elasticity for your services**, responding to changes in the environment by **adding or removing web servers and balancing the load** between them.
-  - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
-  - true autoscale you provide max and min.
-  - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
-  - **scope**: instance limit is set by App Service Plan pricing tier. Autoscaling cannot scale beyond instance limit.
-  - **Automatic Scaling**
-    - new scale-out option. pre-warms resource for smooth transition.
-  - **AutoScale Rule**
-    - description of **when** and **what** action to perform.
-    - monitor from **_Run history_** tab. **Activity Log** alert can be set for success or failure of autoscaling.
-    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU must be > 80%.
-    - scale based on **metric**: disk queue or HTTP request awaiting processing.
-    - scale according to predefined schedule.
-    - **time grain**: length of time between Service metric updates.
-    - **time aggregation**: grouping of time grain values. Avg, Min, Max, Sum, Last, Count.
-      - **duration**: amount of **time grain** to group for a better picture of resource usage over time.
-    - **Actions**: scale-out/in. define rules in pairs: when to scale-out and when to scale-in.
-      - **cool down**: during this time, will not scale in/out.
-    - **Autoscale condition**: group of autoscale rules. scale-out if **any** rules met. scale-in if **all** rules met.
-    - **Best Practices**
-      - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
-      - min/max numbers are **inclusive**, so scale-in/out rules must not use same numbers.
-      - choose best diagnostic metric: Avg, Min, Max, Total.
-      - when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.
-      - **default instance count** should be the min needed if metrics are unavailable.
-      - configure autoscale notifications.
-- **App Service Plan**
-  - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
-  - **scope**: VM apps created in same region as App Service Plan defines.
-  - **Scaling**
-    - **scale unit**: **changing plan tier** is the only way to **increase scale-out**.
-    - changing scale size by changing plan tier.
-    - **Isolate apps by adding to separate App Service Plan**:
-      - The app is resource-intensive.
-      - You want to scale the app independently from the other apps in the existing plan.
-      - The app needs resource in a different geographical region.
-  - **Shared**: **Free** or **Shared**, two base tiers. charged **per CPU minute**.
-    - allocate CPU quotas to each app that runs on the shared resources
-    - **linux cannot run on shared**.
-    - **resources can't scale out**.
-    - **only for development and testing**.
-  - **Dedicated**: **Basic, Standard, Premium, PremiumV2, PremiumV3**.
-    - only apps in App Service Plan share compute resources.
-    - **higher tiers have more VM instances** available for scale-out.
-  - **Isolated**: **Isolated, IsolatedV2**.
-    - dedicated VMs on dedicated VNet.
-    - network and compute isolation.
-    - maximum scale-out.
-- **App Service Authentication and Authorization**
-  - **App Service** feature that provides out-of-the-box authentication with federated identity providers, allowing you to focus on the rest of your application.
-  - Security Module: authenticate users, manage tokens, sessions, and inject identity into request headers.
-  - built-in authentication and authorization support.
-  - configured by using App settings, when enabled, every HTTP request will pass through the security module before it's handled by your App.
-  - automatic logging of authentication and authorization traces.
-  - **Settings**
-    - **Allow Anonymous(unauthenticated) Request**: defer authorization of unauthenticated traffic to your App.
-    - **require authenticated**: **_all_** anonymous traffic is sent to login provider page. Even home page.
-  - **Logging**
-    - enable auth traces to be written to log files.
-- **App Service Environment (ASE)**
-  - **fully isolated and dedicated environment** for securely running App Service apps at high scale.
-  - gated by WAFs. **External/Internal load balanced**.
-  - can create multiple ASEs across regions or single region.
-- **App Service Setup**
-  - **OS**: windows, linux
-  - **Region**: location of datacenter. e.g. 'East US'.
-  - **Number of VM instances**: how many VM instances allocated to plan.
-  - **Size of VM instances**: compute. (Small, Medium, Large).
-  - **Pricing Tier**: **Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2**.
-  - **Configuration**
-    - General settings: configure stack, platform, debugging, and incoming client certificate.
-    - Application settings:
-    - Path mappings: incoming URL redirects.
-- **App Service Variables**
-  - **Portal**: `App Settings/Environment Variables`
-  - **CLI**: `az webapp config appsettings set --settings key1=value1 key2=value2 --name ...`
-- **Application Insights**
-  - continuously monitor the performance and usability of your apps.
-  - analytic tools(failure, response, request, views, load performance) to understand what users are doing with your apps.
-  - Apps hosted on-premises, in a hybrid environment, or in any public cloud.
-  - ![application insights](img/application_insights.PNG)
-- **Backup and Restore App**
-  - App snapshots can be created on a schedule or manually backup.
-  - **Standard** or **Premium** tier App Service plan.
-  - full or partial backups.
-- **Continuous Integration and Deployment CI/CD**
-  - **automated deployment**: automate the testing and deployment of code changes.
-  - automated deployment. push new features and bug fixes in a fast, repetitive pattern.
-  - **Automated**
-  - **Azure DevOps**: pipeline. code changes -> testing -> deploy. build, test, run in cloud. Push to web app.
-    - **GitHub**: connect to Azure. changes to repo, deployed to web app.
-    - **Bitbucket**: same as GitHub.
-  - **Manual**
-    - Git(link web app to Git URL), CLI(`az webapp up`), Zip deploy(`curl http...`), FTP(S).
-- **Deployment Slots**
-  - with App Service, instead of deploying to production node, you deploy to another node with **it's own hostname**.
-  - **scope**: Standard, Premium, Isolated. each progressive tier has higher slot count.
-  - manage different app stages(development, testing, staging, and production).
-  - similar to **_blue/green_** deployment strategy. Rollback if "**_swap_**" is not as expected.
-  - new deployment slots can be empty or cloned.
-  - **swap**: loads and starts image(**warm up**), if **HTTP responds**, considered **warmed up** and **switches routing rules** from **source** to **target** slot.
-    - the HTTP request and URL path can be altered.
-  - **swap with preview**: load and starts slot image, pauses to allow you to preview, before switching routing rules to target slot.
-  - **auto swap**: when code changes, automatically swaps app into production. not on linux or Web App for Containers.
-  - **Swap Routing**
-    - **Traffic Percentage**: you can change percentage of traffic to another slot.
-    - **Manual Routing**
-      - link back to production from beta: `<a href="<webappname>.azurewebsites.net/?x-ms-routing-name=self">Go back to production app</a>`
-      - address to go to beta: `<webappname>.azurewebsites.net/?x-ms-routing-name=staging`
-      - default routing is `0%`(light grey color) setting the percentage manually to `0%`(black color), allows you to hide traffic while allowing internal team to reach resource.
-  - ![deployment slot](img/deployment_slot.PNG)
-- **Domain Names (DNS) Records**
-  - you are given a sub domain name for main account owner: `yourAppName.azurewebsites.net`.
-  - purchase domain from Azure portal, you don't have to configure anything.
-  - `A` record: map domain name to IP address of web server.
-  - `Cname`: maps domain name to another domain name.
-- **Logging**
-  - enable persistent storage, enable logging.
-  - logs can be stored in **Azure Storage** or **App Service file system**.
-  - **Linux**: only supports **Deployment logging**.
-  - **Level of information**: disabled, error, warning, information, verbose.
-  - **Streaming**
-    - enabled from `Portal/App Service/yourApp/Log stream` or CLI `az webapp log tail --name appName --resource-group groupName`
-    - files ending in `.txt, .log, .htm` stored in the `d:/home/logfiles` are streamed by App Service.
-- **Network**
-  - default App Service apps are accessible through internet endpoints only.
-  - multitenant(Free, Shared) will have **many different customers** in the same App Service scale unit(VM), it would be a security risk to connect App Service directly to your VNet.
-    - the solution is to handle web app communication: inbound and outbound.
-    - `App-assigned Address` // Inbound
-    - `Hybrid Connections` // Outbound
-  - **front-ends**: handle all http(s) request.
-  - **workers**: handle workload.
-  - control **VNet inbound/outbound** traffic:
-    - **multitenant**: Free - PremiumV3.
-    - **single-tenant**: Isolated.
-- **Path Mappings**
-  - determine how web app handles incoming requests for a specific path or directories.
-  - e.g. `www.example.com/images` would map to `media/images`
-- **Security Certificates TLS/SSL**
-  - upload or import public certificates into App Service.
-  - certificate binds to **App Service plan resource group and region**(called **webspace**). makes certificate **accessible to other apps** in same resource group and region combination.
-  - **scope**: all tiers except Free.
-- **Storage**
-  - containerized storage is ephemeral. persistent storage can be added to containerized apps.
-- **WebJobs**
-  - run script in the same instance as web app. no additional charge.
-
-```bash
-# online Azure Cloud Shell
-az webapp list-runtimes --os-type linux # show linux runtime options. node, dotnet, python...
-```
-
-## Blob Storage
-
-- **Blob Storage**
-  - designed to store massive amounts of unstructured data(text, binary). storing, streaming, writing.
-  - Users or client applications can access objects in Blob storage via HTTP/HTTPS, from anywhere in the world.
-  - **scope**: region.
-  - **Standard**: general-purpose V2. most accounts.
-    - General-Purpose V2: Basic storage account type for blobs, files, queues, and tables.
-  - **Premium**: block blob, page blob, file share. high performance SSD.
-    - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables.
-      - **190.7 TB max size**. **append blob optimized for logging**.
-      - can only move to different access tiers through manual AzCopy.
-    - PageBlob: page blob only. **8TB max size**.
-    - FileShare: SMB file shares(Windows, Linux, macOS).
-  - **Blob storage offers three types of resources**:
-    - **storage account**: can have multiple storage accounts. must be unique.
-      - `http://mystorageaccount.blob.core.windows.net`
-    - **container**: must be inside storage account. can have multiple containers.
-      - `https://mystorageaccount.blob.core.windows.net/mycontainer`
-    - **blob**: must be inside container. can have multiple blobs.
-      - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
-- **Static Website**
-  - serve directly from storage **container** named `$web`. serverless architecture.
-  - **Azure Static Web Apps** for header and Auth(N|Z) support.
-  - all files will have public access.
-  - **domain mapping**: only http. Azure CDN for https.
-- **Storage Lifecycle: Access Tiers**
-  - can be set during or after upload.
-  - **account level**: set storage limits(spread across all tiers). can set access tier to hot, cold, or cool.
-  - **blob level**: can set access tier to archive.
-  - data **storage cost decrease** and **access cost increases** as tier gets **cooler**.
-  - data cost to transfer(replicate to another region, move out of Azure, per-gigabyte charge).
-  - Hot, Cool, Cold transfer happens **immediately**. **Archive takes time**.
-  - **Hot**: immediate access. highest storage cost, lowest access cost. frequently accessed.
-  - **Cool**: immediate access. infrequently accessed. retained at least 30 days. early deletion penalty.
-  - **Cold**: immediate access. infrequently accessed. retained at least 90 days. early deletion penalty.
-  - **Archive**: **Data in the Archive storage tier is stored offline and must be rehydrated to the Cool or Hot tier before it can be accessed.** This process can take up to 15 hours. infrequent access. retained at least 180 days. early deletion penalty. **LRS, GRS, RA-GRS only redundancy**.
-    - **rehydration**: can **copy or move** from archive to warmer tier. This does not change last modified time! Lifecycle policy can move blob back to archive!
-    - **priority**: standard rehydration or high(under one hour < 10GB size).
-    - can only rehydrate blob to same **storage account**.
-    - ![access tier rehydrate](img/access_tier_rehydrate.PNG)
-  - Hot -> cool: incurs a **write** charge for all data.
-  - Cool -> Hot: incurs **read** charge for all data.
-  - ![blob storage lifecycle](img/blob_storage_lifecycle.PNG)
-  - **Manage Lifecycle Rules**
-    - policy to transition/delete data. modify via: Azure Portal, PowerShell, CLI, REST APIs.
-    - **scope**: rules can be applied to containers or blobs.
-
-```json
-# lifecycle management policy. Azure Portal/Data Management/Lifecycle Management -Add rule.
-{
-  "rules": [
-    {
-      "name": "ruleFoo",
-      "enabled": true,
-      "type": "Lifecycle",
-      "definition": {
-        "filters": {
-          "blobTypes": [ "blockBlob" ],
-          "prefixMatch": [ "container1/foo" ]
-        },
-        "actions": {
-          "baseBlob": {
-            "tierToCool": { "daysAfterModificationGreaterThan": 30 }, # 30 days after last modification.
-            "tierToArchive": { "daysAfterModificationGreaterThan": 90 },
-            "delete": { "daysAfterModificationGreaterThan": 2555 }
-          },
-          "snapshot": {
-            "delete": { "daysAfterCreationGreaterThan": 90 } # 90 days after snapshot creation.
-          }
-        }
-      }
-    }
-  ]
-}
-```
-
-- **Storage Service Encryption (SSE)**
-  - by default all data is encrypted at rest(256-bit ASE) and in transit(HTTPS, SMB 3.0).
-  - RBAC for security principals(resource group, resource, service, storage account, container, blob, queue).
-  - Microsoft Entra ID for 'key' management.
-  - ![key management](img/key_management.PNG)
-
-```bash
-# CREATE STORAGE ACCOUNT -set variables -current session only.
-export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_RESOURCE_GROUP_NAME="my-resource-group${RANDOM:0:3}"
-export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:3}" # numbers and lowercase letters only. name must be unique across azure. RANDOM number between 1 - 999.
-az login --use-device-code # allows WSL2 to login through web browser.
-az provider register --namespace Microsoft.Storage
-# create resource group
-az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-# create storage account
-az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME -l $AZ_LOCATION --sku Standard_LRS
-# clean up
-az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
-```
-
-## Cosmos DB
-
-- **Cosmos DB**
-  - fully managed NoSQL, globally distributed database. read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
-  - low latency, elastic scalability of throughput. place data in region where users are.
-  - add remove **regions** at any time. can have multiple Cosmos databases in account.
-  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
-  - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
-    - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
-  - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
-- **Cosmos DB Containers**
-  - unit of scalability both for provisioned throughput and storage.
-  - A container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
-  - items added are distributed across the partitions(based on partition key).
-  - **Throughput**
-    - **Dedicated**: throughput on container exclusively reserved for container. Backed by SLA.
-    - **Shared**: share throughput with other containers in same database.
-- **Consistency Levels**
-  - distributed database must make tradeoff between read consistency, availability, latency, and throughput.
-  - data may lag replication across regions due to failures(eventual consistency).
-  - region-agnostic. guaranteed for all operations regardless of region.
-  - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
-  - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
-    - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
-    - removes database regions that do not respond to write until they are back online.
-  - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
-  - **Session**: single client can read-your-writes.
-  - **Consistent prefix**: updates made as a batch.
-  - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
-  - ![consistency levels](img/consistency_levels.PNG)
-- **Cosmos DB API**
-  - if you want to migrate existing database into Cosmos DB.
-  - **NoSQL**: document format. first to update. best end-to-end experience. Query in SQL syntax.
-  - **MongoDB**: BSON format. compatible with MongoDB.
-  - **PostgreSQL**: PostgreSQL distributed tables for scale.
-  - **Apache Cassandra**: column-oriented schema.
-  - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
-  - **Apache Gremlin**: for graph queries. store data as edges and vertices. data too complex to be modeled with relational database.
-- **Cosmos DB Modes**
-  - you need dedicated resources for database.
-  - **Provisioned Throughput Mode**: provision in increments of 100 RUs per second.
-    - can be increased/decreased at any time.
-    - provision at database or container level.
-  - **Serverless Mode**: billed for RUs used.
-  - **AutoScale Mode**: mission-critical workloads. SLA on high performance and scale.
-  - **Cosmos Change Feed**
-    - track changes made to items in **Cosmos DB container**. persistent ordered record.
-    - **listens**: for changes(inserts, updates, deletes).
-    - **recording**: adds changes to change log, preserving order it happened.
-    - **push model**: you listen for changes. **recommended**.
-    - **pull model**: you query for changes.
-- **Stored Procedure**
-  - **User-Defined Functions**: Javascript functions you can register and call.
-  - **pretriggers**: executed before modifying database. must be registered.
-  - **post-triggers**: executed after modifying database. must be registered. runs as part of the same transaction and if trigger has exception, commit is rolled back and exception returned.
-
-```js
-const helloWorldStoredProc = {
-  id: 'helloWorld',
-  serverScript: function () {
-    const context = getContext();
-    const response = context.getResponse();
-    response.setBody('Hello, World');
-  },
-};
-```
-
-```bash
-## Create Cosmos DB
-# az account list-locations --query "sort_by([].{DisplayName: displayName, AzureName: name}, &DisplayName)" --out table
-export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
-export AZ_COSMOS_DB_NAME="my-cosmosdb-${RANDOM:0:3}"
-az login --use-device-code # allows WSL2 to login through web browser.
-az provider register --namespace Microsoft.DocumentDB
-export AZ_SUBSCRIPTION_NAME=$(az account show --query 'name' -o tsv)
-az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-az cosmosdb create --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --subscription "$AZ_SUBSCRIPTION_NAME"
-# Retrieve the primary key
-az cosmosdb keys list --name $AZ_COSMOS_DB_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
-# Clean up
-az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
-az logout
-```
-
-## Functions
+## Azure Functions
 
 - **Azure Function as a Service (FaaS)**
   - serverless, event driven **triggers(based on event or emit data)** to start functions.
@@ -1185,7 +1139,53 @@ az logout
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
 
-## Managed Identities
+## Azure Key Vault
+
+- **Azure Key Vault**
+  - cloud service for securely storing and accessing secrets(API keys, passwords, certificates, or cryptographic keys).
+  - **Tiers**
+    - **Standard**: encrypts with a software key.
+    - **Premium**: includes hardware security module(HSM)-protected keys.
+  - **Service-Managed Keys**: Microsoft HSM(hardware security module)s safeguard keys.
+  - **Customer Managed Keys**: create your own key. greater control(create, audit, rotate, delete...). stored in Microsoft HSM. **Bring Your Own Key (BYOK)**.
+  - **Service-Managed Keys in Customer-Controlled Hardware**: your keys, your HSM, outside Microsoft control. **Host Your Own Key (HYOK)**.
+  - **Benefits**
+    - highly available, secure(Microsoft Entra ID, RBAC) centralized secret management.
+    - access and use logging or stream to event hub.
+  - **Best Practices**
+    - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
+    - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
+    - **Separate Key Vaults**: dev, test, production best to use separate vaults.
+    - **Check Authorization**: only authorized people should have access to keys.
+    - **Backup and Logging**: create regular backup and log access.
+    - **Soft Delete**: turn on soft delete and purge protection.
+
+```bash
+# Key Vault
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_KEY_VAULT_NAME="mykeyvault${RANDOM:0:3}"
+export AZ_SECRET_NAME="MyFirstExamplePassword"
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az provider register --namespace Microsoft.KeyVault
+# create key vault
+az keyvault create --name $AZ_KEY_VAULT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME --location $AZ_LOCATION
+# assign yourself as "Key Vault Administrator".
+export AZ_SUBSCRIPTION_ID=$(az account show --query 'id' -o tsv)
+export AZ_USER_PRINCIPAL_NAME="$(az ad user list --query '[0].userPrincipalName' -o tsv)"
+az role assignment create --role "Key Vault Administrator" --assignee "$AZ_USER_PRINCIPAL_NAME" --scope "$AZ_SUBSCRIPTION_ID"
+
+# add secret
+az keyvault secret set --vault-name $AZ_KEY_VAULT_NAME --name $AZ_SECRET_NAME --value "my-Secret-Password"
+# show secret
+az keyvault secret show --name $AZ_SECRET_NAME --vault-name $AZ_KEY_VAULT_NAME
+
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
+
+## Azure Managed Identities
 
 - **Managed Identities**
   - Azure managed secrets, credentials, certificates, keys. eliminate the need for developers to manage secrets.
@@ -1257,7 +1257,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 az logout
 ```
 
-## Microsoft Graph
+## Azure Microsoft Graph
 
 - **Microsoft Graph**
   - Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile).
