@@ -1067,17 +1067,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Functions
 
 - **Azure Function as a Service (FaaS)**
-  - serverless, event driven **triggers(based on event or emit data)** to start functions.
+  - fully-managed, event driven **(triggers based on event or emit data)**, **scales to zero**. **you bring the code**.
+  - highly: scalable, elastic, available, durable, secure by default.
+  - abstracts infrastructure and are billed on execution time. **do not pay for idle servers**.
   - define input, actions, conditions, and output.
-  - fully managed and **scales to zero**.
   - requires a **storage account to operate**.
   - **function app**: one or more individual functions that are managed, deployed, and scaled together.
     - share the same pricing plan, deployment method, and runtime version.
-    - **Functions 2.x all functions** in a function app must be authored in the **same language**.
-  - **Serverless**
-    - fully managed cloud services. **you bring the code**.
-    - abstracts infrastructure and are billed on execution time. **do not pay for idle servers**.
-    - highly: scalable, elastic, available, durable, secure by default.
+    - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
   - **Project Files**: root of directory.
     - `host.json`: metadata file configuration options on Azure Functions.
     - `local.settings.json`: local on-prem specific configurations to override `host.json`.
