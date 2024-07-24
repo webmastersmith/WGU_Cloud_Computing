@@ -66,7 +66,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - dynamic change app settings without restart/redeploy.
   - **Keys**
     - configuration data is stored as key-value pairs.
-    - **naming**: `[^*,\]`.
+    - **naming**: any ascii except: `*,\`.
     - **max size**: 10,000 characters on a key-value pair.
     - **label**: `Key = AppName:DbEndpoint & Label = Test`. Labels allow versioning.
   - **Feature Management**
@@ -76,7 +76,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 - **Secure App Configuration Data**
   - **Customer-managed keys**: Azure Key Vault with soft-delete and purge-protection features enabled.
     - RSA or RSA-HSM key within the Key Vault: The key must not be expired, it must be enabled, and it must have both wrap and unwrap capabilities enabled
-  - **Private endpoints**: allow clients on a virtual network to securely access data over a private link.
+  - **Private endpoints**: allow clients on a virtual network to securely access data over a **Azure Private Link**.
     - private endpoint uses an IP address from the virtual network address space for your App Configuration store.
     - secure connection by firewall blocking all connection to App on public endpoint.
     - connect using on-prem VPN or ExpressRoute w/ private-peering.
