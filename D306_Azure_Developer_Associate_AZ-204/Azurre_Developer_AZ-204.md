@@ -86,26 +86,34 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 ## Azure API Management Service
 
 - **API Management Service**
-  - each API must be subscribed to gain access to operations.
-  - **API Gateway**: accepts request, verifies API key, enforces quotas, logs request.
+  - comprehensive toolbox for managing the entire lifecycle of your APIs, making them more secure, accessible, and efficient for both developers and end-users.
+  - central interface between backend services and the clients using the service.
+  - **Security**: authentication, authorization, and rate limiting.
+  - **Analytics and Monitoring**: Tracks API usage, performance, and health to identify and troubleshoot issues.
+  - **Transformation**: Allows you to modify API requests and responses using policies (e.g., convert XML to JSON).
+  - **Caching**: Improves API performance by caching responses, reducing the load on backend services.
   - **Management Plane**: administrative interface where you set up the API program.
     - define API schema, set policies(quota, transformations).
     - analytic insights, manage users.
-  - **Developer Portal**: automatically generated website with you API documentation.
-    - interactive console to call APIs.
-    - create/manage account -get assigned API key.
-  - **Products**: one or more APIs and how APIs delivered to developers.
-    - **Open**: used without subscription.
-    - **Protected**: must be subscribed to.
+- **Developer Portal**
+  - customizable portal where developers can discover, learn about, and test your APIs.
+  - automatically generates a website from you API documentation.
+  - interactive console to call APIs.
+  - create/manage account -get assigned API key.
+- **API Access**
+  - one or more APIs and how APIs delivered to developers.
+  - **Open**: used without subscription.
+  - **Protected**: must be subscribed to.
   - **Groups**: manage visibility of products to developers.
     - **Administrators**: manage API CRUD.
     - **Developers**: use APIs.
     - **Guests**: read-only.
   - **Developers**: user accounts in API Management Service. Created or invited to join by administrator.
-  - **Policies**: executed on API request. typically run a function on the query(rate limit, transform XML to JSON...).
 - **API Gateway (data plane or runtime)**
+  - **single point entry for all API traffic**. accepts request, verifies API key, enforces quotas, logs request.
   - accepts request, verifies API key, enforces quotas, logs request.
-  - API gateway sits between clients and services proxying API requests, applying policies, and collecting telemetry.
+  - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
+  - **Policies**: executed on API request. typically run a function on the query(rate limit, transform XML to JSON...).
   - **TLS**: Gateway handles handshake and verification.
   - no gateway, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
