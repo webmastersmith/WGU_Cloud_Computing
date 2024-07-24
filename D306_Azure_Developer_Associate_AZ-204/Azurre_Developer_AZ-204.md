@@ -105,15 +105,14 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - **Open**: used without subscription.
   - **Protected**: must be subscribed to.
   - **Groups**: manage visibility of products to developers.
-    - **Administrators**: manage API CRUD.
+    - **Administrators**: manage API lifecycle.
     - **Developers**: use APIs.
     - **Guests**: read-only.
   - **Developers**: user accounts in API Management Service. Created or invited to join by administrator.
 - **API Gateway (data plane or runtime)**
   - **single point entry for all API traffic**. accepts request, verifies API key, enforces quotas, logs request.
-  - accepts request, verifies API key, enforces quotas, logs request.
   - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
-  - **Policies**: executed on API request. typically run a function on the query(rate limit, transform XML to JSON...).
+  - **Policies**: executed on API request. typically run a function on the query. e.g. rate limit, transform XML to JSON...
   - **TLS**: Gateway handles handshake and verification.
   - no gateway, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
