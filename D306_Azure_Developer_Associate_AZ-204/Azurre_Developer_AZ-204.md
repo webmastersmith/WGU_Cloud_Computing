@@ -1081,7 +1081,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
 - **Authorization Level**
   - determines what if any keys need to be present to invoke function.
-  - **auth level can be change after creation**
+  - **auth level can be change after creation**.
   - **Anonymous**: no key required.
   - **Function**: default. function-specific API key.
   - **admin**: master key required.
@@ -1124,18 +1124,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 }
 ```
 
-- **Azure Function vs Logic Apps vs App service WebJobs**
-  - all are serverless.
-  - **Functions**
-    - event-driven functions. (e.g. HTTP request, timer schedule, message in a queue).
-    - code-focused. build microservices, real-time data processing, automation task.
-  - **Logic App**
-    - Logic Apps are designed **visually** using a **drag-and-drop interface** to create workflows that orchestrate actions across different systems and services.
-    - Low code. vast library with pre-built connectors to integrate into Azure and third-party services.
-  - **WebJobs SDK**
-    - background tasks. runs in background of webapp.
-    - code-focused. long-running task, recurring jobs that can run in background.
-  - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 - **Function Hosting Plans**
   - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
   - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
@@ -1159,6 +1147,18 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
+- **Azure Function vs Logic Apps vs App service WebJobs**
+  - all are serverless.
+  - **Functions**
+    - event-driven functions. (e.g. HTTP request, timer schedule, message in a queue).
+    - code-focused. build microservices, real-time data processing, automation task.
+  - **Logic App**
+    - Logic Apps are designed **visually** using a **drag-and-drop interface** to create workflows that orchestrate actions across different systems and services.
+    - Low code. vast library with pre-built connectors to integrate into Azure and third-party services.
+  - **WebJobs SDK**
+    - background tasks. runs in background of webapp.
+    - code-focused. long-running task, recurring jobs that can run in background.
+  - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 
 ## Azure Key Vault
 
