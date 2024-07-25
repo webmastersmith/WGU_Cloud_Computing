@@ -1075,6 +1075,22 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Blob Storage**: store bindings and function keys.
     - **Azure Files**: store function app code.
     - **Queue and Table Storage**: used by task hubs in Durable Functions.
+  - **Advantages**
+    - serverless(only pay when running). zero maintenance. easy to upgrade.
+    - easier to write and deploy. (e.g. can be **built**, **tested** and **deployed** from browser).
+    - access to other APIs, databases, libraries with proper credentials.
+    - automatic scale to traffic demand.
+    - monitoring through Azure Monitor.
+    - event-driven triggers, emit event data.
+    - built-in CI/CD via Azure DevOps.
+  - **Hosting and Runtime**
+    - they are all docker containers.
+    - **Hosting**
+      - windows: all features enabled.
+      - linux: cannot edit functions in portal.
+    - **Runtime**
+      - most common flavors. (e.g. nodejs, python, C#, powershell).
+      - can create **custom handler** for your preferred runtime.
 - **Function App**
   - one or more individual functions that are managed, deployed, and scaled together.
   - share the same pricing plan, deployment method, and runtime version.
@@ -1086,20 +1102,22 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Function**: default. function-specific API key.
   - **admin**: master key required.
   - ![function auth level](img/function_auth_level.PNG)
-- **Project Files**: root of directory.
+- **Function Templates**
+  - **Project Files**: root of directory.
+  - **Triggers**: HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid.
   - `host.json`: global configuration of all functions at the Function App level.
   - `local.settings.json`: local on-prem specific configurations to override `host.json`.
   - **orchestration**: collection of functions(steps).
   - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
     - **identities**: RBAC assigned roles are used to connect the services.
-    - **trigger**: required to call the function.
     - **input bindings**: other service responds to event. function is called with data as the argument.
     - **output bindings**: other service is listening. the function return value is passed to listening service.
   - ![FaaS overview](img/faas_overview.PNG)
   - ![function bindings](img/function_bindings.PNG)
-  - **function.json**: function configuration file.
-    - **dataType**: binary, stream, string.
-    - **direction**: in/out
+  - **function.json**: single function configuration file. every function will have this file.
+    - defines the functions trigger, bindings, direction...
+      - **dataType**: binary, stream, string.
+      - **direction**: in/out
 
 ```json
 # function.json example
@@ -1114,11 +1132,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       "connection": "MyStorageConnectionAppSetting"
     },
     {
-      "tableName": "Person",
-      "connection": "MyStorageConnectionAppSetting",
-      "name": "tableBinding",
       "type": "table",
-      "direction": "out"
+      "direction": "out",
+      "name": "tableBinding",
+      "tableName": "Person",
+      "connection": "MyStorageConnectionAppSetting"
     }
   ]
 }
@@ -1147,16 +1165,20 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - ![function timeout](img/function_timeout.PNG)
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
+- **Function Debugging**
+  - **enable streaming**: stream events to logs, to see near real time errors.
+    - **Built-in Log Streaming**: App Service platform shows you log view.
+    - **Live Metric Stream**: when Function is connected to Application Insights. view from portal.
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Functions**
-    - event-driven functions. (e.g. HTTP request, timer schedule, message in a queue).
+    - **event-driven functions**. (e.g. HTTP request, timer schedule, message in a queue).
     - code-focused. build microservices, real-time data processing, automation task.
   - **Logic App**
     - Logic Apps are designed **visually** using a **drag-and-drop interface** to create workflows that orchestrate actions across different systems and services.
     - Low code. vast library with pre-built connectors to integrate into Azure and third-party services.
   - **WebJobs SDK**
-    - background tasks. runs in background of webapp.
+    - **background tasks**. runs in background of webapp.
     - code-focused. long-running task, recurring jobs that can run in background.
   - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 
