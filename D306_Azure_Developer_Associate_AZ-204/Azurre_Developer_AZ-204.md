@@ -1075,10 +1075,17 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Blob Storage**: store bindings and function keys.
     - **Azure Files**: store function app code.
     - **Queue and Table Storage**: used by task hubs in Durable Functions.
-- **function app**
+- **Function App**
   - one or more individual functions that are managed, deployed, and scaled together.
   - share the same pricing plan, deployment method, and runtime version.
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
+- **Authorization Level**
+  - determines what if any keys need to be present to invoke function.
+  - **auth level can be change after creation**
+  - **Anonymous**: no key required.
+  - **Function**: default. function-specific API key.
+  - **admin**: master key required.
+  - ![function auth level](img/function_auth_level.PNG)
 - **Project Files**: root of directory.
   - `host.json`: global configuration of all functions at the Function App level.
   - `local.settings.json`: local on-prem specific configurations to override `host.json`.
@@ -1088,8 +1095,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **trigger**: required to call the function.
     - **input bindings**: other service responds to event. function is called with data as the argument.
     - **output bindings**: other service is listening. the function return value is passed to listening service.
-  - ![function bindings](img/function_bindings.PNG)
   - ![FaaS overview](img/faas_overview.PNG)
+  - ![function bindings](img/function_bindings.PNG)
   - **function.json**: function configuration file.
     - **dataType**: binary, stream, string.
     - **direction**: in/out
