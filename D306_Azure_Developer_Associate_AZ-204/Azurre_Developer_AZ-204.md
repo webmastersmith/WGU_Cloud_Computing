@@ -1103,21 +1103,22 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **admin**: master key required.
   - ![function auth level](img/function_auth_level.PNG)
 - **Function Templates**
+  - **orchestration**: collection of functions(steps).
+  - **identities**: RBAC assigned roles are used to connect the services.
+  - **Triggers and Bindings**: HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid.
+    - simplify functions by abstracting hardcoding to services.
+    - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+      - **input bindings**: other service responds to event. function is called with data as the argument.
+      - **output bindings**: other service is listening. the function return value is passed to listening service.
+    - ![FaaS overview](img/faas_overview.PNG)
+    - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
-  - **Triggers**: HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid.
   - `host.json`: global configuration of all functions at the Function App level.
   - `local.settings.json`: local on-prem specific configurations to override `host.json`.
-  - **orchestration**: collection of functions(steps).
-  - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
-    - **identities**: RBAC assigned roles are used to connect the services.
-    - **input bindings**: other service responds to event. function is called with data as the argument.
-    - **output bindings**: other service is listening. the function return value is passed to listening service.
-  - ![FaaS overview](img/faas_overview.PNG)
-  - ![function bindings](img/function_bindings.PNG)
-  - **function.json**: single function configuration file. every function will have this file.
-    - defines the functions trigger, bindings, direction...
-      - **dataType**: binary, stream, string.
-      - **direction**: in/out
+    - **function.json**: single function configuration file. every function will have this file.
+      - defines the functions trigger, bindings, direction...
+        - **dataType**: binary, stream, string.
+        - **direction**: in/out
 
 ```json
 # function.json example
@@ -1143,8 +1144,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
 - **Function Hosting Plans**
-  - **Consumption Plan**: default. pay-as-you-go w/automatic scale. dynamically added based on incoming events.
-  - **Flex Consumption Plan**: same as consumption with better options: Compute and 'cold start' pre-provision(always ready) instances.
+  - **Consumption Plan**: default. cold-starts. pay-as-you-go. dynamic scale.
+  - **Flex Consumption Plan**: pre-warmed. larger compute.
   - **Premium Plan**
     - always ready instances. better Compute.
     - functions that run continuously.
@@ -1152,10 +1153,9 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - high number of small executions(low GB seconds for each run) or code needs longer run times.
     - require VNet connectivity. need custom linux image.
   - **Dedicated Plan**
-    - same as Premium. runs at App Service rates. predictable billing.
-    - manually scale instances.
+    - if you use **App Service**, your Azure Functions will run on them. predictable billing.
+    - **manually scale** instances by adding more VMs to App Service plan.
     - full compute isolation. secure network access by ASE(App Service Environment).
-    - high memory usage.
   - **Container Apps Plan**
     - functions run in container. Kubernetes style workflow without complexity.
     - create custom library to support **line-of-business** apps.
