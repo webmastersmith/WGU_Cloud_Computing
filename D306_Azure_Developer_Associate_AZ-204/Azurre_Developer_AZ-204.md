@@ -1075,16 +1075,17 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Blob Storage**: store bindings and function keys.
     - **Azure Files**: store function app code.
     - **Queue and Table Storage**: used by task hubs in Durable Functions.
-  - **function app**: one or more individual functions that are managed, deployed, and scaled together.
-    - share the same pricing plan, deployment method, and runtime version.
-    - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
-  - **Project Files**: root of directory.
-    - `host.json`: metadata file configuration options on Azure Functions.
-    - `local.settings.json`: local on-prem specific configurations to override `host.json`.
+- **function app**
+  - one or more individual functions that are managed, deployed, and scaled together.
+  - share the same pricing plan, deployment method, and runtime version.
+  - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
+- **Project Files**: root of directory.
+  - `host.json`: global configuration of all functions at the Function App level.
+  - `local.settings.json`: local on-prem specific configurations to override `host.json`.
   - **orchestration**: collection of functions(steps).
-  - **trigger**: required to call the function.
   - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
     - **identities**: RBAC assigned roles are used to connect the services.
+    - **trigger**: required to call the function.
     - **input bindings**: other service responds to event. function is called with data as the argument.
     - **output bindings**: other service is listening. the function return value is passed to listening service.
   - ![function bindings](img/function_bindings.PNG)
