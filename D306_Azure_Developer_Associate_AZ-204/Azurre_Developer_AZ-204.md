@@ -211,7 +211,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **App Service**
   - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
   - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
-  - defines a set of **compute resources**(how many VMs, compute, disk for each VM) for a web application to run on.
+  - defines a set of **compute resources**(how many VMs, compute, storage for each VM) for a web application to run on.
   - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
   - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
   - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
@@ -222,7 +222,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **availability and fault tolerance**: avoids long wait times to response because not enough resources.
   - true autoscale. you provide max and min VMs.
   - **resource-intensive processing**: autoscaling might not be an effective approach. increase Vertical scaling.
-  - **scope**: instance limit is set by App Service Plan pricing tier. Autoscaling cannot scale beyond instance limit.
+  - **scope**: instance limit is **set by App Service Plan pricing tier**. Autoscaling cannot scale beyond instance limit.
   - **Automatic Scaling**
     - new scale-out option. pre-warms resource for smooth transition.
   - **AutoScale Rule**
@@ -362,7 +362,12 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Storage**
   - containerized storage is ephemeral. persistent storage can be added to containerized apps.
 - **WebJobs**
-  - run script in the same instance as web app. no additional charge.
+  - use existing App Services VM instances to run background scripts(powershell, shell, nodejs, python java...). no additional charge.
+  - **continuous**: run until stopped.
+  - **triggered**: run only when triggered.
+  - **WebJobs Scale (only for continuous)**
+    - **Multi Instance**: scale WebJob across all instances of App Service VMs.
+    - **Single Instance**: single running instance.
 
 ```bash
 # online Azure Cloud Shell
@@ -716,6 +721,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - ACI provide a **simple** way to create **container instances** without having to create and manage a VM.
   - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
   - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
+  - **Access**: FQDN `mylabel.azureregion.azurecontainer.io`
   - **Restart Policy**
     - **Always**: long running task. (e.g. web-servers).
     - **Never**: one of task. (e.g. background jobs).
@@ -736,7 +742,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Storage**
   - containers(pods) are **stateless**(ephemeral). data is lost on failure.
   - persist state beyond the lifetime of the container, you must **mount a volume from an external store**.
-  - Azure File Share, Empty directory, GitHub, Secret.
+  - **Azure File** Share, Empty directory, GitHub, Secret.
     - **Linux**: can only mount File Shares and only as root.
 
 ```bash
@@ -773,6 +779,12 @@ az container show --resource-group $AZ_RESOURCE_GROUP_NAME \
     --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" \
     --out table
 
+# troubleshooting
+az container logs # show container logs
+az container attach # stream logs during startup.
+az container exec # connect to container shell.
+az container metrics list # get container metrics. e.g. CPU usage.
+
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 az logout
@@ -789,7 +801,7 @@ az logout
     - **Premium**: Standard + increased storage, throughput. geo-replication.
   - **Storage**: encryption-at-rest, regional(where created), zone redundancy(Premium).
 - **ACR Tasks**
-  - automated image build. build, test, push, deploy.
+  - automated image build. build, test, push, deploy. **CI/CD**.
   - **automated trigger**: source code update, base image update, or schedule update.
     - `az task create`. links to GitHub or Azure DevOps Service.
   - **multi-step task**: `file.yaml` multi-step workflows.
