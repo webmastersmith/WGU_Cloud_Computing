@@ -112,7 +112,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 - **API Gateway (data plane or runtime)**
   - **single point entry for all API traffic**. accepts request, verifies API key, enforces quotas, logs request.
   - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
-  - **Policies**: executed on API request. typically run a function on the query. e.g. rate limit, transform XML to JSON...
+  - **Policies**: executed on API request. typically run a function on the query. (e.g. rate limit, transform XML to JSON...).
   - **TLS**: Gateway handles handshake and verification.
   - **with no gateway**, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
@@ -228,7 +228,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **AutoScale Rule**
     - description of **when** and **what** action to perform.
     - monitor from **_Run history_** tab. **Activity Log** alert can be set for success or failure of autoscaling.
-    - rules threshold is for **all** instances running. e.g. CPU > 80%, all instances CPU averaged, must be > 80%.
+    - rules threshold is for **all** instances running. (e.g. CPU > 80%, all instances CPU averaged, must be > 80%).
     - scale based on **metric**: disk queue or HTTP request awaiting processing.
     - scale according to predefined schedule.
     - **time grain**: length of time between Service metric updates.
@@ -283,7 +283,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - can create multiple ASEs across regions or single region.
 - **App Service Setup**
   - **OS**: windows, linux
-  - **Region**: location of datacenter. e.g. 'East US'.
+  - **Region**: location of datacenter. (e.g. 'East US').
   - **Number of VM instances**: how many VM instances allocated to plan.
   - **Size of VM instances**: compute. (Small, Medium, Large).
   - **Pricing Tier**: **Free, Shared, Basic, Standard, Premium, PremiumV2, PremiumV3, Isolated, IsolatedV2**.
@@ -354,7 +354,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **single-tenant**: Isolated.
 - **Path Mappings**
   - determine how web app handles incoming requests for a specific path or directories.
-  - e.g. `www.example.com/images` would map to `media/images`
+  - (e.g. `www.example.com/images` would map to `media/images`)
 - **Security Certificates TLS/SSL**
   - upload or import public certificates into App Service.
   - certificate binds to **App Service plan resource group and region**(called **webspace**). makes certificate **accessible to other apps** in same resource group and region combination.
@@ -373,7 +373,7 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 
 - **Microsoft Identity**
   - simplify Identity and Access Management.
-  - identities, social accounts, with your own API or Microsoft AP. e.g. Microsoft Graph.
+  - identities, social accounts, with your own API or Microsoft AP. (e.g. Microsoft Graph).
   - **OAuth 2.0 and OpenID Connect**: authenticate with several identity types.
     - Microsoft Entra ID and External ID, Azure Active Directory B2C.
   - **Open-source libraries**: standard-compliant libraries.
@@ -431,7 +431,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 - **Service Principal Object**
   - to access resources secured by Microsoft Entra tenant, the service must have valid security principal.
   - service principal must be **created in each tenant** where the application is used to enable it to establish an **identity** for sign-in and/or **access to resources** being secured by the tenant.
-  - **application object serves as the template** from which common and default properties are derived for use in creating corresponding service principal objects. e.g. Class object and instantiated object.
+  - **application object serves as the template** from which common and default properties are derived for use in creating corresponding service principal objects. (e.g. Class object and instantiated object).
   - service principal is the **local representation for use in a specific tenant**.
   - **Application Service Principal**: traditional application registered in Azure AD.
     - can be assigned RBAC roles and have credentials(client secrets, certificates).
@@ -442,7 +442,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
   - **Legacy**: older apps created before introduction of modern app registration features. Limited functionality.
 - **Shared Access Signature (SAS)**
   - uniform resource identifier(URI): grant access to a **specific resource**, for a **specified period of time**, and with a **specified set of permissions** to **Azure Storage resources**(containers, blobs, queues, tables...).
-    - e.g. `https://medicalrecords.blob.core.windows.net/patient-images/patient-116139-nq8z7f.jpg?sp=r&st=2020-01-20T11:42:32Z&se=2020-01-20T19:42:32Z&spr=https&sv=2019-02-02&sr=b&sig=SrW1HZ5Nb6MbRzTbXCaPm%2BJiSEn15tC91Y4umMPwVZs%3D`
+    - (e.g. `https://medicalrecords.blob.core.windows.net/patient-images/patient-116139-nq8z7f.jpg?sp=r&st=2020-01-20T11:42:32Z&se=2020-01-20T19:42:32Z&spr=https&sv=2019-02-02&sr=b&sig=SrW1HZ5Nb6MbRzTbXCaPm%2BJiSEn15tC91Y4umMPwVZs%3D`).
   - ![sas token](img/SAS.PNG)
   - purpose: give client who normally does not have access, a URI for a specified time period, to prevent storage key exposure.
   - granular control(read, write, delete...) of resource permissions(blobs, files, queues, tables). restrict IP address, protocol used(https or http).
@@ -644,7 +644,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **advantages**: dynamic scale to zero(except CPU or memory scale).
     - run multiple container **revisions**(immutable snapshot of a container app version) while managing lifecycle
       - **lifecycle**: allows reverting, or updating w/ revision-scope change(change revision suffix).
-      - e.g. change revision suffix: `app-name--1st-revision` -> `app-name--2nd-revision`
+      - (e.g. change revision suffix: `app-name--1st-revision` -> `app-name--2nd-revision`).
     - easily enable HTTPS ingress, **microservices**(Dapr integration), secrets, logs(same Log Analytics workspace for each environment).
     - can run different environments: keep cross communication and logs separate.
   - **containers**: share disk, network, and lifecycle.
@@ -668,18 +668,18 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - Makes available to App running in container environment variable.
 
 ```bash
-# Container Apps+
-# upgrade CLI and register services
-az extension add --name containerapp --upgrade
-az login --use-device-code # allows WSL2 to login through web browser.
-az provider register --namespace Microsoft.App
-az provider register --namespace Microsoft.OperationalInsights
+# Container Apps
 # variables
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_CONTAINER_ENVIRONMENT_NAME="my-container-environment-${RANDOM:0:3}"
 export AZ_CONTAINER_APP_NAME="my-container-app-${RANDOM:0:3}"
 export AZ_SECRET="my-super-safe-secret"
+# upgrade CLI and register services
+az extension add --name containerapp --upgrade
+az login --use-device-code # allows WSL2 to login through web browser.
+az provider register --namespace Microsoft.App
+az provider register --namespace Microsoft.OperationalInsights
 az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
 # create environment. secure, logs and communication grouped.
 az containerapp env create --name $AZ_CONTAINER_ENVIRONMENT_NAME \
@@ -711,12 +711,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Container Instance (ACI)
 
 - **Azure Container Instance (ACI)**
-  - **serverless** way to package, deploy and manage cloud apps. ACI provide a simple way to create container instances without having to create and manage a VM.
+  - **serverless** way to **package**, **deploy** and **manage** cloud apps.
+  - Docker as a Service.
+  - ACI provide a **simple** way to create **container instances** without having to create and manage a VM.
   - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
   - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
   - **Restart Policy**
-    - **Always**: long running task. e.g. web-servers.
-    - **Never**: one of task. e.g. background jobs.
+    - **Always**: long running task. (e.g. web-servers).
+    - **Never**: one of task. (e.g. background jobs).
     - **OnFailure**: container encounter error try restarting.
   - ![container instance](img/container-instance.PNG)
 - **ACI Environment Variables**
@@ -728,11 +730,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Azure Container Groups**
   - **collection of containers** that get scheduled on the **same host machine**.
   - The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
-  - similar to a 'pod' in Kubernetes(multiple containers per pod).
-  - deploy through **ARM**(Azure Resource Manager, best for multiple resources) or **YAML** files(best for single ).
+  - similar to a '**Kubernetes pod**'.
+  - deploy through **ARM**(Azure Resource Manager, best for multiple resources) or **YAML** files(best for single resource).
   - share public IP address and FQDN per container group.
 - **Storage**
-  - pods are stateless(ephemeral). data is lost on failure.
+  - containers(pods) are **stateless**(ephemeral). data is lost on failure.
   - persist state beyond the lifetime of the container, you must **mount a volume from an external store**.
   - Azure File Share, Empty directory, GitHub, Secret.
     - **Linux**: can only mount File Shares and only as root.
@@ -779,7 +781,7 @@ az logout
 ## Azure Container Registry (ACR)
 
 - **ACR**
-  - managed, private Docker registry service for Windows and Linux images.
+  - managed, **private Docker registry** service for Windows and Linux images.
   - Kubernetes, DC/OS, Docker Swarm, Azure Kubernetes Service(AKS), App Service, Batch, Service Fabric.
   - **tiers**
     - **Basic**: cost-optimized entry point.
@@ -1269,7 +1271,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - ARM creates **service principal** in Microsoft Entra ID for identity of VM.
     - ARM updates **Service identity endpoint metadata** on VM with **service principal client id and certificate**. VM now has an **identity**.
     - **Service Principal** is granted **access permissions** to Azure resource through **RBAC roles**.
-    - code that's running on the virtual machine can request a token from the Azure Instance Metadata service endpoint. e.g. `http://169.254.169.254/metadata/identity/oauth2/token`. **JSON web token** is returned.
+    - code that's running on the virtual machine can request a token from the Azure Instance Metadata service endpoint. (e.g. `http://169.254.169.254/metadata/identity/oauth2/token`. **JSON web token** is returned).
     - code sends JWT w/ call to service(Must be part of Microsoft Entra ID).
       - [services that can use Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/managed-identities-status)
   - **User-assigned managed identities VMs**
@@ -1347,6 +1349,13 @@ az logout
 curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
 ```
 
+## Azure Resource Management Templates
+
+- **ARM Templates**
+  - **Infrastructure as Code**: manage and provision resources through **definition files** (e.g. JSON).
+  - declarative. reduce mistakes.
+- ![arm template](img/arm_template.PNG)
+
 ## Azure Service Bus and Queue Storage
 
 - **Azure Messaging**
@@ -1388,8 +1397,8 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
 ## Azure VMs
 
 - **VMs**
-  - **hyper-V Gen 1 and 2**. virtualize complete computer.
-  - pay-as-you-go virtualized server.
+  - **hyper-V Gen 1 and 2**. virtualize a complete computer.
+  - pay-as-you-go **hourly** virtualized machine.
   - ![vm setup](img/vm_setup.PNG)
 - **VM Sizes**
   - B,D: general purpose.
@@ -1398,8 +1407,11 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
   - H: network and compute optimized.
   - L: storage optimized.
   - N: GPU optimized.
-- **VM Security**
-  - ssh(linux, port 22).
-  - RDP(windows, port 3389). OS outside of Windows will need to install RDP client software.
+- **VM Secure Connections**
+  - ssh(linux, port **22**).
+  - RDP(windows, port **3389**). OS outside of Windows will need to install RDP client software.
   - Bastion(Azure service, web browser).
     - have to create subnet: **_AzureBastionSubnet_** with min `/27` (32 addresses).
+- **Update Management**
+  - manage and install operating system updates and patches.
+  - update scan performed: Windows(every **12** hours), Linux(every **3** hours).
