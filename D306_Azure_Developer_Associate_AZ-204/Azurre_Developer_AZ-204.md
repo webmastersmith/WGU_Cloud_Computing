@@ -1103,22 +1103,27 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **admin**: master key required.
   - ![function auth level](img/function_auth_level.PNG)
 - **Function Templates**
-  - **orchestration**: collection of functions(steps).
   - **identities**: RBAC assigned roles are used to connect the services.
-  - **Triggers and Bindings**: HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid.
-    - simplify functions by abstracting hardcoding to services.
-    - **bindings**: optional. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+  - **Triggers and Bindings**
+    - **Trigger**: function can only have **one trigger**.
+      - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
+      - simplify functions by abstracting hardcoding to services.
+    - **Bindings**: **optional**. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
       - **input bindings**: other service responds to event. function is called with data as the argument.
       - **output bindings**: other service is listening. the function return value is passed to listening service.
+      - **Binding Expression**
+        - most expressions: `{someName}`
+        - App Service expression: `%someName%`
     - ![FaaS overview](img/faas_overview.PNG)
     - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
   - `host.json`: global configuration of all functions at the Function App level.
-  - `local.settings.json`: local on-prem specific configurations to override `host.json`.
-    - **function.json**: single function configuration file. every function will have this file.
-      - defines the functions trigger, bindings, direction...
-        - **dataType**: binary, stream, string.
-        - **direction**: in/out
+  - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
+  - `file.exe`: the actual code that will be run.
+  - **function.json**: single function configuration file. **every function will have this file**.
+    - defines the functions trigger, bindings, direction...
+      - **dataType**: binary, stream, string.
+      - **direction**: in/out
 
 ```json
 # function.json example
@@ -1143,10 +1148,15 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 }
 ```
 
+- **Function Core Tools**
+  - cmd tool that lets you develope and test functions on-prem computer.
+  - `func init`: start new function.
+  - `func logs`: get logs from Kubernetes cluster.
+  - `func run`: run function directly.
 - **Function Hosting Plans**
   - **Consumption Plan**: default. cold-starts. pay-as-you-go. dynamic scale.
-  - **Flex Consumption Plan**: pre-warmed. larger compute.
   - **Premium Plan**
+    - pre-warmed. larger compute.
     - always ready instances. better Compute.
     - functions that run continuously.
     - more control over instances(CPU, memory).
@@ -1166,9 +1176,18 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
 - **Function Debugging**
+  - **service unreachable**: service key bad. service is not available, busy or full.
   - **enable streaming**: stream events to logs, to see near real time errors.
     - **Built-in Log Streaming**: App Service platform shows you log view.
     - **Live Metric Stream**: when Function is connected to Application Insights. view from portal.
+- **Durable Functions**
+  - stateful functions. state survives VM reboot or failure.
+  - **Types**
+    - **Orchestrator function**: define stateful workflow (implicit state).
+    - **Entity function**: explicitly manage state.
+  - **Durable Function patterns**
+    - **Function Chaining**: collection of functions(steps), sequentially run.
+    - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Functions**
@@ -1365,3 +1384,22 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
     - more than **80 GB storage** of messages in a queue.
     - needs to **track progress** for processing a message in the queue.
     - **server side logs** of all transactions with queue.
+
+## Azure VMs
+
+- **VMs**
+  - **hyper-V Gen 1 and 2**. virtualize complete computer.
+  - pay-as-you-go virtualized server.
+  - ![vm setup](img/vm_setup.PNG)
+- **VM Sizes**
+  - B,D: general purpose.
+  - E: memory optimized.
+  - F: compute optimized.
+  - H: network and compute optimized.
+  - L: storage optimized.
+  - N: GPU optimized.
+- **VM Security**
+  - ssh(linux, port 22).
+  - RDP(windows, port 3389). OS outside of Windows will need to install RDP client software.
+  - Bastion(Azure service, web browser).
+    - have to create subnet: **_AzureBastionSubnet_** with min `/27` (32 addresses).
