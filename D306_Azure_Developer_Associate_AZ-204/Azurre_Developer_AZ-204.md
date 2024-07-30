@@ -856,6 +856,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - low latency, elastic scalability of throughput. place data in region where users are.
   - add remove **regions** at any time. can have multiple Cosmos databases in account.
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
+  - **Collection**: maps to a container in Azure CosmosDB.
   - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
     - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
   - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
@@ -906,6 +907,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **post-triggers**: executed after modifying database. must be registered. runs as part of the same transaction and if trigger has exception, commit is rolled back and exception returned.
 
 ```js
+// JavaScript user defined Stored Procedure example.
 const helloWorldStoredProc = {
   id: 'helloWorld',
   serverScript: function () {
