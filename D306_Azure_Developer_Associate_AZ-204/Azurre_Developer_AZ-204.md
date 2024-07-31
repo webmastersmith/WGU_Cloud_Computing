@@ -68,7 +68,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
     - configuration data is stored as key-value pairs.
     - **naming**: any ascii except: `*,\`.
     - **max size**: 10,000 characters on a key-value pair.
-    - **label**: `Key = AppName:DbEndpoint & Label = Test`. Labels allow versioning.
+    - **label**: `Key = AppName:DbEndpoint & Label = Test`. Labels allow versioning/searching.
   - **Feature Management**
     - **feature flag**: on/off.
     - **feature manager**: manages lifecycle of feature flags.
@@ -377,7 +377,7 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
 ## Azure Authentication and Authorization
 
 - **Microsoft Identity**
-  - simplify Identity and Access Management.
+  - Azure Active Directory(AD) simplifies **Identity** and **Access Management**.
   - identities, social accounts, with your own API or Microsoft AP. (e.g. Microsoft Graph).
   - **OAuth 2.0 and OpenID Connect**: authenticate with several identity types.
     - Microsoft Entra ID and External ID, Azure Active Directory B2C.
@@ -856,7 +856,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - low latency, elastic scalability of throughput. place data in region where users are.
   - add remove **regions** at any time. can have multiple Cosmos databases in account.
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
-  - **Collection**: maps to a container in Azure CosmosDB.
+  - **Collection**: deprecated term. original explanation: maps to a container in Azure CosmosDB.
   - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
     - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
   - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
@@ -881,6 +881,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
 - **Cosmos DB API**
+  - you choose the API you want inside your Cosmos DB.
   - if you want to migrate existing database into Cosmos DB.
   - **NoSQL**: document format. first to update. best end-to-end experience. Query in SQL syntax.
   - **MongoDB**: BSON format. compatible with MongoDB.
@@ -1217,6 +1218,34 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - code-focused. long-running task, recurring jobs that can run in background.
   - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 
+## Azure Graph
+
+- **Microsoft Graph**
+  - Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile).
+  - build apps for organizations and consumers that interact with millions of users.
+  - to **access data in Microsoft Graph**, your application needs to acquire an **OAuth 2.0 access token**.
+  - **Microsoft Office 365**: Microsoft Graph is the gateway to data through REST API. `https://graph.microsoft.com`
+  - ![Microsoft Graph](img/graph.PNG)
+  - **Microsoft Graph connectors**: connect to Graph from external source.
+  - **Microsoft Graph Data Connect**: scalable delivery of Microsoft Graph data to Azure data stores.
+  - **Microsoft Graph SDKs**
+    - **Service Library**: low level API.
+    - **Core Library**: extra features(retry handling, secure redirect...)
+  - **Handling Responses**: Graph response handling.
+    - **Pagination**: result can be returned in multiple pages. `@odata.nextLink` to call next page.
+    - **Evolvable enumerations**: only **known members** are returned unless you add `Prefer` to **HTTP request header**.
+  - **Best Practices**
+    - **least privilege**: only necessary access.
+    - **correct permissions**: if user is present, use **_delegated_** permissions. if runs in background, use **_application_** permissions.
+    - **consent**: understand the difference between **static, dynamic, incremental consent**.
+    - **multi-tenant application**: expect customers to have various applications adn consent controls.
+
+```bash
+# CRUD -GET, POST, PATCH(update resource), PUT(replace resource), DELETE. -current version is v1.0
+# https://graph.microsoft.com/{version}/{resource}?{query-parameters}
+curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
+```
+
 ## Azure Key Vault
 
 - **Azure Key Vault**
@@ -1333,34 +1362,6 @@ az vm identity assign -g $AZ_RESOURCE_GROUP_NAME -n $AZ_VM2_NAME --identities $A
 # Clean up
 az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 az logout
-```
-
-## Azure Microsoft Graph
-
-- **Microsoft Graph**
-  - Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile).
-  - build apps for organizations and consumers that interact with millions of users.
-  - to **access data in Microsoft Graph**, your application needs to acquire an **OAuth 2.0 access token**.
-  - **Microsoft Office 365**: Microsoft Graph is the gateway to data through REST API. `https://graph.microsoft.com`
-  - ![Microsoft Graph](img/graph.PNG)
-  - **Microsoft Graph connectors**: connect to Graph from external source.
-  - **Microsoft Graph Data Connect**: scalable delivery of Microsoft Graph data to Azure data stores.
-  - **Microsoft Graph SDKs**
-    - **Service Library**: low level API.
-    - **Core Library**: extra features(retry handling, secure redirect...)
-  - **Handling Responses**: Graph response handling.
-    - **Pagination**: result can be returned in multiple pages. `@odata.nextLink` to call next page.
-    - **Evolvable enumerations**: only **known members** are returned unless you add `Prefer` to **HTTP request header**.
-  - **Best Practices**
-    - **least privilege**: only necessary access.
-    - **correct permissions**: if user is present, use **_delegated_** permissions. if runs in background, use **_application_** permissions.
-    - **consent**: understand the difference between **static, dynamic, incremental consent**.
-    - **multi-tenant application**: expect customers to have various applications adn consent controls.
-
-```bash
-# CRUD -GET, POST, PATCH(update resource), PUT(replace resource), DELETE. -current version is v1.0
-# https://graph.microsoft.com/{version}/{resource}?{query-parameters}
-curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
 ```
 
 ## Azure Resource Management Templates
