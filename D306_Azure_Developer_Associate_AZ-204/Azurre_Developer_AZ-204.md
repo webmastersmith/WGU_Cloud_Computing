@@ -1218,15 +1218,21 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - code-focused. long-running task, recurring jobs that can run in background.
   - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
 
+## Azure Front Door
+
+- **Front Door**
+  - traffic manager, load balancer, firewall(WAF), CDN
+  - ![azure front door](img/front_door.PNG)
+
 ## Azure Graph
 
 - **Microsoft Graph**
-  - Microsoft Graph is a RESTful web API that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile).
-  - build apps for organizations and consumers that interact with millions of users.
+  - Microsoft Graph is a **RESTful web API and SDK** that enables you to access Microsoft Cloud service resources(Office 365, Window 10, Mobile) **data**.
+  - It provides a **single, consistent way to interact with the vast amounts of data in Microsoft cloud services**.
   - to **access data in Microsoft Graph**, your application needs to acquire an **OAuth 2.0 access token**.
   - **Microsoft Office 365**: Microsoft Graph is the gateway to data through REST API. `https://graph.microsoft.com`
   - ![Microsoft Graph](img/graph.PNG)
-  - **Microsoft Graph connectors**: connect to Graph from external source.
+  - **Microsoft Graph connectors**: connect external data from third-party API to Graph. (e.g. AWS S3 to Graph).
   - **Microsoft Graph Data Connect**: scalable delivery of Microsoft Graph data to Azure data stores.
   - **Microsoft Graph SDKs**
     - **Service Library**: low level API.
@@ -1239,6 +1245,30 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **correct permissions**: if user is present, use **_delegated_** permissions. if runs in background, use **_application_** permissions.
     - **consent**: understand the difference between **static, dynamic, incremental consent**.
     - **multi-tenant application**: expect customers to have various applications adn consent controls.
+
+```bash
+# CRUD -GET, POST, PATCH(update resource), PUT(replace resource), DELETE. -current version is v1.0
+# https://graph.microsoft.com/{version}/{resource}?{query-parameters}
+curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@contoso.com'"
+```
+
+- build apps for organizations and consumers that interact with millions of users.
+- to **access data in Microsoft Graph**, your application needs to acquire an **OAuth 2.0 access token**.
+- **Microsoft Office 365**: Microsoft Graph is the gateway to data through REST API. `https://graph.microsoft.com`
+- ![Microsoft Graph](img/graph.PNG)
+- **Microsoft Graph connectors**: connect to Graph from external source.
+- **Microsoft Graph Data Connect**: scalable delivery of Microsoft Graph data to Azure data stores.
+- **Microsoft Graph SDKs**
+  - **Service Library**: low level API.
+  - **Core Library**: extra features(retry handling, secure redirect...)
+- **Handling Responses**: Graph response handling.
+  - **Pagination**: result can be returned in multiple pages. `@odata.nextLink` to call next page.
+  - **Evolvable enumerations**: only **known members** are returned unless you add `Prefer` to **HTTP request header**.
+- **Best Practices**
+  - **least privilege**: only necessary access.
+  - **correct permissions**: if user is present, use **_delegated_** permissions. if runs in background, use **_application_** permissions.
+  - **consent**: understand the difference between **static, dynamic, incremental consent**.
+  - **multi-tenant application**: expect customers to have various applications adn consent controls.
 
 ```bash
 # CRUD -GET, POST, PATCH(update resource), PUT(replace resource), DELETE. -current version is v1.0
