@@ -611,7 +611,8 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Caching**
   - improve performance and scalability of **Redis** and **Azure Content Delivery Network**.
 - **Cache for Redis**
-  - Redis is fast because it holds recent transactions in server memory.
+  - Redis is open-source **in-memory** database store. caching layer for **very fast database response**.
+  - high volatile(because in-memory), key:value store.
   - ![redis](img/redis.PNG)
   - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
   - **location**: region your location of traffic.
@@ -619,6 +620,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **clustering**: split data among multiple nodes(premium, Enterprise, Enterprise Flash).
   - **deletion**: 1-millisecond precision to delete from cache.
   - **Connection to Redis**: host name, port, and an access key for the cache.
+  - ![redis cli](img/redis_cli.PNG)
 - **Azure Content Deliver Network Caching**
   - deliver content to users. cache in various nodes across the world.
   - **Point-of-Presence (POP)**: edge locations caching content close to users.
@@ -1437,6 +1439,8 @@ az logout
     - **payload**: binary. MIME content type is `ContentType:application/json:charset=utf-8`
       - **broker properties**: routing config.
       - **user properties**:
+- **Servcie Bus Queue**
+  - **Queue**: pull model. subscriber must poll(ask for message).
   - **Queue Receive Modes**
     - **Receive and Delete**: good when consumer can tolerate missing message in failure event.
     - **Peek Lock**: good when consumer can't tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
@@ -1458,6 +1462,7 @@ az logout
     - **Queue**: name lowercase. Azure Queue service.
     - **Message**: max **64KB** size. time-to-live: 1 day - never expire.
   - ![queue url](img/queues_url.PNG)
+  - **Queue CLI**
   - ![queue cli](img/queues_cli.PNG)
   - **When to use**
     - more than **80 GB storage** of messages in a queue.
