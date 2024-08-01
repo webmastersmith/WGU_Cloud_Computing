@@ -85,7 +85,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 
 ## Azure API Management Service
 
-- **API Management Service**
+- **API Management Service (APIM)**
   - comprehensive toolbox for managing the entire lifecycle of your APIs, making them more secure, accessible, and efficient for both developers and end-users.
   - central interface between backend services and the clients using the service.
   - **Security**: authentication, authorization, and rate limiting.
@@ -105,8 +105,8 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - **Open**: used without subscription.
   - **Protected**: must be subscribed to.
   - **Groups**: manage visibility of products to developers.
-    - **Administrators**: manage API lifecycle.
-    - **Developers**: use APIs.
+    - **Administrators**: manage API lifecycle. CRUD.
+    - **Developers**: use APIs to build their applications.
     - **Guests**: read-only.
   - **Developers**: user accounts in API Management Service. Created or invited to join by administrator.
 - **API Gateway (data plane or runtime)**
@@ -120,6 +120,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
     - public endpoint exposes attack surface.
   - **Managed**: default gateway. all API traffic flows through Azure, regardless where backend is located.
   - **Self-hosted**: containerized version of default managed gateway for on-prem backends(hybrid or multicloud). manage APIs on-prem and across clouds from single API Management service in Azure.
+  - **DAPR**: companies that use DAPR(API microservice central authority), can integrate with APIM.
 - **API Subscriptions Keys**
   - secure API with subscription keys. valid keys are sent with developer request or it is rejected.
   - subscription is a named container for subscription keys(two keys -easier to rotate).
@@ -128,6 +129,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
   - **policy format**: `inbound, backend, outbound, on-error`.
   - if error, policy jumps to `on-error` section.
+  - ![APIM policies](img/apim.PNG)
 
 ```xml
 <!-- Sample Policy Format -->
