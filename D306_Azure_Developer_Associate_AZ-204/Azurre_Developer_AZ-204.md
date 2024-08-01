@@ -614,6 +614,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - Redis is open-source **in-memory** database store. caching layer for **very fast database response**.
   - high volatile(because in-memory), key:value store.
   - ![redis](img/redis.PNG)
+  - **Azure redis cache**: service from microsoft to provide **high-throughput** and **low latency** for same data request.
   - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
   - **location**: region your location of traffic.
   - **cache type**: size, performance, and features available for cache.
