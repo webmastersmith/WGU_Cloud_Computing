@@ -1043,6 +1043,9 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 
 ## Azure Event Hub
 
+- **Event Hub vs Event Grid**:
+  - **Event Hub**: high-volume data streaming of massive amount of events. (e.g. telemetry)
+  - **Event Grid**: event-driven(push) architecture for serverless application.
 - **Event Hub**
   - **big data streaming platform** and event ingestion service. It can receive and process millions of events per second.
     - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
