@@ -1404,6 +1404,14 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 az logout
 ```
 
+## Azure Notification Hub
+
+- **Notification Hub**
+  - push notifications to mobile apps outside text messages.
+  - phones must install app or suscribe to receive notifications.
+  - notifications are narrowed by **tag or tag expression**. Those who subscribe will receive it.
+  - ![notification hub](img/notification_hub.PNG)
+
 ## Azure Resource Management Templates
 
 - **ARM Templates**
