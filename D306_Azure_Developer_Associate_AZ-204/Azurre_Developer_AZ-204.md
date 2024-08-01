@@ -16,6 +16,8 @@
   - [Github Directory](https://github.com/Ditectrev/Microsoft-Azure-AZ-204-Developing-Solutions-for-Microsoft-Azure-Practice-Tests-Exams-Question-Answer)
   - [Shane Bart -pay attention to section on mind mapping](https://www.shanebart.com/az-204-exam-study-guide/)
   - [Madeleine Von Hausswolff -pay attention to practice with questions section](https://medium.com/webstep/exam-az-204-developing-solutions-for-microsoft-azure-study-tips-254d56941fd8)
+- **Cheat Sheets**
+  - <https://github.com/milanm/azure-cheat-sheet/tree/main>
 - **Testing Notes**
   - heavy on container and function services.
 - **Microsoft Learn**
@@ -1046,6 +1048,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
     - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
   - fully managed PaaS.
+  - ![event hub](img/event_hub.PNG)
   - **Checkpoint**: each consumer(event processor) **maintains its own checkpoint, tracking progress within the partition**. can resume if failure or restart.
     - consumer communicates with the Event Hub partition periodically. consumer(event processor) marks or commits the position(Event Hub partition records commit as a checkpoint) of the last successfully processed event within a partition.
     - If consumer goes offline, the new consumer can pick up where last checkpoint is.
