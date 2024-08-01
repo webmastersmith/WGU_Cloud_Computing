@@ -1423,10 +1423,15 @@ az logout
 
 - **Azure Messaging**
   - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
+- **Service Bus vs Queues**
+  - **Service Bus**: Enterprise-grade messaging service. advanced features like transactions, sessions, message ordering, and guaranteed delivery.
+  - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages.
 - **Service Bus queues**
   - Azure **messaging infrastructure** that supports **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
   - fully managed message broker for message queues and pub/sub topics.
   - decouples application from services that rely on messaging.
+  - ![service bus overview](img/service_bus_overview.PNG)
+  - ![service bus features](img/service_bus_features.PNG)
   - **Payloads and Serialization**: **messages** contain payload and metadata.
     - **metadata**: key:value pair description and handling instructions about payload.
     - **payload**: binary. MIME content type is `ContentType:application/json:charset=utf-8`
@@ -1452,6 +1457,8 @@ az logout
     - **storage account**: Azure Storage account.
     - **Queue**: name lowercase. Azure Queue service.
     - **Message**: max **64KB** size. time-to-live: 1 day - never expire.
+  - ![queue url](img/queues_url.PNG)
+  - ![queue cli](img/queues_cli.PNG)
   - **When to use**
     - more than **80 GB storage** of messages in a queue.
     - needs to **track progress** for processing a message in the queue.
