@@ -948,7 +948,7 @@ az logout
   - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
   - route or multicast to multiple endpoints.
   - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
-  - **Topics**: collection of related events. one or more endpoints can subscribe to these topics.
+  - **Topics**: collection of related events inside Event Grid. one or more endpoints can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
     - **custom topics**: third-party or custom topics.
   - ![event hub scaling](img/event_hub_consumer_group.png)
