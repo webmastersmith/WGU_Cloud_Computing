@@ -175,7 +175,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Application Insights
 
 - **Application Insights**
-  - extension of Auzre Monitor. provides **Application Performance Monitoring(APM)**.
+  - extension of Auzre Monitor. provides **Application Performance Monitoring(APM) (performance and availability)**.
   - **APM**: monitor from **development** through **test** and into **production**.
   - **metrics, telemetry**(describe application activities and health), **trace logging** data(detailed view of application activity).
   - **Insight Monitoring Parameters**
@@ -1221,7 +1221,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Front Door
 
 - **Front Door**
-  - traffic manager, load balancer, firewall(WAF), CDN
+  - traffic manager, load balancer, firewall(WAF), CDN/edge.
+  - caching, rule sets(for redirects, blocking...).
   - ![azure front door](img/front_door.PNG)
 
 ## Azure Graph
