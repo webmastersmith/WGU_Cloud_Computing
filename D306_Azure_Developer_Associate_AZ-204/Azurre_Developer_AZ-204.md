@@ -947,6 +947,7 @@ az logout
   - serverless event broker.
   - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
   - route or multicast to multiple endpoints.
+  - ![event grid overview](img/event_grid_overview.PNG)
   - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
   - **Topics**: collection of related events inside Event Grid. one or more endpoints can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
