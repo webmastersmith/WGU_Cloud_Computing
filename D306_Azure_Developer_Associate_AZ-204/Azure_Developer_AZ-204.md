@@ -1072,10 +1072,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Event Hub
 
 - **Event Hub vs Event Grid**:
-  - **Event Hub**: high-volume data streaming of massive amount of events. (e.g. telemetry)
-  - **Event Grid**: event-driven(push) architecture for serverless application.
+  - **Event Hub**: Enterprise level, high-volume data streaming of events. (e.g. telemetry)
+  - **Event Grid**: simple event-driven(push) architecture for serverless application.
 - **Event Hub**
-  - **big data streaming platform** and event ingestion service. It can receive and process millions of events per second.
+  - **Enterprise level, big data streaming platform** and event ingestion service. Designed to receive and process millions of events per second.
     - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
     - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
   - fully managed PaaS.
@@ -1093,7 +1093,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Event Publisher**: **Event Hub internal virtual endpoints** listening for producer(client) data.
     - Each producer(client) will be assigned a token(SAS, JWT) approving them to send data to one and only one **event publisher endpoint**.
       - Each event publisher endpoint has its own unique identifier and associated security credentials (SAS token or JWT). **Multiple clients with same token, can send data to same event publisher endpoint**.
-  - **Event Hub consumer(event processor, Data Receiver)**: instances of application or services reading events from Event Hubs. Read from specific partition.
+  - **Event Hub consumer(Event Processor, Data Receiver)**: instances of application or services reading events from Event Hubs. Read from specific partition.
     - the function that processes the events between partition and consumer is called sequentially.
   - **partitions**: sequence of events held in Event Hub. partitions are specified **at Event Hubs creation** and **can't be changed**.
     - enable parallel processing of events which increases throughput.
