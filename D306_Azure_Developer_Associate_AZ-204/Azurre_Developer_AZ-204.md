@@ -882,17 +882,29 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Cosmos DB
 
 - **Cosmos DB**
-  - fully managed NoSQL, globally distributed database. read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
-  - low latency, elastic scalability of throughput. place data in region where users are.
-  - add remove **regions** at any time. can have multiple Cosmos databases in account.
-  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
+  - fully managed NoSQL, globally distributed database service. You can run multiple API's inside the CosmosDB service.
+  - **Cosmos DB API**
+    - you choose the API you want inside your Cosmos DB.
+    - if you want to migrate existing database into Cosmos DB.
+    - **NoSQL**: document format. first to update. **best end-to-end experience**. Query in SQL syntax.
+    - **MongoDB**: BSON format. compatible with MongoDB.
+    - **PostgreSQL**: PostgreSQL distributed tables for scale.
+    - **Apache Cassandra**: column-oriented schema. supports CQL query language.
+    - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
+    - **Apache Gremlin**: for graph traversal queries. store data as edges and vertices. data too complex to be modeled with relational database.
   - **Collection**: deprecated term. original explanation: maps to a container in Azure CosmosDB.
   - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
     - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
   - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
+  - **Best Practices**
+    - for the lowest latency: place data in region where users are.
+    - unless you need a specific format(API), use the NoSQL option.
 - **Cosmos DB Containers**
+  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
+  - a container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
+  - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
+  - add remove **regions** at any time. can have multiple Cosmos databases in account.
   - unit of scalability both for provisioned throughput and storage.
-  - A container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
   - items added are distributed across the partitions(based on partition key).
   - **Throughput**
     - **Dedicated**: throughput on container exclusively reserved for container. Backed by SLA.
@@ -910,15 +922,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Consistent prefix**: updates made as a batch.
   - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
-- **Cosmos DB API**
-  - you choose the API you want inside your Cosmos DB.
-  - if you want to migrate existing database into Cosmos DB.
-  - **NoSQL**: document format. first to update. best end-to-end experience. Query in SQL syntax.
-  - **MongoDB**: BSON format. compatible with MongoDB.
-  - **PostgreSQL**: PostgreSQL distributed tables for scale.
-  - **Apache Cassandra**: column-oriented schema.
-  - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
-  - **Apache Gremlin**: for graph queries. store data as edges and vertices. data too complex to be modeled with relational database.
 - **Cosmos DB Modes**
   - you need dedicated resources for database.
   - **Provisioned Throughput Mode**: provision in increments of 100 RUs per second.
