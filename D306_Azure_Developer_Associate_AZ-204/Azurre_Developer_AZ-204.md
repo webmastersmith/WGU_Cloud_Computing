@@ -883,9 +883,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 
 - **Cosmos DB**
   - fully managed NoSQL, globally distributed database service. You can run multiple API's inside the CosmosDB service.
-  - **Cosmos DB API**
-    - you choose the API you want inside your Cosmos DB.
-    - if you want to migrate existing database into Cosmos DB.
+  - **Cosmos DB API**: choose the API(format) or migrate existing database into Cosmos DB.
     - **NoSQL**: document format. first to update. **best end-to-end experience**. Query in SQL syntax.
     - **MongoDB**: BSON format. compatible with MongoDB.
     - **PostgreSQL**: PostgreSQL distributed tables for scale.
