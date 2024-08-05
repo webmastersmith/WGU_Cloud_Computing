@@ -1125,7 +1125,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - highly: scalable, elastic, available, durable, secure by default.
   - abstracts infrastructure and are billed on execution time. **do not pay for idle servers**.
   - define input, actions, conditions, and output.
-  - **requires a storage account to operate**.
+  - **requires a storage account and these three services to operate**.
     - **Blob Storage**: store bindings and function keys.
     - **Azure Files**: store function app code.
     - **Queue and Table Storage**: used by task hubs in Durable Functions.
