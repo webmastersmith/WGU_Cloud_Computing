@@ -1171,7 +1171,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - ![FaaS overview](img/faas_overview.PNG)
     - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
-  - `host.json`: global configuration of all functions at the Function App level.
+  - `host.json`: global configuration of **all functions** at the Function App level.
   - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
   - `file.exe`: the actual code that will be run.
   - **function.json**: single function configuration file. **every function will have this file**.
@@ -1469,7 +1469,7 @@ az logout
   - **Queue**: pull model. subscriber must poll(ask for message).
   - **Queue Receive Modes**
     - **Receive and Delete**: good when consumer can tolerate missing message in failure event.
-    - **Peek Lock**: good when consumer can't tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
+    - **Peek Lock**: good when consumer **can't** tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
   - **Tiers**
     - basic: obsolete. entry level.
     - standard: variable throughput and latency, max message size **256KB**.
