@@ -899,7 +899,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - unless you need a specific format(API), use the NoSQL option.
 - **Cosmos DB Containers**
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
-  - a container is horizontally partitioned(evenly distributed across a SSD partition) and then replicated across multiple regions.
+  - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
   - add remove **regions** at any time. can have multiple Cosmos databases in account.
   - unit of scalability both for provisioned throughput and storage.
@@ -912,13 +912,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - data may lag replication across regions due to failures(eventual consistency).
   - region-agnostic. guaranteed for all operations regardless of region.
   - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
-  - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
-    - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
-    - removes database regions that do not respond to write until they are back online.
-  - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
-  - **Session**: single client can read-your-writes.
-  - **Consistent prefix**: updates made as a batch.
-  - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
+  - **Consistency Levels**
+    - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
+      - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
+      - removes database regions that do not respond to write until they are back online.
+    - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
+    - **Session**: single client can read-your-writes.
+    - **Consistent prefix**: updates made as a batch.
+    - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
 - **Cosmos DB Modes**
   - you need dedicated resources for database.
@@ -978,18 +979,18 @@ az logout
   - route or multicast to multiple endpoints.
   - ![event grid overview](img/event_grid_overview.PNG)
   - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
-  - **Topics**: collection of related events inside Event Grid. one or more endpoints can subscribe to these topics.
+  - **Topics**: collection of related events inside Event Grid. one or more endpoints(**Event Handlers**) can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
     - **custom topics**: third-party or custom topics.
   - ![event hub scaling](img/event_hub_consumer_group.png)
   - **Event Subscription**: which topics you subscribe to.
   - **Event Handler**: where event is sent.
   - ![event grid](img/event_grid.PNG)
-  - **Event Schema**
-    - event sources send events in an array with several objects.
-    - **Event Grid event schema**: default event schema. 64KB chunk, 1MB max size.
-    - **Cloud event schema**: support for 'CloudEvents V1.0'. open source event data description.
-    - ![event schema](img/event_schema.PNG)
+- **Event Schema**
+  - Event Sources send events in an array with several objects.
+  - **Event Grid event schema**: default event payload is 64KB chunk, and max 1MB size.
+  - **Cloud event schema**: support for 'CloudEvents V1.0'. open source event data description.
+  - ![event schema](img/event_schema.PNG)
 - **Event Delivery Durability**
   - if events sent are **not acknowledged or error**, Event Grid:
   - **default**: deliver one event at a time with a payload is an array. **64KB chunk, 1MB max size**.
