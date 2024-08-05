@@ -213,13 +213,23 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure App Services
 
 - **App Service**
-  - **App Service**: PaaS. HTTP-based service for hosting, develop and deploying web, mobile, and API apps.
-  - has third party **identity providers**(Facebook, Google, Microsoft) **integration** for managing **customer authentication**.
-  - defines a set of **compute resources**(how many VMs, compute, storage for each VM) for a web application to run on.
-  - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
-  - brings together everything you need to create websites, mobile backends, and web APIs for any platform or device.
-  - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
-  - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
+  - PaaS. Rapidly building and deploying web applications, APIs, and mobile backends.
+  - **Key Features**
+    - **Fully managed** platform: Handles **infrastructure management**, **scaling**, and **patching** for you.
+    - Wide range of **languages and frameworks**: Supports popular options like .NET, Java, Node.js, Python, and PHP.
+    - Built-in **CI/CD**: Integrates with GitHub, Azure DevOps, or other Git repositories for automated deployments.
+    - **Auto-scaling**: Scales your app based on demand.
+    - **Deployment slots**: Enable staging environments and easy swapping of production and staging slots.
+    - Integrated **monitoring and diagnostics**: Provides tools to track performance and troubleshoot issues.
+    - **identity providers integration**: (Facebook, Google, Microsoft). for managing **customer authentication**.
+  - **Setup**
+    - defines a set of **compute resources**(how many VMs, compute, storage for each VM) for a web application to run on.
+    - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
+    - **containers**: run container apps on windows or linux. pull images from Azure Container Registry or Docker Hub.
+    - **Load Balancer**: optional. layer 7, round robin, deliver HTTP request to **workers**(web servers).
+  - **Best for**
+    - Web applications, APIs, and mobile backends that don't require extensive customization of the underlying infrastructure.
+    - Development teams that want a streamlined deployment process with minimal infrastructure management.
 - **App Service Autoscaling and Automatic Scaling**
   - **Scaling**: vertical(larger compute/memory, scale up/down) or horizontal(more VMs, scale out/in).
   - **elasticity for your services**, responding to changes in the environment by **adding or removing web servers and balancing the load** between them.
@@ -639,18 +649,21 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Generalized web delivery optimizations: **seven days**
     - Large file optimizations: **one day**
     - Media streaming optimizations: **one year**
-  - **Purge TTL**
-    - version assets to ensure latest asset is delivered.
-    - purge by endpoint.
-    - specify file on all or single endpoint.
+  - **Purge Cache Before TTL Expires**
+    - **version assets** to ensure latest asset is delivered.
+    - purge **all assets by endpoint**.
+    - purge **specific file** by name on all or single endpoint.
   - **Geo-filtering**
     - filters based on geographic region. allow/block content.
 
 ## Azure Container Apps
 
 - **Azure Container Apps**
-  - serverless platform that **manages the details of Kubernetes deployment and container orchestration**.
+  - Running **containerized applications** in a **serverless environment** for **microservice architecture**.
+  - **fully managed details of Kubernetes deployment and container orchestration**.
   - **runs on top of Azure Kubernetes Service**.
+  - **run any container image**. Microservice-friendly. Event-driven scaling. Pay-as-you-go. DAPR(simplifies distributed applications) integration.
+- ![container app vs app services](img/container_app_vs_app_service.PNG)
   - Containers: use any runtime, programming language, or development stack.
   - **common uses**: API endpoints, background or event-driven processes, microservices.
   - **advantages**: dynamic scale to zero(except CPU or memory scale).
@@ -723,11 +736,23 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Container Instance (ACI)
 
 - **Azure Container Instance (ACI)**
-  - **serverless** way to **package**, **deploy** and **manage** cloud apps.
-  - Docker as a Service.
+  - Quickly running single containers in a serverless environment.
+  - Docker as a Service: **serverless** way to **package**, **deploy** and **manage** cloud apps.
+  - **Key Features**
+    - **Simple and fast deployment**: Spin up containers in seconds with a single command.
+    - **No orchestration** required: No need to manage complex Kubernetes clusters.
+    - **Hyper-V isolation**: Provides a secure environment for running your containers.
+    - **Granular billing**: Pay only for the **resources you use, per second**.
+    - Customizable: Configure CPU, memory, and storage resources.
+  - **Best for**
+    - **Simple, single-container** applications.
+    - **Batch jobs** and task automation.
+    - Scenarios where **quick and easy deployment is crucial**.
+    - Teams that want a **simple, lightweight solution** for running containers.
   - ACI provide a **simple** way to create **container instances** without having to create and manage a VM.
   - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
   - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
+  - ![container app vs container instances](img/container_app_vs_container_instance.PNG)
   - **Access**: FQDN `mylabel.azureregion.azurecontainer.io`
   - **Restart Policy**
     - **Always**: long running task. (e.g. web-servers).
