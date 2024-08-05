@@ -736,22 +736,19 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Container Instance (ACI)
 
 - **Azure Container Instance (ACI)**
-  - Quickly running single containers in a serverless environment.
+  - Quickly running **single containers** in a serverless environment without having to **create** and **manage** a **VM**.
   - Docker as a Service: **serverless** way to **package**, **deploy** and **manage** cloud apps.
   - **Key Features**
     - **Simple and fast deployment**: Spin up containers in seconds with a single command.
     - **No orchestration** required: No need to manage complex Kubernetes clusters.
     - **Hyper-V isolation**: Provides a secure environment for running your containers.
-    - **Granular billing**: Pay only for the **resources you use, per second**.
+    - **Granular billing**: Pay only for the **resources you use, per second**. (cheaper than VM which is billed per hour).
     - Customizable: Configure CPU, memory, and storage resources.
   - **Best for**
     - **Simple, single-container** applications.
     - **Batch jobs** and task automation.
     - Scenarios where **quick and easy deployment is crucial**.
     - Teams that want a **simple, lightweight solution** for running containers.
-  - ACI provide a **simple** way to create **container instances** without having to create and manage a VM.
-  - **billed only for containers in use per second**(cheaper than VM which is billed per hour).
-  - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
   - ![container app vs container instances](img/container_app_vs_container_instance.PNG)
   - **Access**: FQDN `mylabel.azureregion.azurecontainer.io`
   - **Restart Policy**
@@ -766,6 +763,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - values aren't visible in container properties.
     - you reference the **secureValue property**, not the value.
 - **Azure Container Groups**
+  - each container group(similar to pod in Kubernetes) has own public IP address and FQDN.
   - **collection of containers** that get scheduled on the **same host machine**.
   - The containers in a container group **share** a **lifecycle, resources, local network, and storage volumes**.
   - similar to a '**Kubernetes pod**'.
