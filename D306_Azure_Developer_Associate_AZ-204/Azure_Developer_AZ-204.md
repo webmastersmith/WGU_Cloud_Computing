@@ -1111,7 +1111,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - ![event hub scaling](img/event_hub_consumer_group.png)
 - **Roles**
   - advantage of **Microsoft Entra ID** with Event Hubs is that your credentials no longer need to be stored in your code. Instead, you can request an **OAuth 2.0** access token from Microsoft identity platform.
-  - **SAS policies** are defined at the **entity level**(namespace, Event Hub, consumer group), but not at the individual consumer level.
+  - **SAS policies** are defined at the **entity level**(namespace, Event Hub, consumer group), but not at the individual consumer inside a consumer group.
     - Permissions granted at the **namespace or Event Hub level** automatically apply to all consumer groups within that entity.
   - **RBAC** gives you fine-grained control to assign permissions to specific users, groups, or service principals at the consumer group level.
   - Azure **Event Hubs Data Owner**: Use this role to give complete access to Event Hubs resources.
