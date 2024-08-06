@@ -105,13 +105,14 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - create/manage account -get assigned API key.
 - **API Access**
   - one or more APIs and how APIs delivered to developers.
-  - **Open**: used without subscription.
-  - **Protected**: must be subscribed to.
-  - **Groups**: manage visibility of products to developers.
-    - **Administrators**: manage API lifecycle. CRUD.
-    - **Developers**: use APIs to build their applications.
-    - **Guests**: read-only.
-  - **Developers**: user accounts in API Management Service. Created or invited to join by administrator.
+  - **Products**: the way you package your APIs and **make them available** to developers. Products can include one or more APIs, and they can have different **usage quotas** and terms of service. By associating APIs with products, you can **control how they are exposed** and consumed by external users.
+    - **Open**: used without subscription.
+    - **Protected**: must be subscribed to.
+  - **Developers**: Developers are the users who consume your APIs.
+  - **Policies**: set of **rules** that you can apply to APIs to control their behavior.
+  - **Groups**: **organize developers** and **manage** their **access** to products.
+  - **Administrators**: manage API lifecycle. CRUD.
+  - **Guests**: read-only access. cannot use.
 - **API Gateway (data plane or runtime)**
   - **single point entry for all API traffic**. accepts request, verifies API key, enforces quotas, logs request.
   - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
@@ -186,7 +187,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Transaction search**: Transaction search allows you to search for **specific transactions** and view details.
     - **Application map**: Application map provides a **visual representation** of the components of your application and their **dependencies**.
     - **Live metrics**: Live metrics provide real-time data on **application performance**.
-    - **Availability**: The Availability section in Application Insights is specifically designed for setting up and **monitoring web tests**, including **multi-step web tests**. These tests simulate user interactions with your web application, allowing you to check its availability and responsiveness from different locations.
+    - **Availability**: The Availability section in Application Insights is specifically designed for setting up and **monitoring web tests**, including **multi-step web tests**. These tests simulate user interactions with your web application, allowing you to check its **availability** and **responsiveness** from different locations.
     - **Failures**: The Failures section provides insights into **exceptions and failed requests** in your application.
   - **Insight Monitoring Parameters**
     - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
