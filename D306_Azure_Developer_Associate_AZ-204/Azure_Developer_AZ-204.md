@@ -1020,9 +1020,17 @@ az logout
   - serverless event broker.
   - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
   - route or multicast to multiple endpoints.
+  - **Azure Event Grid goes like this**:
+    1. Publisher sends events to a Topic.
+    2. Event Grid matches the events against Subscriptions.
+    3. Events are delivered to the Handlers associated with the matching subscriptions.
   - ![event grid overview](img/event_grid_overview.PNG)
   - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
-  - **Topics**: collection of related events inside Event Grid. one or more endpoints(**Event Handlers**) can subscribe to these topics.
+  - **Handler**: Event handlers are the components that **receive and process the events** delivered by Event Grid. They are the **endpoints** (e.g., Azure Functions, webhooks) that you configure to take action based on the events.
+  - **Subscription**: mechanism through which **event handlers subscribe to a topic** and filter the specific events they want to receive. They define the relationship between a topic and a handler.
+  - **Publisher**: entities (applications, services) that **generate events** and send them to the Event Grid topic.
+  - **Topic**: a topic is a channel or **endpoint where you send your events**. Think of it as the **central hub for events** related to a specific subject. Publishers send events to the topic, and Event Grid then routes those events to the appropriate **subscribers**.
+    - collection of related events inside Event Grid. one or more endpoints(**Event Handlers**) can subscribe to these topics.
     - **system topics**: built-in to Azure Services. If you enable an Azure service, can subscribe to them.
     - **custom topics**: third-party or custom topics.
   - ![event hub scaling](img/event_hub_consumer_group.png)
@@ -1207,8 +1215,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Trigger**: function can only have **one trigger**.
       - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
       - triggers simplify functions by abstracting hardcoding to services.
-    - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
-      - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like [EventGridTrigger]) to specify that the function should be triggered by events from Azure Event Grid.)
+      - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
+        - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like **EventGridTrigger**) to specify that the function should be triggered by events from Azure Event Grid.)
     - **Bindings**: **optional**. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
       - **input bindings**: other service responds to event. function is called with data as the argument.
       - **output bindings**: other service is listening. the function return value is passed to listening service.
@@ -1219,7 +1227,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
     - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers#configuration>
-    - `host.json`: where to send requests by pointing to a web server capable of processing HTTP events.
+    - `host.json`: global config of function app.
+      - Controls runtime behaviors, middleware settings, and other global aspects of the function app.
     - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
     - `file.exe`: the actual code that will be run.
   - **function.json**: single function configuration file. **every function will have this file**.
