@@ -182,7 +182,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Application Insights**
   - extension of Auzre Monitor. provides **Application Performance Monitoring(APM) (performance and availability)**.
   - **APM**: monitor from **development** through **test** and into **production**.
-  - **metrics, telemetry**(describe application activities and health), **trace logging** data(detailed view of application activity).
+    - **Smart detection**: Smart detection in Azure Monitor proactively **analyzes telemetry** from your applications and **automatically detects** performance anomalies, potential failures, and other unusual patterns. It **provides alerts** and insights to help you quickly identify and address issues before they impact users.
+    - **Transaction search**: Transaction search allows you to search for specific transactions and view details.
+    - **Application map**: Application map provides a visual representation of the components of your application and their dependencies.
+    - **Live metrics**: Live metrics provide real-time data on application performance.
   - **Insight Monitoring Parameters**
     - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
     - **Dependency rates, response times, and failure rates** - Find out whether external services are slowing you down.
@@ -194,8 +197,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Host diagnostics**: from Docker or Azure.
     - **Diagnostic trace logs**: from your app - so that you can correlate trace events with requests.
     - **Custom events and metrics**: that you write yourself in the client or server code, to track business events such as items sold or games won.
-- **Instrumenting**
-  - enabling application telemetry capturing.
+- **Instrument Key**
+  - unique identifier that is assigned to **each Application Insights resource**. When you configure your application to use an instrumentation key, it **enables the application to send telemetry data** to that specific Application Insights resource.
   - install instrumentation in your app and it monitors and directs the telemetry data to an Application Insights resource by using a unique token.
 - **Availability Testing**
   - monitor availability and responsiveness.
@@ -662,6 +665,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **clustering**: split data among multiple nodes(premium, Enterprise, Enterprise Flash).
   - **deletion**: 1-millisecond precision to delete from cache.
   - **Connection to Redis**: host name, port, and an access key for the cache.
+  - **Redis Cache Timespan**: `new TimeSpan(hour, minute, seconds)`
   - ![redis cli](img/redis_cli.PNG)
 - **Azure Content Deliver Network Caching**
   - deliver content to users. cache in various nodes across the world.
