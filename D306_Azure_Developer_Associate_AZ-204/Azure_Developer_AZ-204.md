@@ -1021,9 +1021,9 @@ az logout
   - publishers emit events, but have no expectation on how events are handled(**event sources**). subscribers listen for events and decide how to handle(**event handlers**).
   - route or multicast to multiple endpoints.
   - **Azure Event Grid goes like this**:
-    1. Publisher sends events to a Topic.
-    2. Event Grid matches the events against Subscriptions.
-    3. Events are delivered to the Handlers associated with the matching subscriptions.
+    1. Publisher sends events to a **Topic**.
+    2. Event Grid matches the events against **Subscriptions**.
+    3. Events are delivered to the **Handlers** associated with the matching subscriptions.
   - ![event grid overview](img/event_grid_overview.PNG)
   - **Events**: what happened. 64KB chunk 1MB max. HTTP POST request is sent. payload in request body.
   - **Handler**: Event handlers are the components that **receive and process the events** delivered by Event Grid. They are the **endpoints** (e.g., Azure Functions, webhooks) that you configure to take action based on the events.
@@ -1133,6 +1133,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
   - fully managed PaaS.
   - ![event hub](img/event_hub.PNG)
+  - **Expiration**: default is **one day**.
   - **Checkpoint**: each consumer(event processor) **maintains its own checkpoint, tracking progress within the partition**. can resume if failure or restart.
     - consumer communicates with the Event Hub partition periodically. consumer(event processor) marks or commits the position(Event Hub partition records commit as a checkpoint) of the last successfully processed event within a partition.
     - If consumer goes offline, the new consumer can pick up where last checkpoint is.
@@ -1533,6 +1534,7 @@ az logout
 - **Service Bus vs Queues**
   - **Service Bus**: Enterprise-grade messaging service. advanced features like transactions, sessions, message ordering, and guaranteed delivery.
   - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages.
+  - ![queue storage vs service bus](img/queue_vs_service_bus.PNG)
 - **Service Bus queues**
   - Azure **messaging infrastructure** that supports **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
   - fully managed message broker for message queues and pub/sub topics.
@@ -1543,11 +1545,11 @@ az logout
     - **metadata**: key:value pair description and handling instructions about payload.
     - **payload**: binary. MIME content type is `ContentType:application/json:charset=utf-8`
       - **broker properties**: routing config.
-      - **user properties**:
+      - **user properties**: data.
 - **Servcie Bus Queue**
   - **Queue**: pull model. subscriber must poll(ask for message).
   - **Queue Receive Modes**
-    - **Receive and Delete**: good when consumer can tolerate missing message in failure event.
+    - **Receive and Delete**: good when consumer **can** tolerate missing message in failure event.
     - **Peek Lock**: good when consumer **can't** tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
   - **Tiers**
     - basic: obsolete. entry level.
@@ -1561,7 +1563,11 @@ az logout
     - message size often bigger than **64KB** but less than 1MB.
     - **RBAC** support.
 - **Azure Queue Storage**
-  - Azure **storage infrastructure**. store large numbers of messages(millions, limit is size of storage account), accessible from anywhere using HTTPS.
+  - Azure **storage infrastructure**. store large numbers of messages(millions, limit is size of storage account), accessible from anywhere using **HTTPS**.
+  - **Delivery**: **30 seconds** after message read, message becomes invisisble.
+  - **Batched Receive**: **retrieving multiple messages in a single batch operation**, improving efficiency when processing large volumes of messages.
+  - **Peeking**: peeking refers to the process of **retrieving messages from a queue without removing them**. It allows you to **examine the messages** contents without changing their **visibility** or state in the queue.
+    - **max 32 message** limitation imposed by the Azure Queue Storage REST API.
   - **config**
     - **storage account**: Azure Storage account.
     - **Queue**: name lowercase. Azure Queue service.
