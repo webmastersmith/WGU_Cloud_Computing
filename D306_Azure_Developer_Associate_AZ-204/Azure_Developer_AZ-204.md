@@ -223,7 +223,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Integrated **monitoring and diagnostics**: Provides tools to track performance and troubleshoot issues.
     - **identity providers integration**: (Facebook, Google, Microsoft). for managing **customer authentication**.
   - **VM Scale Set vs App Service**
-  - ![vm scale set vs app service|300](img/scale_set_vs_app_service.PNG)
+  - ![vm scale set vs app service](img/scale_set_vs_app_service.PNG)
   - **Setup**
     - defines a set of **compute resources**(how many VMs, compute, storage for each VM) for a web application to run on.
     - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
@@ -253,13 +253,13 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Actions**: scale-out/in. define rules in pairs: when to scale-out and when to scale-in.
       - **cool down**: during this time, will not scale in/out.
     - **Autoscale condition**: group of autoscale rules. scale-out if **any** rules met. scale-in if **all** rules met.
-    - **Best Practices**
-      - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
-      - min/max numbers are **inclusive**, so scale-in/out rules must not use same numbers.
-      - choose best diagnostic metric: Avg, Min, Max, Total.
-      - when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.
-      - **default instance count** should be the min needed if metrics are unavailable.
-      - configure autoscale notifications.
+  - **Best Practices**
+    - **DoS attack**: implement **detection** and **filtering** of requests **before they reach your service**.
+    - choose best diagnostic metric: Avg, Min, Max, Total.
+    - min/max numbers are **inclusive**, so scale-in/out rules must not use same numbers.
+    - (e.g. when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.)
+    - **default instance count** should be the min needed if metrics are unavailable.
+    - configure autoscale notifications.
 - **App Service Plan Tiers**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
@@ -900,6 +900,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Best Practices**
     - for the lowest latency: place data in region where users are.
     - unless you need a specific format(API), use the NoSQL option.
+- **Cosmos DB Keys**
+  - Keys allow for identifying, and searching data.
+  - Primary key, Alternate key, Synthetic key, Unique key.
+  - ![cosmos db keys](img/cosmos_db_keys.PNG)
 - **Cosmos DB Containers**
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
@@ -1174,15 +1178,32 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - ![FaaS overview](img/faas_overview.PNG)
     - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
-  - `host.json`: global configuration of **all functions** at the Function App level.
-  - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
-  - `file.exe`: the actual code that will be run.
+    - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers#configuration>
+    - `host.json`: where to send requests by pointing to a web server capable of processing HTTP events.
+    - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
+    - `file.exe`: the actual code that will be run.
   - **function.json**: single function configuration file. **every function will have this file**.
     - defines the functions trigger, bindings, direction...
       - **dataType**: binary, stream, string.
       - **direction**: in/out
+  - **Arguments**: pass values to function.
 
 ```json
+# host.json example
+{
+  "version": "2.0",
+  "customHandler": {
+    "description": {
+      "defaultExecutablePath": "app/handler.exe",
+      "arguments": [
+        "--database-connection-string",
+        "%DATABASE_CONNECTION_STRING%"
+      ],
+      "workingDirectory": "app"
+    }
+  }
+}
+
 # function.json example
 {
   "disabled": false,
