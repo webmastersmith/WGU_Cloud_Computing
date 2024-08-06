@@ -88,9 +88,9 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 
 ## Azure API Management Service
 
-- **API Management Service (APIM)**
+- **API Management (APIM)**
   - comprehensive toolbox for managing the entire lifecycle of your APIs, making them more secure, accessible, and efficient for both developers and end-users.
-  - central interface between backend services and the clients using the service.
+  - API Management acts as a gateway between the client applications and your backend services. It provides a facade that allows you to **abstract the underlying implementation of your APIs**. You can change or replace your backend systems without impacting the way clients interact with your APIs. It also offers additional benefits like **rate limiting, caching, and security features**.
   - **Security**: authentication, authorization, and rate limiting.
   - **Analytics and Monitoring**: Tracks API usage, performance, and health to identify and troubleshoot issues.
   - **Transformation**: Allows you to modify API requests and responses using policies (e.g., convert XML to JSON).
@@ -109,14 +109,15 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
     - **Open**: used without subscription.
     - **Protected**: must be subscribed to.
   - **Developers**: Developers are the users who consume your APIs.
-  - **Policies**: set of **rules** that you can apply to APIs to control their behavior.
+  - **Policies**: set of **rules**. executed on API request.
+    - typically run a function on the query. (e.g. rate limit, transform XML to JSON...).
+    - **Policy Scope**: can be applied on global(all APIs), workspace, product, API, or operation(**smallest unit** on an API).
   - **Groups**: **organize developers** and **manage** their **access** to products.
   - **Administrators**: manage API lifecycle. CRUD.
   - **Guests**: read-only access. cannot use.
 - **API Gateway (data plane or runtime)**
   - **single point entry for all API traffic**. accepts request, verifies API key, enforces quotas, logs request.
   - API gateway sits between clients and services(proxy). handles all API requests, applying policies, and collecting telemetry.
-  - **Policies**: executed on API request. typically run a function on the query. (e.g. rate limit, transform XML to JSON...).
   - **TLS**: Gateway handles handshake and verification.
   - **with no gateway**, request are sent to back-end servers.
     - complex code(auth, rate limiting, proxy)
@@ -131,12 +132,12 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - `curl --header "Ocp-Apim-Subscription-Key: <key string>" https://<apim gateway>.azure-api.net/api/path`
 - **API Management Policies**
   - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
-  - **policy format**: `inbound, backend, outbound, on-error`.
+  - **policy format**: XML. `inbound, backend, outbound, on-error`.
   - if error, policy jumps to `on-error` section.
   - ![APIM policies](img/apim.PNG)
 
 ```xml
-<!-- Sample Policy Format -->
+<!-- Sample Policy Format in XML -->
 <policies>
   <inbound>
     <!-- statements to be applied to the request go here -->
@@ -1066,6 +1067,8 @@ az logout
 - **Event Grid Roles**: built-in RBAC roles.
   - **Event Source**: to create event, you must have `Microsoft.EventGrid/EventSubscriptions/Write` permissions.
   - ![event grid roles](img/event_grid_roles.PNG)
+- **Event Grid Configurations**
+  - **appsettings.json**: in **.NET** holds configuration settings. store the credentials needed to connect to Azure Event Grid.
 
 ```bash
 # Event Grid
@@ -1203,7 +1206,9 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Triggers and Bindings**
     - **Trigger**: function can only have **one trigger**.
       - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
-      - simplify functions by abstracting hardcoding to services.
+      - triggers simplify functions by abstracting hardcoding to services.
+    - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
+      - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like [EventGridTrigger]) to specify that the function should be triggered by events from Azure Event Grid.)
     - **Bindings**: **optional**. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
       - **input bindings**: other service responds to event. function is called with data as the argument.
       - **output bindings**: other service is listening. the function return value is passed to listening service.
