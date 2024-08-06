@@ -223,7 +223,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Integrated **monitoring and diagnostics**: Provides tools to track performance and troubleshoot issues.
     - **identity providers integration**: (Facebook, Google, Microsoft). for managing **customer authentication**.
   - **VM Scale Set vs App Service**
-  - ![vm scale set vs app service](img/scale_set_vs_app_service.PNG){: width="50%"}
+  - ![vm scale set vs app service|300](img/scale_set_vs_app_service.PNG)
   - **Setup**
     - defines a set of **compute resources**(how many VMs, compute, storage for each VM) for a web application to run on.
     - configuration settings include runtime stack(node, python, dotnet...), operating system(linux, windows), region and App Service plan(standard, premium, isolated...).
