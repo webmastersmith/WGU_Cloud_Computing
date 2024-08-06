@@ -183,9 +183,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - extension of Auzre Monitor. provides **Application Performance Monitoring(APM) (performance and availability)**.
   - **APM**: monitor from **development** through **test** and into **production**.
     - **Smart detection**: Smart detection in Azure Monitor proactively **analyzes telemetry** from your applications and **automatically detects** performance anomalies, potential failures, and other unusual patterns. It **provides alerts** and insights to help you quickly identify and address issues before they impact users.
-    - **Transaction search**: Transaction search allows you to search for specific transactions and view details.
-    - **Application map**: Application map provides a visual representation of the components of your application and their dependencies.
-    - **Live metrics**: Live metrics provide real-time data on application performance.
+    - **Transaction search**: Transaction search allows you to search for **specific transactions** and view details.
+    - **Application map**: Application map provides a **visual representation** of the components of your application and their **dependencies**.
+    - **Live metrics**: Live metrics provide real-time data on **application performance**.
+    - **Availability**: The Availability section in Application Insights is specifically designed for setting up and **monitoring web tests**, including **multi-step web tests**. These tests simulate user interactions with your web application, allowing you to check its availability and responsiveness from different locations.
+    - **Failures**: The Failures section provides insights into **exceptions and failed requests** in your application.
   - **Insight Monitoring Parameters**
     - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
     - **Dependency rates, response times, and failure rates** - Find out whether external services are slowing you down.
