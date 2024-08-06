@@ -452,6 +452,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
     - the app is registered with Microsoft Identity Service.
     - **Authority**: once registered, you will have a client ID and identity provider URL. known as Authority.
   - ![masl auth](img/masl_auth.PNG)
+- **Active Directory**
+  - **AD Premium**: authentication, restricting IP address logins, multifactor auth.
+  - ![ad auth tier features](img/ad_tier_auth_features.PNG)
 - **RBAC**
   - **Scope**
     - **Management group**: containers that help you manage access, policy, and compliance for multiple subscriptions. They are the **highest level of scope in Azure RBAC**. You can assign Azure roles to users, groups, or service principals at the management group level, which then applies to all the subscriptions within that group.
