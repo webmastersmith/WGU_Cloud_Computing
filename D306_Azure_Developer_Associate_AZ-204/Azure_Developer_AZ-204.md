@@ -64,9 +64,10 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
 
 - **App Configuration Service**
   - fully managed, central management of app settings and feature flags.
+  - custom role-out of changes to early adopters.
   - point-in-time replay of settings.
   - dynamic change app settings without restart/redeploy.
-  - **Resource Name**: 5 -50 chars, `-, 0-9, a-z` // cannot start or end with `-`.
+  - **Resource Name**: **5-50 characters**, `-, 0-9, a-z` // cannot start or end with `-`.
   - **Keys**
     - configuration data is stored as key-value pairs.
     - **naming**: any ascii except: `*,\`.
@@ -76,7 +77,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
     - **feature flag**: on/off.
     - **feature manager**: manages lifecycle of feature flags.
     - **filter**: rule for evaluating state of feature flag.
-- **Secure App Configuration Data**
+- **Security**
   - **Customer-managed keys**: Azure Key Vault with soft-delete and purge-protection features enabled.
     - RSA or RSA-HSM key within the Key Vault: The key must not be expired, it must be enabled, and it must have both wrap and unwrap capabilities enabled
   - **Private endpoints**: allow clients on a virtual network to securely access data over a **Azure Private Link**.
@@ -111,7 +112,6 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - **Developers**: Developers are the users who consume your APIs.
   - **Policies**: set of **rules**. executed on API request.
     - typically run a function on the query. (e.g. rate limit, transform XML to JSON...).
-    - **Policy Scope**: can be applied on global(all APIs), workspace, product, API, or operation(**smallest unit** on an API).
   - **Groups**: **organize developers** and **manage** their **access** to products.
   - **Administrators**: manage API lifecycle. CRUD.
   - **Guests**: read-only access. cannot use.
@@ -132,6 +132,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - `curl --header "Ocp-Apim-Subscription-Key: <key string>" https://<apim gateway>.azure-api.net/api/path`
 - **API Management Policies**
   - Policies are a collection of Statements that are executed sequentially on the request or response of an API.
+  - **Policy Scope**: can be applied on global(all APIs), workspace, product, API, or operation(**smallest unit** on an API).
   - **policy format**: XML. `inbound, backend, outbound, on-error`.
   - if error, policy jumps to `on-error` section.
   - ![APIM policies](img/apim.PNG)
@@ -182,7 +183,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ## Azure Application Insights
 
 - **Application Insights**
-  - extension of Auzre Monitor. provides **Application Performance Monitoring(APM) (performance and availability)**.
+  - extension of Azure Monitor. provides **Application Performance Monitoring(APM) (performance and availability)**.
   - **APM**: monitor from **development** through **test** and into **production**.
     - **Smart detection**: Smart detection in Azure Monitor proactively **analyzes telemetry** from your applications and **automatically detects** performance anomalies, potential failures, and other unusual patterns. It **provides alerts** and insights to help you quickly identify and address issues before they impact users.
     - **Transaction search**: Transaction search allows you to search for **specific transactions** and view details.
