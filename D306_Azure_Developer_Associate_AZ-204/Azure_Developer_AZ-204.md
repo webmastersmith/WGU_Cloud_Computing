@@ -448,8 +448,20 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
     - the app is registered with Microsoft Identity Service.
     - **Authority**: once registered, you will have a client ID and identity provider URL. known as Authority.
   - ![masl auth](img/masl_auth.PNG)
+- **RBAC**
+  - **Scope**
+    - **Management group**: containers that help you manage access, policy, and compliance for multiple subscriptions. They are the **highest level of scope in Azure RBAC**. You can assign Azure roles to users, groups, or service principals at the management group level, which then applies to all the subscriptions within that group.
+    - **Subscription**: logical unit of Azure services that are linked to a single billing account.
+    - **Resource group**: container that holds related resources for an Azure solution. It is a smaller scope than both subscriptions and management groups.
+    - **Resource**: individual instances of Azure services (like a virtual machine, storage account, or database). This is the smallest scope in Azure RBAC.
+  - ![rbac hierarchy](img/rbac_hierarchy.png)
 - **OAuth 2.0**
   - token given to service principal to act on your behalf, without giving your credentials.
+  - **Authorization server**: issues access token.
+  - **Access token**: credential used by the client (application) to **access protected resources** on behalf of the user. It represents the approved authorization granted by the user to the client.
+  - **Authentication grant**: An authentication grant (e.g., authorization code) is an intermediate credential used to **obtain an access token**, but it doesn't represent the final authorization itself.
+  - **Refresh token**: **obtain a new access token** when the current one expires. While it's part of the OAuth flow, it doesn't directly represent the authorization.
+  - **Authorization request**: initial step in the OAuth process, where the client asks the user for permission to access protected resources. It's not a credential used to represent the approved authorization.
 - **Service Principal Object**
   - to access resources secured by Microsoft Entra tenant, the service must have valid security principal.
   - service principal must be **created in each tenant** where the application is used to enable it to establish an **identity** for sign-in and/or **access to resources** being secured by the tenant.
@@ -542,6 +554,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - `https://mystorageaccount.blob.core.windows.net/mycontainer`
     - **blob**: must be inside container. can have multiple blobs.
       - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
+- **Blob Permissions**
+  - **Lease Blob**: A lease on a blob provides **exclusive write and delete access** to the blob for a specified duration. While a lease is active, other clients cannot modify or delete the blob.
+  - **Set Blob Immutability Policy**: An immutability policy makes a blob immutable, **preventing any changes** for a set period. It doesn't provide the exclusive access needed for write and delete operations.
+  - **Snapshot Blob**: Snapshots create a **read-only copy** of the blob at a specific point in time. While useful for versioning, it doesn't offer exclusive write or delete access to the original blob.
+  - **Set Blob Properties**: This operation allows **changing metadata** of the blob (e.g., content type, cache control) but doesn't provide exclusive write or delete access.
 - **Static Website**
   - serve directly from storage **container** named `$web`. serverless architecture.
   - **Azure Static Web Apps** for header and Auth(N|Z) support.
@@ -892,7 +909,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **PostgreSQL**: PostgreSQL distributed tables for scale.
     - **Apache Cassandra**: column-oriented schema. supports CQL query language.
     - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
-    - **Apache Gremlin**: for graph traversal queries. store data as edges and vertices. data too complex to be modeled with relational database.
+    - **Apache Gremlin**: for **graph traversal queries**. store data as edges and vertices. data too complex to be modeled with relational database.
   - **Collection**: deprecated term. original explanation: maps to a container in Azure CosmosDB.
   - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
     - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
@@ -924,7 +941,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
       - removes database regions that do not respond to write until they are back online.
     - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
-    - **Session**: single client can read-your-writes.
+    - **Session**: **default**. single client can read-your-writes.
     - **Consistent prefix**: updates made as a batch.
     - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
