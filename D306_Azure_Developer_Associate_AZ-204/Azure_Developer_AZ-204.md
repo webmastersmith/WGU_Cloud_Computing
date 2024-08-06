@@ -66,6 +66,7 @@ az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv
   - fully managed, central management of app settings and feature flags.
   - point-in-time replay of settings.
   - dynamic change app settings without restart/redeploy.
+  - **Resource Name**: 5 -50 chars, `-, 0-9, a-z` // cannot start or end with `-`.
   - **Keys**
     - configuration data is stored as key-value pairs.
     - **naming**: any ascii except: `*,\`.
@@ -418,8 +419,10 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
   - (permission to preform an action) and secrets can be assigned to the object.
   - permission is granted through URI: `https://graph.microsoft.com/Calendars.Read`.
   - **Permission Types**
-    - **Delegated permissions**: signed-in user present. user consents to app request.
-    - **App-only access permissions**: apps that run without signed-in user present. only administrator can consent to app-only access permissions.
+    - **Delegated permissions**: acting in behalf of a signed-in user. user consents to app request.
+    - **App-only access permissions**: apps that run without signed-in user present. (e.g. background task)
+      - only administrator can consent to app-only access permissions.
+      - Services like **Microsoft Graph** will have to '**admin**' level permissions to access data.
   - **Consent Types**
     - **static user consent**: manual permissions, all up front at sign-in, in app configuration.
     - **incremental and dynamic user consent**: incremental assign permissions as needed.
@@ -651,6 +654,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - Redis is open-source **in-memory** database store. caching layer for **very fast database response**.
   - high volatile(because in-memory), key:value store.
   - ![redis](img/redis.PNG)
+  - ![redis cache](img/redis_cache_tier.PNG)
   - **Azure redis cache**: service from microsoft to provide **high-throughput** and **low latency** for same data request.
   - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
   - **location**: region your location of traffic.
@@ -1366,6 +1370,7 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
 
 - **Azure Key Vault**
   - cloud service for securely storing and accessing secrets(API keys, passwords, certificates, or cryptographic keys).
+  - **Access Keys/Secrets**: `https://{yourName}.vault.azure.net/{secrets, keys...}/{secret name}/{vesion}`
   - **Tiers**
     - **Standard**: encrypts with a software key.
     - **Premium**: includes hardware security module(HSM)-protected keys.
@@ -1375,6 +1380,11 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
   - **Benefits**
     - highly available, secure(Microsoft Entra ID, RBAC) centralized secret management.
     - access and use logging or stream to event hub.
+- **Key Vault Self-Signed Certificate Creation**
+  - **CertificatePolicy**: This class is used to **define the policy for creating certificates** in Azure Key Vault. It allows you to **specify various properties** of the key that backs the certificate, such as key type, key size, and key usage. You can also set custom attributes on the policy object. This is the correct class to use when you need to configure the key properties of a self-signed certificate.
+  - **CertificateOperation**: This class represents an **operation on a certificate** in Azure Key Vault (e.g., create, import, update). While it's used in the process of generating a certificate, it doesn't directly allow you to set custom key properties.
+  - **Trigger**: This is a concept used in Azure Functions or Logic Apps to initiate a workflow **based on an event**. It's not relevant to setting key properties in Key Vault.
+  - **Action**: This is a **general term for an operation or task**, and it's not a specific class used in the context of Azure Key Vault certificates.
   - **Best Practices**
     - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
     - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
