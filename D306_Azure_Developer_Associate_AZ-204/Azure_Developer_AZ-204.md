@@ -190,30 +190,12 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Application map**: Application map provides a **visual representation** of the components of your application and their **dependencies**.
     - **Live metrics**: Live metrics provide real-time data on **application performance**.
     - **Availability**: The Availability section in Application Insights is specifically designed for setting up and **monitoring web tests**, including **multi-step web tests**. These tests simulate user interactions with your web application, allowing you to check its **availability** and **responsiveness** from different locations.
+      - **Standard Test**: ping test, SSL/TLS valid. HTTP GET, HEAD, POST.
+      - **Custom TrackAvailability Test**: custom app that tracks availability. **multi request** or **authentication** test scenarios.
     - **Failures**: The Failures section provides insights into **exceptions and failed requests** in your application.
-  - **Insight Monitoring Parameters**
-    - **Request rates, response times, and failure rates** - Find out which pages are most popular, at what times of day, and where your users are. See which pages perform best. If your response times and failure rates go high when there are more requests, then perhaps you have a resourcing problem.
-    - **Dependency rates, response times, and failure rates** - Find out whether external services are slowing you down.
-    - **Exceptions** - Analyze the aggregated statistics, or pick specific instances and drill into the stack trace and related requests. Both server and browser exceptions are reported.
-    - **Page views and load performance** - reported by your users' browsers.
-    - **AJAX calls** from web pages - rates, response times, and failure rates.
-    - **User and session counts**.
-    - **Performance counters**: from your Windows or Linux server machines, such as CPU, memory, and network usage.
-    - **Host diagnostics**: from Docker or Azure.
-    - **Diagnostic trace logs**: from your app - so that you can correlate trace events with requests.
-    - **Custom events and metrics**: that you write yourself in the client or server code, to track business events such as items sold or games won.
-- **Instrument Key**
+- **Instrumentation Key**
   - unique identifier that is assigned to **each Application Insights resource**. When you configure your application to use an instrumentation key, it **enables the application to send telemetry data** to that specific Application Insights resource.
-  - install instrumentation in your app and it monitors and directs the telemetry data to an Application Insights resource by using a unique token.
-- **Availability Testing**
-  - monitor availability and responsiveness.
-  - Application Insights sends web request at regular intervals(availability) from points around the world(responsiveness).
-  - **Standard Test**: ping test, SSL/TLS valid. HTTP GET, HEAD, POST.
-  - **Custom TrackAvailability Test**: custom app that tracks availability. **multi request** or **authentication** test scenarios.
-- **Application Map**
-  - spot performance bottlenecks and failure hotspots.
-  - each node represents application component.
-  -
+  - install instrumentation in your app and it monitors and **directs the telemetry data** to an Application Insights resource by using a unique token.
   - ![application map](img/application_map.PNG)
 - **Log Metrics**
   - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
