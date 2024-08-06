@@ -410,6 +410,10 @@ az webapp list-runtimes --os-type linux # show linux runtime options. node, dotn
     - how service can issue tokens to access app.
     - resources app can access.
     - actions app can take.
+  - **Granting Permissions**
+    - **Managed identity**: feature of Azure Active Directory (Azure AD) that **provide an identity** for applications to use when connecting to resources that support Azure AD authentication. This **eliminates the need for developers to manage credentials**.
+    - **Service principal**: similar to user accounts, but they are created for use by applications. They still require credentials to be managed.
+    - **User**: User accounts are for individual people, and using them to grant resource permissions to other resources would require managing the user's credentials.
 - **scope**
   - (permission to preform an action) and secrets can be assigned to the object.
   - permission is granted through URI: `https://graph.microsoft.com/Calendars.Read`.
