@@ -258,7 +258,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.
       - **default instance count** should be the min needed if metrics are unavailable.
       - configure autoscale notifications.
-- **App Service Plan**
+- **App Service Plan Tiers**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
   - **Scaling**
@@ -280,6 +280,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - dedicated VMs on dedicated VNet.
     - network and compute isolation.
     - maximum scale-out.
+  - ![app service tiers](img/app_services_tiers.PNG)
 - **App Service Authentication and Authorization**
   - **App Service** feature that provides out-of-the-box authentication with federated identity providers, allowing you to focus on the rest of your application.
   - Security Module: authenticate users, manage tokens, sessions, and inject identity into request headers.
