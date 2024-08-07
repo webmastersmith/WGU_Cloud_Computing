@@ -1213,7 +1213,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Functions Scale Instances**: max instances
   - ![function scale instances](img/functions_scale_instances.PNG)
 - **Authorization Level for Calling HTTP Triggered Functions**
-  - determines what if any keys need to be present to invoke function.
+  - **HTTP**: determines if URI connection string need to be present in request to invoke function.
   - (e.g. `HttpTrigger(AuthorizationLevel.Anonymous)` **auth level can be change after creation**).
   - **Anonymous**: no key required.
   - **Function**: default. function-specific API key.
@@ -1224,12 +1224,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
   - ![function auth level](img/function_auth_level.PNG)
 - **Function Triggers and Bindings**
-  - **identities**: RBAC assigned roles are used to connect the services.
   - **Trigger**: event that starts the function. functions can only have **one trigger**.
-    - trigger calls the function with parameters(bindings. declarative connection to service). the function runs, and outputs data to service(binding).
-    - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
-    - triggers simplify functions by abstracting hardcoding to services.
-    - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
+    - trigger calls the function with parameters(input/output bindings).
+    - multiple Azure services can trigger an event. (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
+    - **Parameter**: Azure Functions **are passed function parameters**.
       - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like **EventGridTrigger**) to specify that the function should be triggered by events from Azure Event Grid.)
   - **Bindings**: **optional**. must be **registered**. can have multiple input/output bindings.
     - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=isolated-process%2Cpython-v2&pivots=programming-language-csharp#supported-bindings>
@@ -1343,12 +1341,11 @@ module.exports = async function (context, eventGridEvent) {
 - **Durable Functions**
   - stateful functions. state survives VM reboot or failure.
   - also called **Orchestrator Functions**.
-  - **Types**
-    - **Client Function**: initiate orchestrator function. can use any trigger.
+  - **Durable Function Types**
+    - **Client Function**: trigger entry point. initiate orchestrator function. can use any trigger.
     - **Orchestrator Function**: define stateful workflow. handle errors.
     - **Activity Function**: run each step defined in 'orchestrator' function. can use any bindings.
-    - **Entity function**: explicitly manage state.
-- **Durable Function patterns**
+- **Durable Function Patterns**
   - **Function Chaining**: collection of functions(steps defined in orchestrator function), sequentially run. orchestrator function keeps track of what steps have been run.
   - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
   - **Asynchronous HTTP API**: repeatedly poll for progress.
