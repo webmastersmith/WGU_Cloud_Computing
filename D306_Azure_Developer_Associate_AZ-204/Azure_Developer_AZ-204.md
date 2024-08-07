@@ -38,6 +38,7 @@
 
 - [azure cli install](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [azure cli](https://learn.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest)
+- [service naming rules](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules)
 
 ```bash
 # install -https://learn.microsoft.com/en-us/cli/azure/install-azure-cli-linux?pivots=apt
@@ -1189,7 +1190,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - most common flavors. (e.g. nodejs, python, C#, powershell).
       - can create **custom handler** for your preferred runtime.
 - **Tiers**
-  - **Consumption Plan**: default. cold-starts. pay-as-you-go. dynamic scale.
+  - **Consumption Plan**: default. **5 min limit**. cold-starts. pay-as-you-go. dynamic scale.
   - **Premium Plan**
     - pre-warmed. larger compute.
     - always ready instances. better Compute.
@@ -1222,32 +1223,31 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - share the same pricing plan, deployment method, and runtime version.
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
   - ![function auth level](img/function_auth_level.PNG)
-- **Function Templates**
+- **Function Triggers and Bindings**
   - **identities**: RBAC assigned roles are used to connect the services.
-  - **Triggers and Bindings**
-    - **Trigger**: event that starts the function. functions can only have **one trigger**.
-      - trigger calls the function with parameters(bindings. declarative connection to service). the function runs, and outputs data to service(binding).
-      - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
-      - triggers simplify functions by abstracting hardcoding to services.
-      - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
-        - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like **EventGridTrigger**) to specify that the function should be triggered by events from Azure Event Grid.)
-    - **Bindings**: **optional**. must be **registered**. avoids hardcoding access(input/output data) to other services.
-      - declarative connect services(the path is not hardcoded).
-      - data is passed in the form of a function **parameter**.
-      - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=isolated-process%2Cpython-v2&pivots=programming-language-csharp#supported-bindings>
-      - `C#`: bindings passed as decorating methods. register with **NuGet package**.
-      - `other`: update `function.json` configuration file. register with command-line utility.
-        - (e.g. `func extensions install -package Microsoft.Azure.WebJobs.ServiceBus`)
-        - **type**: binding type. (e.g. eventHub, serviceBus, ...)
-        - **direction**: in/out.
-        - **name**: attribute for binding the data.
-      - **input bindings**: other service responds to event. function is called with data as the argument.
-      - **output bindings**: other service is listening. the function return value is passed to listening service.
-      - **Binding Expression**
-        - most expressions: `{someName}`
-        - App Service expression: `%someName%`
-    - ![FaaS overview](img/faas_overview.PNG)
-    - ![function bindings](img/function_bindings.PNG)
+  - **Trigger**: event that starts the function. functions can only have **one trigger**.
+    - trigger calls the function with parameters(bindings. declarative connection to service). the function runs, and outputs data to service(binding).
+    - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
+    - triggers simplify functions by abstracting hardcoding to services.
+    - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
+      - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like **EventGridTrigger**) to specify that the function should be triggered by events from Azure Event Grid.)
+  - **Bindings**: **optional**. must be **registered**. can have multiple input/output bindings.
+    - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=isolated-process%2Cpython-v2&pivots=programming-language-csharp#supported-bindings>
+    - avoids hardcoding access(input/output data) to other services.
+    - declarative connect services(the path is not hardcoded).
+    - data is passed in the form of a function **parameter**.
+    - **input bindings**: read data from external service.
+    - **output bindings**: write data to external service.
+    - `C#`: bindings passed as decorating methods. register with **NuGet package**.
+    - `other`: update `function.json` configuration file.
+      - **type**: binding type. (e.g. eventHub, serviceBus, ...)
+      - **direction**: in/out.
+      - **name**: attribute for binding the data.
+    - **Binding Expression**
+      - most expressions: `{someName}`
+      - App Service expression: `%someName%`
+  - ![FaaS overview](img/faas_overview.PNG)
+  - ![function bindings](img/function_bindings.PNG)
   - **Project Files**: root of directory.
     - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-custom-handlers#configuration>
     - `host.json`: global config of function app.
@@ -1330,6 +1330,8 @@ module.exports = async function (context, eventGridEvent) {
 
 - **Function Core Tools**
   - cmd tool that lets you develope and test functions on-prem computer.
+  - local development will need services installed command-line utility:
+  - (e.g. `func extensions install -package Microsoft.Azure.WebJobs.ServiceBus`)
   - `func init`: start new function.
   - `func logs`: get logs from Kubernetes cluster.
   - `func run`: run function directly.
@@ -1340,12 +1342,18 @@ module.exports = async function (context, eventGridEvent) {
     - **Live Metric Stream**: when Function is connected to Application Insights. view from portal.
 - **Durable Functions**
   - stateful functions. state survives VM reboot or failure.
+  - also called **Orchestrator Functions**.
   - **Types**
-    - **Orchestrator function**: define stateful workflow (implicit state).
+    - **Client Function**: initiate orchestrator function. can use any trigger.
+    - **Orchestrator Function**: define stateful workflow. handle errors.
+    - **Activity Function**: run each step defined in 'orchestrator' function. can use any bindings.
     - **Entity function**: explicitly manage state.
-  - **Durable Function patterns**
-    - **Function Chaining**: collection of functions(steps), sequentially run.
-    - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
+- **Durable Function patterns**
+  - **Function Chaining**: collection of functions(steps defined in orchestrator function), sequentially run. orchestrator function keeps track of what steps have been run.
+  - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
+  - **Asynchronous HTTP API**: repeatedly poll for progress.
+  - **Monitor**: poll then sleep. timed schedule.
+  - **Human Interaction**: wait for events to finish. (e.g. asking for input).
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Functions**
@@ -1358,6 +1366,27 @@ module.exports = async function (context, eventGridEvent) {
     - **background tasks**. runs in background of webapp.
     - code-focused. long-running task, recurring jobs that can run in background.
   - ![functions vs logic apps vs webjobs](img/function_vs_logic_app_vs_webjobs.PNG)
+
+```sh
+# Function setup -must have storage account.
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_STORAGE_ACCOUNT_NAME="mystorageaccount${RANDOM:0:5}" # RANDOM 1-99999. name: [a-z0-9]{3,24}
+export AZ_FUNCTION_NAME="my-function-${RANDOM:0:5}" # RANDOM 1-99999. name: [-a-z0-9]{2,60}
+
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+az storage account create --name $AZ_STORAGE_ACCOUNT_NAME --resource-group $AZ_RESOURCE_GROUP_NAME
+
+# create function app
+az functionapp create --name $AZ_FUNCTION_NAME \
+  --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --storage-account $AZ_STORAGE_ACCOUNT_NAME \
+  --consumption-plan-location $AZ_LOCATION
+
+# clean up
+az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
+```
 
 ## Azure Front Door
 
