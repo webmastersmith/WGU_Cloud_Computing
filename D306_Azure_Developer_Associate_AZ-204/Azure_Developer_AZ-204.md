@@ -1188,7 +1188,30 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Runtime**
       - most common flavors. (e.g. nodejs, python, C#, powershell).
       - can create **custom handler** for your preferred runtime.
-- **Authorization Level for Calling Function**
+- **Tiers**
+  - **Consumption Plan**: default. cold-starts. pay-as-you-go. dynamic scale.
+  - **Premium Plan**
+    - pre-warmed. larger compute.
+    - always ready instances. better Compute.
+    - functions that run continuously.
+    - more control over instances(CPU, memory).
+    - high number of small executions(low GB seconds for each run) or code needs longer run times.
+    - require VNet connectivity. need custom linux image.
+  - **Dedicated Plan**
+    - if you use **App Service**, your Azure Functions will run on them. predictable billing.
+    - **manually scale** instances by adding more VMs to App Service plan.
+    - full compute isolation. secure network access by ASE(App Service Environment).
+  - ![function tiers](img/function_tiers.PNG)
+  - **Container Apps Plan**
+    - functions run in container. Kubernetes style workflow without complexity.
+    - create custom library to support **line-of-business** apps.
+    - migrate on-prem code or legacy apps to cloud microservices running in containers.
+  - ![function hosting plans](img/function_hosting.PNG)
+  - **Function Timeout**: max time avaiable in minutes function has to return response.
+  - ![function timeout](img/function_timeout.PNG)
+  - **Functions Scale Instances**: max instances
+  - ![function scale instances](img/functions_scale_instances.PNG)
+- **Authorization Level for Calling HTTP Triggered Functions**
   - determines what if any keys need to be present to invoke function.
   - (e.g. `HttpTrigger(AuthorizationLevel.Anonymous)` **auth level can be change after creation**).
   - **Anonymous**: no key required.
@@ -1310,28 +1333,6 @@ module.exports = async function (context, eventGridEvent) {
   - `func init`: start new function.
   - `func logs`: get logs from Kubernetes cluster.
   - `func run`: run function directly.
-- **Function Hosting Plans**
-  - **Consumption Plan**: default. cold-starts. pay-as-you-go. dynamic scale.
-  - **Premium Plan**
-    - pre-warmed. larger compute.
-    - always ready instances. better Compute.
-    - functions that run continuously.
-    - more control over instances(CPU, memory).
-    - high number of small executions(low GB seconds for each run) or code needs longer run times.
-    - require VNet connectivity. need custom linux image.
-  - **Dedicated Plan**
-    - if you use **App Service**, your Azure Functions will run on them. predictable billing.
-    - **manually scale** instances by adding more VMs to App Service plan.
-    - full compute isolation. secure network access by ASE(App Service Environment).
-  - **Container Apps Plan**
-    - functions run in container. Kubernetes style workflow without complexity.
-    - create custom library to support **line-of-business** apps.
-    - migrate on-prem code or legacy apps to cloud microservices running in containers.
-  - ![function hosting plans](img/function_hosting.PNG)
-  - **Function Timeout**: max time avaiable in minutes function has to return response.
-  - ![function timeout](img/function_timeout.PNG)
-  - **Functions Scale Instances**: max instances
-  - ![function scale instances](img/functions_scale_instances.PNG)
 - **Function Debugging**
   - **service unreachable**: service key bad. service is not available, busy or full.
   - **enable streaming**: stream events to logs, to see near real time errors.
