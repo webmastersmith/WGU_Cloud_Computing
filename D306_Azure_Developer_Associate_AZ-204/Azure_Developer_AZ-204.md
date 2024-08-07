@@ -878,7 +878,7 @@ CMD ["dotnet", "MyApp.dll"]
 ```
 
 ```bash
-# Container Registry
+# Create Container Registry
 export AZ_LOCATION="eastus" # once logged in: az account list-locations
 export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
 export AZ_CONTAINER_REGISTRY_NAME="mycontainerregistry$(openssl rand -base64 20 | tr -dc 'a-z')" # Random letters. must be globally unique.
@@ -898,6 +898,15 @@ az acr repository list --name $AZ_CONTAINER_REGISTRY_NAME --output table
 az acr repository show-tags --name $AZ_CONTAINER_REGISTRY_NAME --repository "${AZ_IMAGE_NAME}" --output table
 # run
 az acr run --registry $AZ_CONTAINER_REGISTRY_NAME --cmd "\$Registry/${AZ_IMAGE_NAME}:${AZ_IMAGE_VERSION}" /dev/null
+
+# Upload docker image.
+# login to ACR
+az acr login --name $AZ_CONTAINER_REGISTRY_NAME
+# tag your docker image
+docker tag imageName <acr_name>.azurecr.io/<repository_name>/<image_name>
+# push image to registry
+docker push <acr_name>.azurecr.io/<repository_name>/<image_name>
+
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
@@ -1346,11 +1355,11 @@ module.exports = async function (context, eventGridEvent) {
     - **Orchestrator Function**: define stateful workflow. handle errors.
     - **Activity Function**: run each step defined in 'orchestrator' function. can use any bindings.
 - **Durable Function Patterns**
-  - **Function Chaining**: collection of functions(steps defined in orchestrator function), sequentially run. orchestrator function keeps track of what steps have been run.
+  - **Function Chaining**: collection of functions(steps defined in orchestrator function), **sequentially run**. orchestrator function keeps track of what steps have been run.
   - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
-  - **Asynchronous HTTP API**: repeatedly poll for progress.
-  - **Monitor**: poll then sleep. timed schedule.
-  - **Human Interaction**: wait for events to finish. (e.g. asking for input).
+  - **Asynchronous HTTP API**: **repeatedly poll** for progress.
+  - **Monitor**: **timed poll** then sleep. timed schedule.
+  - **Human Interaction**: **wait for events** to finish. (e.g. asking for input).
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
   - **Functions**
