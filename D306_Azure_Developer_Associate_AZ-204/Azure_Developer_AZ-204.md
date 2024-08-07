@@ -196,10 +196,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Instrumentation Key**
   - unique identifier that is assigned to **each Application Insights resource**. When you configure your application to use an instrumentation key, it **enables the application to send telemetry data** to that specific Application Insights resource.
   - install instrumentation in your app and it monitors and **directs the telemetry data** to an Application Insights resource by using a unique token.
-  - ![application map](img/application_map.PNG)
 - **Log Metrics**
   - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
   - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
+  - ![application map](img/application_map.PNG)
 
 ## Azure App Services
 
