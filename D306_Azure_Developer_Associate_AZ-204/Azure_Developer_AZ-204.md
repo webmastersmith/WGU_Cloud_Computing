@@ -252,6 +252,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - (e.g. when scale-out adds instance, the Avg will divide metric by one more, dropping the result. if result falls within scale-in, you will create a **flapping** effect. To avoid this, it will **not** scale-in. solve this by choosing adequate margin between scale-in/out.)
     - **default instance count** should be the min needed if metrics are unavailable.
     - configure autoscale notifications.
+- **App Service Logging**
+  - logs can be saved to local VM file system, or Blob Storage(default no retention period).
+  1. **Detailed Error Logging**: any request status code 400 or greater. logs written to VM instance app is running in. **max 50 error** files can be stored.
+  2. **Failed Request Logging**: failed request made to server. writes to VM instance.
+  3. **Web Server Logging**: HTTP transactions. written to log files. default never deleted.
 - **App Service Plan Tiers**
   - App Service always runs in App Service Plan. defines compute resources for a web app to run. one or more apps can run on the same compute resource.
   - **scope**: VM apps created in same region as App Service Plan defines.
