@@ -1160,8 +1160,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Azure Function as a Service (FaaS)**
   - fully-managed, event driven **(triggers based on event or emit data)**, **scales to zero**. **you bring the code**.
   - highly: scalable, elastic, available, durable, secure by default.
-  - abstracts infrastructure and are billed on execution time. **do not pay for idle servers**.
+  - abstracts infrastructure. charged **per second** of execution time(**do not pay for idle servers**).
   - define input, actions, conditions, and output.
+  - combine with Azure App Service to run task.
+  - **Flow**
+    1. trigger event occurs. (e.g. HTTP request, new queue message, timer expires...).
+    2. function execution begins with parameter data passed in from the trigger event.
+    3. function uses input bindings to read trigger event data.
+    4. function uses output bindings to write data to other resource.
   - **requires a storage account and these three services to operate**.
     - **Blob Storage**: store bindings and function keys.
     - **Azure Files**: store function app code.
@@ -1182,26 +1188,36 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Runtime**
       - most common flavors. (e.g. nodejs, python, C#, powershell).
       - can create **custom handler** for your preferred runtime.
+- **Authorization Level for Calling Function**
+  - determines what if any keys need to be present to invoke function.
+  - (e.g. `HttpTrigger(AuthorizationLevel.Anonymous)` **auth level can be change after creation**).
+  - **Anonymous**: no key required.
+  - **Function**: default. function-specific API key.
+  - **admin**: master key required.
 - **Function App**
   - one or more individual functions that are managed, deployed, and scaled together.
   - share the same pricing plan, deployment method, and runtime version.
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
-- **Authorization Level**
-  - determines what if any keys need to be present to invoke function.
-  - **auth level can be change after creation**.
-  - **Anonymous**: no key required.
-  - **Function**: default. function-specific API key.
-  - **admin**: master key required.
   - ![function auth level](img/function_auth_level.PNG)
 - **Function Templates**
   - **identities**: RBAC assigned roles are used to connect the services.
   - **Triggers and Bindings**
-    - **Trigger**: function can only have **one trigger**.
+    - **Trigger**: event that starts the function. functions can only have **one trigger**.
+      - trigger calls the function with parameters(bindings. declarative connection to service). the function runs, and outputs data to service(binding).
       - multiple Azure services can trigger an event (e.g. HTTP request, scheduled, Blob and Queue Storage, Cosmos DB, and Event Grid).
       - triggers simplify functions by abstracting hardcoding to services.
       - **Parameter**: In Azure Functions, **triggers are defined by function parameters**.
         - (e.g. When you create an Event Grid triggered function, you'll have a parameter of type **EventGridEvent** in the **Run method**. This parameter is decorated with an attribute (like **EventGridTrigger**) to specify that the function should be triggered by events from Azure Event Grid.)
-    - **Bindings**: **optional**. avoids hardcoding access(input/output data) to other services. data is passed in the form of a function **parameter**.
+    - **Bindings**: **optional**. must be **registered**. avoids hardcoding access(input/output data) to other services.
+      - declarative connect services(the path is not hardcoded).
+      - data is passed in the form of a function **parameter**.
+      - <https://learn.microsoft.com/en-us/azure/azure-functions/functions-triggers-bindings?tabs=isolated-process%2Cpython-v2&pivots=programming-language-csharp#supported-bindings>
+      - `C#`: bindings passed as decorating methods. register with **NuGet package**.
+      - `other`: update `function.json` configuration file. register with command-line utility.
+        - (e.g. `func extensions install -package Microsoft.Azure.WebJobs.ServiceBus`)
+        - **type**: binding type. (e.g. eventHub, serviceBus, ...)
+        - **direction**: in/out.
+        - **name**: attribute for binding the data.
       - **input bindings**: other service responds to event. function is called with data as the argument.
       - **output bindings**: other service is listening. the function return value is passed to listening service.
       - **Binding Expression**
@@ -1225,6 +1241,10 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 # host.json example
 {
   "version": "2.0",
+  "extensionBundle": {  // register bindings
+        "id": "Microsoft.Azure.Functions.ExtensionBundle",
+        "version": "[4.0.0, 5.0.0)"
+  },
   "customHandler": {
     "description": {
       "defaultExecutablePath": "app/handler.exe",
@@ -1237,7 +1257,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   }
 }
 
-# function.json example
+# function.json example -other language besides C# must declare in/out bindings here.
 {
   "disabled": false,
   "bindings": [
@@ -1257,6 +1277,32 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     }
   ]
 }
+```
+
+```js
+// NodeJS. Index.js -Function example.
+const uuid = require('uuid/v4');
+//                          input binding, output binding.
+module.exports = async function (context, eventGridEvent) {
+  context.log('JavaScript Event Grid trigger function processed a request.');
+  context.log('Subject: ' + eventGridEvent.subject);
+  context.log('Time: ' + eventGridEvent.eventTime);
+  context.log('Data: ' + JSON.stringify(eventGridEvent.data));
+
+  context.bindings.document = JSON.stringify({
+    id: uuid(),
+    Description: eventGridEvent.topic,
+  });
+
+  context.bindings.signalRMessages = [
+    {
+      target: 'newMessage',
+      arguments: [eventGridEvent.subject],
+    },
+  ];
+
+  context.done();
+};
 ```
 
 - **Function Core Tools**
