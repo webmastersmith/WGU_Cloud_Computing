@@ -1092,6 +1092,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - Azure Event Hubs represents the "**front door**" for an **event pipeline**, often called an **event ingestor** in solution architectures.
     - acts as a proxy, sitting between event publishers and event consumers to decouple the production of an event stream from the consumption of those events.
   - fully managed PaaS.
+  - **connection**: **AMQP**, **Kafka**, and **HTTPS**.
   - ![event hub](img/event_hub.PNG)
   - **Expiration**: default is **one day**.
   - **Checkpoint**: each consumer(event processor) **maintains its own checkpoint, tracking progress within the partition**. can resume if failure or restart.
@@ -1607,10 +1608,10 @@ az logout
   - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
 - **Service Bus vs Queues**
   - **Service Bus**: Enterprise-grade messaging service. advanced features like transactions, sessions, message ordering, and guaranteed delivery.
-  - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages.
+  - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages(**> 80 GB**).
   - ![queue storage vs service bus](img/queue_vs_service_bus.PNG)
-- **Service Bus queues**
-  - Azure **messaging infrastructure** that supports **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
+- **Service Bus**
+  - Enterprise-grade **messaging infrastructure**. advanced features like **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
   - fully managed message broker for message queues and pub/sub topics.
   - decouples application from services that rely on messaging.
   - ![service bus overview](img/service_bus_overview.PNG)
@@ -1620,6 +1621,9 @@ az logout
     - **payload**: binary. MIME content type is `ContentType:application/json:charset=utf-8`
       - **broker properties**: routing config.
       - **user properties**: data.
+  - **Namespace**: container for all components of a message, housing multiple queues and topics.
+  - **Queue**: container of messages. stores messages until application retreives them. **FIFO** stack.
+  - **Topic**: sending and receiving messages. several subscriptions(receivers).
 - **Servcie Bus Queue**
   - **Queue**: pull model. subscriber must poll(ask for message).
   - **Queue Receive Modes**
@@ -1638,6 +1642,8 @@ az logout
     - **RBAC** support.
 - **Azure Queue Storage**
   - Azure **storage infrastructure**. store large numbers of messages(millions, limit is size of storage account), accessible from anywhere using **HTTPS**.
+  - it's the solution when you need to store more than **80 GB** of messages in a queue.
+  - FIFO, but not guaranteed.
   - **Delivery**: **30 seconds** after message read, message becomes invisisble.
   - **Batched Receive**: **retrieving multiple messages in a single batch operation**, improving efficiency when processing large volumes of messages.
   - **Peeking**: peeking refers to the process of **retrieving messages from a queue without removing them**. It allows you to **examine the messages** contents without changing their **visibility** or state in the queue.
@@ -1645,7 +1651,7 @@ az logout
   - **config**
     - **storage account**: Azure Storage account.
     - **Queue**: name lowercase. Azure Queue service.
-    - **Message**: max **64KB** size. time-to-live: 1 day - never expire.
+    - **Message**: max **64KB** size. time-to-live: (1 day - never expire).
   - ![queue url](img/queues_url.PNG)
   - **Queue CLI**
   - ![queue cli](img/queues_cli.PNG)
