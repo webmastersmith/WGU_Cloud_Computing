@@ -642,48 +642,6 @@ az storage account create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_STORAGE_ACCOUNT_NAME
 az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
-## Azure Cache and Storage CDNs
-
-- **Caching**
-  - improve performance and scalability of **Redis** and **Azure Content Delivery Network**.
-- **Cache for Redis**
-  - Redis is open-source **in-memory** database store. caching layer for **very fast database response**.
-  - high volatile(because in-memory), key:value store.
-  - ![redis](img/redis.PNG)
-  - ![redis cache](img/redis_cache_tier.PNG)
-  - **Azure redis cache**: service from microsoft to provide **high-throughput** and **low latency** for same data request.
-  - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
-  - **location**: region your location of traffic.
-  - **cache type**: size, performance, and features available for cache.
-  - **clustering**: split data among multiple nodes(premium, Enterprise, Enterprise Flash).
-  - **deletion**: 1-millisecond precision to delete from cache.
-  - **Connection to Redis**: host name, port, and an access key for the cache.
-  - **Redis Cache Timespan**: `new TimeSpan(hour, minute, seconds)`
-  - ![redis cli](img/redis_cli.PNG)
-- **Azure Content Deliver Network Caching**
-  - deliver content to users. cache in various nodes across the world.
-  - **Point-of-Presence (POP)**: edge locations caching content close to users.
-    - file remains cached on the edge server in the POP until the time-to-live (TTL) specified by its HTTP headers expires.
-    - default TTL is seven days.
-  - ![CDN POP](img/cdn_pop.PNG)
-  - **CDN Cache Behavior**
-    - caching rules modify default expiration of content.
-    - **Caching Rules**
-      - **Global caching rules**: set rule on endpoint, which affects all requests to the endpoint.
-      - **Custom caching rules**: custom caching rules on endpoint. match specific paths, file extensions , and override the global caching rule, if set.
-    - **Query String Caching**: handle caching requests with query strings.
-    - **Rules Engine**: one or more(up to four) match conditions and an action.
-  - **Default TTL**
-    - Generalized web delivery optimizations: **seven days**
-    - Large file optimizations: **one day**
-    - Media streaming optimizations: **one year**
-  - **Purge Cache Before TTL Expires**
-    - **version assets** to ensure latest asset is delivered.
-    - purge **all assets by endpoint**.
-    - purge **specific file** by name on all or single endpoint.
-  - **Geo-filtering**
-    - filters based on geographic region. allow/block content.
-
 ## Azure Container Apps
 
 - **Azure Container Apps**
@@ -1593,6 +1551,48 @@ az logout
   - phones must install app or suscribe to receive notifications.
   - notifications are narrowed by **tag or tag expression**. Those who subscribe will receive it.
   - ![notification hub](img/notification_hub.PNG)
+
+## Azure Redis Cache and CDNs
+
+- **Caching**
+  - improve performance and scalability of **Redis** and **Azure Content Delivery Network**.
+- **Cache for Redis**
+  - Redis is open-source **in-memory** database store. caching layer for **very fast database response**.
+  - high volatile(because in-memory), key:value store.
+  - ![redis](img/redis.PNG)
+  - ![redis cache](img/redis_cache_tier.PNG)
+  - **Azure redis cache**: service from microsoft to provide **high-throughput** and **low latency** for same data request.
+  - **name**: globally unique(used to create public facing URL). 1-63 chars([-a-z0-9]).
+  - **location**: region your location of traffic.
+  - **cache type**: size, performance, and features available for cache.
+  - **clustering**: split data among multiple nodes(premium, Enterprise, Enterprise Flash).
+  - **deletion**: 1-millisecond precision to delete from cache.
+  - **Connection to Redis**: host name, port, and an access key for the cache.
+  - **Redis Cache Timespan**: `new TimeSpan(hour, minute, seconds)`
+  - ![redis cli](img/redis_cli.PNG)
+- **Azure Content Deliver Network Caching**
+  - deliver content to users. cache in various nodes across the world.
+  - **Point-of-Presence (POP)**: edge locations caching content close to users.
+    - file remains cached on the edge server in the POP until the time-to-live (TTL) specified by its HTTP headers expires.
+    - default TTL is seven days.
+  - ![CDN POP](img/cdn_pop.PNG)
+  - **CDN Cache Behavior**
+    - caching rules modify default expiration of content.
+    - **Caching Rules**
+      - **Global caching rules**: set rule on endpoint, which affects all requests to the endpoint.
+      - **Custom caching rules**: custom caching rules on endpoint. match specific paths, file extensions , and override the global caching rule, if set.
+    - **Query String Caching**: handle caching requests with query strings.
+    - **Rules Engine**: one or more(up to four) match conditions and an action.
+  - **Default TTL**
+    - Generalized web delivery optimizations: **seven days**
+    - Large file optimizations: **one day**
+    - Media streaming optimizations: **one year**
+  - **Purge Cache Before TTL Expires**
+    - **version assets** to ensure latest asset is delivered.
+    - purge **all assets by endpoint**.
+    - purge **specific file** by name on all or single endpoint.
+  - **Geo-filtering**
+    - filters based on geographic region. allow/block content.
 
 ## Azure Resource Management Templates
 
