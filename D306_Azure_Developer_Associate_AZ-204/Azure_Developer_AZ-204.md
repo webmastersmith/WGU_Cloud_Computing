@@ -938,7 +938,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - Keys allow for identifying, and searching data.
   - Primary key, Alternate key, Synthetic key, Unique key.
   - ![cosmos db keys](img/cosmos_db_keys.PNG)
-- **Cosmos DB Containers**
+- **Cosmos DB Containers and Partitions**
+  - **Partitions**
+    - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
+    - **Physical**: the actual data on the disk. sometimes called **replicas**.
+    - **Partition Key**: key for Cosmos to determine if data belongs to that partition.
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
@@ -957,8 +961,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
       - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
       - removes database regions that do not respond to write until they are back online.
-    - **Bounded staleness**: read can lag(single region **5s**, multi-region **300s**) after write.
-    - **Session**: **default**. single client can read-your-writes.
+    - **Bounded staleness**: read-your-write after set time. single region **5s**, multi-region **300s** after write.
+    - **Session**: **default**. single client. only can read-your-writes. replicas eventually converge.
     - **Consistent prefix**: updates made as a batch.
     - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
