@@ -191,7 +191,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Application map**: Application map provides a **visual representation** of the components of your application and their **dependencies**.
     - **Live metrics**: Live metrics provide real-time data on **application performance**.
     - **Availability**: The Availability section in Application Insights is specifically designed for setting up and **monitoring web tests**, including **multi-step web tests**. These tests simulate user interactions with your web application, allowing you to check its **availability** and **responsiveness** from different locations.
-      - **Standard Test**: ping test, SSL/TLS valid. HTTP GET, HEAD, POST.
+      - **Standard Test URL Ping Test**: check status code, response, and SSL/TLS valid. HTTP GET, HEAD, POST.
       - **Custom TrackAvailability Test**: custom app that tracks availability. **multi request** or **authentication** test scenarios.
     - **Failures**: The Failures section provides insights into **exceptions and failed requests** in your application.
 - **Instrumentation Key**
@@ -942,7 +942,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Partitions**
     - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
     - **Physical**: the actual data on the disk. sometimes called **replicas**.
-    - **Partition Key**: key for Cosmos to determine if data belongs to that partition.
+    - **Partition Key**: immutable. cannot be changed once selected. how to distribute your data across the different logical partitions.
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
@@ -950,7 +950,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - unit of scalability both for provisioned throughput and storage.
   - items added are distributed across the partitions(based on partition key).
   - **Throughput**
-    - **Dedicated**: throughput on container exclusively reserved for container. Backed by SLA.
+    - **Dedicated**: throughput exclusively reserved for a container. Backed by SLA.
     - **Shared**: share throughput with other containers in same database.
 - **Consistency Levels**
   - distributed database must make tradeoff between read consistency, availability, latency, and throughput.
@@ -959,11 +959,11 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **default consistency level** effects **all Cosmos DB databases** in **Azure Cosmos DB account**.
   - **Consistency Levels**
     - **Strong**: Users are always guaranteed to read the latest committed write. request served concurrently.
-      - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**.
+      - all regions confirm successful write before data is considered written. increases latency. **lowest throughput**. **linearizability guarantee**.
       - removes database regions that do not respond to write until they are back online.
-    - **Bounded staleness**: read-your-write after set time. single region **5s**, multi-region **300s** after write.
+    - **Bounded staleness**: read-your-write after set time. single region **5s**, multi-region **300s** after write. **time-delayed linearizability guarantee**.
     - **Session**: **default**. single client. only can read-your-writes. replicas eventually converge.
-    - **Consistent prefix**: updates made as a batch.
+    - **Consistent prefix**: will always be able to read-your-writes in the written order. updates made as a batch.
     - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
 - **Cosmos DB Modes**
