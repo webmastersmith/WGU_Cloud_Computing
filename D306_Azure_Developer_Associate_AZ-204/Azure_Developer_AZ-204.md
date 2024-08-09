@@ -1319,7 +1319,7 @@ module.exports = async function (context, eventGridEvent) {
   - **Function Chaining**: collection of functions(steps defined in orchestrator function), **sequentially run**. orchestrator function keeps track of what steps have been run.
   - **Fan-out/Fan-in**: multiple function running in **parallel** and waiting for **all** to finish.
   - **Asynchronous HTTP API**: **repeatedly poll** for progress.
-  - **Monitor**: **timed poll** then sleep. timed schedule.
+  - **Monitor**: **timed poll**. poll, then sleep. timed schedule.
   - **Human Interaction**: **wait for events** to finish. (e.g. asking for input).
 - **Azure Function vs Logic Apps vs App service WebJobs**
   - all are serverless.
