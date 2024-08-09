@@ -1193,7 +1193,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Function**: default. function-specific API key.
   - **admin**: master key required.
 - **Function App**
-  - one or more individual functions that are managed, deployed, and scaled together.
+  - one or more individual functions that are **managed**, **deployed**, and **scaled together**.
   - share the same pricing plan, deployment method, and runtime version.
   - **as of Functions 2.x** **all functions** in a function app must be authored in the **same language**.
   - ![function auth level](img/function_auth_level.PNG)
@@ -1208,14 +1208,14 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - avoids hardcoding access(input/output data) to other services.
     - declarative connect services(the path is not hardcoded).
     - data is passed in the form of a function **parameter**.
-    - **input bindings**: read data from external service.
-    - **output bindings**: write data to external service.
+    - **input bindings**: **read** data from external service.
+    - **output bindings**: **write** data to external service.
     - `C#`: bindings passed as decorating methods. register with **NuGet package**.
     - `other`: update `function.json` configuration file.
       - **type**: binding type. (e.g. eventHub, serviceBus, ...)
       - **direction**: in/out.
       - **name**: attribute for binding the data.
-    - **Binding Expression**
+    - **Binding Expression (Variable)**
       - most expressions: `{someName}`
       - App Service expression: `%someName%`
   - ![FaaS overview](img/faas_overview.PNG)
@@ -1225,7 +1225,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - `host.json`: global config of function app.
       - Controls runtime behaviors, middleware settings, and other global aspects of the function app.
     - `local.settings.json`: local on-prem specific configurations to override `host.json` while developing.
-    - `file.exe`: the actual code that will be run.
+    - `file.js`: the actual code that will be run.
   - **function.json**: single function configuration file. **every function will have this file**.
     - defines the functions trigger, bindings, direction...
       - **dataType**: binary, stream, string.
@@ -1236,10 +1236,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 # host.json example
 {
   "version": "2.0",
-  "extensionBundle": {  // register bindings
-        "id": "Microsoft.Azure.Functions.ExtensionBundle",
-        "version": "[4.0.0, 5.0.0)"
-  },
   "customHandler": {
     "description": {
       "defaultExecutablePath": "app/handler.exe",
