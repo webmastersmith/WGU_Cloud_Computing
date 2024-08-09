@@ -888,6 +888,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Collection**: deprecated term. original explanation: maps to a container in Azure CosmosDB.
   - **pay** for the **throughput you provision** and the **storage you consume** on an **hourly basis**.
     - expressed as **request units (RUs)**(CPU, IOPS, memory). **1KB read = 1RU**.
+      - **RU**: unit of scalability both for provisioned throughput and storage.
   - ![cosmos db hierarchy](img/cosmos_db_hierarchy.PNG)
   - **Best Practices**
     - for the lowest latency: place data in region where users are.
@@ -897,16 +898,15 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
     - **Physical**: the actual data on the disk. sometimes called **replicas**.
     - **Partition Key**: immutable. cannot be changed once selected. how to distribute your data across the different logical partitions.
+      - items added are distributed across the partitions(based on partition key).
     - ![cosmos db keys](img/cosmos_db_keys.PNG)
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
   - add remove **regions** at any time. can have multiple Cosmos databases in account.
-  - unit of scalability both for provisioned throughput and storage.
-  - items added are distributed across the partitions(based on partition key).
   - **Throughput**
-    - **Dedicated**: throughput exclusively reserved for a container. Backed by SLA.
-    - **Shared**: share throughput with other containers in same database.
+    - **Dedicated**: throughput exclusively reserved for a **container**. Backed by SLA.
+    - **Shared**: share throughput with **other containers** in same database.
 - **Consistency Levels**
   - distributed database must make tradeoff between read consistency, availability, latency, and throughput.
   - data may lag replication across regions due to failures(eventual consistency).
@@ -928,12 +928,12 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - provision at database or container level.
   - **Serverless Mode**: billed for RUs used.
   - **AutoScale Mode**: mission-critical workloads. SLA on high performance and scale.
-  - **Cosmos Change Feed**
-    - track changes made to items in **Cosmos DB container**. persistent ordered record.
-    - **listens**: for changes(inserts, updates, deletes).
-    - **recording**: adds changes to change log, preserving order it happened.
-    - **push model**: you listen for changes. **recommended**.
-    - **pull model**: you query for changes.
+- **Cosmos DB Change Feed**
+  - track changes made to items in **Cosmos DB container**. persistent ordered record. parallel processing of changes.
+  - **listens**: for changes(inserts, updates, deletes).
+  - **recording**: adds changes to change log, preserving order it happened.
+  - **push model**: you listen for changes. **recommended**.
+  - **pull model**: you query for changes.
 - **Stored Procedure**
   - **User-Defined Functions**: Javascript functions you can register and call.
   - **pretriggers**: executed before modifying database. must be registered.
