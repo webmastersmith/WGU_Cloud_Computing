@@ -892,13 +892,12 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Best Practices**
     - for the lowest latency: place data in region where users are.
     - unless you need a specific format(API), use the NoSQL option.
-- **Cosmos DB Containers and Partitions**
+- **Cosmos DB Partitions and Containers**
   - **Partitions**
     - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
     - **Physical**: the actual data on the disk. sometimes called **replicas**.
     - **Partition Key**: immutable. cannot be changed once selected. how to distribute your data across the different logical partitions.
-      - Primary key, Alternate key, Synthetic key, Unique key.
-      - ![cosmos db keys](img/cosmos_db_keys.PNG)
+    - ![cosmos db keys](img/cosmos_db_keys.PNG)
   - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
