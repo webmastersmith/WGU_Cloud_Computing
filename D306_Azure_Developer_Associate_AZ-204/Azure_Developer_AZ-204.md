@@ -551,7 +551,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - BlockBlob: high-performance block blob and append blob storage. no files, queues, tables.
       - **190.7 TB max size**. **append blob optimized for logging**.
       - can only move to different access tiers through manual AzCopy.
-    - PageBlob: page blob only. **8TB max size**.
+    - PageBlob: page blob only. **8 TB max size**.
     - FileShare: SMB file shares(Windows, Linux, macOS).
   - **Blob storage offers three types of resources**:
     - **storage account**: can have multiple storage accounts. must be unique.
@@ -646,7 +646,7 @@ az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
 
 - **Azure Container Apps**
   - Running **containerized applications** in a **serverless environment** for **microservice architecture**.
-  - **fully managed details of Kubernetes deployment and container orchestration**.
+  - **Azure fully managed Kubernetes deployment and container orchestration**.
   - **runs on top of Azure Kubernetes Service**.
   - **run any container image**. Microservice-friendly. Event-driven scaling. Pay-as-you-go. DAPR(simplifies distributed applications) integration.
 - ![container app vs app services](img/container_app_vs_app_service.PNG)
