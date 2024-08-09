@@ -898,8 +898,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Physical**: the actual data on the disk. sometimes called **replicas**.
     - **Partition Key**: immutable. cannot be changed once selected. how to distribute your data across the different logical partitions.
     - ![cosmos db keys](img/cosmos_db_keys.PNG)
-  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - **container**: horizontally partitioned(evenly distributed across a SSD partition). allows for safe replication across multiple regions.
+  - database is analogous to a **namespace** with a logical grouping of **Azure Cosmos DB containers**.
   - read and write data from the **local replicas** of your database and it transparently **replicates** the data **to all the regions** associated with your Cosmos account.
   - add remove **regions** at any time. can have multiple Cosmos databases in account.
   - unit of scalability both for provisioned throughput and storage.
