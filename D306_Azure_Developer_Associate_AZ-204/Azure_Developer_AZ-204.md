@@ -539,6 +539,78 @@ az storage container policy list --container-name $AZ_STORAGE_CONTAINER_NAME \
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 ```
 
+## Azure Authentication and Authorization (Managed Identities)
+
+- **Managed Identities**
+  - Azure managed secrets, credentials, certificates, keys. eliminate the need for developers to manage secrets.
+  - managed identities provide an automatically managed identity in Microsoft Entra ID for applications to use.
+  - managed identities are **service principals** of a special type that are locked to Azure resource. **they share the same lifecycle**.
+  - **system-assigned managed identity**: when instance is enabled, Azure creates an identity for the instance in Microsoft Entra tenant. If instance is deleted, Azure deletes Microsoft Entra ID identity.
+    - Workloads contained within a single Azure resource.
+    - Workloads needing independent identities.
+    - For example, an application that runs on a single virtual machine.
+  - **user-assigned managed identity**: standalone identity created in Microsoft Entra tenant. can be assigned to one or more service instances. lifecycle of Entra identity is managed separately from service identity.
+    - Workloads that run on multiple resources and can share a single identity.
+    - Workloads needing preauthorization to a secure resource, as part of a provisioning flow.
+    - Workloads where resources are recycled frequently, but permissions should stay consistent.
+    - For example, a workload where multiple virtual machines need to access the same resource.
+  - ![managed identity](img/managed_identity.PNG)
+- **VMs**
+  - **System-assigned managed identities VMs**.
+    - **Azure Resource Manager receives request** to enable the **system-assigned** managed identity on a VM.
+    - ARM creates **service principal** in Microsoft Entra ID for identity of VM.
+    - ARM updates **Service identity endpoint metadata** on VM with **service principal client id and certificate**. VM now has an **identity**.
+    - **Service Principal** is granted **access permissions** to Azure resource through **RBAC roles**.
+    - code that's running on the virtual machine can request a token from the Azure Instance Metadata service endpoint. (e.g. `http://169.254.169.254/metadata/identity/oauth2/token`. **JSON web token** is returned).
+    - code sends JWT w/ call to service(Must be part of Microsoft Entra ID).
+      - [services that can use Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/managed-identities-status)
+  - **User-assigned managed identities VMs**
+    - same steps as system-assigned with a few changes:
+      - ARM receives request to **create a user-assigned managed identity**.
+      - ARM receives request to update the **Azure Instance(VM) Metadata Service identity endpoint** with the **user-assigned managed identity service principal client ID and certificate**.
+
+```bash
+# Managed Identities
+export AZ_LOCATION="eastus" # once logged in: az account list-locations
+export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
+export AZ_VM1_NAME="myFirstVM"
+export AZ_VM2_NAME="mySecondVM"
+export AZ_USER_IDENTITY_NAME="myUserAssignedIdentity"
+az login --use-device-code # allows WSL2 to login through web browser.
+az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
+
+# get resource group id.
+export AZ_RESOURCE_GROUP_ID="$(az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv)"
+
+# list available images: az vm image list --query '[].urnAlias' -o table
+# create system-assigned identity VM.
+az vm create --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --name $AZ_VM1_NAME --image Debian11 \
+  --assign-identity \
+  --role contributor \
+  --scope $AZ_RESOURCE_GROUP_ID \
+  --admin-username azureuser \
+  --admin-password myPassword12
+
+# system-assigned managed identity.
+az vm identity assign -g $AZ_RESOURCE_GROUP_NAME -n $AZ_VM1_NAME
+
+# user-assigned managed identity.
+az identity create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_USER_IDENTITY_NAME
+# create VM
+az vm create --resource-group $AZ_RESOURCE_GROUP_NAME \
+  --name $AZ_VM2_NAME --image Ubuntu2204 \
+  --assign-identity $AZ_USER_IDENTITY_NAME \
+  --admin-username azureuser \
+  --admin-password myPassword12
+# assign identity
+az vm identity assign -g $AZ_RESOURCE_GROUP_NAME -n $AZ_VM2_NAME --identities $AZ_USER_IDENTITY_NAME
+
+# Clean up
+az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
+az logout
+```
+
 ## Azure Blob Storage
 
 - **Blob Storage**
@@ -1464,78 +1536,6 @@ az keyvault secret show --name $AZ_SECRET_NAME --vault-name $AZ_KEY_VAULT_NAME
 
 # clean up
 az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
-```
-
-## Azure Managed Identities
-
-- **Managed Identities**
-  - Azure managed secrets, credentials, certificates, keys. eliminate the need for developers to manage secrets.
-  - managed identities provide an automatically managed identity in Microsoft Entra ID for applications to use.
-  - managed identities are **service principals** of a special type that are locked to Azure resource. **they share the same lifecycle**.
-  - **system-assigned managed identity**: when instance is enabled, Azure creates an identity for the instance in Microsoft Entra tenant. If instance is deleted, Azure deletes Microsoft Entra ID identity.
-    - Workloads contained within a single Azure resource.
-    - Workloads needing independent identities.
-    - For example, an application that runs on a single virtual machine.
-  - **user-assigned managed identity**: standalone identity created in Microsoft Entra tenant. can be assigned to one or more service instances. lifecycle of Entra identity is managed separately from service identity.
-    - Workloads that run on multiple resources and can share a single identity.
-    - Workloads needing preauthorization to a secure resource, as part of a provisioning flow.
-    - Workloads where resources are recycled frequently, but permissions should stay consistent.
-    - For example, a workload where multiple virtual machines need to access the same resource.
-  - ![managed identity](img/managed_identity.PNG)
-- **VMs**
-  - **System-assigned managed identities VMs**.
-    - **Azure Resource Manager receives request** to enable the **system-assigned** managed identity on a VM.
-    - ARM creates **service principal** in Microsoft Entra ID for identity of VM.
-    - ARM updates **Service identity endpoint metadata** on VM with **service principal client id and certificate**. VM now has an **identity**.
-    - **Service Principal** is granted **access permissions** to Azure resource through **RBAC roles**.
-    - code that's running on the virtual machine can request a token from the Azure Instance Metadata service endpoint. (e.g. `http://169.254.169.254/metadata/identity/oauth2/token`. **JSON web token** is returned).
-    - code sends JWT w/ call to service(Must be part of Microsoft Entra ID).
-      - [services that can use Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/managed-identities-status)
-  - **User-assigned managed identities VMs**
-    - same steps as system-assigned with a few changes:
-      - ARM receives request to **create a user-assigned managed identity**.
-      - ARM receives request to update the **Azure Instance(VM) Metadata Service identity endpoint** with the **user-assigned managed identity service principal client ID and certificate**.
-
-```bash
-# Managed Identities
-export AZ_LOCATION="eastus" # once logged in: az account list-locations
-export AZ_RESOURCE_GROUP_NAME="my-resource-group-${RANDOM:0:3}" # RANDOM 1-999
-export AZ_VM1_NAME="myFirstVM"
-export AZ_VM2_NAME="mySecondVM"
-export AZ_USER_IDENTITY_NAME="myUserAssignedIdentity"
-az login --use-device-code # allows WSL2 to login through web browser.
-az group create --location $AZ_LOCATION --name $AZ_RESOURCE_GROUP_NAME
-
-# get resource group id.
-export AZ_RESOURCE_GROUP_ID="$(az group show --name $AZ_RESOURCE_GROUP_NAME --query 'id' -o tsv)"
-
-# list available images: az vm image list --query '[].urnAlias' -o table
-# create system-assigned identity VM.
-az vm create --resource-group $AZ_RESOURCE_GROUP_NAME \
-  --name $AZ_VM1_NAME --image Debian11 \
-  --assign-identity \
-  --role contributor \
-  --scope $AZ_RESOURCE_GROUP_ID \
-  --admin-username azureuser \
-  --admin-password myPassword12
-
-# system-assigned managed identity.
-az vm identity assign -g $AZ_RESOURCE_GROUP_NAME -n $AZ_VM1_NAME
-
-# user-assigned managed identity.
-az identity create -g $AZ_RESOURCE_GROUP_NAME -n $AZ_USER_IDENTITY_NAME
-# create VM
-az vm create --resource-group $AZ_RESOURCE_GROUP_NAME \
-  --name $AZ_VM2_NAME --image Ubuntu2204 \
-  --assign-identity $AZ_USER_IDENTITY_NAME \
-  --admin-username azureuser \
-  --admin-password myPassword12
-# assign identity
-az vm identity assign -g $AZ_RESOURCE_GROUP_NAME -n $AZ_VM2_NAME --identities $AZ_USER_IDENTITY_NAME
-
-# Clean up
-az group delete -n $AZ_RESOURCE_GROUP_NAME -y --no-wait
-az logout
 ```
 
 ## Azure Notification Hub
