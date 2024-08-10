@@ -1601,7 +1601,7 @@ az logout
   - Azure supports two types of queue mechanisms: **Service Bus queues** and **Storage queues**.
 - **Service Bus vs Queues**
   - **Service Bus**: Enterprise-grade messaging service. advanced features like transactions, sessions, message ordering, and guaranteed delivery.
-  - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages(**> 80 GB**).
+  - **Queues**: Simple, scalable, and cost-effective message queuing. stores large numbers of messages(**> 80 GB**). FIFO, but not guaranteed.
   - ![queue storage vs service bus](img/queue_vs_service_bus.PNG)
 - **Service Bus**
   - Enterprise-grade **messaging infrastructure**. advanced features like **messaging, queues, and pub/sub with topics**. designed to support applications that may span multiple communication protocols, data contracts, trust domains, network environments.
