@@ -965,6 +965,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Best Practices**
     - for the lowest latency: place data in region where users are.
     - unless you need a specific format(API), use the NoSQL option.
+- **Tiers**
+  - ![cosmos db tiers](img/cosmos_db_tiers.PNG)
 - **Cosmos DB Partitions and Containers**
   - **Partitions**
     - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
@@ -1500,6 +1502,10 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
   - **Benefits**
     - highly available, secure(Microsoft Entra ID, RBAC) centralized secret management.
     - access and use logging or stream to event hub.
+- **Key Vault and ARM templates**
+  - <https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/key-vault-parameter?tabs=azure-cli>
+  - referencing the key vault and secret ID in your ARM parameter file.
+  - The user who deploys the ARM template must have the `Microsoft.KeyVault/vaults/deploy/action` (access policy -depreciated) RBAC permission.
 - **Key Vault Self-Signed Certificate Creation**
   - **CertificatePolicy**: This class is used to **define the policy for creating certificates** in Azure Key Vault. It allows you to **specify various properties** of the key that backs the certificate, such as key type, key size, and key usage. You can also set custom attributes on the policy object. This is the correct class to use when you need to configure the key properties of a self-signed certificate.
   - **CertificateOperation**: This class represents an **operation on a certificate** in Azure Key Vault (e.g., create, import, update). While it's used in the process of generating a certificate, it doesn't directly allow you to set custom key properties.
