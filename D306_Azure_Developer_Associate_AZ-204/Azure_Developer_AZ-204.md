@@ -965,8 +965,6 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Best Practices**
     - for the lowest latency: place data in region where users are.
     - unless you need a specific format(API), use the NoSQL option.
-- **Tiers**
-  - ![cosmos db tiers](img/cosmos_db_tiers.PNG)
 - **Cosmos DB Partitions and Containers**
   - **Partitions**
     - **Logical**: small section of a container. default logical partition **max size 20 GB** for storing data.
@@ -1002,6 +1000,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - provision at database or container level.
   - **Serverless Mode**: billed for RUs used.
   - **AutoScale Mode**: mission-critical workloads. SLA on high performance and scale.
+  - ![cosmos db tiers](img/cosmos_db_tiers.PNG)
 - **Cosmos DB Change Feed**
   - track changes made to items in **Cosmos DB container**. persistent ordered record. parallel processing of changes.
   - **listens**: for changes(inserts, updates, deletes).
