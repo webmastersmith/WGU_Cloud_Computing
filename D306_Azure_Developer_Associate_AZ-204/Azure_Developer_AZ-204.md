@@ -1622,16 +1622,16 @@ az logout
   - **Queue Receive Modes**
     - **Receive and Delete**: good when consumer **can** tolerate missing message in failure event.
     - **Peek Lock**: good when consumer **can't** tolerate missing messages. Service Bus locks message until receives 'messaged was processed' from consumer.
-  - **Tiers**
-    - basic: obsolete. entry level.
-    - standard: variable throughput and latency, max message size **256KB**.
-    - premium: for high scale and performance. mission-critical applications.
+  - **Service Bus Tiers**
+    - basic: **obsolete**. entry level.
+    - standard: variable throughput and latency, max message size **256 KB**.
+    - premium: for high scale and performance. mission-critical applications. max message size **100 MB**.
   - **When to use**
     - **long-polling**: client request messages, if no message immediately available, server holds connection open for set duration waiting for a message to arrive.
     - guaranteed **FIFO** delivery.
     - automatic **duplicate** detection.
     - **parallel** long-running **streams**.
-    - message size often bigger than **64KB** but less than 1MB.
+    - message size often bigger than **64 KB** but less than 1MB.
     - **RBAC** support.
 - **Azure Queue Storage**
   - Azure **storage infrastructure**. store large numbers of messages(millions, limit is size of storage account), accessible from anywhere using **HTTPS**.
@@ -1644,7 +1644,7 @@ az logout
   - **config**
     - **storage account**: Azure Storage account.
     - **Queue**: name lowercase. Azure Queue service.
-    - **Message**: max **64KB** size. time-to-live: (1 day - never expire).
+    - **Message**: max **64 KB** size. time-to-live: (1 day - never expire).
   - ![queue url](img/queues_url.PNG)
   - **Queue CLI**
   - ![queue cli](img/queues_cli.PNG)
