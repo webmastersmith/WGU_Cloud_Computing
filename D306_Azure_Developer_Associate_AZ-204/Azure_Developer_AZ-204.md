@@ -197,9 +197,13 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Instrumentation Key**
   - unique identifier that is assigned to **each Application Insights resource**. When you configure your application to use an instrumentation key, it **enables the application to send telemetry data** to that specific Application Insights resource.
   - install instrumentation in your app and it monitors and **directs the telemetry data** to an Application Insights resource by using a unique token.
-- **Log Metrics**
-  - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
-  - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
+- **Signal Types**
+  - **Logs** feature can store a **variety of datatypes** (each with its own structure). **stateless**(keep triggering at every alert condition).
+    - **Activity Log**: includes **service health record**s along with records on any **configuration changes** made to the resources (and is available to all Azure resources).
+    - **Audit Log**: contains the history of **sign-in activity** and audit trail of changes made within a particular tenant.
+    - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
+  - **Metric**: can only store **numeric data** in a particular structure. **stateful**(alert with trigger and when resolved). **numerical values** that are collected at regular intervals and describe some aspect of a system at a particular time
+    - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
   - ![application map](img/application_map.PNG)
 
 ## Azure App Services
@@ -473,7 +477,7 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
     3. **User Authentication and Consent**: user authenticates with Microsoft Entra ID which grants or denies the requested permissions.
     4. **Authorization Grant**: once authenticated, Microsoft Entra ID issues an authorization grant (e.g., an authorization code) to the app(client).
     5. **Access Token Request**: The app(client) exchanges the authorization grant for an access token by sending a request to Microsoft Entra ID's token endpoint.
-    6. **Access Token**: Microsoft Entra ID issues an access token to the app(client), which contains information about the granted permissions (scopes) and the user or app(client)lication on whose behalf the app(client) is acting.
+    6. **Access Token**: Microsoft Entra ID issues an access token to the app(client), which contains information about the granted permissions (scopes) and the user or application on whose behalf the app(client) is acting.
     7. **Resource Access**: The app(client) includes the access token in its requests to the resource server (Azure service or API) to access the protected resources.
     8. **Token Validation**: The resource server validates the access token to ensure it's valid, was issued by a trusted authority (Microsoft Entra ID), and grants access.
   - ![oauth 2 flow](img/oauth2.png)
@@ -1531,12 +1535,15 @@ curl "https://graph.microsoft.com/v1.0/me/messages?filter=emailAddress eq 'jon@c
   - **CertificateOperation**: This class represents an **operation on a certificate** in Azure Key Vault (e.g., create, import, update). While it's used in the process of generating a certificate, it doesn't directly allow you to set custom key properties.
   - **Trigger**: This is a concept used in Azure Functions or Logic Apps to initiate a workflow **based on an event**. It's not relevant to setting key properties in Key Vault.
   - **Action**: This is a **general term for an operation or task**, and it's not a specific class used in the context of Azure Key Vault certificates.
-  - **Best Practices**
-    - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
-    - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
-    - **Separate Key Vaults**: dev, test, production best to use separate vaults.
-    - **Check Authorization**: only authorized people should have access to keys.
-    - **Backup and Logging**: create regular backup and log access.
+- **Key Vault Objects Delete Protection**
+  - enable **purge protection**: cannot permanently delete key vault objects until protection period has expired.
+  - enable **soft delete**: retain deleted items for set time before permanent deletion.
+- **Key Vault Best Practices**
+  - **Managed Identities**: authenticate by assigning identities to app. Azure automatically rotates service principal client secret associated with identity.
+  - **Encryption in Transit**: Key Vault enforces TLS(transport layer security) and **Perfect Forward Secrecy (PFS)** that protects connections between client and Microsoft cloud services.
+  - **Separate Key Vaults**: dev, test, production best to use separate vaults.
+  - **Check Authorization**: only authorized people should have access to keys.
+  - **Backup and Logging**: create regular backup and log access.
     - **Soft Delete**: turn on soft delete and purge protection.
 
 ```bash
