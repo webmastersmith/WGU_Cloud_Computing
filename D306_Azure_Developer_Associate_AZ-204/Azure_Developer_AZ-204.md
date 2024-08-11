@@ -8,6 +8,7 @@
   - [cyber vista practice exams](https://app.pluralsight.com/paths/certificate/developing-solutions-for-microsoft-azure-az-204)
 - **Reddit**
   - <https://www.reddit.com/r/AzureCertification/comments/1difpww/az204/>
+  - <https://www.reddit.com/r/AzureCertification/comments/1epfhzy/share_your_thoughts_az204/>
 - **Study Guides**
   - [Thomas Maurer](https://www.thomasmaurer.ch/2020/03/az-204-study-guide-developing-solutions-for-microsoft-azure/)
   - [Github AndreaKarz](https://github.com/AndreasKarz/AZ-204)
@@ -337,6 +338,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - new deployment slots can be empty or cloned.
   - **swap**: loads and starts image(**warm up**), if **HTTP responds**, considered **warmed up** and **switches routing rules** from **source** to **target** slot.
     - the HTTP request and URL path can be altered.
+    - alter swap warm-up or resources are available: edit `web.config` `applicationInitialization`.
   - **swap with preview**: load and starts slot image, pauses to allow you to preview, before switching routing rules to target slot.
   - **auto swap**: when code changes, automatically swaps app into production. not on linux or Web App for Containers.
   - **Swap Routing**
@@ -656,6 +658,9 @@ az logout
       - `https://mystorageaccount.blob.core.windows.net/mycontainer`
     - **blob**: must be inside container. can have multiple blobs.
       - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
+- **Blob Event Bindings**
+  - input/output bindings but no blob triggers(use Event Grid for trigger).
+  - consumption plan 10 minute delay in processing new blobs, unless 'Always on' is used.
 - **Blob Permissions**
   - **Lease Blob**: A lease on a blob provides **exclusive write and delete access** to the blob for a specified duration. While a lease is active, other clients cannot modify or delete the blob.
   - **Set Blob Immutability Policy**: An immutability policy makes a blob immutable, **preventing any changes** for a set period. It doesn't provide the exclusive access needed for write and delete operations.
