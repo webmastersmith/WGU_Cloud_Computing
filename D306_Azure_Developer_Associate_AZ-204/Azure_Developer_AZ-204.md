@@ -453,6 +453,8 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
   - ![masl auth](img/masl_auth.PNG)
 - **Active Directory**
   - **AD Premium**: authentication, restricting IP address logins, multifactor auth.
+  - **Register Application**
+    - Redirect URI is needed. Upon registration, the portal will give client ID and tenant ID. Both of these will be included in the app configuration json file.
   - ![ad auth tier features](img/ad_tier_auth_features.PNG)
 - **RBAC**
   - **Scope**
@@ -463,11 +465,29 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
   - ![rbac hierarchy](img/rbac_hierarchy.png)
 - **OAuth 2.0**
   - token given to service principal to act on your behalf, without giving your credentials.
-  - **Authorization server**: issues access token.
+  - open standard protocol that enables **secure authorization and access** to Azure **resources and services**.
+  - **limited access** to **protected resources** on Azure, **without sharing credentials** directly.
+  - **How It Works**
+    1. **Client Registration**: application is **registered** with **Microsoft Entra ID** to obtain a **unique client ID** and, optionally, a client secret.
+    2. **Authorization Request**: The application initiates the authorization flow by re-directing the user to Microsoft Entra ID's authorization endpoint(**URI Login Page**).
+    3. **User Authentication and Consent**: user authenticates with Microsoft Entra ID which grants or denies the requested permissions.
+    4. **Authorization Grant**: once authenticated, Microsoft Entra ID issues an authorization grant (e.g., an authorization code) to the app.
+    5. **Access Token Request**: The app exchanges the authorization grant for an access token by sending a request to Microsoft Entra ID's token endpoint.
+    6. **Access Token**: Microsoft Entra ID issues an access token to the app, which contains information about the granted permissions (scopes) and the user or application on whose behalf the client is acting.
+    7. **Resource Access**: The client includes the access token in its requests to the resource server (Azure service or API) to access the protected resources.
+    8. **Token Validation**: The resource server validates the access token to ensure it's valid, was issued by a trusted authority (Microsoft Entra ID), and grants access to the requested resources if the permissions (scopes) in the token match.
+  - ![oauth 2 flow](img/oauth2.png)
+  - **Authorization server**: issues access token. manages user consent.
+  - **Resource Owner**: The user or entity that owns the protected resources on Azure.
+  - **Client**: The application or service that requests access to the protected resources on behalf of the resource owner.
+  - **Resource Server**: The service or API that hosts the protected resources and validates access tokens.
   - **Access token**: credential used by the client (application) to **access protected resources** on behalf of the user. It represents the approved authorization granted by the user to the client.
   - **Authentication grant**: An authentication grant (e.g., authorization code) is an intermediate credential used to **obtain an access token**, but it doesn't represent the final authorization itself.
   - **Refresh token**: **obtain a new access token** when the current one expires. While it's part of the OAuth flow, it doesn't directly represent the authorization.
   - **Authorization request**: initial step in the OAuth process, where the client asks the user for permission to access protected resources. It's not a credential used to represent the approved authorization.
+- **OpenID Connect (OIDC)**
+  - extends the OAuth 2.0 authorization protocol for use as another authentication protocol.
+  - enable **single sign-on (SSO)** between your **OAuth-enabled applications** by using a security token called an ID token.
 - **Service Principal Object**
   - to access resources secured by Microsoft Entra tenant, the service must have valid security principal.
   - service principal must be **created in each tenant** where the application is used to enable it to establish an **identity** for sign-in and/or **access to resources** being secured by the tenant.
