@@ -953,6 +953,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - **Cosmos DB API**: choose the API(format) or migrate existing database into Cosmos DB.
     - **NoSQL**: document format. first to update. **best end-to-end experience**. Query in SQL syntax.
     - **MongoDB**: BSON format. compatible with MongoDB.
+      - migration: **MongoDB native** -> `monorestore or Azure Database Migration Service` -> **Azure MongoDB API**.
     - **PostgreSQL**: PostgreSQL distributed tables for scale.
     - **Apache Cassandra**: column-oriented schema. supports CQL query language.
     - **Table**: key:value format. has been **replaced by Cosmos DB NoSQL**.
