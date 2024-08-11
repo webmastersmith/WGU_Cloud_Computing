@@ -468,14 +468,14 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
   - open standard protocol that enables **secure authorization and access** to Azure **resources and services**.
   - **limited access** to **protected resources** on Azure, **without sharing credentials** directly.
   - **How It Works**
-    1. **Client Registration**: application is **registered** with **Microsoft Entra ID** to obtain a **unique client ID** and, optionally, a client secret.
-    2. **Authorization Request**: The application initiates the authorization flow by re-directing the user to Microsoft Entra ID's authorization endpoint(**URI Login Page**).
+    1. **Client Registration**: application(client) is **registered** with **Microsoft Entra ID** to obtain a **unique client ID** and, optionally, a client secret.
+    2. **Authorization Request**: The app(client) initiates the authorization flow by re-directing the user to Microsoft Entra ID's authorization endpoint(**URI Login Page**).
     3. **User Authentication and Consent**: user authenticates with Microsoft Entra ID which grants or denies the requested permissions.
-    4. **Authorization Grant**: once authenticated, Microsoft Entra ID issues an authorization grant (e.g., an authorization code) to the app.
-    5. **Access Token Request**: The app exchanges the authorization grant for an access token by sending a request to Microsoft Entra ID's token endpoint.
-    6. **Access Token**: Microsoft Entra ID issues an access token to the app, which contains information about the granted permissions (scopes) and the user or application on whose behalf the client is acting.
-    7. **Resource Access**: The client includes the access token in its requests to the resource server (Azure service or API) to access the protected resources.
-    8. **Token Validation**: The resource server validates the access token to ensure it's valid, was issued by a trusted authority (Microsoft Entra ID), and grants access to the requested resources if the permissions (scopes) in the token match.
+    4. **Authorization Grant**: once authenticated, Microsoft Entra ID issues an authorization grant (e.g., an authorization code) to the app(client).
+    5. **Access Token Request**: The app(client) exchanges the authorization grant for an access token by sending a request to Microsoft Entra ID's token endpoint.
+    6. **Access Token**: Microsoft Entra ID issues an access token to the app(client), which contains information about the granted permissions (scopes) and the user or app(client)lication on whose behalf the app(client) is acting.
+    7. **Resource Access**: The app(client) includes the access token in its requests to the resource server (Azure service or API) to access the protected resources.
+    8. **Token Validation**: The resource server validates the access token to ensure it's valid, was issued by a trusted authority (Microsoft Entra ID), and grants access.
   - ![oauth 2 flow](img/oauth2.png)
   - **Authorization server**: issues access token. manages user consent.
   - **Resource Owner**: The user or entity that owns the protected resources on Azure.
