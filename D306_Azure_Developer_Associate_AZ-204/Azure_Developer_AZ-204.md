@@ -203,7 +203,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Activity Log**: includes **service health record**s along with records on any **configuration changes** made to the resources (and is available to all Azure resources).
     - **Audit Log**: contains the history of **sign-in activity** and audit trail of changes made within a particular tenant.
     - **Log-based metrics**: logs translated into **Kusto Queries** from stored events. more dimensions. better for **data analysis**.
-  - **Metric**: can only store **numeric data** in a particular structure. **stateful**(alert with trigger and when resolved). **numerical values** that are collected at regular intervals and describe some aspect of a system at a particular time
+  - **Metric**: can only store **numeric data** in a particular structure. **stateful**(alert only once with trigger and only once when resolved). **numerical values** that are collected at regular intervals and describe some aspect of a system at a particular time
     - **Standard metrics**: are stored as **pre-aggregated** time series. better choice for **dashboarding** and in **real-time alerting**.
   - ![application map](img/application_map.PNG)
 
