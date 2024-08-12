@@ -935,7 +935,9 @@ FROM mcr.microsoft.com/dotnet/runtime:6.0
 WORKDIR /app
 # Copy the contents of the published app to the container's /app directory
 COPY bin/Release/net6.0/publish/ .
-# Expose port 80 to the outside world
+# run script in current directory.
+RUN ./script.ps1
+# Expose port 80 to the internal docker network.
 EXPOSE 80
 # Set the command to run when the container starts
 CMD ["dotnet", "MyApp.dll"]
@@ -1021,7 +1023,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
     - **Bounded staleness**: read-your-write after set time. single region **5s**, multi-region **300s** after write. **time-delayed linearizability guarantee**.
     - **Session**: **default**. single client. only can read-your-writes. replicas eventually converge.
     - **Consistent prefix**: will always be able to read-your-writes in the written order. updates made as a batch.
-    - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **greatest throughput**.
+    - **Eventual**: no ordering guarantee for reads. replicas eventually converge. **highest throughput**.
   - ![consistency levels](img/consistency_levels.PNG)
 - **Cosmos DB Modes**
   - you need dedicated resources for database.
