@@ -1033,6 +1033,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
   - ![cosmos db tiers](img/cosmos_db_tiers.PNG)
 - **Cosmos DB Change Feed**
   - track changes made to items in **Cosmos DB container**. persistent ordered record. parallel processing of changes.
+  - change feed provides transaction logs of **all the changes** that occur to the blobs and the blob metadata in your storage account. The change feed provides **ordered**, guaranteed, a durable, **immutable**, read-only log of these changes. You can process these logs **asynchronously**, incrementally or in-full.
   - **listens**: for changes(inserts, updates, deletes).
   - **recording**: adds changes to change log, preserving order it happened.
   - **push model**: you listen for changes. **recommended**.
@@ -1267,7 +1268,7 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
       - most common flavors. (e.g. nodejs, python, C#, powershell).
       - can create **custom handler** for your preferred runtime.
 - **Tiers**
-  - **Consumption Plan**: default. **5 min limit**. cold-starts. pay-as-you-go. dynamic scale.
+  - **Consumption Plan**: default. **5 min limit**. cold-starts(upto **10 minutes**). pay-as-you-go. dynamic scale.
   - **Premium Plan**
     - pre-warmed. larger compute.
     - always ready instances. better Compute.
@@ -1414,7 +1415,7 @@ module.exports = async function (context, eventGridEvent) {
 - **Durable Functions**
   - stateful functions. state survives VM reboot or failure.
   - also called **Orchestrator Functions**.
-  - **Durable Function Types**
+  - **Orchestrator Function Types**
     - **Client Function**: trigger entry point. initiate orchestrator function. can use any trigger.
     - **Orchestrator Function**: define stateful workflow. handle errors.
     - **Activity Function**: run each step defined in 'orchestrator' function. can use any bindings.
