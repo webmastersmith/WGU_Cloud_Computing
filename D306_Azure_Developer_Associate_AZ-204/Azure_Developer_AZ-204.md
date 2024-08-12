@@ -659,8 +659,8 @@ az logout
     - **blob**: must be inside container. can have multiple blobs.
       - `https://mystorageaccount.blob.core.windows.net/mycontainer/myblob`
 - **Blob Event Bindings**
-  - input/output bindings but no blob triggers(use Event Grid for trigger).
-  - consumption plan 10 minute delay in processing new blobs, unless 'Always on' is used.
+  - input/output bindings, but no HTTP triggers.
+  - **Azure Function Plan**: Consumption plan can have 10 minute delay(warm-up period) in processing new blobs, unless 'Always on'(premium or dedicated tier) is used.
 - **Blob Permissions**
   - **Lease Blob**: A lease on a blob provides **exclusive write and delete access** to the blob for a specified duration. While a lease is active, other clients cannot modify or delete the blob.
   - **Set Blob Immutability Policy**: An immutability policy makes a blob immutable, **preventing any changes** for a set period. It doesn't provide the exclusive access needed for write and delete operations.
