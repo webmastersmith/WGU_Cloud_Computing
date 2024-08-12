@@ -859,8 +859,8 @@ az group delete --name $AZ_RESOURCE_GROUP_NAME -y --no-wait
 - **Storage**
   - containers(pods) are **stateless**(ephemeral). data is lost on failure.
   - persist state beyond the lifetime of the container, you must **mount a volume from an external store**.
-  - **Azure File** Share, Empty directory, GitHub, Secret.
-    - **Linux**: can only mount File Shares and only as root.
+  - **Windows**: File Share(admin), Empty directory(regular user), GitHub, Secret.
+  - **Linux**: can only mount File Shares and only as root.
 
 ```bash
 # Container Instance
