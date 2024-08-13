@@ -18,6 +18,16 @@
   - [AWS Exam Prep](https://explore.skillbuilder.aws/learn/course/external/view/elearning/14760/exam-prep-standard-course-aws-certified-solutions-architect-associate-saa-c03)
   - [AWS Exam Practice Questions](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/13266/aws-certified-solutions-architect-associate-official-practice-question-set-saa-c03-english)
 
+## AWS Bash CLI
+
+- **Install**
+  - <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
+  - `aws --version` // check if installed correctly.
+- **Create AWS User**
+  - <https://docs.aws.amazon.com/streams/latest/dev/setting-up.html>
+- **Login**
+  - <https://docs.aws.amazon.com/signin/latest/userguide/command-line-sign-in.html>
+
 ## AWS Well-Architected Framework (Six Pillars)
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
@@ -147,18 +157,58 @@
   - ![S3 access](img/s3_access.PNG)
   - **Best Practices**
     - give least privilege access. (e.g. create **presigned URL** to object that **expires in 24 hours**).
+- **S3 Object Deletion**
+  - deletions are hidden but not removed. to remove you must delete again.
+- **S3 Pricing**
+  - transferring data **in** or inside **region** is free.
+  - transferring data **out** or other **regions** cost.
+- **S3 Tiers**
+  - **S3 Standard**: frequently accessed data. across **three AZ**.
+  - **S3 Standard-IA(infrequent access)**: same as S3 Standard. **30 storage penalty**. **higher cost** to retrieve.
+  - **S3 One Zone IA**: **single AZ**. non-critical data.
+  - **S3 Glacier**: archiving rarely accessed data.
+    - **Expedited**: retrieve data 1-5 min.
+    - **Standard**: retrieve data 3-5 hours.
+    - **Bulk**: retrieve data 5-12 hours.
+  - **S3 Glacier Deep Archive**: least expensive. data access once or twice a year. Eleven 9's of durability.
+    - stored across **three geographical areas**.
+    - data is restored within 12 hours.
+  - **S3 Intelligent Tiering**:
+    - option to remove cost. automatically moves objects to the most cost-effective access tier.
+    - fee to use.
+  - **S3 Lifecycle Policy**
+    - delete or move objects based on age.
+  - ![S3 Tiers](img/S3_tier.PNG)
+- **S3 Uploading**
+  - **aws cli**: `aws s3 cp file.txt s3://BUCKET-NAME/file.txt`
+  - **Multipart**: tool that splits data into smaller size. `> 100 MB`. network connectivity inconsistent.
+  - **Transfer Acceleration**: uses CloudFront edge location, then AWS backbone.
+  - **Snowball**: **Petabytes** disk storage. physical device shipped to you.
+  - **Snowmobile**: **Exabytes** disk storage. 18 wheeler shipping container picks up data.
 - **S3 versioning**
   - enabled through bucket properties.
   - **Versioning Not Enabled**: default. no versioning.
   - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend.
   - **Versioning-Suspended**: bucket has been versioned, but suspended.
-- **S3 Object Deletion**
-  - deletions are hidden but not removed. to remove you must delete again.
 - **S3 Website**
   - low cost solution to web hosting.
-  - **Best Practices**
-    - enable versioning.
-  - ![S3 static website](img/s3_website.PNG)
   - **CORS (cross-origin resource sharing)**
     - XML document with rules that identify the origins that are allowed to access your bucket.
   - ![S3 CORS](img/S3_cors.PNG)
+  - **Best Practices**
+    - enable versioning.
+  - ![S3 static website](img/s3_website.PNG)
+
+```sh
+# Create Transfer Accelerate S3 upload.
+export AWS_BUCKET_NAME="AWS_BUCKET_NAME_$(openssl rand -base64 20 | tr -dc 'a-z0-9')"
+export AWS_REGION="us-east-1"
+# create 1G 'file.dat' in current directory.
+time dd if=/dev/zero of=file.dat bs=1G seek=1 count=0
+
+# cp file to s3 through CloudFront edge location.
+aws s3 cp file.dat s3://${AWS_BUCKET_NAME}/file.dat -- region $AWS_REGION  --endpoint-url http://s3-accelerate.amazonaws.com
+
+# check if file in s3
+aws s3api get-bucket-accelerate-configuration --bucket $AWS_BUCKET_NAME --query 'Status'
+```
