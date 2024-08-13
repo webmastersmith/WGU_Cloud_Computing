@@ -22,8 +22,26 @@
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
+  - run and monitor(logging) systems. fix quickly and safely.
 - **Security**
+  - protect at all layers.
 - **Reliability**
+  - recover from infrastructure or service disruption.
 - **Performance efficiency**
+  - most efficient resource selection(mechanical sympathy) as demand changes.
 - **Cost optimization**
+  - measure efficiency. eliminate unneeded expense. reduce employee overhead with managed services.
 - **Sustainability**
+
+## Best Practices
+
+- **Enable Scalability**
+- **Automate your environment**
+- **Treat resources as disposable**
+- **Use loosely-coupled components**
+- **Design services, not servers**
+- **Choose the right database solutions**
+- **Avoid single points of failure**
+- **Optimize for cost**
+- **Use Caching**
+- **Secure your entire infrastructure**
