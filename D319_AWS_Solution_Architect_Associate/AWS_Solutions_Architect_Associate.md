@@ -80,13 +80,21 @@
 - **Availability Zone (AZ)**
   - **one or more data centers** geographically separated from each other with redundant power, and networking.
   - networked together through the **AWS backbone network**.
+  - **Best Practice**
+    - choose AZ that protects against natural disasters.
+    - latency reduction for end user.
   - ![availability zone](img/availability_zone.PNG)
 - **AWS Local Zone**
   - extension of Region that is closer to end user(edge).
   - compute, storage, database **closer to large populations** where **no Region exist**. (e.g. Los Angeles Local Zone).
+- **Cloud Architecture**
+  - applying cloud-based technology to meet technical and business requirements.
 - **Cloud Front**
-  - over 200 points-of-presence (PoP), edge locations and edge caches.
+  - AWS CDN(content delivery network).
+  - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
   - ![cloud front](img/cloud_front.PNG)
+- **Cloud Watch**
+  - **monitor** infrastructure and **automate** scaling.
 - **Data Centers**
   - location of physical servers. redundant hardware, power, cooling, and networking.
   - networked to other data centers through the **AWS backbone network**.
@@ -94,3 +102,63 @@
   - Geographical location with **two or more availability zones**. (e.g us-east-1, eu-west-1).
   - Most services provided by AWS are **region scoped**. (e.g. data for a service used in one region is not replicated in another region).
   - China and GovCloud regions have restricted access.
+  - **Best Practices**
+    - use region with lowest latency to end users.
+    - complies with local government law. (e.g. where data is stored, who can access data center...).
+
+## Storage
+
+- **S3**
+  - **object** storage service.
+  - global REST URL access.
+  - Eleven 9's of **durability**(not lost). 99.999999999% uptime.
+  - Four 9's of **availability**(can access). 99.99% available.
+  - **bucket**: name is **globally unique**. storage container.
+  - **object**: asset. max single object size **5 TB**.
+    - **Object Properties**
+      - **key**: name used to retrieve object.
+      - **version ID**: together with key uniquely identify object.
+      - **value**: data you store. immutable(you **cannot change value**).
+      - **metadata**: key:value properties about the object.
+      - **subresources**: object specific information.
+  - **New Objects**: **Read-After-Write**. new objects are available immediately.
+  - **Overwrite PUTS and DELETES**: **eventual consistency**. changed objects take time to propagate.
+  - **Create**
+    1. name: (globally unique)
+    2. region: (e.g. us-east-1)
+    3. permissions: (block all public access | allow public access)
+  - **Best Practices**
+    - **cache** frequently accessed objects.
+    - tune **retry and timeout logic** for high traffic objects.
+    - **scale horizontally** for high **throughput** across network.
+    - often used as a **data store** for analytics and **backup and archive** service for critical data.
+- **S3 Object Access**
+  - **private** and **protected** by **default**.
+  - **Block Public Access**: lock bucket and objects from being accessed.
+  - **IAM Policies**: good when users can authenticate using IAM.
+  - **Bucket Policies**: define access to specific object or bucket.
+  - **Access Control List (ACL)**: legacy access.
+  - **S3 Access Point**: configure access with names and permissions.
+  - **Presigned URLs**: time-limited access with temporary URLs.
+  - **AWS Trusted Advisor**: free feature. bucket permission check.
+  - **encryption**:
+    - server-side: data encrypted on save, decrypted on download.
+    - client-side: client uploads encrypted data.
+  - ![S3 access](img/s3_access.PNG)
+  - **Best Practices**
+    - give least privilege access. (e.g. create **presigned URL** to object that **expires in 24 hours**).
+- **S3 versioning**
+  - enabled through bucket properties.
+  - **Versioning Not Enabled**: default. no versioning.
+  - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend.
+  - **Versioning-Suspended**: bucket has been versioned, but suspended.
+- **S3 Object Deletion**
+  - deletions are hidden but not removed. to remove you must delete again.
+- **S3 Website**
+  - low cost solution to web hosting.
+  - **Best Practices**
+    - enable versioning.
+  - ![S3 static website](img/s3_website.PNG)
+  - **CORS (cross-origin resource sharing)**
+    - XML document with rules that identify the origins that are allowed to access your bucket.
+  - ![S3 CORS](img/S3_cors.PNG)
