@@ -161,39 +161,59 @@ aws sts get-caller-identity
 
 ## Compute
 
-- **Virtual Machines**
-  - **EC2**
-    - virtual machines in the cloud (EC2)
-    - Storing data on virtual drives (EBS)
-    - Distributing load across multiple machines (ELB)
-    - Scaling the services using an auto-scaling group (ASG)
-    - **Elastic IP**
-      - fixed IP address. avoid due to 'pool' architecture.
-      - use **DNS** mapped to random IP's.
-    - **EC2 User Data**
-      - script run as **root** only once during the **initial EC2 instance start**.
-    - **Security Groups**
-      - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
-      - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
-      - **default** inbound:block, outbound:allow.
-      - **Scope**: region/VPC.
-      - **Errors**:
-        - **Timeout**: blocked by security group.
-        - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
-  - **Lightsail**:
+- **Compute**
+  - higher infrastructure customization <--> faster deployment.
+  - ![compute](img/compute.PNG)
+  - ![compute chart](img/compute2.PNG)
 - **Containers**
   - **ECS**
 - **PaaS**
   - **AWS Elastic Beanstalk**
 - **Serverless**
-  - **AWS Lambda**
-  - **AWS Fargate**
-- **Specialized: AWS Outposts, AWS Batch**
+  - **AWS Lambda**: only pay when runs.
+  - **AWS Fargate**: run serverless containers.
+- **Specialized**
   - fully managed
+  - **AWS Outposts**: run AWS services on-prem.
+  - **AWS Batch**: any scale batch(background) jobs.
+- **Virtual Machines**
+  - **EC2**
+    - resizable VM instance. pay-as-you-go(CPU, memory, EBS, networking). when stopped, only pay **EBS**.
+    - **Amazon Machine Image (AMI)**: the blueprint of VM instance.
+    - virtual machines in the cloud (EC2)
+    - Storing data on virtual drives (EBS)
+    - Distributing load across multiple machines (ELB)
+    - Scaling the services using an auto-scaling group (ASG)
+  - ![ec2](img/ec2_setup.PNG)
+  - **EC2 Storage**
+    - **instance store**. default. create with EC2. ephemeral storage. deleted when EC2 stops.
+    - **EBS**: elastic block store. persistent block-storage volumes.
+    - **Elastic IP**
+      - fixed IP address. avoid due to 'pool' architecture.
+      - use **DNS** mapped to random IP's.
+  - **EC2 Tiers**
+    - **On-Demand**: short workload, predictable pricing.
+    - **Reserved**: known amount of time (minimum 1 year). Types of reserved instances:
+      - **Reserved Instances**: recommended long workloads.
+      - **Convertible Reserved Instances**: recommended for long workloads with flexible instance types.
+      - **Scheduled Reserved Instances**: instances reserved for a longer period used at a certain schedule.
+    - **Spot Instance**: cheapest. for short ephemeral workloads. risk of losing the instance while running.
+    - **Dedicated Instances**: no other customer will share the underlying hardware.
+    - **Dedicated Hosts**: book an entire physical server, can control the placement of the instance.
+  - **EC2 User Data**
+    - script run as **root** only once during the **initial EC2 instance start**.
+  - **Security Groups**
+    - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
+    - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
+    - **default** inbound:block, outbound:allow.
+    - **Scope**: region/VPC.
+    - **Errors**:
+      - **Timeout**: blocked by security group.
+      - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+  - **Lightsail**:
 
 ## S3
 
-- **EBS**: elastic block storage.
 - EFS
 - FSx
 - Storage Gateway
