@@ -185,6 +185,7 @@ aws sts get-caller-identity
     - Distributing load across multiple machines (ELB)
     - Scaling the services using an auto-scaling group (ASG)
   - ![ec2](img/ec2_setup.PNG)
+  - ![ec2 overview](img/ec2_setup2.PNG)
   - **EC2 Storage**
     - **instance store**. default. create with EC2. ephemeral storage. deleted when EC2 stops.
     - **EBS**: elastic block store. persistent block-storage volumes.
