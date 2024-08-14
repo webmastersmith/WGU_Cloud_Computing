@@ -25,7 +25,8 @@
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
 5. <a href="#Definitions">Definitions</a>
-6. <a href="#S3">S3</a>
+6. <a href="#Compute">Compute</a>
+7. <a href="#S3">S3</a>
 
 ## AWS Bash CLI Login
 
@@ -158,26 +159,37 @@ aws sts get-caller-identity
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
 
-## EC2
+## Compute
 
-- **EC2**
-  - Renting virtual machines in the cloud (EC2)
-  - Storing data on virtual drives (EBS)
-  - Distributing load across multiple machines (ELB)
-  - Scaling the services using an auto-scaling group (ASG)
-- **Elastic IP**
-  - fixed IP address. avoid due to 'pool' architecture.
-  - use **DNS** mapped to random IP's.
-- **EC2 User Data**
-  - script run as **root** only once during the **initial EC2 instance start**.
-- **Security Groups**
-  - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
-  - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
-  - **default** inbound:block, outbound:allow.
-  - **Scope**: region/VPC.
-  - **Errors**:
-    - **Timeout**: blocked by security group.
-    - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+- **Virtual Machines**
+  - **EC2**
+    - virtual machines in the cloud (EC2)
+    - Storing data on virtual drives (EBS)
+    - Distributing load across multiple machines (ELB)
+    - Scaling the services using an auto-scaling group (ASG)
+    - **Elastic IP**
+      - fixed IP address. avoid due to 'pool' architecture.
+      - use **DNS** mapped to random IP's.
+    - **EC2 User Data**
+      - script run as **root** only once during the **initial EC2 instance start**.
+    - **Security Groups**
+      - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
+      - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
+      - **default** inbound:block, outbound:allow.
+      - **Scope**: region/VPC.
+      - **Errors**:
+        - **Timeout**: blocked by security group.
+        - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+  - **Lightsail**:
+- **Containers**
+  - **ECS**
+- **PaaS**
+  - **AWS Elastic Beanstalk**
+- **Serverless**
+  - **AWS Lambda**
+  - **AWS Fargate**
+- **Specialized: AWS Outposts, AWS Batch**
+  - fully managed
 
 ## S3
 
