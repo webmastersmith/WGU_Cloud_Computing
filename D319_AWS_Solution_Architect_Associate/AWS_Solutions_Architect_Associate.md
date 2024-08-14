@@ -18,32 +18,34 @@
   - [AWS Exam Prep](https://explore.skillbuilder.aws/learn/course/external/view/elearning/14760/exam-prep-standard-course-aws-certified-solutions-architect-associate-saa-c03)
   - [AWS Exam Practice Questions](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/13266/aws-certified-solutions-architect-associate-official-practice-question-set-saa-c03-english)
 
-## AWS Bash CLI
+## Table of Contents
+
+1. <a href="#AWS-Bash-CLI-Login">AWS Bash CLI Login</a>
+2. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
+3. <a href="#Best-Practices">Best Practices</a>
+4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
+5. <a href="#Definitions">Definitions</a>
+6. <a href="#S3">S3</a>
+
+## AWS Bash CLI Login
 
 - **Install**
   - <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
   - `aws --version` // check if installed correctly.
 - **Create AWS User**
   - <https://docs.aws.amazon.com/streams/latest/dev/setting-up.html>
+  - create new user. assign to IAM group with admin privileges.
+  - create access keys. copy access key and secret key.
 - **Login**
-  - <https://docs.aws.amazon.com/signin/latest/userguide/command-line-sign-in.html>
+  - <https://medium.com/@nickjabs/installing-and-configuring-the-aws-cli-on-windows-with-wsl2-72f2b72d21bc>
 
 ```sh
 # login -get access and secret key from IAM portal.
-# https://medium.com/@nickjabs/installing-and-configuring-the-aws-cli-on-windows-with-wsl2-72f2b72d21bc
-aws configure # copy paste
+aws configure # copy paste access and secret key.
 
 # check your logged in.
 aws sts get-caller-identity
 ```
-
-## Table of Contents
-
-1. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
-
-2. <a href="#Best-Practices">Best Practices</a>
-
-3. <a href="#simple-storage-service-s3">Simple Storage Service (S3)</a>
 
 ## AWS Well-Architected Framework (Six Pillars)
 
@@ -102,7 +104,7 @@ aws sts get-caller-identity
   - traceability(log every change, access).
   - IaC. automation ensures consistent security.
 
-## Authentication
+## Authentication and Authorization
 
 - **IAM**
   - A global service allowing AWS customers to manage user access and permissions. Available APIs at service, and
@@ -153,6 +155,8 @@ aws sts get-caller-identity
   - **Best Practices**
     - use region with lowest latency to end users.
     - complies with local government law. (e.g. where data is stored, who can access data center...).
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
 
 ## EC2
 
@@ -175,7 +179,7 @@ aws sts get-caller-identity
     - **Timeout**: blocked by security group.
     - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
 
-## Storage
+## S3
 
 - **EBS**: elastic block storage.
 - EFS
@@ -283,6 +287,3 @@ aws s3 cp file.dat s3://${AWS_BUCKET_NAME}/file.dat -- region $AWS_REGION  --end
 # check if file in s3
 aws s3api get-bucket-accelerate-configuration --bucket $AWS_BUCKET_NAME --query 'Status'
 ```
-
-- **Storage Gateway**
-  - hybrid storage between on-prem and AWS cloud.
