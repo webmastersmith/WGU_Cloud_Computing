@@ -211,9 +211,11 @@ aws sts get-caller-identity
     - **Dedicated Hosts**: book an entire physical server, can control the placement of the instance.
   - **EC2 User Data**
     - script run as **root** only once during the **initial EC2 instance start**.
-    - **Instance Metadata**: info about your instance. from inside your instance: `http://169.254.169.254/latest/meta-data`
+    - **Instance Metadata URL**: must run from inside instance.
+    - **Baking**: custom AMI(decrease boot time) <--> just enough AMI(decrease build time).
     - ![user data](img/user_data.PNG)
     - ![instance metadata](img/user_data_metadata.PNG)
+    - ![fully baked vs just enough AMI](img/full_baked_vs_just_enough_ami.PNG)
   - **Security Groups**
     - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
     - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
