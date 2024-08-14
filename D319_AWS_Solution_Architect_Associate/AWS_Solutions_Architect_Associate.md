@@ -179,13 +179,18 @@ aws sts get-caller-identity
 - **Virtual Machines**
   - **EC2**
     - resizable VM instance. pay-as-you-go(CPU, memory, EBS, networking). when stopped, only pay **EBS**.
-    - **Amazon Machine Image (AMI)**: the blueprint of VM instance.
+    - **Amazon Machine Image (AMI)**: the blueprint of VM instance. **region specific**.
+      - **HVM**: hardware virtual machine. best performance.
+    - you can only stop/start **EBS** backed AMI.
     - virtual machines in the cloud (EC2)
     - Storing data on virtual drives (EBS)
     - Distributing load across multiple machines (ELB)
     - Scaling the services using an auto-scaling group (ASG)
   - ![ec2](img/ec2_setup.PNG)
   - ![ec2 overview](img/ec2_setup2.PNG)
+  - **EC2 Instance Type**
+    - <https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html>
+    - ![ec2 instance type](img/ec2_instance_type.PNG)
   - **EC2 Storage**
     - **instance store**. default. create with EC2. ephemeral storage. deleted when EC2 stops.
     - **EBS**: elastic block store. persistent block-storage volumes.
