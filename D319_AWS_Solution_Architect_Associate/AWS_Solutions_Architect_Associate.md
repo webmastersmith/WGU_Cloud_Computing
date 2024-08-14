@@ -28,6 +28,23 @@
 - **Login**
   - <https://docs.aws.amazon.com/signin/latest/userguide/command-line-sign-in.html>
 
+```sh
+# login -get access and secret key from IAM portal.
+# https://medium.com/@nickjabs/installing-and-configuring-the-aws-cli-on-windows-with-wsl2-72f2b72d21bc
+aws configure # copy paste
+
+# check your logged in.
+aws sts get-caller-identity
+```
+
+## Table of Contents
+
+1. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
+
+2. <a href="#Best-Practices">Best Practices</a>
+
+3. <a href="#simple-storage-service-s3">Simple Storage Service (S3)</a>
+
 ## AWS Well-Architected Framework (Six Pillars)
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
@@ -85,6 +102,27 @@
   - traceability(log every change, access).
   - IaC. automation ensures consistent security.
 
+## Authentication
+
+- **IAM**
+  - A global service allowing AWS customers to manage user access and permissions. Available APIs at service, and
+    resource level (sometimes) within AWS — all global, all across available AWS regions.
+  - fine-grained access
+  - centralized control of your AWS account
+  - **Tips to protect a root account**:
+    - enable MFA (multi-factor authentication).
+    - no use of root user, create an IAM user with access.
+    - do not share root-used access keys, disabling or deleting them is better.
+    - Always go for the least privilege principle — only necessary permissions. New users are created with no permissions.
+  - **Policies**:
+    - **AWS managed**: standalone, administered by AWS.
+    - **Customer managed**: standalone, administered by you.
+    - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
+    - Suggested to use managed policies, not inline, to view all policies in the console.
+  - IAM users → authentication, assumed programmatically, credentials do expire.
+  - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
+  - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
+
 ## Definitions
 
 - **Availability Zone (AZ)**
@@ -116,10 +154,38 @@
     - use region with lowest latency to end users.
     - complies with local government law. (e.g. where data is stored, who can access data center...).
 
+## EC2
+
+- **EC2**
+  - Renting virtual machines in the cloud (EC2)
+  - Storing data on virtual drives (EBS)
+  - Distributing load across multiple machines (ELB)
+  - Scaling the services using an auto-scaling group (ASG)
+- **Elastic IP**
+  - fixed IP address. avoid due to 'pool' architecture.
+  - use **DNS** mapped to random IP's.
+- **EC2 User Data**
+  - script run as **root** only once during the **initial EC2 instance start**.
+- **Security Groups**
+  - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
+  - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
+  - **default** inbound:block, outbound:allow.
+  - **Scope**: region/VPC.
+  - **Errors**:
+    - **Timeout**: blocked by security group.
+    - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+
 ## Storage
 
+- **EBS**: elastic block storage.
+- EFS
+- FSx
+- Storage Gateway
+- Transfer Family
+- **AWS Backup**
+  - policy that determines when and how you want your AWS resources backed up.
 - **S3**
-  - **object** storage service.
+  - immutable **object** storage service.
   - global REST URL access.
   - Eleven 9's of **durability**(not lost). 99.999999999% uptime.
   - Four 9's of **availability**(can access). 99.99% available.
@@ -162,6 +228,11 @@
 - **S3 Pricing**
   - transferring data **in** or inside **region** is free.
   - transferring data **out** or other **regions** cost.
+- **S3 How to Choose Region**
+  1. choosing region is based on **local governance laws**.
+  2. **proximity**(latency) of users.
+  3. features and **availability**. not all AWS services available in all regions.
+  4. **cost** effectiveness. some regions are more expensive.
 - **S3 Tiers**
   - **S3 Standard**: frequently accessed data. across **three AZ**.
   - **S3 Standard-IA(infrequent access)**: same as S3 Standard. **30 storage penalty**. **higher cost** to retrieve.
@@ -212,3 +283,6 @@ aws s3 cp file.dat s3://${AWS_BUCKET_NAME}/file.dat -- region $AWS_REGION  --end
 # check if file in s3
 aws s3api get-bucket-accelerate-configuration --bucket $AWS_BUCKET_NAME --query 'Status'
 ```
+
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
