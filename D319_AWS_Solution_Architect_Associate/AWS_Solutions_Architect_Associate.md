@@ -129,8 +129,12 @@ aws sts get-caller-identity
   - IAM users → authentication, assumed programmatically, credentials do expire.
   - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
   - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
+- **Network Access Control List (ACL)**
+  - stateless firewall that are scoped to the **subnet level**.
+  - **allow inbound/outbound traffic** by default.
+  - ![ACL](img/acl.PNG)
 - **Security Groups**
-  - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
+  - **Stateful Firewalls**: instance level. policy with **allow/deny rules** to ports and IPv4/IPv6.
   - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
   - **default** inbound:block, outbound:allow.
   - **Scope**: region/VPC.
@@ -329,13 +333,18 @@ aws sts get-caller-identity
   - ![multi-account](img/multi-account.PNG)
 - **NAT Gateway**
   - enable **private subnets outbound communication** with Internet Gateway. **no inbound request**.
-  - must be placed in public subnet.
+  - must be placed in **public subnet**.
+  - requires an **Elastic IP**. `0.0.0.0/0` is gateway to internet.
   - ![nat gateway](img/nat_gateway.PNG)
+  - ![nat gateway routing](img/nat_gateway_routing.PNG)
 - **Route Table**
   - **control** traffic from subnet or gateway. can create **custom** route table.
   - all **subnets** must be associated with a route table.
   - **route table**: one-to-many. can have **multiple subnets**.
   - **subnet**: one-to-one. can have only **one route table**.
+- **Secure Network**
+  - **Stateful Firewalls**: control in/outbound traffic.
+  - **Security Group**
 - **Subnet**
   - segment of VPC ip address range. **not isolation boundaries**.
   - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
@@ -344,6 +353,8 @@ aws sts get-caller-identity
   - ![subnet CIDR](img/subnet_cidr.PNG)
   - **Private Subnet**
     - on out/inbound VPC access.
+    - for outbound only internet access: NAT gateway and Elastic IP is required.
+    - route table entry `0.0.0.0/0` with `nat-gq-id` is the gateway to internet.
   - **Public Subnet**
     - connect resources to internet.
     - ![public subnet](img/public_subnet.PNG)
