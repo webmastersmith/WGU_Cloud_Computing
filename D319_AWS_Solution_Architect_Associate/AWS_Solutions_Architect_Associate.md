@@ -250,14 +250,14 @@ aws sts get-caller-identity
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
 
-## S3
+## Storage
 
-- EFS
-- FSx
-- Storage Gateway
-- Transfer Family
 - **AWS Backup**
   - policy that determines when and how you want your AWS resources backed up.
+- **EFS**: -see <a href="#Compute">Compute</a>/EC2 Storage.
+- **FSx**: -see <a href="#Compute">Compute</a>/EC2 Storage.
+- **Storage Gateway**:
+- **Transfer Family**:
 - **S3**
   - immutable **object** storage service.
   - global REST URL access.
