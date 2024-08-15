@@ -311,9 +311,15 @@ aws sts get-caller-identity
   - ![cloud front](img/cloud_front.PNG)
 - **Cloud Watch**
   - **monitor** infrastructure and **automate** scaling.
+- **Elastic IP**
+  - fixed IPv4 address. map to **instance** or elastic network **interface**.
 - **Public Subnet**
   - connect resources to internet.
   - ![public subnet](img/public_subnet.PNG)
+- **Route Table**
+  - connect VPC resources. can create **custom** route table.
+  - all **subnets** must be associated with a route table.
+  - **route table** can have **multiple subnets**. **subnet** can have only **one route table**.
 - **VPC**
   - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
   - ![vpc flow](img/vpc_flow.PNG)
