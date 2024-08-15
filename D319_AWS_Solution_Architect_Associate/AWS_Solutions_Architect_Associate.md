@@ -194,7 +194,7 @@ aws sts get-caller-identity
     - **AWS Compute Optimizer**: analyze running instances. recommends 'right-sized' EC2.
     - ![ec2 instance type](img/ec2_instance_type.PNG)
   - **EC2 Placement Groups**
-    - control Availability Zone where instances run. logica grouping to create **low latency** between running **instances**.
+    - control Availability Zone where instances run. logical grouping to create **low latency** between running **instances**.
     - instance can launched in only one placement group. **dedicated host** **cannot** run in placement group.
     - **Cluster**: lowest-latency and high packet-per-second network. same server rack.
     - **Partition**: low-latency with reduced correlated hardware failure risk. spread across server racks.
