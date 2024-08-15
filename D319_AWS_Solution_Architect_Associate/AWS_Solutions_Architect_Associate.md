@@ -163,9 +163,10 @@ aws sts get-caller-identity
   - **EC2 Placement Groups**
     - control Availability Zone where instances run. logical grouping to create **low latency** between running **instances**.
     - instance can launched in only one placement group. **dedicated host** **cannot** run in placement group.
-    - **Cluster**: lowest-latency and high packet-per-second network. same server rack.
-    - **Partition**: low-latency with reduced correlated hardware failure risk. spread across server racks.
-    - **Spread**: low-latency spread across Availability Zones.
+    - **Cluster**: lowest-latency and high packet-per-second network. **same server rack**.
+    - **Partition**: low-latency with reduced correlated hardware failure risk. **same or different server racks**.
+      - good for low-latency with large volume of instances.
+    - **Spread**: low-latency. at least one instance is in **another Availability Zone**.
   - **EC2 Storage**
     - **instance store**. default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
     - **EBS**: elastic block store. **persistent** block-storage volumes. **root volume**
@@ -212,10 +213,17 @@ aws sts get-caller-identity
 
 - **Database**
   - **choose database**: scalability, storage requirements, type and size of objects, durability.
+  - ![database management](img/database_manage.PNG)
 - **Relational Database**
   - strict schema rules. provide data integrity. SQL.
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
+- **Relational Database Service (RDS)**
+  - fully AWS managed, SQL database.
+  - Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB.
+  -
+- **Aurora**
+  - auto scaling database when combined with RDS.
 
 ## Network
 
