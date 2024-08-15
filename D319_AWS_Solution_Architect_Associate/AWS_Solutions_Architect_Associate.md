@@ -254,8 +254,8 @@ aws sts get-caller-identity
 
 - **AWS Backup**
   - policy that determines when and how you want your AWS resources backed up.
-- **EFS**: -see <a href="#Compute">Compute</a>/EC2 Storage.
-- **FSx**: -see <a href="#Compute">Compute</a>/EC2 Storage.
+- **EFS**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
+- **FSx**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
 - **Storage Gateway**:
 - **Transfer Family**:
 - **S3**
