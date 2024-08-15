@@ -219,6 +219,8 @@ aws sts get-caller-identity
   - strict schema rules. provide data integrity. SQL.
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
+- **Database Migration Service**
+  - migrate existing database to AWS.
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
   - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
@@ -233,20 +235,37 @@ aws sts get-caller-identity
   - **Aurora**
     - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
     - auto scaling database when combined with RDS.
+  - **Security**
+    - run RDS in **VPC**(isolation and firewall).
+    - **AWS IAM policies** for **access**. **built-in security features of DB engine** control **login**.
+    - **security groups**(firewall) control allowed IP addresses.
+    - **SSL** encryption in **transit**.
+    - enable **encryption** at rest.
+    - enable alerts for important RDS events.
 - **Amazon Redshift**
   - **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
   - **OLAP**: online analytical processing.
 - **Amazon DynamoDB**
-  - fully managed **serverless**, **key-value**, and **document** database service.
-  - ACID compliant, multi-region, unlimited throughput.
-  - high volumes of data, low-latency, ultra-high throughput, and scales quickly. (e.g. gaming, adtech, mobile).
+  - fully managed **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
+  - multi-AZ/Region, **horizontal scaling**, **low latency**. (e.g. gaming, adtech(shopping cart), mobile).
   - does not enforce fixed schema(cannot JOIN).
   - **Primary Key**: also known as **partition or hash key**. uniquely identify row. only **required** attribute.
   - **Partition**: key:value section. allows easier scale/replication.
   - ![dynamoDb](img/dynamoDB.PNG)
   - **Global Tables**
-    - replicate across multiple regions.
+    - replicate across multiple regions(geographies).
+    - **multi-master**: all data tables are fully managed and kept in sync.
   - ![global table](img/dynamoDB_global_table.PNG)
+  - **Consistency**
+    - **Eventually**: default. read-write within 1 second.
+    - **Strongly**: all databases write operations must complete, before read of data is allowed.
+  - ![dynamoDB consistency](img/dynamoDB_consistency.PNG)
+  - **Security**
+    - **IAM roles** for access.
+    - **IAM policies** for fine-grain access to DynamoDB APIs. least privilege.
+    - **VPC endpoints**. limit traffic to only defined routes. limits API access.
+    - **client-side encryption**. confidential data is encrypted close as possible to its origin.
+    - **encryption in transit and at rest**. default. DynamoDB uses **HTTPS** in transit.
 
 ## Network
 
