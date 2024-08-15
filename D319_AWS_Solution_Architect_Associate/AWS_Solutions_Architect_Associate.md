@@ -381,7 +381,7 @@ aws sts get-caller-identity
     - option to remove cost. automatically moves objects to the most cost-effective access tier.
     - fee to use.
   - **S3 Lifecycle Policy**
-    - delete or move objects based on age.
+    - delete or move objects based on ag**e**.
   - ![S3 Tiers](img/S3_tier.PNG)
 - **S3 Uploading**
   - **aws cli**: `aws s3 cp file.txt s3://BUCKET-NAME/file.txt`
