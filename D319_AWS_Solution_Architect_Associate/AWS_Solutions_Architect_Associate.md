@@ -130,9 +130,14 @@ aws sts get-caller-identity
   - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
   - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
 - **Network Access Control List (ACL)**
-  - stateless firewall that are scoped to the **subnet level**.
+  - stateless firewall. scoped at the **subnet level**.
   - **allow inbound/outbound traffic** by default.
+  - **ACL**: one-to-many subnets.
+  - **subnet**: one-to-one ACL.
   - ![ACL](img/acl.PNG)
+  - ![ACL chain](img/acl2.PNG)
+  - **Custom ACL**
+    - default **deny in/outbound traffic**.
 - **Security Groups**
   - **Stateful Firewalls**: instance level. policy with **allow/deny rules** to ports and IPv4/IPv6.
   - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
