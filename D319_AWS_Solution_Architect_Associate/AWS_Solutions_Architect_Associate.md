@@ -25,8 +25,9 @@
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
 5. <a href="#Compute">Compute</a>
-6. <a href="#Network">Network</a>
-7. <a href="#S3">S3</a>
+6. <a href="#Database">Database</a>
+7. <a href="#Network">Network</a>
+8. <a href="#S3">S3</a>
 
 ## AWS Bash CLI Login
 
@@ -219,11 +220,33 @@ aws sts get-caller-identity
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
 - **Relational Database Service (RDS)**
-  - fully AWS managed, SQL database.
-  - Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB.
-  -
-- **Aurora**
-  - auto scaling database when combined with RDS.
+  - fully AWS managed, SQL database. you bring the data.
+  - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
+  - multi-AZ deployments provide high availability.
+  - ![RDS high availability](img/rds_az.PNG)
+  - **Read Replica**
+    - continuous **read-only copy** of database. immutable. max **five** read replicas.
+    - allow scale out for heavy read workloads.
+  - **Backup**
+    - snapshot to S3 bucket.
+  - ![RDS backup](img/rds_backup.PNG)
+  - **Aurora**
+    - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
+    - auto scaling database when combined with RDS.
+- **Amazon Redshift**
+  - **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
+  - **OLAP**: online analytical processing.
+- **Amazon DynamoDB**
+  - fully managed **serverless**, **key-value**, and **document** database service.
+  - ACID compliant, multi-region, unlimited throughput.
+  - high volumes of data, low-latency, ultra-high throughput, and scales quickly. (e.g. gaming, adtech, mobile).
+  - does not enforce fixed schema(cannot JOIN).
+  - **Primary Key**: also known as **partition or hash key**. uniquely identify row. only **required** attribute.
+  - **Partition**: key:value section. allows easier scale/replication.
+  - ![dynamoDb](img/dynamoDB.PNG)
+  - **Global Tables**
+    - replicate across multiple regions.
+  - ![global table](img/dynamoDB_global_table.PNG)
 
 ## Network
 
