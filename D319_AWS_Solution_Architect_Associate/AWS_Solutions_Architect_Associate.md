@@ -219,8 +219,13 @@ aws sts get-caller-identity
   - strict schema rules. provide data integrity. SQL.
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
-- **Database Migration Service**
-  - migrate existing database to AWS.
+- **Database Migration Service (DMS)**
+  - **migrate** or **continuous replication** of existing database to AWS.
+  - ![database migration service](img/database_migration.PNG)
+  - **AWS Schema Conversion Tool (AWS SCT)**
+    - change database engine between source and target.
+  - **AWS Snowball Edge**: migrate multi-terabyte data.
+  - ![snowball edge](img/snowball_edge.PNG)
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
   - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
