@@ -305,6 +305,10 @@ aws sts get-caller-identity
 
 ## Network
 
+- **Bastion Hosts**
+  - public entrypoint. typically firewalled, out to private network.
+  - minimize entry points.
+  - ![bastion hosts](img/bastion.PNG)
 - **Cloud Front**
   - AWS CDN(content delivery network) edge network.
   - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
@@ -313,29 +317,8 @@ aws sts get-caller-identity
   - **monitor** infrastructure and **automate** scaling.
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
-- **Public Subnet**
-  - connect resources to internet.
-  - ![public subnet](img/public_subnet.PNG)
-- **Route Table**
-  - connect VPC resources. can create **custom** route table.
-  - all **subnets** must be associated with a route table.
-  - **route table** can have **multiple subnets**. **subnet** can have only **one route table**.
-- **VPC**
-  - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
-  - ![vpc flow](img/vpc_flow.PNG)
-  - **Scope**: **single region**.
-    - spans **all AZs** in a Region. can host supported resources from any **Availability Zone** within it's Region.
-  - **Subnet**
-    - segment of VPC ip address range. **not isolation boundaries**.
-    - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
-    - subnet **mapped** to **one Availability Zone**.
-    - AWS **reserves five (first four, then last ip) ip addresses** in each subnet.
-  - ![subnet CIDR](img/subnet_cidr.PNG)
-  - **Best Practices**
-    - **one subnet per AZ** for **each group of hosts** with unique routing requirements.
-    - **divide VPC network range evenly** across all AZs in a Region.
-    - **reserve extra address space** for future use. CIDR, VPC size.
-    - **VPC CIDR range cannot overlap** other ranges.
+- **Internet Gateway**
+  - internet communication to VPC resources.
 - **Multi-VPC and Multi-Accounts**
   - are **most** VPC use cases. max **5 VPC** per Region.
   - **Multi-VPC**
@@ -344,6 +327,36 @@ aws sts get-caller-identity
   - **Multi-account**
     - **enterprise or large organizations** or **multiple IT teams**. **medium-sized**, anticipate rapid growth.
   - ![multi-account](img/multi-account.PNG)
+- **NAT Gateway**
+  - enable **private subnets outbound communication** with Internet Gateway. **no inbound request**.
+  - must be placed in public subnet.
+  - ![nat gateway](img/nat_gateway.PNG)
+- **Route Table**
+  - **control** traffic from subnet or gateway. can create **custom** route table.
+  - all **subnets** must be associated with a route table.
+  - **route table**: one-to-many. can have **multiple subnets**.
+  - **subnet**: one-to-one. can have only **one route table**.
+- **Subnet**
+  - segment of VPC ip address range. **not isolation boundaries**.
+  - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
+  - subnet **mapped** to **one Availability Zone**.
+  - AWS **reserves five (first four, then last ip) ip addresses** in each subnet.
+  - ![subnet CIDR](img/subnet_cidr.PNG)
+  - **Private Subnet**
+    - on out/inbound VPC access.
+  - **Public Subnet**
+    - connect resources to internet.
+    - ![public subnet](img/public_subnet.PNG)
+- **VPC**
+  - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
+  - ![vpc flow](img/vpc_flow.PNG)
+  - **Scope**: **single region**.
+    - spans **all AZs** in a Region. can host supported resources from any **Availability Zone** within it's Region.
+  - **Best Practices**
+    - **one subnet per AZ** for **each group of hosts** with unique routing requirements.
+    - **divide VPC network range evenly** across all AZs in a Region.
+    - **reserve extra address space** for future use. CIDR, VPC size.
+    - **VPC CIDR range cannot overlap** other ranges.
 
 ## Storage
 
