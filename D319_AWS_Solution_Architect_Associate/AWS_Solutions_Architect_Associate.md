@@ -129,7 +129,7 @@ aws sts get-caller-identity
 ## Definitions
 
 - **Availability Zone (AZ)**
-  - **one or more data centers** geographically separated from each other with redundant power, and networking.
+  - **one or more data centers** in same Region, separated from each other with redundant power, and networking.
   - networked together through the **AWS backbone network**.
   - **Best Practice**
     - choose AZ that protects against natural disasters.
@@ -182,7 +182,6 @@ aws sts get-caller-identity
     - **Amazon Machine Image (AMI)**: the blueprint of VM instance. **region specific**.
       - **HVM**: hardware virtual machine. best performance.
     - you can only stop/start **EBS** backed AMI.
-    - virtual machines in the cloud (EC2)
     - Storing data on virtual drives (EBS)
     - Distributing load across multiple machines (ELB)
     - Scaling the services using an auto-scaling group (ASG)
@@ -194,21 +193,36 @@ aws sts get-caller-identity
     - **New Generation Instance types**: better price-to-performance ratio.
     - **AWS Compute Optimizer**: analyze running instances. recommends 'right-sized' EC2.
     - ![ec2 instance type](img/ec2_instance_type.PNG)
+  - **EC2 Placement Groups**
+    - control Availability Zone where instances run. logica grouping to create **low latency** between running **instances**.
+    - instance can launched in only one placement group. **dedicated host** **cannot** run in placement group.
+    - **Cluster**: lowest-latency and high packet-per-second network. same server rack.
+    - **Partition**: low-latency with reduced correlated hardware failure risk. spread across server racks.
+    - **Spread**: low-latency spread across Availability Zones.
   - **EC2 Storage**
-    - **instance store**. default. create with EC2. ephemeral storage. deleted when EC2 stops.
-    - **EBS**: elastic block store. persistent block-storage volumes.
-    - **Elastic IP**
-      - fixed IP address. avoid due to 'pool' architecture.
-      - use **DNS** mapped to random IP's.
+    - **instance store**. default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
+    - **EBS**: elastic block store. **persistent** block-storage volumes. **root volume**
+      - **single instance** only. can be detached and **moved** to **any single instance** in same **Availability Zone**.
+      - EC2 with EBS can be placed in hibernation and shutdown. preserves **RAM memory**.
+      - ![EBS optimized](img/ebs_optimized.PNG)
+    - **EFS**: elastic file system. **data volume** that serves **multiple Linux instances**. **NFS** protocol.
+      - must be mounted: `sudo mount -t nfs4 mount-target-DNS:/ ~/efs.mount-point`
+    - **FSx**: Windows file server. **data volume** that serves **multiple Windows instances**. **SSD** only.
+      - **NTFS, SMB, DFS, Active Directory, ACLs**.
+  - **EC2 Elastic IP**
+    - fixed IP address. avoid due to 'pool' architecture.
+    - use **DNS** mapped to random IP's.
   - **EC2 Tiers**
-    - **On-Demand**: short workload, predictable pricing.
-    - **Reserved**: known amount of time (minimum 1 year). Types of reserved instances:
-      - **Reserved Instances**: recommended long workloads.
-      - **Convertible Reserved Instances**: recommended for long workloads with flexible instance types.
-      - **Scheduled Reserved Instances**: instances reserved for a longer period used at a certain schedule.
+    - **per-second billing**: only on **Linux/Ubuntu**. others per-hour.
+    - **On-Demand**: short, unpredictable workload.
+    - **Reserved**: 1 - 3 year commitment. **EC2 only**.
+    - **Savings Plan**: same discounts as Reserved. 1 - 3 year commitment.
+      - flexible: **EC2, Fargate, Lambda, instance family, size, OS, tenancy, region**.
     - **Spot Instance**: cheapest. for short ephemeral workloads. risk of losing the instance while running.
-    - **Dedicated Instances**: no other customer will share the underlying hardware.
-    - **Dedicated Hosts**: book an entire physical server, can control the placement of the instance.
+    - **Dedicated Hosts**: physical servers(hardware) dedicated to you. single tenancy.
+    - **Best Practice**: use **combination** reserved, savings-plan, on-demand, spot to save money.
+    - ![EC2 Tier best practices](img/ec2_tiers.PNG)
+    - ![EC2 savings plan vs reserved](img/ec2_savings_plan_vs_reserved.PNG)
   - **EC2 User Data**
     - script run as **root** only once during the **initial EC2 instance start**.
     - **Instance Metadata URL**: must run from inside instance.
