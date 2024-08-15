@@ -24,8 +24,8 @@
 2. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
-5. <a href="#Definitions">Definitions</a>
-6. <a href="#Compute">Compute</a>
+5. <a href="#Compute">Compute</a>
+6. <a href="#Definitions">Definitions</a>
 7. <a href="#S3">S3</a>
 
 ## AWS Bash CLI Login
@@ -126,39 +126,6 @@ aws sts get-caller-identity
   - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
   - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
 
-## Definitions
-
-- **Availability Zone (AZ)**
-  - **one or more data centers** in same Region, separated from each other with redundant power, and networking.
-  - networked together through the **AWS backbone network**.
-  - **Best Practice**
-    - choose AZ that protects against natural disasters.
-    - latency reduction for end user.
-  - ![availability zone](img/availability_zone.PNG)
-- **AWS Local Zone**
-  - extension of Region that is closer to end user(edge).
-  - compute, storage, database **closer to large populations** where **no Region exist**. (e.g. Los Angeles Local Zone).
-- **Cloud Architecture**
-  - applying cloud-based technology to meet technical and business requirements.
-- **Cloud Front**
-  - AWS CDN(content delivery network).
-  - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
-  - ![cloud front](img/cloud_front.PNG)
-- **Cloud Watch**
-  - **monitor** infrastructure and **automate** scaling.
-- **Data Centers**
-  - location of physical servers. redundant hardware, power, cooling, and networking.
-  - networked to other data centers through the **AWS backbone network**.
-- **Region**
-  - Geographical location with **two or more availability zones**. (e.g us-east-1, eu-west-1).
-  - Most services provided by AWS are **region scoped**. (e.g. data for a service used in one region is not replicated in another region).
-  - China and GovCloud regions have restricted access.
-  - **Best Practices**
-    - use region with lowest latency to end users.
-    - complies with local government law. (e.g. where data is stored, who can access data center...).
-- **Storage Gateway**
-  - hybrid storage between on-prem and AWS cloud.
-
 ## Compute
 
 - **Compute**
@@ -235,10 +202,52 @@ aws sts get-caller-identity
     - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
     - **default** inbound:block, outbound:allow.
     - **Scope**: region/VPC.
-    - **Errors**:
+    - **Errors**
       - **Timeout**: blocked by security group.
       - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
   - **Lightsail**:
+
+## Database
+
+- **Database**
+  - **choose database**: scalability, storage requirements, type and size of objects, durability.
+- **Relational Database**
+  - strict schema rules. provide data integrity. SQL.
+- **Non-Relational Database**
+  - scale horizontally. higher flexibility. semi-structured and unstructured data.
+
+## Definitions
+
+- **Availability Zone (AZ)**
+  - **one or more data centers** in same Region, separated from each other with redundant power, and networking.
+  - networked together through the **AWS backbone network**.
+  - **Best Practice**
+    - choose AZ that protects against natural disasters.
+    - latency reduction for end user.
+  - ![availability zone](img/availability_zone.PNG)
+- **AWS Local Zone**
+  - extension of Region that is closer to end user(edge).
+  - compute, storage, database **closer to large populations** where **no Region exist**. (e.g. Los Angeles Local Zone).
+- **Cloud Architecture**
+  - applying cloud-based technology to meet technical and business requirements.
+- **Cloud Front**
+  - AWS CDN(content delivery network).
+  - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
+  - ![cloud front](img/cloud_front.PNG)
+- **Cloud Watch**
+  - **monitor** infrastructure and **automate** scaling.
+- **Data Centers**
+  - location of physical servers. redundant hardware, power, cooling, and networking.
+  - networked to other data centers through the **AWS backbone network**.
+- **Region**
+  - Geographical location with **two or more availability zones**. (e.g us-east-1, eu-west-1).
+  - Most services provided by AWS are **region scoped**. (e.g. data for a service used in one region is not replicated in another region).
+  - China and GovCloud regions have restricted access.
+  - **Best Practices**
+    - use region with lowest latency to end users.
+    - complies with local government law. (e.g. where data is stored, who can access data center...).
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
 
 ## S3
 
