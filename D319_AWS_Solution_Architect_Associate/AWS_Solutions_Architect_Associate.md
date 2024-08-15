@@ -25,7 +25,7 @@
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
 5. <a href="#Compute">Compute</a>
-6. <a href="#Definitions">Definitions</a>
+6. <a href="#Network">Network</a>
 7. <a href="#S3">S3</a>
 
 ## AWS Bash CLI Login
@@ -170,7 +170,8 @@ aws sts get-caller-identity
     - **instance store**. default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
     - **EBS**: elastic block store. **persistent** block-storage volumes. **root volume**
       - **single instance** only. can be detached and **moved** to **any single instance** in same **Availability Zone**.
-      - EC2 with EBS can be placed in hibernation and shutdown. preserves **RAM memory**.
+      - **EC2 with EBS** can be placed in **hibernation** and shutdown. preserves **RAM memory**.
+      - **EBS Optimized**: dedicated network, higher I/O.
       - ![EBS optimized](img/ebs_optimized.PNG)
     - **EFS**: elastic file system. **data volume** that serves **multiple Linux instances**. **NFS** protocol.
       - must be mounted: `sudo mount -t nfs4 mount-target-DNS:/ ~/efs.mount-point`
@@ -216,7 +217,7 @@ aws sts get-caller-identity
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
 
-## Definitions
+## Network
 
 - **Availability Zone (AZ)**
   - **one or more data centers** in same Region, separated from each other with redundant power, and networking.
