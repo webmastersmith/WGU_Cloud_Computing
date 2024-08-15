@@ -226,18 +226,20 @@ aws sts get-caller-identity
     - change database engine between source and target.
   - **AWS Snowball Edge**: migrate multi-terabyte data.
   - ![snowball edge](img/snowball_edge.PNG)
+- **Read Replica**
+  - continuous **read-only copy** of database. immutable. **RDS** max **five** read replicas.
+  - allow scale out for heavy read workloads.
+  - ![max read replicas](img/max_read_replicas.PNG)
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
   - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
   - multi-AZ deployments provide high availability.
   - ![RDS high availability](img/rds_az.PNG)
-  - **Read Replica**
-    - continuous **read-only copy** of database. immutable. max **five** read replicas.
-    - allow scale out for heavy read workloads.
   - **Backup**
     - snapshot to S3 bucket.
   - ![RDS backup](img/rds_backup.PNG)
   - **Aurora**
+    - AWS 'golden goose' SQL database. 5x faster, S3 continuous backup, 15 read replicas, 3 Availability Zones.
     - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
     - auto scaling database when combined with RDS.
   - **Security**
@@ -248,7 +250,8 @@ aws sts get-caller-identity
     - enable **encryption** at rest.
     - enable alerts for important RDS events.
 - **Amazon Redshift**
-  - **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
+  - petabyte scale **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
+  - **does not support read replicas**
   - **OLAP**: online analytical processing.
 - **Amazon DynamoDB**
   - fully managed **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
@@ -373,6 +376,7 @@ aws sts get-caller-identity
   - **S3 Glacier Deep Archive**: least expensive. data access once or twice a year. Eleven 9's of durability.
     - stored across **three geographical areas**.
     - data is restored within 12 hours.
+  - ![S3 tiers](img/S3_tiers.PNG)
   - **S3 Intelligent Tiering**:
     - option to remove cost. automatically moves objects to the most cost-effective access tier.
     - fee to use.
