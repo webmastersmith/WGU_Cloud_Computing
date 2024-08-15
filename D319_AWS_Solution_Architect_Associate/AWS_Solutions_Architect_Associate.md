@@ -26,8 +26,9 @@
 4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
 5. <a href="#Compute">Compute</a>
 6. <a href="#Database">Database</a>
-7. <a href="#Network">Network</a>
-8. <a href="#S3">S3</a>
+7. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
+8. <a href="#Network">Network</a>
+9. <a href="#S3">S3</a>
 
 ## AWS Bash CLI Login
 
@@ -53,23 +54,23 @@ aws sts get-caller-identity
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
-  - run and monitor(logging) systems. fix quickly and safely.
+  - run and monitor(**logging**) systems. fix quickly and safely.
   - IaC reduces mistakes and increases reliability.
 - **Security**
-  - protect at all layers(data, systems, assets).
-  - enable traceability(log of all changes and access).
-  - risk assessment and mitigation strategies.
+  - **protect** at all layers(data, systems, assets).
+  - enable **traceability**(log of all changes and access).
+  - **risk** assessment and mitigation strategies.
 - **Reliability**
-  - recover from infrastructure or service disruption.
-  - dynamic recovery, scale, mitigation.
+  - **recover** from infrastructure or service disruption.
+  - **dynamic** recovery, scale, mitigation.
 - **Performance efficiency**
-  - most efficient resource selection as demand changes.
-  - democratize: use ready made solutions for advanced problems.
-  - mechanical sympathy: understand best way to take advantage of services, resources.
+  - most **efficient** resource selection as demand changes.
+  - **democratize**: use ready made solutions for advanced problems.
+  - **mechanical sympathy**: understand best way to take advantage of services, resources.
 - **Cost optimization**
-  - measure efficiency. eliminate unneeded expense. reduce employee overhead with managed services.
-  -
+  - **measure** efficiency. **eliminate** unneeded expense. reduce employee overhead with managed services.
 - **Sustainability**
+  - ?
 
 ## Best Practices
 
@@ -275,8 +276,17 @@ aws sts get-caller-identity
     - **client-side encryption**. confidential data is encrypted close as possible to its origin.
     - **encryption in transit and at rest**. default. DynamoDB uses **HTTPS** in transit.
 
-## Network
+## Geography, Region, Availability Zone
 
+- **Cloud Architecture**
+  - applying cloud-based technology to meet technical and business requirements.
+- **Region**
+  - Geographical location with **two or more availability zones**. (e.g us-east-1, eu-west-1).
+  - Most services provided by AWS are **region scoped**. (e.g. data for a service used in one region is not replicated in another region).
+  - China and GovCloud regions have restricted access.
+  - **Best Practices**
+    - use region with lowest latency to end users.
+    - complies with local government law. (e.g. where data is stored, who can access data center...).
 - **Availability Zone (AZ)**
   - **one or more data centers** in same Region, separated from each other with redundant power, and networking.
   - networked together through the **AWS backbone network**.
@@ -287,26 +297,18 @@ aws sts get-caller-identity
 - **AWS Local Zone**
   - extension of Region that is closer to end user(edge).
   - compute, storage, database **closer to large populations** where **no Region exist**. (e.g. Los Angeles Local Zone).
-- **Cloud Architecture**
-  - applying cloud-based technology to meet technical and business requirements.
+- **Data Centers**
+  - location of physical servers. redundant hardware, power, cooling, and networking.
+  - networked to other data centers through the **AWS backbone network**.
+
+## Network
+
 - **Cloud Front**
   - AWS CDN(content delivery network).
   - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
   - ![cloud front](img/cloud_front.PNG)
 - **Cloud Watch**
   - **monitor** infrastructure and **automate** scaling.
-- **Data Centers**
-  - location of physical servers. redundant hardware, power, cooling, and networking.
-  - networked to other data centers through the **AWS backbone network**.
-- **Region**
-  - Geographical location with **two or more availability zones**. (e.g us-east-1, eu-west-1).
-  - Most services provided by AWS are **region scoped**. (e.g. data for a service used in one region is not replicated in another region).
-  - China and GovCloud regions have restricted access.
-  - **Best Practices**
-    - use region with lowest latency to end users.
-    - complies with local government law. (e.g. where data is stored, who can access data center...).
-- **Storage Gateway**
-  - hybrid storage between on-prem and AWS cloud.
 
 ## Storage
 
@@ -314,7 +316,8 @@ aws sts get-caller-identity
   - policy that determines when and how you want your AWS resources backed up.
 - **EFS**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
 - **FSx**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
-- **Storage Gateway**:
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
 - **Transfer Family**:
 - **S3**
   - immutable **object** storage service.
