@@ -23,7 +23,7 @@
 1. <a href="#AWS-Bash-CLI-Login">AWS Bash CLI Login</a>
 2. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
 3. <a href="#Best-Practices">Best Practices</a>
-4. <a href="#Authentication-and-Authorization">Authentication and Authorization</a>
+4. <a href="#Authentication-Authorization-and-Security">Authentication, Authorization and Security</a>
 5. <a href="#Compute">Compute</a>
 6. <a href="#Database">Database</a>
 7. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
@@ -107,8 +107,10 @@ aws sts get-caller-identity
   - traceability(log every change, access).
   - IaC. automation ensures consistent security.
 
-## Authentication and Authorization
+## Authentication, Authorization and Security
 
+- **Access Control List (ACL)**
+  - legacy access.
 - **IAM**
   - A global service allowing AWS customers to manage user access and permissions. Available APIs at service, and
     resource level (sometimes) within AWS — all global, all across available AWS regions.
@@ -127,6 +129,14 @@ aws sts get-caller-identity
   - IAM users → authentication, assumed programmatically, credentials do expire.
   - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
   - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
+- **Security Groups**
+  - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
+  - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
+  - **default** inbound:block, outbound:allow.
+  - **Scope**: region/VPC.
+  - **Errors**
+    - **Timeout**: blocked by security group.
+    - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
 
 ## Compute
 
@@ -201,14 +211,6 @@ aws sts get-caller-identity
     - ![user data](img/user_data.PNG)
     - ![instance metadata](img/user_data_metadata.PNG)
     - ![fully baked vs just enough AMI](img/full_baked_vs_just_enough_ami.PNG)
-  - **Security Groups**
-    - firewall policy with **allow/deny rules** to ports and IPv4/IPv6.
-    - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
-    - **default** inbound:block, outbound:allow.
-    - **Scope**: region/VPC.
-    - **Errors**
-      - **Timeout**: blocked by security group.
-      - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
   - **Lightsail**:
 
 ## Database
@@ -304,11 +306,38 @@ aws sts get-caller-identity
 ## Network
 
 - **Cloud Front**
-  - AWS CDN(content delivery network).
+  - AWS CDN(content delivery network) edge network.
   - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
   - ![cloud front](img/cloud_front.PNG)
 - **Cloud Watch**
   - **monitor** infrastructure and **automate** scaling.
+- **Public Subnet**
+  - connect resources to internet.
+  - ![public subnet](img/public_subnet.PNG)
+- **VPC**
+  - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
+  - ![vpc flow](img/vpc_flow.PNG)
+  - **Scope**: **single region**.
+    - spans **all AZs** in a Region. can host supported resources from any **Availability Zone** within it's Region.
+  - **Subnet**
+    - segment of VPC ip address range. **not isolation boundaries**.
+    - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
+    - subnet **mapped** to **one Availability Zone**.
+    - AWS **reserves five (first four, then last ip) ip addresses** in each subnet.
+  - ![subnet CIDR](img/subnet_cidr.PNG)
+  - **Best Practices**
+    - **one subnet per AZ** for **each group of hosts** with unique routing requirements.
+    - **divide VPC network range evenly** across all AZs in a Region.
+    - **reserve extra address space** for future use. CIDR, VPC size.
+    - **VPC CIDR range cannot overlap** other ranges.
+- **Multi-VPC and Multi-Accounts**
+  - are **most** VPC use cases. max **5 VPC** per Region.
+  - **Multi-VPC**
+    - **single team/organization**. **Governance** and **compliance standards** might require greater isolation.
+  - ![multi-vpc](img/multi-vpc.PNG)
+  - **Multi-account**
+    - **enterprise or large organizations** or **multiple IT teams**. **medium-sized**, anticipate rapid growth.
+  - ![multi-account](img/multi-account.PNG)
 
 ## Storage
 
