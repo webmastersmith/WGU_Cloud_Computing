@@ -390,9 +390,13 @@ aws sts get-caller-identity
     - connect resources to internet.
     - ![public subnet](img/public_subnet.PNG)
 - **Transit Gateway (AWS)**
-  - avoid large scale peering. simplify with Transit Gateway.
+  - avoid large scale peering. simplify with Transit Gateway. **hub-and-spoke model**.
   - connect multiple **VPCs** and **on-prem** with **single gateway**.
   - ![transit gateway](img/transit_gateway.PNG)
+  - **Routes**: the Transit Gateway route table enables VPC connection or external.
+    - each VPC must have a route to Transit Gateway in it's route table.
+    - Transit Gateway must have routes to each VPC to enable VPC-to-VPC communication.
+  - ![transit gateway route isolation](img/transit_gateway_route_isolation1.PNG)
 - **VPC**
   - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
   - ![vpc flow](img/vpc_flow.PNG)
