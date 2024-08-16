@@ -328,7 +328,16 @@ aws sts get-caller-identity
   - **monitor** infrastructure and **automate** scaling.
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
-- **Internet Gateway**
+- **Direct Connect (DX)**
+  - dedicated **private** network connection. (e.g. use on-prem database with AWS).
+  - access any VPC or AWS service in **any Region** from any supported **DX location**.
+  - 802.1q VLANs '_dot1q_'. encapsulation and tagging for VLAN over Ethernet.
+  - ![direct connect](img/direct_connect.PNG)
+  - **High Availability**
+    - highly available with redundant DX connections.
+  - ![direct connect high availability](img/direct_connect_high_availability.PNG)
+  - ![direct connect high durability](img/direct_connect_high_durability.PNG)
+- **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
 - **Multi-VPC and Multi-Accounts**
   - are **most** VPC use cases. max **5 VPC** per Region.
@@ -349,9 +358,12 @@ aws sts get-caller-identity
   - all **subnets** must be associated with a route table.
   - **route table**: one-to-many. can have **multiple subnets**.
   - **subnet**: one-to-one. can have only **one route table**.
-- **Secure Network**
-  - **Stateful Firewalls**: control in/outbound traffic.
-  - **Security Group**
+- **Site-to-Site VPN**
+  - connect on-prem to VPC. IPSec encryption. creates **two**(default) or **more** encrypted 'tunnels' between networks.
+  - charged per connection-hour.
+  - **Static Routing**: if Gateway device does not support 'Dynamic', you must manually update route table.
+  - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
+  - ![vpn site-to-site](img/vpn_site-to-site.PNG)
 - **Subnet**
   - segment of VPC ip address range. **not isolation boundaries**.
   - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
@@ -359,7 +371,7 @@ aws sts get-caller-identity
   - AWS **reserves five (first four, then last ip) ip addresses** in each subnet.
   - ![subnet CIDR](img/subnet_cidr.PNG)
   - **Private Subnet**
-    - on out/inbound VPC access.
+    - no internet access(unless you have a NAT Gateway). internal VPC access.
     - for outbound only internet access: NAT gateway and Elastic IP is required.
     - route table entry `0.0.0.0/0` with `nat-gq-id` is the gateway to internet.
   - **Public Subnet**
