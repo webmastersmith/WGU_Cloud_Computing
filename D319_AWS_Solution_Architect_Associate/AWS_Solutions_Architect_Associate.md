@@ -110,32 +110,6 @@ aws sts get-caller-identity
 ## Authentication, Authorization and Security
 
 - **Access Control List (ACL)**
-  - legacy access.
-- **Bastion Hosts**
-  - public entrypoint. typically firewalled, out to private network.
-  - minimize entry points.
-  - bastion security group must add **allow in** from **internet**.
-  - private subnet security group must **allow in** from **bastion**.
-  - ![bastion hosts](img/bastion.PNG)
-- **IAM**
-  - A global service allowing AWS customers to manage user access and permissions. Available APIs at service, and
-    resource level (sometimes) within AWS — all global, all across available AWS regions.
-  - fine-grained access
-  - centralized control of your AWS account
-  - **Tips to protect a root account**:
-    - enable MFA (multi-factor authentication).
-    - no use of root user, create an IAM user with access.
-    - do not share root-used access keys, disabling or deleting them is better.
-    - Always go for the least privilege principle — only necessary permissions. New users are created with no permissions.
-  - **Policies**:
-    - **AWS managed**: standalone, administered by AWS.
-    - **Customer managed**: standalone, administered by you.
-    - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
-    - Suggested to use managed policies, not inline, to view all policies in the console.
-  - IAM users → authentication, assumed programmatically, credentials do expire.
-  - IAM policies → authorization, attached to user or groups. User is one user only, Group can have many users.
-  - IAM Federation → combine existing user accounts with AWS, uses SAML, Active Directory.
-- **Network Access Control List (ACL)**
   - stateless firewall. scoped at the **subnet level**.
   - **allow inbound/outbound traffic** by default.
   - **ACL**: one-to-many subnets.
@@ -144,6 +118,45 @@ aws sts get-caller-identity
   - ![ACL chain](img/acl2.PNG)
   - **Custom ACL**
     - default **deny in/outbound traffic**.
+- **Bastion Hosts**
+  - public entrypoint. typically firewalled, out to private network.
+  - minimize entry points.
+  - bastion security group must add **allow in** from **internet**.
+  - private subnet security group must **allow in** from **bastion**.
+  - ![bastion hosts](img/bastion.PNG)
+- **IAM**
+  - Identity and Access Management. Authentication(prove identity) and Authorization(permission to read/modify/delete).
+  - supports **Active Directory** and standard identity providers.
+  - fine-grained access
+  - **root user**: full access.
+    - **Tips to protect a root account**:
+      - enable MFA (multi-factor authentication).
+      - no use of root user, create an IAM user with access.
+      - do not share root-used access keys, disabling or deleting them is better.
+      - Always go for the least privilege principle — only necessary permissions. New users are created with no permissions.
+  - IAM user -> authentication, assumed programmatically, credentials do expire.
+  - IAM group -> users granted identical authorization.
+  - IAM policies -> authorization, attached to user or groups. User is one user only, Group can have many users.
+  - IAM role -> grant temporary access. **person, application, or service**.
+  - IAM Federation -> combine existing user accounts with AWS, uses SAML, Active Directory.
+  - ![iam](img/iam.PNG)
+- **IAM Group**
+  - users granted identical authorization.
+- **IAM Policy**:
+  - permissions are defined. **JSON** format. **principle of least privilege**.
+  - **Identity-Based**: attach to IAM principal.
+  - **Resource-Based**: attach to AWS resource.
+  - default **deny**.
+  - ![IAM flow](img/iam_flow.PNG)
+  - authorization, attached to user or groups. User is one user only, Group can have many users.
+  - **AWS managed**: standalone, administered by AWS.
+  - **Customer managed**: standalone, administered by you.
+  - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
+  - Suggested to use managed policies, not inline, to view all policies in the console.
+- **IAM Role**
+  - grant temporary access. **person, application, or service**.
+- **IAM User**
+  - authentication, assumed programmatically, credentials do expire.
 - **Security Groups**
   - **Stateful Firewalls**: instance level. policy with **allow/deny rules** to ports and IPv4/IPv6.
   - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
@@ -329,15 +342,21 @@ aws sts get-caller-identity
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
 - **Direct Connect (DX)**
-  - dedicated **private** network connection. (e.g. use on-prem database with AWS).
+  - dedicated **private** network connection. **consistent performance**. (e.g. use on-prem database with AWS).
   - access any VPC or AWS service in **any Region** from any supported **DX location**.
   - 802.1q VLANs '_dot1q_'. encapsulation and tagging for VLAN over Ethernet.
   - ![direct connect](img/direct_connect.PNG)
   - **High Availability**
     - highly available with redundant DX connections.
   - ![direct connect high availability](img/direct_connect_high_availability.PNG)
-  - high resilient, fault tolerant architecture. multiple datacenters.
+    - high resilient, fault tolerant architecture. multiple datacenters.
   - ![direct connect high durability](img/direct_connect_high_durability.PNG)
+- **Endpoint (VPC)**
+  - **private** communication between VPN and **AWS services**. uses **AWS backbone**. no other infrastructure needed.
+  - only returns traffic that originated from your VPC endpoint.
+  - **Interface Endpoint**: powered by **AWS PrivateLink**. Load Balancer, CloudWatch... creates a network interface.
+  - **Gateway Endpoint**: connection to **S3** or **DynamoDB**.
+  - ![endpoint](img/endpoint.PNG)
 - **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
 - **Multi-VPC and Multi-Accounts**
@@ -360,6 +379,7 @@ aws sts get-caller-identity
   - **Route**: each peered VPC must add route to route table, ACL and Security Groups updated.
     - **No overlap in CIDR**.
     - not transitive(A <-> B, A <-> C, B and C cannot communicate with each other).
+      - to connect all VPCs requires **full-mesh network**.
     - only one active VPC peering between VPCs. (e.g. A <-> B, another redundant peering A <-> B not allowed).
   - ![peering route](img/peering.PNG)
   - **Scope**: any AWS VPC. in another **VPC account**, or **Region**(Inter-Region VPC peering).
@@ -371,7 +391,7 @@ aws sts get-caller-identity
   - **route table**: one-to-many. can have **multiple subnets**.
   - **subnet**: one-to-one. can have only **one route table**.
 - **Site-to-Site VPN**
-  - connect on-prem to VPC. IPSec encryption. creates **two**(default) or **more** encrypted 'tunnels' between networks.
+  - connect on-prem to VPC. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
   - charged per connection-hour.
   - **Static Routing**: if Gateway device does not support 'Dynamic', you must manually update route table.
   - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
