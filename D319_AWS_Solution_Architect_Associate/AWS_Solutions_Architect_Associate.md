@@ -28,7 +28,7 @@
 6. <a href="#Database">Database</a>
 7. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
 8. <a href="#Network">Network</a>
-9. <a href="#S3">S3</a>
+9. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -111,6 +111,12 @@ aws sts get-caller-identity
 
 - **Access Control List (ACL)**
   - legacy access.
+- **Bastion Hosts**
+  - public entrypoint. typically firewalled, out to private network.
+  - minimize entry points.
+  - bastion security group must add **allow in** from **internet**.
+  - private subnet security group must **allow in** from **bastion**.
+  - ![bastion hosts](img/bastion.PNG)
 - **IAM**
   - A global service allowing AWS customers to manage user access and permissions. Available APIs at service, and
     resource level (sometimes) within AWS — all global, all across available AWS regions.
@@ -314,10 +320,6 @@ aws sts get-caller-identity
 
 ## Network
 
-- **Bastion Hosts**
-  - public entrypoint. typically firewalled, out to private network.
-  - minimize entry points.
-  - ![bastion hosts](img/bastion.PNG)
 - **Cloud Front**
   - AWS CDN(content delivery network) edge network.
   - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
