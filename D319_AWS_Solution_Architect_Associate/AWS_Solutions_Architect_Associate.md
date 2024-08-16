@@ -124,6 +124,8 @@ aws sts get-caller-identity
   - bastion security group must add **allow in** from **internet**.
   - private subnet security group must **allow in** from **bastion**.
   - ![bastion hosts](img/bastion.PNG)
+- **Cloud Trail (AWS)**
+  - log and monitor activity. default **90-day** history. who, what, when, where.
 - **IAM**
   - Identity and Access Management. Authentication(prove identity) and Authorization(permission to read/modify/delete).
   - supports **Active Directory** and standard identity providers.
@@ -143,16 +145,24 @@ aws sts get-caller-identity
 - **IAM Group**
   - users granted identical authorization.
 - **IAM Policy**:
-  - permissions are defined. **JSON** format. **principle of least privilege**.
-  - **Identity-Based**: attach to IAM principal.
-  - **Resource-Based**: attach to AWS resource.
-  - default **deny**.
+  - <https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsidentityandaccessmanagementiam.html>
+  - list of defined permissions. **JSON** format. **principle of least privilege**.
+  - policy attached to user or groups.
+  - default **deny**. **allow** must be **explicit** or **everything denied**.
   - ![IAM flow](img/iam_flow.PNG)
-  - authorization, attached to user or groups. User is one user only, Group can have many users.
-  - **AWS managed**: standalone, administered by AWS.
-  - **Customer managed**: standalone, administered by you.
-  - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
-  - Suggested to use managed policies, not inline, to view all policies in the console.
+  - **Identity-Based**: attach to IAM principal(user, group, role).
+    - **AWS managed**: standalone, administered by AWS.
+    - **Customer managed**: standalone, administered by you.
+      - Suggested to use managed policies, not inline, to view all policies in the console.
+    - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
+  - **Resource-Based**: attach to AWS resource. **always inline**. **no managed** policies. (e.g. S3 bucket).
+  - ![iam policy](img/iam_policy.PNG)
+  - ![iam policy json](img/iam_json.PNG)
+  - **ARNs**
+    - Amazon Resource Name. identifies resources.
+    - Syntax: `arn:partition:service:region:account:resource`
+    - (e.g. `arn:aws:iam::123456:user/mmajor`)
+  - **Wildcards**: `*` include all. (e.g. `s3:*`, `iam:*AccessKey*`)
 - **IAM Role**
   - grant temporary access. **person, application, or service**.
 - **IAM User**
