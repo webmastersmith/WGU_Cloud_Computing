@@ -336,6 +336,7 @@ aws sts get-caller-identity
   - **High Availability**
     - highly available with redundant DX connections.
   - ![direct connect high availability](img/direct_connect_high_availability.PNG)
+  - high resilient, fault tolerant architecture. multiple datacenters.
   - ![direct connect high durability](img/direct_connect_high_durability.PNG)
 - **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
@@ -353,6 +354,17 @@ aws sts get-caller-identity
   - requires an **Elastic IP**. `0.0.0.0/0` is gateway to internet.
   - ![nat gateway](img/nat_gateway.PNG)
   - ![nat gateway routing](img/nat_gateway_routing.PNG)
+- **Peering (VPC)**
+  - **one-to-one** network connection between **two VPCs**. no other infrastructure needed.
+  - traffic stays on AWS backbone. no bottlenecks or single point of failure.
+  - **Route**: each peered VPC must add route to route table, ACL and Security Groups updated.
+    - **No overlap in CIDR**.
+    - not transitive(A <-> B, A <-> C, B and C cannot communicate with each other).
+    - only one active VPC peering between VPCs. (e.g. A <-> B, another redundant peering A <-> B not allowed).
+  - ![peering route](img/peering.PNG)
+  - **Scope**: any AWS VPC. in another **VPC account**, or **Region**(Inter-Region VPC peering).
+  - **Best Practices**
+    - isolate workloads with different VPCs. peer them to transfer data.
 - **Route Table**
   - **control** traffic from subnet or gateway. can create **custom** route table.
   - all **subnets** must be associated with a route table.
@@ -377,6 +389,10 @@ aws sts get-caller-identity
   - **Public Subnet**
     - connect resources to internet.
     - ![public subnet](img/public_subnet.PNG)
+- **Transit Gateway (AWS)**
+  - avoid large scale peering. simplify with Transit Gateway.
+  - connect multiple **VPCs** and **on-prem** with **single gateway**.
+  - ![transit gateway](img/transit_gateway.PNG)
 - **VPC**
   - virtual private cloud. **logically isolated section** of AWS Cloud for the **virtual network that you define**.
   - ![vpc flow](img/vpc_flow.PNG)
