@@ -112,6 +112,10 @@ aws sts get-caller-identity
 - **ABAC**
   - Attribute-Based Access Control. If both principal(user, group, role) have same tag as resource, policy is applied.
   - combine with **Tagging** to define permissions.
+  - **Create ABAC**
+    1. create identities(user, roles). Tag with labels.
+    2. tag new resources. create policy that new resources must have certain tags. (e.g. 'project' tag and 'team' tag).
+    3. configure permissions.
   - ![abac](img/abac.PNG)
 - **Access Control List (ACL)**
   - stateless firewall. scoped at the **subnet level**.
@@ -161,12 +165,26 @@ aws sts get-caller-identity
 - **IAM Role**
   - grant **temporary** access.
   - **assumable** by a **person, application, or service**.
-  - you must **grant permissions to switch to the role**.
+  - you must be **granted permission to switch to the role**.
   - **AWS STS**
     - Security Token Service. enables request of temporary limited-privilege credentials.
     - cross account or **federated** access.
 - **IAM User**
   - authentication, assumed programmatically, credentials do expire.
+- **Identity Federation**
+  - user is authenticated by system external to the AWS account.
+  - allow access without having to create IAM users.
+  - ![sts idp](img/sts_idp.PNG)
+  - **Identity Federation Options**
+    1. **AWS STS** Security Token Service. enables request of temporary limited-privilege credentials.
+       1. **identity service providers (IdPs)**: Microsoft Active Directory, or custom identity broker.
+       2. ![sts idps](img/sts_idps.PNG)
+    2. **SAML**: security assertion markup language.
+       1. ![sts saml](img/sts_saml.PNG)
+    3. Amazon **Cognito**: web identity provider.
+       1. fully managed, **authentication**, **authorization**, and **user management** for **web** and **mobile** apps.
+       2. **OpenID Connect (OIDC)**: open source identity management. (e.g. Facebook, Google or SAML auth).
+       3. ![sts cognito](img/sts_cognito.PNG)
 - **RBAC**
   - Role Based Access Control. you create admin role, developer role... then assign them to user. time consuming.
 - **Security Groups**
