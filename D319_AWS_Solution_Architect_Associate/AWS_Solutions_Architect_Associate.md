@@ -171,6 +171,8 @@ aws sts get-caller-identity
     - cross account or **federated** access.
 - **IAM User**
   - authentication, assumed programmatically, credentials do expire.
+  - IAM user is **person** or **application** that must make **API calls** to AWS products.
+  - Each user **must have a unique name** (with no spaces in the name).
 - **Identity Federation**
   - user is authenticated by system external to the AWS account.
   - allow access without having to create IAM users.
