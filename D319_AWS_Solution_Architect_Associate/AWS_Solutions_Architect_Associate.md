@@ -186,12 +186,11 @@ aws sts get-caller-identity
        2. **OpenID Connect (OIDC)**: open source identity management. (e.g. Facebook, Google or SAML auth).
        3. ![sts cognito](img/sts_cognito.PNG)
 - **Organizations (AWS)**
-  - large organizations typically isolate business departments(dev, test, audit, cost alerts) with multiple accounts.
-  - IAM consistency can be a problem.
-  - AWS Organizations centrally manage and enforce policies across multiple AWS accounts.
-  - **Group-based**. consolidate billing. API-based.
-  - **Policy-based** access to AWS services.
-  - **Automated account creation** and management.
+  - large organizations typically isolate business departments with multiple accounts.
+  - AWS Organizations centralize management, consolidate billing, and enforce policies across multiple AWS accounts.
+  - **SCPs**: service control policies. create top level policy that cannot be overridden.
+    - **explicit allow** or it's denied.
+    - **cannot** be **overridden** by local AWS **account admins**.
   - ![organizations](img/organizations.PNG)
 - **RBAC**
   - Role Based Access Control. you create admin role, developer role... then assign them to user. time consuming.
