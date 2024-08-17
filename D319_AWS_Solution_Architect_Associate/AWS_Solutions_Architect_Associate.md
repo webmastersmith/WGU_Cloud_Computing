@@ -177,8 +177,8 @@ aws sts get-caller-identity
   - user is authenticated by system external to the AWS account.
   - allow access without having to create IAM users.
   - ![sts idp](img/sts_idp.PNG)
-  - **Identity Federation Options**
-    1. **AWS STS** Security Token Service. enables request of **temporary limited-privilege credentials**.
+  - **Identity Federation Three Options**
+    1. **AWS STS**: Security Token Service. enables request of **temporary limited-privilege credentials**.
        1. **identity service providers (IdPs)**: Microsoft Active Directory, or custom identity broker.
        2. ![sts idps](img/sts_idps.PNG)
     2. **SAML**: security assertion markup language.
