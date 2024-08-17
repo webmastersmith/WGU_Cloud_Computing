@@ -28,7 +28,8 @@
 6. <a href="#Database">Database</a>
 7. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
 8. <a href="#Network">Network</a>
-9. <a href="#Storage">Storage</a>
+9. <a href="#Reactive-Architecture">Reactive Architecture</a>
+10. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -478,7 +479,18 @@ aws sts get-caller-identity
 
 - **01_Reactive Architecture**
   - scale into the millions. responsive, highly available.
-- **Amazon EC2 Autoscaling**
+- **Database Autoscaling**
+  - **RDS and Aurora**
+    - **Vertical Scaling**: change instance class(**micro <-> 24xlarge**). must stop database.
+      - **Database Storage Autoscaling**: change SSD to IOPS SSD or automatically add more capacity.
+    - **Horizontal Scaling**: **read-heavy** workloads. read replicas scale horizontal. **asynchronous** replication.
+      - **Primary** and **Read Replica**.
+    - **Aurora Serverless**: autoscale with demand. you **pay ACUs**(aurora capacity units). **unpredictable** workloads.
+    - **Sharding**: split database into separate chunks. based on key. (e.g. split on employeeID odd/even).
+      - improves **write** performance. read performance is impacted from **JOIN** with multiple databases.
+  - **DynamoDB**
+    -
+- **EC2 Autoscaling**
   - **launch or terminate instances**. launch **across AZs**.
   - works with load balancers to automatically **register new instances**.
   - scale from policies that you define, schedules, and health checks.
