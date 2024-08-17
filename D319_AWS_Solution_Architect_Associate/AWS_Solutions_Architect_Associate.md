@@ -74,38 +74,38 @@ aws sts get-caller-identity
 
 ## Best Practices
 
-- **Enable Scalability**
-  - dynamic scale based on load. increase availability.
 - **Automate your environment**
   - dynamic increase/decrease infrastructure.
   - automate monitoring/notifying when resources change.
-- **Treat resources as disposable**
-  - Infrastructure as Code (IaC). declarative control infrastructure.
-  - terminate resources not in use.
-- **Use loosely-coupled components**
-  - avoid tightly-coupled resources.
-  - ![loosely-coupled components](img/loosely-coupled.PNG)
+- **Avoid single points of failure**
+  - create secondary systems to avoid single point failure.
+  - ![single point failure](img/single-point-failure.PNG)
+- **Choose the right database solutions**
+  - acceptable latency, max concurrent users, data integrity.
 - **Design services, not servers**
   - use AWS services to connect your infrastructure.
   - containers(docker), ephemeral(IaC), Queues handle communication between applications.
   - static assets stored in S3.
-- **Choose the right database solutions**
-  - acceptable latency, max concurrent users, data integrity.
-- **Avoid single points of failure**
-  - create secondary systems to avoid single point failure.
-  - ![single point failure](img/single-point-failure.PNG)
+- **Enable Scalability**
+  - dynamic scale based on load. increase availability.
 - **Optimize for cost**
   - CapEx: capital expense. One-time investments in long-term assets. (e.g. hardware servers)
   - OpEx: operational expense. Ongoing costs associated with running the project. (e.g. software license, pay-as-you-go).
-- **Use Caching**
-  - request are faster, increase data throughput.
-  - ![caching](img/caching.PNG)
 - **Secure your entire infrastructure**
   - encrypt data transit and rest.
   - network isolation.
   - least privilege access. MFA.
   - traceability(log every change, access).
   - IaC. automation ensures consistent security.
+- **Treat resources as disposable**
+  - Infrastructure as Code (IaC). declarative control infrastructure.
+  - terminate resources not in use.
+- **Use loosely-coupled components**
+  - avoid tightly-coupled resources.
+  - ![loosely-coupled components](img/loosely-coupled.PNG)
+- **Use Caching**
+  - request are faster, increase data throughput.
+  - ![caching](img/caching.PNG)
 
 ## Authentication, Authorization and Security
 
@@ -373,6 +373,10 @@ aws sts get-caller-identity
   - location of physical servers. redundant hardware, power, cooling, and networking.
   - networked to other data centers through the **AWS backbone network**.
 
+## Monitoring
+
+-
+
 ## Network
 
 - **Cloud Front**
@@ -469,6 +473,22 @@ aws sts get-caller-identity
     - **divide VPC network range evenly** across all AZs in a Region.
     - **reserve extra address space** for future use. CIDR, VPC size.
     - **VPC CIDR range cannot overlap** other ranges.
+
+## Reactive Architecture
+
+- **01_Reactive Architecture**
+  - scale into the millions. responsive, highly available.
+- **Amazon EC2 Autoscaling**
+  - **launch or terminate instances**. launch **across AZs**.
+- **Elastic**
+  - expand or contract as capacity needs change.
+- **Scaling**
+  - achieve elasticity.
+  - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
+  - **vertical scaling**: increase compute, memory, storage size. must restart instance.
+  - ![scale](img/scale.PNG)
+- **Load Balancing**
+  - scale without interruption.
 
 ## Storage
 
