@@ -109,6 +109,10 @@ aws sts get-caller-identity
 
 ## Authentication, Authorization and Security
 
+- **ABAC**
+  - Attribute-Based Access Control. If both principal(user, group, role) have same tag as resource, policy is applied.
+  - combine with **Tagging** to define permissions.
+  - ![abac](img/abac.PNG)
 - **Access Control List (ACL)**
   - stateless firewall. scoped at the **subnet level**.
   - **allow inbound/outbound traffic** by default.
@@ -127,19 +131,10 @@ aws sts get-caller-identity
 - **Cloud Trail (AWS)**
   - log and monitor activity. default **90-day** history. who, what, when, where.
 - **IAM**
-  - Identity and Access Management. Authentication(prove identity) and Authorization(permission to read/modify/delete).
+  - Identity and Access Management. Authentication(prove identity) and Authorization(**permissions**(CRUD)).
   - supports **Active Directory** and standard identity providers.
   - fine-grained access
-  - **root user**: full access.
-    - **Tips to protect a root account**:
-      - enable MFA (multi-factor authentication).
-      - no use of root user, create an IAM user with access.
-      - do not share root-used access keys, disabling or deleting them is better.
-      - Always go for the least privilege principle — only necessary permissions. New users are created with no permissions.
-  - IAM user -> authentication, assumed programmatically, credentials do expire.
-  - IAM group -> users granted identical authorization.
-  - IAM policies -> authorization, attached to user or groups. User is one user only, Group can have many users.
-  - IAM role -> grant temporary access. **person, application, or service**.
+  - **root user**: full access. **avoid using for common task**. enable **MFA**. least privilege.
   - IAM Federation -> combine existing user accounts with AWS, uses SAML, Active Directory.
   - ![iam](img/iam.PNG)
 - **IAM Group**
@@ -147,8 +142,8 @@ aws sts get-caller-identity
 - **IAM Policy**:
   - <https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsidentityandaccessmanagementiam.html>
   - list of defined permissions. **JSON** format. **principle of least privilege**.
-  - policy attached to user or groups.
   - default **deny**. **allow** must be **explicit** or **everything denied**.
+  - explicit deny **overrides allow**.
   - ![IAM flow](img/iam_flow.PNG)
   - **Identity-Based**: attach to IAM principal(user, group, role).
     - **AWS managed**: standalone, administered by AWS.
@@ -164,9 +159,16 @@ aws sts get-caller-identity
     - (e.g. `arn:aws:iam::123456:user/mmajor`)
   - **Wildcards**: `*` include all. (e.g. `s3:*`, `iam:*AccessKey*`)
 - **IAM Role**
-  - grant temporary access. **person, application, or service**.
+  - grant **temporary** access.
+  - **assumable** by a **person, application, or service**.
+  - you must **grant permissions to switch to the role**.
+  - **AWS STS**
+    - Security Token Service. enables request of temporary limited-privilege credentials.
+    - cross account or **federated** access.
 - **IAM User**
   - authentication, assumed programmatically, credentials do expire.
+- **RBAC**
+  - Role Based Access Control. you create admin role, developer role... then assign them to user. time consuming.
 - **Security Groups**
   - **Stateful Firewalls**: instance level. policy with **allow/deny rules** to ports and IPv4/IPv6.
   - stand alone policy and can be **attached** to **multiple instances** or **combined** with **other security groups**.
@@ -175,6 +177,9 @@ aws sts get-caller-identity
   - **Errors**
     - **Timeout**: blocked by security group.
     - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+- **Tagging**
+  - use tagging to label users. **50** tags per resource.
+  - key = value.
 
 ## Compute
 
