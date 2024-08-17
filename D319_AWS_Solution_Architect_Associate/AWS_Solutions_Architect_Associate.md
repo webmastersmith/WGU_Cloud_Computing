@@ -480,7 +480,15 @@ aws sts get-caller-identity
   - scale into the millions. responsive, highly available.
 - **Amazon EC2 Autoscaling**
   - **launch or terminate instances**. launch **across AZs**.
-- **Elastic**
+  - works with load balancers to automatically **register new instances**.
+  - scale from policies that you define, schedules, and health checks.
+  - **Scaling Options**
+    - **Scheduled**: performed at set date and time. (e.g. turn off dev EC2 at night).
+    - **Dynamic**: define parameters that control scaling. (e.g. add another EC2 instance when CPU high).
+    - **Predictive**: ML models predict compute requirements. can be used with **Dynamic**.
+  - **Autoscaling Group**: specify **EC2 instance types** and the **pricing models** that it uses.
+    - you define **min capacity, max capacity, and desired capacity**.
+- **Elastic Infrastructure**
   - expand or contract as capacity needs change.
 - **Scaling**
   - achieve elasticity.
