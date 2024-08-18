@@ -376,7 +376,29 @@ aws sts get-caller-identity
 
 ## Monitoring
 
--
+- **CloudWatch**
+  - collects operational data in the form of **logs**(log files), **metrics**(CPU usage...), and **events**(EventBridge).
+  - create **alarms**. send **notifications**.
+  - visualize data through dashboard. can include data from on-prem. **unified view**.
+  - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
+- **EventBridge**
+  - serverless event bus. stream of real-time resource data. routed to targets.
+  - (e.g EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
+  - **Rules**: JSON. route events to targets.
+  - **Targets**: process events.
+  - ![eventBridge](img/eventBridge.PNG)
+- **Monitoring**
+  - track: health, app performance, resource utilization, security auditing.
+  - manage **cost of AWS infrastructure**.
+  - ![cost explorer](img/monitoring_cost_explorer.PNG)
+  - **Budgets**
+    - set custom budget alerts.
+  - **Cost and Usage Report**
+    - comprehensive report about usage. includes metadata about AWS service, pricing, and reservations.
+  - **Cost Explorer**
+    - visualize and manage cost and usage. daily, monthly. **know where your spending money**.
+  - **Cost Optimization Monitor**
+    - customizable dashboard to monitor usage and cost. breakdown by period, account, resource, or tags.
 
 ## Network
 
@@ -502,6 +524,10 @@ aws sts get-caller-identity
     - **Scheduled**: performed at set date and time. (e.g. turn off dev EC2 at night).
     - **Dynamic**: define parameters that control scaling. (e.g. add another EC2 instance when CPU high).
     - **Predictive**: ML models predict compute requirements. can be used with **Dynamic**.
+  - **Scaling Policy**
+    - **Simple Scaling**: based on cloudwatch alarms. (e.g. new workloads, spiky workloads).
+    - **Step Scaling**: based on avg metric from cloudwatch. (e.g. predictable workloads).
+    - **Target Tracking Scaling**: based on specific metric and target. (e.g. keep metric at target levels).
   - **Autoscaling Group**: specify **EC2 instance types** and the **pricing models** that it uses.
     - you define **min capacity, max capacity, and desired capacity**.
 - **Elastic Infrastructure**
@@ -518,9 +544,15 @@ aws sts get-caller-identity
     - **Classic**: EC2 instances. request/connection level.
   - ![load balancer](img/loadbalancer.PNG)
   - **Creating High Availability Web App**
-    - create load balancer: **EC2 console**/Load Balancers/Create Load Balancer/**Create Application Load Balancer**.
-      - select at least **two availability zones** for high availability.
-      - create security group: allow ports(80, 443...).
+    - highly available, elastic scaling web app.
+    - **Create ELB**: **EC2 console**/Load Balancers/Create Load Balancer/**Create Application Load Balancer**.
+      - **create target group**: select at least **two availability zones** for high availability.
+      - **create security group**: allow ports(80, 443...).
+    - **Create AutoScaling Group**:
+      - collection of EC2 instances that AWS can automatically adjust in size based on demand or predefined schedules.
+      - **launch template**: choose AMI. security group. user data: script to install HTTP server and webpage.
+      - select the same **two AZs** of ELB.
+      - min, max EC2s. tags.
 - **Highly Available**
   - minimized downtime. minimal human intervention. recover from failure or roll over to secondary backup.
   - avoid single points of failure.
