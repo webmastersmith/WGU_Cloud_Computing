@@ -24,12 +24,14 @@
 2. <a href="#AWS-Well-Architected-Framework-Six-Pillars">AWS Well-Architected Framework (Six Pillars)</a>
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-Authorization-and-Security">Authentication, Authorization and Security</a>
-5. <a href="#Compute">Compute</a>
-6. <a href="#Database">Database</a>
-7. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
-8. <a href="#Network">Network</a>
-9. <a href="#Reactive-Architecture">Reactive Architecture</a>
-10. <a href="#Storage">Storage</a>
+5. <a href="#Automation">Automation</a>
+6. <a href="#Compute">Compute</a>
+7. <a href="#Database">Database</a>
+8. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
+9. <a href="#Monitoring">Monitoring</a>
+10. <a href="#Network">Network</a>
+11. <a href="#Reactive-Architecture">Reactive Architecture</a>
+12. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -64,6 +66,7 @@ aws sts get-caller-identity
 - **Reliability**
   - **recover** from infrastructure or service disruption.
   - **dynamic** recovery, scale, mitigation.
+  - manage change with automation.
 - **Performance efficiency**
   - most **efficient** resource selection as demand changes.
   - **democratize**: use ready made solutions for advanced problems.
@@ -178,7 +181,7 @@ aws sts get-caller-identity
   - user is authenticated by system external to the AWS account.
   - allow access without having to create IAM users.
   - ![sts idp](img/sts_idp.PNG)
-  - **Identity Federation Three Options**
+  - **Identity Federation: Three Options**
     1. **AWS STS**: Security Token Service. enables request of **temporary limited-privilege credentials**.
        1. **identity service providers (IdPs)**: Microsoft Active Directory, or custom identity broker.
        2. ![sts idps](img/sts_idps.PNG)
@@ -208,6 +211,17 @@ aws sts get-caller-identity
 - **Tagging**
   - use tagging to label users. **50** tags per resource.
   - key = value.
+
+## Automation
+
+- **Automation**
+  - without automation it is a long **manual process** to build architecture.
+- **CloudFormation (AWS)**
+  - IaC. simplify infrastructure management.
+  - **Stack**: YAML or JSON format. creates a 'stack'(becomes the running environment).
+- **Elastic Beanstalk (AWS)**
+- **OpsWorks (AWS)**
+- **Systems Manager (AWS)**
 
 ## Compute
 
@@ -282,7 +296,6 @@ aws sts get-caller-identity
     - ![user data](img/user_data.PNG)
     - ![instance metadata](img/user_data_metadata.PNG)
     - ![fully baked vs just enough AMI](img/full_baked_vs_just_enough_ami.PNG)
-  - **Lightsail**:
 
 ## Database
 
@@ -591,7 +604,6 @@ aws sts get-caller-identity
 - **FSx**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
-- **Transfer Family**:
 - **S3**
   - immutable **object** storage service.
   - global REST URL access.
@@ -671,7 +683,7 @@ aws sts get-caller-identity
   - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend.
   - **Versioning-Suspended**: bucket has been versioned, but suspended.
 - **S3 Website**
-  - low cost solution to web hosting.
+  - static only(no server). low cost solution to web hosting.
   - **CORS (cross-origin resource sharing)**
     - XML document with rules that identify the origins that are allowed to access your bucket.
   - ![S3 CORS](img/S3_cors.PNG)
