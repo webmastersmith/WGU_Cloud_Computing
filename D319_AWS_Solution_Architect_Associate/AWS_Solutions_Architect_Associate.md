@@ -517,6 +517,10 @@ aws sts get-caller-identity
     - **Network**: TCP, UDP, TLS. layer 4. **Recommended**.
     - **Classic**: EC2 instances. request/connection level.
   - ![load balancer](img/loadbalancer.PNG)
+  - **Creating High Availability Web App**
+    - create load balancer: **EC2 console**/Load Balancers/Create Load Balancer/**Create Application Load Balancer**.
+      - select at least **two availability zones** for high availability.
+      - create security group: allow ports(80, 443...).
 - **Highly Available**
   - minimized downtime. minimal human intervention. recover from failure or roll over to secondary backup.
   - avoid single points of failure.
