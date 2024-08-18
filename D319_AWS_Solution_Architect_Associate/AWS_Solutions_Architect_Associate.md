@@ -523,6 +523,22 @@ aws sts get-caller-identity
 - **Route 53 (Amazon)**
   - Domain Name System. translates names into IP addresses.
   - DNS failover(redirect to healthy endpoints). low-latency, fault-tolerant.
+  - **Simple Load Balance**
+    - copy and **paste both IP addresses** into the '**create record set**' value input.
+    - routing policy is **simple**.
+    - ![dns distribute evenly](img/dns_simple_load_balance.PNG)
+    - ![dns distribute evenly creation](img/dns_simple_load_balance_creation.PNG)
+  - **Failover**
+    - **create health check**. setup notifications.
+    - **Create Record Set**: add IP. Routing Policy: Failover. Mark as Primary and choose health-check you just created.
+    - **Create Record Set**: same as above, just mark as secondary.
+    - ![dns failover](img/dns_failover.PNG)
+    - ![dns failover setup](img/dns_failover_policy.PNG)
+  - **Geolocation**
+    - create two record sets for each region.
+    - routing policy: Geolocation. choose your continent.
+    - ![dns geolocation](img/dns_geolocation.PNG)
+    - ![dns geolocation setup](img/dns_geolocation_setup.PNG)
 - **Scaling**
   - achieve elasticity.
   - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
