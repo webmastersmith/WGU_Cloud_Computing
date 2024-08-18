@@ -519,6 +519,10 @@ aws sts get-caller-identity
   - ![load balancer](img/loadbalancer.PNG)
 - **Highly Available**
   - minimized downtime. minimal human intervention. recover from failure or roll over to secondary backup.
+  - avoid single points of failure.
+- **Route 53 (Amazon)**
+  - Domain Name System. translates names into IP addresses.
+  - DNS failover(redirect to healthy endpoints). low-latency, fault-tolerant.
 - **Scaling**
   - achieve elasticity.
   - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
