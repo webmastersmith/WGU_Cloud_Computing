@@ -219,6 +219,7 @@ aws sts get-caller-identity
 - **CloudFormation (AWS)**
   - IaC. simplify infrastructure management.
   - **Stack**: YAML or JSON format. creates a 'stack'(becomes the running environment).
+  - ![cloudformation template example](img/cloudFormation_template.PNG)
 - **Elastic Beanstalk (AWS)**
 - **OpsWorks (AWS)**
 - **Systems Manager (AWS)**
