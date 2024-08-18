@@ -566,8 +566,8 @@ aws sts get-caller-identity
     - ![dns distribute evenly creation](img/dns_simple_load_balance_creation.PNG)
   - **Failover**
     - **create health check**. setup notifications.
-    - **Create Record Set**: add IP. Routing Policy: Failover. Mark as Primary and choose health-check you just created.
-    - **Create Record Set**: same as above, just mark as secondary.
+    - **Create Record Set**: add Primary IP. Routing Policy: Failover. Mark as Primary and choose health-check you just created.
+    - **Create Record Set**: add Secondary IP. same as above, mark as secondary.
     - ![dns failover](img/dns_failover.PNG)
     - ![dns failover setup](img/dns_failover_policy.PNG)
   - **Geolocation**
