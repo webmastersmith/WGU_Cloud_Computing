@@ -481,15 +481,19 @@ aws sts get-caller-identity
   - scale into the millions. responsive, highly available.
 - **Database Autoscaling**
   - **RDS and Aurora**
-    - **Vertical Scaling**: change instance class(**micro <-> 24xlarge**). must stop database.
+    - **Vertical Scaling**: **push-button scaling**. change instance class(**micro <-> 24xlarge**). must stop database.
       - **Database Storage Autoscaling**: change SSD to IOPS SSD or automatically add more capacity.
     - **Horizontal Scaling**: **read-heavy** workloads. read replicas scale horizontal. **asynchronous** replication.
       - **Primary** and **Read Replica**.
-    - **Aurora Serverless**: autoscale with demand. you **pay ACUs**(aurora capacity units). **unpredictable** workloads.
-    - **Sharding**: split database into separate chunks. based on key. (e.g. split on employeeID odd/even).
+    - **Aurora Serverless**: default autoscale with demand. set min, max capacity. you **pay ACUs**(aurora capacity units). best for **unpredictable** workloads.
+    - **Sharding**: split database into separate chunks(horizontal scaling). based on key. (e.g. split on employeeID odd/even).
       - improves **write** performance. read performance is impacted from **JOIN** with multiple databases.
-  - **DynamoDB**
-    -
+  - **DynamoDB On-Demand**: pay-per-request pricing.
+    - NoSQL spiky unpredictable workloads.
+    - **Autoscaling**: default. set min, max limits.
+      - can read and write **without throttling**.
+      - **auto increase throughput capacity**.
+  - ![dynamodb autoscale](img/dynamodb_autoscale.PNG)
 - **EC2 Autoscaling**
   - **launch or terminate instances**. launch **across AZs**.
   - works with load balancers to automatically **register new instances**.
@@ -502,6 +506,19 @@ aws sts get-caller-identity
     - you define **min capacity, max capacity, and desired capacity**.
 - **Elastic Infrastructure**
   - expand or contract as capacity needs change.
+- **Elastic Load Balancing (ELB)**
+  - managed. distributes load across containers, EC2 instances, IP addresses, and Lambda functions.
+  - external/internal facing.
+  - **DNS name**: has own DNS name.
+  - **Health-Check**: recognizes and responds to unhealthy instances.
+  - **Scope**: across multiple AZs.
+  - **Types**
+    - **Application**: HTTP(S). layer 7. Web Apps. **Recommended**.
+    - **Network**: TCP, UDP, TLS. layer 4. **Recommended**.
+    - **Classic**: EC2 instances. request/connection level.
+  - ![load balancer](img/loadbalancer.PNG)
+- **Highly Available**
+  - minimized downtime. minimal human intervention. recover from failure or roll over to secondary backup.
 - **Scaling**
   - achieve elasticity.
   - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
