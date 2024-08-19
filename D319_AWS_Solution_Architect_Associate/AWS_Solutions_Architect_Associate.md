@@ -508,7 +508,16 @@ aws sts get-caller-identity
   - **publisher**: sends message to topic.
   - **topic**: holds subscriptions. **pushes** message to subscriber. supports encrypted topics.
   - **subscriber**: subscribes to topic. receives all messages.
+  - **Scope**: Region scoped. multiple AZs.
+  - ![sns](img/sns.PNG)
+  - **SNS vs SQS**
+  - ![sns vs sqs](img/sns_vs_sqs.PNG)
 - **MQ**
+  - hybrid **on-prem** message broker to cloud solution. **lift-and-shift**.
+  - **message broker**: allows distributed applications communicate.
+  - **Apache ActiveMQ**, JMS, NMS, AMQP, STOMP, MQTT, and WebSockets.
+  - ![mq](img/mq.PNG)
+  - ![mq vs sns/sqs](img/mq_vs_sns-sqs.PNG)
 
 ## Monitoring
 
