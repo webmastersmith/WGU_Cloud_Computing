@@ -189,8 +189,9 @@ aws sts get-caller-identity
        1. ![sts saml](img/sts_saml.PNG)
     3. **Amazon Cognito**: web identity provider.
        1. fully managed, **authentication**, **authorization**, and **user management** for **web** and **mobile** apps.
-       2. **OpenID Connect (OIDC)**: open source identity management. (e.g. Facebook, Google or SAML auth).
-       3. ![sts cognito](img/sts_cognito.PNG)
+       2. creates **user pools** and **identity pools**.
+       3. **OpenID Connect (OIDC)**: open source identity management. (e.g. Facebook, Google or SAML auth).
+       4. ![sts cognito](img/sts_cognito.PNG)
 - **Organizations (AWS)**
   - large organizations typically isolate business departments with multiple accounts.
   - AWS Organizations centralize management, consolidate billing, and enforce policies across multiple AWS accounts.
@@ -208,6 +209,9 @@ aws sts get-caller-identity
   - **Errors**
     - **Timeout**: blocked by security group.
     - **Connection Refused**: application error. traffic went through to EC2, but EC2 did not respond.
+- **Root User**
+  - highest level of privileges. Only one with **default** access to billing information.
+  - best practice to not use root.
 - **Tagging**
   - use tagging to label users. **50** tags per resource.
   - key = value.
@@ -216,6 +220,7 @@ aws sts get-caller-identity
 
 - **Automation**
   - without automation it is a long **manual process** to build architecture.
+  - ![automation tool](img/automation_tool.PNG)
 - **CloudFormation (AWS)**
   - IaC. simplify infrastructure management. **model, create,** and **manage AWS resources** .
   - **Stack**: YAML or JSON format. creates a 'stack'(becomes the running environment).
@@ -225,14 +230,18 @@ aws sts get-caller-identity
   - **Version control**: when uploaded to S3, Github, or AWS CodeCommit.
   - **AWS CloudFormation Designer**: GUI drag-n-drop design tool.
   - ![cloudformation template example](img/cloudFormation_template.PNG)
+  - ![cloudformation template example 2](img/cloudFormation_template2.PNG)
   - **Change Set**: preview changes **before** implementing them.
   - ![cloudFormation change set](img/change_set.PNG)
-  - **Scope**: group templates similar to website grouping. frontend, backend, network, security...
-  - **AWS Quick Starts**: template examples maintained by AWS. develope using **patterns and practices** from Quick Start.
+  - **Scope**: **Region** scoped.
+  - Organize templates the same you would a website: frontend, backend, network, security...
+  - **AWS Quick Starts**: template examples maintained by AWS.
+    - develope your infrastructure using **patterns and practices** from Quick Start.
+    - provides code with **best practices**.
 - **Elastic Beanstalk (AWS)**
   - **managed service** to quickly get **Web Applications** up-and-running.
   - automatically handles: deployment, load balancing, scaling, health monitoring, analysis and debugging, logging.
-  - you pay for EC2 instances.
+  - you pay for resources used.
   - ![elastic beanstalk](img/elastic_beanstalk.PNG)
   - ![elastic beanstalk full example](img/elastic_beanstalk2.PNG)
 - **IaC**
@@ -240,6 +249,7 @@ aws sts get-caller-identity
   - ![IaC](img/iac.PNG)
 - **OpsWorks (AWS)**
   - **configuration management service**. provides **Chef, Puppet, Stacks** for automation tools.
+  - **Chef Recipes**: implement individual stack layers.
   - **CloudFormation and OpWorks** work compliment each other.
   - ![CloudFormation and OpWorks](img/cloudFormation_Opworks.PNG)
 - **Systems Manager (AWS)**
@@ -487,7 +497,7 @@ aws sts get-caller-identity
   - **Route**: each peered VPC must add route to route table, ACL and Security Groups updated.
     - **No overlap in CIDR**.
     - not transitive(A <-> B, A <-> C, B and C cannot communicate with each other).
-      - to connect all VPCs requires **full-mesh network**.
+      - to connect all VPCs requires **full-mesh network**. `n*(n-1)` (e.g. 6 VPCs fully connected = 30 connections).
     - only one active VPC peering between VPCs. (e.g. A <-> B, another redundant peering A <-> B not allowed).
   - ![peering route](img/peering.PNG)
   - **Scope**: any AWS VPC. in another **VPC account**, or **Region**(Inter-Region VPC peering).
@@ -614,6 +624,10 @@ aws sts get-caller-identity
     - routing policy: Geolocation. choose your continent.
     - ![dns geolocation](img/dns_geolocation.PNG)
     - ![dns geolocation setup](img/dns_geolocation_setup.PNG)
+  - **Multivalue Answer Routing**
+    - send up to **eight records(IP addresses)** in response to query, allowing **client to choose another IP** if **no response**.
+  - **Weighted Round-Robin Routing**
+    - send small amount of 'canary' version responses for testing.
 - **Scaling**
   - achieve elasticity.
   - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
