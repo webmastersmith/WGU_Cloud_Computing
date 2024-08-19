@@ -25,13 +25,15 @@
 3. <a href="#Best-Practices">Best Practices</a>
 4. <a href="#Authentication-Authorization-and-Security">Authentication, Authorization and Security</a>
 5. <a href="#Automation">Automation</a>
-6. <a href="#Compute">Compute</a>
-7. <a href="#Database">Database</a>
-8. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
-9. <a href="#Monitoring">Monitoring</a>
-10. <a href="#Network">Network</a>
-11. <a href="#Reactive-Architecture">Reactive Architecture</a>
-12. <a href="#Storage">Storage</a>
+6. <a href="#Caching">Caching</a>
+7. <a href="#Compute">Compute</a>
+8. <a href="#Database">Database</a>
+9. <a href="#Employability-and-Competency">Employability and Competency</a>
+10. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
+11. <a href="#Monitoring">Monitoring</a>
+12. <a href="#Network">Network</a>
+13. <a href="#Reactive-Architecture">Reactive Architecture</a>
+14. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -262,6 +264,43 @@ aws sts get-caller-identity
     - Run commands, update/patch **remotely** without needing a Bastion Host.
   - ![ssm agent](img/ssm_agent.PNG)
 
+## Caching
+
+- **Caching**
+  - distance from **origin server** to client induces latency.
+  - improve performance(high **throughput**) of data retrieval and reduce **latency**. using edge locations.
+  - high speed data storage layer.
+  - **Best Practice**
+    - data that requires **slow, expensive query**.
+    - **frequent** request for **static data** that can be **stale** for some time.
+  - ![caching 2](img/caching2.PNG)
+- **Cloud Front**
+  - **Content Delivery Network**: globally distributed system of caching servers.
+  - AWS CDN(content delivery network) edge network. supports **websockets** and **HTTPS**.
+  - **AWS Shield Standard**: extra layer of security(DDOS). resilient. -no extra cost.
+  - **AWS Certificate Manager**: create/manage **SSL** certs. -no extra cost.
+  - **Resilient**: DDOS protection and DNS Route 53(distribute across Edge locations).
+  - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
+  - ![cloudFront](img/cloud_front.PNG)
+  - **Setup**: specify **origin server**, configure **distribution**.
+  - ![cloudFront start](img/cloud_front_start.PNG)
+  - **Edge Cache**: sometimes called **PoP (point of presence)**. **frequent** content, **close** to your users.
+  - **Regional Edge Cache**: larger cache so **longer shelf life**. **origin** to Edge Caches.
+  - **Expire Content**
+    - **TTL**: time-to-live. specify length of time.
+    - **Change Object Name**: use versions.
+    - **Invalidate Objects**: not recommended. you force delete objects from CDN.
+- **Caching Web Sessions**
+  - **sessions**: manage user **authentication** and store **data** while user interacts with application.
+  - **Sticky Sessions**: ELB uses cookies to route traffic to instance with session.
+    - by default an ELB will route to smallest load, but with sticky sessions, ELB routes to same instance.
+    - if instance fails, session is lost.
+    - prevents ELB from truly balancing the load.
+  - **Distributed Cache**: store session data in cache. solves single-point-failure and load balancing sessions.
+    - can also use **DynamoDB** to persist sessions.
+  - ![distrubted cache](img/distributed_cache.PNG)
+  - ![distrubted cache dynamoDB](img/distributed_cache_dynamoDB.PNG)
+
 ## Compute
 
 - **Compute**
@@ -401,6 +440,10 @@ aws sts get-caller-identity
     - **client-side encryption**. confidential data is encrypted close as possible to its origin.
     - **encryption in transit and at rest**. default. DynamoDB uses **HTTPS** in transit.
 
+## Employability and Competency
+
+- ***
+
 ## Geography, Region, Availability Zone
 
 - **Cloud Architecture**
@@ -454,10 +497,6 @@ aws sts get-caller-identity
 
 ## Network
 
-- **Cloud Front**
-  - AWS CDN(content delivery network) edge network.
-  - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
-  - ![cloud front](img/cloud_front.PNG)
 - **Cloud Watch**
   - **monitor** infrastructure and **automate** scaling.
 - **Elastic IP**
