@@ -217,9 +217,21 @@ aws sts get-caller-identity
 - **Automation**
   - without automation it is a long **manual process** to build architecture.
 - **CloudFormation (AWS)**
-  - IaC. simplify infrastructure management.
+  - IaC. simplify infrastructure management. **model, create,** and **manage AWS resources** .
   - **Stack**: YAML or JSON format. creates a 'stack'(becomes the running environment).
+    - **Update Stack**: update change to template.
+    - **Delete Stack**: remove all template resources.
+    - **Detect Drift**: detects modified infrastructure outside the CloudFormation template.
+  - **Version control**: when uploaded to S3, Github, or AWS CodeCommit.
+  - **AWS CloudFormation Designer**: GUI drag-n-drop design tool.
   - ![cloudformation template example](img/cloudFormation_template.PNG)
+  - **Change Set**: preview changes **before** implementing them.
+  - ![cloudFormation change set](img/change_set.PNG)
+  - **Scope**: group templates similar to website grouping. frontend, backend, network, security...
+  - **AWS Quick Starts**: template examples maintained by AWS. develope using **patterns and practices** from Quick Start.
+- **IaC**
+  - Infrastructure as Code. rapid deployment, consistency, reusable, repeatable, maintainability.
+  - ![IaC](img/iac.PNG)
 - **Elastic Beanstalk (AWS)**
 - **OpsWorks (AWS)**
 - **Systems Manager (AWS)**
