@@ -222,7 +222,7 @@ aws sts get-caller-identity
 ## Automation
 
 - **Automation**
-  - without automation it is a long **manual process** to build architecture.
+  - **without** automation it is a long **manual process** to build architecture.
   - ![automation tool](img/automation_tool.PNG)
 - **CloudFormation (AWS)**
   - IaC. simplify infrastructure management. **model, create,** and **manage AWS resources** .
@@ -253,7 +253,7 @@ aws sts get-caller-identity
 - **OpsWorks (AWS)**
   - **configuration management service**. provides **Chef, Puppet, Stacks** for automation tools.
   - **Chef Recipes**: implement individual stack layers.
-  - **CloudFormation and OpWorks** work compliment each other.
+  - **CloudFormation and OpWorks** compliment each other.
   - ![CloudFormation and OpWorks](img/cloudFormation_Opworks.PNG)
 - **Systems Manager (AWS)**
   - AWS version of **Ansible**. for managing massive scale of instances. updates/patches. on-prem/cloud.
