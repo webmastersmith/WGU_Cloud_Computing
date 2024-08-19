@@ -29,10 +29,11 @@
 7. <a href="#Compute">Compute</a>
 8. <a href="#Database">Database</a>
 9. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
-10. <a href="#Monitoring">Monitoring</a>
-11. <a href="#Network">Network</a>
-12. <a href="#Reactive-Architecture">Reactive Architecture</a>
-13. <a href="#Storage">Storage</a>
+10. <a href="#Messaging">Messaging</a>
+11. <a href="#Monitoring">Monitoring</a>
+12. <a href="#Network">Network</a>
+13. <a href="#Reactive-Architecture">Reactive Architecture</a>
+14. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
