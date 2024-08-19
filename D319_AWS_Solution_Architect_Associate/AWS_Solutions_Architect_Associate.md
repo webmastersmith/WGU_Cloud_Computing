@@ -229,12 +229,24 @@ aws sts get-caller-identity
   - ![cloudFormation change set](img/change_set.PNG)
   - **Scope**: group templates similar to website grouping. frontend, backend, network, security...
   - **AWS Quick Starts**: template examples maintained by AWS. develope using **patterns and practices** from Quick Start.
+- **Elastic Beanstalk (AWS)**
+  - **managed service** to quickly get **Web Applications** up-and-running.
+  - automatically handles: deployment, load balancing, scaling, health monitoring, analysis and debugging, logging.
+  - you pay for EC2 instances.
+  - ![elastic beanstalk](img/elastic_beanstalk.PNG)
 - **IaC**
   - Infrastructure as Code. rapid deployment, consistency, reusable, repeatable, maintainability.
   - ![IaC](img/iac.PNG)
-- **Elastic Beanstalk (AWS)**
 - **OpsWorks (AWS)**
+  - **configuration management service**. provides **Chef, Puppet, Stacks** for automation tools.
+  - **CloudFormation and OpWorks** work compliment each other.
+  - ![CloudFormation and OpWorks](img/cloudFormation_Opworks.PNG)
 - **Systems Manager (AWS)**
+  - AWS version of **Ansible**. for managing massive scale of instances. updates/patches. on-prem/cloud.
+  - **SSM Agent**: install on **EC2** instance or **on-prem** computer.
+    - data is sent back to Systems Manager.
+    - Run commands, update/patch **remotely** without needing a Bastion Host.
+  - ![ssm agent](img/ssm_agent.PNG)
 
 ## Compute
 
