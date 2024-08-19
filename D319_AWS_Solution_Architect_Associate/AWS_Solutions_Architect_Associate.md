@@ -28,12 +28,11 @@
 6. <a href="#Caching">Caching</a>
 7. <a href="#Compute">Compute</a>
 8. <a href="#Database">Database</a>
-9. <a href="#Employability-and-Competency">Employability and Competency</a>
-10. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
-11. <a href="#Monitoring">Monitoring</a>
-12. <a href="#Network">Network</a>
-13. <a href="#Reactive-Architecture">Reactive Architecture</a>
-14. <a href="#Storage">Storage</a>
+9. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
+10. <a href="#Monitoring">Monitoring</a>
+11. <a href="#Network">Network</a>
+12. <a href="#Reactive-Architecture">Reactive Architecture</a>
+13. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -267,9 +266,9 @@ aws sts get-caller-identity
 ## Caching
 
 - **Caching**
+  - **high speed data storage layer**.
   - distance from **origin server** to client induces latency.
   - improve performance(high **throughput**) of data retrieval and reduce **latency**. using edge locations.
-  - high speed data storage layer.
   - **Best Practice**
     - data that requires **slow, expensive query**.
     - **frequent** request for **static data** that can be **stale** for some time.
@@ -299,13 +298,14 @@ aws sts get-caller-identity
     - key:value NoSQL in-memory store. typically for Redis or Memcached. read-heavy workloads.
   - ![side cache](img/side_cache.PNG)
   - **Elasticache**: fully managed, side cache. web application in-memory data store.
-    - supports Memcached(**20** cache nodes) and Redis(**250** cache nodes).
-    - **node**: smallest block of **network-attached RAM**. has own **DNS name** and **port**.
+    - supports **engines**: Memcached(**20** cache nodes, horizontal scale, no multiple AZs) and Redis(**250** cache nodes, complex memory types).
+    - **node**: smallest block of **network-attached RAM**. each node is independent, has own **DNS name** and **port**.
     - **cluster**: logical group of nodes.
     - **Scope**: region. multiple AZs.
     - **Lazy Load**: app request Elasticache data. If not exist, app ask database. app writes data to Elasticache.
-      - advantages: only requested data is cached.
-    - **Write-through**: data is written to database and Elasticache.
+      - advantages: only requested data is cached. **stale data**.
+    - **Write-through**: data is written to database and Elasticache. **real-time data updates**.
+    - **TTL**: stale data is updated when TTL expires.
   - ![elasticache](img/elasticache.PNG)
   - ![elasticache cluster](img/elasticache_cluster.PNG)
 - **Caching Web Sessions**
@@ -458,10 +458,6 @@ aws sts get-caller-identity
     - **client-side encryption**. confidential data is encrypted close as possible to its origin.
     - **encryption in transit and at rest**. default. DynamoDB uses **HTTPS** in transit.
 
-## Employability and Competency
-
-- ***
-
 ## Geography, Region, Availability Zone
 
 - **Cloud Architecture**
@@ -486,6 +482,33 @@ aws sts get-caller-identity
 - **Data Centers**
   - location of physical servers. redundant hardware, power, cooling, and networking.
   - networked to other data centers through the **AWS backbone network**.
+
+## Messaging
+
+- **Coupled Architecture**
+  - tightly coupled architecture is difficult to scale.
+  - ![decoupling](img/decoupled.PNG)
+  - **loose coupling**: ELB external and internal can loose couple architecture.
+  - ![loose coupling](img/loose_coupling.PNG)
+- **SQS**
+  - **Simple Queue Service**. temporary repository(default **4** days) for messages waiting to be processed. encrypted.
+    - buffer between producer and consumer.
+    - max message size: **256 kb**.
+  - **Producer**: sender of message.
+  - **Consumer**: recipient of message. polls for new message. processes and deletes message during visibility timeout.
+  - **Long polling**: SQS queries all servers for messages, then sends back all messages in single request.
+  - **Visibility Timeout**: default **30 seconds**. period of time no other consumer can 'see' message. allows time for message to be processed and deleted from Queue.
+  - **Scope**: region. multiple AZs.
+  - **Queue Types**
+    - **Standard Queue**: at-least-once delivery. best-effort ordering. nearly unlimited throughput.
+    - **First In, First Out (FIFO)**: high throughput. exactly once processing.
+    - **Dead-Letter Queue (DLQ)**: no consumer response. send to DLQ storage.
+- **SNS**
+  - **Simple Notification Service**. pub/sub messaging.
+  - **publisher**: sends message to topic.
+  - **topic**: holds subscriptions. **pushes** message to subscriber. supports encrypted topics.
+  - **subscriber**: subscribes to topic. receives all messages.
+- **MQ**
 
 ## Monitoring
 
