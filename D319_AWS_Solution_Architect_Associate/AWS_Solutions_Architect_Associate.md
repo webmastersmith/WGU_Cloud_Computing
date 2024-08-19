@@ -274,7 +274,7 @@ aws sts get-caller-identity
     - data that requires **slow, expensive query**.
     - **frequent** request for **static data** that can be **stale** for some time.
   - ![caching 2](img/caching2.PNG)
-- **Cloud Front**
+- **CloudFront**
   - **Content Delivery Network**: globally distributed system of caching servers.
   - AWS CDN(content delivery network) edge network. supports **websockets** and **HTTPS**.
   - **AWS Shield Standard**: extra layer of security(DDOS). resilient. -no extra cost.
@@ -290,6 +290,24 @@ aws sts get-caller-identity
     - **TTL**: time-to-live. specify length of time.
     - **Change Object Name**: use versions.
     - **Invalidate Objects**: not recommended. you force delete objects from CDN.
+- **Caching Databases**
+  - reduce cost, latency, volume of DB reads.
+  - **Amazon DynamoDB Accelerator (DAX)**: extremely performant(microsecond-scale response time).
+    - adds in-memory acceleration.
+  - ![DAX](img/dax.PNG)
+  - **Remote or Side Cache**: adjacent to database.
+    - key:value NoSQL in-memory store. typically for Redis or Memcached. read-heavy workloads.
+  - ![side cache](img/side_cache.PNG)
+  - **Elasticache**: fully managed, side cache. web application in-memory data store.
+    - supports Memcached(**20** cache nodes) and Redis(**250** cache nodes).
+    - **node**: smallest block of **network-attached RAM**. has own **DNS name** and **port**.
+    - **cluster**: logical group of nodes.
+    - **Scope**: region. multiple AZs.
+    - **Lazy Load**: app request Elasticache data. If not exist, app ask database. app writes data to Elasticache.
+      - advantages: only requested data is cached.
+    - **Write-through**: data is written to database and Elasticache.
+  - ![elasticache](img/elasticache.PNG)
+  - ![elasticache cluster](img/elasticache_cluster.PNG)
 - **Caching Web Sessions**
   - **sessions**: manage user **authentication** and store **data** while user interacts with application.
   - **Sticky Sessions**: ELB uses cookies to route traffic to instance with session.
