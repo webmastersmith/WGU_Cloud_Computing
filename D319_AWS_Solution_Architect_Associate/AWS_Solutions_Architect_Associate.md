@@ -47,6 +47,9 @@
 
 ```sh
 # login -get access and secret key from IAM portal.
+# caution! this is for personal development.
+# Do not load your credentials on EC2 instances. Create policy and attach to EC2 instance.
+# This copies the secret key to your computer.
 aws configure # copy paste access and secret key.
 
 # check your logged in.
