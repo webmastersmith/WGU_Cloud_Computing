@@ -234,6 +234,7 @@ aws sts get-caller-identity
   - automatically handles: deployment, load balancing, scaling, health monitoring, analysis and debugging, logging.
   - you pay for EC2 instances.
   - ![elastic beanstalk](img/elastic_beanstalk.PNG)
+  - ![elastic beanstalk full example](img/elastic_beanstalk2.PNG)
 - **IaC**
   - Infrastructure as Code. rapid deployment, consistency, reusable, repeatable, maintainability.
   - ![IaC](img/iac.PNG)
