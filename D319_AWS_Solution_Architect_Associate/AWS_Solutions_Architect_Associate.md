@@ -514,7 +514,7 @@ aws sts get-caller-identity
   - **SNS vs SQS**
   - ![sns vs sqs](img/sns_vs_sqs.PNG)
 - **MQ**
-  - hybrid **on-prem** message broker to cloud solution. **lift-and-shift**.
+  - hybrid **on-prem** to **message broker** cloud solution. **lift-and-shift**.
   - **message broker**: allows distributed applications communicate.
   - **Apache ActiveMQ**, JMS, NMS, AMQP, STOMP, MQTT, and WebSockets.
   - ![mq](img/mq.PNG)
