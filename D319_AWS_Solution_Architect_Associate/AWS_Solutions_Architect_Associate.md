@@ -477,7 +477,16 @@ aws sts get-caller-identity
   - **Backup**: data is safe from deletion/lose.
   - **Disaster Recovery**: IaC and data backups to get back online fast.
   - **Storage and Backup**
+    - S3: cross region.
+    - EBS: snapshots(incremental only what has changed since last snapshot).
+    - EFS/EFX: DataSync Region.
   - ![storage and backup storage](img/storage_backup.PNG)
+  - **Routing Services**
+  - ![routing services](img/routing_services.PNG)
+  - **Databases**
+  - ![database backup](img/database_backup.PNG)
+  - **IaC**
+  - ![IaC](img/iac_backup.PNG)
 
 ## Geography, Region, Availability Zone
 
