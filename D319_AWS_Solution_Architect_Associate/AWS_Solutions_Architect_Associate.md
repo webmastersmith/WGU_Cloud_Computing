@@ -490,9 +490,14 @@ aws sts get-caller-identity
   - ![IaC](img/iac_backup.PNG)
 - **Disaster Recovery**
   - each option below is based on RPO/RTO and cost-effectiveness.
+  - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
+  - **highest RTO**.
   - ![disaster recovery](img/disaster_recovery.PNG)
-  - **Backup and Restore**: backup to S3.
-  - **Pilot Light**:
+  - **Pilot Light**: run secondary database as backup in another Region.
+    - **Faster RTO**
+    - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
+  - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
+  - ![pilot light](img/pilot_light.PNG)
   - **Warm Standby**:
   - **Multi-site**:
 
