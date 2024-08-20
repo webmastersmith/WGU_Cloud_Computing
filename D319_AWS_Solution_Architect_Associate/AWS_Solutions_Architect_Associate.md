@@ -732,7 +732,25 @@ aws sts get-caller-identity
 
 ## Serverless
 
-- **d**
+- **API Gateway (Amazon)**
+- **ECS (Elastic Container Service)**
+  - build microservices. container contains everything needed to run: code, runtime engine, dependencies, configurations.
+  - orchestration, scale.
+  - **cluster**: logical grouping of resources.
+  - **task definition**: JSON. describes the containers that form the application. blueprint.
+  - **Host your ECS**
+    - **Fargate**.
+    - **EC2 cluster**: run ECS on **your EC2 instances** with ECS container agent.
+  - **Autoscaling**: based on CloudWatch alarms, scale up/down.
+  - **Cluster Autoscaling **:
+  - ![ecs](img/ecs.PNG)
+- **Fargate**
+  - **serverless** host for ECS clusters.
+- **Lambda Functions (AWS)**
+- **Microservices (AWS)**
+  - **independent services** that communicate over **well-defined APIs**.
+  - ![microservices](img/microservices.PNG)
+- **Step Functions (AWS)**
 
 ## Storage
 
