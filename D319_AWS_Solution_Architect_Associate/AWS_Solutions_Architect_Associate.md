@@ -490,6 +490,7 @@ aws sts get-caller-identity
   - ![IaC](img/iac_backup.PNG)
 - **Disaster Recovery**
   - each option below is based on RPO/RTO and cost-effectiveness.
+  - ![disaster recovery options](img/disaster_recovery_options.PNG)
   - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
   - **highest RTO**.
   - ![disaster recovery](img/disaster_recovery.PNG)
@@ -498,6 +499,7 @@ aws sts get-caller-identity
   - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
   - ![pilot light](img/pilot_light.PNG)
   - **Warm Standby**: scaled down version. business critical resources always running.
+    - similar to pilot light, but keep critical business.
   - ![warm standby](img/disaster_recovery_warm_standby.PNG)
   - **Multi-site**: complete copy of infrastructure.
     - **Fastest RTO**, most expensive.
