@@ -28,13 +28,14 @@
 6. <a href="#Caching">Caching</a>
 7. <a href="#Compute">Compute</a>
 8. <a href="#Database">Database</a>
-9. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
-10. <a href="#Messaging">Messaging</a>
-11. <a href="#Monitoring">Monitoring</a>
-12. <a href="#Network">Network</a>
-13. <a href="#Reactive-Architecture">Reactive Architecture</a>
-14. <a href="#Serverless">Serverless</a>
-15. <a href="#Storage">Storage</a>
+9. <a href="#Disaster-Backup-and-Recovery">Disaster, Backup and Recovery</a>
+10. <a href="#Geography-Region-Availability-Zone">Geography, Region, Availability Zone</a>
+11. <a href="#Messaging">Messaging</a>
+12. <a href="#Monitoring">Monitoring</a>
+13. <a href="#Network">Network</a>
+14. <a href="#Reactive-Architecture">Reactive Architecture</a>
+15. <a href="#Serverless-and-Microservices">Serverless and Microservices</a>
+16. <a href="#Storage">Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -460,6 +461,16 @@ aws sts get-caller-identity
     - **client-side encryption**. confidential data is encrypted close as possible to its origin.
     - **encryption in transit and at rest**. default. DynamoDB uses **HTTPS** in transit.
 
+## Disaster, Backup and Recovery
+
+- **AWS Backup**
+  - policy that determines when and how you want your AWS resources backed up.
+- **RPO (Recovery Point Objective)**
+- **RTO (Recovery Time Objective)**
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
+- **Strategies for Disaster Planning**
+
 ## Geography, Region, Availability Zone
 
 - **Cloud Architecture**
@@ -815,12 +826,8 @@ aws sts get-caller-identity
 
 ## Storage
 
-- **AWS Backup**
-  - policy that determines when and how you want your AWS resources backed up.
 - **EFS**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
 - **FSx**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
-- **Storage Gateway**
-  - hybrid storage between on-prem and AWS cloud.
 - **S3**
   - immutable **object** storage service.
   - global REST URL access.
