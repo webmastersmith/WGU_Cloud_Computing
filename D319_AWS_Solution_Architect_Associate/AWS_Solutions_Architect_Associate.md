@@ -494,12 +494,14 @@ aws sts get-caller-identity
   - **highest RTO**.
   - ![disaster recovery](img/disaster_recovery.PNG)
   - **Pilot Light**: run secondary database as backup in another Region.
-    - **Faster RTO**
     - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
   - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
   - ![pilot light](img/pilot_light.PNG)
-  - **Warm Standby**:
-  - **Multi-site**:
+  - **Warm Standby**: scaled down version. business critical resources always running.
+  - ![warm standby](img/disaster_recovery_warm_standby.PNG)
+  - **Multi-site**: complete copy of infrastructure.
+    - **Fastest RTO**, most expensive.
+  - ![multi-site](img/disaster_recovery_multi-site.PNG)
 
 ## Geography, Region, Availability Zone
 
