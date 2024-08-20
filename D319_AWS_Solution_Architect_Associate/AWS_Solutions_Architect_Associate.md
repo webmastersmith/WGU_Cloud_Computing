@@ -472,6 +472,7 @@ aws sts get-caller-identity
   - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
+  - ![storage gateway](img/storage_gateway.PNG)
 - **Strategies for Disaster Planning**
   - **High Availability**: minimize how often apps become unavailable. redundancy, failover, scaling.
   - **Backup**: data is safe from deletion/lose.
@@ -487,6 +488,13 @@ aws sts get-caller-identity
   - ![database backup](img/database_backup.PNG)
   - **IaC**
   - ![IaC](img/iac_backup.PNG)
+- **Disaster Recovery**
+  - each option below is based on RPO/RTO and cost-effectiveness.
+  - ![disaster recovery](img/disaster_recovery.PNG)
+  - **Backup and Restore**: backup to S3.
+  - **Pilot Light**:
+  - **Warm Standby**:
+  - **Multi-site**:
 
 ## Geography, Region, Availability Zone
 
