@@ -730,26 +730,45 @@ aws sts get-caller-identity
 - **Load Balancing**
   - scale without interruption.
 
-## Serverless
+## Serverless and Microservices
 
 - **API Gateway (Amazon)**
+- **App Mesh (AWS)**
+  - capture metrics, logs, traces from all microservices. export to CloudWatch, X-Ray, or any APN(AWS partner network).
+  - control traffic flow between microservices for high availability.
+- **Cloud Map (AWS)**
+  - fully managed. assign custom names for **dynamically** changing resources.
+  - maps name to dynamically changing resources.
 - **ECS (Elastic Container Service)**
+  - **container orchestration service**.
   - build microservices. container contains everything needed to run: code, runtime engine, dependencies, configurations.
-  - orchestration, scale.
   - **cluster**: logical grouping of resources.
   - **task definition**: JSON. describes the containers that form the application. blueprint.
   - **Host your ECS**
-    - **Fargate**.
-    - **EC2 cluster**: run ECS on **your EC2 instances** with ECS container agent.
-  - **Autoscaling**: based on CloudWatch alarms, scale up/down.
-  - **Cluster Autoscaling **:
+    - **Fargate**. AWS managed.
+    - **EC2 cluster**: run ECS on **EC2 instances you manage**, with an ECS container agent(**container instance**).
+  - **Auto Scaling Group**: uses **CloudWatch alarms** to scale instances up/down(vertical) in/out(horizontal).
+  - **ECS Cluster Auto Scaling**: uses **ECS** to scale Auto Scaling Group automatically.
+    - **advantages**: increase speed, reliability of scale-out. automatically manage instance termination on scale-in.
+    - **capacity providers**: **link** ECS cluster to Auto Scaling Group.
+      - capacity provider can have only **on**e Auto Scaling Group.
+      - Auto Scaling Group can have **many** capacity providers.
   - ![ecs](img/ecs.PNG)
 - **Fargate**
-  - **serverless** host for ECS clusters.
+  - fully managed **container** service. **serverless** host for ECS or EKS.
+  - manage(containers and runtime environment), scale, provision container clusters.
 - **Lambda Functions (AWS)**
 - **Microservices (AWS)**
   - **independent services** that communicate over **well-defined APIs**.
   - ![microservices](img/microservices.PNG)
+- **Monolithic to Microservices**
+  - Step 1: create image for each service.
+  - ![monolithic to microservice 1](img/monolithic_to_microservice.PNG)
+  - Step 2: create **task definition** for each group
+  - ![monolithic to microservice 2](img/monolithic_to_microservice2.PNG)
+  - Step 3: create ELB with routes to ECS cluster.
+  - ![monolithic to microservice 3](img/monolithic_to_microservice3.PNG)
+  -
 - **Step Functions (AWS)**
 
 ## Storage
