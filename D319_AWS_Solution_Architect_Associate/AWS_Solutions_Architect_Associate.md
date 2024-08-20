@@ -466,10 +466,18 @@ aws sts get-caller-identity
 - **AWS Backup**
   - policy that determines when and how you want your AWS resources backed up.
 - **RPO (Recovery Point Objective)**
+  - maximum data loss measured in **time**. (e.g. 8 hrs from last backup).
 - **RTO (Recovery Time Objective)**
+  - time it takes to recover from disaster/failure. (e.g. 1 hour to get systems restored).
+  - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
 - **Strategies for Disaster Planning**
+  - **High Availability**: minimize how often apps become unavailable. redundancy, failover, scaling.
+  - **Backup**: data is safe from deletion/lose.
+  - **Disaster Recovery**: IaC and data backups to get back online fast.
+  - **Storage and Backup**
+  - ![storage and backup storage](img/storage_backup.PNG)
 
 ## Geography, Region, Availability Zone
 
