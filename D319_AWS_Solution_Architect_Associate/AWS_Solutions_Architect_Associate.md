@@ -404,6 +404,7 @@ aws sts get-caller-identity
       - must be mounted: `sudo mount -t nfs4 mount-target-DNS:/ ~/efs.mount-point`
     - **FSx**: Windows file server. **data volume** that serves **multiple Windows instances**. **SSD** only.
       - **NTFS, SMB, DFS, Active Directory, ACLs**.
+    - **FSx for Lustre**: ML or AI. access big data analytics. connects to **HCP** compute.
   - **EC2 Elastic IP**
     - fixed IP address. avoid due to 'pool' architecture.
     - use **DNS** mapped to random IP's.
@@ -640,6 +641,10 @@ aws sts get-caller-identity
 
 ## Network
 
+- **CloudHub**
+  - works with or without VPN.
+  - multiple branch offices and existing internet connections.
+  - ![cloudhub](img/cloudhub.png)
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
 - **Direct Connect (DX)**
