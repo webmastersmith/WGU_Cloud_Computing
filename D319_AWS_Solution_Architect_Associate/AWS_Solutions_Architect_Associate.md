@@ -270,6 +270,10 @@ aws sts get-caller-identity
   - Infrastructure as Code. rapid deployment, consistency, reusable, repeatable, maintainability.
   - ![IaC](img/iac.PNG)
 - **OpsWorks (AWS)**
+  - **End of Life: May 26, 2024**. should not be testing or training you for it! Update your training material!!!!!
+  - <https://docs.aws.amazon.com/opsworks/latest/userguide/welcome.html>
+  - <https://docs.aws.amazon.com/opsworks/latest/userguide/stacks-eol-faqs.html>
+  - Replaced by **AWS Systems Manager**.
   - **configuration management service**. provides **Chef, Puppet, Stacks** for automation tools.
   - **Chef Recipes**: implement individual stack layers.
   - **CloudFormation and OpWorks** compliment each other.
@@ -310,12 +314,12 @@ aws sts get-caller-identity
 - **Caching Databases**
   - reduce cost, latency, volume of DB reads.
   - **Amazon DynamoDB Accelerator (DAX)**: extremely performant(microsecond-scale response time).
-    - adds in-memory acceleration.
+    - adds **in-memory**(RAM) acceleration.
   - ![DAX](img/dax.PNG)
   - **Remote or Side Cache**: adjacent to database.
-    - key:value NoSQL in-memory store. typically for Redis or Memcached. read-heavy workloads.
+    - key:value NoSQL in-memory store. typically for **Redis** or **Memcached**. read-heavy workloads.
   - ![side cache](img/side_cache.PNG)
-  - **Elasticache**: fully managed, side cache. web application in-memory data store.
+  - **Elasticache**: fully managed, **side cache**. web application(web sessions, state) in-memory data store.
     - supports **engines**: Memcached(**20** cache nodes, horizontal scale, no multiple AZs) and Redis(**250** cache nodes, complex memory types).
     - **node**: smallest block of **network-attached RAM**. each node is independent, has own **DNS name** and **port**.
     - **cluster**: logical group of nodes.
@@ -499,7 +503,7 @@ aws sts get-caller-identity
   - **Storage and Backup**
     - S3: cross region.
     - EBS: snapshots(incremental only what has changed since last snapshot).
-    - EFS/EFX: DataSync Region.
+    - EFS/EFX: **DataSync** Region.
   - ![storage and backup storage](img/storage_backup.PNG)
   - **Routing Services**
   - ![routing services](img/routing_services.PNG)
