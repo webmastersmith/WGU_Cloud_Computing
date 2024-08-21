@@ -18,7 +18,7 @@
   - [AWS FAQ](https://aws.amazon.com/faqs/)
   - [AWS Documentation](https://docs.aws.amazon.com/)
   - [AWS Architecture Solutions Videos](https://aws.amazon.com/architecture/this-is-my-architecture/?tma.sort-by=item.additionalFields.airDate&tma.sort-order=desc&awsf.category=*all&awsf.industry=*all&awsf.language=*all&awsf.show=*all&awsf.product=*all)
-  - [AWS YoutTube Channel](https://www.youtube.com/@amazonwebservices)
+  - [AWS YouTube Channel](https://www.youtube.com/@amazonwebservices)
   - [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/cloud-adoption-framework/)
   - [AWS Quick Starts](https://aws.amazon.com/quickstart/?solutions-all.sort-by=item.additionalFields.sortDate&solutions-all.sort-order=desc&awsf.filter-content-type=*all&awsf.filter-tech-category=*all&awsf.filter-industry=*all)
   - [AWS Getting Started Tutorials](https://aws.amazon.com/getting-started/)
