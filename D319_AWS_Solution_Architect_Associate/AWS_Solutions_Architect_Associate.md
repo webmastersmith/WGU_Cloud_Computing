@@ -650,7 +650,7 @@ aws sts get-caller-identity
 - **Direct Connect (DX)**
   - <https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html>
   - dedicated **private** network connection. **consistent performance**. (e.g. use on-prem database with AWS).
-  - **dedicated throughput**: 1 GPS or 10 GBS.
+  - **dedicated throughput**: 1 Gbps or 10 Gbps.
   - access any VPC or AWS service in **any Region** from any supported **DX location**.
   - 802.1q VLANs '_dot1q_'. encapsulation and tagging for VLAN over Ethernet.
   - ![direct connect](img/direct_connect.PNG)
@@ -671,12 +671,12 @@ aws sts get-caller-identity
 - **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
 - **Multi-VPC and Multi-Accounts**
-  - are **most** VPC use cases. max **5 VPC** per Region.
   - **Multi-VPC**
-    - **single team/organization**. **Governance** and **compliance standards** might require greater isolation.
+    - **single team/organization** with multiple VPC is **most** use cases. max **5 VPC** per Region.
   - ![multi-vpc](img/multi-vpc.PNG)
   - **Multi-account**
     - **enterprise or large organizations** or **multiple IT teams**. **medium-sized**, anticipate rapid growth.
+    - **Governance** and **compliance standards** might require greater isolation.
   - ![multi-account](img/multi-account.PNG)
 - **NAT Gateway**
   - enable **private subnets outbound communication** with Internet Gateway. **no inbound request**.
@@ -702,9 +702,11 @@ aws sts get-caller-identity
   - **route table**: one-to-many. can have **multiple subnets**.
   - **subnet**: one-to-one. can have only **one route table**.
 - **Site-to-Site VPN**
+  - <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html>
   - connect on-prem to VPC. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
   - charged per connection-hour.
-  - **Static Routing**: if Gateway device does not support 'Dynamic', you must manually update route table.
+  - **Customer gateway device**: your hardware that connect to VPN endpoint(VPG virtual private gateway).
+  - **Static Routing**: if your Gateway device does not support 'Dynamic', you must manually update route table.
   - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
   - ![vpn site-to-site](img/vpn_site-to-site.PNG)
 - **Storage Gateway**
@@ -728,7 +730,7 @@ aws sts get-caller-identity
     - connect resources to internet.
     - ![public subnet](img/public_subnet.PNG)
 - **Transit Gateway (AWS)**
-  - avoid large scale peering. simplify with Transit Gateway. **hub-and-spoke model**.
+  - avoid large scale **peering**. simplify with Transit Gateway. **hub-and-spoke model**.
   - connect multiple **VPCs** and **on-prem** with **single gateway**.
   - ![transit gateway](img/transit_gateway.PNG)
   - **Routes**: the Transit Gateway route table enables VPC connection or external.
@@ -745,6 +747,8 @@ aws sts get-caller-identity
     - **divide VPC network range evenly** across all AZs in a Region.
     - **reserve extra address space** for future use. CIDR, VPC size.
     - **VPC CIDR range cannot overlap** other ranges.
+- **VPG (Virtual Private Gateway)**
+  - VPC endpoint for VPN setup. See Network/Site-to-Site VPN.
 
 ## Reactive Architecture
 
