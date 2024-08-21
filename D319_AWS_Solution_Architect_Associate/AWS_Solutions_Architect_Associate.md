@@ -75,7 +75,9 @@ aws sts get-caller-identity
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
-  - run **workloads effectively**, **gain insight** into their operations(monitor **logging**), and to continuously improve(fix quickly, safely).
+  - run **workloads effectively**.
+  - **gain insight** into their operations(**monitoring**, **logging**).
+  - **continuously improve**(small adjustments often).
 - **Security**
   - **protect** at all layers(**data, systems, assets**).
   - enable **traceability**(log of all changes and access).
@@ -84,13 +86,14 @@ aws sts get-caller-identity
   - **workload** will perform its intended function **correctly** and **consistently**.
   - **test** through its total **lifecycle**.
   - **recover**(automatic scale, failover) from infrastructure or service disruption.
-  - manage change with automation(IaC).
+  - manage change with automation(**IaC**).
 - **Performance efficiency**
-  - most **efficient** resource selection as demand changes.
-  - **democratize**: use ready made solutions for advanced problems.
-  - **mechanical sympathy**: understand best way to take advantage of services, resources.
+  - use **cloud resources efficiently** to meet performance requirements.
+    - **democratize**: use ready made solutions for advanced problems.
+    - **mechanical sympathy**: understand best way to take advantage of services, resources.
 - **Cost optimization**
-  - **measure** efficiency. **eliminate** unneeded expense(delete unused resources).
+  - **measure** efficiency.
+  - **eliminate** unneeded expense(delete unused resources).
   - reduce employee overhead with **managed services**.
 - **Sustainability**
   - **environmental impacts**, especially **energy consumption** and **efficiency**.
