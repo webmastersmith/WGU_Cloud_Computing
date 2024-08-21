@@ -571,10 +571,15 @@ aws sts get-caller-identity
   - **Simple Queue Service**. temporary repository(default **4** days) for messages waiting to be processed. encrypted.
     - buffer between producer and consumer.
     - max message size: **256 kb**.
+  - **single subscriber**: ideal for workflows where order and loss prevention are critical.
   - **Producer**: sender of message.
   - **Consumer**: recipient of message. polls for new message. processes and deletes message during visibility timeout.
   - **Long polling**: SQS queries all servers for messages, then sends back all messages in single request.
   - **Visibility Timeout**: default **30 seconds**. period of time no other consumer can 'see' message. allows time for message to be processed and deleted from Queue.
+  - **LifeCycle**
+    1. producer sends message to SQS.
+    2. consumer retrieves message. visibility timeout starts.
+    3. consumer processes message and deletes from Queue.
   - **Scope**: region. multiple AZs.
   - **Queue Types**
     - **Standard Queue**: at-least-once delivery. best-effort ordering. nearly unlimited throughput.
