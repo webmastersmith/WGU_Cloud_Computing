@@ -624,7 +624,7 @@ aws sts get-caller-identity
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
 - **EventBridge**
   - serverless event bus. stream of real-time resource data. routed to targets.
-  - (e.g. EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
+    - (e.g. EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
   - **Rules**: JSON. route events to targets.
   - **Targets**: process events.
   - ![eventBridge](img/eventBridge.PNG)
@@ -635,11 +635,11 @@ aws sts get-caller-identity
   - **Budgets**
     - set custom budget alerts.
   - **Cost and Usage Report**
-    - comprehensive report about usage. includes metadata about AWS service, pricing, and reservations.
+    - **comprehensive report** about usage. includes **metadata** about AWS service, pricing, and reservations.
   - **Cost Explorer**
-    - visualize and manage cost and usage. daily, monthly. **know where your spending money**.
+    - **visualize** and manage cost and usage. daily, monthly. **know where your spending money**.
   - **Cost Optimization Monitor**
-    - customizable dashboard to monitor usage and cost. breakdown by period, account, resource, or tags.
+    - customizable **dashboard** to **monitor** usage and cost. breakdown by period, account, resource, or tags.
 
 ## Network
 
