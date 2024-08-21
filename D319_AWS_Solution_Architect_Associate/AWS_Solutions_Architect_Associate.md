@@ -180,7 +180,7 @@ aws sts get-caller-identity
     - **Customer managed**: standalone, administered by you.
       - Suggested to use managed policies, not inline, to view all policies in the console.
     - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
-  - **Resource-Based**: attach to AWS resource. **always inline**. **no managed** policies. (e.g. S3 bucket).
+  - **Resource-Based**: attach to AWS resource. **always inline**. **no managed** policies. (e.g. EC2 read access S3 bucket).
   - ![iam policy](img/iam_policy.PNG)
   - ![iam policy json](img/iam_json.PNG)
   - **ARNs**
