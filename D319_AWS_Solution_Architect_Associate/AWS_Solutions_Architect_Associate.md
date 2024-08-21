@@ -599,8 +599,10 @@ aws sts get-caller-identity
     - **First In, First Out (FIFO)**: high throughput. exactly once processing.
     - **Dead-Letter Queue (DLQ)**: no consumer response. send to DLQ storage.
 - **SNS**
-  - **Simple Notification Service**. pub/sub messaging.
+  - <https://docs.aws.amazon.com/sns/latest/dg/welcome.html>
+  - **Simple Notification Service**. pub/sub messaging. notification: email, text message.
   - publishers to send **messages** to **multiple subscribers** through **topics**
+  - **FIFO**: first-in-first-out. ensure strict message ordering.
   - **publisher**: sends message to topic.
   - **topic**: holds subscriptions. **pushes** message to subscriber. supports encrypted topics.
   - **subscriber**: subscribes to topic. receives all messages.
@@ -619,7 +621,7 @@ aws sts get-caller-identity
 
 - **CloudWatch**
   - collects operational data in the form of **logs**(log files), **metrics**(CPU usage...), and **events**(EventBridge).
-  - create **alarms**. send **notifications**.
+  - create **alarms**. send **notifications**. (e.g. **monitor** infrastructure and send alerts to **Auto Scaling** or **SNS**).
   - visualize data through dashboard. can include data from on-prem. **unified view**.
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
 - **EventBridge**
@@ -633,7 +635,7 @@ aws sts get-caller-identity
   - manage **cost of AWS infrastructure**.
   - ![cost explorer](img/monitoring_cost_explorer.PNG)
   - **Budgets**
-    - set custom budget alerts.
+    - set custom **budget alerts**.
   - **Cost and Usage Report**
     - **comprehensive report** about usage. includes **metadata** about AWS service, pricing, and reservations.
   - **Cost Explorer**
@@ -643,12 +645,12 @@ aws sts get-caller-identity
 
 ## Network
 
-- **Cloud Watch**
-  - **monitor** infrastructure and **automate** scaling.
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
 - **Direct Connect (DX)**
+  - <https://docs.aws.amazon.com/directconnect/latest/UserGuide/Welcome.html>
   - dedicated **private** network connection. **consistent performance**. (e.g. use on-prem database with AWS).
+  - **dedicated throughput**: 1 GPS or 10 GBS.
   - access any VPC or AWS service in **any Region** from any supported **DX location**.
   - 802.1q VLANs '_dot1q_'. encapsulation and tagging for VLAN over Ethernet.
   - ![direct connect](img/direct_connect.PNG)
