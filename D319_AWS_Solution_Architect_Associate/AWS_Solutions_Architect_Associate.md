@@ -14,6 +14,15 @@
   - [Udemy Practice Exams](https://wgu.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate/)
 - **AWS**
   - 100–1,000. The minimum passing score is 720.
+  - [AWS Exam Guide](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf)
+  - [AWS FAQ](https://aws.amazon.com/faqs/)
+  - [AWS Documentation](https://docs.aws.amazon.com/)
+  - [AWS Architecture Solutions Videos](https://aws.amazon.com/architecture/this-is-my-architecture/?tma.sort-by=item.additionalFields.airDate&tma.sort-order=desc&awsf.category=*all&awsf.industry=*all&awsf.language=*all&awsf.show=*all&awsf.product=*all)
+  - [AWS YoutTube Channel](https://www.youtube.com/@amazonwebservices)
+  - [AWS Cloud Adoption Framework (CAF)](https://aws.amazon.com/cloud-adoption-framework/)
+  - [AWS Quick Starts](https://aws.amazon.com/quickstart/?solutions-all.sort-by=item.additionalFields.sortDate&solutions-all.sort-order=desc&awsf.filter-content-type=*all&awsf.filter-tech-category=*all&awsf.filter-industry=*all)
+  - [AWS Getting Started Tutorials](https://aws.amazon.com/getting-started/)
+  - [AWS White Paper and Guides](https://aws.amazon.com/whitepapers/?whitepapers-main.sort-by=item.additionalFields.sortDate&whitepapers-main.sort-order=desc&awsf.whitepapers-content-type=*all&awsf.whitepapers-global-methodology=*all&awsf.whitepapers-tech-category=*all&awsf.whitepapers-industries=*all&awsf.whitepapers-business-category=*all)
   - [AWS Design Architecture](https://explore.skillbuilder.aws/learn/public/learning_plan/view/1044/solutions-architect-knowledge-badge-readiness-path)
   - [AWS Exam Prep](https://explore.skillbuilder.aws/learn/course/external/view/elearning/14760/exam-prep-standard-course-aws-certified-solutions-architect-associate-saa-c03)
   - [AWS Exam Practice Questions](https://explore.skillbuilder.aws/learn/course/internal/view/elearning/13266/aws-certified-solutions-architect-associate-official-practice-question-set-saa-c03-english)
@@ -62,7 +71,7 @@ aws sts get-caller-identity
 
 ## AWS Well-Architected Framework (Six Pillars)
 
-- <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
+- <https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html>
 - **Operational excellence**
   - run and monitor(**logging**) systems. fix quickly and safely.
   - IaC reduces mistakes and increases reliability.
