@@ -472,6 +472,10 @@ aws sts get-caller-identity
   - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
   - hybrid storage between on-prem and AWS cloud.
+  - **Three Interfaces**
+    - **File Gateway**: storage objects. **NFS, SMB**.
+    - **Volume Gateway**: server snapshots. **EBS** storage.
+    - **Tape Gateway**: data backup from on-prem. **VTL, iSCSI**
   - ![storage gateway](img/storage_gateway.PNG)
 - **Strategies for Disaster Planning**
   - **High Availability**: minimize how often apps become unavailable. redundancy, failover, scaling.
@@ -490,19 +494,24 @@ aws sts get-caller-identity
   - ![IaC](img/iac_backup.PNG)
 - **Disaster Recovery**
   - each option below is based on RPO/RTO and cost-effectiveness.
+  - start simple: create backups. practice Game Day: run test to verify redundancy.
   - ![disaster recovery options](img/disaster_recovery_options.PNG)
   - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
-  - **highest RTO**.
+  - **highest RTO, highest cost-effective**.
+  - recover within a day.
   - ![disaster recovery](img/disaster_recovery.PNG)
   - **Pilot Light**: run secondary database as backup in another Region.
     - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
+    - recover in an hour.
   - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
   - ![pilot light](img/pilot_light.PNG)
   - **Warm Standby**: scaled down version. business critical resources always running.
+    - recover in minutes.
     - similar to pilot light, but keep critical business.
   - ![warm standby](img/disaster_recovery_warm_standby.PNG)
   - **Multi-site**: complete copy of infrastructure.
     - **Fastest RTO**, most expensive.
+    - recover instantly.
   - ![multi-site](img/disaster_recovery_multi-site.PNG)
 
 ## Geography, Region, Availability Zone
