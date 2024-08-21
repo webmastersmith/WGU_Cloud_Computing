@@ -11,7 +11,10 @@
   - **Spencer G**: heavy focus on security so know your encryption types (at Rest, In Transit, Client\Server.) Know KMS and CloudHSM. Know your IAM policies and review policies in general. Also understand your Databases - Aurora, DynamoDB, RDBMS. Know your EFS, FSx, EBS, S3 + lifecycles. Try to look for keywords like "Serverless". Exam Dojo and Udemy can be used but I feel like they're harder than the OA since they involve connecting 2-3 services together while the OA is mainly just 1 service at a time but with more depth on that specific service. I used the Course Material Section review questions and Percipio Testprep as the bulk of study for my practice questions.
   - **JW M**: knowing S3 and its Lifecycle policies, what CloudHSM is, The different VPC Endpoints and what each one does, CloudFront, and how Aurora and NoSQL are DIFFERENT from other databases.
   - **Denise W**: heavy on encryption and the differences between Relational vs Non-relational databases.
+- **Udemy Training**
   - [Udemy Practice Exams](https://wgu.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate/)
+  - [Udemy Practice Exams](https://wgu.udemy.com/course/aws-certified-solutions-architect-associate-practice-tests-k/)
+  - [Udemy AWS SAA-C03](https://wgu.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
 - **AWS**
   - 100–1,000. The minimum passing score is 720.
   - [AWS Exam Guide](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf)
