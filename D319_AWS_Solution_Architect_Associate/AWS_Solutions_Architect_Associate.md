@@ -362,6 +362,7 @@ aws sts get-caller-identity
   - **AWS Batch**: any scale batch(background) jobs.
 - **Virtual Machines**
   - **EC2**
+    - <https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/concepts.html>
     - resizable VM instance. pay-as-you-go(CPU, memory, EBS, networking). when stopped, only pay **EBS**.
     - **Amazon Machine Image (AMI)**: the blueprint of VM instance. **region specific**.
       - **HVM**: hardware virtual machine. best performance.
@@ -372,8 +373,15 @@ aws sts get-caller-identity
   - ![ec2](img/ec2_setup.PNG)
   - ![ec2 overview](img/ec2_setup2.PNG)
   - **EC2 Instance Type**
+    - <https://aws.amazon.com/ec2/instance-types/>
     - <https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html>
-    - **EC2 Instance type**: CPU, Memory, Network, Storage characteristics.
+    - **EC2 Instance type**:
+      - **General Purpose**: **cheapest** of all options. balance of compute, memory, network.
+      - **Compute**: **high CPU** usage. media transcoding, high performance web server.
+      - **Memory**: large **dataset in-memory**.
+      - **Accelerated Computing**: **GPU**. floating point number calculations. AI.
+      - **Storage**: high **read/write** access to large datasets. **Database**.
+      - **HPC**: high performance computing. **deep learning models**.
     - **New Generation Instance types**: better price-to-performance ratio.
     - **AWS Compute Optimizer**: analyze running instances. recommends 'right-sized' EC2.
     - ![ec2 instance type](img/ec2_instance_type.PNG)
