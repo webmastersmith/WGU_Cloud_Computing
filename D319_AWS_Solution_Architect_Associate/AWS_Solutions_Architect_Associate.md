@@ -502,7 +502,7 @@ aws sts get-caller-identity
   - time it takes to recover from disaster/failure. (e.g. 1 hour to get systems restored).
   - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
-  - See <a href="##Storage-Gateway">Network</a>
+  - See <a href="#Network">Network</a>
   - hybrid storage between on-prem and AWS cloud.
   - **Three Interfaces**
     - **File Gateway**: storage objects. **NFS, SMB**.
