@@ -757,7 +757,7 @@ aws sts get-caller-identity
       - **Primary** and **Read Replica**.
     - **Aurora Serverless**: default autoscale with demand. set min, max capacity. you **pay ACUs**(aurora capacity units). best for **unpredictable** workloads.
     - **Sharding**: split database into separate chunks(horizontal scaling). based on key. (e.g. split on employeeID odd/even).
-      - improves **write** performance. read performance is impacted from **JOIN** with multiple databases.
+      - improves **write** performance. read performance is impacted. (e.g. **JOIN** multiple databases shards).
   - **DynamoDB On-Demand**: pay-per-request pricing.
     - NoSQL spiky unpredictable workloads.
     - **Autoscaling**: default. set min, max limits.
@@ -810,7 +810,7 @@ aws sts get-caller-identity
   - **Routing Policies**
     - **Simple**: **single resource**. (e.g. web server that serves content for the example.com website).
     - **Failover**: active-passive **failover**.
-    - **Geolocation**: route traffic based on the **location**. (e.g. change currency symbol and price based on location).
+    - **Geolocation**: route traffic based on the **location**. (e.g. change currency symbol and price based on US or Europe location).
     - **Latency**: resources in multiple AWS Regions. route traffic to the Region that provides the **best latency**.
     - **Multivalue answer**: Route 53 to respond to DNS queries with up to **eight healthy records(IP addresses)**.
       - (e.g. **client to choose another IP** if **no response**).
@@ -859,7 +859,7 @@ aws sts get-caller-identity
   - fully managed. assign custom names for **dynamically** changing resources.
   - maps name to dynamically changing resources.
 - **ECS (Elastic Container Service)**
-  - **container orchestration service**.
+  - **container orchestration service**(AWS version of kubernetes).
   - build microservices. container contains everything needed to run: code, runtime engine, dependencies, configurations.
   - **cluster**: logical grouping of resources.
   - **task definition**: JSON. describes the containers that form the application. blueprint.
@@ -953,7 +953,7 @@ aws sts get-caller-identity
   - **Block Public Access**: lock bucket and objects from being accessed.
   - **IAM Policies**: good when users can authenticate using IAM.
   - **Bucket Policies**: define access to specific object or bucket.
-  - **Access Control List (ACL)**: legacy access.
+  - **Access Control List (ACL)**: legacy access. not recommended. **Not the same as Network ACL**.
   - **S3 Access Point**: configure access with names and permissions.
   - **Presigned URLs**: time-limited access with temporary URLs.
   - **AWS Trusted Advisor**: free feature. bucket permission check.
@@ -982,7 +982,7 @@ aws sts get-caller-identity
     - **Standard**: retrieve data 3-5 hours.
     - **Bulk**: retrieve data 5-12 hours.
   - **S3 Glacier Deep Archive**: least expensive. data access once or twice a year. Eleven 9's of durability.
-    - stored across **three geographical areas**.
+    - stored across **three geographical(Regions) areas**.
     - data is restored within 12 hours.
   - ![S3 tiers](img/S3_tiers.PNG)
   - **S3 Intelligent Tiering**:
@@ -991,6 +991,8 @@ aws sts get-caller-identity
   - **S3 Lifecycle Policy**
     - delete or move objects based on ag**e**.
   - ![S3 Tiers](img/S3_tier.PNG)
+- **S3 Transfer Acceleration**
+  - takes advantage of the **globally distributed edge** locations in Amazon **CloudFront**.
 - **S3 Uploading**
   - **aws cli**: `aws s3 cp file.txt s3://BUCKET-NAME/file.txt`
   - **Multipart**: tool that splits data into smaller size. `> 100 MB`. network connectivity inconsistent.
@@ -1001,6 +1003,7 @@ aws sts get-caller-identity
   - enabled through bucket properties.
   - **Versioning Not Enabled**: default. no versioning.
   - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend.
+    - **prevents deletion**. S3 objects are 'hidden', but still recoverable when deleted.
   - **Versioning-Suspended**: bucket has been versioned, but suspended.
 - **S3 Website**
   - static only(no server). low cost solution to web hosting.
