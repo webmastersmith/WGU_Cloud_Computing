@@ -73,7 +73,7 @@ aws sts get-caller-identity
 
 ## AWS Well-Architected Framework (Six Pillars)
 
-- <https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html>
+- <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
   - run and monitor(**logging**) systems. fix quickly and safely.
   - IaC reduces mistakes and increases reliability.
