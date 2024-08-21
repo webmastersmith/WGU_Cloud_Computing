@@ -13,6 +13,8 @@
   - [Udemy Practice Exams](https://wgu.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate/)
   - [Udemy Practice Exams](https://wgu.udemy.com/course/aws-certified-solutions-architect-associate-practice-tests-k/)
   - [Udemy AWS SAA-C03](https://wgu.udemy.com/course/aws-certified-solutions-architect-associate-saa-c03/)
+- **Github**
+  - <https://github.com/Ernyoke/certified-aws-solutions-architect-associate>
 - **AWS**
   - 100–1,000. The minimum passing score is 720.
   - [AWS Exam Guide](https://d1.awsstatic.com/training-and-certification/docs-sa-assoc/AWS-Certified-Solutions-Architect-Associate_Exam-Guide.pdf)
@@ -775,6 +777,14 @@ aws sts get-caller-identity
 - **Route 53 (Amazon)**
   - Domain Name System. translates names into IP addresses.
   - DNS failover(redirect to healthy endpoints). low-latency, fault-tolerant.
+  - **Routing Policies**
+    - **Simple**: **single resource**. (e.g. web server that serves content for the example.com website).
+    - **Failover**: active-passive **failover**.
+    - **Geolocation**: route traffic based on the **location**.
+    - **Latency**: resources in multiple AWS Regions. route traffic to the Region that provides the **best latency**.
+    - **Multivalue answer**: Route 53 to respond to DNS queries with up to **eight healthy records(IP addresses)**.
+      - (e.g. **client to choose another IP** if **no response**).
+    - **Weighted**: route traffic to **multiple resources** in proportions that you specify. (e.g. send small amount of 'canary' version responses for testing.)
   - **Simple Load Balance**
     - copy and **paste both IP addresses** into the '**create record set**' value input.
     - routing policy is **simple**.
@@ -791,10 +801,6 @@ aws sts get-caller-identity
     - routing policy: Geolocation. choose your continent.
     - ![dns geolocation](img/dns_geolocation.PNG)
     - ![dns geolocation setup](img/dns_geolocation_setup.PNG)
-  - **Multivalue Answer Routing**
-    - send up to **eight records(IP addresses)** in response to query, allowing **client to choose another IP** if **no response**.
-  - **Weighted Round-Robin Routing**
-    - send small amount of 'canary' version responses for testing.
 - **Scaling**
   - achieve elasticity.
   - **horizontal scaling**: add more resources. (e.g. create new EC2 instance)
