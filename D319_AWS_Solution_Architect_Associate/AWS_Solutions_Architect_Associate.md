@@ -579,13 +579,15 @@ aws sts get-caller-identity
   - **loose coupling**: ELB external and internal can loose couple architecture.
   - ![loose coupling](img/loose_coupling.PNG)
 - **SQS**
-  - **Simple Queue Service**. temporary repository(default **4** days) for messages waiting to be processed. encrypted.
+  - **Simple Queue Service**. temporary repository(default **4** days up to 14 days) for messages waiting to be processed. encrypted.
     - buffer between producer and consumer.
-    - max message size: **256 kb**.
-  - **single subscriber**: ideal for workflows where **order** and **loss prevention** are critical.
+    - max message size: **256 kb**. (e.g. upload large item to S3, send item link to SQS).
+  - **single subscriber**: ideal for workflows where **order** and **loss prevention** are **critical**.
   - **Producer**: sender of message.
-  - **Consumer**: recipient of message. polls for new message. processes and deletes message during visibility timeout.
-  - **Long polling**: SQS queries all servers for messages, then sends back all messages in single request.
+  - **Consumer**: recipient of message. **polls**(continuous ask Queue) for new message. processes and deletes message during visibility timeout.
+  - **Long polling**: batch message delivery.
+    - SQS queries all Queue servers for messages, then sends back all messages in single request.
+    - reduce Queue congestion.
   - **Visibility Timeout**: default **30 seconds**. period of time no other consumer can 'see' message. allows time for message to be processed and deleted from Queue.
   - **LifeCycle**
     1. producer sends message to SQS.
@@ -622,7 +624,7 @@ aws sts get-caller-identity
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
 - **EventBridge**
   - serverless event bus. stream of real-time resource data. routed to targets.
-  - (e.g EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
+  - (e.g. EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
   - **Rules**: JSON. route events to targets.
   - **Targets**: process events.
   - ![eventBridge](img/eventBridge.PNG)
