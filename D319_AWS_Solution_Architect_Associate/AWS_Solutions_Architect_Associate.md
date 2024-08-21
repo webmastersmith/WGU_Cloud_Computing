@@ -456,7 +456,7 @@ aws sts get-caller-identity
     - snapshot to S3 bucket.
   - ![RDS backup](img/rds_backup.PNG)
   - **Aurora**
-    - AWS 'flagship' SQL database. 5x faster, S3 continuous backup, 15 read replicas, 3 Availability Zones.
+    - AWS 'flagship' SQL database. 5x faster, S3 continuous backup, **15** read replicas, **3** Availability Zones.
     - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
     - auto scaling database when combined with RDS.
   - **Security**
@@ -471,14 +471,14 @@ aws sts get-caller-identity
   - **does not support read replicas**
   - **OLAP**: online analytical processing.
 - **Amazon DynamoDB**
-  - fully managed **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
+  - **fully managed**, **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
   - multi-AZ/Region, **horizontal scaling**, **low latency**. (e.g. gaming, adtech(shopping cart), mobile).
   - does not enforce fixed schema(cannot JOIN).
   - **Primary Key**: also known as **partition or hash key**. uniquely identify row. only **required** attribute.
   - **Partition**: key:value section. allows easier scale/replication.
   - ![dynamoDb](img/dynamoDB.PNG)
   - **Global Tables**
-    - replicate across multiple regions(geographies).
+    - replicate Database across multiple regions(geographies).
     - **multi-master**: all data tables are fully managed and kept in sync.
   - ![global table](img/dynamoDB_global_table.PNG)
   - **Consistency**
@@ -502,6 +502,7 @@ aws sts get-caller-identity
   - time it takes to recover from disaster/failure. (e.g. 1 hour to get systems restored).
   - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
+  - See <a href="#Network">Network</a>
   - hybrid storage between on-prem and AWS cloud.
   - **Three Interfaces**
     - **File Gateway**: storage objects. **NFS, SMB**.
@@ -654,11 +655,14 @@ aws sts get-caller-identity
   - ![direct connect high availability](img/direct_connect_high_availability.PNG)
     - high resilient, fault tolerant architecture. multiple datacenters.
   - ![direct connect high durability](img/direct_connect_high_durability.PNG)
-- **Endpoint (VPC)**
-  - **private** communication between VPN and **AWS services**. uses **AWS backbone**. no other infrastructure needed.
-  - only returns traffic that originated from your VPC endpoint.
-  - **Interface Endpoint**: powered by **AWS PrivateLink**. Load Balancer, CloudWatch... creates a network interface.
-  - **Gateway Endpoint**: connection to **S3** or **DynamoDB**.
+- **Endpoints**
+  - interface connected to network that can **send/receive data**.
+  - **Gateway Endpoint**: specific for **S3** and **DynamoDB**. **does not use PrivateLink**.
+    - cannot be accessed from outside VPC.
+  - **Interface Endpoint**: **fully managed**, interface to AWS service through AWS **PrivateLink**(backbone).
+    - private connection from interface to AWS services or AWS Partners.
+    - **without requiring an internet gateway, NAT gateway, or public IP addresses**.
+  - **VPC Endpoint**: generic term for any virtual **interface in VPC** that allows **private** access to **AWS services**.
   - ![endpoint](img/endpoint.PNG)
 - **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
@@ -699,6 +703,13 @@ aws sts get-caller-identity
   - **Static Routing**: if Gateway device does not support 'Dynamic', you must manually update route table.
   - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
   - ![vpn site-to-site](img/vpn_site-to-site.PNG)
+- **Storage Gateway**
+  - hybrid storage between on-prem and AWS cloud.
+  - **Three Interfaces**
+    - **File Gateway**: storage objects. **NFS, SMB, iSCSI**.
+    - **Volume Gateway**: server snapshots. **EBS** snapshot storage.
+    - **Tape Gateway**: tape drive backup from on-prem. **VTL-iSCI**. S3 stored as Virtual Tape Library.
+  - ![storage gateway](img/storage_gateway.PNG)
 - **Subnet**
   - segment of VPC ip address range. **not isolation boundaries**.
   - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
