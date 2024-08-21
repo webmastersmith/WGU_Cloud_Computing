@@ -435,7 +435,8 @@ aws sts get-caller-identity
 - **Non-Relational Database**
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
 - **Database Migration Service (DMS)**
-  - **migrate** or **continuous replication** of existing database to AWS.
+  - **migrate** or **continuous replication** of **on-prem** database to AWS.
+  - can transform data into desired AWS format. (e.g. on-prem MySQL to Amazon Aurora format).
   - ![database migration service](img/database_migration.PNG)
   - **AWS Schema Conversion Tool (AWS SCT)**
     - change database engine between source and target.
@@ -443,7 +444,8 @@ aws sts get-caller-identity
   - ![snowball edge](img/snowball_edge.PNG)
 - **Read Replica**
   - continuous **read-only copy** of database. immutable. **RDS** max **five** read replicas.
-  - allow scale out for heavy read workloads.
+  - **primary**: read/write. **secondary**: read-only.
+  - allow scale out for heavy **read** workloads.
   - ![max read replicas](img/max_read_replicas.PNG)
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
@@ -454,7 +456,7 @@ aws sts get-caller-identity
     - snapshot to S3 bucket.
   - ![RDS backup](img/rds_backup.PNG)
   - **Aurora**
-    - AWS 'golden goose' SQL database. 5x faster, S3 continuous backup, 15 read replicas, 3 Availability Zones.
+    - AWS 'flagship' SQL database. 5x faster, S3 continuous backup, 15 read replicas, 3 Availability Zones.
     - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
     - auto scaling database when combined with RDS.
   - **Security**
