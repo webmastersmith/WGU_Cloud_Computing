@@ -145,15 +145,16 @@ aws sts get-caller-identity
     2. tag new resources. create policy that new resources must have certain tags. (e.g. 'project' tag and 'team' tag).
     3. configure permissions.
   - ![abac](img/abac.PNG)
-- **Access Control List (ACL)**
+- **Network Access Control List (ACL)**
   - stateless firewall. scoped at the **subnet level**.
   - **allow inbound/outbound traffic** by default.
-  - **ACL**: one-to-many subnets.
-  - **subnet**: one-to-one ACL.
-  - ![ACL](img/acl.PNG)
-  - ![ACL chain](img/acl2.PNG)
-  - **Custom ACL**
+  - **Network ACL**: one-to-many subnets.
+  - **subnet**: one-to-one Network ACL.
+  - ![Network ACL](img/acl.PNG)
+  - ![Network ACL chain](img/acl2.PNG)
+  - **Custom Network ACL**
     - default **deny in/outbound traffic**.
+    - very rare use cases. not advised to use.
 - **Bastion Hosts**
   - public entrypoint. typically firewalled, out to private network.
   - minimize entry points.
@@ -503,12 +504,6 @@ aws sts get-caller-identity
   - ![rpo rto](img/rpo_rto.PNG)
 - **Storage Gateway**
   - See <a href="#Network">Network</a>
-  - hybrid storage between on-prem and AWS cloud.
-  - **Three Interfaces**
-    - **File Gateway**: storage objects. **NFS, SMB**.
-    - **Volume Gateway**: server snapshots. **EBS** storage.
-    - **Tape Gateway**: data backup from on-prem. **VTL, iSCSI**
-  - ![storage gateway](img/storage_gateway.PNG)
 - **Strategies for Disaster Planning**
   - **High Availability**: minimize how often apps become unavailable. redundancy, failover, scaling.
   - **Backup**: data is safe from deletion/lose.
@@ -705,8 +700,8 @@ aws sts get-caller-identity
   - <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html>
   - connect on-prem to VPC. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
   - charged per connection-hour.
-  - **Customer gateway device**: your hardware that connect to VPN endpoint(VPG virtual private gateway).
-  - **Static Routing**: if your Gateway device does not support 'Dynamic', you must manually update route table.
+  - **Customer Gateway Device**: your hardware that connect to VPN endpoint(VPG virtual private gateway).
+  - **Static Routing**: if your Customer Gateway Device does not support 'Dynamic', you must manually update route table.
   - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
   - ![vpn site-to-site](img/vpn_site-to-site.PNG)
 - **Storage Gateway**
@@ -752,7 +747,7 @@ aws sts get-caller-identity
 
 ## Reactive Architecture
 
-- **01_Reactive Architecture**
+- **Reactive Architecture**
   - scale into the millions. responsive, highly available.
 - **Database Autoscaling**
   - **RDS and Aurora**
