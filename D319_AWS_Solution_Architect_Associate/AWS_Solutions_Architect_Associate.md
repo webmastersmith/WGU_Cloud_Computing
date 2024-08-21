@@ -571,7 +571,7 @@ aws sts get-caller-identity
   - **Simple Queue Service**. temporary repository(default **4** days) for messages waiting to be processed. encrypted.
     - buffer between producer and consumer.
     - max message size: **256 kb**.
-  - **single subscriber**: ideal for workflows where order and loss prevention are critical.
+  - **single subscriber**: ideal for workflows where **order** and **loss prevention** are critical.
   - **Producer**: sender of message.
   - **Consumer**: recipient of message. polls for new message. processes and deletes message during visibility timeout.
   - **Long polling**: SQS queries all servers for messages, then sends back all messages in single request.
@@ -587,6 +587,7 @@ aws sts get-caller-identity
     - **Dead-Letter Queue (DLQ)**: no consumer response. send to DLQ storage.
 - **SNS**
   - **Simple Notification Service**. pub/sub messaging.
+  - publishers to send **messages** to **multiple subscribers** through **topics**
   - **publisher**: sends message to topic.
   - **topic**: holds subscriptions. **pushes** message to subscriber. supports encrypted topics.
   - **subscriber**: subscribes to topic. receives all messages.
