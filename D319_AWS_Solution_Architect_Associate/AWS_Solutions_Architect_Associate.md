@@ -2,15 +2,13 @@
 
 ## Tips
 
-- <https://www.freecodecamp.org/news/pass-the-aws-certified-solutions-architect-associate-certification/>
-- **YouTube**
-  - [FreeCodeCamp AWS exam tutorial (2020)](https://www.youtube.com/watch?v=Ia-UEYYR44s)
-  - [FreeCodeCamp AWS exam tutorial (2024)](https://www.youtube.com/watch?v=c3Cn4xYfxJY)
-    - <https://www.freecodecamp.org/news/pass-the-aws-certified-solutions-architect-associate-certification/>
 - **WGU Chatter**
   - **Spencer G**: heavy focus on security so know your encryption types (at Rest, In Transit, Client\Server.) Know KMS and CloudHSM. Know your IAM policies and review policies in general. Also understand your Databases - Aurora, DynamoDB, RDBMS. Know your EFS, FSx, EBS, S3 + lifecycles. Try to look for keywords like "Serverless". Exam Dojo and Udemy can be used but I feel like they're harder than the OA since they involve connecting 2-3 services together while the OA is mainly just 1 service at a time but with more depth on that specific service. I used the Course Material Section review questions and Percipio Testprep as the bulk of study for my practice questions.
   - **JW M**: knowing S3 and its Lifecycle policies, what CloudHSM is, The different VPC Endpoints and what each one does, CloudFront, and how Aurora and NoSQL are DIFFERENT from other databases.
   - **Denise W**: heavy on encryption and the differences between Relational vs Non-relational databases.
+- **YouTube**
+  - [FreeCodeCamp AWS exam tutorial (2020)](https://www.youtube.com/watch?v=Ia-UEYYR44s)
+  - [FreeCodeCamp AWS exam tutorial (2024)](https://www.freecodecamp.org/news/pass-the-aws-certified-solutions-architect-associate-certification/)
 - **Udemy Training**
   - [Udemy Practice Exams](https://wgu.udemy.com/course/practice-exams-aws-certified-solutions-architect-associate/)
   - [Udemy Practice Exams](https://wgu.udemy.com/course/aws-certified-solutions-architect-associate-practice-tests-k/)
