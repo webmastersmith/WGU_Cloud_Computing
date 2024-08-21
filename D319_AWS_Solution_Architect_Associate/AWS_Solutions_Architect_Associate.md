@@ -92,7 +92,7 @@ aws sts get-caller-identity
 - **Cost optimization**
   - **measure** efficiency. **eliminate** unneeded expense. reduce employee overhead with managed services.
 - **Sustainability**
-  - ?
+  - environmental impacts, especially energy consumption and efficiency,
 
 ## Best Practices
 
