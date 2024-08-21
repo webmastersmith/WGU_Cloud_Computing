@@ -530,20 +530,20 @@ aws sts get-caller-identity
   - ![disaster recovery options](img/disaster_recovery_options.PNG)
   - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
   - **highest RTO, highest cost-effective**.
-  - recover within a day.
+  - recover within a **day**.
   - ![disaster recovery](img/disaster_recovery.PNG)
   - **Pilot Light**: run secondary database as backup in another Region.
     - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
-    - recover in an hour.
+    - recover in an **hour**.
   - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
   - ![pilot light](img/pilot_light.PNG)
   - **Warm Standby**: scaled down version. business critical resources always running.
-    - recover in minutes.
+    - recover in **minutes**.
     - similar to pilot light, but keep critical business.
   - ![warm standby](img/disaster_recovery_warm_standby.PNG)
   - **Multi-site**: complete copy of infrastructure.
     - **Fastest RTO**, most expensive.
-    - recover instantly.
+    - recover **instantly**.
   - ![multi-site](img/disaster_recovery_multi-site.PNG)
 
 ## Geography, Region, Availability Zone
@@ -565,11 +565,11 @@ aws sts get-caller-identity
     - latency reduction for end user.
   - ![availability zone](img/availability_zone.PNG)
 - **AWS Local Zone**
-  - extension of Region that is closer to end user(edge).
+  - extension of Region that is closer to end user(edge). invitation only.
   - compute, storage, database **closer to large populations** where **no Region exist**. (e.g. Los Angeles Local Zone).
 - **Data Centers**
   - location of physical servers. redundant hardware, power, cooling, and networking.
-  - networked to other data centers through the **AWS backbone network**.
+  - networked to other data centers through the **AWS PrivateLink(backbone) network**.
 
 ## Messaging
 
@@ -659,10 +659,10 @@ aws sts get-caller-identity
   - interface connected to network that can **send/receive data**.
   - **Gateway Endpoint**: specific for **S3** and **DynamoDB**. **does not use PrivateLink**.
     - cannot be accessed from outside VPC.
-  - **Interface Endpoint**: **fully managed**, interface to AWS service through AWS **PrivateLink**(backbone).
-    - private connection from interface to AWS services or AWS Partners.
-    - **without requiring an internet gateway, NAT gateway, or public IP addresses**.
-  - **VPC Endpoint**: generic term for any virtual **interface in VPC** that allows **private** access to **AWS services**.
+  - **VPC/Interface Endpoint**: highly available, scalable technology that you can use to privately connect your VPC to services as if they were in your VPC.
+    - <https://docs.aws.amazon.com/vpc/latest/privatelink/what-is-privatelink.html>
+    - **fully managed**, interface to AWS service through AWS **PrivateLink**(backbone) to AWS services or AWS Partners **without requiring an internet gateway, NAT gateway, or public IP addresses**.
+  - ![endpoint](img/privatelink.PNG)
   - ![endpoint](img/endpoint.PNG)
 - **Internet Gateway (Virtual Private Gateway)**
   - internet communication to VPC resources.
@@ -807,11 +807,11 @@ aws sts get-caller-identity
   - **Routing Policies**
     - **Simple**: **single resource**. (e.g. web server that serves content for the example.com website).
     - **Failover**: active-passive **failover**.
-    - **Geolocation**: route traffic based on the **location**.
+    - **Geolocation**: route traffic based on the **location**. (e.g. change currency symbol and price based on location).
     - **Latency**: resources in multiple AWS Regions. route traffic to the Region that provides the **best latency**.
     - **Multivalue answer**: Route 53 to respond to DNS queries with up to **eight healthy records(IP addresses)**.
       - (e.g. **client to choose another IP** if **no response**).
-    - **Weighted**: route traffic to **multiple resources** in proportions that you specify. (e.g. send small amount of 'canary' version responses for testing.)
+    - **Weighted**: route traffic to **multiple resources** in proportions that you specify. (e.g. send small random 'canary' version responses for testing.)
   - **Simple Load Balance**
     - copy and **paste both IP addresses** into the '**create record set**' value input.
     - routing policy is **simple**.
