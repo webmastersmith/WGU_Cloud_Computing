@@ -217,7 +217,7 @@ aws sts get-caller-identity
 - **Organizations (AWS)**
   - large organizations typically isolate business departments with multiple accounts.
   - AWS Organizations centralize management, consolidate billing, and enforce policies across multiple AWS accounts.
-  - **SCPs**: service control policies. create top level policy that cannot be overridden.
+  - **SCPs**: service control policies. create top level policy that **cannot be overridden** by local account admins.
     - **explicit allow** or it's denied.
     - **cannot** be **overridden** by local AWS **account admins**.
   - ![organizations](img/organizations.PNG)
