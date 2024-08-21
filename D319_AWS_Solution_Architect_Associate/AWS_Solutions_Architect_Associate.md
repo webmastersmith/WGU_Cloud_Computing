@@ -44,7 +44,7 @@
 13. <a href="#Network">Network</a>
 14. <a href="#Reactive-Architecture">Reactive Architecture</a>
 15. <a href="#Serverless-and-Microservices">Serverless and Microservices</a>
-16. <a href="#Storage">Storage</a>
+16. <a href="#S3-Storage">S3 Storage</a>
 
 ## AWS Bash CLI Login
 
@@ -60,6 +60,7 @@
 
 ```sh
 # login -get access and secret key from IAM portal.
+# Create new user besides root credentials.
 # caution! this is for personal development.
 # Do not load your credentials on EC2 instances. Create policy and attach to EC2 instance.
 # This copies the secret key to your computer.
@@ -876,10 +877,8 @@ aws sts get-caller-identity
     - **States Language**: define state machine in JSON.
   - ![step function state machine](img/step_function_state.PNG)
 
-## Storage
+## S3 Storage
 
-- **EFS**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
-- **FSx**: -see <a href="#Compute">Compute</a>/Virtual Machines/EC2 Storage.
 - **S3**
   - immutable **object** storage service.
   - global REST URL access.
