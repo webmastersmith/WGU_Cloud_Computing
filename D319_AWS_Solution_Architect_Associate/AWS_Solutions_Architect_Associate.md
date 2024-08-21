@@ -75,24 +75,25 @@ aws sts get-caller-identity
 
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
-  - run and monitor(**logging**) systems. fix quickly and safely.
-  - IaC reduces mistakes and increases reliability.
+  - run **workloads effectively**, **gain insight** into their operations(monitor **logging**), and to continuously improve(fix quickly, safely).
 - **Security**
-  - **protect** at all layers(data, systems, assets).
+  - **protect** at all layers(**data, systems, assets**).
   - enable **traceability**(log of all changes and access).
   - **risk** assessment and mitigation strategies.
 - **Reliability**
-  - **recover** from infrastructure or service disruption.
-  - **dynamic** recovery, scale, mitigation.
-  - manage change with automation.
+  - **workload** will perform its intended function **correctly** and **consistently**.
+  - **test** through its total **lifecycle**.
+  - **recover**(automatic scale, failover) from infrastructure or service disruption.
+  - manage change with automation(IaC).
 - **Performance efficiency**
   - most **efficient** resource selection as demand changes.
   - **democratize**: use ready made solutions for advanced problems.
   - **mechanical sympathy**: understand best way to take advantage of services, resources.
 - **Cost optimization**
-  - **measure** efficiency. **eliminate** unneeded expense. reduce employee overhead with managed services.
+  - **measure** efficiency. **eliminate** unneeded expense(delete unused resources).
+  - reduce employee overhead with **managed services**.
 - **Sustainability**
-  - environmental impacts, especially energy consumption and efficiency,
+  - **environmental impacts**, especially **energy consumption** and **efficiency**.
 
 ## Best Practices
 
