@@ -202,7 +202,7 @@ aws sts get-caller-identity
     - (e.g. `arn:aws:iam::123456:user/mmajor`)
   - **Wildcards**: `*` include all. (e.g. `s3:*`, `iam:*AccessKey*`)
 - **IAM Role**
-  - tool for granting **temporary** access to AWS resources.
+  - tool for granting **temporary** access to **AWS resources**.
   - **assumable** by a **person, application, or service**.
   - you must be **granted permission to switch to the role**.
   - **AWS STS**
@@ -488,8 +488,9 @@ aws sts get-caller-identity
   - ![RDS backup](img/rds_backup.PNG)
   - **Aurora**
     - AWS 'flagship' SQL database. 5x faster, S3 continuous backup, **15** read replicas, **3** Availability Zones.
-    - fully managed MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
+    - **fully managed** MySQL, PostgrSQL compatible, **OLTP**(high concurrent users) database.
     - auto scaling database when combined with RDS.
+  - **Aurora Serverless**: unpredictable workloads, high-availability, business-critical database.
   - **Security**
     - run RDS in **VPC**(isolation and firewall).
     - **AWS IAM policies** for **access**. **built-in security features of DB engine** control **login**.
@@ -676,7 +677,7 @@ aws sts get-caller-identity
   - manage **cost of AWS infrastructure**.
   - ![cost explorer](img/monitoring_cost_explorer.PNG)
   - **Budgets**
-    - set custom **budget alerts**.
+    - set custom **budget alerts**. (e.g. EC2 instance exceeds threshold, email you).
   - **Cost and Usage Report**
     - **comprehensive report** about usage. includes **metadata** about AWS service, pricing, and reservations.
   - **Cost Explorer**
@@ -729,9 +730,14 @@ aws sts get-caller-identity
 - **NAT Gateway**
   - enable **private subnets outbound communication** with Internet Gateway. **no inbound request**.
   - must be placed in **public subnet**.
+  - highly available(multi-AZ), high throughput(100 Gbps).
   - requires an **Elastic IP**. `0.0.0.0/0` is gateway to internet.
   - ![nat gateway](img/nat_gateway.PNG)
   - ![nat gateway routing](img/nat_gateway_routing.PNG)
+- **Nat Instance**
+  - <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html>
+  - same as NAT Gateway, not highly available throughput of instance type.
+  - allow resources in a private subnet to communicate with destinations outside the virtual private cloud (VPC).
 - **Peering (VPC)**
   - **one-to-one** network connection between **two VPCs**. no other infrastructure needed.
   - traffic stays on AWS backbone. **no bottlenecks or single point of failure**.
@@ -752,7 +758,7 @@ aws sts get-caller-identity
 - **Site-to-Site VPN**
   - <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html>
   - connect **on-prem to VPC**. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
-  - charged per connection-hour.
+  - charged per connection-hour. **1.25 Gbps** connection.
   - **Customer Gateway Device**: physical or software appliance that you own or manage in your **on-premises** network.
     - <https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html#DevicesTested>
     - hardware that connect to VPN endpoint(VPG virtual private gateway).
@@ -871,6 +877,9 @@ aws sts get-caller-identity
     - **Latency**: resources in multiple AWS Regions. route traffic to the Region that provides the **best latency**.
     - **Multivalue answer**: Route 53 to respond to DNS queries with up to **eight healthy records(IP addresses)**.
       - (e.g. **client to choose another IP** if **no response**).
+      - <https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy-multivalue.html>
+      - Route 53 checks health of resource. returns only values for healthy resources.
+      - cost-effective way to use **DNS** and improve **availability** and **load balancing**.
     - **Weighted**: route traffic to **multiple resources** in proportions that you specify. (e.g. send small random 'canary' version responses for testing.)
   - **Simple Load Balance**
     - copy and **paste both IP addresses** into the '**create record set**' value input.
@@ -934,14 +943,25 @@ aws sts get-caller-identity
 - **Fargate**
   - fully managed **container** service. **serverless** host for ECS or EKS.
   - manage(containers and runtime environment), scale, provision container clusters.
+- **Glue (AWS)**
+  - <https://docs.aws.amazon.com/glue/latest/dg/what-is-glue.html>
+  - fully managed, serverless **ETL**(extract, transform, and load) service.
+  - **transform** data from **multiple sources**. analytics, ML.
+- **Kenesis**
+  - <https://docs.aws.amazon.com/streams/latest/dev/introduction.html>
+  - <https://docs.aws.amazon.com/Monitron/latest/user-guide/kinesis-store-S3-v2.html>
+  - collect and process **large streams of data** records in **real time**.
+  - **Data Firehose**: direct stream to another AWS service. (e.g. large stream to Redshift for analytics).
+    - <https://docs.aws.amazon.com/firehose/latest/dev/what-is-this-service.html>
 - **Lambda Functions (AWS)**
+  - <https://docs.aws.amazon.com/lambda/latest/dg/welcome.html>
   - **fully managed** compute service. runs code in response to **events**.
   - runs code in response to **events**. S3, DynamoDB...
   - Java, Go, PowerShell, Node.js, C#, Python, Ruby, and Runtime API.
-  - **cost**: memory usage + function request \* duration.
+  - **cost**: `memory usage + function request * duration`.
     - (e.g. fun1 + 256 MB memory cost twice as much as func2 + 128 MB memory running the same duration).
   - **Timeout**: max time function can run. you control.
-  - **Lambda at the edge**: reduce latency. runs in response to **CDN** at **edge** locations.
+  - **Lambda at the edge**: reduce latency. function runs on **edge** servers(**CloudFront (CDN)**).
   - **Lambda Layers**: upload complete stack(custom code or libraries). share/reuse stack with functions.
     - up to **five layers** or **250 MB**.
   - ![lambda](img/lambda.PNG)
@@ -950,6 +970,7 @@ aws sts get-caller-identity
     - code that **triggers the function**. AWS defined or custom defined JSON stream.
   - **context object**: always generated by AWS. **metadata about runtime environment**.
     - (e.g. getRemainingTimeInMillis(), number of milliseconds remaining before function time runs out).
+  - **Trigger**: HTTPS endpoint(Lambda Function URL), API, CLI
   - ![lambda example](img/lambda_function_example.PNG)
   - ![lambda example S3](img/lambda_function_s3.PNG)
 - **Microservices (AWS)**
@@ -984,8 +1005,10 @@ aws sts get-caller-identity
 
 - <a href="#Table-of-Contents">Table of Contents</a>
 - **S3**
-  - immutable **object** storage service.
-  - global REST URL access.
+  - <https://docs.aws.amazon.com/AmazonS3/latest/userguide/Welcome.html>
+  - immutable **object** storage service. **encryption** and **private** are **default**.
+  - long-term retention, **concurrent access**, and cost-effectiveness.
+  - global REST URL access. max object **upload** size **5 TiB**.
   - Eleven 9's of **durability**(not lost). 99.999999999% uptime.
   - Four 9's of **availability**(can access). 99.99% available.
   - **bucket**: name is **globally unique**. storage container.
@@ -998,6 +1021,7 @@ aws sts get-caller-identity
       - **subresources**: object specific information.
   - **New Objects**: **Read-After-Write**. new objects are available immediately.
   - **Overwrite PUTS and DELETES**: **eventual consistency**. changed objects take time to propagate.
+  - **Scope**: Region. Objects never leave Region unless you want them to.
   - **Create**
     1. name: (globally unique)
     2. region: (e.g. us-east-1)
@@ -1061,8 +1085,7 @@ aws sts get-caller-identity
 - **S3 versioning**
   - enabled through bucket properties.
   - **Versioning Not Enabled**: default. no versioning.
-  - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend.
-    - **prevents deletion**. S3 objects are 'hidden', but still recoverable when deleted.
+  - **Versioning-Enabled**: once enabled, cannot change back to non-version state, only suspend. **prevents deletion**.
   - **Versioning-Suspended**: bucket has been versioned, but suspended.
 - **S3 Website**
   - static only(no server). low cost solution to web hosting.
