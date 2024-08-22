@@ -161,8 +161,6 @@ aws sts get-caller-identity
   - bastion security group must add **allow in** from **internet**.
   - private subnet security group must **allow in** from **bastion**.
   - ![bastion hosts](img/bastion.PNG)
-- **Cloud Trail (AWS)**
-  - log and monitor activity. default **90-day** history. who, what, when, where.
 - **IAM**
   - Identity and Access Management. Authentication(prove identity) and Authorization(**permissions**(CRUD)).
   - supports **Active Directory** and standard identity providers.
@@ -171,19 +169,22 @@ aws sts get-caller-identity
   - IAM Federation -> combine existing user accounts with AWS, uses SAML, Active Directory.
   - ![iam](img/iam.PNG)
 - **IAM Group**
-  - users granted identical authorization.
+  - **IAM users** granted identical authorization.
 - **IAM Policy**:
   - <https://docs.aws.amazon.com/service-authorization/latest/reference/list_awsidentityandaccessmanagementiam.html>
-  - list of defined permissions. **JSON** format. **principle of least privilege**.
+  - **JSON** list of defined permissions of what IAM user can and cannot do.
+  - **principal**: privileges are granted to principals(IAM user, role, AWS services).
   - default **deny**. **allow** must be **explicit** or **everything denied**.
-  - explicit deny **overrides allow**.
+  - **explicit** deny **overrides allow**.
   - ![IAM flow](img/iam_flow.PNG)
-  - **Identity-Based**: attach to IAM principal(user, group, role).
-    - **AWS managed**: standalone, administered by AWS.
-    - **Customer managed**: standalone, administered by you.
+  - **Identity-Based Policy**: attach to IAM principal(user, group, role).
+    - define what actions that identity can perform, on which resources, and under what conditions.
+    - **AWS managed**: standalone, administered by **AWS**.
+    - **Customer managed**: standalone, administered by **you**.
       - Suggested to use managed policies, not inline, to view all policies in the console.
-    - **Inline**: embedded in an IAM identity (user/group/role), exists only on IAM identity.
-  - **Resource-Based**: attach to AWS resource. **always inline**. **no managed** policies. (e.g. EC2 read access S3 bucket).
+    - **Inline Policy**: you create and manage. embedded in a single IAM identity (user, group, role), exists only on IAM Identity-Based Policy.
+  - **Resource-Based Policy**: attach to **AWS resource**. **always inline**. **no managed** policies. (e.g. EC2 read access S3 bucket).
+    - define which actions a specified principal can perform on that resource and under what conditions.
   - ![iam policy](img/iam_policy.PNG)
   - ![iam policy json](img/iam_json.PNG)
   - **ARNs**
@@ -192,7 +193,7 @@ aws sts get-caller-identity
     - (e.g. `arn:aws:iam::123456:user/mmajor`)
   - **Wildcards**: `*` include all. (e.g. `s3:*`, `iam:*AccessKey*`)
 - **IAM Role**
-  - grant **temporary** access.
+  - tool for granting **temporary** access to AWS resources.
   - **assumable** by a **person, application, or service**.
   - you must be **granted permission to switch to the role**.
   - **AWS STS**
@@ -620,6 +621,12 @@ aws sts get-caller-identity
   - create **alarms**. send **notifications**. (e.g. **monitor** infrastructure and send alerts to **Auto Scaling** or **SNS**).
   - visualize data through dashboard. can include data from on-prem. **unified view**.
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
+- **CloudTrail (AWS)**
+  - enables governance, compliance, and **auditing** of your AWS **account**.
+  - provides an **event history of account activity**, including actions taken through the AWS Management Console, AWS SDKs, and command line tools.
+  - simplifies **security analysis**, resource change tracking, and troubleshooting.
+  - log and monitor activity. default **90-day** history. who, what, when, where.
+  - integrates with **EventBridge**. (e.g. S3 bucket made public, CloudTrail notifies EventBridge).
 - **EventBridge**
   - serverless event bus. stream of real-time resource data. routed to targets.
     - (e.g. EC2 state change(running -> stopped), Auto Scaling change, EBS volume creation...).
