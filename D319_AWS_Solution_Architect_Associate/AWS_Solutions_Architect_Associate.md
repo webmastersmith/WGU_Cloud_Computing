@@ -688,8 +688,10 @@ aws sts get-caller-identity
 
 - <a href="#Table-of-Contents">Table of Contents</a>
 - **CloudHub**
-  - works with or without VPN.
-  - multiple branch offices and existing internet connections.
+  - <https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-vpn-cloudhub.html>
+  - works **with** or **without** VPN.
+  - **mesh connects** multiple **branch offices** and VPG.
+  - **low-cost hub-and-spoke model** for primary or **backup connectivity** **between** these **remote offices**.
   - ![cloudhub](img/cloudhub.png)
 - **Elastic IP**
   - fixed IPv4 address. map to **instance** or elastic network **interface**.
@@ -749,9 +751,12 @@ aws sts get-caller-identity
   - **subnet**: one-to-one. can have only **one route table**.
 - **Site-to-Site VPN**
   - <https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html>
-  - connect on-prem to VPC. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
+  - connect **on-prem to VPC**. **IPSec encryption**. creates **two**(default) or **more** encrypted 'tunnels' between networks.
   - charged per connection-hour.
-  - **Customer Gateway Device**: your hardware that connect to VPN endpoint(VPG virtual private gateway).
+  - **Customer Gateway Device**: physical or software appliance that you own or manage in your **on-premises** network.
+    - <https://docs.aws.amazon.com/vpn/latest/s2svpn/your-cgw.html#DevicesTested>
+    - hardware that connect to VPN endpoint(VPG virtual private gateway).
+  - ![customer gateway device](img/site-to-site.png)
   - **Static Routing**: if your Customer Gateway Device does not support 'Dynamic', you must manually update route table.
   - **Dynamic Routing**: BGP(border gateway protocol) dynamically finds route.
   - ![vpn site-to-site](img/vpn_site-to-site.PNG)
