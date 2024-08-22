@@ -259,6 +259,12 @@ aws sts get-caller-identity
 - **Root User**
   - highest level of privileges. Only one with **default** access to billing information.
   - best practice to not use root.
+- **Shield (AWS)**
+  - <https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html>
+  - **Standard**
+    - free. DDOS layer 3, 4, and 7.
+    - works Route 53, CloudFront.
+  - **Advanced**: extends protect to web exploits and more. includesAWS WAF, custom mitigation, and DDoS insight.
 - **Tagging**
   - use tagging to label users. **50** tags per resource.
   - key = value.
@@ -411,6 +417,7 @@ aws sts get-caller-identity
     - **New Generation Instance types**: better price-to-performance ratio.
     - **AWS Compute Optimizer**: analyze running instances. recommends 'right-sized' EC2.
     - ![ec2 instance type](img/ec2_instance_type.PNG)
+    - ![ec2 family](img/ec2_family.PNG)
   - **EC2 Placement Groups**
     - control Availability Zone where instances run. logical grouping to create **low latency** between running **instances**.
     - instance can launched in only one placement group. **dedicated host** **cannot** run in placement group.
@@ -542,6 +549,11 @@ aws sts get-caller-identity
   - **highest RTO, highest cost-effective**.
   - recover within a **day**.
   - ![disaster recovery](img/disaster_recovery.PNG)
+  - Anything that is not instant recovery is **active - passive**.
+    1. Aws Backup(least op overhead) - RTO/RPO = hours.
+    2. Pilot Light -RTO/RPO = hour.
+    3. Warm Standby -RTO/RPO= minutes.
+    4. Multi AZ option: **active - active**. instant.
   - **Pilot Light**: run secondary database as backup in another Region.
     - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
     - recover in an **hour**.
