@@ -684,6 +684,8 @@ aws sts get-caller-identity
     - **visualize** and manage cost and usage. daily, monthly. **know where your spending money**.
   - **Cost Optimization Monitor**
     - customizable **dashboard** to **monitor** usage and cost. breakdown by period, account, resource, or tags.
+- **Resource Group Tag Editor**
+  - managing and organizing resources based on tags. centralized **reporting of tagged components** **across** multiple services and **Regions**.
 
 ## Network
 
@@ -1061,6 +1063,7 @@ aws sts get-caller-identity
   - **S3 Standard-IA(infrequent access)**: same as S3 Standard. **30 storage penalty**. **higher cost** to retrieve.
   - **S3 One Zone IA**: **single AZ**. non-critical data.
   - **S3 Glacier**: archiving rarely accessed data.
+    - **Instant Access**: retrieve data in milliseconds.
     - **Expedited**: retrieve data 1-5 min.
     - **Standard**: retrieve data 3-5 hours.
     - **Bulk**: retrieve data 5-12 hours.
