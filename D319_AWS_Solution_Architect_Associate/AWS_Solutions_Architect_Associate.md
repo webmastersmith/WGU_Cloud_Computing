@@ -75,6 +75,7 @@ aws sts get-caller-identity
 
 ## AWS Well-Architected Framework (Six Pillars)
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - <https://docs.aws.amazon.com/wellarchitected/latest/framework/the-pillars-of-the-framework.html>
 - **Operational excellence**
   - run **workloads effectively**.
@@ -102,6 +103,7 @@ aws sts get-caller-identity
 
 ## Best Practices
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Automate your environment**
   - dynamic increase/decrease infrastructure.
   - automate monitoring/notifying when resources change.
@@ -137,6 +139,7 @@ aws sts get-caller-identity
 
 ## Authentication, Authorization and Security
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **ABAC**
   - Attribute-Based Access Control. If both principal(user, group, role) have same tag as resource, policy is applied.
   - combine with **Tagging** to define permissions.
@@ -161,6 +164,12 @@ aws sts get-caller-identity
   - bastion security group must add **allow in** from **internet**.
   - private subnet security group must **allow in** from **bastion**.
   - ![bastion hosts](img/bastion.PNG)
+- **Certificate Manager (AWS)**
+  - <https://docs.aws.amazon.com/acm/latest/userguide/acm-overview.html>
+  - ACM can be used to obtain an **SSL/TLS certificate** and **attach** it to the **AWS services**(e.g. ALB).
+    - This allows **encrypted communication(data in transit)** between the clients and the AWS service.
+  - **Secure communication between connected resources** on private networks, such as servers, mobile and IoT devices, and applications.
+  - Provision and manage SSL/TLS certificates(X.509 certificates and keys) with AWS services and connected resources.
 - **IAM**
   - Identity and Access Management. Authentication(prove identity) and Authorization(**permissions**(CRUD)).
   - supports **Active Directory** and standard identity providers.
@@ -218,6 +227,18 @@ aws sts get-caller-identity
        2. creates **user pools** and **identity pools**.
        3. **OpenID Connect (OIDC)**: open source identity management. (e.g. Facebook, Google or SAML auth).
        4. ![sts cognito](img/sts_cognito.PNG)
+- **KMS (AWS)**
+  - <https://docs.aws.amazon.com/kms/latest/developerguide/overview.html>
+  - Key Management Service. create/manage **cryptographic keys** that are used to **encrypt** your **data** at **rest**.
+  - **AWS CloudTrail**: log use of your KMS keys for auditing, regulatory, and compliance needs.
+    - monitor and investigate how and when your KMS keys have been used and who used them.
+  - **KMS HSM**: hardware security modules (HSM) to protect and validate your AWS KMS keys under the FIPS 140-2.
+  - **Symmetric Keys**: **default** key. most common type. encryption at **rest**.
+  - **Asymmetric Keys**: **public** key and **private** key pair. **SSL/TLS**(**HTTPS**) in **transit**.
+    - <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html>
+  - **Custom Key Stores**:
+    - <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#keystore-concept>
+    - custom key manager outside of AWS KMS that **you own and manage**.
 - **Organizations (AWS)**
   - large organizations typically isolate business departments with multiple accounts.
   - AWS Organizations centralize management, consolidate billing, and enforce policies across multiple AWS accounts.
@@ -244,6 +265,7 @@ aws sts get-caller-identity
 
 ## Automation
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Automation**
   - **without** automation it is a long **manual process** to build architecture.
   - ![automation tool](img/automation_tool.PNG)
@@ -291,6 +313,7 @@ aws sts get-caller-identity
 
 ## Caching
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Caching**
   - **high speed data storage layer**.
   - distance from **origin server** to client induces latency.
@@ -347,6 +370,7 @@ aws sts get-caller-identity
 
 ## Compute
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Compute**
   - higher infrastructure customization <--> faster deployment.
   - ![compute](img/compute.PNG)
@@ -398,6 +422,7 @@ aws sts get-caller-identity
     - **instance store**. default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
     - **EBS**: elastic block store. **persistent** block-storage volumes. **root volume**
       - **single instance** only. can be detached and **moved** to **any single instance** in same **Availability Zone**.
+      - **AWS KMS** can be used to **encrypt** the **EBS** at **rest**.
       - **EC2 with EBS** can be placed in **hibernation** and shutdown. preserves **RAM memory**.
       - **EBS Optimized**: dedicated network, higher I/O.
       - ![EBS optimized](img/ebs_optimized.PNG)
@@ -430,8 +455,11 @@ aws sts get-caller-identity
 
 ## Database
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Database**
   - **choose database**: scalability, storage requirements, type and size of objects, durability.
+  - **AWS KMS**: can be used to **encrypt** database storage at **rest**.
+  - **ACM**: AWS Certificate Manager. used to obtain an **SSL/TLS certificate** and attach it to the ALB. This **encrypts** the **data in transit** between the clients and the ALB.
   - ![database management](img/database_manage.PNG)
 - **Relational Database**
   - strict schema rules. provide data integrity. SQL.
@@ -439,7 +467,7 @@ aws sts get-caller-identity
   - scale horizontally. higher flexibility. semi-structured and unstructured data.
 - **Database Migration Service (DMS)**
   - **migrate** or **continuous replication** of **on-prem** database to AWS.
-  - can transform data into desired AWS format. (e.g. on-prem MySQL to Amazon Aurora format).
+  - can **transform** data into desired AWS format. (e.g. on-prem MySQL to Amazon Aurora format).
   - ![database migration service](img/database_migration.PNG)
   - **AWS Schema Conversion Tool (AWS SCT)**
     - change database engine between source and target.
@@ -497,8 +525,35 @@ aws sts get-caller-identity
 
 ## Disaster, Backup and Recovery
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **AWS Backup**
   - policy that determines when and how you want your AWS resources backed up.
+- **DataSync**
+  - <https://docs.aws.amazon.com/datasync/latest/userguide/how-datasync-transfer-works.html>
+  - data transfer and discovery service. one-time or recurring.
+  - secure data migration of file or object data **to**, **from**, and **between** AWS storage services.
+  - ![datasync](img/DataSync.png)
+- **Disaster Recovery**
+  - each option below is based on RPO/RTO and cost-effectiveness.
+  - start simple: create backups. practice Game Day: run test to verify redundancy.
+  - ![disaster recovery options](img/disaster_recovery_options.PNG)
+  - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
+  - **highest RTO, highest cost-effective**.
+  - recover within a **day**.
+  - ![disaster recovery](img/disaster_recovery.PNG)
+  - **Pilot Light**: run secondary database as backup in another Region.
+    - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
+    - recover in an **hour**.
+  - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
+  - ![pilot light](img/pilot_light.PNG)
+  - **Warm Standby**: scaled down version. business critical resources always running.
+    - recover in **minutes**.
+    - similar to pilot light, but keep critical business.
+  - ![warm standby](img/disaster_recovery_warm_standby.PNG)
+  - **Multi-site**: complete copy of infrastructure.
+    - **Fastest RTO**, most expensive.
+    - recover **instantly**.
+  - ![multi-site](img/disaster_recovery_multi-site.PNG)
 - **RPO (Recovery Point Objective)**
   - maximum data loss measured in **time**. (e.g. 8 hrs from last backup).
 - **RTO (Recovery Time Objective)**
@@ -521,30 +576,10 @@ aws sts get-caller-identity
   - ![database backup](img/database_backup.PNG)
   - **IaC**
   - ![IaC](img/iac_backup.PNG)
-- **Disaster Recovery**
-  - each option below is based on RPO/RTO and cost-effectiveness.
-  - start simple: create backups. practice Game Day: run test to verify redundancy.
-  - ![disaster recovery options](img/disaster_recovery_options.PNG)
-  - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
-  - **highest RTO, highest cost-effective**.
-  - recover within a **day**.
-  - ![disaster recovery](img/disaster_recovery.PNG)
-  - **Pilot Light**: run secondary database as backup in another Region.
-    - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
-    - recover in an **hour**.
-  - ![pilot light recovery](img/disaster_recovery_pilot_light.PNG)
-  - ![pilot light](img/pilot_light.PNG)
-  - **Warm Standby**: scaled down version. business critical resources always running.
-    - recover in **minutes**.
-    - similar to pilot light, but keep critical business.
-  - ![warm standby](img/disaster_recovery_warm_standby.PNG)
-  - **Multi-site**: complete copy of infrastructure.
-    - **Fastest RTO**, most expensive.
-    - recover **instantly**.
-  - ![multi-site](img/disaster_recovery_multi-site.PNG)
 
 ## Geography, Region, Availability Zone
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Cloud Architecture**
   - applying cloud-based technology to meet technical and business requirements.
 - **Region**
@@ -570,6 +605,7 @@ aws sts get-caller-identity
 
 ## Messaging
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Coupled Architecture**
   - tightly coupled architecture is difficult to scale.
   - ![decoupling](img/decoupled.PNG)
@@ -616,10 +652,12 @@ aws sts get-caller-identity
 
 ## Monitoring
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **CloudWatch**
   - collects operational data in the form of **logs**(log files), **metrics**(CPU usage...), and **events**(EventBridge).
   - create **alarms**. send **notifications**. (e.g. **monitor** infrastructure and send alerts to **Auto Scaling** or **SNS**).
   - visualize data through dashboard. can include data from on-prem. **unified view**.
+  - **CloudWatch Logs**: monitor EC2 logs.
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
 - **CloudTrail (AWS)**
   - enables governance, compliance, and **auditing** of your AWS **account**.
@@ -648,6 +686,7 @@ aws sts get-caller-identity
 
 ## Network
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **CloudHub**
   - works with or without VPN.
   - multiple branch offices and existing internet connections.
@@ -693,7 +732,7 @@ aws sts get-caller-identity
   - ![nat gateway routing](img/nat_gateway_routing.PNG)
 - **Peering (VPC)**
   - **one-to-one** network connection between **two VPCs**. no other infrastructure needed.
-  - traffic stays on AWS backbone. no bottlenecks or single point of failure.
+  - traffic stays on AWS backbone. **no bottlenecks or single point of failure**.
   - **Route**: each peered VPC must add route to route table, ACL and Security Groups updated.
     - **No overlap in CIDR**.
     - not transitive(A <-> B, A <-> C, B and C cannot communicate with each other).
@@ -759,6 +798,7 @@ aws sts get-caller-identity
 
 ## Reactive Architecture
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **Reactive Architecture**
   - scale into the millions. responsive, highly available.
 - **Database Autoscaling**
@@ -853,6 +893,7 @@ aws sts get-caller-identity
 
 ## Serverless and Microservices
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **API Gateway (Amazon)**
   - **fully managed API service**. secure APIs. version control/stages. custom rate limit.
   - **entrypoint** to backend resources.
@@ -936,6 +977,7 @@ aws sts get-caller-identity
 
 ## S3 Storage
 
+- <a href="#Table-of-Contents">Table of Contents</a>
 - **S3**
   - immutable **object** storage service.
   - global REST URL access.
