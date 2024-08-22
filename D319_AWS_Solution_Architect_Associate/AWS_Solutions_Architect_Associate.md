@@ -670,6 +670,11 @@ aws sts get-caller-identity
 ## Monitoring
 
 - <a href="#Table-of-Contents">Table of Contents</a>
+- **Athena (Amazon)**
+  - <https://docs.aws.amazon.com/managedservices/latest/userguide/athena.html>
+  - query service that helps you to **analyze data in Amazon S3** using standard **SQL**.
+  - no need for complex exact-transform-load (ETL) jobs to prepare your data for analysis.
+  - (e.g. upload handwritten doc to S3, use Amazon Textract OCR to extract text, output to SQL format).
 - **CloudWatch**
   - collects operational data in the form of **logs**(log files), **metrics**(CPU usage...), and **events**(EventBridge).
   - create **alarms**. send **notifications**. (e.g. **monitor** infrastructure and send alerts to **Auto Scaling** or **SNS**).
@@ -702,6 +707,9 @@ aws sts get-caller-identity
     - customizable **dashboard** to **monitor** usage and cost. breakdown by period, account, resource, or tags.
 - **Resource Group Tag Editor**
   - managing and organizing resources based on tags. centralized **reporting of tagged components** **across** multiple services and **Regions**.
+- **Textract (Amazon)**
+  - <https://docs.aws.amazon.com/managedservices/latest/userguide/textract.html>
+  - machine learning (ML) service that automatically extracts text, handwriting, layout elements, and data from scanned documents.
 
 ## Network
 
