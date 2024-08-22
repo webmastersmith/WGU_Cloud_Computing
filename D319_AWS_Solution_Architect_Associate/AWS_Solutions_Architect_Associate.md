@@ -230,6 +230,7 @@ aws sts get-caller-identity
 - **KMS (AWS)**
   - <https://docs.aws.amazon.com/kms/latest/developerguide/overview.html>
   - Key Management Service. create/manage **cryptographic keys** that are used to **encrypt** your **data** at **rest**.
+  - **Key Rotation**: <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt>
   - **AWS CloudTrail**: log use of your KMS keys for auditing, regulatory, and compliance needs.
     - monitor and investigate how and when your KMS keys have been used and who used them.
   - **KMS HSM**: hardware security modules (HSM) to protect and validate your AWS KMS keys under the FIPS 140-2.
@@ -468,6 +469,9 @@ aws sts get-caller-identity
   - **AWS KMS**: can be used to **encrypt** database storage at **rest**.
   - **ACM**: AWS Certificate Manager. used to obtain an **SSL/TLS certificate** and attach it to the ALB. This **encrypts** the **data in transit** between the clients and the ALB.
   - ![database management](img/database_manage.PNG)
+- **Lake Formation (AWS)**
+  - <https://docs.aws.amazon.com/lake-formation/latest/dg/what-is-lake-formation.html>
+  - **centrally manage** and scale **fine-grained data access** permissions and share data with confidence within and **outside** your **organization**.
 - **Relational Database**
   - strict schema rules. provide data integrity. SQL.
 - **Non-Relational Database**
@@ -1045,6 +1049,8 @@ aws sts get-caller-identity
     - tune **retry and timeout logic** for high traffic objects.
     - **scale horizontally** for high **throughput** across network.
     - often used as a **data store** for analytics and **backup and archive** service for critical data.
+- **S3 Encryption**
+  - **SSE-S3**: default. **AWS managed**, automatically rotates the keys every **year**.
 - **S3 Object Access**
   - **private** and **protected** by **default**.
   - **Block Public Access**: lock bucket and objects from being accessed.
