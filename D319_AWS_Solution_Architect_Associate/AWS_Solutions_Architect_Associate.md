@@ -509,16 +509,16 @@ aws sts get-caller-identity
     - **SSL** encryption in **transit**.
     - enable **encryption** at rest.
     - enable alerts for important RDS events.
-- **Amazon Redshift**
-  - petabyte scale **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
-  - **does not support read replicas**
-  - **OLAP**: online analytical processing.
+- **DocumentDB (Amazon)**
+  - MongoDB compatibility. NoSQL.
 - **Amazon DynamoDB**
   - **fully managed**, **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
   - multi-AZ/Region, **horizontal scaling**, **low latency**. (e.g. gaming, adtech(shopping cart), mobile).
   - does not enforce fixed schema(cannot JOIN).
   - **Primary Key**: also known as **partition or hash key**. uniquely identify row. only **required** attribute.
   - **Partition**: key:value section. allows easier scale/replication.
+  - **TTL**: time-to-live. automatically delete items from a table after a specified period.
+    - (e.g. adding a TTL attribute to each item with a value of the current timestamp + 30 days, DynamoDB automatically delete items older than 30 days).
   - ![dynamoDb](img/dynamoDB.PNG)
   - **Global Tables**
     - replicate Database across multiple regions(geographies).
@@ -528,6 +528,10 @@ aws sts get-caller-identity
     - **Eventually**: default. read-write within 1 second.
     - **Strongly**: all databases write operations must complete, before read of data is allowed.
   - ![dynamoDB consistency](img/dynamoDB_consistency.PNG)
+- **Amazon Redshift**
+  - petabyte scale **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
+  - **does not support read replicas**
+  - **OLAP**: online analytical processing.
   - **Security**
     - **IAM roles** for access.
     - **IAM policies** for fine-grain access to DynamoDB APIs. least privilege.
@@ -707,9 +711,15 @@ aws sts get-caller-identity
     - customizable **dashboard** to **monitor** usage and cost. breakdown by period, account, resource, or tags.
 - **Resource Group Tag Editor**
   - managing and organizing resources based on tags. centralized **reporting of tagged components** **across** multiple services and **Regions**.
+- **Rekognition**
+  - analyzing images and videos.
 - **Textract (Amazon)**
   - <https://docs.aws.amazon.com/managedservices/latest/userguide/textract.html>
   - machine learning (ML) service that automatically extracts text, handwriting, layout elements, and data from scanned documents.
+- **Transcribe (Amazon)**
+  - speech-to-text service. handle **multiple speakers** and can generate transcript files in real-time or asynchronously. These transcript files can be stored in Amazon S3 for long-term storage.
+- **Translate (Amazon)**
+  - translating text from one language to another.
 
 ## Network
 
@@ -837,6 +847,7 @@ aws sts get-caller-identity
 
 - <a href="#Table-of-Contents">Table of Contents</a>
 - **Reactive Architecture**
+  - <https://docs.aws.amazon.com/whitepapers/latest/real-time-communication-on-aws/high-availability-and-scalability-on-aws.html>
   - scale into the millions. responsive, highly available.
 - **Database Autoscaling**
   - **RDS and Aurora**
