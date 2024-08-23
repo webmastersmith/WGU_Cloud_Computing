@@ -205,9 +205,6 @@ aws sts get-caller-identity
   - tool for granting **temporary** access to **AWS resources**.
   - **assumable** by a **person, application, or service**.
   - you must be **granted permission to switch to the role**.
-  - **AWS STS**
-    - Security Token Service. enables request of **temporary limited-privilege credentials**.
-    - cross account or **federated** access.
 - **IAM User**
   - authentication, assumed programmatically, credentials do expire.
   - IAM user is **person** or **application** that must make **API calls** to AWS products.
@@ -218,8 +215,9 @@ aws sts get-caller-identity
   - ![sts idp](img/sts_idp.PNG)
   - **Identity Federation: Three Options**
     1. **AWS STS**: Security Token Service. enables request of **temporary limited-privilege credentials**.
-       1. **identity service providers (IdPs)**: Microsoft Active Directory, or custom identity broker.
-       2. ![sts idps](img/sts_idps.PNG)
+       1. cross account or **federated** access.
+       2. **identity service providers (IdPs)**: Microsoft Active Directory, or custom identity broker.
+       3. ![sts idps](img/sts_idps.PNG)
     2. **SAML**: security assertion markup language.
        1. ![sts saml](img/sts_saml.PNG)
     3. **Amazon Cognito**: web identity provider.
