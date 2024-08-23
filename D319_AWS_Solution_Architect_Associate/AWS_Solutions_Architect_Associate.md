@@ -602,6 +602,10 @@ aws sts get-caller-identity
   - ![database backup](img/database_backup.PNG)
   - **IaC**
   - ![IaC](img/iac_backup.PNG)
+- **Transfer Family**
+  - <https://docs.aws.amazon.com/transfer/latest/userguide/what-is-aws-transfer-family.html>
+  - **secure** transfer service that enables you to transfer files into and out of AWS storage services.
+  - **fully managed** support for the transfer of files over **SFTP, AS2, FTPS, and FTP** directly into and out of Amazon **S3** or Amazon **EFS**.
 
 ## Geography, Region, Availability Zone
 
@@ -1077,6 +1081,13 @@ aws sts get-caller-identity
     - often used as a **data store** for analytics and **backup and archive** service for critical data.
 - **S3 Encryption**
   - **SSE-S3**: default. **AWS managed**, automatically rotates the keys every **year**.
+- **S3 Object Lock**
+  - <https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html>
+  - prevent Amazon S3 objects from being deleted or overwritten for a fixed amount of time or indefinitely.
+  - Object Lock uses a **write-once-read-many** (WORM).
+  - **compliance mode**: a protected object version can't be overwritten or deleted by any user, including the root user in your AWS account.
+  - **governance mode**: users can't overwrite or delete an object version or alter its lock settings unless they have special permissions.
+  - S3 **versioning** must be **enabled**.
 - **S3 Object Access**
   - **private** and **protected** by **default**.
   - **Block Public Access**: lock bucket and objects from being accessed.
