@@ -170,6 +170,9 @@ aws sts get-caller-identity
     - This allows **encrypted communication(data in transit)** between the clients and the AWS service.
   - **Secure communication between connected resources** on private networks, such as servers, mobile and IoT devices, and applications.
   - Provision and manage SSL/TLS certificates(X.509 certificates and keys) with AWS services and connected resources.
+- **GuardDuty (Amazon)**
+  - **threat detection service** that helps protect your accounts, containers, workloads, and the data within your AWS environment. **ML**.
+  - continuously monitors different **log** sources and **runtime** activity to identify and prioritize potential security risks and malicious activities in your environment.
 - **IAM**
   - Identity and Access Management. Authentication(prove identity) and Authorization(**permissions**(CRUD)).
   - supports **Active Directory** and standard identity providers.
@@ -239,6 +242,11 @@ aws sts get-caller-identity
   - **Custom Key Stores**:
     - <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#keystore-concept>
     - custom key manager outside of AWS KMS that **you own and manage**.
+- **Network Firewall (AWS)**
+  - <https://aws.amazon.com/network-firewall/>
+  - fine-grained control over network traffic.
+  - firewall service that provides **filtering** for both **inbound** and **outbound** network **traffic**.
+  - create rules for **traffic inspection** and filtering, which can help protect your production VPC.
 - **Organizations (AWS)**
   - large organizations typically isolate business departments with multiple accounts.
   - AWS Organizations centralize management, consolidate billing, and enforce policies across multiple AWS accounts.
@@ -729,6 +737,12 @@ aws sts get-caller-identity
   - speech-to-text service. handle **multiple speakers** and can generate transcript files in real-time or asynchronously. These transcript files can be stored in Amazon S3 for long-term storage.
 - **Translate (Amazon)**
   - translating text from one language to another.
+- **QuickSight**
+  - <https://docs.aws.amazon.com/managedservices/latest/userguide/quicksight.html>
+  - **BI**: business intelligence service that delivers insights to everyone in your organization.
+  - create and publish interactive dashboards that include machine learning (ML) insights.
+  - **Grant Access to Dashboard**: add user to 'share dashboard' list.
+    - <https://docs.aws.amazon.com/quicksight/latest/user/share-a-dashboard-grant-access-users.html>
 
 ## Network
 
