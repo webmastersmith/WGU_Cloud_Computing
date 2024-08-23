@@ -1125,6 +1125,13 @@ aws sts get-caller-identity
   - ![S3 access](img/s3_access.PNG)
   - **Best Practices**
     - give least privilege access. (e.g. create **presigned URL** to object that **expires in 24 hours**).
+- **S3 Event Notification**
+  - <https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html>
+  - receive notifications when certain events happen in your S3 bucket.
+  - **enable notifications**:
+    - add a notification configuration that identifies the events that you want Amazon S3 to publish.
+    - identify the destinations: **SNS, SQS, Lambda, EventBridge**.
+    - S3 provides an API for you to manage this subresource.
 - **S3 Object Deletion**
   - deletions are hidden but not removed. to remove you must delete again.
 - **S3 Pricing**
