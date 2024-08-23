@@ -485,14 +485,16 @@ aws sts get-caller-identity
   - **AWS Snowball Edge**: migrate multi-terabyte data.
   - ![snowball edge](img/snowball_edge.PNG)
 - **Read Replica**
-  - continuous **read-only copy** of database. immutable. **RDS** max **five** read replicas.
+  - **asynchronous**, continuous **read-only copy** of database. immutable. **RDS** max **five** read replicas.
   - **primary**: read/write. **secondary**: read-only.
   - allow scale out for heavy **read** workloads.
   - ![max read replicas](img/max_read_replicas.PNG)
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
   - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
-  - multi-AZ deployments provide high availability.
+  - **Multi-AZ DB instance deployments**: synchronous copy data to another AZ. **high availability**.
+    - <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html>
+    - **failover**: RDS automatically provisions and maintains a **synchronous** standby replica in a different Availability Zone.
   - ![RDS high availability](img/rds_az.PNG)
   - **Backup**
     - snapshot to S3 bucket.
@@ -511,7 +513,7 @@ aws sts get-caller-identity
     - enable alerts for important RDS events.
 - **DocumentDB (Amazon)**
   - MongoDB compatibility. NoSQL.
-- **Amazon DynamoDB**
+- **DynamoDB (Amazon)**
   - **fully managed**, **serverless**, non-relational, **key-value**, and document **NoSQL** database service.
   - multi-AZ/Region, **horizontal scaling**, **low latency**. (e.g. gaming, adtech(shopping cart), mobile).
   - does not enforce fixed schema(cannot JOIN).
@@ -524,11 +526,14 @@ aws sts get-caller-identity
     - replicate Database across multiple regions(geographies).
     - **multi-master**: all data tables are fully managed and kept in sync.
   - ![global table](img/dynamoDB_global_table.PNG)
+  - **DynamoDb Streams**: logs tracking all changes in DynamoDB table. ordered flow of changes.
+    - <https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.html>
+    - Whenever an application creates, updates, or deletes items in the table, DynamoDB Streams writes a stream record with the primary key attributes of the items that were modified.
   - **Consistency**
     - **Eventually**: default. read-write within 1 second.
     - **Strongly**: all databases write operations must complete, before read of data is allowed.
   - ![dynamoDB consistency](img/dynamoDB_consistency.PNG)
-- **Amazon Redshift**
+- **Redshift (Amazon)**
   - petabyte scale **data warehousing** service(highly structured, frequently accessed). does **NOT** run on **RDS**.
   - **does not support read replicas**
   - **OLAP**: online analytical processing.
@@ -967,6 +972,8 @@ aws sts get-caller-identity
   - build microservices. container contains everything needed to run: code, runtime engine, dependencies, configurations.
   - **cluster**: logical grouping of resources.
   - **task definition**: JSON. describes the containers that form the application. blueprint.
+    - **taskRoleArn**: grants containers in the task permission to call AWS APIs on your behalf.
+    - (e.g. container write to S3 bucket through API call).
   - **Host your ECS**
     - **Fargate**. AWS managed.
     - **EC2 cluster**: run ECS on **EC2 instances you manage**, with an ECS container agent(**container instance**).
