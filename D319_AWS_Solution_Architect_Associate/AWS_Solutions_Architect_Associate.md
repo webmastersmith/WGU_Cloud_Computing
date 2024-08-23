@@ -210,8 +210,8 @@ aws sts get-caller-identity
   - IAM user is **person** or **application** that must make **API calls** to AWS products.
   - Each user **must have a unique name** (with no spaces in the name).
 - **Identity Federation**
-  - user is authenticated by system external to the AWS account.
-  - allow access without having to create IAM users.
+  - user is authenticated by system **external** to the AWS account.
+  - allow access **without** having to create IAM users.
   - ![sts idp](img/sts_idp.PNG)
   - **Identity Federation: Three Options**
     1. **AWS STS**: Security Token Service. enables request of **temporary limited-privilege credentials**.
@@ -228,12 +228,13 @@ aws sts get-caller-identity
 - **KMS (AWS)**
   - <https://docs.aws.amazon.com/kms/latest/developerguide/overview.html>
   - Key Management Service. create/manage **cryptographic keys** that are used to **encrypt** your **data** at **rest**.
-  - **Key Rotation**: <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt>
+  - **Key Rotation**: AWS managed: 365 days.
+    - <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#key-mgmt>
   - **AWS CloudTrail**: log use of your KMS keys for auditing, regulatory, and compliance needs.
     - monitor and investigate how and when your KMS keys have been used and who used them.
   - **KMS HSM**: hardware security modules (HSM) to protect and validate your AWS KMS keys under the FIPS 140-2.
   - **Symmetric Keys**: **default** key. most common type. encryption at **rest**.
-  - **Asymmetric Keys**: **public** key and **private** key pair. **SSL/TLS**(**HTTPS**) in **transit**.
+  - **Asymmetric Keys**: **public** key and **private** key pair. **SSL/TLS**(**HTTPS**) encryption in **transit**.
     - <https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html>
   - **Custom Key Stores**:
     - <https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#keystore-concept>
@@ -260,9 +261,7 @@ aws sts get-caller-identity
   - best practice to not use root.
 - **Shield (AWS)**
   - <https://docs.aws.amazon.com/waf/latest/developerguide/ddos-overview.html>
-  - **Standard**
-    - free. DDOS layer 3, 4, and 7.
-    - works Route 53, CloudFront.
+  - **Standard**: free. DDOS layer 3, 4, and 7. works with Route 53, CloudFront.
   - **Advanced**: extends protect to web exploits and more. includesAWS WAF, custom mitigation, and DDoS insight.
 - **Tagging**
   - use tagging to label users. **50** tags per resource.
@@ -425,7 +424,7 @@ aws sts get-caller-identity
       - good for low-latency with large volume of instances.
     - **Spread**: low-latency. at least one instance is in **another Availability Zone**.
   - **EC2 Storage**
-    - **instance store**. default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
+    - **instance store**: default. create with EC2. ephemeral storage. **cannot stop, only terminate**. (e.g. buffers, cache, scratch data).
     - **EBS**: elastic block store. **persistent** block-storage volumes. **root volume**
       - **single instance** only. can be detached and **moved** to **any single instance** in same **Availability Zone**.
       - **AWS KMS** can be used to **encrypt** the **EBS** at **rest**.
@@ -480,7 +479,7 @@ aws sts get-caller-identity
   - ![database migration service](img/database_migration.PNG)
   - **AWS Schema Conversion Tool (AWS SCT)**
     - change database engine between source and target.
-  - **AWS Snowball Edge**: migrate multi-terabyte data.
+  - **AWS Snowball Edge**: migrate multi-terabyte data. max size 80 TB.
   - ![snowball edge](img/snowball_edge.PNG)
 - **Read Replica**
   - **asynchronous**, continuous **read-only copy** of database. immutable. **RDS** max **five** read replicas.
@@ -490,7 +489,7 @@ aws sts get-caller-identity
 - **Relational Database Service (RDS)**
   - fully AWS managed, SQL database. you bring the data.
   - options: **Microsoft SQL Server, Oracle, MySQL, PostgreSQL, Aurora, MariaDB**.
-  - **Multi-AZ DB instance deployments**: synchronous copy data to another AZ. **high availability**.
+  - **Multi-AZ DB instance deployments**: **synchronous** copy data to another AZ. **high availability**.
     - <https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.MultiAZSingleStandby.html>
     - **failover**: RDS automatically provisions and maintains a **synchronous** standby replica in a different Availability Zone.
   - ![RDS high availability](img/rds_az.PNG)
@@ -555,16 +554,16 @@ aws sts get-caller-identity
 - **Disaster Recovery**
   - each option below is based on RPO/RTO and cost-effectiveness.
   - start simple: create backups. practice Game Day: run test to verify redundancy.
-  - ![disaster recovery options](img/disaster_recovery_options.PNG)
-  - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
-  - **highest RTO, highest cost-effective**.
-  - recover within a **day**.
-  - ![disaster recovery](img/disaster_recovery.PNG)
   - Anything that is not instant recovery is **active - passive**.
     1. Aws Backup(least op overhead) - RTO/RPO = hours.
     2. Pilot Light -RTO/RPO = hour.
     3. Warm Standby -RTO/RPO= minutes.
     4. Multi AZ option: **active - active**. instant.
+  - ![disaster recovery options](img/disaster_recovery_options.PNG)
+  - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
+  - **highest RTO, highest cost-effective**.
+  - recover within a **day**.
+  - ![disaster recovery](img/disaster_recovery.PNG)
   - **Pilot Light**: run secondary database as backup in another Region.
     - the most time consuming is restoring data. with data already in place, quickly restore infrastructure.
     - recover in an **hour**.
