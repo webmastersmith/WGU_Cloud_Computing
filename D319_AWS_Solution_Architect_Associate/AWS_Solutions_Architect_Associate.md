@@ -555,10 +555,10 @@ aws sts get-caller-identity
   - each option below is based on RPO/RTO and cost-effectiveness.
   - start simple: create backups. practice Game Day: run test to verify redundancy.
   - Anything that is not instant recovery is **active - passive**.
-    1. Aws Backup(least op overhead) - RTO/RPO = hours.
-    2. Pilot Light -RTO/RPO = hour.
-    3. Warm Standby -RTO/RPO= minutes.
-    4. Multi AZ option: **active - active**. instant.
+    1. Aws Backup(least op overhead) - RTO/RPO = **hours**. **active - passive**.
+    2. Pilot Light - RTO/RPO = **hour**. **active - passive**.
+    3. Warm Standby - RTO/RPO = **minutes**. **active - passive**.
+    4. Multi AZ option: RTO/RPO = **instant**. **active - active**.
   - ![disaster recovery options](img/disaster_recovery_options.PNG)
   - **Backup and Restore**: backup to S3. time consuming to transfer data from storage.
   - **highest RTO, highest cost-effective**.
@@ -778,7 +778,7 @@ aws sts get-caller-identity
   - ![nat gateway routing](img/nat_gateway_routing.PNG)
 - **Nat Instance**
   - <https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-comparison.html>
-  - same as NAT Gateway, not highly available throughput of instance type.
+  - same as NAT Gateway, throughput is same as instance type.
   - allow resources in a private subnet to communicate with destinations outside the virtual private cloud (VPC).
 - **Peering (VPC)**
   - **one-to-one** network connection between **two VPCs**. no other infrastructure needed.
