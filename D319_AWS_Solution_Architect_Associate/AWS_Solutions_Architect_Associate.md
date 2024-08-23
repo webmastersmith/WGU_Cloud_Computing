@@ -333,6 +333,9 @@ aws sts get-caller-identity
   - **AWS Certificate Manager**: create/manage **SSL** certs. -no extra cost.
   - **Resilient**: DDOS protection and DNS Route 53(distribute across Edge locations).
   - over 200 points-of-presence (PoP), edge locations and **edge caches**. (e.g. share S3 assets all over the world).
+  - **Encryption**: turn on **require users to use HTTPS** in transit.
+    - **Field-Level Encryption**: encryption at the edge. maintains encryption through entire application stack.
+      - the apps that need data, have credentials to decrypt.
   - ![cloudFront](img/cloud_front.PNG)
   - **Setup**: specify **origin server**, configure **distribution**.
   - ![cloudFront start](img/cloud_front_start.PNG)
@@ -1135,7 +1138,7 @@ aws sts get-caller-identity
   - **aws cli**: `aws s3 cp file.txt s3://BUCKET-NAME/file.txt`
   - **Multipart**: tool that splits data into smaller size. `> 100 MB`. network connectivity inconsistent.
   - **Transfer Acceleration**: uses CloudFront edge location, then AWS backbone.
-  - **Snowball**: **Petabytes** disk storage. physical device shipped to you.
+  - **Snowball**: **80 Terabytes** disk storage. physical device shipped to you.
   - **Snowmobile**: **Exabytes** disk storage. 18 wheeler shipping container picks up data.
 - **S3 versioning**
   - enabled through bucket properties.
