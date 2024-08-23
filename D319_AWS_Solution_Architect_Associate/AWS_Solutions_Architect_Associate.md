@@ -776,8 +776,8 @@ aws sts get-caller-identity
   - <https://aws.amazon.com/global-accelerator/>
   - network layer to improve performance to **global** audience by using **Endpoints** and AWS PrivateLink.
   - **Global Accelerator**: low-latency global load-balancing.
-    - Improves performance for a wide range of applications over **TCP or UDP** running in one or more AWS Regions.
-    - Good fit for **non-HTTP** use cases, such as **gaming (UDP)**, **IoT (MQTT)**, or **Voice over IP**.
+    - proxying **TCP or UDP** running in one or more AWS Regions.
+    - **non-HTTP** use cases, such as **gaming (UDP)**, **IoT (MQTT)**, or **Voice over IP**.
   - **CloudFront**: HTTP: website, media streaming, downloading, caching.
   - ![global accelerator](img/global_accelerator.PNG)
 - **NAT Gateway**
