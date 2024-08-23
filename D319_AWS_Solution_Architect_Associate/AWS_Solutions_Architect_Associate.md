@@ -700,6 +700,7 @@ aws sts get-caller-identity
   - collects operational data in the form of **logs**(log files), **metrics**(CPU usage...), and **events**(EventBridge).
   - create **alarms**. send **notifications**. (e.g. **monitor** infrastructure and send alerts to **Auto Scaling** or **SNS**).
   - visualize data through dashboard. can include data from on-prem. **unified view**.
+  - **Sharing Dashboard Views**: CloudWatch console add user email. complete sharing steps. Provide link.
   - **CloudWatch Logs**: monitor EC2 logs.
   - ![cloudWatch eventBridge](img/cloudWatch_eventBridge.PNG)
 - **CloudTrail (AWS)**
