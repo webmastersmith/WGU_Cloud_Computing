@@ -772,6 +772,14 @@ aws sts get-caller-identity
     - **enterprise or large organizations** or **multiple IT teams**. **medium-sized**, anticipate rapid growth.
     - **Governance** and **compliance standards** might require greater isolation.
   - ![multi-account](img/multi-account.PNG)
+- **Global Accelerator**
+  - <https://aws.amazon.com/global-accelerator/>
+  - network layer to improve performance to **global** audience by using **Endpoints** and AWS PrivateLink.
+  - **Global Accelerator**: low-latency global load-balancing.
+    - Improves performance for a wide range of applications over **TCP or UDP** running in one or more AWS Regions.
+    - Good fit for **non-HTTP** use cases, such as **gaming (UDP)**, **IoT (MQTT)**, or **Voice over IP**.
+  - **CloudFront**: HTTP: website, media streaming, downloading, caching.
+  - ![global accelerator](img/global_accelerator.PNG)
 - **NAT Gateway**
   - enable **private subnets outbound communication** with Internet Gateway. **no inbound request**.
   - must be placed in **public subnet**.
