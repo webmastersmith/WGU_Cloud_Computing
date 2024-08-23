@@ -842,6 +842,7 @@ aws sts get-caller-identity
   - ![storage gateway](img/storage_gateway.PNG)
 - **Subnet**
   - segment of VPC ip address range. **not isolation boundaries**.
+  - **All** private subnets within a VPC can **communicate** with each other by **default**. use the **Private IP address** to connect.
   - **subset** of CIDR(classless inter domain routing, `/28`) block. **cannot overlap**
   - subnet **mapped** to **one Availability Zone**.
   - AWS **reserves five (first four, then last ip) ip addresses** in each subnet.
@@ -1110,6 +1111,13 @@ aws sts get-caller-identity
   - **compliance mode**: a protected object version can't be overwritten or deleted by any user, including the root user in your AWS account.
   - **governance mode**: users can't overwrite or delete an object version or alter its lock settings unless they have special permissions.
   - S3 **versioning** must be **enabled**.
+- **S3 Event Notification**
+  - <https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html>
+  - receive notifications when certain events happen in your S3 bucket.
+  - **enable notifications**:
+    - add a notification configuration that identifies the events that you want Amazon S3 to publish.
+    - identify the destinations: **SNS, SQS, Lambda, EventBridge**.
+    - S3 provides an API for you to manage this subresource.
 - **S3 Object Access**
   - **private** and **protected** by **default**.
   - **Block Public Access**: lock bucket and objects from being accessed.
@@ -1125,13 +1133,6 @@ aws sts get-caller-identity
   - ![S3 access](img/s3_access.PNG)
   - **Best Practices**
     - give least privilege access. (e.g. create **presigned URL** to object that **expires in 24 hours**).
-- **S3 Event Notification**
-  - <https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html>
-  - receive notifications when certain events happen in your S3 bucket.
-  - **enable notifications**:
-    - add a notification configuration that identifies the events that you want Amazon S3 to publish.
-    - identify the destinations: **SNS, SQS, Lambda, EventBridge**.
-    - S3 provides an API for you to manage this subresource.
 - **S3 Object Deletion**
   - deletions are hidden but not removed. to remove you must delete again.
 - **S3 Pricing**
