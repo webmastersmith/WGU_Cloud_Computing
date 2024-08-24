@@ -1,4 +1,4 @@
-# D320 Managing Cloud Security -Certified Cloud Security Professional
+# D320 Managing Cloud Security CCSP (ISC)2 Certified Cloud Security Professional
 
 ## Tips
 
@@ -13,3 +13,7 @@
   - <https://www.reddit.com/r/WGU/comments/uo9eie/c838_managing_cloud_security_passed/>
   - <https://www.reddit.com/r/WGU/comments/wdnup8/c838_managing_cloud_security_passed/>
   - <https://www.reddit.com/r/WGU/comments/lp3zpi/passed_c838_managing_cloud_security/>
+- **WGU Chatter**
+  - paid special attention to Chapter 4 which focused on Security aspects.
+  - pros and cons of the different cloud types; Private, Public, Community, etc. Be familiar with what is offered through IaaS, PaaS, etc, and what risks are involved with each type.
+  - different laws that pertain to the cloud.
