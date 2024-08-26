@@ -2,18 +2,321 @@
 
 ## Tips
 
-- <https://www.reddit.com/r/CCSP/comments/1agcp0j/passed_lessons_learned/>
-- <https://www.reddit.com/r/WGU/comments/yv1qto/d320_c838_passed_in_5_days/>
-  - I hate reading course material. I just do. I end up zoning out. Quizlet on 'Learning' mode is my bread and butter. I'll watch videos on concepts I need clarification on, but I rely almost entirely on Quizlet. Though the Quizlet set created by Brian MacFarlane is long, it has questions from the exams in it verbatim. I firmly believe that if you review the 4 sets below, you'll be ready for the exam.
-  - <https://quizlet.com/434235257/wgu-course-c838-managing-cloud-security-quizlet-by-brian-macfarlane-flash-cards/>
-  - <https://quizlet.com/743338474/d320-c838-laws-regulations-and-organizations-flash-cards/>
-  - <https://quizlet.com/705828069/c838-cloud-data-lifecycle-flash-cards/>
-  - <https://quizlet.com/516641978/6-steps-for-tokenization-flash-cards/>
-  - Other awesome Reddit posts with a variety of learning material (books, video courses, tips, etc) depending on how you like to prepare:
-  - <https://www.reddit.com/r/WGU/comments/uo9eie/c838_managing_cloud_security_passed/>
-  - <https://www.reddit.com/r/WGU/comments/wdnup8/c838_managing_cloud_security_passed/>
-  - <https://www.reddit.com/r/WGU/comments/lp3zpi/passed_c838_managing_cloud_security/>
+- **Reddit**
+  - <https://www.reddit.com/r/CCSP/comments/1agcp0j/passed_lessons_learned/>
+  - <https://www.reddit.com/r/WGU/comments/yv1qto/d320_c838_passed_in_5_days/>
+    - I hate reading course material. I just do. I end up zoning out. Quizlet on 'Learning' mode is my bread and butter. I'll watch videos on concepts I need clarification on, but I rely almost entirely on Quizlet. Though the Quizlet set created by Brian MacFarlane is long, it has questions from the exams in it verbatim. I firmly believe that if you review the 4 sets below, you'll be ready for the exam.
+    - <https://quizlet.com/434235257/wgu-course-c838-managing-cloud-security-quizlet-by-brian-macfarlane-flash-cards/>
+    - <https://quizlet.com/743338474/d320-c838-laws-regulations-and-organizations-flash-cards/>
+    - <https://quizlet.com/705828069/c838-cloud-data-lifecycle-flash-cards/>
+    - <https://quizlet.com/516641978/6-steps-for-tokenization-flash-cards/>
+    - Other awesome Reddit posts with a variety of learning material (books, video courses, tips, etc) depending on how you like to prepare:
+    - <https://www.reddit.com/r/WGU/comments/uo9eie/c838_managing_cloud_security_passed/>
+    - <https://www.reddit.com/r/WGU/comments/wdnup8/c838_managing_cloud_security_passed/>
+    - <https://www.reddit.com/r/WGU/comments/lp3zpi/passed_c838_managing_cloud_security/>
 - **WGU Chatter**
   - paid special attention to Chapter 4 which focused on Security aspects.
   - pros and cons of the different cloud types; Private, Public, Community, etc. Be familiar with what is offered through IaaS, PaaS, etc, and what risks are involved with each type.
   - different laws that pertain to the cloud.
+
+## Key Terms
+
+- **Anonymization**
+  - is a technique used to **obscure data** in the cloud.
+  - no PII exposed.
+- **American Institute of Certified Public Accountants (AICPA)**
+  - represents the **accounting** and **audit process**.
+- **API**
+  - used to allow other applications to **consume web services** from the application.
+- **Application Normative Frameworks (ANF)**
+  - subset of the ONF for each specific application.
+- **Audits: Internal, External, Audit Prep**
+  - **Internal Audit**: performed by employees of the organization
+  - **External Audit**: performed by auditors outside of the organization
+  - **Audit Preparation**: parameters that are discussed and negotiated prior to the start of the audit
+- **Black Box Testing (Dynamic Application Security Testing (DAST))**
+  - testing the program functions, in **runtime**.
+- **Block storage**
+  - a blank **volume** that the customer or user can put anything into. More flexible and higher performance but requires a **greater amount of administration**.
+- **Business Impact Analysis (BIA)**
+  - **detailed analysis and assessment** of the priorities given to each **asset** and process within the organization.
+  - interview managers, users, customers. Inventory assets. review financial, insurance, data, and regulatory mandates.
+  - Determine the value of the assets that are protected to know how much time, money, and effort to expend to protect them.
+  - identify critical paths and single point failures.
+- **CDN (Content Delivery Network)**
+  - form of data caching, for copies of data commonly requested by users.
+- **CIA**
+  - three main goals of cybersecurity: Confidentiality, Integrity, and Availability.
+  - **Confidentiality**: protect assets(data). on those authorized can access.
+  - **Integrity**: protect against unauthorized modification.
+  - **Availability**: available for use when needed(without disruption).
+- **Cloud Access Security Broker (CASB)**
+  - managed **identity and access management** services.
+  - integrate security across Cloud services. (e.g. who may access data).
+- **Cloud Bursting**
+  - routing overflow web traffic from on-prem to cloud during heavy use.
+  - (e.g. heavy website usage during holidays).
+- **Cloud Customer**
+  - always ultimately **legally liable for any loss of data**.
+  - This is true even if the cloud provider demonstrates negligence or malice.
+- **Cloud Deployment Models: Private, Public, Hybrid, Mulit-cloud, and Community Cloud**
+  - **Private**: **dedicated** resources. single tenant. do not share compute resources.
+  - **Public**: multitenancy model. **share resources** for cost savings.
+  - **Hybrid**: combination of **Public and Private Cloud** resources. (e.g. on-prem and Cloud).
+  - **Multi-Cloud**: resources from **two or more Cloud providers**.
+  - **Community Cloud**: private Cloud **shared** among **organizations** with common interest. (e.g. colleges sharing resources).
+- **Cloud Governance**
+  - single organizations **centralized control** of individual business units(cloud services).
+  - ensure organization is in compliance with security, legal, business.
+- **Cloud Partner**
+  - third party service that interacts with Cloud services.
+- **Content-based discovery**
+  - **discovery tools** can be used to **discover data** by delving into the **content** of **datasets** _without_ **labels** or **metadata** assigned.
+- **Cloud-Secure Software Deployment Lifecycle (SDLC): Defining, Designing, Testing, Secure Operations, Disposal**
+  - **Defining**: Focused on identifying the business requirements of the application, such as accounting, database, or customer relationship management
+  - **Designing**: Begin to develop user stories (what the user will want to accomplish, what interface will look like and whether it will require the use or development of any APIs)
+  - **Development**: Where the code is written.
+  - **Testing**: Activities such as initial penetration testing and vulnerability scanning against the application is performed. Will use both dynamic and static testing or DSAT (Dynamic Application Security Testing) or SAST (Static Application Security Testing).
+  - **Secure Operations**: After testing, the application is deemed secure.
+  - **Disposal**: Once it’s reached the end of life or has been replaced with a newer or different application.
+- **Community Cloud**
+  - **resources shared** and dispersed among an **affinity group** (online gaming community).
+- **Cross Site Scripting (XSS)**
+  - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
+- **Cross Site Request Forgery (CSRF)**
+  - manipulates a **logged-on user’s browser** to send a **forged HTTP request** along with **cookies** to generate a request that a vulnerable **application thinks is legitimate**.
+- **CSA STAR program**
+  - initiated in **2011**, was created in response to market demand for a **single consistent framework for evaluating cloud providers**.
+- **Crypto Keys Best Practice**
+  - Recommended **NOT** to **store crypto** keys with the **cloud provider**.
+  - use a **CASB** (Cloud Access Security Broker) or other means of **key management**.
+- **Defense in depth**
+  - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
+  - Includes a blend of administrative, logical, technical, and physical controls.
+- **Data**
+  - company **asset**. legally liable for data loss.
+  - Data at rest should be **encrypted**.
+- **Data lifecycle**
+  1. **Create**: data owner performs **categorization** and **classification**.
+  2. **Store**:
+  3. **Use**:
+  4. **Share**:
+  5. **Archive**:
+  6. **Destroy**:
+- **Data owner**
+  - organization that has **collected** or **created** the **data**.
+- **Data custodian**
+  - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
+- **Data processor**
+  - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
+- **Data discovery**
+  - term that can be used to refer to several kinds of tasks:
+    - it might mean the organization is attempting to **create** an initial **inventory of data**.
+    - that the organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**).
+- **DLP (Data Leak Prevention)**
+  - tools used to **monitor data egress** that leaves production environment.
+- **File-based storage storage (File-level or File-based)**
+  - **data** stored and displayed just as with a **file structure** in the traditional environment, as files and folders.
+- **Gap Analysis**
+  - Identifies and reports on any risks that may affect the AIC of key information assets.
+- **Hashing**
+  - using a one
+- **Homomorphic encryption**
+  - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
+- **Honeypot**
+  - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data)
+- **IAAS**
+  - Cloud customer has the most responsibility and authority.
+  - Cloud provider is only liable for the underlying hardware.
+- **IaaS Risk**
+  - Personnel Threats
+  - External Threats
+  - Lack of Specific Skillsets
+- **Injection**
+  - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
+- **IPSec or TLS (1.2 or higher)**
+  - Preferred(secured) upload method to the cloud VPN.
+- **IRM (Information Rights Management)**
+  - the use of specific controls that act in concert with or in addition to the organization’s other access control mechanisms to protect certain types of assets, usually at the file level.
+- **Label-based discovery**
+  - labels **created** by the **data owner** greatly aid any **discovery**.
+- **Masking**
+  - **hiding the data** with useless characters.
+- **Metadata-based discovery**
+  - data about data.
+  - metadata is a listing of **traits** and characteristics about specific **data elements** and **sets**.
+- **Nonrepudiation**
+  - no party to a **transaction** can later **claim** that **they did not take part**.
+- **Object-based storage**
+  - **data** stored as **objects**, not files or blocks. **Includes metadata** as well as the actual production content.
+- **Organization Normative Framework (ONF)**
+  - framework for all components of application security controls and best practices.
+- **PAAS**
+  - Cloud customer still loses more control because the cloud provider is responsible for installing, maintaining, and administering the OS as well as underlying hardware.
+- **PaaS Risk**
+  - Interoperability Issues
+  - Persistent Backdoors
+  - Virtualization
+  - Resource Sharing
+- **Patent**
+  - grants exclusivity in the production, sale, and importation of the patented property
+- **PKI (Public Key Infrastructure)**
+  - a framework of programs, procedures, communication protocols, and public key cryptography that enables a diverse group of individuals to communicate securely
+- **Portability**
+  - the general level of **ease or difficulty when transferring data** out of a providers data center.
+- **Private Cloud**
+  - **distributed computing environment** with only **one customer**.
+- **Quantitative**
+  - Risk assessment that uses specific numerical values.
+- **Qualitative**
+  - Risk assessment that uses nonnumerical categories that are relative in nature, such as high, medium, and low.
+- **Randomization**
+  - replacement of data with random characters.
+- **Regulators**
+  - have authority over Cloud ecosystem.
+- **Resource Pooling**
+  - sharing resources among many clients and resources can be reassigned as needed.
+- **Risk appetite**
+  - level, amount, or type of risk that the organization finds acceptable.
+- **Residual risk**
+  - The leftover risk left after applying countermeasures and controls.
+- **SAAS**
+  - Cloud customer loses all control of the environment. Cloud provider is responsible for all of the underlying hardware and software.
+- **SaaS Risk**
+  - Proprietary Formats
+  - Virtualization
+  - Web Application Security
+- **Secure Socket Layer (SSL)**
+  - used to encrypt data transmissions between two endpoints. Deprecated in 2015 and replaced with TLS.
+- **Shuffling**
+  - using different entries from within the same data set to represent the data.
+- **SIEM (Security Information and Event Management)**
+  - ?
+- **SOC Report**
+  - part of the SSSAE reporting format created by the **AICPA**. Designed for compliance with the **Sarbanes-Oxley Act**.
+- **SOC Report Types**
+  - **SOC 1**
+    - Strictly for auditing the financial reporting instruments of a corporation
+  - **SOC 2**
+    - Intended to report audits of any controls on an organization’s security, availability, processing integrity, confidentiality, and privacy.
+    - **Type 1**
+      - Reviews the design of controls, not how they are implemented or maintained.
+    - **Type 2**
+      - Used for getting a true assessment of an organization’s security posture
+  - **SOC 3**
+    - Designed to be shared with the public.
+    - Seal of approval. Does not contain any actual data about the security controls of the audit target.
+- **SPOF**
+  - Single Point of Failure. Bad practice for high availability and reliability.
+- **Structured data**
+  - data that is **sorted** according to **meaningful**, discrete types and **attributes**.
+- **Threat Modeling**
+  - **STRIDE**: Created by Microsoft. Describes threats by their attributes.
+  - S (Spoofing)
+  - T (Tampering)
+  - R (Repudiation)
+  - I (Information Disclosure)
+  - D (Denial of Service)
+  - E (Elevation of Privilege)
+- **Trademarks**
+  - Applied to specific **words and graphics** (representation of an organization (it’s brand)).
+  - Trademarks **registered** with the **USPTO** can use the ® symbol.
+- **Transference**
+  - one of the main ways organizations address risks. (e.g. pay for insurance to transfer risk to them).
+- **Transparent encryption**
+  - when the encryption key is stored on the same data store as the data (database encryption key is stored in the database itself)
+- **Transport Layer Security (TLS)**
+  - Protocol designed to ensure privacy when communicating between applications.
+- **Unstructured data**
+  - data with no defined labels or structure.
+  - (e.g. content of various emails in a user’s sent folder).
+- **Uptime Institute (UI)**
+  - **Tier 1**
+    - UPS
+    - Sufficient Cooling
+    - Power Generator w. minimum 12hours fuel
+    - WILL CAUSE DOWNTIME
+  - **Tier 2**
+    - Critical operations do not have to be interrupted for scheduled replacement or downtime
+    - MAY CAUSE DOWNTIME
+  - **Tier 3**
+    - Dual Power Supplies for all IT Systems
+    - Can continue with a single component or power element
+  - **Tier 4**
+    - Redundancy of both IT and electrical
+- **Vendor Lock-In**
+  - when a provider uses **proprietary data format** or **medium** to store information and the customer may not be able to move their data to another provider.
+- **Vendor Lock-Out**
+  - when the cloud **provider goes out of business**, is acquired by another company, or **ceases operation** for any reason. The concern is whether the customer can still readily access and recover their data.
+- **Virtualization**
+  - use underlying hardware(memory, storage, compute) to wherever it's needed.
+- **VM Escape**
+  - attacker is able to break out of the virtualized guest operating system and access processor or memory.
+- **VM Sprawl**
+  - unused and abandoned VMs on the network. not properly maintained. easy to target for vulnerabilities.
+- **Vulnerability Assessment**
+  - scan of the network in order to detect known vulnerabilities
+- **Volume Encryption**
+  - Only encrypts a partition on a hard drive instead of the whole disk
+- **White Box Testing (Static Application Security Testing (SAST))**
+  - reviewing the **source code**.
+- **Whole Instance Encryption**
+  - whole-disk encryption.
+- **Zero-Day Vulnerability**
+  - **Unknown vulnerability** that has **yet been found** and a patch released.
+
+## Laws
+
+- **Asia-Pacific Economic Cooperation (APEC) Privacy Framework**
+- **Australian Privacy Act of 1988**
+- **Canada’s Personal Information Protection and Electronic Document Act (PIPEDA)**
+- **Copyright**
+  - the legal **protection** for expressions of **ideas** (does not cover ideas, specific words, slogans, recipes, or formulae).
+- **EU General Data Protection Regulation (GDPR)**
+  - most significant, powerful personal privacy law in the world. Describes the appropriate handling of personal and private information of all EU citizens.
+- **DMCA (Digital Millennium Copyright Act)**
+  - created to provide additional **protections** to **creative works in digital formats**.
+- **ISO 17789**
+  - common **terminology** framework for **roles** and **responsibilities**.
+- **ISO 27001**
+  - the most well-recognized security program standard globally.
+- **ISO 27017**
+  - cloud-specific security controls.
+- **ISO/IEC 27017:2015**
+  - set of standards regarding the guidelines of information security controls applicable to the provision and use of cloud services and cloud service customers.
+- **ISO/IEC 27034 Standards for Secure Application Development**
+  - Provides an overview of application security.
+- **ISO 31000:2018**
+  - is an international standard that focuses on **designing, implementing, and reviewing risk management processes** and practices ions in the United States.
+  - specifically focuses on design implementation and management.
+- **NIST 800-92**
+  - log management.
+- **NIST SP 800**
+  - is the Guide for **Implementing** the **Risk Management Framework (RMF)**.
+- **US Laws**
+  - **Electronic Communications Privacy Act (ECPA)**:
+  - **Graham-Leach-Bliley Act (GLBA)**: allow banks to merge and own insurance companies
+  - **Sarbanes-Oxley Act (SOX)**: increase transparency into publicly traded corporations’ financial activities
+  - **HIPPA (1996)**: protect patient records and data (ePHI)
+  - **FERPA**: prevent academic institutions from sharing student data other than parents or student
+  - **DMCA**: protect owned data on the internet
+  - **CLOUD Act**: Allows US law enforcement and courts to compel American companies to disclose data stored in foreign data centers
+  - **FedRAMP**: US federal program that mandates a standardized approach to security assessments, authorization,
+
+## Notes
+
+- Critique falls under the exceptions category for “fair-use” copyrighted material
+- **Industry Standard 5 9’s 99.999% uptime**.
+- New dependencies is a potential emergent business impact analysis (BIA) concern
+- Secure Logical Framework is a part of the operating requirements.
+- Initial training is a security training delivery category
+- and continuous monitoring of cloud products and services.
+- **service provider**: is a component of the “Hub and Spoke” network design model.
+- **GDRP Seven principals**
+  - Notice
+  - Choice
+  - Purpose
+  - Access
+  - Integrity
+  - Security
+  - Enforcement
