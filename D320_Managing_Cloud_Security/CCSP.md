@@ -47,6 +47,7 @@
   - interview managers, users, customers. Inventory assets. review financial, insurance, data, and regulatory mandates.
   - Determine the value of the assets that are protected to know how much time, money, and effort to expend to protect them.
   - identify critical paths and single point failures.
+  - **New dependencies** is a potential emergent business impact analysis (BIA) concern.
 - **CDN (Content Delivery Network)**
   - form of data caching, for copies of data commonly requested by users.
 - **CIA**
@@ -230,19 +231,21 @@
   - collect, manage, analyze, display log data.
   - centralize log data. advanced trend detection(slow attacks).
   - GUI, automated alerts.
-- **SOC Report**
-  - part of the SSSAE reporting format created by the **AICPA**. Designed for compliance with the **Sarbanes-Oxley Act**.
+- **SOC Report (Service Organization Reports)**
+  - part of the SSSAE reporting format created by the **AICPA**. Ensure compliance with the **Sarbanes-Oxley Act (SOX -govern publicly traded corporations)**.
+  - Cloud providers hire third-parties to audit infrastructure. The results are published as SOC reports.
 - **SOC Report Types**
   - **SOC 1**
-    - Strictly for auditing the financial reporting instruments of a corporation
+    - Strictly for **auditing** the **financial reporting** instruments of a corporation.
   - **SOC 2**
-    - Intended to report audits of any controls on an organization’s security, availability, processing integrity, confidentiality, and privacy.
+    - Intended to report **audits** of any controls on an organization’s **security, availability, processing integrity, confidentiality, and privacy**.
+    - security professionals most common viewed report.
     - **Type 1**
-      - Reviews the design of controls, not how they are implemented or maintained.
+      - Reviews the **design of controls**, not how they are implemented or maintained.
     - **Type 2**
-      - Used for getting a true assessment of an organization’s security posture
+      - Used for getting a true assessment of an **organization’s security posture**.
   - **SOC 3**
-    - Designed to be shared with the public.
+    - Designed to be shared with the public. (e.g. Organization passed security audit).
     - Seal of approval. Does not contain any actual data about the security controls of the audit target.
 - **SPOF**
   - Single Point of Failure. Bad practice for high availability and reliability.
@@ -374,7 +377,6 @@
 
 - Critique falls under the exceptions category for “fair-use” copyrighted material
 - **Industry Standard 5 9’s 99.999% uptime**.
-- New dependencies is a potential emergent business impact analysis (BIA) concern
 - Secure Logical Framework is a part of the operating requirements.
 - Initial training is a security training delivery category
 - and continuous monitoring of cloud products and services.
