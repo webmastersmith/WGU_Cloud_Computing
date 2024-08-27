@@ -110,12 +110,12 @@
   - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
   - (e.g. organization is mining it's data for trends and relations).
 - **Data lifecycle**
-  1. **Create**: data owner performs **categorization** and **classification**. assigns rights to use.
-  2. **Store**:
-  3. **Use**:
-  4. **Share**:
-  5. **Archive**:
-  6. **Destroy**:
+  1. **Create**: on-prem and Cloud. **encrypt** before **upload** or upon **creation** to Cloud.
+  2. **Store**: immediate after data creation, data owner performs **categorization** and **classification**. assigns **access rights**.
+  3. **Use**: secure transit(**HTTPS, SSL/TLS**). consume, modify data.
+  4. **Share**: understanding **legal requirements** of sharing data across geographies.
+  5. **Archive**: data security over **long term storage** and **location**.
+  6. **Destroy**: **sanitize media**. permanent loss. **Cloud** needs **contractual destroy agreements**.
 - **Data Label**
   - indicates who data owner is. added as metadata.
   - information about data lifecycle.
@@ -277,10 +277,10 @@
   - attacker is able to break out of the virtualized guest operating system and access processor or memory.
 - **VM Sprawl**
   - unused and abandoned VMs on the network. not properly maintained. easy to target for vulnerabilities.
+- **Volume Encryption**
+  - Only encrypts a partition on a hard drive instead of the whole disk.
 - **Vulnerability Assessment**
   - scan of the network in order to detect known vulnerabilities
-- **Volume Encryption**
-  - Only encrypts a partition on a hard drive instead of the whole disk
 - **White Box Testing (Static Application Security Testing (SAST))**
   - reviewing the **source code**.
 - **Whole Instance Encryption**
@@ -331,7 +331,7 @@
   - is an international standard that focuses on **designing, implementing, and reviewing risk management processes** and practices ions in the United States.
   - specifically focuses on design implementation and management.
 - **Legal Hold**
-  - data is collected and preserved.
+  - data is collected and preserved. overrides organizations data retention policy.
 - **NIST 800-92**
   - log management.
 - **NIST SP 800**
