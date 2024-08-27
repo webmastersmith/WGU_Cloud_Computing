@@ -97,12 +97,18 @@
 - **Crypto Keys Best Practice**
   - Recommended **NOT** to **store crypto** keys with the **cloud provider**.
   - use a **CASB** (Cloud Access Security Broker) or other means of **key management**.
-- **Defense in depth**
-  - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
-  - Includes a blend of administrative, logical, technical, and physical controls.
 - **Data**
-  - company **asset**. legally liable for data loss.
+  - company **asset**. **legally liable for data loss**.
   - Data at rest should be **encrypted**.
+- **Data Classification**
+  - labeling data as: **sensitive**, **top secret**...
+- **Data custodian**
+  - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
+- **Data discovery**
+  - determine and accurately inventory data.
+  - (e.g. organization is attempting to **create** an initial **inventory of data**).
+  - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
+  - (e.g. organization is mining it's data for trends and relations).
 - **Data lifecycle**
   1. **Create**: data owner performs **categorization** and **classification**. assigns rights to use.
   2. **Store**:
@@ -110,24 +116,22 @@
   4. **Share**:
   5. **Archive**:
   6. **Destroy**:
-- **Data owner**
-  - organization that has **collected** or **created** the **data**.
-  - legally responsible for all data they own(even if created on Cloud platform).
-- **Data custodian**
-  - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
-- **Data processor**
-  - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
-- **Data discovery**
-  - determine and accurately inventory data.
-  - (e.g. organization is attempting to **create** an initial **inventory of data**).
-  - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
-  - (e.g. organization is mining it's data for trends and relations).
 - **Data Label**
   - indicates who data owner is. added as metadata.
   - information about data lifecycle.
 - **Data Mapping**
   - normalizing and translating data into meaningful information.
   - when classifying data, mark how sensitive it is.
+- **Data owner**
+  - organization that has **collected** or **created** the **data**.
+  - legally responsible for all data they own(even if created on Cloud platform).
+- **Data processor**
+  - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
+- **Data Rights**
+  - actions user can take on data. CRUD.
+- **Defense in depth**
+  - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
+  - Includes a blend of administrative, logical, technical, and physical controls.
 - **DLP (Data Leak Prevention)**
   - tools used to **monitor data egress** that leaves production environment.
 - **Edge and Fog Computing**
@@ -206,7 +210,7 @@
 - **Secure Socket Layer (SSL)**
   - used to encrypt data transmissions between two endpoints. Deprecated in 2015 and replaced with TLS.
 - **Semi-Structured Data**
-  - uses tags to structure data. **XML** is an example.
+  - uses tags to structure data. **XML** and **JSON** is an example.
 - **Shuffling**
   - using different entries from within the same data set to represent the data.
 - **SIEM (Security Information and Event Management)**
@@ -293,8 +297,11 @@
   - the legal **protection** for expressions of **ideas** (does not cover ideas, specific words, slogans, recipes, or formulae).
 - **DMCA (Digital Millennium Copyright Act)**
   - created to provide additional **protections** to **creative works in digital formats**.
+- **DRM (Digital Rights Management)**
+  - control access to digital data. who can modify, share, access.
 - **GDPR (EU General Data Protection Regulation)**
   - most significant, powerful personal privacy law in the world. Describes the appropriate handling of personal and private information of all EU citizens.
+  - where and how you store PII data.
 - **GDRP Seven principals (European Union's General Data Protection Regulation)**
   - **Notice**:
   - **Choice**:
@@ -307,6 +314,9 @@
   - ?
 - **HIPAA (Health Insurance Portability and Accountability Act)**
   - ?
+- **IRM (Information Rights Management)**
+  - applying digital rights management tools and techniques to files.
+  - focus on protecting the information contained in document than who can access it.
 - **ISO 17789**
   - common **terminology** framework for **roles** and **responsibilities**.
 - **ISO 27001**
@@ -320,6 +330,8 @@
 - **ISO 31000:2018**
   - is an international standard that focuses on **designing, implementing, and reviewing risk management processes** and practices ions in the United States.
   - specifically focuses on design implementation and management.
+- **Legal Hold**
+  - data is collected and preserved.
 - **NIST 800-92**
   - log management.
 - **NIST SP 800**
