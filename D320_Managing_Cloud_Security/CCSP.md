@@ -36,7 +36,9 @@
   - **Audit Preparation**: parameters that are discussed and negotiated prior to the start of the audit
 - **Black Box Testing (Dynamic Application Security Testing (DAST))**
   - testing the program functions, in **runtime**.
-- **Block storage**
+- **Block Chain**
+  - distributed immutable ledger. (e.g. cryptocurrency Bitcoin).
+- **Block Storage**
   - a blank **volume** that the customer or user can put anything into. More flexible and higher performance but requires a **greater amount of administration**.
 - **Business Impact Analysis (BIA)**
   - **detailed analysis and assessment** of the priorities given to each **asset** and process within the organization.
@@ -79,8 +81,13 @@
   - **Testing**: Activities such as initial penetration testing and vulnerability scanning against the application is performed. Will use both dynamic and static testing or DSAT (Dynamic Application Security Testing) or SAST (Static Application Security Testing).
   - **Secure Operations**: After testing, the application is deemed secure.
   - **Disposal**: Once it’s reached the end of life or has been replaced with a newer or different application.
+- **Content-Based Discovery**
+  - using discovery tools to locate and identify data without labels or metadata.
 - **Community Cloud**
   - **resources shared** and dispersed among an **affinity group** (online gaming community).
+- **Confidential Computing**
+  - data remains encrypted through it's entire lifecycle(at **rest**, in **transit**, in **use**(memory)).
+  - TEEs trusted execution environment. data in **use**.
 - **Cross Site Scripting (XSS)**
   - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
 - **Cross Site Request Forgery (CSRF)**
@@ -97,7 +104,7 @@
   - company **asset**. legally liable for data loss.
   - Data at rest should be **encrypted**.
 - **Data lifecycle**
-  1. **Create**: data owner performs **categorization** and **classification**.
+  1. **Create**: data owner performs **categorization** and **classification**. assigns rights to use.
   2. **Store**:
   3. **Use**:
   4. **Share**:
@@ -105,16 +112,27 @@
   6. **Destroy**:
 - **Data owner**
   - organization that has **collected** or **created** the **data**.
+  - legally responsible for all data they own(even if created on Cloud platform).
 - **Data custodian**
   - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
 - **Data processor**
   - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
 - **Data discovery**
-  - term that can be used to refer to several kinds of tasks:
-    - it might mean the organization is attempting to **create** an initial **inventory of data**.
-    - that the organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**).
+  - determine and accurately inventory data.
+  - (e.g. organization is attempting to **create** an initial **inventory of data**).
+  - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
+  - (e.g. organization is mining it's data for trends and relations).
+- **Data Label**
+  - indicates who data owner is. added as metadata.
+  - information about data lifecycle.
+- **Data Mapping**
+  - normalizing and translating data into meaningful information.
+  - when classifying data, mark how sensitive it is.
 - **DLP (Data Leak Prevention)**
   - tools used to **monitor data egress** that leaves production environment.
+- **Edge and Fog Computing**
+  - **Edge**: placing servers close to the people. edge of network. reduce latency.
+  - **Fog**: IoT. placing servers close to the sensors. do the computation and return results to data center.
 - **File-based storage storage (File-level or File-based)**
   - **data** stored and displayed just as with a **file structure** in the traditional environment, as files and folders.
 - **Gap Analysis**
@@ -125,7 +143,7 @@
   - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
 - **Honeypot**
   - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data)
-- **IAAS**
+- **IaaS**
   - Cloud customer has the most responsibility and authority.
   - Cloud provider is only liable for the underlying hardware.
 - **IaaS Risk**
@@ -140,6 +158,7 @@
   - the use of specific controls that act in concert with or in addition to the organization’s other access control mechanisms to protect certain types of assets, usually at the file level.
 - **Label-based discovery**
   - labels **created** by the **data owner** greatly aid any **discovery**.
+  - helps determine what data is. easier to sort and group.
 - **Masking**
   - **hiding the data** with useless characters.
 - **Metadata-based discovery**
@@ -151,15 +170,13 @@
   - **data** stored as **objects**, not files or blocks. **Includes metadata** as well as the actual production content.
 - **Organization Normative Framework (ONF)**
   - framework for all components of application security controls and best practices.
-- **PAAS**
+- **PaaS**
   - Cloud customer still loses more control because the cloud provider is responsible for installing, maintaining, and administering the OS as well as underlying hardware.
 - **PaaS Risk**
   - Interoperability Issues
   - Persistent Backdoors
   - Virtualization
   - Resource Sharing
-- **Patent**
-  - grants exclusivity in the production, sale, and importation of the patented property
 - **PKI (Public Key Infrastructure)**
   - a framework of programs, procedures, communication protocols, and public key cryptography that enables a diverse group of individuals to communicate securely
 - **Portability**
@@ -188,6 +205,8 @@
   - Web Application Security
 - **Secure Socket Layer (SSL)**
   - used to encrypt data transmissions between two endpoints. Deprecated in 2015 and replaced with TLS.
+- **Semi-Structured Data**
+  - uses tags to structure data. **XML** is an example.
 - **Shuffling**
   - using different entries from within the same data set to represent the data.
 - **SIEM (Security Information and Event Management)**
@@ -272,10 +291,22 @@
 - **Canada’s Personal Information Protection and Electronic Document Act (PIPEDA)**
 - **Copyright**
   - the legal **protection** for expressions of **ideas** (does not cover ideas, specific words, slogans, recipes, or formulae).
-- **EU General Data Protection Regulation (GDPR)**
-  - most significant, powerful personal privacy law in the world. Describes the appropriate handling of personal and private information of all EU citizens.
 - **DMCA (Digital Millennium Copyright Act)**
   - created to provide additional **protections** to **creative works in digital formats**.
+- **GDPR (EU General Data Protection Regulation)**
+  - most significant, powerful personal privacy law in the world. Describes the appropriate handling of personal and private information of all EU citizens.
+- **GDRP Seven principals (European Union's General Data Protection Regulation)**
+  - **Notice**:
+  - **Choice**:
+  - **Purpose**:
+  - **Access**:
+  - **Integrity**:
+  - **Security**:
+  - **Enforcement**:
+- **Gram-Leach-Bliley Act (GLBA)**
+  - ?
+- **HIPAA (Health Insurance Portability and Accountability Act)**
+  - ?
 - **ISO 17789**
   - common **terminology** framework for **roles** and **responsibilities**.
 - **ISO 27001**
@@ -293,6 +324,12 @@
   - log management.
 - **NIST SP 800**
   - is the Guide for **Implementing** the **Risk Management Framework (RMF)**.
+- **Patent**
+  - grants exclusivity in the production, sale, and importation of the patented property
+- **PCI DSS (Payment Card Industry Data Security Standard)**
+  - laws governing the handling of PII and credit information.
+- **Sarbanes-Oxley (SOX)**
+  - ?
 - **US Laws**
   - **Electronic Communications Privacy Act (ECPA)**:
   - **Graham-Leach-Bliley Act (GLBA)**: allow banks to merge and own insurance companies
@@ -312,11 +349,3 @@
 - Initial training is a security training delivery category
 - and continuous monitoring of cloud products and services.
 - **service provider**: is a component of the “Hub and Spoke” network design model.
-- **GDRP Seven principals**
-  - Notice
-  - Choice
-  - Purpose
-  - Access
-  - Integrity
-  - Security
-  - Enforcement
