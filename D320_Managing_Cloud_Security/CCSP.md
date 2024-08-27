@@ -18,6 +18,8 @@
   - paid special attention to Chapter 4 which focused on Security aspects.
   - pros and cons of the different cloud types; Private, Public, Community, etc. Be familiar with what is offered through IaaS, PaaS, etc, and what risks are involved with each type.
   - different laws that pertain to the cloud.
+- <https://www.sans.org/>
+- <https://cloudsecurityalliance.org/artifacts/enterprise-architecture-reference-guide-v2>
 
 ## Key Terms
 
