@@ -53,8 +53,7 @@
   - **Integrity**: protect against unauthorized modification.
   - **Availability**: available for use when needed(without disruption).
 - **Cloud Access Security Broker (CASB)**
-  - managed **identity and access management** services.
-  - integrate security across Cloud services. (e.g. who may access data).
+  - **third-party provider** that handles **identity and access management** services for Cloud customers.
 - **Cloud Bursting**
   - routing overflow web traffic from on-prem to cloud during heavy use.
   - (e.g. heavy website usage during holidays).
@@ -72,8 +71,6 @@
   - ensure organization is in compliance with security, legal, business.
 - **Cloud Partner**
   - third party service that interacts with Cloud services.
-- **Content-based discovery**
-  - **discovery tools** can be used to **discover data** by delving into the **content** of **datasets** _without_ **labels** or **metadata** assigned.
 - **Cloud-Secure Software Deployment Lifecycle (SDLC): Defining, Designing, Testing, Secure Operations, Disposal**
   - **Defining**: Focused on identifying the business requirements of the application, such as accounting, database, or customer relationship management
   - **Designing**: Begin to develop user stories (what the user will want to accomplish, what interface will look like and whether it will require the use or development of any APIs)
@@ -84,10 +81,12 @@
 - **Content-Based Discovery**
   - using discovery tools to locate and identify data without labels or metadata.
 - **Community Cloud**
-  - **resources shared** and dispersed among an **affinity group** (online gaming community).
+  - **resources shared** and dispersed among an **affinity group** (e.g. online gaming community).
 - **Confidential Computing**
   - data remains encrypted through it's entire lifecycle(at **rest**, in **transit**, in **use**(memory)).
   - TEEs trusted execution environment. data in **use**.
+- **Content-based discovery**
+  - **discovery tools** can be used to **discover data** by delving into the **content** of **datasets** _without_ **labels** or **metadata** assigned.
 - **Cross Site Scripting (XSS)**
   - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
 - **Cross Site Request Forgery (CSRF)**
@@ -98,18 +97,21 @@
   - Recommended **NOT** to **store crypto** keys with the **cloud provider**.
   - use a **CASB** (Cloud Access Security Broker) or other means of **key management**.
 - **Data**
-  - company **asset**. **legally liable for data loss**.
+  - company **asset**. **legally liable for data loss** even if Cloud provider acted with malice or neglect.
   - Data at rest should be **encrypted**.
+- **Data Anonymization**
+  - remove PII. (e.g. name, address, phone, SSN).
 - **Data Classification**
-  - labeling data as: **sensitive**, **top secret**...
-- **Data custodian**
+  - labeling data as: **sensitive**, **top secret**, **PII**...
+  - sensitive data must be classified when created. (e.g. name and age marked PII so can be anonymized in datset).
+- **Data Custodian**
   - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
-- **Data discovery**
+- **Data Discovery**
   - determine and accurately inventory data.
   - (e.g. organization is attempting to **create** an initial **inventory of data**).
   - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
   - (e.g. organization is mining it's data for trends and relations).
-- **Data lifecycle**
+- **Data Lifecycle**
   1. **Create**: on-prem and Cloud. **encrypt** before **upload** or upon **creation** to Cloud.
   2. **Store**: immediate after data creation, data owner performs **categorization** and **classification**. assigns **access rights**.
   3. **Use**: secure transit(**HTTPS, SSL/TLS**). consume, modify data.
@@ -120,20 +122,33 @@
   - indicates who data owner is. added as metadata.
   - information about data lifecycle.
 - **Data Mapping**
-  - normalizing and translating data into meaningful information.
+  - normalizing and translating data into meaningful information. (e.g. labeling data).
   - when classifying data, mark how sensitive it is.
+- **Data Masking**
+  - **hiding data** with useless characters. (e.g. SSN: xxx-xx-1234).
+- **Data Obscuring**
+  - **Static**: modified copy of datset is created and used.
+  - **Dynamic**: data is modified when accessed.
 - **Data owner**
   - organization that has **collected** or **created** the **data**.
   - legally responsible for all data they own(even if created on Cloud platform).
 - **Data processor**
   - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
+- **Data Randomization**
+  - replace value with similar character type. enables data checking. (e.g. replace number with random number).
 - **Data Rights**
   - actions user can take on data. CRUD.
+- **Data Shuffling**
+  - using different entries from within the same data set to represent the data.
+- **Data Tokenization**
+  - replace sensitive data with token. Token maps to actual data value.
 - **Defense in depth**
   - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
   - Includes a blend of administrative, logical, technical, and physical controls.
 - **DLP (Data Leak Prevention)**
   - tools used to **monitor data egress** that leaves production environment.
+  - identify controlled data with tagging, pattern matching. (e.g. ensure PII is not plain text in database).
+  - (e.g. warn user email contains sensitive information).
 - **Edge and Fog Computing**
   - **Edge**: placing servers close to the people. edge of network. reduce latency.
   - **Fog**: IoT. placing servers close to the sensors. do the computation and return results to data center.
@@ -142,7 +157,7 @@
 - **Gap Analysis**
   - Identifies and reports on any risks that may affect the AIC of key information assets.
 - **Hashing**
-  - using a one
+  - one way function output that changes if file/data is modified. integrity check. cannot be decrypted.
 - **Homomorphic encryption**
   - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
 - **Honeypot**
@@ -151,9 +166,9 @@
   - Cloud customer has the most responsibility and authority.
   - Cloud provider is only liable for the underlying hardware.
 - **IaaS Risk**
-  - Personnel Threats
-  - External Threats
-  - Lack of Specific Skillsets
+  - **Personnel Threats**: malicious/negligent Cloud employee may damage physical resources.
+  - **External Threats**: malware, hacking, DDOS, on-path...
+  - **Lack of Specific Skillsets**: more responsibility on customer. data security.
 - **Injection**
   - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
 - **IPSec or TLS (1.2 or higher)**
@@ -163,8 +178,6 @@
 - **Label-based discovery**
   - labels **created** by the **data owner** greatly aid any **discovery**.
   - helps determine what data is. easier to sort and group.
-- **Masking**
-  - **hiding the data** with useless characters.
 - **Metadata-based discovery**
   - data about data.
   - metadata is a listing of **traits** and characteristics about specific **data elements** and **sets**.
@@ -211,10 +224,10 @@
   - used to encrypt data transmissions between two endpoints. Deprecated in 2015 and replaced with TLS.
 - **Semi-Structured Data**
   - uses tags to structure data. **XML** and **JSON** is an example.
-- **Shuffling**
-  - using different entries from within the same data set to represent the data.
 - **SIEM (Security Information and Event Management)**
-  - ?
+  - collect, manage, analyze, display log data.
+  - centralize log data. advanced trend detection(slow attacks).
+  - GUI, automated alerts.
 - **SOC Report**
   - part of the SSSAE reporting format created by the **AICPA**. Designed for compliance with the **Sarbanes-Oxley Act**.
 - **SOC Report Types**
@@ -269,10 +282,13 @@
     - Redundancy of both IT and electrical
 - **Vendor Lock-In**
   - when a provider uses **proprietary data format** or **medium** to store information and the customer may not be able to move their data to another provider.
+  - provider uses **obscure contract wording** to overcharge if customer leaves platform.
 - **Vendor Lock-Out**
   - when the cloud **provider goes out of business**, is acquired by another company, or **ceases operation** for any reason. The concern is whether the customer can still readily access and recover their data.
 - **Virtualization**
   - use underlying hardware(memory, storage, compute) to wherever it's needed.
+  - **Hypervisor Type 1**: bare metal. (e.g. VMware).
+  - **Hypervisor Type 2**: run on top of Guest OS. (e.g. Virtualbox)
 - **VM Escape**
   - attacker is able to break out of the virtualized guest operating system and access processor or memory.
 - **VM Sprawl**
