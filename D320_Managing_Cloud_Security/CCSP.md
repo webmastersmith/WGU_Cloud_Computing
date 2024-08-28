@@ -19,10 +19,16 @@
   - pros and cons of the different cloud types; Private, Public, Community, etc. Be familiar with what is offered through IaaS, PaaS, etc, and what risks are involved with each type.
   - different laws that pertain to the cloud.
 - <https://www.sans.org/>
+- <https://www.sans.org/top25-software-errors/>
 - <https://cloudsecurityalliance.org/artifacts/enterprise-architecture-reference-guide-v2>
+- <https://owasp.org/www-project-top-ten/>
+- <https://safecode.org/>
+- <https://safecode.org/uncategorized/fundamental-practices-secure-software-development/>
 
 ## Key Terms
 
+- **Access Management**
+  - valid user is given access to single resource. Authorization is checked with every request.
 - **Anonymization**
   - is a technique used to **obscure data** in the cloud.
   - no PII exposed.
@@ -37,7 +43,7 @@
   - **External Audit**: performed by auditors outside of the organization
   - **Audit Preparation**: parameters that are discussed and negotiated prior to the start of the audit
 - **Black Box Testing (Dynamic Application Security Testing (DAST))**
-  - testing the program functions, in **runtime**.
+  - testing infrastructure vulnerabilities. external hacker with '**zero knowledge**' of infrastructure.
 - **Block Chain**
   - distributed immutable ledger. (e.g. cryptocurrency Bitcoin).
 - **Block Storage**
@@ -90,10 +96,6 @@
   - TEEs trusted execution environment. data in **use**.
 - **Content-based discovery**
   - **discovery tools** can be used to **discover data** by delving into the **content** of **datasets** _without_ **labels** or **metadata** assigned.
-- **Cross Site Scripting (XSS)**
-  - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
-- **Cross Site Request Forgery (CSRF)**
-  - manipulates a **logged-on user’s browser** to send a **forged HTTP request** along with **cookies** to generate a request that a vulnerable **application thinks is legitimate**.
 - **CSA STAR program**
   - initiated in **2011**, was created in response to market demand for a **single consistent framework for evaluating cloud providers**.
 - **Crypto Keys Best Practice**
@@ -163,8 +165,6 @@
   - one way function output that changes if file/data is modified. integrity check. cannot be decrypted.
 - **Homomorphic encryption**
   - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
-- **Honeypot**
-  - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data)
 - **IaaS**
   - Cloud customer has the most responsibility and authority.
   - Cloud provider is only liable for the underlying hardware.
@@ -174,6 +174,9 @@
   - **Lack of Specific Skillsets**: more responsibility on customer. data security.
 - **Injection**
   - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
+- **Identity Management**
+  - giving access to resources based on persons identity.
+  - (e.g. user logs in to computer and has access to all their files/folders).
 - **IPSec or TLS (1.2 or higher)**
   - Preferred(secured) upload method to the cloud VPN.
 - **IRM (Information Rights Management)**
@@ -254,12 +257,12 @@
   - data that is **sorted** according to **meaningful**, discrete types and **attributes**.
 - **Threat Modeling**
   - **STRIDE**: Created by Microsoft. Describes threats by their attributes.
-  - S (Spoofing)
-  - T (Tampering)
-  - R (Repudiation)
-  - I (Information Disclosure)
-  - D (Denial of Service)
-  - E (Elevation of Privilege)
+  - **S (Spoofing)**: **disguising communication** as being from a known, **trusted** source.
+  - **T (Tampering)**: unauthorized modification.
+  - **R (Repudiation)**: no proof of actions. (e.g. no log file or record of action).
+  - **I (Information Disclosure)**: exposing data unknowingly.
+  - **D (Denial of Service)**: malicious blocking of access to service. (e.g. DDOS, crashing, overloading, restarting).
+  - **E (Elevation of Privilege)**: user changing privilege level. (e.g. gain admin control).
 - **Trademarks**
   - Applied to specific **words and graphics** (representation of an organization (it’s brand)).
   - Trademarks **registered** with the **USPTO** can use the ® symbol.
@@ -304,7 +307,7 @@
 - **Vulnerability Assessment**
   - scan of the network in order to detect known vulnerabilities
 - **White Box Testing (Static Application Security Testing (SAST))**
-  - reviewing the **source code**.
+  - testing infrastructure vulnerabilities. external hacker with '**full knowledge**' of infrastructure.
 - **Whole Instance Encryption**
   - whole-disk encryption.
 - **Zero-Day Vulnerability**
@@ -346,7 +349,7 @@
 - **ISO 27017**
   - cloud-specific security controls.
 - **ISO/IEC 27017:2015**
-  - set of standards regarding the guidelines of information security controls applicable to the provision and use of cloud services and cloud service customers.
+  - set of standards regarding the **guidelines** of information security controls applicable to the provision and use of **cloud services** and **cloud service customers**.
 - **ISO/IEC 27034 Standards for Secure Application Development**
   - Provides an overview of application security.
 - **ISO 31000:2018**
@@ -373,6 +376,23 @@
   - **DMCA**: protect owned data on the internet
   - **CLOUD Act**: Allows US law enforcement and courts to compel American companies to disclose data stored in foreign data centers
   - **FedRAMP**: US federal program that mandates a standardized approach to security assessments, authorization,
+
+## Threats
+
+- **Broken Authentication**
+  - auth issues allowing exploiting permissions.
+- **Cross Site Scripting (XSS)**
+  - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
+- **Cross Site Request Forgery (CSRF)**
+  - manipulates a **logged-on user’s browser** to send a **forged HTTP request** along with **valid cookies** to generate a request that a vulnerable **application thinks is legitimate**.
+- **Honeypot**
+  - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data).
+- **Injection**
+  - malicious attempt to run unauthorized code or action by injecting a string value into a field. (e.g. SQL, LDAP, OS).
+- **Insecure Direct Object Access**
+  - user can manipulates data by referencing an internal object without access controls.
+- **Sensitive Data Exposure**
+  - exposure of PII, credit card, medical...
 
 ## Notes
 
