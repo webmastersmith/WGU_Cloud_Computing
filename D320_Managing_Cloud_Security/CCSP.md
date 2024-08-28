@@ -251,6 +251,7 @@
     - **Type 1**
       - Reviews the **design of controls**, not how they are implemented or maintained.
     - **Type 2**
+      - same as Type 1, but goes further with actual **testing** **controls** to verify they are working.
       - Used for getting a true assessment of an **organization’s security posture**.
   - **SOC 3**
     - Designed to be shared with the **public**. (e.g. Organization passed security audit).
@@ -328,14 +329,23 @@
 - **Asia-Pacific Economic Cooperation (APEC) Privacy Framework**
 - **Australian Privacy Act of 1988**
 - **Canada’s Personal Information Protection and Electronic Document Act (PIPEDA)**
+- **CLOUD Act**
+  - requires US companies to disclose data to federal law enforcement, even if data is located outside the US.
 - **Copyright**
   - the legal **protection** for expressions of **ideas** (does not cover ideas, specific words, slogans, recipes, or formulae).
 - **DMCA (Digital Millennium Copyright Act)**
   - created to provide additional **protections** to **creative works in digital formats**.
 - **DRM (Digital Rights Management)**
   - control access to digital data. who can modify, share, access.
+- **Electronic Communications Privacy Act (ECPA)**
+  - ?
+- **FedRAMP**
+  - US federal program that mandates a standardized approach to security assessments, authorization,
+- **FERPA**
+  - prevent academic institutions from sharing student data other than parents or student
 - **GDPR (EU General Data Protection Regulation)**
-  - most significant, powerful personal privacy law in the world. Describes the appropriate handling of personal and private information of all EU citizens.
+  - most significant, powerful personal privacy law in the world.
+  - Describes the appropriate handling of personal and private information of all EU citizens.
   - where and how you store PII data.
 - **GDRP Seven principals (European Union's General Data Protection Regulation)**
   - **Notice**:
@@ -345,23 +355,30 @@
   - **Integrity**:
   - **Security**:
   - **Enforcement**:
-- **Gram-Leach-Bliley Act (GLBA)**
-  - ?
-- **HIPAA (Health Insurance Portability and Accountability Act)**
-  - ?
+- **Graham-Leach-Bliley Act (GLBA)**
+  - improve information **privacy** and **security** for **financial** services.
+- **HIPAA (1996 Health Insurance Portability and Accountability Act)**
+  - protect patient records and data (ePHI)
 - **IRM (Information Rights Management)**
   - applying digital rights management tools and techniques to files.
   - focus on protecting the information contained in document than who can access it.
 - **ISO 17789**
+  - International Organization for Standardization.
   - common **terminology** framework for **roles** and **responsibilities**.
 - **ISO 27001**
+  - defines **Information Security Management Systems (ISMS)**.
+  - **addressing** and **managing** **risk** in an organization.
   - the most well-recognized security program standard globally.
 - **ISO 27017**
   - cloud-specific security controls.
 - **ISO/IEC 27017:2015**
+  - defines standards for providing **cloud services** and handling/securing **customer data**.
   - set of standards regarding the **guidelines** of information security controls applicable to the provision and use of **cloud services** and **cloud service customers**.
 - **ISO/IEC 27034 Standards for Secure Application Development**
   - Provides an overview of application security.
+- **ISO 2018 (GAPP)**
+  - Generally Accepted Privacy Principles.
+  - global framework for handling the privacy of personal information.
 - **ISO 31000:2018**
   - is an international standard that focuses on **designing, implementing, and reviewing risk management processes** and practices ions in the United States.
   - specifically focuses on design implementation and management.
@@ -375,17 +392,9 @@
   - grants exclusivity in the production, sale, and importation of the patented property
 - **PCI DSS (Payment Card Industry Data Security Standard)**
   - laws governing the handling of PII and credit information.
-- **Sarbanes-Oxley (SOX)**
-  - ?
-- **US Laws**
-  - **Electronic Communications Privacy Act (ECPA)**:
-  - **Graham-Leach-Bliley Act (GLBA)**: allow banks to merge and own insurance companies
-  - **Sarbanes-Oxley Act (SOX)**: increase transparency into publicly traded corporations’ financial activities
-  - **HIPPA (1996)**: protect patient records and data (ePHI)
-  - **FERPA**: prevent academic institutions from sharing student data other than parents or student
-  - **DMCA**: protect owned data on the internet
-  - **CLOUD Act**: Allows US law enforcement and courts to compel American companies to disclose data stored in foreign data centers
-  - **FedRAMP**: US federal program that mandates a standardized approach to security assessments, authorization,
+- **Sarbanes-Oxley Act (SOX)**
+  - increase **transparency** into publicly traded **corporations**’ **financial** activities.
+  - (e.g. Enron, WorldCom...)
 
 ## Threats
 
