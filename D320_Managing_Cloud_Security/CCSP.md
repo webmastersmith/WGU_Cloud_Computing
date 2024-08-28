@@ -249,7 +249,7 @@
     - **Type 2**
       - Used for getting a true assessment of an **organization’s security posture**.
   - **SOC 3**
-    - Designed to be shared with the public. (e.g. Organization passed security audit).
+    - Designed to be shared with the **public**. (e.g. Organization passed security audit).
     - Seal of approval. Does not contain any actual data about the security controls of the audit target.
 - **SPOF**
   - Single Point of Failure. Bad practice for high availability and reliability.
@@ -263,6 +263,12 @@
   - **I (Information Disclosure)**: exposing data unknowingly.
   - **D (Denial of Service)**: malicious blocking of access to service. (e.g. DDOS, crashing, overloading, restarting).
   - **E (Elevation of Privilege)**: user changing privilege level. (e.g. gain admin control).
+- **Testing Applications**
+  - **Quality Assurance (QA)**: ensure software meets requirements.
+  - **NonFunctional**: test quality. (e.g. load, stress testing).
+  - **Functional**: test if components work together and behave as designed. (e.g. does it do what is supposed to do)
+  - **Static**: reviewing source code.
+  - **Dynamic**: runtime test.
 - **Trademarks**
   - Applied to specific **words and graphics** (representation of an organization (it’s brand)).
   - Trademarks **registered** with the **USPTO** can use the ® symbol.
