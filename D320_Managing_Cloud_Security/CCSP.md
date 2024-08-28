@@ -232,8 +232,9 @@
   - centralize log data. advanced trend detection(slow attacks).
   - GUI, automated alerts.
 - **SOC Report (Service Organization Reports)**
-  - part of the SSSAE reporting format created by the **AICPA**. Ensure compliance with the **Sarbanes-Oxley Act (SOX -govern publicly traded corporations)**.
   - Cloud providers hire third-parties to audit infrastructure. The results are published as SOC reports.
+  - SOC was created by the **AICPA** and part of **SSSAE** reporting format.
+  - Audit ensures compliance with the **Sarbanes-Oxley Act (SOX -govern publicly traded corporations)**.
 - **SOC Report Types**
   - **SOC 1**
     - Strictly for **auditing** the **financial reporting** instruments of a corporation.
