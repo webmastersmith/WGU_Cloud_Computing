@@ -56,6 +56,8 @@
   - **New dependencies** is a potential emergent business impact analysis (BIA) concern.
 - **CDN (Content Delivery Network)**
   - form of data caching, for copies of data commonly requested by users.
+- **Change Management**
+  - process used to review, approve, and document any modifications to the resource.
 - **CIA**
   - three main goals of cybersecurity: Confidentiality, Integrity, and Availability.
   - **Confidentiality**: protect assets(data). on those authorized can access.
@@ -87,6 +89,8 @@
   - **Testing**: Activities such as initial penetration testing and vulnerability scanning against the application is performed. Will use both dynamic and static testing or DSAT (Dynamic Application Security Testing) or SAST (Static Application Security Testing).
   - **Secure Operations**: After testing, the application is deemed secure.
   - **Disposal**: Once it’s reached the end of life or has been replaced with a newer or different application.
+- **Configuration Management**
+  - approved baseline settings for systems and software.
 - **Content-Based Discovery**
   - using discovery tools to locate and identify data without labels or metadata.
 - **Community Cloud**
@@ -237,7 +241,7 @@
 - **SOC Report (Service Organization Reports)**
   - Cloud providers hire third-parties to audit infrastructure. The results are published as SOC reports.
   - SOC was created by the **AICPA** and part of **SSSAE** reporting format.
-  - Audit ensures compliance with the **Sarbanes-Oxley Act (SOX -govern publicly traded corporations)**.
+  - Audit ensures compliance with the **Sarbanes-Oxley Act (SOX -governs publicly traded corporations)**.
 - **SOC Report Types**
   - **SOC 1**
     - Strictly for **auditing** the **financial reporting** instruments of a corporation.
