@@ -27,13 +27,6 @@
 
 ## Key Terms
 
-- **Access Management**
-  - valid user is given access to single resource. Authorization is checked with every request.
-- **Anonymization**
-  - is a technique used to **obscure data** in the cloud.
-  - no PII exposed.
-- **American Institute of Certified Public Accountants (AICPA)**
-  - represents the **accounting** and **audit process**.
 - **API**
   - used to allow other applications to **consume web services** from the application.
 - **Application Normative Frameworks (ANF)**
@@ -56,15 +49,11 @@
   - **New dependencies** is a potential emergent business impact analysis (BIA) concern.
 - **CDN (Content Delivery Network)**
   - form of data caching, for copies of data commonly requested by users.
-- **Change Management**
-  - process used to review, approve, and document any modifications to the resource.
 - **CIA**
   - three main goals of cybersecurity: Confidentiality, Integrity, and Availability.
   - **Confidentiality**: protect assets(data). on those authorized can access.
   - **Integrity**: protect against unauthorized modification.
   - **Availability**: available for use when needed(without disruption).
-- **Cloud Access Security Broker (CASB)**
-  - **third-party provider** that handles **identity and access management** services for Cloud customers.
 - **Cloud Bursting**
   - routing overflow web traffic from on-prem to cloud during heavy use.
   - (e.g. heavy website usage during holidays).
@@ -89,8 +78,6 @@
   - **Testing**: Activities such as initial penetration testing and vulnerability scanning against the application is performed. Will use both dynamic and static testing or DSAT (Dynamic Application Security Testing) or SAST (Static Application Security Testing).
   - **Secure Operations**: After testing, the application is deemed secure.
   - **Disposal**: Once it’s reached the end of life or has been replaced with a newer or different application.
-- **Configuration Management**
-  - approved baseline settings for systems and software.
 - **Content-Based Discovery**
   - using discovery tools to locate and identify data without labels or metadata.
 - **Community Cloud**
@@ -102,79 +89,13 @@
   - **discovery tools** can be used to **discover data** by delving into the **content** of **datasets** _without_ **labels** or **metadata** assigned.
 - **CSA STAR program**
   - initiated in **2011**, was created in response to market demand for a **single consistent framework for evaluating cloud providers**.
-- **Crypto Keys Best Practice**
-  - Recommended **NOT** to **store crypto** keys with the **cloud provider**.
-  - use a **CASB** (Cloud Access Security Broker) or other means of **key management**.
-- **Data**
-  - company **asset**. **legally liable for data loss** even if Cloud provider acted with malice or neglect.
-  - Data at rest should be **encrypted**.
-- **Data Anonymization**
-  - remove PII. (e.g. name, address, phone, SSN).
-- **Data Classification**
-  - labeling data as: **sensitive**, **top secret**, **PII**...
-  - sensitive data must be classified when created. (e.g. name and age marked PII so can be anonymized in datset).
-- **Data Custodian**
-  - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
-- **Data Discovery**
-  - determine and accurately inventory data.
-  - (e.g. organization is attempting to **create** an initial **inventory of data**).
-  - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
-  - (e.g. organization is mining it's data for trends and relations).
-- **Data Lifecycle**
-  1. **Create**: on-prem and Cloud. **encrypt** before **upload** or upon **creation** to Cloud.
-  2. **Store**: immediate after data creation, data owner performs **categorization** and **classification**. assigns **access rights**.
-  3. **Use**: secure transit(**HTTPS, SSL/TLS**). consume, modify data.
-  4. **Share**: understanding **legal requirements** of sharing data across geographies.
-  5. **Archive**: data security over **long term storage** and **location**.
-  6. **Destroy**: **sanitize media**. permanent loss. **Cloud** needs **contractual destroy agreements**.
-- **Data Label**
-  - indicates who data owner is. added as metadata.
-  - information about data lifecycle.
-- **Data Mapping**
-  - normalizing and translating data into meaningful information. (e.g. labeling data).
-  - when classifying data, mark how sensitive it is.
-- **Data Masking**
-  - **hiding data** with useless characters. (e.g. SSN: xxx-xx-1234).
-- **Data Obscuring**
-  - **Static**: modified copy of datset is created and used.
-  - **Dynamic**: data is modified when accessed.
-- **Data owner**
-  - organization that has **collected** or **created** the **data**.
-  - legally responsible for all data they own(even if created on Cloud platform).
-- **Data processor**
-  - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
-- **Data Randomization**
-  - replace value with similar character type. enables data checking. (e.g. replace number with random number).
-- **Data Rights**
-  - actions user can take on data. CRUD.
-- **Data Shuffling**
-  - using different entries from within the same data set to represent the data.
-- **Data Tokenization**
-  - replace sensitive data with token. Token maps to actual data value.
-- **Defense in depth**
-  - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
-  - Includes a blend of administrative, logical, technical, and physical controls.
-- **DLP (Data Leak Prevention)**
-  - tools used to **monitor data egress** that leaves production environment.
-  - identify controlled data with tagging, pattern matching. (e.g. ensure PII is not plain text in database).
-  - (e.g. warn user email contains sensitive information).
 - **Edge and Fog Computing**
   - **Edge**: placing servers close to the people. edge of network. reduce latency.
   - **Fog**: IoT. placing servers close to the sensors. do the computation and return results to data center.
-- **ERM (Enterprise Risk Management)**
-  - analysis of risk. Identify risk and severity, adopt risk management strategy.
-  - **Threat**: possible bad events.
-  - **Vulnerabilities**: weakness in organizations systems.
-  - **Risk**: threat exploits vulnerability.
-  - (e.g. vulnerability: exposing server port 22(SSH), threat: attacker port scanning).
+- **Electronic Discovery**
+  - eDiscovery. **identifying, preserving, collecting, reviewing**, and producing electronically stored information (ESI) in response to a **legal** request or **investigation**.
 - **File-based storage storage (File-level or File-based)**
   - **data** stored and displayed just as with a **file structure** in the traditional environment, as files and folders.
-- **Gap Analysis**
-  - Identifies and reports on any risks that may affect the AIC of key information assets.
-- **Hashing**
-  - one way function output that changes if file/data is modified. integrity check. cannot be decrypted.
-- **Homomorphic encryption**
-  - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
 - **IaaS**
   - Cloud customer has the most responsibility and authority.
   - Cloud provider is only liable for the underlying hardware.
@@ -182,25 +103,33 @@
   - **Personnel Threats**: malicious/negligent Cloud employee may damage physical resources.
   - **External Threats**: malware, hacking, DDOS, on-path...
   - **Lack of Specific Skillsets**: more responsibility on customer. data security.
-- **Injection**
-  - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
-- **Identity Management**
-  - giving access to resources based on persons identity.
-  - (e.g. user logs in to computer and has access to all their files/folders).
-- **IPSec or TLS (1.2 or higher)**
-  - Preferred(secured) upload method to the cloud VPN.
 - **IRM (Information Rights Management)**
-  - the use of specific controls that act in concert with or in addition to the organization’s other access control mechanisms to protect certain types of assets, usually at the file level.
+  - comprehensive approach to managing the **lifecycle of sensitive information**, from **creation** to **destruction**.
+  - applying digital rights management tools and techniques to files.
+  - focus on protecting the information contained in document than who can access it.
+  - (e.g. classification, labeling, access control, rights enforcement(usage restrictions)).
 - **Label-based discovery**
   - labels **created** by the **data owner** greatly aid any **discovery**.
   - helps determine what data is. easier to sort and group.
+- **Management**
+  - **Access Management**: who has **access to what resources** within a cloud environment.
+    - valid user is given access to single resource. Authorization is checked for every resource.
+  - **Availability management**: focuses on ensuring that **critical IT services** are **accessible** and operational **when needed**.
+  - **Capacity management**: ensuring that the IT **infrastructure** can **handle future demand**.
+  - **Change Management**: process used to review, approve, and **document** any **modifications** to the **resource**.
+  - **Configuration Management**: approved **baseline**.
+    - process of tracking and managing changes to the configuration of systems and software.
+  - **Incident management**: focuses on **responding** to and resolving **problems after they occur**.
+  - **Problem Management (PM)**: **identifying** and managing the **root cause** of **incidents** to **prevent** them from **recurring**.
+  - **Release Management**: systematic process of **planning, scheduling, testing, and deploying** new or changed **software** or hardware components into **production** environments.
+  - **Security management**: **protecting IT assets** and **preventing unauthorized access**.
 - **Metadata-based discovery**
   - data about data.
   - metadata is a listing of **traits** and characteristics about specific **data elements** and **sets**.
-- **Nonrepudiation**
-  - no party to a **transaction** can later **claim** that **they did not take part**.
 - **Object-based storage**
   - **data** stored as **objects**, not files or blocks. **Includes metadata** as well as the actual production content.
+- **Operational Excellence**
+  - Focuses on **optimizing** the **efficiency** and **effectiveness** of **cloud operations**.
 - **Organization Normative Framework (ONF)**
   - framework for all components of application security controls and best practices.
 - **PaaS**
@@ -211,7 +140,13 @@
   - Virtualization
   - Resource Sharing
 - **PKI (Public Key Infrastructure)**
-  - a framework of programs, procedures, communication protocols, and public key cryptography that enables a diverse group of individuals to communicate securely
+  - a framework of programs, procedures, communication protocols, and public key cryptography that enables a diverse group of individuals to communicate securely.
+- **Planes**
+  - **Control Plane**: **interface** used to **manage and configure** the **network infrastructure**.
+    - APIs and **dashboards** for interacting with the network.
+  - **Data Plane**: where actual **data packets** are processed and **transmitted**.
+  - **Management Plane**: "brain" of the network that **makes decisions** about how to handle traffic.
+    - It calculates routing tables, enforces security policies, and manages network state.
 - **Portability**
   - the general level of **ease or difficulty when transferring data** out of a providers data center.
 - **Private Cloud**
@@ -229,10 +164,6 @@
   - have authority over Cloud ecosystem.
 - **Resource Pooling**
   - sharing resources among many clients and resources can be reassigned as needed.
-- **Risk appetite**
-  - level, amount, or type of risk that the organization finds acceptable.
-- **Residual risk**
-  - The leftover risk left after applying countermeasures and controls.
 - **SAAS**
   - Cloud customer loses all control of the environment. Cloud provider is responsible for all of the underlying hardware and software.
 - **SaaS Risk**
@@ -241,8 +172,6 @@
   - Web Application Security
 - **Secure Socket Layer (SSL)**
   - used to encrypt data transmissions between two endpoints. Deprecated in 2015 and replaced with TLS.
-- **Semi-Structured Data**
-  - uses tags to structure data. **XML** and **JSON** is an example.
 - **SIEM (Security Information and Event Management)**
   - collect, manage, analyze, display log data.
   - centralize log data. advanced trend detection(slow attacks).
@@ -268,9 +197,8 @@
 - **SPOF**
   - Single Point of Failure. Bad practice for high availability and reliability.
 - **Standards**
+  - set of guidelines or best practices.
   - define **mandatory requirements** of how an organization will **carry** out **security policies**.
-- **Structured data**
-  - data that is **sorted** according to **meaningful**, discrete types and **attributes**.
 - **Threat Modeling**
   - **STRIDE**: Created by Microsoft. Describes threats by their attributes.
   - **S (Spoofing)**: **disguising communication** as being from a known, **trusted** source.
@@ -294,9 +222,6 @@
   - when the encryption key is stored on the same data store as the data (database encryption key is stored in the database itself)
 - **Transport Layer Security (TLS)**
   - Protocol designed to ensure privacy when communicating between applications.
-- **Unstructured data**
-  - data with no defined labels or structure.
-  - (e.g. content of various emails in a user’s sent folder).
 - **Uptime Institute (UI)**
   - **Tier 1**
     - UPS
@@ -335,31 +260,97 @@
 - **Zero-Day Vulnerability**
   - **Unknown vulnerability** that has **yet been found** and a patch released.
 
+## Data
+
+- **Data**
+  - company **asset**. **legally liable for data loss** even if Cloud provider acted with malice or neglect.
+  - Data at rest should be **encrypted**.
+- **Data Custodian**
+  - person or entity that is tasked with the **daily maintenance** and **administration** of the **data**.
+- **Data Discovery**
+  - determine and accurately inventory data.
+  - (e.g. organization is attempting to **create** an initial **inventory of data**).
+  - (e.g. organization is involved in **electronic discovery** (e-discovery, legal terms of **collecting electronic data** as part of a **lawsuit** or **investigation**)).
+  - (e.g. organization is mining it's data for trends and relations).
+- **Data Governance**
+  - Data is first categorized. Once categories are defined, data is labeled and mapped.
+  - **Data Categorization**: **classifying** data into **different groups** or categories based on its **sensitivity**, **criticality**, and other relevant factors.
+    - (e.g. similar to **table header** row: "First Name", "SSN", "Credit Card Details").
+  - **Data Classification**: data based on its sensitivity and risk level. (e.g. **Public, Sensitive, Confidential**).
+    - sensitive data must be classified when created. (e.g. name and age marked PII so can be anonymized in datset).
+  - **Data Label**
+    - focuses on adding **descriptive information** to existing **data**.
+    - indicates who data owner is. added as metadata.
+    - information about data lifecycle.
+  - **Data Mapping**
+    - focuses on **connecting data** between different **sources**.
+    - The process of **linking data** elements from **one source to another**, often with the goal of **integrating** them.
+    - (e.g. mapping custer IDs from legacy database to new CRM system).
+- **Data Lifecycle**
+  1. **Create**: on-prem and Cloud. **encrypt** before **upload** or upon **creation** to Cloud.
+  2. **Store**: immediate after data creation, data owner performs **categorization** and **classification**. assigns **access rights**.
+  3. **Use**: secure transit(**HTTPS, SSL/TLS**). consume, modify data.
+  4. **Share**: understanding **legal requirements** of sharing data across geographies.
+  5. **Archive**: data security over **long term storage** and **location**.
+  6. **Destroy**: **sanitize media**. permanent loss. **Cloud** needs **contractual destroy agreements**.
+- **Data Masking**
+  - **hiding data** with useless characters. (e.g. SSN: xxx-xx-1234).
+- **Data Obscuring**
+  - **Static**: modified copy of datset is created and used.
+  - **Dynamic**: data is modified when accessed.
+- **Data owner**
+  - organization that has **collected** or **created** the **data**.
+  - legally responsible for all data they own(even if created on Cloud platform).
+- **Data processor**
+  - Anything that can be done to data: **CRUD**. copying it, printing it, destroying it, utilizing it.
+- **Data Randomization**
+  - replace value with similar character type. enables data checking.
+  - (e.g. replace number with random number. You can still check data type is accurate).
+- **Data Rights**
+  - actions user can take on data. CRUD.
+- **Data Shuffling**
+  - using different entries from within the same data set to represent the data.
+- **Data Tokenization**
+  - replace sensitive data with token. Token maps to actual data value.
+- **Semi-Structured Data**
+  - Data that has some structure but doesn't strictly conform to a predefined format.
+  - uses tags to structure data. **XML** and **JSON** is an example.
+- **Structured data**
+  - Data that is **organized** in a predefined format, typically in **rows** and **columns** within a **database** or **spreadsheet**.
+  - data that is **sorted** according to **meaningful**, discrete types and **attributes**.
+- **Unstructured data**
+  - data with no defined labels or structure.
+  - (e.g. Emails, customer reviews, social media comments).
+
 ## Laws
 
-- **Asia-Pacific Economic Cooperation (APEC) Privacy Framework**
-- **Australian Privacy Act of 1988**
-- **Canada’s Personal Information Protection and Electronic Document Act (PIPEDA)**
+- **American Institute of Certified Public Accountants (AICPA)**
+  - represents the **accounting** and **audit process**.
 - **CLOUD Act**
-  - requires US companies to disclose data to federal law enforcement, even if data is located outside the US.
+  - Clarifying Lawful Overseas Use of Data.
+  - requires US companies to **disclose data** to **federal law enforcement**, even if **data** is located **outside the US**.
 - **Copyright**
   - the legal **protection** for expressions of **ideas** (does not cover ideas, specific words, slogans, recipes, or formulae).
 - **DMCA (Digital Millennium Copyright Act)**
   - created to provide additional **protections** to **creative works in digital formats**.
 - **DRM (Digital Rights Management)**
   - control access to digital data. who can modify, share, access.
-- **Electronic Communications Privacy Act (ECPA)**
-  - ?
 - **FedRAMP**
   - Federal Risk and Authorization Management Program.
   - US federal program that **certifies security of cloud services**.
   - mandates a standardized approach to security assessments, authorization.
 - **FERPA**
-  - prevent academic institutions from sharing student data other than parents or student
+  - **prevent** academic institutions from **sharing student data** other than parents or student.
 - **GDPR (EU General Data Protection Regulation)**
   - most significant, powerful personal privacy law in the world.
   - Describes the appropriate handling of personal and private information of all EU citizens.
   - where and how you store PII data.
+  - **GDPR Rights of Individuals**
+    - **Right to object**: Individuals have the right to object to their data processing, especially if it's for direct marketing purposes.
+    - **Grounds for objection**: Individuals can object if the processing isn't necessary for the legitimate interests pursued by the company, unless those interests override the fundamental rights and freedoms of the individual.
+  - **Company's Options**:
+    - **Stop processing**: If the company can't demonstrate a legitimate reason for processing the data, it must stop.
+    - **Demonstrate necessity**: The company can attempt to justify the processing by showing that it's **necessary for a legitimate business** purpose that outweighs the individual's interests.
 - **GDRP Seven principals (European Union's General Data Protection Regulation)**
   - **Notice**:
   - **Choice**:
@@ -372,9 +363,6 @@
   - improve information **privacy** and **security** for **financial** services.
 - **HIPAA (1996 Health Insurance Portability and Accountability Act)**
   - protect patient records and data (ePHI)
-- **IRM (Information Rights Management)**
-  - applying digital rights management tools and techniques to files.
-  - focus on protecting the information contained in document than who can access it.
 - **ISO 17789**
   - International Organization for Standardization.
   - common **terminology** framework for **roles** and **responsibilities**.
@@ -406,10 +394,85 @@
 - **Patent**
   - grants exclusivity in the production, sale, and importation of the patented property
 - **PCI DSS (Payment Card Industry Data Security Standard)**
-  - laws governing the handling of PII and credit information.
+  - **security standards** designed to ensure that all companies that **accept, process, store, or transmit** **credit card information** maintain a secure environment.
+  - crucial to keep the relevant **regulatory** bodies (like the PCI Security Standards Council or the card brands themselves) informed of any **security incidents or breaches, including situations where compliance is temporarily impacted**.
 - **Sarbanes-Oxley Act (SOX)**
   - increase **transparency** into publicly traded **corporations**’ **financial** activities.
   - (e.g. Enron, WorldCom...)
+
+## Risk
+
+- **Annualized loss expectancy (ALE)**
+  - ALE is a financial metric used to **estimate** the **average financial loss** an organization can expect from a specific risk over a **year**.
+- **BC/DR Business Continuity and Disaster Recovery**
+  - **Toolkit**: collection of essential documents, procedures, and tools needed to execute a successful business continuity and disaster recovery plan.
+    - **Disaster recovery plan**: Outlines the steps to be taken in the event of a disruption.
+    - **Contact lists**: Contains contact information for key personnel, vendors, and suppliers.
+    - **Backup and recovery procedures**: Describes how to restore data and systems from backups.
+    - **Business impact analysis (BIA)**: Identifies critical systems and processes, and assesses the potential impact of disruptions on them.
+    - **Communication plan**: Outlines how to communicate with employees, customers, and other stakeholders during a disruption.
+- **ERM (Enterprise Risk Management)**
+  - analysis of risk. Identify risk and severity, adopt risk management strategy.
+  - **Threat**: possible bad events.
+  - **Vulnerabilities**: weakness in organizations systems.
+  - **Risk**: threat exploits vulnerability.
+  - (e.g. vulnerability: exposing server port 22(SSH), threat: attacker port scanning).
+- **Gap Analysis**
+  - Identifies and reports on any risks that may affect the AIC of key information assets.
+  - **Maximum tolerable downtime (MTD)**
+    - MTD is the **maximum** amount of **time** a business process or system can be **unavailable** before causing **significant harm** to the organization.
+- **Risk appetite**
+  - level, amount, or type of risk that the organization finds acceptable.
+- **Residual risk**
+  - The leftover risk left after applying countermeasures and controls.
+- **Recovery point objective (RPO)**
+  - RPO defines the **maximum** amount of **data loss** an organization can tolerate due to a disruption.
+  - It influences how often data backups need to be performed.
+- **Recovery time objective (RTO)**
+  - maximum amount of time an organization can tolerate for a system or process to be down after a disruption.
+  - defines the target time frame for restoring operations to an acceptable level.
+
+## Security
+
+- **Anonymization**
+  - This technique removes or replaces personally identifiable information (PII) with non-identifying data.
+  - ensure that even if the data is breached, attackers can't link the information back to specific people.
+  - (e.g. SSN: xxx-xx-1234).
+- **Cloud Access Security Broker (CASB)**
+  - **third-party provider** that handles **identity and access management** services for Cloud customers.
+- **Crypto-shredding**
+  - encrypting data and then destroying the encryption keys, making the data unrecoverable.
+- **Crypto Keys Best Practice**
+  - Recommended **NOT** to **store crypto** keys with the **cloud provider**.
+  - use a **CASB** (Cloud Access Security Broker) or other means of **key management**.
+- **Defense in depth**
+  - practice of having **multiple** overlapping means of **securing an environment** with a variety of methods.
+  - Includes a blend of administrative, logical, technical, and physical controls.
+- **DLP (Data Loss Prevention)**
+  - tools used to **monitor data egress** that leaves production environment.
+  - identify controlled data with tagging, pattern matching. (e.g. ensure PII is not plain text in database).
+  - (e.g. warn user email contains sensitive information).
+- **Degaussing**
+  - erase data from **magnetic** media, like hard drives (HDD).
+- **Federated Identity**
+  - allows users to use their **existing credentials** from one identity provider to access **multiple applications**.
+  - (e.g. log into third-party app with Google account, Github, Facebook...).
+- **Identity Management**
+  - giving access to all users resources based on **persons identity**.
+  - (e.g. user logs in to computer and has access to all their files/folders).
+- **IPSec or TLS (1.2 or higher)**
+  - Preferred(secured) upload method to the cloud VPN.
+- **Hashing**
+  - one way function output that changes if file/data is modified. integrity check. cannot be decrypted.
+- **Homomorphic encryption**
+  - The process of processing data in the cloud while it’s encrypted (without having to decrypt), never exposing it temporarily other than authorized users.
+- **Nonrepudiation**
+  - no party to a **transaction** can later **claim** that **they did not take part**.
+- **Randomization**
+  - replacing data with random values. While it obscures the original data, it might not be effective in preventing the identification of individuals if other related data points remain unchanged.
+- **Single sign-on (SSO)**
+  - SSO simplifies the login process for users across **multiple applications**.
+  - (e.g. sign-in Microsoft Office, use One Note, Word, Excel...).
 
 ## Threats
 
@@ -417,12 +480,13 @@
   - auth issues allowing exploiting permissions.
 - **Cross Site Scripting (XSS)**
   - when an **application allows untrusted data** to be sent to a **web browser** without proper validation or escaping.
+  - **Injection**
+    - malicious attempt to run unauthorized code or action by injecting a string value into a field. (e.g. SQL, LDAP, OS).
+    - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
 - **Cross Site Request Forgery (CSRF)**
   - manipulates a **logged-on user’s browser** to send a **forged HTTP request** along with **valid cookies** to generate a request that a vulnerable **application thinks is legitimate**.
 - **Honeypot**
   - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data).
-- **Injection**
-  - malicious attempt to run unauthorized code or action by injecting a string value into a field. (e.g. SQL, LDAP, OS).
 - **Insecure Direct Object Access**
   - user can manipulates data by referencing an internal object without access controls.
 - **Sensitive Data Exposure**
