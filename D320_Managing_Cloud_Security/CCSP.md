@@ -71,9 +71,11 @@
   - ensure organization is in compliance with security, legal, business.
 - **Cloud Partner**
   - third party service that interacts with Cloud services.
-- **Cloud-Secure Software Deployment Lifecycle (SDLC): Defining, Designing, Testing, Secure Operations, Disposal**
-  - **Defining**: Focused on identifying the business requirements of the application, such as accounting, database, or customer relationship management
-  - **Designing**: Begin to develop user stories (what the user will want to accomplish, what interface will look like and whether it will require the use or development of any APIs)
+- **Cloud-Secure Software Deployment Lifecycle (SDLC): Planning, Designing, Testing, Secure Operations, Disposal**
+  - **Planning**: Defining **HOW** the software will be **built**, including **timelines**, resources, and strategies.
+    - **Requirements Definition**: Understanding and documenting **WHAT** the software should **do** and **HOW** it should **behave**.
+      - **stakeholders** collaboratively **identify**, document, and agree upon the **features**, functionalities, and constraints of the software system being built.
+  - **Designing**: Begin to develop user stories (what the user will want to accomplish, what interface will look like and whether it will require the use or development of any APIs).
   - **Development**: Where the code is written.
   - **Testing**: Activities such as initial penetration testing and vulnerability scanning against the application is performed. Will use both dynamic and static testing or DSAT (Dynamic Application Security Testing) or SAST (Static Application Security Testing).
   - **Secure Operations**: After testing, the application is deemed secure.
@@ -207,12 +209,6 @@
   - **I (Information Disclosure)**: exposing data unknowingly.
   - **D (Denial of Service)**: malicious blocking of access to service. (e.g. DDOS, crashing, overloading, restarting).
   - **E (Elevation of Privilege)**: user changing privilege level. (e.g. gain admin control).
-- **Testing Applications**
-  - **Quality Assurance (QA)**: ensure software meets requirements.
-  - **NonFunctional**: test quality. (e.g. load, stress testing).
-  - **Functional**: test if components work together and behave as designed. (e.g. does it do what is supposed to do)
-  - **Static**: reviewing source code.
-  - **Dynamic**: runtime test.
 - **Trademarks**
   - Applied to specific **words and graphics** (representation of an organization (it’s brand)).
   - Trademarks **registered** with the **USPTO** can use the ® symbol.
@@ -431,6 +427,19 @@
 - **Recovery time objective (RTO)**
   - maximum amount of time an organization can tolerate for a system or process to be down after a disruption.
   - defines the target time frame for restoring operations to an acceptable level.
+- **Software Testing**
+  - **Quality Assurance (QA)**: ensure software meets requirements.
+  - **NonFunctional**: test quality. (e.g. load, stress testing).
+  - **Functional**: test if components work together and behave as designed. (e.g. does it do what is supposed to do)
+  - **Static**: reviewing source code.
+  - **Dynamic**: runtime test.
+- **Testing**
+  - **Acceptance testing**: Verifying that the system meets user requirements.
+  - **Full tests**: comprehensive testing of a system.
+  - **Integration testing**: Testing how different components work together.
+  - **System testing**: Testing the entire system as a whole.
+  - **Tabletop tests**: exercises where team members gather to discuss and simulate their response to a specific scenario, often a disaster or security incident.
+  - **Unit testing**: Testing individual components or modules of code.
 
 ## Security
 
@@ -458,6 +467,7 @@
   - allows users to use their **existing credentials** from one identity provider to access **multiple applications**.
   - (e.g. log into third-party app with Google account, Github, Facebook...).
 - **Identity Management**
+  - also called **Identity assurance**: verifying and authenticating the identity of individuals or entities.
   - giving access to all users resources based on **persons identity**.
   - (e.g. user logs in to computer and has access to all their files/folders).
 - **IPSec or TLS (1.2 or higher)**
@@ -485,6 +495,7 @@
     - malicious user attempts to **inject a string of some type into a field** in order to manipulate the application’s actions to **reveal unauthorized data**. SQL, LDAP, or OS injections.
 - **Cross Site Request Forgery (CSRF)**
   - manipulates a **logged-on user’s browser** to send a **forged HTTP request** along with **valid cookies** to generate a request that a vulnerable **application thinks is legitimate**.
+  - **Tokens**: used to prevent CSRF attack.
 - **Honeypot**
   - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data).
 - **Insecure Direct Object Access**
