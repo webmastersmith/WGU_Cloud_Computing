@@ -161,6 +161,12 @@
 - **Edge and Fog Computing**
   - **Edge**: placing servers close to the people. edge of network. reduce latency.
   - **Fog**: IoT. placing servers close to the sensors. do the computation and return results to data center.
+- **ERM (Enterprise Risk Management)**
+  - analysis of risk. Identify risk and severity, adopt risk management strategy.
+  - **Threat**: possible bad events.
+  - **Vulnerabilities**: weakness in organizations systems.
+  - **Risk**: threat exploits vulnerability.
+  - (e.g. vulnerability: exposing server port 22(SSH), threat: attacker port scanning).
 - **File-based storage storage (File-level or File-based)**
   - **data** stored and displayed just as with a **file structure** in the traditional environment, as files and folders.
 - **Gap Analysis**
@@ -210,10 +216,13 @@
   - the general level of **ease or difficulty when transferring data** out of a providers data center.
 - **Private Cloud**
   - **distributed computing environment** with only **one customer**.
+- **Procedures**
+  - step-by-step processes that individual or organization must follow in specific circumstances.
+  - similar to checklist. (e.g. steps to take when responding to a data breach).
 - **Quantitative**
-  - Risk assessment that uses specific numerical values.
+  - Risk assessment that uses **specific numerical values**.
 - **Qualitative**
-  - Risk assessment that uses nonnumerical categories that are relative in nature, such as high, medium, and low.
+  - Risk assessment that uses **nonnumerical** categories that are relative in nature, such as **high, medium, and low**.
 - **Randomization**
   - replacement of data with random characters.
 - **Regulators**
@@ -258,6 +267,8 @@
     - Seal of approval. Does not contain any actual data about the security controls of the audit target.
 - **SPOF**
   - Single Point of Failure. Bad practice for high availability and reliability.
+- **Standards**
+  - define **mandatory requirements** of how an organization will **carry** out **security policies**.
 - **Structured data**
   - data that is **sorted** according to **meaningful**, discrete types and **attributes**.
 - **Threat Modeling**
@@ -380,7 +391,9 @@
   - Generally Accepted Privacy Principles.
   - global framework for handling the privacy of personal information.
 - **ISO 31000:2018**
+  - **risk management framework (RMF)**.
   - is an international standard that focuses on **designing, implementing, and reviewing risk management processes** and practices ions in the United States.
+  - **NIST SP 800-37**: guide for implementing **RMF**.
   - specifically focuses on design implementation and management.
 - **Legal Hold**
   - data is collected and preserved. overrides organizations data retention policy.
