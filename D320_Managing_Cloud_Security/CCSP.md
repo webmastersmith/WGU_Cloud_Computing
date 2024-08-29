@@ -351,7 +351,9 @@
 - **Electronic Communications Privacy Act (ECPA)**
   - ?
 - **FedRAMP**
-  - US federal program that mandates a standardized approach to security assessments, authorization,
+  - Federal Risk and Authorization Management Program.
+  - US federal program that **certifies security of cloud services**.
+  - mandates a standardized approach to security assessments, authorization.
 - **FERPA**
   - prevent academic institutions from sharing student data other than parents or student
 - **GDPR (EU General Data Protection Regulation)**
