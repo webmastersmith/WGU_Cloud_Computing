@@ -41,12 +41,6 @@
   - distributed immutable ledger. (e.g. cryptocurrency Bitcoin).
 - **Block Storage**
   - a blank **volume** that the customer or user can put anything into. More flexible and higher performance but requires a **greater amount of administration**.
-- **Business Impact Analysis (BIA)**
-  - **detailed analysis and assessment** of the priorities given to each **asset** and process within the organization.
-  - interview managers, users, customers. Inventory assets. review financial, insurance, data, and regulatory mandates.
-  - Determine the value of the assets that are protected to know how much time, money, and effort to expend to protect them.
-  - identify critical paths and single point failures.
-  - **New dependencies** is a potential emergent business impact analysis (BIA) concern.
 - **CDN (Content Delivery Network)**
   - form of data caching, for copies of data commonly requested by users.
 - **CIA**
@@ -219,19 +213,13 @@
 - **Transport Layer Security (TLS)**
   - Protocol designed to ensure privacy when communicating between applications.
 - **Uptime Institute (UI)**
-  - **Tier 1**
-    - UPS
-    - Sufficient Cooling
-    - Power Generator w. minimum 12hours fuel
-    - WILL CAUSE DOWNTIME
-  - **Tier 2**
-    - Critical operations do not have to be interrupted for scheduled replacement or downtime
-    - MAY CAUSE DOWNTIME
-  - **Tier 3**
-    - Dual Power Supplies for all IT Systems
-    - Can continue with a single component or power element
-  - **Tier 4**
-    - Redundancy of both IT and electrical
+  - **Tier 1**: **most basic level** of data center.
+    - limited redundancy and expected downtime. for **non-critical applications** with lower availability requirements.
+  - **Tier 2**: **redundancy** for **power** and **cooling** components.
+  - **Tier 3**: full **redundancy** for all **critical** infrastructure components.
+    - allowing for **maintenance or repairs without impacting operations**.
+  - **Tier 4**: **complete fault tolerance**. any single component will not impact operations.
+    - most **critical applications** that cannot tolerate any downtime.
 - **Vendor Lock-In**
   - when a provider uses **proprietary data format** or **medium** to store information and the customer may not be able to move their data to another provider.
   - provider uses **obscure contract wording** to overcharge if customer leaves platform.
@@ -255,6 +243,22 @@
   - whole-disk encryption.
 - **Zero-Day Vulnerability**
   - **Unknown vulnerability** that has **yet been found** and a patch released.
+
+## Agreements
+
+- **Master service agreement (MSA)**
+  - high-level **contract** that establishes the **overall terms and conditions** for a long-term business relationship between two parties, often a vendor and an organization.
+  - covers legal and commercial terms like payment terms, dispute resolution, and confidentiality.
+  - often include **security requirements** to ensure that the vendor maintains adequate data protection and security practices while working with the organization.
+- **Service level agreement (SLA)**
+  - defines the specific **performance expectations** for a service provided by a vendor.
+  - It outlines metrics like **uptime, response time**s, and service levels.
+- **Nondisclosure agreement (NDA)**
+  - protects **confidential information** shared between two parties.
+  - It ensures that sensitive information remains private.
+- **Business partnership agreement (BPA)**
+  - outlines the **terms and conditions** for a **collaborative relationship** between two or more businesses.
+  - It focuses on shared goals and responsibilities.
 
 ## Data
 
@@ -318,7 +322,7 @@
   - data with no defined labels or structure.
   - (e.g. Emails, customer reviews, social media comments).
 
-## Laws
+## Regulators
 
 - **American Institute of Certified Public Accountants (AICPA)**
   - represents the **accounting** and **audit process**.
@@ -347,6 +351,7 @@
   - **Company's Options**:
     - **Stop processing**: If the company can't demonstrate a legitimate reason for processing the data, it must stop.
     - **Demonstrate necessity**: The company can attempt to justify the processing by showing that it's **necessary for a legitimate business** purpose that outweighs the individual's interests.
+    - **client must opt in for the data use**.
 - **GDRP Seven principals (European Union's General Data Protection Regulation)**
   - **Notice**:
   - **Choice**:
@@ -407,6 +412,13 @@
     - **Backup and recovery procedures**: Describes how to restore data and systems from backups.
     - **Business impact analysis (BIA)**: Identifies critical systems and processes, and assesses the potential impact of disruptions on them.
     - **Communication plan**: Outlines how to communicate with employees, customers, and other stakeholders during a disruption.
+- **Business Impact Analysis (BIA)**
+  - Evaluates the potential effects of a disruption to critical business functions and processes. It helps organizations understand the financial and operational consequences of an incident.
+  - **detailed analysis and assessment** of the priorities given to each **asset** and process within the organization.
+  - interview managers, users, customers. Inventory assets. review financial, insurance, data, and regulatory mandates.
+  - Determine the value of the assets that are protected to know how much time, money, and effort to expend to protect them.
+  - identify critical paths and single point failures.
+  - **New dependencies** is a potential emergent business impact analysis (BIA) concern.
 - **ERM (Enterprise Risk Management)**
   - analysis of risk. Identify risk and severity, adopt risk management strategy.
   - **Threat**: possible bad events.
@@ -414,13 +426,25 @@
   - **Risk**: threat exploits vulnerability.
   - (e.g. vulnerability: exposing server port 22(SSH), threat: attacker port scanning).
 - **Gap Analysis**
-  - Identifies and reports on any risks that may affect the AIC of key information assets.
+  - compares the **current state** of something (like controls, processes, or performance) against a **desired** or ideal **state** (a **baseline standard**).
   - **Maximum tolerable downtime (MTD)**
     - MTD is the **maximum** amount of **time** a business process or system can be **unavailable** before causing **significant harm** to the organization.
+- **Inherent risk**
+  - the level of risk that exists before any risk mitigation measures are implemented.
+- **Privacy impact analysis**
+  - **assessing** the potential impact of a project or system on **individual privacy**.
+  - evaluates how personal data is collected, used, and protected.
+- **Risk analysis**
+  - **identifying**, assessing, and prioritizing **risks** that could **affect an organization's objectives**.
+  - includes considering the **likelihood** and impact of **various threats and vulnerabilities**.
 - **Risk appetite**
   - level, amount, or type of risk that the organization finds acceptable.
 - **Residual risk**
   - The leftover risk left after applying countermeasures and controls.
+- **Risk management**
+  - identifying, assessing, and controlling risks.
+- **Residual risk**
+  - level of risk that remains after risk mitigation measures have been implemented.
 - **Recovery point objective (RPO)**
   - RPO defines the **maximum** amount of **data loss** an organization can tolerate due to a disruption.
   - It influences how often data backups need to be performed.
@@ -434,9 +458,13 @@
   - **Static**: reviewing source code.
   - **Dynamic**: runtime test.
 - **Testing**
+  - **Abuse case**: focuses on identifying vulnerabilities and weaknesses in the system by simulating malicious attacks or unexpected scenarios.
   - **Acceptance testing**: Verifying that the system meets user requirements.
+  - **Dry run**: walking through the disaster recovery plan without actually activating any systems or processes.
   - **Full tests**: comprehensive testing of a system.
   - **Integration testing**: Testing how different components work together.
+  - **Split test**: some components of the system are tested in a live environment while others remain in the production environment.
+    - useful for testing specific changes or upgrades without disrupting the entire system.
   - **System testing**: Testing the entire system as a whole.
   - **Tabletop tests**: exercises where team members gather to discuss and simulate their response to a specific scenario, often a disaster or security incident.
   - **Unit testing**: Testing individual components or modules of code.
