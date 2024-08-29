@@ -489,6 +489,17 @@
   - tool used to detect, identify, isolate, and analyze attacks by distracting attackers (usually a dummy machine with useless data).
 - **Insecure Direct Object Access**
   - user can manipulates data by referencing an internal object without access controls.
+- **OWASP Top 10 Vulnerabilities**
+  1. [**Broken Access Control**](https://owasp.org/Top10/A01_2021-Broken_Access_Control/): using insecure direct object identifiers to view another user's account information.
+  2. [**cryptographic Failures**](https://owasp.org/Top10/A02_2021-Cryptographic_Failures/): sensitive data exposure or system compromise.
+  3. [**Injection**](https://owasp.org/Top10/A03_2021-Injection/): Cross-site Scripting.
+  4. [**Insecure Design**](https://owasp.org/Top10/A04_2021-Insecure_Design/): lack of business risk profiling.
+  5. [**Security Misconfiguration**](https://owasp.org/Top10/A05_2021-Security_Misconfiguration/): some form of misconfiguration.
+  6. [**Vulnerable and Outdated Components**](https://owasp.org/Top10/A06_2021-Vulnerable_and_Outdated_Components/): test and assess risk.
+  7. [**Identification and Authentication Failures**](https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/): session management.
+  8. [**Software and Data Integrity Failures**](https://owasp.org/Top10/A08_2021-Software_and_Data_Integrity_Failures/): software updates, critical data, and CI/CD pipelines without verifying integrity.
+  9. [**Security Logging and Monitoring Failures**](https://owasp.org/Top10/A09_2021-Security_Logging_and_Monitoring_Failures/): impact visibility, incident alerting, and forensics.
+  10. [**Server-Side Request Forgery**](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/): fetching a remote resource without validating the user-supplied URL.
 - **Sensitive Data Exposure**
   - exposure of PII, credit card, medical...
 
