@@ -352,14 +352,6 @@
     - **Stop processing**: If the company can't demonstrate a legitimate reason for processing the data, it must stop.
     - **Demonstrate necessity**: The company can attempt to justify the processing by showing that it's **necessary for a legitimate business** purpose that outweighs the individual's interests.
     - **client must opt in for the data use**.
-- **GDRP Seven principals (European Union's General Data Protection Regulation)**
-  - **Notice**:
-  - **Choice**:
-  - **Purpose**:
-  - **Access**:
-  - **Integrity**:
-  - **Security**:
-  - **Enforcement**:
 - **Graham-Leach-Bliley Act (GLBA)**
   - improve information **privacy** and **security** for **financial** services.
 - **HIPAA (1996 Health Insurance Portability and Accountability Act)**
@@ -541,12 +533,3 @@
   10. [**Server-Side Request Forgery**](https://owasp.org/Top10/A10_2021-Server-Side_Request_Forgery_%28SSRF%29/): fetching a remote resource without validating the user-supplied URL.
 - **Sensitive Data Exposure**
   - exposure of PII, credit card, medical...
-
-## Notes
-
-- Critique falls under the exceptions category for “fair-use” copyrighted material
-- **Industry Standard 5 9’s 99.999% uptime**.
-- Secure Logical Framework is a part of the operating requirements.
-- Initial training is a security training delivery category
-- and continuous monitoring of cloud products and services.
-- **service provider**: is a component of the “Hub and Spoke” network design model.
