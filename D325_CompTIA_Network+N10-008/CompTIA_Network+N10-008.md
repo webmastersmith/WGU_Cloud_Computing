@@ -53,7 +53,7 @@
 | 4      | Transport    | Segment/reassemble data. Host-to-Host. Port. Reliable data delivery (TCP/UDP).   |
 | 3      | Network      | Packet(datagram). Router, hop-to-hop. layer3 switch. icmp. Logical IP Addressing |
 | 2      | Data Link    | Frame. Node-to-Node(MAC). Error detection. switch(WAP), bridge, NIC.             |
-| 1      | Physical     | Bit. hub, repeater, modem, cabling/wifi(Bounded/unbounded media).                |
+| 1      | Physical     | Bit. hub, repeater, modem, cabling(Bounded) wifi/microwave(Unbounded) media.     |
 
 1. physical: transceiver, repeater, hub, media converter, modem.
    1. transceiver: part of the NIC that sends/receives signals.
@@ -63,7 +63,8 @@
    5. Physical topology: larger networks are divided into **segments**. segment is where all nodes share the same media.
    6. physical interface: cable specs. radio transceiver specs.
    7. Signaling: transmit/receiving encoded data over the network medium. timing synchronization. modulation schemes.
-   8. Bounded media refers to the fact that some form of shield, cladding, and/or insulation is employed to bind the signal within the core medium.
+   8. Bounded media: some form of shield, cladding, and/or insulation is employed to bind the signal within the core medium.
+   9. Unbounded media: wifi or microwave signals used to transport data.
 2. data link: transfer data between 'logical segment'(data is sent using hardware addressing(MAC)).
    1. bridge: legacy. joins physical network segments. each port is a network interface(NIC). separated collision domains with Hubs. replaced by switches. Radio/Microwaves are unbounded.
    2. Extended Unique Identifier (EUI-48, EUI-64). Similar to MAC address.
