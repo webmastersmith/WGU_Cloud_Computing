@@ -666,7 +666,7 @@ FULL JOIN table2 t2
 ```
 
 - **LEFT JOIN**
-  - `LEFT JOIN` selects **all left table rows**, but only matching left table rows.
+  - `LEFT JOIN` selects **all left table rows**, but only matching right table rows.
 
 ```sql
 SELECT
